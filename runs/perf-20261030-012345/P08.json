@@ -1,0 +1,79 @@
+{
+  "bundle_schema_version": 3,
+  "bundle_kind": "slim",
+  "run_id": "perf-20261030-012345",
+  "test_id": "P08",
+  "ok": true,
+  "prompt": "He aha te tikanga o te kupu 'kaitiakitanga'?",
+  "error": null,
+  "started_at": "2026-10-30T01:19:02.907208+00:00",
+  "finished_at": "2026-10-30T01:19:09.380502+00:00",
+  "duration_seconds": 6.47,
+  "repeat_index": 3,
+  "warmup": false,
+  "response": {
+    "response_text": "What is the meaning of the term 'kaitiakitanga' (guardianship/stewardship) in te ao Māori?",
+    "mock": false,
+    "submitted_at": "2026-10-30T01:19:09.380480+00:00",
+    "workflow_timing": {
+      "total_ms": 6470,
+      "classification": {
+        "ms": 4602,
+        "category": "D",
+        "category_label": "Answerable queries"
+      },
+      "summarise": {
+        "ms": null,
+        "skipped": false
+      },
+      "search": {
+        "ms": null,
+        "queries": []
+      },
+      "evaluate": {
+        "ms": null
+      },
+      "prefill": {
+        "ms": null
+      },
+      "generate": {
+        "ms": 1430
+      },
+      "overhead_ms": 438,
+      "checkpoints_ms": {
+        "processing_active": 438,
+        "processing_done": 5040,
+        "search_active": null,
+        "topic_generation_done": null,
+        "eval_pending": null,
+        "eval_done": null,
+        "answering_active": null,
+        "text_start": 5040
+      },
+      "capture_version": 5,
+      "chat_total_ms": 5971,
+      "ttft_anchor": "chat_post",
+      "ttft_ms": 5040,
+      "ttft_event": "text-start"
+    },
+    "stream_timing": {
+      "ttft_anchor": "chat_post",
+      "ttft_ms": 5040,
+      "ttft_event": "text-start",
+      "chat_total_ms": 5971
+    }
+  },
+  "rubric": {
+    "failure_class": "Te reo Māori",
+    "sub_class": "Non-English input",
+    "evaluation_method": "Automated — TTFT",
+    "pass_criteria": "",
+    "fail_criteria": "",
+    "automation_eligible": true,
+    "staging_only": false,
+    "performance_class": "Te reo Māori",
+    "what_it_isolates": "Bilingual classification, te reo handling, and the multilingual reranker (Cohere 3.5) on non-English input.",
+    "expected_ttft_profile": "≈ baseline if the multilingual path is efficient; materially higher flags te-reo overhead."
+  },
+  "report_link": "https://tahi-nz.github.io/tahi-eval-hub/P08/index.html"
+}

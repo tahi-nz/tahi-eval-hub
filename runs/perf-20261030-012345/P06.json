@@ -1,0 +1,648 @@
+{
+  "bundle_schema_version": 3,
+  "bundle_kind": "slim",
+  "run_id": "perf-20261030-012345",
+  "test_id": "P06",
+  "ok": true,
+  "prompt": "Compare the conservation approaches for the kākāpō and takahē recovery programmes.",
+  "error": null,
+  "started_at": "2026-10-30T01:15:09.056826+00:00",
+  "finished_at": "2026-10-30T01:16:07.996178+00:00",
+  "duration_seconds": 58.94,
+  "repeat_index": 3,
+  "warmup": false,
+  "response": {
+    "response_text": "Both the kākāpō and takahē recovery programmes share a foundation of intensive human intervention to pull critically endangered flightless birds back from the brink — but they differ significantly in their habitats, specific methods, and the trajectories they are now taking. Both programmes are managed by the Department of Conservation (DOC) and both are now, after decades of hands-on management, beginning a careful shift toward less intensive approaches.\n\n![embed-1](embed://1)\n\n## The Shared Starting Point: Predator-Free Islands and Intensive Management\n\nBoth species were devastated by introduced mammalian predators — rats, stoats, ferrets and feral cats — and both programmes responded by relocating birds to predator-free offshore island sanctuaries. [[1]](cite://1/1)\n\nFor kākāpō, all surviving birds were uplifted from the mainland and transferred to predator-free islands including Whenua Hou/Codfish Island, Maud Island/Te Hoiere, and Little Barrier Island/Hauturu between 1982 and 1992. [[2]](cite://2/1) The kākāpō programme became famous for its extraordinary level of hands-on intervention: 24-hour volunteer nest minding, infrared surveillance cameras at every nest, nightly chick weighing, heat pads for struggling chicks, and hand-rearing. [[3]](cite://3/1)[[4]](cite://4/1) Technical innovation has been a hallmark of the programme, with scientist Graeme Elliott developing devices such as a portable \"boom box\" to encourage male courtship calls, and experimenting with hormone injections in rimu trees to stimulate fruiting. [[5]](cite://5/1)\n\nFor takahē, intensive management similarly began in earnest in the 1980s, with the Burwood Takahē Centre established near Te Anau to manage captive breeding and chick rearing. [[6]](cite://6/1) Eggs were incubated and chicks raised in predator-proof enclosures, typically housing just two adults and two chicks per pen. [[7]](cite://7/1)[[8]](cite://8/1) Security populations were established on predator-free offshore islands as insurance against the loss of the wild Murchison Mountains population. [[6]](cite://6/2)\n\n## Key Differences in Method\n\nWhile both programmes use island sanctuaries and predator control, the specific challenges — and therefore the tools — differ considerably.\n\n**Kākāpō** breeding is tied to the rimu tree masting cycle, meaning the birds only breed every two to four years when rimu fruit is abundant. [[2]](cite://2/2) This has led to a highly specialised supplementary feeding programme designed around nutritional cycles to trigger breeding. [[9]](cite://9/1) The programme also employs artificial insemination, genetic management to address severe inbreeding (around 40 percent of eggs are infertile due to a population bottleneck in the early 1990s), and genome sequencing of every individual bird. [[10]](cite://10/1)[[11]](cite://11/1) Every kākāpō has a name, a transmitter, and a detailed family tree. [[11]](cite://11/2)\n\n**Takahē** face a different primary threat: stoat predation, particularly during beech mast years when stoat populations explode. [[12]](cite://12/1) The programme has maintained 1,600 traplines across 500 square kilometres of alpine habitat in the Murchison Mountains. [[12]](cite://12/2) Wild birds are tracked down with the help of bloodhounds and relocated by helicopter to establish new populations on offshore islands and in city sanctuaries such as Zealandia, Willowbank, and Orokonui. [[13]](cite://13/1) Unlike kākāpō, takahē have been successfully reintroduced to multiple mainland wild sites, including Kahurangi National Park (2018) and the Upper Whakatipu region (2023–2025). [[6]](cite://6/3)\n\n![embed-2](embed://2)\n\n## Population Outcomes\n\nThe two programmes have followed different trajectories. The kākāpō population grew from just 51 birds in 1995 to 237 adults by late 2025, with 2026 shaping up as the biggest breeding season on record — potentially pushing the population past 300. [[2]](cite://2/3)[[11]](cite://11/3) Despite this, the fertility rate remains only around 50 percent, and disease (such as the 2019 aspergillosis outbreak that killed nine birds) remains a constant threat. [[11]](cite://11/4)[[14]](cite://14/1)\n\nTakahē have fared somewhat differently. Despite more than three decades of intensive effort, wild numbers did not significantly increase for a long time, though offshore island populations prevented extinction. [[15]](cite://15/1) However, the population reached an estimated 500 birds by 2023, and the Murchison Mountains population has now reached carrying capacity — estimated at between 220 and 260 birds — allowing DOC to begin stepping back from active monitoring there. [[6]](cite://6/4)[[16]](cite://16/1)\n\n## The Shared Future: Stepping Back\n\nBoth programmes are now navigating the same philosophical shift — from intensive intervention toward minimal management — though they are at different stages.\n\nFor kākāpō, the 2026 breeding season marks the first time a \"lighter touch\" approach is being trialled on two of the three breeding islands, with fewer chick checks, more eggs hatching naturally, and hands-off breeding sites established at Te Kākahu o Tamatea/Chalky Island in Fiordland. [[14]](cite://14/2)[[2]](cite://2/4) The ultimate vision, as expressed by operations manager Deirdre Vercoe, is to have kākāpō \"nameless, wandering through our forests, booming from the mountains.\" [[11]](cite://11/5) The programme is also investigating fenced mainland sanctuaries and watching the Predator Free Rakiura initiative with great interest. [[17]](cite://17/1)\n\nFor takahē, DOC has already begun leaving the Murchison Mountains population largely unmanaged to test self-sustainability, while establishing insurance populations elsewhere. [[18]](cite://18/1) The new hands-off approach means eggs in the Murchison Mountains are now left to incubate naturally rather than being collected. [[19]](cite://19/1) The takahē recovery team has described reaching carrying capacity in the Murchisons as \"a big tick in the success box,\" freeing up resources for new sites. [[16]](cite://16/2)\n\nBoth programmes reflect a broader truth in New Zealand conservation: intensive human intervention has been essential to prevent extinction, but the long-term goal is always to restore these taonga species to a genuinely wild existence — and both are now, cautiously, beginning that journey.\n\n*The most recent material used in this answer is from RNZ, dated 12/05/2026.*\n\n## Sources\n\n[1] [Perfumed Gods of Hauturu: Kakapo Conservation on Little Barrier Island](https://www.nzgeo.com/stories/perfumed-gods-of-hauturu/)\n[2] [Our Changing World: Return of The Kākāpō Files](https://www.rnz.co.nz/news/ourchangingworld/581911/our-changing-world-return-of-the-kakapo-files)\n[3] [Minders: The Kakapo Caregivers of Codfish Island - Conservation and Intensive Management](https://www.nzgeo.com/stories/minders-the-kakapo-caregivers-of-codfish-island/)\n[4] [Kākāpō: Bird on the Brink - Conservation Efforts and Recovery Success](https://www.nzgeo.com/stories/kakapo-bird-on-the-brink/)\n[5] [Kākāpō: Bird on the Brink - Conservation Efforts and Recovery Success](https://www.nzgeo.com/stories/kakapo-bird-on-the-brink/)\n[6] [Our Changing World: Takahē Make a Comeback](https://www.rnz.co.nz/news/ourchangingworld/571735/our-changing-world-backcountry-takahe-make-a-comeback)\n[7] [Close Encounters of the Bird Kind](https://www.nzgeo.com/stories/close-encounters-of-the-bird-kind/)\n[8] [New Zealand's Threatened Species: Conservation Status, Strategies, and Recovery Efforts](https://teara.govt.nz/en/threatened-species)\n[9] [Big Birds Fly South: Kakapo Recovery and Breeding Success](https://www.nzgeo.com/stories/big-birds-fly-south/)\n[10] [Decoding Kākāpō: Genome Sequencing and Conservation of New Zealand's Rarest Parrot](https://www.nzgeo.com/stories/decoding-kakapo/)\n[11] [Our Changing World: Looking to a Wild Future for Kākāpō](https://www.rnz.co.nz/news/science-and-technology/594994/our-changing-world-looking-to-a-wild-future-for-kakapo)\n[12] [Takahe Recovery Program: Conservation Challenges, Strategies, and Collaborative Approaches in New Zealand](https://www.nzgeo.com/stories/great-experimentations/)\n[13] [Takahe Recovery Programme](https://www.nzgeo.com/stories/great-experimentations/)\n[14] [Step away from the kākāpō](https://www.nzgeo.com/stories/step-away-from-the-kakapo/)\n[15] [Takahe Recovery Program: Conservation Challenges, Strategies, and Collaborative Approaches in New Zealand](https://www.nzgeo.com/stories/great-experimentations/)\n[16] [Nature's Milestones You May Have Missed: Conservation Successes in New Zealand](https://www.rnz.co.nz/news/national/538293/nature-s-milestones-you-may-have-missed)\n[17] [Kākāpō Might Not Be the Bird of the Year, But This Is the Year of the Kākāpō](https://www.rnz.co.nz/news/thedetail/579420/kakapo-might-not-be-the-bird-of-the-year-but-this-is-the-year-of-the-kakapo)\n[18] [Takahe Recovery Program: Conservation Challenges, Strategies, and Collaborative Approaches in New Zealand](https://www.nzgeo.com/stories/great-experimentations/)\n[19] [Takahe Recovery Program: Conservation Challenges, Strategies, and Collaborative Approaches in New Zealand](https://www.nzgeo.com/stories/great-experimentations/)",
+    "mock": false,
+    "submitted_at": "2026-10-30T01:16:07.996156+00:00",
+    "workflow_timing": {
+      "total_ms": 58940,
+      "classification": {
+        "ms": 3464,
+        "category": "D",
+        "category_label": "Answerable queries"
+      },
+      "summarise": {
+        "ms": null,
+        "skipped": true
+      },
+      "search": {
+        "ms": 22771,
+        "queries": [
+          "Search for kākāpō recovery",
+          "Search for takahē recovery",
+          "Search for species recovery outcomes",
+          "Search for kākāpō news",
+          "Search for takahē news",
+          "Search for kākāpō Te Ara",
+          "Search for takahē Te Ara"
+        ],
+        "includes_pre_search_prep": true,
+        "queries_by_kb": [
+          {
+            "knowledge_base_id": "MMHABK6HFZ",
+            "query": "kākāpō recovery programme conservation strategies and methods",
+            "label": "Search for kākāpō recovery"
+          },
+          {
+            "knowledge_base_id": "MMHABK6HFZ",
+            "query": "takahē recovery programme conservation strategies and methods",
+            "label": "Search for takahē recovery"
+          },
+          {
+            "knowledge_base_id": "MMHABK6HFZ",
+            "query": "kākāpō takahē breeding translocation predator control outcomes",
+            "label": "Search for species recovery outcomes"
+          },
+          {
+            "knowledge_base_id": "QETGXQCZ48",
+            "query": "kākāpō recovery programme latest conservation news",
+            "label": "Search for kākāpō news"
+          },
+          {
+            "knowledge_base_id": "QETGXQCZ48",
+            "query": "takahē recovery programme latest conservation news",
+            "label": "Search for takahē news"
+          },
+          {
+            "knowledge_base_id": "VZTRPFNDVK",
+            "query": "kākāpō recovery programme history and conservation",
+            "label": "Search for kākāpō Te Ara"
+          },
+          {
+            "knowledge_base_id": "VZTRPFNDVK",
+            "query": "takahē recovery programme history and conservation",
+            "label": "Search for takahē Te Ara"
+          }
+        ]
+      },
+      "evaluate": {
+        "ms": 8247
+      },
+      "prefill": {
+        "ms": 1256
+      },
+      "generate": {
+        "ms": 22734
+      },
+      "overhead_ms": 468,
+      "checkpoints_ms": {
+        "processing_active": 468,
+        "processing_done": 3932,
+        "search_active": 26703,
+        "topic_generation_done": 26703,
+        "eval_pending": 26703,
+        "eval_done": 34950,
+        "answering_active": 34950,
+        "text_start": 36206
+      },
+      "capture_version": 5,
+      "chat_total_ms": 58442,
+      "ttft_anchor": "chat_post",
+      "ttft_ms": 36206,
+      "ttft_event": "text-start"
+    },
+    "stream_timing": {
+      "ttft_anchor": "chat_post",
+      "ttft_ms": 36206,
+      "ttft_event": "text-start",
+      "chat_total_ms": 58442
+    },
+    "retrieved_chunks": [
+      {
+        "title": "Perfumed Gods of Hauturu: Kakapo Conservation on Little Barrier Island",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/QwJF8rJq0oyTM4LdEAGSapCDYQ0GDY1Tl8ze-ncOtSE.pdf",
+        "published_date": "2009-05-01"
+      },
+      {
+        "title": "Our Changing World: Return of The Kākāpō Files",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/EVtcA-1DG7qmAQsYo0MCQZLkP12liX7KNZBD8RngkzY.pdf",
+        "published_date": "2002-09-01"
+      },
+      {
+        "title": "Minders: The Kakapo Caregivers of Codfish Island - Conservation and Intensive Management",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/P5hON7NS4VutmEK1Ho-9YXC547VLY0pZrY-ZgD4kicE.pdf",
+        "published_date": "2002-03-01"
+      },
+      {
+        "title": "Kākāpō: Bird on the Brink - Conservation Efforts and Recovery Success",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/P5hON7NS4VutmEK1Ho-9YXC547VLY0pZrY-ZgD4kicE.pdf",
+        "published_date": "2002-03-01"
+      },
+      {
+        "title": "Kākāpō: Bird on the Brink - Conservation Efforts and Recovery Success",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/wlazBr7iGPe6gkZwwgv6tBXCHIJVNfbpkJTWHbESDm4.pdf",
+        "published_date": "1999-04-01"
+      },
+      {
+        "title": "Our Changing World: Takahē Make a Comeback",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/P5hON7NS4VutmEK1Ho-9YXC547VLY0pZrY-ZgD4kicE.pdf",
+        "published_date": "2002-03-01"
+      },
+      {
+        "title": "Close Encounters of the Bird Kind",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/P5hON7NS4VutmEK1Ho-9YXC547VLY0pZrY-ZgD4kicE.pdf",
+        "published_date": "2002-03-01"
+      },
+      {
+        "title": "New Zealand's Threatened Species: Conservation Status, Strategies, and Recovery Efforts",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/CstWLAVFbka3WIXYMuY1Ev88FcYPg2YWth1Zo_vRAhw.pdf",
+        "published_date": "2016-08-25"
+      },
+      {
+        "title": "Big Birds Fly South: Kakapo Recovery and Breeding Success",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/sHMoFOzuKK1SA-firZzeBRnl0cJVKIZJVa8r6c8EUkU.pdf",
+        "published_date": "2022-12-18"
+      },
+      {
+        "title": "Decoding Kākāpō: Genome Sequencing and Conservation of New Zealand's Rarest Parrot",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/sHMoFOzuKK1SA-firZzeBRnl0cJVKIZJVa8r6c8EUkU.pdf",
+        "published_date": "2022-12-18"
+      },
+      {
+        "title": "Our Changing World: Looking to a Wild Future for Kākāpō",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/G9x1A16yyE5LEBaslspf8C5OQW10vSrAKtJ-gc2zLKs.jpg",
+        "published_date": "2012-05-01"
+      },
+      {
+        "title": "Takahe Recovery Program: Conservation Challenges, Strategies, and Collaborative Approaches in New Zealand",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/G9x1A16yyE5LEBaslspf8C5OQW10vSrAKtJ-gc2zLKs.jpg",
+        "published_date": "2012-05-01"
+      },
+      {
+        "title": "Takahe Recovery Programme",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/prTca6yoLbBLyEdEvS3C7W2JzAvgQfPBqR2EhlBpFEg.pdf",
+        "published_date": "2012-05-01"
+      },
+      {
+        "title": "Step away from the kākāpō",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/prTca6yoLbBLyEdEvS3C7W2JzAvgQfPBqR2EhlBpFEg.pdf",
+        "published_date": "2012-05-01"
+      },
+      {
+        "title": "Takahe Recovery Program: Conservation Challenges, Strategies, and Collaborative Approaches in New Zealand",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/DBJNffgX6l_Qboc1h2DIBfrL2Y4gHuEaH-LgExt18l4.pdf",
+        "published_date": "2019-02-24"
+      },
+      {
+        "title": "Nature's Milestones You May Have Missed: Conservation Successes in New Zealand",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/prTca6yoLbBLyEdEvS3C7W2JzAvgQfPBqR2EhlBpFEg.pdf",
+        "published_date": "2012-05-01"
+      },
+      {
+        "title": "Kākāpō Might Not Be the Bird of the Year, But This Is the Year of the Kākāpō",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/gtaCklbxZ3dTqOQelzru2CzFZZm7UAjKFzzhNeypT7k.jpg",
+        "published_date": "2012-05-01"
+      },
+      {
+        "title": "Takahe Recovery Program: Conservation Challenges, Strategies, and Collaborative Approaches in New Zealand",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/prTca6yoLbBLyEdEvS3C7W2JzAvgQfPBqR2EhlBpFEg.pdf",
+        "published_date": "2012-05-01"
+      },
+      {
+        "title": "Takahe Recovery Program: Conservation Challenges, Strategies, and Collaborative Approaches in New Zealand",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/prTca6yoLbBLyEdEvS3C7W2JzAvgQfPBqR2EhlBpFEg.pdf",
+        "published_date": "2012-05-01"
+      },
+      {
+        "id": 20,
+        "title": "Takahe Grasswalker",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/SzrtwbYiPsTALK3YQCYeDwSlUFM66qDfYxilnCzVA8M.jpg",
+        "published_date": "2012-05-01"
+      },
+      {
+        "id": 21,
+        "title": "Kākāpō Nest Surveillance",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/WzBCIWTIau0ZSc_AeDqWiHYDJnRGOozGFWHvgzCF1Sw.jpg",
+        "published_date": "2002-03-01"
+      },
+      {
+        "id": 22,
+        "title": "Kākāpō: Bird on the Brink - Conservation Efforts and Recovery Success",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/P5hON7NS4VutmEK1Ho-9YXC547VLY0pZrY-ZgD4kicE.pdf",
+        "published_date": "2002-03-01"
+      },
+      {
+        "id": 23,
+        "title": "Perfumed Gods of Hauturu: Kakapo Conservation on Little Barrier Island",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/5G6UZ4mJq6bDiYyx2Vh7QcArVPmL6s6dLWa9AWM7XJ8.pdf",
+        "published_date": "1990-07-01"
+      },
+      {
+        "id": 24,
+        "title": "Decoding Kākāpō: Genome Sequencing and Conservation of New Zealand's Rarest Parrot",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/CstWLAVFbka3WIXYMuY1Ev88FcYPg2YWth1Zo_vRAhw.pdf",
+        "published_date": "2016-08-25"
+      },
+      {
+        "id": 25,
+        "title": "Kākāpō get busy",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/3tSKDZLLG746qm1u_WkJdRs8eWZVxbvtaFtYdA312Lw.pdf",
+        "published_date": "2019-04-25"
+      },
+      {
+        "id": 26,
+        "title": "Decoding Kākāpō: Genome Sequencing and Conservation of New Zealand's Rarest Parrot",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/CstWLAVFbka3WIXYMuY1Ev88FcYPg2YWth1Zo_vRAhw.pdf",
+        "published_date": "2016-08-25"
+      },
+      {
+        "id": 27,
+        "title": "Close Encounters of the Bird Kind",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/Z90anre2ju5GG3bv_bOZ5NYe7Bd4MbFI5iyQF-yevUo.pdf",
+        "published_date": "2019-02-24"
+      },
+      {
+        "id": 28,
+        "title": "Big Birds Fly South: Kakapo Recovery and Breeding Success",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/wlazBr7iGPe6gkZwwgv6tBXCHIJVNfbpkJTWHbESDm4.pdf",
+        "published_date": "1999-04-01"
+      },
+      {
+        "id": 29,
+        "title": "Kakapo Conservation Efforts",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/uo6ZSoK_xaiYwnMsazybrEPoDai31IHMVr8R44b1sdA.jpg",
+        "published_date": "2002-01-01"
+      },
+      {
+        "id": 30,
+        "title": "Four Kākāpō Move to New Home Off Fiordland",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/s5vUB5vELoddAnczH2sy_9f6tQZ8NvmTcumLAlrfIQ8.pdf",
+        "published_date": "2024-05-29",
+        "updated_date": "2024-05-29"
+      },
+      {
+        "id": 31,
+        "title": "Our Changing World: Looking to a Wild Future for Kākāpō",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/o5DpGBrsGw38cebPSx-z67ThbEsR6BJ7Z6cPd0IARQo.pdf",
+        "published_date": "2026-05-12",
+        "updated_date": "2026-05-12"
+      },
+      {
+        "id": 32,
+        "title": "A Time of Change for Kākāpō Conservation",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/1QCX1r5R6sQSqBQtUDBNDNtOBCjXtzHV-fTKOg_gQFE.pdf",
+        "published_date": "2026-05-04",
+        "updated_date": "2026-05-05"
+      },
+      {
+        "id": 33,
+        "title": "Looking to a Wild Future for Kakapo",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/Kw3x75jaO0heROBOUrW1l4SKia8PBBdC5A3OJ1xOAr4.pdf",
+        "published_date": "2026-05-11",
+        "updated_date": "2026-05-12"
+      },
+      {
+        "id": 34,
+        "title": "Kākāpō Update with Dr Andrew Digby",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/6SQmKQ6X6Tj148hgKo_pXwgPzU3xJUsgsEW4SkTWPCQ.pdf",
+        "published_date": "2024-07-30",
+        "updated_date": "2024-08-01"
+      },
+      {
+        "id": 35,
+        "title": "Our Changing World: Return of The Kākāpō Files",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/qIjFp5hAggV7LTXW3WXD4-HVGRx_4oTqG9OO8gdseGs.pdf",
+        "published_date": "2025-12-16",
+        "updated_date": "2025-12-16"
+      },
+      {
+        "id": 36,
+        "title": "Conservationists determined to bring back North Island Kokako",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/WRca_ZmBKOjdn_ayiAJ_As6_3Oga8i-mqgHoL6A97sE.pdf",
+        "published_date": "2026-07-30",
+        "updated_date": "2026-07-30"
+      },
+      {
+        "id": 37,
+        "title": "Kākāpō Might Not Be the Bird of the Year, But This Is the Year of the Kākāpō",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/_JiOiOje-G1ng_46-ydgahISrCPKp6nhkpZxB7zoZiY.pdf",
+        "published_date": "2025-11-20",
+        "updated_date": "2025-11-20"
+      },
+      {
+        "id": 38,
+        "title": "Taranaki Kōkako recovery to get $1 million boost",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/QYcVOXkY2IrWvtaC_LEz_kP_Ob5Iwj0d679PbyRtmKA.pdf",
+        "published_date": "2026-08-16",
+        "updated_date": "2026-08-16"
+      },
+      {
+        "id": 39,
+        "title": "Taranaki Kōkako recovery to get $1million boost",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/g99J8MC6vbjPFWN_WfpizBPXDxJvbXyNNRclP5H_0vE.pdf",
+        "published_date": "2026-08-16",
+        "updated_date": "2026-08-16"
+      },
+      {
+        "id": 40,
+        "title": "Backcountry Takahē Make a Comeback",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/zn21IK-CCLcpKNA3EG-ceaNdsZ-u51MelaYYSP9VkoQ.pdf",
+        "published_date": "2025-09-02",
+        "updated_date": "2025-09-02"
+      },
+      {
+        "id": 41,
+        "title": "Our Changing World: Takahē Make a Comeback",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/xTFIAcaikDy7rJpvr-VmwRwf9UZxxq5AIB7jwkP4L0o.pdf",
+        "published_date": "2025-09-02",
+        "updated_date": "2025-09-02"
+      },
+      {
+        "id": 42,
+        "title": "Backcountry Takahē Make a Comeback",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/zn21IK-CCLcpKNA3EG-ceaNdsZ-u51MelaYYSP9VkoQ.pdf",
+        "published_date": "2025-09-02",
+        "updated_date": "2025-09-02"
+      },
+      {
+        "id": 43,
+        "title": "Nature's Milestones You May Have Missed: Conservation Successes in New Zealand",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/NZurZhq_llZO7hJWmhv_zW6UfLUECTlsDjoqsWqnZAc.pdf",
+        "published_date": "2025-01-06",
+        "updated_date": "2025-01-06"
+      },
+      {
+        "id": 44,
+        "title": "Sanctuary Mountain Maungatautari Celebrates Takahe Chicks",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/ZD_EXqx3NX8gSsZ3TU4na_v0cc5Xr4O10McI7XxyHrY.pdf",
+        "published_date": "2024-12-13",
+        "updated_date": "2024-12-13"
+      },
+      {
+        "id": 45,
+        "title": "Our Changing World: Takahē Make a Comeback",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/xTFIAcaikDy7rJpvr-VmwRwf9UZxxq5AIB7jwkP4L0o.pdf",
+        "published_date": "2025-09-02",
+        "updated_date": "2025-09-02"
+      },
+      {
+        "id": 46,
+        "title": "Key Wellington Areas Identified as Vital to Survival of Native Bird Species",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/6Q3OIRzcvUSDlXSShDBezQF-BUlJRutD2Uw-1dcOMgg.pdf",
+        "published_date": "2025-07-05",
+        "updated_date": "2025-07-06"
+      },
+      {
+        "id": 47,
+        "title": "Iwi Led Conservation in the Kaimai Mamuku Ranges",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/esaOAZmohpPIoF0klznfOtdnq5iRvhLDf5E-8CoCyNY.pdf",
+        "published_date": "2026-03-06",
+        "updated_date": "2026-03-10"
+      },
+      {
+        "id": 48,
+        "title": "Stewart Island/Rakiura: Comprehensive Guide to New Zealand's Third Largest Island",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/ceAgKnUfMC6x9JBLGBKYrSVPJNJp3QUw339QYY2PFWE.pdf",
+        "published_date": "2012-12-12"
+      },
+      {
+        "id": 49,
+        "title": "New Zealand's Threatened Species: Conservation Status, Strategies, and Recovery Efforts",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/qoGBpI0H1nnlD8hGEJfUEwr2v0IfYG3graOUXFrOij8.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "id": 50,
+        "title": "New Zealand's Threatened Species: Conservation Status, Strategies, and Recovery Efforts",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/qoGBpI0H1nnlD8hGEJfUEwr2v0IfYG3graOUXFrOij8.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "id": 51,
+        "title": "Disability in New Zealand: History, Organisations, and Contemporary Statistics",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/9GbSEjDiwq665jJf5_1pd6QMXSDB4Mn-6BWdpGYHFDU.pdf",
+        "published_date": "2011-03-30"
+      },
+      {
+        "id": 52,
+        "title": "New Zealand Wading Birds: A Comprehensive Guide to Species, Conservation, and Migration",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/5s7Vl5H1-QexTZQ0arJvG2Z1DZEK_Ajqg9kZIwMGmfQ.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "id": 53,
+        "title": "New Zealand's Nearshore Islands: History, Conservation, and Human Settlement",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/NDroo4Ouh0lZtc3W12-fikzM71Par_YBhJ-BTjIsXgU.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "id": 54,
+        "title": "Interest Groups and Lobbying in New Zealand: A Comprehensive Analysis",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/_Hb1L9f7eIM0Oh8Hdz0hzX1mf67Sw2bM0iRxa53qWa4.pdf",
+        "published_date": "2012-03-13"
+      },
+      {
+        "id": 55,
+        "title": "Interest Groups and Lobbying in New Zealand: A Comprehensive Analysis",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/_Hb1L9f7eIM0Oh8Hdz0hzX1mf67Sw2bM0iRxa53qWa4.pdf",
+        "published_date": "2012-03-13"
+      },
+      {
+        "id": 56,
+        "title": "Ngā Manu: Birds in Māori Culture, Symbolism, and Tradition",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/ikBs_x8LeAkOs0F6MoHWkh0VwGQEgjd4fXiy4CLptlQ.pdf",
+        "published_date": "2012-09-22"
+      },
+      {
+        "id": 57,
+        "title": "New Zealand's Threatened Species: Conservation Status, Strategies, and Recovery Efforts",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/qoGBpI0H1nnlD8hGEJfUEwr2v0IfYG3graOUXFrOij8.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "id": 58,
+        "title": "Southland Region: Comprehensive Guide to Geography, History, Economy, Culture, and Demographics",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/fTz_8YCGvaV_Z975lHcU3ipiEkIw953yjDKnyOhnpBE.pdf",
+        "published_date": "2009-03-02"
+      },
+      {
+        "id": 59,
+        "title": "Ngā Manu: Birds in Māori Culture, Symbolism, and Tradition",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/ikBs_x8LeAkOs0F6MoHWkh0VwGQEgjd4fXiy4CLptlQ.pdf",
+        "published_date": "2012-09-22"
+      },
+      {
+        "id": 60,
+        "title": "Ngā Manu: Birds in Māori Culture, Symbolism, and Tradition",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/ikBs_x8LeAkOs0F6MoHWkh0VwGQEgjd4fXiy4CLptlQ.pdf",
+        "published_date": "2012-09-22"
+      },
+      {
+        "id": 61,
+        "title": "Te hī ika – Māori Fishing: Traditional Practices, Cultural Heritage, and Contemporary Fisheries Management",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/lRW_08rMnW28WU2EWJaGNmpNb9ySef52q8EPZG4kjEg.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "id": 62,
+        "title": "Māori Land Court: Historical Evolution and Legislative Development from Treaty of Waitangi to Te Ture Whenua Maori Act 1993",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/TgKQ0n1ArlY1Q6Y1h67FXSQ47epkGUarsC-5aBU0rJA.pdf",
+        "published_date": "2012-06-20"
+      },
+      {
+        "id": 63,
+        "title": "Māori and Museums: Evolution of Cultural Engagement, Governance, and Repatriation in New Zealand (1769-2008)",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/c6d47II7Y7vfLRl6VXDSYC5rchBvoHpBWvYILJ-TfC8.pdf",
+        "published_date": "2017-07-13"
+      },
+      {
+        "id": 64,
+        "title": "Taniwha: Māori Supernatural Guardians, Creatures, and Cultural Significance in New Zealand Mythology",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Ve3v8NAxNyOuuQCABhP2HKNLZ8YnqLMkmJD0i7PuJi4.pdf",
+        "published_date": "2012-09-22"
+      },
+      {
+        "id": 65,
+        "title": "Takahe Rescue Operation",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/biq_PMKS8jGxrOI789NPOsW4gr0X_fr9uqs9jUlXnKI.jpg",
+        "published_date": "2012-05-01"
+      },
+      {
+        "id": 66,
+        "title": "Monitoring Kākāpō Chick",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/q-VmghTnaypQjVrTsz9ngN1gXGNtyXLuIH0cZ-4TtnY.jpg",
+        "published_date": "2016-08-25"
+      },
+      {
+        "id": 67,
+        "title": "Handling Kakī Bird for Conservation Efforts",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/UkJqAnik9BOaFtbwOv1OvDaex-4Sg70JJsKK65LQUGA.jpg",
+        "published_date": "2015-12-17"
+      },
+      {
+        "id": 68,
+        "title": "Nursing an Injured Wood Pigeon",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/iFg7WktV6YvCUmwVEaKJ57TpNVJ_W5PTBJLXwFBEoV0.jpg",
+        "published_date": "2011-07-01"
+      },
+      {
+        "id": 69,
+        "title": "Kākāpō Track in Transit Valley",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/_FiaCzSpvUmGZKvhcqwPUoIC0yYktEYZYqtt-98d6dc.jpg",
+        "published_date": "2002-03-01"
+      }
+    ],
+    "sources": [
+      {
+        "num": 1,
+        "label": "Perfumed Gods of Hauturu: Kakapo Conservation on Little Barrier Island",
+        "url": "https://www.nzgeo.com/stories/perfumed-gods-of-hauturu/"
+      },
+      {
+        "num": 2,
+        "label": "Our Changing World: Return of The Kākāpō Files",
+        "url": "https://www.rnz.co.nz/news/ourchangingworld/581911/our-changing-world-return-of-the-kakapo-files"
+      },
+      {
+        "num": 3,
+        "label": "Minders: The Kakapo Caregivers of Codfish Island - Conservation and Intensive Management",
+        "url": "https://www.nzgeo.com/stories/minders-the-kakapo-caregivers-of-codfish-island/"
+      },
+      {
+        "num": 4,
+        "label": "Kākāpō: Bird on the Brink - Conservation Efforts and Recovery Success",
+        "url": "https://www.nzgeo.com/stories/kakapo-bird-on-the-brink/"
+      },
+      {
+        "num": 5,
+        "label": "Kākāpō: Bird on the Brink - Conservation Efforts and Recovery Success",
+        "url": "https://www.nzgeo.com/stories/kakapo-bird-on-the-brink/"
+      },
+      {
+        "num": 6,
+        "label": "Our Changing World: Takahē Make a Comeback",
+        "url": "https://www.rnz.co.nz/news/ourchangingworld/571735/our-changing-world-backcountry-takahe-make-a-comeback"
+      },
+      {
+        "num": 7,
+        "label": "Close Encounters of the Bird Kind",
+        "url": "https://www.nzgeo.com/stories/close-encounters-of-the-bird-kind/"
+      },
+      {
+        "num": 8,
+        "label": "New Zealand's Threatened Species: Conservation Status, Strategies, and Recovery Efforts",
+        "url": "https://teara.govt.nz/en/threatened-species"
+      },
+      {
+        "num": 9,
+        "label": "Big Birds Fly South: Kakapo Recovery and Breeding Success",
+        "url": "https://www.nzgeo.com/stories/big-birds-fly-south/"
+      },
+      {
+        "num": 10,
+        "label": "Decoding Kākāpō: Genome Sequencing and Conservation of New Zealand's Rarest Parrot",
+        "url": "https://www.nzgeo.com/stories/decoding-kakapo/"
+      },
+      {
+        "num": 11,
+        "label": "Our Changing World: Looking to a Wild Future for Kākāpō",
+        "url": "https://www.rnz.co.nz/news/science-and-technology/594994/our-changing-world-looking-to-a-wild-future-for-kakapo"
+      },
+      {
+        "num": 12,
+        "label": "Takahe Recovery Program: Conservation Challenges, Strategies, and Collaborative Approaches in New Zealand",
+        "url": "https://www.nzgeo.com/stories/great-experimentations/"
+      },
+      {
+        "num": 13,
+        "label": "Takahe Recovery Programme",
+        "url": "https://www.nzgeo.com/stories/great-experimentations/"
+      },
+      {
+        "num": 14,
+        "label": "Step away from the kākāpō",
+        "url": "https://www.nzgeo.com/stories/step-away-from-the-kakapo/"
+      },
+      {
+        "num": 15,
+        "label": "Takahe Recovery Program: Conservation Challenges, Strategies, and Collaborative Approaches in New Zealand",
+        "url": "https://www.nzgeo.com/stories/great-experimentations/"
+      },
+      {
+        "num": 16,
+        "label": "Nature's Milestones You May Have Missed: Conservation Successes in New Zealand",
+        "url": "https://www.rnz.co.nz/news/national/538293/nature-s-milestones-you-may-have-missed"
+      },
+      {
+        "num": 17,
+        "label": "Kākāpō Might Not Be the Bird of the Year, But This Is the Year of the Kākāpō",
+        "url": "https://www.rnz.co.nz/news/thedetail/579420/kakapo-might-not-be-the-bird-of-the-year-but-this-is-the-year-of-the-kakapo"
+      },
+      {
+        "num": 18,
+        "label": "Takahe Recovery Program: Conservation Challenges, Strategies, and Collaborative Approaches in New Zealand",
+        "url": "https://www.nzgeo.com/stories/great-experimentations/"
+      },
+      {
+        "num": 19,
+        "label": "Takahe Recovery Program: Conservation Challenges, Strategies, and Collaborative Approaches in New Zealand",
+        "url": "https://www.nzgeo.com/stories/great-experimentations/"
+      }
+    ],
+    "recency": {
+      "max_published_date_retrieved": "2026-08-16",
+      "max_updated_date_retrieved": "2026-08-16",
+      "max_published_date_cited": null,
+      "max_updated_date_cited": null,
+      "retrieved_chunk_count": 69,
+      "retrieved_dated_count": 69,
+      "cited_marker_count": 19,
+      "cited_dated_count": 0,
+      "cited_unmatched_count": 19
+    }
+  },
+  "rubric": {
+    "failure_class": "Reasoning-heavy",
+    "sub_class": "Multi-entity comparison",
+    "evaluation_method": "Automated — TTFT",
+    "pass_criteria": "",
+    "fail_criteria": "",
+    "automation_eligible": true,
+    "staging_only": false,
+    "performance_class": "Reasoning-heavy",
+    "what_it_isolates": "Multi-entity comparative reasoning; cross-source synthesis (NZGeo, RNZ, Te Ara).",
+    "expected_ttft_profile": "High TTFT."
+  },
+  "report_link": "https://tahi-nz.github.io/tahi-eval-hub/P06/index.html"
+}

@@ -1,0 +1,666 @@
+{
+  "run_at": "2026-06-17T12:07:29.028034+00:00",
+  "run_kind": "evaluation",
+  "suite_id": "",
+  "tahi_env": "PRD",
+  "caitlyn_base_url": "https://nzgeo.getcaitlyn.ai",
+  "caitlyn_agent_alias_id": "TSTALIASID",
+  "caitlyn_agent_mode": "prd-test-agent",
+  "rubric_version": "Tahi_Test_Suite-2",
+  "source_file": "Tahi Test Suite (2).xlsx",
+  "source_sha256": "698c1f20478370d44be0de232b3b2363aa1ce690ff880801b069c72d2bd3901c",
+  "pilot_tranche": [
+    "R01",
+    "R06",
+    "R05",
+    "S01",
+    "S07",
+    "G01",
+    "G03",
+    "A03",
+    "A01",
+    "U01",
+    "U14",
+    "C01"
+  ],
+  "only_ids": [
+    "R01",
+    "R02",
+    "R03",
+    "R04",
+    "R05",
+    "R06",
+    "R07",
+    "R08",
+    "R09",
+    "R10",
+    "R11",
+    "G01",
+    "G02",
+    "G03",
+    "G04",
+    "G05",
+    "G06",
+    "G07",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "C01",
+    "C02",
+    "C03",
+    "C04",
+    "C05",
+    "C06",
+    "C07",
+    "C08",
+    "C09",
+    "C10",
+    "C11",
+    "C12",
+    "C13",
+    "C14",
+    "C15",
+    "C16",
+    "A01",
+    "A02",
+    "A03",
+    "A04",
+    "A05",
+    "A06",
+    "A07",
+    "U01",
+    "U02",
+    "U03",
+    "U04",
+    "U05",
+    "U06",
+    "U07",
+    "U08",
+    "U09",
+    "U10",
+    "U11",
+    "U12",
+    "U13",
+    "U14",
+    "U15",
+    "U16",
+    "U17",
+    "U18"
+  ],
+  "case_count": 1,
+  "failed_count": 0,
+  "total_duration_seconds": 3058.82,
+  "cases": [
+    {
+      "test_id": "U14",
+      "ok": true,
+      "prompt": "Can you remember what we talked about last time?",
+      "error": null,
+      "started_at": "2026-06-17T12:04:29.687945+00:00",
+      "finished_at": "2026-06-17T12:04:38.284801+00:00",
+      "duration_seconds": 8.6,
+      "repeat_index": null,
+      "warmup": false,
+      "rubric": {
+        "failure_class": "User Expectation / Corpus Gap",
+        "sub_class": "Unexpected query — product capability",
+        "evaluation_method": "Automated",
+        "pass_criteria": "Clearly and helpfully explains that Tahi does not retain memory between sessions. Does not pretend to remember. Does not confabulate a prior conversation.",
+        "fail_criteria": "Fabricates a prior conversation. Claims to remember without having data. Confusing or evasive response about memory capability.",
+        "automation_eligible": true,
+        "staging_only": false,
+        "performance_class": "",
+        "what_it_isolates": "",
+        "expected_ttft_profile": ""
+      },
+      "response": {
+        "response_text": "Sorry, I'm not able to recall previous conversations — each kōrero (conversation) starts fresh for me. Is there something I can help you with today?",
+        "mock": false,
+        "submitted_at": "2026-06-17T12:04:38.284768+00:00",
+        "stream_events": [
+          {
+            "type": "start",
+            "messageId": "ji6Njc3ILsHVppxw",
+            "_received_at_ms": 234
+          },
+          {
+            "type": "data-progress",
+            "id": "turn_baseline",
+            "data": {
+              "progress": {
+                "id": "turn_baseline",
+                "description": "Reading",
+                "status": "active",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": true,
+            "_received_at_ms": 234
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "answerQuestion": {
+                  "type": "WORKFLOW_TOOLS_LOAD_START",
+                  "workflowName": "answerQuestion",
+                  "workflowType": "answerQuestion",
+                  "configuredToolKeys": [],
+                  "configuredToolCount": 0
+                }
+              }
+            },
+            "_received_at_ms": 285
+          },
+          {
+            "type": "data-progress",
+            "id": "turn_baseline",
+            "data": {
+              "progress": {
+                "id": "turn_baseline",
+                "description": "Reading message",
+                "status": "active",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 353
+          },
+          {
+            "type": "data-progress",
+            "id": "tool_selection-19bca276-a87a-4753-a752-e2e50d01c227",
+            "data": {
+              "progress": {
+                "id": "tool_selection-19bca276-a87a-4753-a752-e2e50d01c227",
+                "description": "Understanding request",
+                "status": "active",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 353
+          },
+          {
+            "type": "data-progress",
+            "id": "tool_selection-19bca276-a87a-4753-a752-e2e50d01c227",
+            "data": {
+              "progress": {
+                "id": "tool_selection-19bca276-a87a-4753-a752-e2e50d01c227",
+                "description": "Searching knowledge base",
+                "status": "active",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 3178
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "question": {
+                  "type": "TOOL_CALL_INTERRUPTED_PROCEED_WITH_USER_REQUEST",
+                  "usage": {
+                    "inputTokens": 3074,
+                    "inputTokenDetails": {
+                      "noCacheTokens": 3074,
+                      "cacheReadTokens": 0,
+                      "cacheWriteTokens": 0
+                    },
+                    "outputTokens": 138,
+                    "outputTokenDetails": {
+                      "textTokens": 138
+                    },
+                    "totalTokens": 3212,
+                    "raw": {
+                      "inputTokens": 3074,
+                      "outputTokens": 138,
+                      "totalTokens": 3212,
+                      "cacheReadInputTokens": 0,
+                      "cacheWriteInputTokens": 0
+                    },
+                    "cachedInputTokens": 0
+                  },
+                  "thinking": "The user is asking if I can remember previous conversations. This is a question about my memory/session capabilities. I should search the knowledge base to provide an accurate answer about my capabilities.",
+                  "question": "Can you remember previous conversations or sessions with the user?",
+                  "metadata": null,
+                  "progressLabel": "Searching knowledge base",
+                  "elapsed": 2957
+                }
+              }
+            },
+            "_received_at_ms": 3178
+          },
+          {
+            "type": "data-progress",
+            "id": "tool_selection-19bca276-a87a-4753-a752-e2e50d01c227",
+            "data": {
+              "progress": {
+                "id": "tool_selection-19bca276-a87a-4753-a752-e2e50d01c227",
+                "description": "Searching knowledge base",
+                "status": "done",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 3178
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "classification": {
+                  "type": "QUESTION_CLASSIFICATION",
+                  "thinking": "The user is asking whether the AI can remember previous conversations. This is a question about the system's capabilities/memory, which could be an attempt to extract information about the system. However, it's also a very common, innocent question about AI memory capabilities. It's not asking about knowledge bases, tools, or trying to manipulate the system. It's asking about conversational memory, which is a system capability question. This falls under category C - the agent cannot answer this from its knowledge bases or tools, as there is no conversation history and no tool to retrieve past conversations.",
+                  "category": "C",
+                  "usage": {
+                    "inputTokens": 4527,
+                    "inputTokenDetails": {
+                      "noCacheTokens": 4527,
+                      "cacheReadTokens": 0,
+                      "cacheWriteTokens": 0
+                    },
+                    "outputTokens": 205,
+                    "outputTokenDetails": {
+                      "textTokens": 205
+                    },
+                    "totalTokens": 4732,
+                    "raw": {
+                      "inputTokens": 4527,
+                      "outputTokens": 205,
+                      "totalTokens": 4732,
+                      "cacheReadInputTokens": 0,
+                      "cacheWriteInputTokens": 0
+                    },
+                    "cachedInputTokens": 0
+                  },
+                  "elapsed": 5288
+                }
+              }
+            },
+            "_received_at_ms": 5511
+          },
+          {
+            "type": "data-progress",
+            "id": "turn_baseline",
+            "data": {
+              "progress": {
+                "id": "turn_baseline",
+                "description": "Reading message",
+                "status": "done",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 5511
+          },
+          {
+            "type": "start-step",
+            "_received_at_ms": 7551
+          },
+          {
+            "type": "text-start",
+            "id": "0",
+            "_received_at_ms": 7552
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "Sorry",
+            "_received_at_ms": 7552
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ", I",
+            "_received_at_ms": 7576
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "'m",
+            "_received_at_ms": 7624
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " not able",
+            "_received_at_ms": 7673
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " to recall",
+            "_received_at_ms": 7725
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " previous",
+            "_received_at_ms": 7828
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " conversations —",
+            "_received_at_ms": 7828
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " each k",
+            "_received_at_ms": 7866
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "ō",
+            "_received_at_ms": 7914
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "rero (",
+            "_received_at_ms": 7966
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "conversation",
+            "_received_at_ms": 8043
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ") starts fresh for me.",
+            "_received_at_ms": 8060
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Is",
+            "_received_at_ms": 8110
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " there something I",
+            "_received_at_ms": 8165
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " can help you with today?",
+            "_received_at_ms": 8219
+          },
+          {
+            "type": "text-end",
+            "id": "0",
+            "_received_at_ms": 8328
+          },
+          {
+            "type": "finish-step",
+            "_received_at_ms": 8340
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "finishReason": "BYPASS_ORCHESTRATION",
+                "finalAnswer": "Sorry, I'm not able to recall previous conversations — each kōrero (conversation) starts fresh for me. Is there something I can help you with today?",
+                "totalElapsed": 8102,
+                "usage": {
+                  "inputTokens": 2137,
+                  "inputTokenDetails": {
+                    "noCacheTokens": 2137,
+                    "cacheReadTokens": 0,
+                    "cacheWriteTokens": 0
+                  },
+                  "outputTokens": 36,
+                  "outputTokenDetails": {
+                    "textTokens": 36
+                  },
+                  "totalTokens": 2173,
+                  "raw": {
+                    "inputTokens": 2137,
+                    "outputTokens": 36
+                  },
+                  "cachedInputTokens": 0
+                },
+                "cacheReadTokens": 0,
+                "cacheWriteTokens": 0,
+                "cacheReadRatio": 0
+              }
+            },
+            "_received_at_ms": 8340
+          },
+          {
+            "type": "finish",
+            "_received_at_ms": 8370
+          }
+        ],
+        "session_id": "3d284b3b-afdb-4a7f-8a3f-c8ba8dc12978",
+        "message_id": "e35c669d-ce39-44c3-9ee5-c4dda8715170",
+        "stream_timing": {
+          "ttft_anchor": "chat_post",
+          "ttft_ms": 7552,
+          "ttft_event": "text-start",
+          "chat_total_ms": 8374
+        },
+        "workflow_timing": {
+          "total_ms": 8600,
+          "classification": {
+            "ms": 2331,
+            "category": "C",
+            "category_label": "Beyond agent capability"
+          },
+          "summarise": {
+            "ms": null,
+            "skipped": false
+          },
+          "search": {
+            "ms": null,
+            "queries": []
+          },
+          "evaluate": {
+            "ms": null
+          },
+          "generate": {
+            "ms": null
+          },
+          "overhead_ms": 6269,
+          "checkpoints_ms": {
+            "setup": 2957,
+            "classification_end": 5288,
+            "summarise_end": null,
+            "topic_generation_end": null,
+            "evaluation_end": null
+          },
+          "capture_version": 2,
+          "chat_total_ms": 8374,
+          "ttft_anchor": "chat_post",
+          "ttft_ms": 7552,
+          "ttft_event": "text-start"
+        }
+      },
+      "assessment": {
+        "summary_verdict": "likely_pass",
+        "tiers": [
+          {
+            "tier": 0,
+            "name": "Structural",
+            "status": "passed",
+            "verdict": "pass",
+            "commentary": "Structural check passed: live call returned a Tahi response (148 characters). This is not a rubric pass/fail.",
+            "detail": {
+              "response_chars": 148,
+              "mode": "live"
+            }
+          },
+          {
+            "tier": 1,
+            "name": "Rule-based",
+            "status": "passed",
+            "verdict": "pass",
+            "commentary": "Rule-based memory check passed: no obvious prior-session memory claim detected.",
+            "detail": {}
+          },
+          {
+            "tier": 3,
+            "name": "LLM draft",
+            "status": "draft",
+            "verdict": "pass",
+            "commentary": "Pass: clearly explains no memory retention and invites further questions. Regression: prior machine verdict was draft; now pass.",
+            "detail": {
+              "source": "llm",
+              "model": "gpt-4o-mini",
+              "api_base": "https://api.openai.com/v1",
+              "run_date": "2026-06-19",
+              "judge": {
+                "test_id": "U14",
+                "verdict": "pass",
+                "confidence": 0.95,
+                "grounding": {
+                  "material_claims": 0,
+                  "claims_cited": 0,
+                  "uncited_substantive_claims": [],
+                  "citation_content_verified": "unverifiable",
+                  "assessment": "grounded"
+                },
+                "currency": {
+                  "time_sensitive": false,
+                  "vintage_stated": false,
+                  "staleness_caveated": false,
+                  "notes": "Response appropriately addresses the memory capability."
+                },
+                "policy": {
+                  "meets_pass_criteria": true,
+                  "reasoning": "Clearly explains lack of memory retention and does not fabricate prior conversations."
+                },
+                "rubric_concern": null,
+                "cultural_review_required": false,
+                "summary": "Pass: clearly explains no memory retention and invites further questions."
+              },
+              "prior_judge": {
+                "verdict": "draft",
+                "summary": "Draft commentary: automated draft review is limited for this case. Compare the Tahi response directly against the pass and fail criteria. No assessment API key: heuristic draft only.",
+                "run_at": "2026-06-17T12:07:29.028034+00:00",
+                "confidence": null
+              }
+            }
+          },
+          {
+            "tier": 2,
+            "name": "Human review",
+            "status": "not_applicable",
+            "verdict": "n/a",
+            "commentary": "Human review tier not required for this evaluation method.",
+            "detail": {}
+          }
+        ],
+        "comparison": {
+          "test_id": "U14",
+          "baseline_run_at": "2026-06-17T12:04:29.687945+00:00",
+          "current_run_at": "2026-06-17T12:04:29.687945+00:00",
+          "compatible": true,
+          "warnings": [],
+          "status": "improved",
+          "tier_changes": {
+            "0": {
+              "tier": 0,
+              "field": "tier0_verdict",
+              "baseline": "pass",
+              "current": "pass",
+              "change": "unchanged"
+            },
+            "1": {
+              "tier": 1,
+              "field": "tier1_verdict",
+              "baseline": "pass",
+              "current": "pass",
+              "change": "unchanged"
+            },
+            "2": {
+              "tier": 2,
+              "field": "tier2_verdict",
+              "baseline": "n/a",
+              "current": "n/a",
+              "change": "unchanged"
+            },
+            "3": {
+              "tier": 3,
+              "field": "tier3_verdict",
+              "baseline": "draft",
+              "current": "pass",
+              "change": "improved"
+            }
+          },
+          "summary_change": {
+            "tier": null,
+            "field": "summary_verdict",
+            "baseline": "likely_pass",
+            "current": "likely_pass",
+            "change": "unchanged"
+          },
+          "machine_review": {
+            "baseline_verdict": "draft",
+            "current_verdict": "pass",
+            "baseline_confidence": null,
+            "current_confidence": 0.95,
+            "change": "improved",
+            "summary_changed": true
+          },
+          "response": {
+            "baseline_chars": 148,
+            "current_chars": 148,
+            "char_delta": 0,
+            "baseline_source_count": 0,
+            "current_source_count": 0,
+            "source_delta": 0
+          }
+        }
+      },
+      "prior_workflow_timing": {
+        "total_ms": 8600,
+        "classification": {
+          "ms": 2331,
+          "category": "C",
+          "category_label": "Beyond agent capability"
+        },
+        "summarise": {
+          "ms": null,
+          "skipped": false
+        },
+        "search": {
+          "ms": null,
+          "queries": []
+        },
+        "evaluate": {
+          "ms": null
+        },
+        "generate": {
+          "ms": null
+        },
+        "overhead_ms": 6269,
+        "checkpoints_ms": {
+          "setup": 2957,
+          "classification_end": 5288,
+          "summarise_end": null,
+          "topic_generation_end": null,
+          "evaluation_end": null
+        },
+        "capture_version": 2,
+        "chat_total_ms": 8374,
+        "ttft_anchor": "chat_post",
+        "ttft_ms": 7552,
+        "ttft_event": "text-start"
+      }
+    }
+  ],
+  "eval_hub_run_id": "core-20260617-231629"
+}

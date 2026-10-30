@@ -1,0 +1,222 @@
+{
+  "run_at": "2026-06-17T12:07:29.028034+00:00",
+  "run_kind": "evaluation",
+  "suite_id": "",
+  "tahi_env": "PRD",
+  "caitlyn_base_url": "https://nzgeo.getcaitlyn.ai",
+  "caitlyn_agent_alias_id": "TSTALIASID",
+  "caitlyn_agent_mode": "prd-test-agent",
+  "rubric_version": "Tahi_Test_Suite-2",
+  "source_file": "Tahi Test Suite (2).xlsx",
+  "source_sha256": "698c1f20478370d44be0de232b3b2363aa1ce690ff880801b069c72d2bd3901c",
+  "pilot_tranche": [
+    "R01",
+    "R06",
+    "R05",
+    "S01",
+    "S07",
+    "G01",
+    "G03",
+    "A03",
+    "A01",
+    "U01",
+    "U14",
+    "C01"
+  ],
+  "only_ids": [
+    "R01",
+    "R02",
+    "R03",
+    "R04",
+    "R05",
+    "R06",
+    "R07",
+    "R08",
+    "R09",
+    "R10",
+    "R11",
+    "G01",
+    "G02",
+    "G03",
+    "G04",
+    "G05",
+    "G06",
+    "G07",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "C01",
+    "C02",
+    "C03",
+    "C04",
+    "C05",
+    "C06",
+    "C07",
+    "C08",
+    "C09",
+    "C10",
+    "C11",
+    "C12",
+    "C13",
+    "C14",
+    "C15",
+    "C16",
+    "A01",
+    "A02",
+    "A03",
+    "A04",
+    "A05",
+    "A06",
+    "A07",
+    "U01",
+    "U02",
+    "U03",
+    "U04",
+    "U05",
+    "U06",
+    "U07",
+    "U08",
+    "U09",
+    "U10",
+    "U11",
+    "U12",
+    "U13",
+    "U14",
+    "U15",
+    "U16",
+    "U17",
+    "U18"
+  ],
+  "case_count": 1,
+  "failed_count": 1,
+  "total_duration_seconds": 3058.82,
+  "cases": [
+    {
+      "test_id": "R06",
+      "ok": false,
+      "prompt": "What is the significance of the Treaty of Waitangi?",
+      "error": "Could not extract response text from Caitlyn stream.",
+      "started_at": "2026-06-17T11:20:55.403881+00:00",
+      "finished_at": "2026-06-17T11:21:50.609960+00:00",
+      "duration_seconds": 55.21,
+      "repeat_index": null,
+      "warmup": false,
+      "rubric": {
+        "failure_class": "Retrieval",
+        "sub_class": "Cross-corpus bleed",
+        "evaluation_method": "Human",
+        "pass_criteria": "Response integrates encyclopaedic (Te Ara) and journalistic (RNZ) sources coherently, signalling the difference in register where relevant. Does not treat a news opinion piece as equivalent authority to encyclopaedia content.",
+        "fail_criteria": "Mixes historical authority claims from Te Ara with contested political commentary from RNZ without signalling the difference. Presents editorial framing as settled historical fact.",
+        "automation_eligible": false,
+        "staging_only": false,
+        "performance_class": "",
+        "what_it_isolates": "",
+        "expected_ttft_profile": ""
+      },
+      "assessment": {
+        "summary_verdict": "fail",
+        "tiers": [
+          {
+            "tier": 0,
+            "name": "Structural",
+            "status": "failed",
+            "verdict": "fail",
+            "commentary": "Live call failed before a Tahi response was captured: Could not extract response text from Caitlyn stream.",
+            "detail": {}
+          },
+          {
+            "tier": 1,
+            "name": "Rule-based",
+            "status": "skipped",
+            "verdict": "n/a",
+            "commentary": "Rule-based checks skipped because no response text is available.",
+            "detail": {}
+          },
+          {
+            "tier": 3,
+            "name": "LLM draft",
+            "status": "skipped",
+            "verdict": "n/a",
+            "commentary": "LLM draft commentary skipped because no response was captured.",
+            "detail": {}
+          },
+          {
+            "tier": 2,
+            "name": "Human review",
+            "status": "pending",
+            "verdict": "pending",
+            "commentary": "Human review pending: no reviewer verdict has been recorded yet. Tier 0-1 and tier 2 machine draft commentary do not replace expert sign-off.",
+            "detail": {}
+          }
+        ],
+        "comparison": {
+          "test_id": "R06",
+          "baseline_run_at": "2026-06-17T11:20:55.403881+00:00",
+          "current_run_at": "2026-06-17T11:20:55.403881+00:00",
+          "compatible": true,
+          "warnings": [],
+          "status": "stable",
+          "tier_changes": {
+            "0": {
+              "tier": 0,
+              "field": "tier0_verdict",
+              "baseline": "fail",
+              "current": "fail",
+              "change": "unchanged"
+            },
+            "1": {
+              "tier": 1,
+              "field": "tier1_verdict",
+              "baseline": "n/a",
+              "current": "n/a",
+              "change": "unchanged"
+            },
+            "2": {
+              "tier": 2,
+              "field": "tier2_verdict",
+              "baseline": "pending",
+              "current": "pending",
+              "change": "unchanged"
+            },
+            "3": {
+              "tier": 3,
+              "field": "tier3_verdict",
+              "baseline": "n/a",
+              "current": "n/a",
+              "change": "unchanged"
+            }
+          },
+          "summary_change": {
+            "tier": null,
+            "field": "summary_verdict",
+            "baseline": "fail",
+            "current": "fail",
+            "change": "unchanged"
+          },
+          "machine_review": {
+            "baseline_verdict": "n/a",
+            "current_verdict": "n/a",
+            "baseline_confidence": null,
+            "current_confidence": null,
+            "change": "unchanged",
+            "summary_changed": false
+          },
+          "response": {
+            "baseline_chars": 0,
+            "current_chars": 0,
+            "char_delta": 0,
+            "baseline_source_count": 0,
+            "current_source_count": 0,
+            "source_delta": 0
+          }
+        }
+      }
+    }
+  ],
+  "eval_hub_run_id": "core-20260617-231629"
+}

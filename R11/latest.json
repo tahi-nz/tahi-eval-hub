@@ -1,0 +1,2852 @@
+{
+  "run_at": "2026-06-17T12:07:29.028034+00:00",
+  "run_kind": "evaluation",
+  "suite_id": "",
+  "tahi_env": "PRD",
+  "caitlyn_base_url": "https://nzgeo.getcaitlyn.ai",
+  "caitlyn_agent_alias_id": "TSTALIASID",
+  "caitlyn_agent_mode": "prd-test-agent",
+  "rubric_version": "Tahi_Test_Suite-2",
+  "source_file": "Tahi Test Suite (2).xlsx",
+  "source_sha256": "698c1f20478370d44be0de232b3b2363aa1ce690ff880801b069c72d2bd3901c",
+  "pilot_tranche": [
+    "R01",
+    "R06",
+    "R05",
+    "S01",
+    "S07",
+    "G01",
+    "G03",
+    "A03",
+    "A01",
+    "U01",
+    "U14",
+    "C01"
+  ],
+  "only_ids": [
+    "R01",
+    "R02",
+    "R03",
+    "R04",
+    "R05",
+    "R06",
+    "R07",
+    "R08",
+    "R09",
+    "R10",
+    "R11",
+    "G01",
+    "G02",
+    "G03",
+    "G04",
+    "G05",
+    "G06",
+    "G07",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "C01",
+    "C02",
+    "C03",
+    "C04",
+    "C05",
+    "C06",
+    "C07",
+    "C08",
+    "C09",
+    "C10",
+    "C11",
+    "C12",
+    "C13",
+    "C14",
+    "C15",
+    "C16",
+    "A01",
+    "A02",
+    "A03",
+    "A04",
+    "A05",
+    "A06",
+    "A07",
+    "U01",
+    "U02",
+    "U03",
+    "U04",
+    "U05",
+    "U06",
+    "U07",
+    "U08",
+    "U09",
+    "U10",
+    "U11",
+    "U12",
+    "U13",
+    "U14",
+    "U15",
+    "U16",
+    "U17",
+    "U18"
+  ],
+  "case_count": 1,
+  "failed_count": 0,
+  "total_duration_seconds": 3058.82,
+  "cases": [
+    {
+      "test_id": "R11",
+      "ok": true,
+      "prompt": "What is the current Official Cash Rate set by the Reserve Bank?",
+      "error": null,
+      "started_at": "2026-06-17T11:24:34.300931+00:00",
+      "finished_at": "2026-06-17T11:25:03.270357+00:00",
+      "duration_seconds": 28.97,
+      "repeat_index": null,
+      "warmup": false,
+      "rubric": {
+        "failure_class": "Retrieval",
+        "sub_class": "Stale data served as current",
+        "evaluation_method": "Hybrid",
+        "pass_criteria": "Provides the rate with a clear date and source, or explicitly notes it cannot provide real-time data. Directs user to RBNZ for current rate.",
+        "fail_criteria": "States a specific rate without date qualifier or source. Does not flag potential staleness.",
+        "automation_eligible": true,
+        "staging_only": false,
+        "performance_class": "",
+        "what_it_isolates": "",
+        "expected_ttft_profile": ""
+      },
+      "response": {
+        "response_text": "## Official Cash Rate: 3 percent\n\nThe most recent search result I have on this topic is from 20 August 2025, which reports that the Reserve Bank of New Zealand (RBNZ) cut its Official Cash Rate (OCR) by 25 basis points to **3 percent** — a three-year low at the time of that decision. [[1]](cite://1/1)\n\nThe Monetary Policy Committee (MPC) voted four to two in favour of the smaller 25 basis point cut, having debated options of holding, cutting by 25 basis points, or cutting by 50 basis points. [[1]](cite://1/2)\n\n### What the Reserve Bank said at the time\n\nThe RBNZ left the door open for further cuts, noting: *\"If medium term inflation pressures continue to ease as expected, there is scope to lower the OCR further.\"* The bank projected the OCR could trough at around 2.5 percent by the end of 2025, suggesting further cuts were likely through the course of that year. [[1]](cite://1/3)\n\n### Important caveat\n\nToday is 17 June 2026, and my most recent search result on this topic is dated 20 August 2025. It's quite possible the OCR has changed since then — the RBNZ reviews the rate roughly every six weeks [[2]](cite://2/1), so there could have been several decisions since that report. For the most up-to-date figure, I'd recommend checking directly at **rbnz.govt.nz**.\n\nWould you like to know more about what was driving the RBNZ's rate-cutting cycle and the economic conditions behind those decisions?\n\n## Sources\n\n[1] [Reserve Bank Cuts OCR to 3% - Monetary Policy Decision](https://www.rnz.co.nz/news/business/570534/reserve-bank-cuts-ocr-to-3-percent)\n[2] [How the Reserve Bank Decides the OCR](https://www.rnz.co.nz/news/business/562575/how-the-reserve-bank-decides-the-ocr)",
+        "mock": false,
+        "submitted_at": "2026-06-17T11:25:03.270307+00:00",
+        "stream_events": [
+          {
+            "type": "start",
+            "messageId": "483w6Uq4HjoYZ2Ep",
+            "_received_at_ms": 369
+          },
+          {
+            "type": "data-progress",
+            "id": "turn_baseline",
+            "data": {
+              "progress": {
+                "id": "turn_baseline",
+                "description": "Reading",
+                "status": "active",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": true,
+            "_received_at_ms": 369
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "answerQuestion": {
+                  "type": "WORKFLOW_TOOLS_LOAD_START",
+                  "workflowName": "answerQuestion",
+                  "workflowType": "answerQuestion",
+                  "configuredToolKeys": [],
+                  "configuredToolCount": 0
+                }
+              }
+            },
+            "_received_at_ms": 418
+          },
+          {
+            "type": "data-progress",
+            "id": "turn_baseline",
+            "data": {
+              "progress": {
+                "id": "turn_baseline",
+                "description": "Reading message",
+                "status": "active",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 489
+          },
+          {
+            "type": "data-progress",
+            "id": "tool_selection-87162a5c-fdd0-46ee-a598-4fd50e0ceb28",
+            "data": {
+              "progress": {
+                "id": "tool_selection-87162a5c-fdd0-46ee-a598-4fd50e0ceb28",
+                "description": "Understanding request",
+                "status": "active",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 489
+          },
+          {
+            "type": "data-progress",
+            "id": "tool_selection-87162a5c-fdd0-46ee-a598-4fd50e0ceb28",
+            "data": {
+              "progress": {
+                "id": "tool_selection-87162a5c-fdd0-46ee-a598-4fd50e0ceb28",
+                "description": "Searching knowledge base",
+                "status": "active",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 3103
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "question": {
+                  "type": "TOOL_CALL_INTERRUPTED_PROCEED_WITH_USER_REQUEST",
+                  "usage": {
+                    "inputTokens": 3077,
+                    "inputTokenDetails": {
+                      "noCacheTokens": 3077,
+                      "cacheReadTokens": 0,
+                      "cacheWriteTokens": 0
+                    },
+                    "outputTokens": 148,
+                    "outputTokenDetails": {
+                      "textTokens": 148
+                    },
+                    "totalTokens": 3225,
+                    "raw": {
+                      "inputTokens": 3077,
+                      "outputTokens": 148,
+                      "totalTokens": 3225,
+                      "cacheReadInputTokens": 0,
+                      "cacheWriteInputTokens": 0
+                    },
+                    "cachedInputTokens": 0
+                  },
+                  "thinking": "The user is asking about the current Official Cash Rate (OCR) set by the Reserve Bank of New Zealand. This is a straightforward factual question about New Zealand's monetary policy.",
+                  "question": "What is the current Official Cash Rate (OCR) set by the Reserve Bank of New Zealand?",
+                  "metadata": null,
+                  "progressLabel": "Searching knowledge base",
+                  "elapsed": 2744
+                }
+              }
+            },
+            "_received_at_ms": 3103
+          },
+          {
+            "type": "data-progress",
+            "id": "tool_selection-87162a5c-fdd0-46ee-a598-4fd50e0ceb28",
+            "data": {
+              "progress": {
+                "id": "tool_selection-87162a5c-fdd0-46ee-a598-4fd50e0ceb28",
+                "description": "Searching knowledge base",
+                "status": "done",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 3103
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "classification": {
+                  "type": "QUESTION_CLASSIFICATION",
+                  "thinking": "The user is asking about the current Official Cash Rate (OCR) set by the Reserve Bank of New Zealand. This is a New Zealand-specific financial/economic topic. The RNZ knowledge base covers NZ politics, economy, and business news since January 2024 and is updated daily, so it likely contains recent reporting on OCR decisions. This is a factual question about current NZ economic policy that could be answered from the RNZ knowledge base.",
+                  "category": "D",
+                  "usage": {
+                    "inputTokens": 4530,
+                    "inputTokenDetails": {
+                      "noCacheTokens": 4530,
+                      "cacheReadTokens": 0,
+                      "cacheWriteTokens": 0
+                    },
+                    "outputTokens": 197,
+                    "outputTokenDetails": {
+                      "textTokens": 197
+                    },
+                    "totalTokens": 4727,
+                    "raw": {
+                      "inputTokens": 4530,
+                      "outputTokens": 197,
+                      "totalTokens": 4727,
+                      "cacheReadInputTokens": 0,
+                      "cacheWriteInputTokens": 0
+                    },
+                    "cachedInputTokens": 0
+                  },
+                  "elapsed": 4475
+                }
+              }
+            },
+            "_received_at_ms": 4853
+          },
+          {
+            "type": "data-progress",
+            "id": "turn_baseline",
+            "data": {
+              "progress": {
+                "id": "turn_baseline",
+                "description": "Reading message",
+                "status": "done",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 4854
+          },
+          {
+            "type": "data-progress",
+            "id": "mode-retract-87162a5c-fdd0-46ee-a598-4fd50e0ceb28",
+            "data": {
+              "mode": "retract"
+            },
+            "_received_at_ms": 4854
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "question": {
+                  "type": "QUESTION_GENERATION_SKIPPED",
+                  "question": "What is the current Official Cash Rate (OCR) set by the Reserve Bank of New Zealand?",
+                  "source": "pre_kb_tool_calls",
+                  "elapsed": 4476
+                }
+              }
+            },
+            "_received_at_ms": 4854
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "search_topic_generation",
+                "status": "active",
+                "type": "SEARCHING_KB",
+                "description": "Preparing search topics"
+              }
+            },
+            "_received_at_ms": 9834
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "search_topic_generation",
+                "status": "done",
+                "type": "SEARCHING_KB",
+                "description": "Preparing search topics"
+              }
+            },
+            "_received_at_ms": 10106
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "kb_search_0",
+                "status": "active",
+                "description": "Search for current OCR rate",
+                "type": "SEARCHING_KB"
+              }
+            },
+            "_received_at_ms": 10107
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "kb_search_1",
+                "status": "active",
+                "description": "Search for RBNZ monetary policy",
+                "type": "SEARCHING_KB"
+              }
+            },
+            "_received_at_ms": 10107
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "kb_evaluation",
+                "status": "pending",
+                "description": "Evaluating search results",
+                "type": "EVALUATING_KB"
+              }
+            },
+            "_received_at_ms": 10107
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "orchestration": [
+                  {
+                    "type": "TOPIC_GENERATION",
+                    "queries": [
+                      {
+                        "knowledgeBaseId": "QETGXQCZ48",
+                        "query": "Official Cash Rate (OCR) Reserve Bank of New Zealand current decision",
+                        "label": "Search for current OCR rate",
+                        "filter": "none"
+                      },
+                      {
+                        "knowledgeBaseId": "QETGXQCZ48",
+                        "query": "Reserve Bank New Zealand interest rate monetary policy 2024 2025",
+                        "label": "Search for RBNZ monetary policy",
+                        "filter": "none"
+                      }
+                    ],
+                    "thinking": "The question asks about the current Official Cash Rate (OCR) set by the Reserve Bank of New Zealand. This is a current affairs/economic question. The best knowledge base for this is RNZ, which covers New Zealand news including economy and business, and is updated daily. I should search for OCR and Reserve Bank of New Zealand interest rate decisions. Te Ara might have background info but won't have current rates. RNZ is the primary source here.",
+                    "usage": {
+                      "inputTokens": 5649,
+                      "inputTokenDetails": {
+                        "noCacheTokens": 5649,
+                        "cacheReadTokens": 0,
+                        "cacheWriteTokens": 0
+                      },
+                      "outputTokens": 238,
+                      "outputTokenDetails": {
+                        "textTokens": 238
+                      },
+                      "totalTokens": 5887,
+                      "raw": {
+                        "inputTokens": 5649,
+                        "outputTokens": 238,
+                        "totalTokens": 5887,
+                        "cacheReadInputTokens": 0,
+                        "cacheWriteInputTokens": 0
+                      },
+                      "cachedInputTokens": 0
+                    },
+                    "elapsed": 5264
+                  }
+                ]
+              }
+            },
+            "_received_at_ms": 10107
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "kb_search_1",
+                "status": "done",
+                "type": "SEARCHING_KB"
+              }
+            },
+            "_received_at_ms": 10527
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "kb_search_0",
+                "status": "done",
+                "type": "SEARCHING_KB"
+              }
+            },
+            "_received_at_ms": 10547
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "kb_evaluation",
+                "description": "Evaluating search results",
+                "status": "active",
+                "type": "EVALUATING_KB"
+              }
+            },
+            "_received_at_ms": 10793
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "orchestration": [
+                  {
+                    "type": "KNOWLEDGE_BASE_SEARCH_RESULTS",
+                    "results": {
+                      "1": {
+                        "id": 1,
+                        "text": "[Page 1] RBNZofficial cash rateOCR50 KiwibankASBHSBC10 50 BNZ11 WestpacASB1150Kiwibank2 \"50\"KiwibankJarrod Ifllll Kerr\"\" \"50 \" KiwibankJarrod Kerr Quarterly Survey of Business OpinionQSBO BNZOCR\"\" \"OCR\" BNZconsumer price indexCPI 1150112 \"4OCR125\" WestpacKelly EckholdQSBO2% .WestpacKelly Eckhold \"2021…… \" \"OCR\" \"\" Kerr \"\"\"\" Kerr \"\" \"825950 OCR\" Eckhold \"3\" \"\" Kerr \"\" \" \" \"\" \" \" \"\" OCR 0.5%\"\" .Adrian Orr \"\" \" \" BNZ\"\"\"\" Eckhold2019 \"\" \" \" chinese@rnz.co.nz RELATED https://www.rnz.co.nz/news/chinese/528446/article https://www.rnz.co.nz/news/chinese/525765/article https://www.rnz.co.nz/news/chinese/525630/ocr\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/LWR0Rhvzg77ameovPabV-ymDMwucdrZ1BqC3DeT0NKI/53349a62-3fbb-4a2c-a650-21c441527304.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/LWR0Rhvzg77ameovPabV-ymDMwucdrZ1BqC3DeT0NKI.pdf",
+                          "filePath": "pdf/市场要求央行降息的呼声越来越高.pdf",
+                          "author": "Susan Edmunds - Money Correspondent",
+                          "published_date": "2024-10-03",
+                          "updated_date": "2024-10-03",
+                          "category": "RNZ中文"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "Official Cash Rate (OCR) Reserve Bank of New Zealand current decision",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/市场要求央行降息的呼声越来越高.pdf",
+                          "fileName": "市场要求央行降息的呼声越来越高.pdf",
+                          "checksumSHA256": "LWR0Rhvzg77ameovPabV+ymDMwucdrZ1BqC3DeT0NKI=",
+                          "checksumSHA256URL": "LWR0Rhvzg77ameovPabV-ymDMwucdrZ1BqC3DeT0NKI",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/LWR0Rhvzg77ameovPabV-ymDMwucdrZ1BqC3DeT0NKI.pdf"
+                        },
+                        "document_title": "RBNZ Official Cash Rate Decision and Economic Outlook",
+                        "document_summary": "This article by Susan Edmunds reports on the Reserve Bank of New Zealand's (RBNZ) Official Cash Rate (OCR) decision and economic implications. The piece discusses the OCR at 5.0%, featuring commentary from banking analysts including Jarrod Kerr from Kiwibank and Kelly Eckhold from Westpac. Key topics include the Quarterly Survey of Business Opinion (QSBO), consumer price index (CPI) trends, and market expectations for future rate movements. The article references potential OCR adjustments and economic forecasts, with mentions of RBNZ Governor Adrian Orr's perspective on monetary policy. Banking institutions including BNZ, ASB, HSBC, and Westpac provide their analysis on the rate decision and its economic impact."
+                      },
+                      "2": {
+                        "id": 2,
+                        "text": "[Page 1] 2024 07 10 15:59:48+12:00 Reserve Bank NZ8official cash rateOCR5.5%\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/Q9IXJfdgxyyKIAYg1wBuAvzZHI4zUw7Y3A9XwrSF_rI/e744a2d5-d5f2-49ec-891a-82da868eac71.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/Q9IXJfdgxyyKIAYg1wBuAvzZHI4zUw7Y3A9XwrSF_rI.pdf",
+                          "filePath": "pdf/OCR连续第8次维持5.5%不变，但降息预期增强.pdf",
+                          "author": "Reserve Bank of New Zealand / Monetary Policy Committee",
+                          "published_date": "2024-07-10",
+                          "updated_date": "2024-07-10",
+                          "category": "RNZ中文"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "Official Cash Rate (OCR) Reserve Bank of New Zealand current decision",
+                            "filter": null
+                          },
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "Reserve Bank New Zealand interest rate monetary policy 2024 2025",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/OCR连续第8次维持5.5%不变，但降息预期增强.pdf",
+                          "fileName": "OCR连续第8次维持5.5%不变，但降息预期增强.pdf",
+                          "checksumSHA256": "Q9IXJfdgxyyKIAYg1wBuAvzZHI4zUw7Y3A9XwrSF/rI=",
+                          "checksumSHA256URL": "Q9IXJfdgxyyKIAYg1wBuAvzZHI4zUw7Y3A9XwrSF_rI",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/Q9IXJfdgxyyKIAYg1wBuAvzZHI4zUw7Y3A9XwrSF_rI.pdf"
+                        },
+                        "document_title": "Reserve Bank of New Zealand Official Cash Rate Announcement",
+                        "document_summary": "This document from the Reserve Bank of New Zealand announces the Official Cash Rate (OCR) decision dated July 10, 2024. The OCR is set at 5.5%, maintained within the target range of 1%-3%. The announcement reflects the Monetary Policy Committee's decision and includes references to related news articles and contact information (chinese@rnz.co.nz) for further inquiries. This official monetary policy announcement is a key communication from New Zealand's central bank regarding interest rate decisions and economic policy direction."
+                      },
+                      "3": {
+                        "id": 3,
+                        "text": "[Page 1] Reserve Bank expected to keep official cash rate at 5.5 percent ByGyles Beckford Business Editor 2024 05 20 17:46:01+12:00 Analysis The RBNZ is determined that inflation heads downwards and stays there and will be watching the Budget closely too The official cash rate has been held at 5.5 percent since last May. Analysis The Reserve Bank is expected to stay the course in this week's monetary policy statement with no change to the official cash rate for a seventh consecutive meeting, and a familiar statement. The official cash rate (OCR) has been on hold at 5.5 percent since May last year, with a consistent message that inflation is slowing but not fast enough and remains particularly stubborn in domestic service industries. Since the RBNZ's last monetary review in April, inflation had come in a touch stronger than the RBNZ had been forecasting, while the labour market was weaker. The RBNZ had been dogmatic that inflation was not just headed into its 1 3 percent target band but would stay there before it looked to cut the OCR.\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/WnELZIcz95HC4zM_BNRZeGtU5Lu4E9cysO--Hs_pZMg/b05a02f4-573c-44c1-a2ad-a49353d0922a.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/WnELZIcz95HC4zM_BNRZeGtU5Lu4E9cysO--Hs_pZMg.pdf",
+                          "filePath": "pdf/Reserve Bank expected to keep official cash rate at 5.5 percent.pdf",
+                          "author": "Gyles Beckford - Business Editor ",
+                          "published_date": "2024-05-20",
+                          "updated_date": "2024-05-20",
+                          "category": "New Zealand"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "Official Cash Rate (OCR) Reserve Bank of New Zealand current decision",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Reserve Bank expected to keep official cash rate at 5.5 percent.pdf",
+                          "fileName": "Reserve Bank expected to keep official cash rate at 5.5 percent.pdf",
+                          "checksumSHA256": "WnELZIcz95HC4zM/BNRZeGtU5Lu4E9cysO++Hs/pZMg=",
+                          "checksumSHA256URL": "WnELZIcz95HC4zM_BNRZeGtU5Lu4E9cysO--Hs_pZMg",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/WnELZIcz95HC4zM_BNRZeGtU5Lu4E9cysO--Hs_pZMg.pdf"
+                        },
+                        "document_title": "Reserve Bank Expected to Keep Official Cash Rate at 5.5 Percent",
+                        "document_summary": "The Reserve Bank of New Zealand is expected to maintain the official cash rate (OCR) at 5.5 percent for a seventh consecutive meeting. Despite inflation slowing, it remains stubbornly high in domestic service sectors like rents, rates, and insurance, growing at nearly 6 percent annually. The economy faces recession with weakening labor markets and declining retail sales. The RBNZ remains committed to keeping rates higher for longer, with no rate cuts expected before mid-2025, despite financial markets pricing cuts earlier. Fiscal policy uncertainty surrounding the upcoming Budget adds to the cautious stance. Economists note the economy is performing worse than expected, with negative GDP growth projected through 2024."
+                      },
+                      "4": {
+                        "id": 4,
+                        "text": "[Page 1] =||||||||||||—|]>||||p'|cu|||| 522Reserve Bankofficial cash rateOCR OCR 5.5%OCR OCR ASBChris Tennent Brown \" \" OCR11 \" \"Tennent Brown\"OCR \" \" \" \"6 ' ''18' \" \" 6% \" InfometricsGareth Kiernan \"OCR\" CorelogicKelvin DavidsonOCR \" OCR2025\" \"69\" \" 2025 \" chinese@rnz.co.nz\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/LJr2cXC1BC23_myA5M45CJuQ7yfZ3-qqlg2LGhny-6w/9e570170-dacb-44a3-9e99-77211eb5b73b.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/LJr2cXC1BC23_myA5M45CJuQ7yfZ3-qqlg2LGhny-6w.pdf",
+                          "filePath": "pdf/年内降息无望，房贷借款人未来一段时间仍需“勒紧腰带”.pdf",
+                          "author": "Susan Edmunds - Money Correspondent",
+                          "published_date": "2024-05-23",
+                          "updated_date": "2024-05-23",
+                          "category": "RNZ中文"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "Official Cash Rate (OCR) Reserve Bank of New Zealand current decision",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/年内降息无望，房贷借款人未来一段时间仍需“勒紧腰带”.pdf",
+                          "fileName": "年内降息无望，房贷借款人未来一段时间仍需“勒紧腰带”.pdf",
+                          "checksumSHA256": "LJr2cXC1BC23/myA5M45CJuQ7yfZ3+qqlg2LGhny+6w=",
+                          "checksumSHA256URL": "LJr2cXC1BC23_myA5M45CJuQ7yfZ3-qqlg2LGhny-6w",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/LJr2cXC1BC23_myA5M45CJuQ7yfZ3-qqlg2LGhny-6w.pdf"
+                        },
+                        "document_title": "Reserve Bank Official Cash Rate Decision and Economic Outlook",
+                        "document_summary": "This article from RNZ (Radio New Zealand) dated May 23, 2024, reports on the Reserve Bank's Official Cash Rate (OCR) decision set at 5.5%. The piece features commentary from financial experts including Chris Tennent-Brown from ASB, Gareth Kiernan from Infometrics, and Kelvin Davidson from Corelogic. The article discusses expectations for OCR movements, with analysts anticipating potential rate cuts in the latter half of 2024 and into 2025. The reporting covers economic forecasts and implications of the current monetary policy stance on New Zealand's economy, providing insights into market expectations and expert analysis of the Reserve Bank's decision and its broader economic implications."
+                      },
+                      "5": {
+                        "id": 5,
+                        "text": "[Page 2] Will the OCR go up? The Reserve Bank is forecasting interest rates to stay higher for longer. The central bank held the benchmark official cash rate unchanged at 5.5 percent for the seventh consecutive meeting, as expected. It predicts a 5.7 percent OCR peak at the end of 2024. RBNZ governor Adrian Orr said inflation was sticky and expected it to stay above 2 percent until the middle of 2026, with the official cash rate slowly declining to 5 percent by the end of 2025. He told RNZ business editor Gyles Beckford it would take longer for inflation to fall, meaning \"we have to retain restrictive monetary policy for a bit longer\". https://w ww.rnz.co.nz/national/programmes/morningreport/audio/2018939772/re serve bank governor on holding ocr at 5 point 5 percent But the RBNZ did not have to get to 2 percent to consider rate cuts. \"The quicker price setters get their heads around a low inflation environment and wage expectations get more realistic with low inflation than the less painful disinflation is and the more employment remains in good stead,\" Orr\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/QNsiDwQ9olC0zuD923BWxpQs7_USHDxRLvUAsaBXkfI/f04eabfd-e784-4b7d-abec-71d6dc56023b.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/QNsiDwQ9olC0zuD923BWxpQs7_USHDxRLvUAsaBXkfI.pdf",
+                          "filePath": "pdf/Slow market, high interest rates, stubborn inflation: What is happening with the NZ housing market this week?.pdf",
+                          "author": "Kymberleefernandes - Digital journalist",
+                          "published_date": "2024-05-25",
+                          "updated_date": "2024-05-25",
+                          "category": "New Zealand"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "Official Cash Rate (OCR) Reserve Bank of New Zealand current decision",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Slow market, high interest rates, stubborn inflation: What is happening with the NZ housing market this week?.pdf",
+                          "fileName": "Slow market, high interest rates, stubborn inflation: What is happening with the NZ housing market this week?.pdf",
+                          "checksumSHA256": "QNsiDwQ9olC0zuD923BWxpQs7/USHDxRLvUAsaBXkfI=",
+                          "checksumSHA256URL": "QNsiDwQ9olC0zuD923BWxpQs7_USHDxRLvUAsaBXkfI",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/QNsiDwQ9olC0zuD923BWxpQs7_USHDxRLvUAsaBXkfI.pdf"
+                        },
+                        "document_title": "Slow Market, High Interest Rates, Stubborn Inflation: What is Happening with the NZ Housing Market This Week?",
+                        "document_summary": "New Zealand's residential property market remains sluggish with high interest rates expected to persist until 2025. The government reduced the bright-line test for investment property sales from 10 years to 2 years, potentially affecting 60,000 properties and saving investors $55,000-$65,000 in tax each. The First Home Grants scheme was scrapped, eliminating $5,000-$10,000 assistance for eligible buyers. The Reserve Bank held the official cash rate at 5.5% and forecasts it will peak at 5.7% by end of 2024, with inflation remaining sticky above 2% until mid-2026. Owner-occupiers now represent 27% of purchases, while first-home buyers dropped to 25% market share. House prices are not expected to peak until after 2029. Mortgage rate relief is unlikely before 2025. Median rents nationally remain at $650/week with slight regional variations. Social housing faces restructuring with Kāinga Ora's board being replaced and $140m allocated for 1,500 new community housing units."
+                      },
+                      "6": {
+                        "id": 6,
+                        "text": "[Page 1] https://www.rnz.co.nz/news/business/517502/reserve bank holds official cash rate at 5 point 5 percent https://www.rnz.co.nz/news/national/517 749/what s the best home loan term to fix for now https://www.rnz.co.n z/news/business/514454/reserve bank considers the digital dollar nz s money must innovate to stay relevant https://www.rnz.co.nz/news/natio nal/513923/reserve bank holds ocr at 5 point 5 percent\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/SdWTnxqKSVvblpKxLt8CwBS0a8KFjEavyTBqoD6H19w/f607c3ff-7e28-4731-b8c4-4e2a4948b1b8.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/SdWTnxqKSVvblpKxLt8CwBS0a8KFjEavyTBqoD6H19w.pdf",
+                          "filePath": "pdf/Co-operative Bank posts 10% rise in full year profit.pdf",
+                          "author": "RNZ (Radio New Zealand)",
+                          "published_date": "2024-05-27",
+                          "updated_date": "2024-05-27",
+                          "category": "Business"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "Official Cash Rate (OCR) Reserve Bank of New Zealand current decision",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Co-operative Bank posts 10% rise in full year profit.pdf",
+                          "fileName": "Co-operative Bank posts 10% rise in full year profit.pdf",
+                          "checksumSHA256": "SdWTnxqKSVvblpKxLt8CwBS0a8KFjEavyTBqoD6H19w=",
+                          "checksumSHA256URL": "SdWTnxqKSVvblpKxLt8CwBS0a8KFjEavyTBqoD6H19w",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/SdWTnxqKSVvblpKxLt8CwBS0a8KFjEavyTBqoD6H19w.pdf"
+                        },
+                        "document_title": "Co-operative Bank Posts 10% Rise in Full Year Profit",
+                        "document_summary": "Co-operative Bank achieved a 10% increase in full-year profit to $12.7 million, driven by rising interest rates and increased mortgage lending. Customer numbers grew 3% to just under 182,000, while lending and deposits each reached approximately $3 billion. Income rose 8% to $100 million with expenses at $78.6 million. The bank maintained bad debt provisions at $1.1 million and paid a $2.5 million customer rebate. CEO Mark Wilkshire highlighted steady growth, a stronger balance sheet, and plans for significant system investments including core banking system replacement. The bank was recognized as the best retail bank in 8 of the past 9 years in consumer satisfaction surveys."
+                      },
+                      "7": {
+                        "id": 7,
+                        "text": "[Page 1] Reserve Bank holds OCR at 5.5 percent ByGyles Beckford Business Editor 2024 04 10 14:01:00+12:00 Reserve Bank keeps cash rate unchanged at 5.5 percent The Reserve Bank has released the latest Official Cash Rate decision. The Reserve Bank has left its official cash rate unchanged at 5.5 percent for a sixth consecutive meeting, saying it has more to do to get inflation totally under control. Economists had expected the benchmark rate to be left unchanged at the same level since the RBNZ halted rate rises last May. The central bank said inflation was expected to ease from the two year low of 4.7 percent reached at the end of last year, as consumers and businesses continued to keep a tighter rein on their spending. But it warned interest rates needed to stay high to tackle still stubborn inflation pressures, and to return to its 1 3 percent target band. \"A restrictive monetary policy stance remains necessary to further reduce capacity pressures and inflation,\" the Monetary Policy Committee said in a statement. It said the economy remained weak but there were still near term pressures. \"While some near term price pressures remain, the committee is confident that maintaining the OCR at a restrictive level for a sustained period will return consumer price inflation to within the 1 to 3 percent target range this calendar year. \" In February the RBNZ's indicative forecasts for the OCR showed little prospect of a rate cut before mid 2025. Never going to happen The RBNZ statement was unusually short, which reflected its view that little economically or financially had changed since the February statement. \"The RBNZ were never going to adjust policy today. And the likelihood of a change in May is very slim (to none),\" Kiwibank chief economist Jarrod Kerr said. Recent surveys have shown business and consumer confidence slipping, as households keep a lid on their spending and the fall in sales and orders knocks profits. ANZ chief economist Sharon Zollner said there were pockets of domestic inflation and overseas generated price pressures, such as oil prices that might be a test for the RBNZ. \"If domestic inflation proves stickier than expected and/or there is evidence of flow through impacts onto broader price pressures and inflation expectations the RBNZ may have a problem, but that's not a problem for today.\" She said consumer price index numbers for the first three months of the year due out next week, and then labour market data a couple of weeks later would be important in determining the RBNZ's stance in the May monetary policy statement. \"We continue to expect that the RBNZ will require considerably more certainty before contemplating cuts ... we continue to expect cuts won't be on the table until 2025.\" Financial markets are still pricing in at least two rate cuts by the end of the year. Related\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/4F8pfnChjSqklFtG_zJocZs6zg7yhEq8IWsFopCYUIU/7c730f45-377d-49af-ad3c-7d79619a273f.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/4F8pfnChjSqklFtG_zJocZs6zg7yhEq8IWsFopCYUIU.pdf",
+                          "filePath": "pdf/Reserve Bank holds OCR at 5.5 percent.pdf",
+                          "author": "Gyles Beckford - Business Editor ",
+                          "published_date": "2024-04-10",
+                          "updated_date": "2024-04-10",
+                          "category": "New Zealand"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "Official Cash Rate (OCR) Reserve Bank of New Zealand current decision",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Reserve Bank holds OCR at 5.5 percent.pdf",
+                          "fileName": "Reserve Bank holds OCR at 5.5 percent.pdf",
+                          "checksumSHA256": "4F8pfnChjSqklFtG/zJocZs6zg7yhEq8IWsFopCYUIU=",
+                          "checksumSHA256URL": "4F8pfnChjSqklFtG_zJocZs6zg7yhEq8IWsFopCYUIU",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/4F8pfnChjSqklFtG_zJocZs6zg7yhEq8IWsFopCYUIU.pdf"
+                        },
+                        "document_title": "Reserve Bank Holds Official Cash Rate at 5.5 Percent",
+                        "document_summary": "The Reserve Bank of New Zealand has maintained its Official Cash Rate (OCR) at 5.5 percent for the sixth consecutive meeting, as announced on April 10, 2024. The central bank stated that a restrictive monetary policy stance remains necessary to combat persistent inflation pressures and return consumer price inflation to its 1-3 percent target range. While inflation has eased to 4.7 percent, the RBNZ emphasized that interest rates must stay elevated to manage near-term price pressures. Economists anticipate no rate changes in May, with rate cuts unlikely before mid-2025. Key upcoming economic indicators, including consumer price index data and labour market statistics, will influence the RBNZ's May monetary policy decision."
+                      },
+                      "8": {
+                        "id": 8,
+                        "text": "[Page 1] How the Reserve Bank decides the OCR ByGyles Beckford Business Editor 2025 05 29 18:56:15+12:00 Analysis The setting of the Reserve Bank's monetary policy committee meetings to set the official cash rate (OCR) every six weeks or so is the closest New Zealand has to a Papal Conclave, but without the brightly coloured clothing and smoke out the chimney. The Committee was set up in 2018, replacing the Governor as the sole official decision maker on interest rates, with four RBNZ officials being joined by three external members. The change was explained as New Zealand finally adopting \"best practice\" of other central banks around the world, where a diverse range of the suitably qualified members are expected to bring different perspectives making for better decisions. Contrary to the practice of many of the big central banks, which vote on what to do with interest rates, the RBNZ prefers to arrive at a consensus, implying some form of collegial unanimity. Two rare occasions a vote But just twice the consensus and conformity have been tested by the extent of differences to force a vote. The first was in May 2023, when the MPC voted 5 2 to raise the OCR by 25 basis points 5.5 percent rather than stay on hold at 5.25 percent. That increase proved to be the peak of the RBNZ's tightening cycle. The second was the RBNZ's latest decision, with one member voting for keeping rates on hold and the other five opting for a 25 basis point cut to 5.25 percent. Like the cardinals in the Vatican, who voted for whom remains a secret. At many other central banks it's quite clear who voted for what option and why. Governor Christian Hawkesby explained the vote in both cases has come at a time when the RBNZ is at a \"point of inflection\", and so a more broad range of opinions and options was being debated. In 2023 the RBNZ was near the end of its rate rises and in 2025 it is near the bottom. Which highlights another issue about the monetary policy committee publicly it has remained in the shadow of the RBNZ Governor. The external members are known, they often sit in the front row of monetary policy news conferences mute. It is the governor and a couple of senior officials who do the talking at the conference, and who do the press interviews in following days as they sell the latest decision. At various overseas central banks the external members do speak publicly, within guidelines, and express their opinions, even if they are dissenting. But in another RBNZ surprise, an external member of the committee, Prasanna Gai, a professor of macroeconomics at the University of Auckland, will speak at an Auckland Chamber of Commerce event on monetary policy and trade uncertainty on June 12. However, any excitement of such a first is tempered by the advice there will be no speech notes, the event is not being streamed, and no interviews. Related https://www.rnz.co.nz/news/business/562554/are borrowers missing out if banks don t fully pass on the official cash rate cut https://www.rnz.co. nz/news/national/562410/reserve bank drops ocr by 25 basis points to 3 point 25 percent https://www.rnz.co.nz/news/business/562404/anz bn z westpac cut home loan rates but where to from here https://www.rnz. co.nz/news/business/561626/where does money come from are home l oans actually fake\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/4awAaekJRudU0qob46RRHouLeHgYQtOVkHwUE-PyrYk/35b82aa1-bf9e-454c-bcac-caafed9ecceb.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/4awAaekJRudU0qob46RRHouLeHgYQtOVkHwUE-PyrYk.pdf",
+                          "filePath": "pdf/How the Reserve Bank decides the OCR.pdf",
+                          "author": "Gyles Beckford - Business Editor ",
+                          "published_date": "2025-05-29",
+                          "updated_date": "2025-05-29",
+                          "category": "Business"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "Official Cash Rate (OCR) Reserve Bank of New Zealand current decision",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/How the Reserve Bank decides the OCR.pdf",
+                          "fileName": "How the Reserve Bank decides the OCR.pdf",
+                          "checksumSHA256": "4awAaekJRudU0qob46RRHouLeHgYQtOVkHwUE+PyrYk=",
+                          "checksumSHA256URL": "4awAaekJRudU0qob46RRHouLeHgYQtOVkHwUE-PyrYk",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/4awAaekJRudU0qob46RRHouLeHgYQtOVkHwUE-PyrYk.pdf"
+                        },
+                        "document_title": "How the Reserve Bank Decides the OCR",
+                        "document_summary": "This article explains how New Zealand's Reserve Bank Monetary Policy Committee (MPC) sets the Official Cash Rate (OCR). Established in 2018, the seven-member committee—comprising four RBNZ officials and three external members—replaced the Governor as sole decision-maker, adopting international best practices. Unlike many central banks that vote publicly, the RBNZ prefers consensus-based decisions. Only twice has consensus been broken: in May 2023 (5-2 vote to raise OCR to 5.5%) and recently (5-1 vote to cut to 3.25%). Vote details remain confidential. The article notes that external committee members remain largely invisible publicly, with only the Governor and senior officials communicating decisions. An upcoming exception is external member Prasanna Gai speaking at an Auckland Chamber of Commerce event on June 12, though without published notes or streaming."
+                      },
+                      "9": {
+                        "id": 9,
+                        "text": "[Page 3] https://www.rnz.co.nz/news/business/562404/banks drop interest rates ahead of ocr https://www.rnz.co.nz/news/business/562314/rbnz set to c ut official cash rate by 25 basis points to 3 point 25 percent https://ww w.rnz.co.nz/news/business/562238/bnz drops fixed and variable home l oan rates ahead of ocr decision https://www.rnz.co.nz/news/national/56 1286/inflation increase expected but within reserve bank s target band\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/IA-aUVj2btRYQb9-bWi1WeO-dgpreiCnBWipXbRGMG8/4650e44d-2850-4d02-9179-be8aea14f21b.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/IA-aUVj2btRYQb9-bWi1WeO-dgpreiCnBWipXbRGMG8.pdf",
+                          "filePath": "pdf/Reserve Bank drops OCR by 25 basis points to 3.25 percent.pdf",
+                          "author": "Gyles Beckford - Business Editor ",
+                          "published_date": "2025-05-28",
+                          "updated_date": "2025-05-28",
+                          "category": "New Zealand"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "Official Cash Rate (OCR) Reserve Bank of New Zealand current decision",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Reserve Bank drops OCR by 25 basis points to 3.25 percent.pdf",
+                          "fileName": "Reserve Bank drops OCR by 25 basis points to 3.25 percent.pdf",
+                          "checksumSHA256": "IA+aUVj2btRYQb9+bWi1WeO+dgpreiCnBWipXbRGMG8=",
+                          "checksumSHA256URL": "IA-aUVj2btRYQb9-bWi1WeO-dgpreiCnBWipXbRGMG8",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/IA-aUVj2btRYQb9-bWi1WeO-dgpreiCnBWipXbRGMG8.pdf"
+                        },
+                        "document_title": "Reserve Bank Cuts Official Cash Rate by 25 Basis Points to 3.25 Percent",
+                        "document_summary": "The Reserve Bank of New Zealand cut the official cash rate (OCR) by 25 basis points to 3.25 percent as expected, marking the second consecutive small cut. The Monetary Policy Committee voted 5-1 to cut, with some members debating whether to hold at 3.5 percent. The decision reflects CPI inflation returning to the target range and significant spare capacity in the economy. Despite the cut, the RBNZ omitted mention of future rate cuts, citing global economic uncertainty from US tariff policies. Inflation spiked to 2.5 percent in Q1 but is expected to return to the 2 percent target. Prime Minister Luxon highlighted mortgage payment reductions of over $300 fortnightly on a $500,000 loan, while Finance Minister Willis credited responsible fiscal management for enabling the rate cut."
+                      },
+                      "10": {
+                        "id": 10,
+                        "text": "[Page 1] OCR remains unchanged at 5.5% for eighth consecutive meeting ByGyles Beckford Business Editor 2024 07 10 14:03:36+12:00 Reserve Bank holds official cash rate unchanged at 5.5 percent for eighth consecutive meeting The Reserve Bank has hinted interest rate cuts may be closer than previously thought. The central bank held the official cash rate steady for an eighth consecutive meeting at 5.5 percent, as expected. It repeated much of previous statements about the slowing economy, easing labour market, and gradually falling inflation. \"Restrictive monetary policy has significantly reduced consumer price inflation, with the Committee expecting headline inflation to return to within the 1 to 3 percent target range in the second half of this year,\" the Monetary Policy Committee (MPC) said in a statement. But in an easing of attitude the MPC statement replaced the standard phrase of the OCR needing \"to stay higher for longer\" with the OCR needing to \"stay restrictive\". \"The extent of this restraint will be tempered over time consistent with the expected decline in inflation pressures.\" This review was not accompanied by economic and financial forecasts, but in the May monetary policy statement it had indicated the OCR would stay at its current level until the second half of 2025. Over the next few weeks, there will be updated inflation and labour market data adding fresh input for the RBNZ's August monetary policy statement. Turning point The tone of the RBNZ statement and accompanying minutes of the committee's meeting were taken as dovish and pointing to sooner than expected rate cuts, after May's statement had flirted with talk of rate rises. The New Zealand dollar fell markedly against most major currencies, and local wholesale interest rates were lower. ASB chief economist Nick Tuffley said the statement was decidedly dovish compared to the one issued in May, and showed the RBNZ would be watching the economic numbers closely. \"We continue to expect the RBNZ will cut the OCR by 25 basis points in November. However, the risks are a sooner cut or bigger cut should the signs point to inflation undershooting the RBNZ's view.\" Financial markets changed to price in a definite prospect of a 25 basis point cut to 5.25 percent in October, and most likely another in November. The MPC minutes showed discussion on the big impact of the high cash rate policy as it looked at sliding consumer and business surveys, rising business failures, weak retail sales, and subdued bank lending. \"This may indicate that tight monetary policy is feeding through to domestic demand more strongly than expected.\" Some economists have been critical of the RBNZ's hardline policy stance and suggested it ran the risk of damaging the economy. The MPC said government spending cuts were feeding through slowly, but the impact of tax cuts, due to come in at the end of the month, was uncertain. CoreLogic senior property economist Kelvin Davidson said the latest decision offered little for the housing market in the short term. \"However, there could now just be some light emerging at the end of the mortgage rate tunnel, and although they might not necessarily fall straight away or particularly quickly, any drops would no doubt be welcomed by borrowers. \"To be fair, there's already been a drift lower for rates in the past few months, but OCR cuts would clearly add some impetus.\" Related\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/cGTAW11lQD9_tsjTLsvsR4wO6CLYtTzHmTpBbyknyik/a3ac207b-bdea-4ac7-98e2-f7a95ff6880e.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/cGTAW11lQD9_tsjTLsvsR4wO6CLYtTzHmTpBbyknyik.pdf",
+                          "filePath": "pdf/OCR remains unchanged at 5.5% for eighth consecutive meeting.pdf",
+                          "author": "Gyles Beckford - Business Editor ",
+                          "published_date": "2024-07-10",
+                          "updated_date": "2024-07-10",
+                          "category": "New Zealand"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "Official Cash Rate (OCR) Reserve Bank of New Zealand current decision",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/OCR remains unchanged at 5.5% for eighth consecutive meeting.pdf",
+                          "fileName": "OCR remains unchanged at 5.5% for eighth consecutive meeting.pdf",
+                          "checksumSHA256": "cGTAW11lQD9/tsjTLsvsR4wO6CLYtTzHmTpBbyknyik=",
+                          "checksumSHA256URL": "cGTAW11lQD9_tsjTLsvsR4wO6CLYtTzHmTpBbyknyik",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/cGTAW11lQD9_tsjTLsvsR4wO6CLYtTzHmTpBbyknyik.pdf"
+                        },
+                        "document_title": "OCR Remains Unchanged at 5.5% for Eighth Consecutive Meeting",
+                        "document_summary": "The Reserve Bank of New Zealand held the official cash rate (OCR) steady at 5.5% for the eighth consecutive meeting. The Monetary Policy Committee signaled a dovish shift by replacing \"stay higher for longer\" language with \"stay restrictive,\" suggesting interest rate cuts may come sooner than previously expected. Inflation is expected to return to the 1-3% target range in the second half of 2024. Financial markets now price in a 25 basis point cut to 5.25% in October, with another likely in November. The MPC noted tight monetary policy is impacting domestic demand more strongly than expected, evidenced by weak consumer and business surveys, rising business failures, and subdued lending. Economists anticipate OCR cuts could provide relief to borrowers, though mortgage rates may not fall immediately."
+                      },
+                      "11": {
+                        "id": 11,
+                        "text": "[Page 1] 6 ByGyles Beckford Business Editor 2025 10 20 14:52:13+13:00 No caption. 15Reserve Bank Stats NZCPIconsumer price index1.0%3.0%2.7%6 11.3% \"2080\"Nicola Growden 1.1%3.5% 8.8% 0.8% 0.8%2.5%2023 1%3% 2.5% OCROfficial Cash Rate2.25% OECD4% chinese@rnz.co.nz RELATED\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/_SE2oyVZLWeqxDRLCHs8SlqNlFRpjL-qLqWRTMxuG3k/14fd69f2-f55d-4333-ac58-d5a11978e1de.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/_SE2oyVZLWeqxDRLCHs8SlqNlFRpjL-qLqWRTMxuG3k.pdf",
+                          "filePath": "pdf/消费者物价指数上升，年度涨幅为去年6月至今的最高水平.pdf",
+                          "author": "Gyles Beckford - Business Editor ",
+                          "published_date": "2025-10-20",
+                          "updated_date": "2025-10-20",
+                          "category": "RNZ中文"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "Reserve Bank New Zealand interest rate monetary policy 2024 2025",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/消费者物价指数上升，年度涨幅为去年6月至今的最高水平.pdf",
+                          "fileName": "消费者物价指数上升，年度涨幅为去年6月至今的最高水平.pdf",
+                          "checksumSHA256": "/SE2oyVZLWeqxDRLCHs8SlqNlFRpjL+qLqWRTMxuG3k=",
+                          "checksumSHA256URL": "_SE2oyVZLWeqxDRLCHs8SlqNlFRpjL-qLqWRTMxuG3k",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/_SE2oyVZLWeqxDRLCHs8SlqNlFRpjL-qLqWRTMxuG3k.pdf"
+                        },
+                        "document_title": "New Zealand CPI and Official Cash Rate Report",
+                        "document_summary": "This business report from RNZ (Radio New Zealand) dated October 20, 2025, presents key economic indicators for New Zealand. The Consumer Price Index (CPI) stands at 2.7%, with the Reserve Bank's Official Cash Rate (OCR) at 2.25%. The report includes comparative data showing CPI variations across different periods (1.0%, 3.0%, 2.7%, 11.3%) and references OECD benchmarks at 4%. Additional metrics include rates of 1.1%, 3.5%, 8.8%, 0.8%, and 2.5% for 2023. The document features commentary from Nicola Growden and provides related links to CPI news articles, offering comprehensive analysis of New Zealand's current economic performance and monetary policy stance."
+                      },
+                      "12": {
+                        "id": 12,
+                        "text": "[Page 1] Don't delay interest rate relief too long Westpac tells Reserve Bank 2024 05 15 06:59:26+12:00 Household purses are likely to feel the pressures of inflation and attempts to fight it for the rest of 2024, Westpac's chief economist says. Measures to pull in inflation don't need to be pursued to the bitter end before cutting interest rates to give households some relief, Westpac has said of Reserve Banks controls. Westpac's latest economic outlook points to weak growth for the rest of the year, rising unemployment pushing continued pressure on households, and little chance of lower interest rates. The bank's chief economist Kelly Eckhold said stubborn inflation and the RBNZ's determination to control it would be the key issues confronting households in the rest of 2024, which would be an \"uncomfortable\" time. Read more: Inflation picked to fall back into Reserve Bank target during 2024 survey \"Monetary policy will force New Zealand to do the hard yards in 2024, but provide modest easing in 2025,\" Eckhold said. \"Further falls in headline inflation are expected and inflation should be just below 3 percent in late 2024. However lower non tradable inflation is required to sustainably drive inflation to 2 percent.\" \"We think the RBNZ will be content with ‛almost 2 percent' inflation in 2025,\" Eckhold said. He said the jobs market would be the crunch area for households, with those in employment able to get through, although he expected the greater number of people chasing fewer jobs would push unemployment to 5.4 percent next year, while also applying brakes to wages. \"Household debt is likely to remain manageable, even with the labour market weakening.\" Balance the books Eckhold said how the government went about balancing its books, cutting spending, and implementing tax cuts would be important factors. \"The fiscal outlook is challenging, with a prolonged tight fiscal stance required to return the books to surplus at a time when rapid population growth is lifting the demand for services.\" Westpac forecast an extra $25 billion of borrowing for the next four years, and doubted the government would reach a budget surplus in 2027/28 as forecast in the half year economic and fiscal update. \"A lower nominal tax base mean lower tax revenues and strong population growth will make it hard for the government to constrain spending beyond the next couple of years.\" \"It's not going to be an easy path back to fiscal balance and it might [be] a good few years before we can reasonably expect that.\" The government is scheduled to deliver the national Budget 2024 in two weeks, on 30 May. No rate cuts yet Eckhold said the RBNZ was expected to start cutting the cash rate early next year, with the cash rate falling to 4.5 percent by the end of next year, and the new neutral level where the cash rate neither stimulates nor restricts the economy would likely be about 3.75 percent. He said that would also limit the amount of easing in retail interest rates. \"That will mean mortgage rates that are closer to 5.5 or 6 percent for some maturities.\" Related\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/6Bm6gJMKTiNuis8b9gh6ok7py08cSVhlW3Kw6BqJ1uE/a92bb4a8-11c8-4eca-9070-61c4393b4164.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/6Bm6gJMKTiNuis8b9gh6ok7py08cSVhlW3Kw6BqJ1uE.pdf",
+                          "filePath": "pdf/Don't delay interest rate relief  too long - Westpac tells Reserve Bank.pdf",
+                          "author": "RNZ Business, Westpac Chief Economist Kelly Eckhold",
+                          "published_date": "2024-05-15",
+                          "updated_date": "2024-05-15",
+                          "category": "New Zealand"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "Reserve Bank New Zealand interest rate monetary policy 2024 2025",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Don't delay interest rate relief  too long - Westpac tells Reserve Bank.pdf",
+                          "fileName": "Don't delay interest rate relief  too long - Westpac tells Reserve Bank.pdf",
+                          "checksumSHA256": "6Bm6gJMKTiNuis8b9gh6ok7py08cSVhlW3Kw6BqJ1uE=",
+                          "checksumSHA256URL": "6Bm6gJMKTiNuis8b9gh6ok7py08cSVhlW3Kw6BqJ1uE",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/6Bm6gJMKTiNuis8b9gh6ok7py08cSVhlW3Kw6BqJ1uE.pdf"
+                        },
+                        "document_title": "Don't Delay Interest Rate Relief Too Long - Westpac Tells Reserve Bank",
+                        "document_summary": "Westpac's chief economist Kelly Eckhold warns that New Zealand households will face continued pressure from inflation and monetary policy controls throughout 2024. While the Reserve Bank should not delay interest rate cuts indefinitely, Eckhold forecasts the cash rate will remain unchanged in 2024 before falling to 4.5% by end of 2025, with the neutral rate around 3.75%. This will limit mortgage rate relief to approximately 5.5-6%. The bank predicts weak economic growth, rising unemployment to 5.4%, and challenging fiscal conditions requiring $25 billion in additional government borrowing over four years. Eckhold emphasizes that 2024 will be an \"uncomfortable\" year for households, with the jobs market being the critical pressure point, though household debt should remain manageable."
+                      },
+                      "13": {
+                        "id": 13,
+                        "text": "[Page 1] “” 2024 07 11 13:37:25+12:00 ASB1125 RBNZ710 official cash rateOCR5.5% \"\" KiwibankJarrod Kerrwholesale rates8OCR 10OCR11OCR KiwibankJarrod Kerr \"\" ANZMiles Workman \" ''CPIconsumer price index\" CorelogicKelvin Davidson\"\" \" OCR\" ASB1125 InfometricsBrad Olsen InfometricsBrad Olsen \"6 25\" \"\" \"''''\" 2024 \" \" Olsen OCR10 \"5 \" chinese@rnz.co.nz https://www.rnz.co.nz/news/chinese/521793/ocr 8 5 point 5 percent https://www.rnz.co.nz/news/chinese/520073/q1 https://www.rnz.co.nz/news/chinese/517601/article https://www.rnz.co.nz/news/chinese/515483/2025\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/KIXiFu2V0IWp0xAR2bLSz91jSy7tbc3uRBlEybn8p3g/f62fc965-13b9-4e7f-bc90-6a6542106bcf.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/KIXiFu2V0IWp0xAR2bLSz91jSy7tbc3uRBlEybn8p3g.pdf",
+                          "filePath": "pdf/央行降息态度软化，房贷族“曙光就在前方”.pdf",
+                          "author": "RNZ (Radio New Zealand) - Multiple Contributors (ASB, Kiwibank, ANZ, Infometrics, CoreLogic)",
+                          "published_date": "2024-07-11",
+                          "updated_date": "2024-07-11",
+                          "category": "RNZ中文"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "Reserve Bank New Zealand interest rate monetary policy 2024 2025",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/央行降息态度软化，房贷族“曙光就在前方”.pdf",
+                          "fileName": "央行降息态度软化，房贷族“曙光就在前方”.pdf",
+                          "checksumSHA256": "KIXiFu2V0IWp0xAR2bLSz91jSy7tbc3uRBlEybn8p3g=",
+                          "checksumSHA256URL": "KIXiFu2V0IWp0xAR2bLSz91jSy7tbc3uRBlEybn8p3g",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/KIXiFu2V0IWp0xAR2bLSz91jSy7tbc3uRBlEybn8p3g.pdf"
+                        },
+                        "document_title": "RBNZ Official Cash Rate and Economic Analysis Report",
+                        "document_summary": "This comprehensive economic briefing from RNZ dated July 11, 2024, provides an in-depth analysis of New Zealand's Official Cash Rate (OCR) set at 5.5% by the Reserve Bank of New Zealand (RBNZ). The report synthesizes perspectives from multiple leading financial institutions and economists including ASB, Kiwibank (Jarrod Kerr), ANZ (Miles Workman), and Infometrics (Brad Olsen). Key topics covered include wholesale rates analysis, consumer price index (CPI) trends, and housing market data sourced from CoreLogic (Kelvin Davidson). The document serves as a comprehensive economic briefing that analyzes monetary policy implications, economic indicators, and market conditions for New Zealand in 2024, providing valuable insights into the country's economic landscape and policy direction."
+                      },
+                      "14": {
+                        "id": 14,
+                        "text": "[Page 1] BySusan Edmunds Money Correspondent 2025 01 23 11:49:07+13:00 CPI20242.2%1% 3% RBNZ\"\" 122 CPI20242.2%1% 3% \",\"KiwibankJarrod Kerr\"headline rate2.2%3%\" \" \" 12 \" 2%4%\" BNZMike Jones \" \" \"\" InfometricsBrad Olsen \"' '……\" \" \" \" \" CPI50 JonesOCR \"''… …250\" Olsen 50 \"\" \" ……'' \" chinese@rnz.co.nz RELATED https://www.rnz.co.nz/news/chinese/539657/4 https://www.rnz.co.nz/news/chinese/534971/4 point 25 percent 50\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/pLyTRlZKuDGdTmlvi_tZG6nBgN205tLugNlyL_zUPNU/9fad25d6-120a-446a-a18b-4754882b95be.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/pLyTRlZKuDGdTmlvi_tZG6nBgN205tLugNlyL_zUPNU.pdf",
+                          "filePath": "pdf/数据显示通胀已经结束，为什么普通人没感觉到？.pdf",
+                          "author": "Susan Edmunds - Money Correspondent",
+                          "published_date": "2025-01-23",
+                          "updated_date": "2025-01-23",
+                          "category": "RNZ中文"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "Reserve Bank New Zealand interest rate monetary policy 2024 2025",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/数据显示通胀已经结束，为什么普通人没感觉到？.pdf",
+                          "fileName": "数据显示通胀已经结束，为什么普通人没感觉到？.pdf",
+                          "checksumSHA256": "pLyTRlZKuDGdTmlvi/tZG6nBgN205tLugNlyL/zUPNU=",
+                          "checksumSHA256URL": "pLyTRlZKuDGdTmlvi_tZG6nBgN205tLugNlyL_zUPNU",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/pLyTRlZKuDGdTmlvi_tZG6nBgN205tLugNlyL_zUPNU.pdf"
+                        },
+                        "document_title": "New Zealand CPI 2024 and RBNZ Interest Rate Analysis",
+                        "document_summary": "This article reports on New Zealand's 2024 Consumer Price Index (CPI) data showing a headline rate of 2.2%, which falls within the Reserve Bank of New Zealand's (RBNZ) target range of 1%-3%. The piece features commentary from financial experts including Jarrod Kerr from Kiwibank, Mike Jones from BNZ, and Brad Olsen from Infometrics, discussing the implications of the CPI figures and their expectations regarding the Official Cash Rate (OCR). The analysis examines how the inflation data may influence future monetary policy decisions."
+                      },
+                      "15": {
+                        "id": 15,
+                        "text": "[Page 1] 2024 06 07 10:35:28+12:00 Interest rate cuts coming in February, biggest bank predicts The ANZ Bank has changed its official cash rate forecast. (file image) The country's biggest bank believes interest rate cuts will arrive sooner than it previously expected. The ANZ Bank has changed its official cash rate (OCR) forecast, now expecting the first cut to land in February, rather than May 2025. The Reserve Bank (RBNZ) in its May statement indicated rate cuts would not arrive until the second half of next year. In a note, ANZ New Zealand chief economist Sharon Zollner said \"meaningful progress\" on inflation was \"around the corner\". \"Before cutting the OCR, the RBNZ needs to not only be confident that CPI (consumer price index) inflation is on its way to 2 percent, but that it can be reasonably expected to subsequently stay within the 1 3 percent target band,\" Zollner said. \"But by February next year, we are anticipating that the RBNZ will have seen fourth quarter CPI inflation at 2.6 percent year on year non tradable (domestic driven inflation) still 4.7 percent year on year, but we are forecasting it to drop sub 4 percent the following quarter and unemployment through 5 percent.\" Zollner said that should be enough to trigger a rate cut. It comes as the European Central Bank cut interest rates for the first time in five years, and the Bank of Canada became the first G7 nation to cut rates. The US Federal Reserve the world's most influential central bank is expected to cut rates this year, starting in September. Earlier this week, New Zealand economic consultancy Infometrics pushed out their rate cut call, from November 2024 to February 2025. Financial markets have priced in a 25 basis point rate cut by November and close to 50 basis points by February. ANZ said beyond February, it had pencilled a 25 basis point cut at each meeting. Also earlier this week, the NZ Institute of Economic Research said the RBNZ could always cut in 50 basis point chunks if it needed to. \"In our view, inflation data will soon start to make a more convincing case that the RBNZ is winning this war,\" Zollner said. \"We also expect that the RBNZ will take quite some convincing to actually cut the OCR, given it's in the nature of their mandate to be cautious when assessing the outlook for inflation.\" Related https://www.rnz.co.nz/news/business/518833/reserve bank approach a r ecipe to prolong the pain https://www.rnz.co.nz/news/business/518473/ did we have to have the interest rate pain https://www.rnz.co.nz/news/n ational/517983/rent stress as accommodation supplement stagnant htt ps://www.rnz.co.nz/news/country/517585/farming families facing huge p ressue from rural lending and banks federated farmers https://www.rnz. co.nz/news/national/517749/what s the best home loan term to fix for n ow\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/GyBFvYXRpwj04yo2HewgfwSH_vmm0l8SUfgE3FCbQ1k/dcd8f1e1-9066-4a31-9ee4-bf0c39e6df05.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/GyBFvYXRpwj04yo2HewgfwSH_vmm0l8SUfgE3FCbQ1k.pdf",
+                          "filePath": "pdf/ANZ expects interest rate cuts from February 2025.pdf",
+                          "author": "RNZ (Radio New Zealand)",
+                          "published_date": "2024-06-07",
+                          "updated_date": "2024-06-07",
+                          "category": "Business"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "Reserve Bank New Zealand interest rate monetary policy 2024 2025",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/ANZ expects interest rate cuts from February 2025.pdf",
+                          "fileName": "ANZ expects interest rate cuts from February 2025.pdf",
+                          "checksumSHA256": "GyBFvYXRpwj04yo2HewgfwSH/vmm0l8SUfgE3FCbQ1k=",
+                          "checksumSHA256URL": "GyBFvYXRpwj04yo2HewgfwSH_vmm0l8SUfgE3FCbQ1k",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/GyBFvYXRpwj04yo2HewgfwSH_vmm0l8SUfgE3FCbQ1k.pdf"
+                        },
+                        "document_title": "ANZ Expects Interest Rate Cuts from February 2025",
+                        "document_summary": "ANZ Bank has revised its official cash rate (OCR) forecast, now expecting the first interest rate cut in February 2025 rather than May 2025. ANZ New Zealand chief economist Sharon Zollner stated that \"meaningful progress\" on inflation is imminent. The bank anticipates that by February, the RBNZ will observe fourth quarter CPI inflation at 2.6% year-on-year, with non-tradable inflation dropping below 4% and unemployment exceeding 5%, providing sufficient grounds for a rate cut. This forecast aligns with recent global trends, as the European Central Bank and Bank of Canada have already cut rates. ANZ projects 25 basis point cuts at each subsequent meeting beyond February. Financial markets have priced in a 25 basis point cut by November and approximately 50 basis points by February."
+                      },
+                      "16": {
+                        "id": 16,
+                        "text": "[Page 1] 25 2025 05 28 14:02:58+12:00 No caption. OCR253.25% 51 OCR20229 RBNZOCR253.25% 4 \"OC R3.25%CPI\" OCR3.5% \"OCR3 .50%\" 51 2.5%2% OCR253.0% [www.rbnz.govt.nz/ /media/project/sites/rbnz/files/publications/mone tary policy statements/2025/may 0525/mps_report_may2025.pdf 5] 528OCR BNZ4.95%184.89% ANZapp4.89%184.85%4.92% Glen McLeod5% 25\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/ZSMI62yK8mCUNKnmmo0IzWtmjro8Rk9W0A5RLYzylRQ/8193b861-c531-49e1-89b0-9c7826b10776.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/ZSMI62yK8mCUNKnmmo0IzWtmjro8Rk9W0A5RLYzylRQ.pdf",
+                          "filePath": "pdf/央行再次降息25个基点，商业银行提前抢跑下调房贷利率.pdf",
+                          "author": "Reserve Bank of New Zealand (RBNZ)",
+                          "published_date": "2025-05-28",
+                          "updated_date": "2025-05-29",
+                          "category": "RNZ中文"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "Reserve Bank New Zealand interest rate monetary policy 2024 2025",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/央行再次降息25个基点，商业银行提前抢跑下调房贷利率.pdf",
+                          "fileName": "央行再次降息25个基点，商业银行提前抢跑下调房贷利率.pdf",
+                          "checksumSHA256": "ZSMI62yK8mCUNKnmmo0IzWtmjro8Rk9W0A5RLYzylRQ=",
+                          "checksumSHA256URL": "ZSMI62yK8mCUNKnmmo0IzWtmjro8Rk9W0A5RLYzylRQ",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/ZSMI62yK8mCUNKnmmo0IzWtmjro8Rk9W0A5RLYzylRQ.pdf"
+                        },
+                        "document_title": "RBNZ Official Cash Rate Decision - May 2025",
+                        "document_summary": "This document reports on the Reserve Bank of New Zealand's Official Cash Rate (OCR) decision dated May 28, 2025. The OCR was maintained at 3.25%, with the decision announced at 14:02:58 (NZ time). The document references the May 2025 Monetary Policy Statement and includes OCR rate history showing previous rates of 3.5% and 3.75%. Current mortgage rates from major banks (BNZ at 4.95%, ANZ at 4.89%) are provided for context. The document discusses inflation targets and CPI considerations in the OCR decision-making process, providing essential information for understanding New Zealand's monetary policy stance and its implications for the broader economy."
+                      },
+                      "17": {
+                        "id": 17,
+                        "text": "[Page 3] https://www.rnz.co.nz/news/business/517502/reserve bank holds official cash rate at 5 point 5 percent https://www.rnz.co.nz/news/national/516 831/don t delay interest rate relief too long westpac tells reserve bank https://www.rnz.co.nz/news/business/512028/economic outlook revised down recovery expected in 2026 https://www.rnz.co.nz/news/business/5 18086/low interest rate expectations good indicator of future house pric es https://www.rnz.co.nz/news/political/518266/budget 2024 try rnz s ta x calculator https://www.rnz.co.nz/news/business/510435/explainer wha t s going on with interest rates\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/JR1F2zbYI8I9z3ggeEpFF-xLjmRt1bm2Ft8QA9dBi5o/f4f32980-27de-4d60-ac43-5ed2a5ad0519.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/JR1F2zbYI8I9z3ggeEpFF-xLjmRt1bm2Ft8QA9dBi5o.pdf",
+                          "filePath": "pdf/Did we have to have the interest rate pain?.pdf",
+                          "author": "Susan Edmunds - Money Correspondent",
+                          "published_date": "2024-06-02",
+                          "updated_date": "2024-06-02",
+                          "category": "Business"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "Reserve Bank New Zealand interest rate monetary policy 2024 2025",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Did we have to have the interest rate pain?.pdf",
+                          "fileName": "Did we have to have the interest rate pain?.pdf",
+                          "checksumSHA256": "JR1F2zbYI8I9z3ggeEpFF+xLjmRt1bm2Ft8QA9dBi5o=",
+                          "checksumSHA256URL": "JR1F2zbYI8I9z3ggeEpFF-xLjmRt1bm2Ft8QA9dBi5o",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/JR1F2zbYI8I9z3ggeEpFF-xLjmRt1bm2Ft8QA9dBi5o.pdf"
+                        },
+                        "document_title": "Did We Have to Have the Interest Rate Pain? Alternative Approaches to Controlling Inflation",
+                        "document_summary": "The Reserve Bank of New Zealand raised the official cash rate (OCR) from 0.25% to 5.5% over two years to combat inflation, significantly impacting households and businesses. However, economists suggest alternative approaches exist. Tax increases on company profits or luxury goods could reduce demand but face political resistance and risk capital flight. KiwiSaver contribution adjustments could slow spending but would burden workers disproportionately. Regulatory supply-side reforms, particularly productivity improvements, could address inflation more effectively. The inflation target itself could be adjusted from 2% to 3%, potentially enabling lower interest rates and increased investment. Price controls, attempted in the 1970s, proved ineffective. The choice of tool depends on inflation's underlying cause—interest rates remain the most practical option for externally-driven inflation."
+                      },
+                      "18": {
+                        "id": 18,
+                        "text": "[Page 1] RBNZ cuts official cash rate by 25 basis points to three year low of 3 percent. Monetary committee split between 25 or 50 bps cut voted 4 2 for smaller. Leaves door open for further rate cuts, potentially down to 2.5 percent RBNZ sees economy growing unevenly strong exports weak consumer demand and labour market. Notes uncertainty especially trade tariffs. The Reserve Bank cut its benchmark cash rate by 25 basis points to a three year low of 3 percent, as expected, in a split decision and left the door open for further moves lower. The central bank said the economy had stalled in the past few months with households and businesses cautious because of rising prices, a soft labour market, and global uncertainty. It said underlying inflation pressures were expected to reach its target of around 2 percent, even though headline consumer inflation was edging higher to the top of its broader 1 3 percent band. The Monetary Policy Committee said it debated between no change, and 25 or 50 basis point cuts, with a final vote of four to two in favour of the smaller reduction. It said further cuts were likely. \"Further data on the speed of New Zealand's economic recovery will influence the future path of the OCR. If medium term inflation pressures continue to ease as expected, there is scope to lower the OCR further.\" Prime Minister and Finance Minister react to cuts Prime Minister Christopher Luxon and Finance Minster Nicola Willis both welcomed the cuts and said it was good news for house owners, businesses and the economy. Willis said it was telling New Zealanders while there had been a difficult period for the economy the road to recovery \"looked good\". \"Households listen to merchants of misery everyday, most of whom sit on the opposition benches, who like to be doom sayers and talk down the New Zealand economy. Now is not the time to be talking down the New Zealand economy, the data doesn't lie, the Reserve Bank is independent, they are not political, and they are saying unemployment is going to reduce, growth will return, things are looking better. \"My message to New Zealanders is that's a forecast, but, it's based on their assessment of what's happening in New Zealand... there's every reason to have confidence in the future of this economy.\" Willis said people needed to listen to economists rather than \"doom sayers\" who she said had a \"vested interest in frankly, and I think unpatriotically, talking down New Zealand's prospects\". It had been a tough time for New Zealanders, Willis acknowledged, and there was no getting away from unemployment being higher along with high food prices. \"We have a choice do we talk ourselves into an ongoing funk or do we look ahead and recognise that things will get better... that doesn't take away the fact at the supermarket checkout aisle sometimes the number on the screen is really scary, but we should have a little bit of balance that what we're going through right now, which is really tough, isn't going to last forever.\" Committee split on the size of the rate cut For the second time this year, the RBNZ's rate setting body could not reach consensus on the OCR decision. The summary record of the meeting showed committee members discussed three options; to hold, reduce the OCR by 25 basis points, or by 50 basis points. In the end, it came down to the latter two options, with members voting four to two in favour of a smaller cut. The record showed those favouring the bigger cut emphasised the weakness in the labour market and excess capacity in the economy, which would limit the upside risk to inflation, if the economy recovered faster than expected. Those preferring the smaller cut medium term inflation pressures continued to ease in line with the RBNZ's estimates, further cuts were still likely. It was noted that a 25 basis point cut gave the central bank the option to adjust its view incrementally as it received new data. In a media briefing Reserve Bank Governor Christian Hawkesby said there was a strong consensus around felt if the central path for the OCR the range of views related to the risks around that outlook. \"We had some members emphasising the downside risks, other members emphasising the upside and others seeing the risks as balanced... and it illustrates the uncertainty we're in at the moment.\" The argument for a more modest cut was around the fact that economic activity could bounce back after stalling in the second quarter, he said. There was also an awareness that inflation was at the top of the range and the possibility that inflation expectations \"could ratchet up\", he said. \"On the downside the risk is really around the slowdown in Q2 being more persistent and really needing more of a jolt and more aggressive action from us to right the economy.\" Inflation to creep up, but likely to be short lived The RBNZ expected annual inflation to hit 3 percent in the September quarter, reflecting higher administered prices, food prices, and other tradable goods and services. But medium term inflation expectations remain anchored near the 2 percent midpoint of the RBNZ's target band. \"Headline inflation is expected to converge to the mid point of the target range over the next year as tradables inflation pressures dissipate and significant spare capacity continues to reduce domestic price pressures.\" The RBNZ said high frequency data suggested the economy contracted in the second quarter of 2025, weaker than its previous expectations in May. Factors likely driving a slower recovery in domestic spending were falling employment, slower wage growth, weaker household savings, and a rise in the cost of essentials such as food, gas, electricity, and council rates. The RBNZ also said tariffs and economic uncertainty were dampening the global economic outlook, but evidence suggested the world economy was responding as expected to the conditions. It said tariffs on New Zealand exports to the US were higher than previously expected, and some firms and industries may experience more challenging export conditions. Further data will determine RBNZ's next steps RBNZ Governor RBNZ governor Christian Hawkesby told reporters annual consumer price inflation was currently at top of 1 3 percent target range, however headline inflation was expected to return to around 2 percent by the middle of next year. New Zealand's economic recovery stalled in the second quarter of this year, he said. \"Spending by households and businesses has been constrained by heightened global policy uncertainty, falling employment, higher prices for some essentials and declining house prices.\" Cautious behaviour by households and businesses could further dampen economic growth, but alternatively the economic recovery could accelerate as the effects of interest rate reductions flow through the economy, he said. Further data on New Zealand's economic recovery will determine the bank's next steps, he said. \"If medium term inflation pressures continue to ease as expected, there is scope to reduce the official cash rate further.\" The official cash rate has been revised down considerably in the document, he said. That was largely due to the stalling of growth in the second quarter, he said. \"That's meant we can have interest rates lower to support the economy and get the right amount of domestic inflation pressure.\" The projection troughs at around 2.5 percent by the end of this year \"and so that would be consistent with further cuts through the course of this year\", he said. Events over that period would determine whether the RBNZ would move more quickly or slowly over that period, he said. Sign up for Ngā Pitopito Kōrero, a daily newsletter curated by our editors and delivered straight to your inbox every weekday. Related\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/FqHOwEMXtWPDNEo0L6wRDKfe7oAo6SW1r55h0oxSwwg/b10b5133-364f-43aa-888e-85df02e33de2.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/FqHOwEMXtWPDNEo0L6wRDKfe7oAo6SW1r55h0oxSwwg.pdf",
+                          "filePath": "pdf/Reserve Bank cuts OCR to 3%.pdf",
+                          "author": "RNZ (Radio New Zealand)",
+                          "published_date": "2025-08-20",
+                          "updated_date": "2025-08-20",
+                          "category": "New Zealand"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "Reserve Bank New Zealand interest rate monetary policy 2024 2025",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Reserve Bank cuts OCR to 3%.pdf",
+                          "fileName": "Reserve Bank cuts OCR to 3%.pdf",
+                          "checksumSHA256": "FqHOwEMXtWPDNEo0L6wRDKfe7oAo6SW1r55h0oxSwwg=",
+                          "checksumSHA256URL": "FqHOwEMXtWPDNEo0L6wRDKfe7oAo6SW1r55h0oxSwwg",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/FqHOwEMXtWPDNEo0L6wRDKfe7oAo6SW1r55h0oxSwwg.pdf"
+                        },
+                        "document_title": "Reserve Bank Cuts OCR to 3% - Monetary Policy Decision",
+                        "document_summary": "The Reserve Bank of New Zealand cut its Official Cash Rate (OCR) by 25 basis points to 3%, a three-year low, in a split 4-2 decision. The Monetary Policy Committee debated between no change and cuts of 25 or 50 basis points, ultimately choosing the smaller reduction. The RBNZ cited economic stalling, weak consumer demand, soft labour market, and global uncertainty as reasons for the cut. Inflation is expected to reach the 2% target, though headline inflation is at the top of the 1-3% band. The central bank signaled further rate cuts are likely, potentially down to 2.5% by year-end. Prime Minister Luxon and Finance Minister Willis welcomed the decision as positive for households and businesses, emphasizing economic recovery prospects despite current challenges including higher unemployment and food prices."
+                      },
+                      "19": {
+                        "id": 19,
+                        "text": "[Page 1] 2024 08 14 08:20:28+12:00 The Reserve Bank will announce the Official Cash Rate at 2pm on Wednesday. The current rate is 5.5 percent. The Reserve Bank had previously indicated it wasn't likely to drop until 2025. But business leaders and economists now think it's likely they'll move sooner as inflation slows and unemployment rises. Most banks have been pre empting lower rates with drops in their lending rates already. Expectations are building that the Reserve Bank will cut the official cash rate on Wednesday for the first time in more than four years. Wholesale interest rates have been falling in recent weeks as financial markets expect the first cut to the official cash rate since March 2020. The Reserve Bank started increasing the cash rate in late 2021 in response to high inflation, with the OCR reaching its current peak of 5.5 percent in May last year. However, in recent months, economic data shows inflation slowing, unemployment rising and economic growth going sideways. Not all economists are convinced though, a Reuters poll of 31 analysts showed 19 expect the cash rate to be held steady. https://www .rnz.co.nz/national/programmes/morningreport/audio/2018951056/anz e conomist on calls to cut ocr ANZ's chief economist Sharon Zollner was among those expecting the OCR to hold on Wednesday. She said it was only May when the Reserve Bank said it didn't expect to cut rates until August 2025. \"We suspect that they suspect that in the fullness of time it will be shown that actually cutting now would be the right thing to do, but it doesn't actually necessarily follow that that's the best strategic option right now.\" They leave themselves with more options if they acknowledge the data has turned and wait to cut, Zollner said. \"It wouldn't be popular not to cut rates today, obviously people are really struggling, the economy is doing it pretty tough. \"But we do need to remember this is the plan, this is the first deliberate recession I've ever seen.\" https://www.rnz.co.nz/national/programmes/morningreport/audio/ 2018951046/reserve bank to review ocr Loan Market director Bruce Patten told Morning Report he'd love to see the OCR dropped today, but also didn't think it would be. \"It will go against everything they've been saying and doing the last few years so unfortunately I think we're probably on hold until the next announcement in October.\" Banks were already factoring in rate cuts, he said. \"The banks are still holding some very good margins though so they can afford to bring them down a little but more than they have so I'd like to see them help some of their homeloan customers out. \"I expect that everybody will move down today regardless of whether there is a cut or not.\" Patten said there was a lot of hardship at the moment with people struggling to get between paydays. Related https://www.rnz.co.nz/news/business/524974/flip flopping reserve bank dents its credibility mortgage broking boss says https://www.rnz.co.nz/n ews/business/521302/ocr expectations increase for a 2024 rate cut http s://www.rnz.co.nz/news/national/521229/retail spending slump nearly su rpassing 80s sharemarket crash https://www.rnz.co.nz/news/business/5 24085/why falling interest rates aren t good news for everyone\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/d35KT30wd7qHSx8IzCBlCt5Yi0c7S9Ry-aYkre9IGDw/61430557-0c3e-4975-8107-6dd6e707c094.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/d35KT30wd7qHSx8IzCBlCt5Yi0c7S9Ry-aYkre9IGDw.pdf",
+                          "filePath": "pdf/Expectations rising the Reserve Bank will cut the official cash rate.pdf",
+                          "author": "RNZ (Radio New Zealand)",
+                          "published_date": "2024-08-14",
+                          "updated_date": "2024-08-14",
+                          "category": "New Zealand"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "Reserve Bank New Zealand interest rate monetary policy 2024 2025",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Expectations rising the Reserve Bank will cut the official cash rate.pdf",
+                          "fileName": "Expectations rising the Reserve Bank will cut the official cash rate.pdf",
+                          "checksumSHA256": "d35KT30wd7qHSx8IzCBlCt5Yi0c7S9Ry+aYkre9IGDw=",
+                          "checksumSHA256URL": "d35KT30wd7qHSx8IzCBlCt5Yi0c7S9Ry-aYkre9IGDw",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/d35KT30wd7qHSx8IzCBlCt5Yi0c7S9Ry-aYkre9IGDw.pdf"
+                        },
+                        "document_title": "Expectations Rising the Reserve Bank Will Cut the Official Cash Rate",
+                        "document_summary": "The Reserve Bank of New Zealand is expected to announce the Official Cash Rate on Wednesday, August 14, 2024. The current rate stands at 5.5 percent. While the Reserve Bank previously indicated no cuts until 2025, market expectations have shifted as inflation slows and unemployment rises. Business leaders and economists increasingly anticipate a rate cut, marking the first reduction in over four years since March 2020. However, opinions remain divided—a Reuters poll showed 19 of 31 analysts expect the rate to hold steady. ANZ's chief economist Sharon Zollner and Loan Market director Bruce Patten both expressed skepticism about an immediate cut, suggesting the Reserve Bank may wait until October. Banks have already begun reducing lending rates in anticipation of lower official rates."
+                      }
+                    },
+                    "elapsed": 657
+                  }
+                ]
+              }
+            },
+            "_received_at_ms": 10826
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "search_topic_generation",
+                "status": "done",
+                "type": "SEARCHING_KB",
+                "description": "Preparing search topics"
+              }
+            },
+            "_received_at_ms": 14835
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "orchestration": [
+                  {
+                    "type": "KNOWLEDGE_BASE_EVALUATION",
+                    "thinking": "The question asks about the current Official Cash Rate (OCR) set by the Reserve Bank of New Zealand. I need to find the most recent and relevant results. Looking at the dates, the most recent articles are from 2025, with the latest being from August 2025 (id 18, OCR cut to 3%) and May 2025 (ids 8, 9, 16 showing OCR at 3.25%). There's also an October 2025 article (id 11) mentioning OCR at 2.25%. The most recent result is id 18 (August 2025) cutting OCR to 3%, and id 11 from October 2025 showing 2.25%. I should prioritize the most recent results that directly state the current OCR level.",
+                    "relevant": [
+                      {
+                        "relevance": 0.98,
+                        "id": 18
+                      },
+                      {
+                        "relevance": 0.95,
+                        "id": 11
+                      },
+                      {
+                        "relevance": 0.9,
+                        "id": 8
+                      },
+                      {
+                        "relevance": 0.88,
+                        "id": 9
+                      },
+                      {
+                        "relevance": 0.85,
+                        "id": 16
+                      },
+                      {
+                        "relevance": 0.6,
+                        "id": 14
+                      },
+                      {
+                        "relevance": 0.55,
+                        "id": 10
+                      },
+                      {
+                        "relevance": 0.5,
+                        "id": 7
+                      },
+                      {
+                        "relevance": 0.48,
+                        "id": 19
+                      },
+                      {
+                        "relevance": 0.45,
+                        "id": 3
+                      },
+                      {
+                        "relevance": 0.43,
+                        "id": 2
+                      },
+                      {
+                        "relevance": 0.4,
+                        "id": 1
+                      },
+                      {
+                        "relevance": 0.38,
+                        "id": 13
+                      },
+                      {
+                        "relevance": 0.35,
+                        "id": 15
+                      },
+                      {
+                        "relevance": 0.33,
+                        "id": 4
+                      },
+                      {
+                        "relevance": 0.3,
+                        "id": 5
+                      },
+                      {
+                        "relevance": 0.25,
+                        "id": 17
+                      },
+                      {
+                        "relevance": 0.22,
+                        "id": 12
+                      }
+                    ],
+                    "searchEvaluationUsage": {
+                      "inputTokens": 25497,
+                      "inputTokenDetails": {
+                        "noCacheTokens": 25497,
+                        "cacheReadTokens": 0,
+                        "cacheWriteTokens": 0
+                      },
+                      "outputTokens": 536,
+                      "outputTokenDetails": {
+                        "textTokens": 536
+                      },
+                      "totalTokens": 26033,
+                      "raw": {
+                        "inputTokens": 25497,
+                        "outputTokens": 536,
+                        "totalTokens": 26033,
+                        "cacheReadInputTokens": 0,
+                        "cacheWriteInputTokens": 0
+                      },
+                      "cachedInputTokens": 0
+                    },
+                    "elapsed": 8625
+                  }
+                ]
+              }
+            },
+            "_received_at_ms": 19444
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "orchestration": [
+                  {
+                    "type": "COMBINED_RANKING_SUMMARY",
+                    "totalEvaluated": 18,
+                    "topRanked": 18,
+                    "afterFiltering": 7,
+                    "breakdown": {
+                      "accessible": 7,
+                      "denied": 0
+                    },
+                    "finalResults": {
+                      "accessible": 7,
+                      "denied": 0
+                    },
+                    "elapsed": 0
+                  }
+                ]
+              }
+            },
+            "_received_at_ms": 19444
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "kb_evaluation",
+                "description": "Evaluating search results",
+                "status": "done",
+                "type": "EVALUATING_KB"
+              }
+            },
+            "_received_at_ms": 19444
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "orchestration": [
+                  {
+                    "type": "KNOWLEDGE_BASE_ANSWER",
+                    "elapsed": 0
+                  }
+                ]
+              }
+            },
+            "_received_at_ms": 19444
+          },
+          {
+            "type": "data-progress",
+            "id": "answer_generation-87162a5c-fdd0-46ee-a598-4fd50e0ceb28",
+            "data": {
+              "progress": {
+                "id": "answer_generation-87162a5c-fdd0-46ee-a598-4fd50e0ceb28",
+                "description": "Preparing response",
+                "status": "active",
+                "type": "ANSWERING"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 19444
+          },
+          {
+            "type": "start-step",
+            "_received_at_ms": 19444
+          },
+          {
+            "type": "text-start",
+            "id": "0",
+            "_received_at_ms": 20755
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "##",
+            "_received_at_ms": 20755
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Official",
+            "_received_at_ms": 20755
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Cash Rate:",
+            "_received_at_ms": 20770
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " ",
+            "_received_at_ms": 20843
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "3",
+            "_received_at_ms": 20859
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " ",
+            "_received_at_ms": 21034
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "percent",
+            "_received_at_ms": 21035
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "\n\nThe most",
+            "_received_at_ms": 21093
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " recent search",
+            "_received_at_ms": 21144
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " result",
+            "_received_at_ms": 21158
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " I",
+            "_received_at_ms": 21248
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " have",
+            "_received_at_ms": 21292
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " on",
+            "_received_at_ms": 21306
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " this topic is from ",
+            "_received_at_ms": 21461
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "20",
+            "_received_at_ms": 21461
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " August",
+            "_received_at_ms": 21720
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " 2025, which reports",
+            "_received_at_ms": 21727
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " that the Reserve Bank of New Zealand (",
+            "_received_at_ms": 21727
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "RBNZ) cut",
+            "_received_at_ms": 21727
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " its Official",
+            "_received_at_ms": 21727
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Cash Rate (",
+            "_received_at_ms": 21736
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "OCR) by 25",
+            "_received_at_ms": 21737
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " basis points to **",
+            "_received_at_ms": 21791
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "3 percent** —",
+            "_received_at_ms": 21837
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " a",
+            "_received_at_ms": 21890
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " three",
+            "_received_at_ms": 21936
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "-year",
+            "_received_at_ms": 22012
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " low",
+            "_received_at_ms": 22049
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " at",
+            "_received_at_ms": 22082
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " the time of that",
+            "_received_at_ms": 22123
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " decision",
+            "_received_at_ms": 22181
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ".",
+            "_received_at_ms": 22222
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " ",
+            "_received_at_ms": 22288
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "[[1]](cite://1/1)",
+            "_received_at_ms": 22385
+          },
+          {
+            "type": "data-citation",
+            "data": {
+              "citation": {
+                "1": {
+                  "chunkSequence": -1,
+                  "citationNumber": 1,
+                  "fileChapters": [],
+                  "fileSubtitles": [],
+                  "fileThumbnailSrc": "",
+                  "fileTimestamp": 0,
+                  "fileType": "pdf",
+                  "sourceUrl": "https://www.rnz.co.nz/news/business/570534/reserve-bank-cuts-ocr-to-3-percent",
+                  "sourceUrlExpiresAt": 1781699096671,
+                  "sourceType": "web",
+                  "fileName": "Reserve Bank cuts OCR to 3%.pdf",
+                  "checksumSHA256URL": "FqHOwEMXtWPDNEo0L6wRDKfe7oAo6SW1r55h0oxSwwg",
+                  "checksumSHA256": "FqHOwEMXtWPDNEo0L6wRDKfe7oAo6SW1r55h0oxSwwg=",
+                  "filePath": "pdf/Reserve Bank cuts OCR to 3%.pdf",
+                  "sourceKnowledgeBaseId": "QETGXQCZ48",
+                  "fileAuthor": [
+                    "RNZ (Radio New Zealand)"
+                  ],
+                  "fileDate": "2026-02-11T16:11:45",
+                  "fileDescription": "The Reserve Bank of New Zealand cut its Official Cash Rate (OCR) by 25 basis points to 3%, a three-year low, in a split 4-2 decision. The Monetary Policy Committee debated between no change and cuts of 25 or 50 basis points, ultimately choosing the smaller reduction. The RBNZ cited economic stalling, weak consumer demand, soft labour market, and global uncertainty as reasons for the cut. Inflation is expected to reach the 2% target, though headline inflation is at the top of the 1-3% band. The central bank signaled further rate cuts are likely, potentially down to 2.5% by year-end. Prime Minister Luxon and Finance Minister Willis welcomed the decision as positive for households and businesses, emphasizing economic recovery prospects despite current challenges including higher unemployment and food prices.",
+                  "chunkHighlights": [
+                    {
+                      "pageIndex": 0,
+                      "height": 4.805044890979055,
+                      "width": 75.76058041112455,
+                      "left": 12.119709794437725,
+                      "top": 25.494014536126546,
+                      "text": "RBNZ cuts official cash rate by 25 basis points to three-year low of 3 percent."
+                    },
+                    {
+                      "pageIndex": 0,
+                      "height": 4.634031637451898,
+                      "width": 75.76058041112455,
+                      "left": 12.119709794437725,
+                      "top": 32.59106455750321,
+                      "text": "Monetary committee split between 25 or 50 bps cut - voted 4-2 for smaller."
+                    },
+                    {
+                      "pageIndex": 0,
+                      "height": 4.719538264215473,
+                      "width": 76.42563482466747,
+                      "left": 11.877871825876664,
+                      "top": 39.47434801197093,
+                      "text": "Leaves door open for further rate cuts, potentially down to 2.5 percent"
+                    },
+                    {
+                      "pageIndex": 0,
+                      "height": 4.719538264215473,
+                      "width": 76.06287787182588,
+                      "left": 11.817412333736398,
+                      "top": 46.48589140658401,
+                      "text": "RBNZ sees economy growing unevenly - strong exports weak consumer demand and labour market."
+                    },
+                    {
+                      "pageIndex": 0,
+                      "height": 2.453612654980759,
+                      "width": 49.883917775090694,
+                      "left": 12.119709794437725,
+                      "top": 53.58294142796066,
+                      "text": "Notes uncertainty especially trade tariffs."
+                    },
+                    {
+                      "pageIndex": 0,
+                      "height": 32.338178708849945,
+                      "width": 76.00241837968561,
+                      "left": 11.877871825876664,
+                      "top": 58.456819153484396,
+                      "text": "The Reserve Bank cut its benchmark cash rate by 25 basis points to a three-year low of 3 percent, as expected, in a split decision and left the door open for further moves lower. The central bank said the economy had stalled in the past few months with households and businesses cautious because of rising prices, a soft labour market, and global uncertainty. It said underlying inflation pressures were expected to reach its target of around 2 percent, even though headline consumer inflation was edging higher to the top of its broader 1-3 percent band. The Monetary Policy Committee said it debated between no change, and 25 or 50 basis point cuts, with a final vote of four to two in favour of the smaller reduction. It said further cuts were likely. \"Further data on the speed of New Zealand's economic recovery will influence the future path of the OCR. If medium-term inflation pressures continue to ease as expected, there is scope to lower the OCR further.\" Prime Minister and Finance Minister react to cuts Prime Minister Christopher Luxon and"
+                    },
+                    {
+                      "pageIndex": 1,
+                      "height": 81.50448909790508,
+                      "width": 76.1837968561064,
+                      "left": 11.998790810157196,
+                      "top": 9.119495510902095,
+                      "text": "Finance Minster Nicola Willis both welcomed the cuts and said it was\ngood news for house-owners, businesses and the economy. Willis said it was telling New Zealanders while there had been a difficult period for the economy the road to recovery \"looked good\". \"Households listen to merchants of misery everyday, most of whom sit on the opposition benches, who like to be doom-sayers and talk down the New Zealand economy. Now is not the time to be talking down the New Zealand economy, the data doesn't lie, the Reserve Bank is independent, they are not political, and they are saying unemployment is going to reduce, growth will return, things are looking better. \"My message to New Zealanders is that's a forecast, but, it's based on their assessment of what's happening in New Zealand... there's every reason to have confidence in the future of this economy.\" Willis said people needed to listen to economists rather than \"doom-sayers\" who she said had a \"vested interest in frankly, and I think unpatriotically, talking down New Zealand's prospects\". It had been a tough time for New Zealanders, Willis acknowledged, and there was no getting away from unemployment being higher along with high food prices. \"We have a choice do we talk ourselves into an ongoing funk or do we look ahead and recognise that things will get better... that doesn't take away the fact at the supermarket checkout aisle sometimes the number on the screen is really scary, but we should have a little bit of balance that what we're going through right now, which is really tough, isn't going to last forever.\" Committee split on the size of the rate cut For the second time this year, the RBNZ's rate-setting body could not reach consensus on the OCR decision. The summary record of the meeting showed committee members discussed three options; to hold, reduce the OCR by 25 basis points, or by 50 basis points. In the end, it came down to the latter two options, with members voting four to two in favour of a smaller cut. The record showed those favouring the bigger cut emphasised the weakness in the labour market and excess capacity in the economy, which would limit the upside risk to inflation, if the economy recovered\nfaster-than-expected. Those preferring\nthe smaller cut\nmedium-term inflation pressures continued to ease in line with the\nRBNZ's estimates, further cuts were still likely. It was noted that a 25\nbasis point cut gave the central bank the option to adjust its view\nincrementally as it received new data. In a media briefing Reserve Bank\nGovernor Christian Hawkesby said there was a strong consensus around\nfelt\nif"
+                    },
+                    {
+                      "pageIndex": 2,
+                      "height": 81.50448909790508,
+                      "width": 76.06287787182588,
+                      "left": 12.119709794437725,
+                      "top": 9.119495510902095,
+                      "text": "the central path for the OCR - the range of views related to the risks\naround that outlook. \"We had some members emphasising the downside risks, other members emphasising the upside and others seeing the risks as balanced... and it illustrates the uncertainty we're in at the moment.\" The argument for a more modest cut was around the fact that economic activity could bounce back after stalling in the second quarter, he said. There was also an awareness that inflation was at the top of the range and the possibility that inflation expectations \"could ratchet up\", he said. \"On the downside the risk is really around the slowdown in Q2 being more persistent and really needing more of a jolt and more aggressive action from us to right the economy.\" Inflation to creep up, but likely to be short-lived The RBNZ expected annual inflation to hit 3 percent in the September quarter, reflecting higher administered prices, food prices, and other tradable goods and services. But medium-term inflation expectations remain anchored near the 2 percent midpoint of the RBNZ's target band. \"Headline inflation is expected to converge to the mid-point of the target range over the next year as tradables inflation pressures dissipate and significant spare capacity continues to reduce domestic price pressures.\" The RBNZ said high-frequency data suggested the economy contracted in the second quarter of 2025, weaker than its previous expectations in May. Factors likely driving a slower recovery in domestic spending were falling employment, slower wage growth, weaker household savings, and a rise in the cost of essentials such as food, gas, electricity, and council rates. The RBNZ also said tariffs and economic uncertainty were dampening the global economic outlook, but evidence suggested the world economy was responding as expected to the conditions. It said tariffs on New Zealand exports to the US were higher than previously expected, and some firms and industries may experience more challenging export conditions. Further data will determine RBNZ's next steps - RBNZ Governor RBNZ governor Christian Hawkesby told reporters annual consumer price inflation was currently at top of 1-3 percent target range, however\nheadline inflation was expected to return to around 2 percent by the\nmiddle of next year. New Zealand's economic recovery stalled in the\nsecond quarter of this year, he said. \"Spending by households and\nbusinesses has been constrained by heightened global policy\nuncertainty, falling employment, higher prices for some essentials and\ndeclining house prices.\" Cautious behaviour by households and"
+                    },
+                    {
+                      "pageIndex": 3,
+                      "height": 34.56135100470286,
+                      "width": 76.06287787182588,
+                      "left": 11.93833131801693,
+                      "top": 9.033988884138521,
+                      "text": "businesses could further dampen economic growth, but alternatively the economic recovery could accelerate as the effects of interest rate reductions flow through the economy, he said. Further data on New Zealand's economic recovery will determine the bank's next steps, he said. \"If medium term inflation pressures continue to ease as expected, there is scope to reduce the official cash rate further.\" The official cash rate has been revised down considerably in the document, he said. That was largely due to the stalling of growth in the second quarter, he said. \"That's meant we can have interest rates lower to support the economy and get the right amount of domestic inflation pressure.\" The projection troughs at around 2.5 percent by the end of this year \"and so that would be consistent with further cuts through the course of this year\", he said. Events over that period would determine whether the RBNZ would move more quickly or slowly over that period, he said. Sign up for Ngā Pitopito Kōrero, a daily newsletter curated by our editors and delivered straight to your inbox every weekday. Related"
+                    }
+                  ],
+                  "filePage": 1,
+                  "fileTags": [
+                    "economy",
+                    "money",
+                    "politics"
+                  ],
+                  "fileTitle": "Reserve Bank Cuts OCR to 3% - Monetary Policy Decision",
+                  "customMetadata": {
+                    "publisher": "Radio New Zealand",
+                    "published_date": "2025-08-20"
+                  },
+                  "publishedDate": null
+                }
+              }
+            },
+            "_received_at_ms": 22477
+          },
+          {
+            "type": "data-citationReference",
+            "data": {
+              "reference": {
+                "start": 0,
+                "end": 285,
+                "referenceNumber": 1,
+                "citationNumber": 1
+              }
+            },
+            "_received_at_ms": 22477
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "\n\nThe Monetary Policy Committee (MPC) voted",
+            "_received_at_ms": 22477
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " four",
+            "_received_at_ms": 22515
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " to two",
+            "_received_at_ms": 22579
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " in",
+            "_received_at_ms": 22661
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " favour",
+            "_received_at_ms": 22661
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " of the",
+            "_received_at_ms": 22768
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " smaller",
+            "_received_at_ms": 22768
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " ",
+            "_received_at_ms": 22809
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "25",
+            "_received_at_ms": 22864
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " basis point cut, having",
+            "_received_at_ms": 22901
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " deb",
+            "_received_at_ms": 22949
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "ated options",
+            "_received_at_ms": 23005
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " of",
+            "_received_at_ms": 23086
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " holding",
+            "_received_at_ms": 23099
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ",",
+            "_received_at_ms": 23144
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " cutting by",
+            "_received_at_ms": 23210
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " ",
+            "_received_at_ms": 23260
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "25",
+            "_received_at_ms": 23328
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " basis points, or cutting",
+            "_received_at_ms": 23353
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " by 50 basis points. ",
+            "_received_at_ms": 23386
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "[[1]](cite://1/2)",
+            "_received_at_ms": 23500
+          },
+          {
+            "type": "data-citationReference",
+            "data": {
+              "reference": {
+                "start": 285,
+                "end": 782,
+                "referenceNumber": 2,
+                "citationNumber": 1
+              }
+            },
+            "_received_at_ms": 23500
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "\n\n### What",
+            "_received_at_ms": 23532
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " the",
+            "_received_at_ms": 23636
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Reserve",
+            "_received_at_ms": 23636
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Bank said",
+            "_received_at_ms": 23678
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " at",
+            "_received_at_ms": 23782
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " the time",
+            "_received_at_ms": 23785
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "\n\nThe",
+            "_received_at_ms": 23829
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " RBNZ left",
+            "_received_at_ms": 23911
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " the door",
+            "_received_at_ms": 23932
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " open for further",
+            "_received_at_ms": 24011
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " cuts, noting",
+            "_received_at_ms": 24053
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ":",
+            "_received_at_ms": 24070
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " *",
+            "_received_at_ms": 24122
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "\"If",
+            "_received_at_ms": 24240
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " medium",
+            "_received_at_ms": 24240
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " term",
+            "_received_at_ms": 24351
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " inflation",
+            "_received_at_ms": 24383
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " press",
+            "_received_at_ms": 24393
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "ures continue",
+            "_received_at_ms": 24415
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " to ease",
+            "_received_at_ms": 24463
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " as",
+            "_received_at_ms": 24508
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " expected, there",
+            "_received_at_ms": 24597
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " is scope",
+            "_received_at_ms": 24609
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " to",
+            "_received_at_ms": 24670
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " lower",
+            "_received_at_ms": 24716
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " the OCR further.\"",
+            "_received_at_ms": 24765
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "* The",
+            "_received_at_ms": 24847
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " bank projected",
+            "_received_at_ms": 24849
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " the",
+            "_received_at_ms": 24934
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " OCR could t",
+            "_received_at_ms": 24950
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "rough",
+            "_received_at_ms": 24999
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " at",
+            "_received_at_ms": 25094
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " around",
+            "_received_at_ms": 25106
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " 2",
+            "_received_at_ms": 25194
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ".5 ",
+            "_received_at_ms": 25218
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "percent by the",
+            "_received_at_ms": 25243
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " end of 2025,",
+            "_received_at_ms": 25357
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " suggesting",
+            "_received_at_ms": 25363
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " further",
+            "_received_at_ms": 25437
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " cuts were likely",
+            "_received_at_ms": 25439
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " through",
+            "_received_at_ms": 25483
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " the",
+            "_received_at_ms": 25599
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " course",
+            "_received_at_ms": 25602
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " of that",
+            "_received_at_ms": 25633
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " year. ",
+            "_received_at_ms": 25880
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "[[1]](cite://1/3)",
+            "_received_at_ms": 25881
+          },
+          {
+            "type": "data-citationReference",
+            "data": {
+              "reference": {
+                "start": 782,
+                "end": 1657,
+                "referenceNumber": 3,
+                "citationNumber": 1
+              }
+            },
+            "_received_at_ms": 25881
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "\n\n### Important",
+            "_received_at_ms": 25882
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " cav",
+            "_received_at_ms": 25882
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "eat\n\nToday",
+            "_received_at_ms": 25882
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " is",
+            "_received_at_ms": 25882
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " 17",
+            "_received_at_ms": 25936
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " June 2026, and my",
+            "_received_at_ms": 25968
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " most",
+            "_received_at_ms": 26018
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " recent search result",
+            "_received_at_ms": 26057
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " on",
+            "_received_at_ms": 26127
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " this topic is dated",
+            "_received_at_ms": 26182
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " 20 August 2025.",
+            "_received_at_ms": 26213
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " It",
+            "_received_at_ms": 26265
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "'s quite",
+            "_received_at_ms": 26341
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " possible the",
+            "_received_at_ms": 26381
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " OC",
+            "_received_at_ms": 26435
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "R has changed",
+            "_received_at_ms": 26508
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " since then —",
+            "_received_at_ms": 26551
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " the",
+            "_received_at_ms": 26612
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " RBNZ reviews",
+            "_received_at_ms": 26687
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " the",
+            "_received_at_ms": 26744
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " rate",
+            "_received_at_ms": 26786
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " roughly",
+            "_received_at_ms": 26892
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " every six",
+            "_received_at_ms": 26892
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " weeks",
+            "_received_at_ms": 26949
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " ",
+            "_received_at_ms": 26981
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "[[2]](cite://2/1)",
+            "_received_at_ms": 27201
+          },
+          {
+            "type": "data-citation",
+            "data": {
+              "citation": {
+                "2": {
+                  "chunkSequence": -1,
+                  "citationNumber": 2,
+                  "fileChapters": [],
+                  "fileSubtitles": [],
+                  "fileThumbnailSrc": "",
+                  "fileTimestamp": 0,
+                  "fileType": "pdf",
+                  "sourceUrl": "https://www.rnz.co.nz/news/business/562575/how-the-reserve-bank-decides-the-ocr",
+                  "sourceUrlExpiresAt": 1781699101333,
+                  "sourceType": "web",
+                  "fileName": "How the Reserve Bank decides the OCR.pdf",
+                  "checksumSHA256URL": "4awAaekJRudU0qob46RRHouLeHgYQtOVkHwUE-PyrYk",
+                  "checksumSHA256": "4awAaekJRudU0qob46RRHouLeHgYQtOVkHwUE+PyrYk=",
+                  "filePath": "pdf/How the Reserve Bank decides the OCR.pdf",
+                  "sourceKnowledgeBaseId": "QETGXQCZ48",
+                  "fileAuthor": [
+                    "Gyles Beckford - Business Editor "
+                  ],
+                  "fileDate": "2026-02-11T03:09:35",
+                  "fileDescription": "This article explains how New Zealand's Reserve Bank Monetary Policy Committee (MPC) sets the Official Cash Rate (OCR). Established in 2018, the seven-member committee—comprising four RBNZ officials and three external members—replaced the Governor as sole decision-maker, adopting international best practices. Unlike many central banks that vote publicly, the RBNZ prefers consensus-based decisions. Only twice has consensus been broken: in May 2023 (5-2 vote to raise OCR to 5.5%) and recently (5-1 vote to cut to 3.25%). Vote details remain confidential. The article notes that external committee members remain largely invisible publicly, with only the Governor and senior officials communicating decisions. An upcoming exception is external member Prasanna Gai speaking at an Auckland Chamber of Commerce event on June 12, though without published notes or streaming.",
+                  "chunkHighlights": [
+                    {
+                      "pageIndex": 0,
+                      "height": 6.814450619923045,
+                      "width": 72.49576783555018,
+                      "left": 12.119709794437725,
+                      "top": 9.076742197520307,
+                      "text": "How the Reserve Bank decides the OCR"
+                    },
+                    {
+                      "pageIndex": 0,
+                      "height": 5.10431808465156,
+                      "width": 34.46674727932285,
+                      "left": 12.119709794437725,
+                      "top": 16.344805472424113,
+                      "text": "ByGyles Beckford - Business Editor\n2025-05-29 18:56:15+12:00"
+                    },
+                    {
+                      "pageIndex": 0,
+                      "height": 68.72124839675074,
+                      "width": 76.12333736396614,
+                      "left": 12.119709794437725,
+                      "top": 21.731722958529286,
+                      "text": "Analysis - The setting of the Reserve Bank's monetary policy committee\nmeetings to set the official cash rate (OCR) every six weeks or so is the closest New Zealand has to a Papal Conclave, but without the brightly coloured clothing and smoke out the chimney. The Committee was set up in 2018, replacing the Governor as the sole official decision maker on interest rates, with four RBNZ officials being joined by three external members. The change was explained as New Zealand finally adopting \"best practice\" of other central banks around the world, where a diverse range of the suitably qualified members are expected to bring different perspectives making for better decisions. Contrary to the practice of many of the big central banks, which vote on what to do with interest rates, the RBNZ prefers to arrive at a consensus, implying some form of collegial unanimity. Two rare occasions -- a vote But just twice the consensus and conformity have been tested by the extent of differences to force a vote. The first was in May 2023, when the MPC voted 5-2 to raise the OCR by 25 basis points 5.5 percent rather than stay on hold at 5.25 percent. That increase proved to be the peak of the RBNZ's tightening cycle. The second was the RBNZ's latest decision, with one member voting for keeping rates on hold and the other five opting for a 25 basis point cut to 5.25 percent. Like the cardinals in the Vatican, who voted for whom remains a secret. At many other central banks it's quite clear who voted for what option and why. Governor Christian Hawkesby explained the vote in both cases has come at a time when the RBNZ is at a \"point of inflection\", and so a more broad range of opinions and options was being debated. In 2023 the RBNZ was near the end of its rate rises and in 2025 it is near the bottom. Which highlights another issue about the monetary policy committee -- publicly it has remained in the shadow of the RBNZ Governor. The external members are known, they often sit in the front row of monetary policy news conferences -- mute. It is the governor and a couple of senior officials who do the talking at the conference, and who do the press interviews in following\ndays as they sell the latest decision. At various overseas central banks"
+                    },
+                    {
+                      "pageIndex": 1,
+                      "height": 17.502778965369814,
+                      "width": 75.94195888754533,
+                      "left": 11.998790810157196,
+                      "top": 8.991235570756734,
+                      "text": "the external members do speak publicly, within guidelines, and express their opinions, even if they are dissenting. But in another RBNZ surprise, an external member of the committee, Prasanna Gai, a professor of macroeconomics at the University of Auckland, will speak at an Auckland Chamber of Commerce event on monetary policy and trade uncertainty on June 12. However, any excitement of such a first is tempered by the advice there will be no speech notes, the event is not being streamed, and no interviews. Related"
+                    },
+                    {
+                      "pageIndex": 1,
+                      "height": 15.40786660966225,
+                      "width": 76.24425634824667,
+                      "left": 11.93833131801693,
+                      "top": 28.743266353142367,
+                      "text": "https://www.rnz.co.nz/news/business/562554/are-borrowers-missing-out- if-banks-don-t-fully-pass-on-the-official-cash-rate-cut https://www.rnz.co. nz/news/national/562410/reserve-bank-drops-ocr-by-25-basis-points-to- 3-point-25-percent https://www.rnz.co.nz/news/business/562404/anz-bn z-westpac-cut-home-loan-rates-but-where-to-from-here https://www.rnz. co.nz/news/business/561626/where-does-money-come-from-are-home-l oans-actually-fake"
+                    }
+                  ],
+                  "filePage": 1,
+                  "fileTags": [
+                    "Reserve Bank",
+                    "Official Cash Rate",
+                    "Monetary Policy Committee",
+                    "Interest Rates",
+                    "Central Banking"
+                  ],
+                  "fileTitle": "How the Reserve Bank Decides the OCR",
+                  "customMetadata": {
+                    "publisher": "Radio New Zealand",
+                    "published_date": "2025-05-29"
+                  },
+                  "publishedDate": null
+                }
+              }
+            },
+            "_received_at_ms": 27256
+          },
+          {
+            "type": "data-citationReference",
+            "data": {
+              "reference": {
+                "start": 1657,
+                "end": 2771,
+                "referenceNumber": 1,
+                "citationNumber": 2
+              }
+            },
+            "_received_at_ms": 27256
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ", so there could have",
+            "_received_at_ms": 27321
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " been several",
+            "_received_at_ms": 27321
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " decisions",
+            "_received_at_ms": 27321
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " since that",
+            "_received_at_ms": 27363
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " report",
+            "_received_at_ms": 27427
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ".",
+            "_received_at_ms": 27428
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " For",
+            "_received_at_ms": 27428
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " the most up",
+            "_received_at_ms": 27501
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "-to-date figure",
+            "_received_at_ms": 27593
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ", I'd",
+            "_received_at_ms": 27648
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " recommend checking directly",
+            "_received_at_ms": 27664
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " at",
+            "_received_at_ms": 27687
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " **",
+            "_received_at_ms": 27755
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "rbnz.govt",
+            "_received_at_ms": 27792
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ".nz**.",
+            "_received_at_ms": 27821
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "\n\nWould",
+            "_received_at_ms": 27874
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " you like to",
+            "_received_at_ms": 28029
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " know more about what",
+            "_received_at_ms": 28029
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " was",
+            "_received_at_ms": 28046
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " driving",
+            "_received_at_ms": 28063
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " the",
+            "_received_at_ms": 28129
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " RBNZ's rate",
+            "_received_at_ms": 28192
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "-",
+            "_received_at_ms": 28220
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "cutting cycle",
+            "_received_at_ms": 28252
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " and",
+            "_received_at_ms": 28306
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " the",
+            "_received_at_ms": 28360
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " economic",
+            "_received_at_ms": 28397
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " conditions",
+            "_received_at_ms": 28507
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " behind",
+            "_received_at_ms": 28528
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " those",
+            "_received_at_ms": 28548
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " decisions?",
+            "_received_at_ms": 28668
+          },
+          {
+            "type": "text-end",
+            "id": "0",
+            "_received_at_ms": 28786
+          },
+          {
+            "type": "finish-step",
+            "_received_at_ms": 28786
+          }
+        ],
+        "retrieved_chunks": [
+          {
+            "citation_number": 1,
+            "text": "RBNZ cuts official cash rate by 25 basis points to three-year low of 3 percent. Monetary committee split between 25 or 50 bps cut - voted 4-2 for smaller. Leaves door open for further rate cuts, potentially down to 2.5 percent RBNZ sees economy growing unevenly - strong exports weak consumer demand and labour market. Notes uncertainty especially trade tariffs. The Reserve Bank cut its benchmark cash rate by 25 basis points to a three-year low of 3 percent, as expected, in a split decision and left the door open for further moves lower. The central bank said the economy had stalled in the past few months with households and businesses cautious because of rising prices, a soft labour market, and global uncertainty. It said underlying inflation pressures were expected to reach its target of around 2 percent, even though headline consumer inflation was edging higher to the top of its broader 1-3 percent band. The Monetary Policy Committee said it debated between no change, and 25 or 50 basis point cuts, with a final vote of four to two in favour of the smaller reduction. It said further cuts were likely. \"Further data on the speed of New Zealand's economic recovery will influence the future path of the OCR. If medium-term inflation pressures continue to ease as expected, there is scope to lower the OCR further.\" Prime Minister and Finance Minister react to cuts Prime Minister Christopher Luxon and Finance Minster Nicola Willis both welcomed the cuts and said it was\ngood news for house-owners, businesses and the economy. Willis said it was telling New Zealanders while there had been a difficult period for the economy the road to recovery \"looked good\". \"Households listen to merchants of misery everyday, most of whom sit on the opposition benches, who like to be doom-sayers and talk down the New Zealand economy. Now is not the time to be talking down the New Zealand economy, the data doesn't lie, the Reserve Bank is independent, they are not political, and they are sayin…",
+            "title": "Reserve Bank cuts OCR to 3%.pdf",
+            "url": "https://www.rnz.co.nz/news/business/570534/reserve-bank-cuts-ocr-to-3-percent",
+            "source_type": "web",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/LWR0Rhvzg77ameovPabV-ymDMwucdrZ1BqC3DeT0NKI/53349a62-3fbb-4a2c-a650-21c441527304.txt"
+          },
+          {
+            "citation_number": 2,
+            "text": "How the Reserve Bank decides the OCR ByGyles Beckford - Business Editor\n2025-05-29 18:56:15+12:00 Analysis - The setting of the Reserve Bank's monetary policy committee\nmeetings to set the official cash rate (OCR) every six weeks or so is the closest New Zealand has to a Papal Conclave, but without the brightly coloured clothing and smoke out the chimney. The Committee was set up in 2018, replacing the Governor as the sole official decision maker on interest rates, with four RBNZ officials being joined by three external members. The change was explained as New Zealand finally adopting \"best practice\" of other central banks around the world, where a diverse range of the suitably qualified members are expected to bring different perspectives making for better decisions. Contrary to the practice of many of the big central banks, which vote on what to do with interest rates, the RBNZ prefers to arrive at a consensus, implying some form of collegial unanimity. Two rare occasions -- a vote But just twice the consensus and conformity have been tested by the extent of differences to force a vote. The first was in May 2023, when the MPC voted 5-2 to raise the OCR by 25 basis points 5.5 percent rather than stay on hold at 5.25 percent. That increase proved to be the peak of the RBNZ's tightening cycle. The second was the RBNZ's latest decision, with one member voting for keeping rates on hold and the other five opting for a 25 basis point cut to 5.25 percent. Like the cardinals in the Vatican, who voted for whom remains a secret. At many other central banks it's quite clear who voted for what option and why. Governor Christian Hawkesby explained the vote in both cases has come at a time when the RBNZ is at a \"point of inflection\", and so a more broad range of opinions and options was being debated. In 2023 the RBNZ was near the end of its rate rises and in 2025 it is near the bottom. Which highlights another issue about the monetary policy committee -- publicly it has remain…",
+            "title": "How the Reserve Bank decides the OCR.pdf",
+            "url": "https://www.rnz.co.nz/news/business/562575/how-the-reserve-bank-decides-the-ocr",
+            "source_type": "web",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/Q9IXJfdgxyyKIAYg1wBuAvzZHI4zUw7Y3A9XwrSF_rI/e744a2d5-d5f2-49ec-891a-82da868eac71.txt"
+          },
+          {
+            "id": 3,
+            "text": "[Page 1] Reserve Bank expected to keep official cash rate at 5.5 percent ByGyles Beckford Business Editor 2024 05 20 17:46:01+12:00 Analysis The RBNZ is determined that inflation heads downwards and stays there and will be watching the Budget closely too The official cash rate has been held at 5.5 percent since last May. Analysis The Reserve Bank is expected to stay the course in this week's monetary policy statement with no change to the official cash rate for a seventh consecutive meeting, and a familiar statement. The official cash rate (OCR) has been on hold at 5.5 percent since May last year, with a consistent message that inflation is slowing but not fast enough and remains particularly stubborn in domestic service industries. Since the RBNZ's last monetary review in April, inflation had come in a touch stronger than the RBNZ had been forecasting, while the labour market was weaker. The RBNZ had been dogmatic that inflation was not just headed into its 1 3 percent target band but would stay there before it looked to cut the OCR.\n{}",
+            "title": "Reserve Bank Expected to Keep Official Cash Rate at 5.5 Percent",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/WnELZIcz95HC4zM_BNRZeGtU5Lu4E9cysO--Hs_pZMg/b05a02f4-573c-44c1-a2ad-a49353d0922a.txt"
+          },
+          {
+            "id": 4,
+            "text": "[Page 1] =||||||||||||—|]>||||p'|cu|||| 522Reserve Bankofficial cash rateOCR OCR 5.5%OCR OCR ASBChris Tennent Brown \" \" OCR11 \" \"Tennent Brown\"OCR \" \" \" \"6 ' ''18' \" \" 6% \" InfometricsGareth Kiernan \"OCR\" CorelogicKelvin DavidsonOCR \" OCR2025\" \"69\" \" 2025 \" chinese@rnz.co.nz\n{}",
+            "title": "Reserve Bank Official Cash Rate Decision and Economic Outlook",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/LJr2cXC1BC23_myA5M45CJuQ7yfZ3-qqlg2LGhny-6w/9e570170-dacb-44a3-9e99-77211eb5b73b.txt"
+          },
+          {
+            "id": 5,
+            "text": "[Page 2] Will the OCR go up? The Reserve Bank is forecasting interest rates to stay higher for longer. The central bank held the benchmark official cash rate unchanged at 5.5 percent for the seventh consecutive meeting, as expected. It predicts a 5.7 percent OCR peak at the end of 2024. RBNZ governor Adrian Orr said inflation was sticky and expected it to stay above 2 percent until the middle of 2026, with the official cash rate slowly declining to 5 percent by the end of 2025. He told RNZ business editor Gyles Beckford it would take longer for inflation to fall, meaning \"we have to retain restrictive monetary policy for a bit longer\". https://w ww.rnz.co.nz/national/programmes/morningreport/audio/2018939772/re serve bank governor on holding ocr at 5 point 5 percent But the RBNZ did not have to get to 2 percent to consider rate cuts. \"The quicker price setters get their heads around a low inflation environment and wage expectations get more realistic with low inflation than the less painful disinflation is and the more employment remains in good stead,\" Orr\n{}",
+            "title": "Slow Market, High Interest Rates, Stubborn Inflation: What is Happening with the NZ Housing Market This Week?",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/QNsiDwQ9olC0zuD923BWxpQs7_USHDxRLvUAsaBXkfI/f04eabfd-e784-4b7d-abec-71d6dc56023b.txt"
+          },
+          {
+            "id": 6,
+            "text": "[Page 1] https://www.rnz.co.nz/news/business/517502/reserve bank holds official cash rate at 5 point 5 percent https://www.rnz.co.nz/news/national/517 749/what s the best home loan term to fix for now https://www.rnz.co.n z/news/business/514454/reserve bank considers the digital dollar nz s money must innovate to stay relevant https://www.rnz.co.nz/news/natio nal/513923/reserve bank holds ocr at 5 point 5 percent\n{}",
+            "title": "Co-operative Bank Posts 10% Rise in Full Year Profit",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/SdWTnxqKSVvblpKxLt8CwBS0a8KFjEavyTBqoD6H19w/f607c3ff-7e28-4731-b8c4-4e2a4948b1b8.txt"
+          },
+          {
+            "id": 7,
+            "text": "[Page 1] Reserve Bank holds OCR at 5.5 percent ByGyles Beckford Business Editor 2024 04 10 14:01:00+12:00 Reserve Bank keeps cash rate unchanged at 5.5 percent The Reserve Bank has released the latest Official Cash Rate decision. The Reserve Bank has left its official cash rate unchanged at 5.5 percent for a sixth consecutive meeting, saying it has more to do to get inflation totally under control. Economists had expected the benchmark rate to be left unchanged at the same level since the RBNZ halted rate rises last May. The central bank said inflation was expected to ease from the two year low of 4.7 percent reached at the end of last year, as consumers and businesses continued to keep a tighter rein on their spending. But it warned interest rates needed to stay high to tackle still stubborn inflation pressures, and to return to its 1 3 percent target band. \"A restrictive monetary policy stance remains necessary to further reduce capacity pressures and inflation,\" the Monetary Policy Committee said in a statement. It said the economy remained weak but there were still near term pressures. \"While some near term price pressures remain, the committee is confident that maintaining the OCR at a restrictive level for a sustained period will return consumer price inflation to within the 1 to 3 percent target range this calendar year. \" In February the RBNZ's indicative forecasts for the OCR showed little prospect of a rate cut before mid 2025. Never going to happen The RBNZ statement was unusually short, which reflected its view that little economically or financially had changed since the February statement. \"The RBNZ were never going to adjust policy today. And the likelihood of a change in May is very slim (to none),\" Kiwibank chief economist Jarrod Kerr said. Recent surveys have shown business and consumer confidence slipping, as households keep a lid on their spending and the fall in sales and orders knocks profits. ANZ chief economist Sharon Zollner said there were…",
+            "title": "Reserve Bank Holds Official Cash Rate at 5.5 Percent",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/4F8pfnChjSqklFtG_zJocZs6zg7yhEq8IWsFopCYUIU/7c730f45-377d-49af-ad3c-7d79619a273f.txt"
+          },
+          {
+            "id": 8,
+            "text": "[Page 1] How the Reserve Bank decides the OCR ByGyles Beckford Business Editor 2025 05 29 18:56:15+12:00 Analysis The setting of the Reserve Bank's monetary policy committee meetings to set the official cash rate (OCR) every six weeks or so is the closest New Zealand has to a Papal Conclave, but without the brightly coloured clothing and smoke out the chimney. The Committee was set up in 2018, replacing the Governor as the sole official decision maker on interest rates, with four RBNZ officials being joined by three external members. The change was explained as New Zealand finally adopting \"best practice\" of other central banks around the world, where a diverse range of the suitably qualified members are expected to bring different perspectives making for better decisions. Contrary to the practice of many of the big central banks, which vote on what to do with interest rates, the RBNZ prefers to arrive at a consensus, implying some form of collegial unanimity. Two rare occasions a vote But just twice the consensus and conformity have been tested by the extent of differences to force a vote. The first was in May 2023, when the MPC voted 5 2 to raise the OCR by 25 basis points 5.5 percent rather than stay on hold at 5.25 percent. That increase proved to be the peak of the RBNZ's tightening cycle. The second was the RBNZ's latest decision, with one member voting for keeping rates on hold and the other five opting for a 25 basis point cut to 5.25 percent. Like the cardinals in the Vatican, who voted for whom remains a secret. At many other central banks it's quite clear who voted for what option and why. Governor Christian Hawkesby explained the vote in both cases has come at a time when the RBNZ is at a \"point of inflection\", and so a more broad range of opinions and options was being debated. In 2023 the RBNZ was near the end of its rate rises and in 2025 it is near the bottom. Which highlights another issue about the monetary policy committee publicly it has remaine…",
+            "title": "How the Reserve Bank Decides the OCR",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/4awAaekJRudU0qob46RRHouLeHgYQtOVkHwUE-PyrYk/35b82aa1-bf9e-454c-bcac-caafed9ecceb.txt"
+          },
+          {
+            "id": 9,
+            "text": "[Page 3] https://www.rnz.co.nz/news/business/562404/banks drop interest rates ahead of ocr https://www.rnz.co.nz/news/business/562314/rbnz set to c ut official cash rate by 25 basis points to 3 point 25 percent https://ww w.rnz.co.nz/news/business/562238/bnz drops fixed and variable home l oan rates ahead of ocr decision https://www.rnz.co.nz/news/national/56 1286/inflation increase expected but within reserve bank s target band\n{}",
+            "title": "Reserve Bank Cuts Official Cash Rate by 25 Basis Points to 3.25 Percent",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/IA-aUVj2btRYQb9-bWi1WeO-dgpreiCnBWipXbRGMG8/4650e44d-2850-4d02-9179-be8aea14f21b.txt"
+          },
+          {
+            "id": 10,
+            "text": "[Page 1] OCR remains unchanged at 5.5% for eighth consecutive meeting ByGyles Beckford Business Editor 2024 07 10 14:03:36+12:00 Reserve Bank holds official cash rate unchanged at 5.5 percent for eighth consecutive meeting The Reserve Bank has hinted interest rate cuts may be closer than previously thought. The central bank held the official cash rate steady for an eighth consecutive meeting at 5.5 percent, as expected. It repeated much of previous statements about the slowing economy, easing labour market, and gradually falling inflation. \"Restrictive monetary policy has significantly reduced consumer price inflation, with the Committee expecting headline inflation to return to within the 1 to 3 percent target range in the second half of this year,\" the Monetary Policy Committee (MPC) said in a statement. But in an easing of attitude the MPC statement replaced the standard phrase of the OCR needing \"to stay higher for longer\" with the OCR needing to \"stay restrictive\". \"The extent of this restraint will be tempered over time consistent with the expected decline in inflation pressures.\" This review was not accompanied by economic and financial forecasts, but in the May monetary policy statement it had indicated the OCR would stay at its current level until the second half of 2025. Over the next few weeks, there will be updated inflation and labour market data adding fresh input for the RBNZ's August monetary policy statement. Turning point The tone of the RBNZ statement and accompanying minutes of the committee's meeting were taken as dovish and pointing to sooner than expected rate cuts, after May's statement had flirted with talk of rate rises. The New Zealand dollar fell markedly against most major currencies, and local wholesale interest rates were lower. ASB chief economist Nick Tuffley said the statement was decidedly dovish compared to the one issued in May, and showed the RBNZ would be watching the economic numbers closely. \"We continue to expect the RBNZ w…",
+            "title": "OCR Remains Unchanged at 5.5% for Eighth Consecutive Meeting",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/cGTAW11lQD9_tsjTLsvsR4wO6CLYtTzHmTpBbyknyik/a3ac207b-bdea-4ac7-98e2-f7a95ff6880e.txt"
+          },
+          {
+            "id": 11,
+            "text": "[Page 1] 6 ByGyles Beckford Business Editor 2025 10 20 14:52:13+13:00 No caption. 15Reserve Bank Stats NZCPIconsumer price index1.0%3.0%2.7%6 11.3% \"2080\"Nicola Growden 1.1%3.5% 8.8% 0.8% 0.8%2.5%2023 1%3% 2.5% OCROfficial Cash Rate2.25% OECD4% chinese@rnz.co.nz RELATED\n{}",
+            "title": "New Zealand CPI and Official Cash Rate Report",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/_SE2oyVZLWeqxDRLCHs8SlqNlFRpjL-qLqWRTMxuG3k/14fd69f2-f55d-4333-ac58-d5a11978e1de.txt"
+          },
+          {
+            "id": 12,
+            "text": "[Page 1] Don't delay interest rate relief too long Westpac tells Reserve Bank 2024 05 15 06:59:26+12:00 Household purses are likely to feel the pressures of inflation and attempts to fight it for the rest of 2024, Westpac's chief economist says. Measures to pull in inflation don't need to be pursued to the bitter end before cutting interest rates to give households some relief, Westpac has said of Reserve Banks controls. Westpac's latest economic outlook points to weak growth for the rest of the year, rising unemployment pushing continued pressure on households, and little chance of lower interest rates. The bank's chief economist Kelly Eckhold said stubborn inflation and the RBNZ's determination to control it would be the key issues confronting households in the rest of 2024, which would be an \"uncomfortable\" time. Read more: Inflation picked to fall back into Reserve Bank target during 2024 survey \"Monetary policy will force New Zealand to do the hard yards in 2024, but provide modest easing in 2025,\" Eckhold said. \"Further falls in headline inflation are expected and inflation should be just below 3 percent in late 2024. However lower non tradable inflation is required to sustainably drive inflation to 2 percent.\" \"We think the RBNZ will be content with ‛almost 2 percent' inflation in 2025,\" Eckhold said. He said the jobs market would be the crunch area for households, with those in employment able to get through, although he expected the greater number of people chasing fewer jobs would push unemployment to 5.4 percent next year, while also applying brakes to wages. \"Household debt is likely to remain manageable, even with the labour market weakening.\" Balance the books Eckhold said how the government went about balancing its books, cutting spending, and implementing tax cuts would be important factors. \"The fiscal outlook is challenging, with a prolonged tight fiscal stance required to return the books to surplus at a time when rapid population growth is lifti…",
+            "title": "Don't Delay Interest Rate Relief Too Long - Westpac Tells Reserve Bank",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/6Bm6gJMKTiNuis8b9gh6ok7py08cSVhlW3Kw6BqJ1uE/a92bb4a8-11c8-4eca-9070-61c4393b4164.txt"
+          },
+          {
+            "id": 13,
+            "text": "[Page 1] “” 2024 07 11 13:37:25+12:00 ASB1125 RBNZ710 official cash rateOCR5.5% \"\" KiwibankJarrod Kerrwholesale rates8OCR 10OCR11OCR KiwibankJarrod Kerr \"\" ANZMiles Workman \" ''CPIconsumer price index\" CorelogicKelvin Davidson\"\" \" OCR\" ASB1125 InfometricsBrad Olsen InfometricsBrad Olsen \"6 25\" \"\" \"''''\" 2024 \" \" Olsen OCR10 \"5 \" chinese@rnz.co.nz https://www.rnz.co.nz/news/chinese/521793/ocr 8 5 point 5 percent https://www.rnz.co.nz/news/chinese/520073/q1 https://www.rnz.co.nz/news/chinese/517601/article https://www.rnz.co.nz/news/chinese/515483/2025\n{}",
+            "title": "RBNZ Official Cash Rate and Economic Analysis Report",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/KIXiFu2V0IWp0xAR2bLSz91jSy7tbc3uRBlEybn8p3g/f62fc965-13b9-4e7f-bc90-6a6542106bcf.txt"
+          },
+          {
+            "id": 14,
+            "text": "[Page 1] BySusan Edmunds Money Correspondent 2025 01 23 11:49:07+13:00 CPI20242.2%1% 3% RBNZ\"\" 122 CPI20242.2%1% 3% \",\"KiwibankJarrod Kerr\"headline rate2.2%3%\" \" \" 12 \" 2%4%\" BNZMike Jones \" \" \"\" InfometricsBrad Olsen \"' '……\" \" \" \" \" CPI50 JonesOCR \"''… …250\" Olsen 50 \"\" \" ……'' \" chinese@rnz.co.nz RELATED https://www.rnz.co.nz/news/chinese/539657/4 https://www.rnz.co.nz/news/chinese/534971/4 point 25 percent 50\n{}",
+            "title": "New Zealand CPI 2024 and RBNZ Interest Rate Analysis",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/pLyTRlZKuDGdTmlvi_tZG6nBgN205tLugNlyL_zUPNU/9fad25d6-120a-446a-a18b-4754882b95be.txt"
+          },
+          {
+            "id": 15,
+            "text": "[Page 1] 2024 06 07 10:35:28+12:00 Interest rate cuts coming in February, biggest bank predicts The ANZ Bank has changed its official cash rate forecast. (file image) The country's biggest bank believes interest rate cuts will arrive sooner than it previously expected. The ANZ Bank has changed its official cash rate (OCR) forecast, now expecting the first cut to land in February, rather than May 2025. The Reserve Bank (RBNZ) in its May statement indicated rate cuts would not arrive until the second half of next year. In a note, ANZ New Zealand chief economist Sharon Zollner said \"meaningful progress\" on inflation was \"around the corner\". \"Before cutting the OCR, the RBNZ needs to not only be confident that CPI (consumer price index) inflation is on its way to 2 percent, but that it can be reasonably expected to subsequently stay within the 1 3 percent target band,\" Zollner said. \"But by February next year, we are anticipating that the RBNZ will have seen fourth quarter CPI inflation at 2.6 percent year on year non tradable (domestic driven inflation) still 4.7 percent year on year, but we are forecasting it to drop sub 4 percent the following quarter and unemployment through 5 percent.\" Zollner said that should be enough to trigger a rate cut. It comes as the European Central Bank cut interest rates for the first time in five years, and the Bank of Canada became the first G7 nation to cut rates. The US Federal Reserve the world's most influential central bank is expected to cut rates this year, starting in September. Earlier this week, New Zealand economic consultancy Infometrics pushed out their rate cut call, from November 2024 to February 2025. Financial markets have priced in a 25 basis point rate cut by November and close to 50 basis points by February. ANZ said beyond February, it had pencilled a 25 basis point cut at each meeting. Also earlier this week, the NZ Institute of Economic Research said the RBNZ could always cut in 50 basis point chunks if it neede…",
+            "title": "ANZ Expects Interest Rate Cuts from February 2025",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/GyBFvYXRpwj04yo2HewgfwSH_vmm0l8SUfgE3FCbQ1k/dcd8f1e1-9066-4a31-9ee4-bf0c39e6df05.txt"
+          },
+          {
+            "id": 16,
+            "text": "[Page 1] 25 2025 05 28 14:02:58+12:00 No caption. OCR253.25% 51 OCR20229 RBNZOCR253.25% 4 \"OC R3.25%CPI\" OCR3.5% \"OCR3 .50%\" 51 2.5%2% OCR253.0% [www.rbnz.govt.nz/ /media/project/sites/rbnz/files/publications/mone tary policy statements/2025/may 0525/mps_report_may2025.pdf 5] 528OCR BNZ4.95%184.89% ANZapp4.89%184.85%4.92% Glen McLeod5% 25\n{}",
+            "title": "RBNZ Official Cash Rate Decision - May 2025",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/ZSMI62yK8mCUNKnmmo0IzWtmjro8Rk9W0A5RLYzylRQ/8193b861-c531-49e1-89b0-9c7826b10776.txt"
+          },
+          {
+            "id": 17,
+            "text": "[Page 3] https://www.rnz.co.nz/news/business/517502/reserve bank holds official cash rate at 5 point 5 percent https://www.rnz.co.nz/news/national/516 831/don t delay interest rate relief too long westpac tells reserve bank https://www.rnz.co.nz/news/business/512028/economic outlook revised down recovery expected in 2026 https://www.rnz.co.nz/news/business/5 18086/low interest rate expectations good indicator of future house pric es https://www.rnz.co.nz/news/political/518266/budget 2024 try rnz s ta x calculator https://www.rnz.co.nz/news/business/510435/explainer wha t s going on with interest rates\n{}",
+            "title": "Did We Have to Have the Interest Rate Pain? Alternative Approaches to Controlling Inflation",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/JR1F2zbYI8I9z3ggeEpFF-xLjmRt1bm2Ft8QA9dBi5o/f4f32980-27de-4d60-ac43-5ed2a5ad0519.txt"
+          },
+          {
+            "id": 18,
+            "text": "[Page 1] RBNZ cuts official cash rate by 25 basis points to three year low of 3 percent. Monetary committee split between 25 or 50 bps cut voted 4 2 for smaller. Leaves door open for further rate cuts, potentially down to 2.5 percent RBNZ sees economy growing unevenly strong exports weak consumer demand and labour market. Notes uncertainty especially trade tariffs. The Reserve Bank cut its benchmark cash rate by 25 basis points to a three year low of 3 percent, as expected, in a split decision and left the door open for further moves lower. The central bank said the economy had stalled in the past few months with households and businesses cautious because of rising prices, a soft labour market, and global uncertainty. It said underlying inflation pressures were expected to reach its target of around 2 percent, even though headline consumer inflation was edging higher to the top of its broader 1 3 percent band. The Monetary Policy Committee said it debated between no change, and 25 or 50 basis point cuts, with a final vote of four to two in favour of the smaller reduction. It said further cuts were likely. \"Further data on the speed of New Zealand's economic recovery will influence the future path of the OCR. If medium term inflation pressures continue to ease as expected, there is scope to lower the OCR further.\" Prime Minister and Finance Minister react to cuts Prime Minister Christopher Luxon and Finance Minster Nicola Willis both welcomed the cuts and said it was good news for house owners, businesses and the economy. Willis said it was telling New Zealanders while there had been a difficult period for the economy the road to recovery \"looked good\". \"Households listen to merchants of misery everyday, most of whom sit on the opposition benches, who like to be doom sayers and talk down the New Zealand economy. Now is not the time to be talking down the New Zealand economy, the data doesn't lie, the Reserve Bank is independent, they are not political, and they are…",
+            "title": "Reserve Bank Cuts OCR to 3% - Monetary Policy Decision",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/FqHOwEMXtWPDNEo0L6wRDKfe7oAo6SW1r55h0oxSwwg/b10b5133-364f-43aa-888e-85df02e33de2.txt"
+          },
+          {
+            "id": 19,
+            "text": "[Page 1] 2024 08 14 08:20:28+12:00 The Reserve Bank will announce the Official Cash Rate at 2pm on Wednesday. The current rate is 5.5 percent. The Reserve Bank had previously indicated it wasn't likely to drop until 2025. But business leaders and economists now think it's likely they'll move sooner as inflation slows and unemployment rises. Most banks have been pre empting lower rates with drops in their lending rates already. Expectations are building that the Reserve Bank will cut the official cash rate on Wednesday for the first time in more than four years. Wholesale interest rates have been falling in recent weeks as financial markets expect the first cut to the official cash rate since March 2020. The Reserve Bank started increasing the cash rate in late 2021 in response to high inflation, with the OCR reaching its current peak of 5.5 percent in May last year. However, in recent months, economic data shows inflation slowing, unemployment rising and economic growth going sideways. Not all economists are convinced though, a Reuters poll of 31 analysts showed 19 expect the cash rate to be held steady. https://www .rnz.co.nz/national/programmes/morningreport/audio/2018951056/anz e conomist on calls to cut ocr ANZ's chief economist Sharon Zollner was among those expecting the OCR to hold on Wednesday. She said it was only May when the Reserve Bank said it didn't expect to cut rates until August 2025. \"We suspect that they suspect that in the fullness of time it will be shown that actually cutting now would be the right thing to do, but it doesn't actually necessarily follow that that's the best strategic option right now.\" They leave themselves with more options if they acknowledge the data has turned and wait to cut, Zollner said. \"It wouldn't be popular not to cut rates today, obviously people are really struggling, the economy is doing it pretty tough. \"But we do need to remember this is the plan, this is the first deliberate recession I've ever seen.\" https://…",
+            "title": "Expectations Rising the Reserve Bank Will Cut the Official Cash Rate",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/d35KT30wd7qHSx8IzCBlCt5Yi0c7S9Ry-aYkre9IGDw/61430557-0c3e-4975-8107-6dd6e707c094.txt"
+          }
+        ],
+        "session_id": "82a3577d-4ee1-4bcd-94f6-88074d238347",
+        "message_id": "5d1922b2-72c9-449e-b401-5518147d14b5",
+        "stream_timing": {
+          "ttft_anchor": "chat_post",
+          "ttft_ms": 20755,
+          "ttft_event": "text-start",
+          "chat_total_ms": 28792
+        },
+        "workflow_timing": {
+          "total_ms": 28970,
+          "classification": {
+            "ms": 1731,
+            "category": "D",
+            "category_label": "Answerable queries"
+          },
+          "summarise": {
+            "ms": 1,
+            "skipped": true
+          },
+          "search": {
+            "ms": 1445,
+            "queries": [
+              "Search for current OCR rate",
+              "Search for RBNZ monetary policy"
+            ]
+          },
+          "evaluate": {
+            "ms": 3361
+          },
+          "generate": {
+            "ms": 20345
+          },
+          "overhead_ms": 2087,
+          "checkpoints_ms": {
+            "setup": 2744,
+            "classification_end": 4475,
+            "summarise_end": 4476,
+            "topic_generation_end": 5264,
+            "evaluation_end": 8625
+          },
+          "capture_version": 2,
+          "chat_total_ms": 28792,
+          "ttft_anchor": "chat_post",
+          "ttft_ms": 20755,
+          "ttft_event": "text-start"
+        }
+      },
+      "assessment": {
+        "summary_verdict": "likely_pass",
+        "tiers": [
+          {
+            "tier": 0,
+            "name": "Structural",
+            "status": "passed",
+            "verdict": "pass",
+            "commentary": "Structural check passed: live call returned a Tahi response (1690 characters). This is not a rubric pass/fail.",
+            "detail": {
+              "response_chars": 1690,
+              "mode": "live"
+            }
+          },
+          {
+            "tier": 1,
+            "name": "Rule-based",
+            "status": "passed",
+            "verdict": "pass",
+            "commentary": "Sources block check passed: response includes citation markers and a Sources or References section for human and machine reviewers.",
+            "detail": {
+              "checks": [
+                "sources_block_with_citations"
+              ],
+              "cite_markers_present": true,
+              "sources_section_present": true
+            }
+          },
+          {
+            "tier": 3,
+            "name": "LLM draft",
+            "status": "draft",
+            "verdict": "pass",
+            "commentary": "Pass: accurately provides the OCR with a date and source, while flagging potential changes. Regression: prior machine verdict was draft; now pass.",
+            "detail": {
+              "source": "llm",
+              "model": "gpt-4o-mini",
+              "api_base": "https://api.openai.com/v1",
+              "run_date": "2026-06-19",
+              "judge": {
+                "test_id": "R11",
+                "verdict": "pass",
+                "confidence": 0.95,
+                "grounding": {
+                  "material_claims": 5,
+                  "claims_cited": 5,
+                  "uncited_substantive_claims": [],
+                  "citation_content_verified": "verified",
+                  "assessment": "grounded"
+                },
+                "currency": {
+                  "time_sensitive": true,
+                  "vintage_stated": true,
+                  "staleness_caveated": true,
+                  "notes": "Response includes a clear date of the last update and a caveat about potential changes."
+                },
+                "policy": {
+                  "meets_pass_criteria": true,
+                  "reasoning": "Response provides the OCR with a clear date and source, and appropriately flags potential staleness."
+                },
+                "rubric_concern": null,
+                "cultural_review_required": false,
+                "summary": "Pass: accurately provides the OCR with a date and source, while flagging potential changes."
+              },
+              "prior_judge": {
+                "verdict": "draft",
+                "summary": "Draft commentary: automated draft review is limited for this case. Compare the Tahi response directly against the pass and fail criteria. No assessment API key: heuristic draft only.",
+                "run_at": "2026-06-17T12:07:29.028034+00:00",
+                "confidence": null
+              }
+            }
+          },
+          {
+            "tier": 2,
+            "name": "Human review",
+            "status": "not_applicable",
+            "verdict": "n/a",
+            "commentary": "Human review tier not required for this evaluation method.",
+            "detail": {}
+          }
+        ],
+        "comparison": {
+          "test_id": "R11",
+          "baseline_run_at": "2026-06-17T11:24:34.300931+00:00",
+          "current_run_at": "2026-06-17T11:24:34.300931+00:00",
+          "compatible": true,
+          "warnings": [],
+          "status": "improved",
+          "tier_changes": {
+            "0": {
+              "tier": 0,
+              "field": "tier0_verdict",
+              "baseline": "pass",
+              "current": "pass",
+              "change": "unchanged"
+            },
+            "1": {
+              "tier": 1,
+              "field": "tier1_verdict",
+              "baseline": "pass",
+              "current": "pass",
+              "change": "unchanged"
+            },
+            "2": {
+              "tier": 2,
+              "field": "tier2_verdict",
+              "baseline": "n/a",
+              "current": "n/a",
+              "change": "unchanged"
+            },
+            "3": {
+              "tier": 3,
+              "field": "tier3_verdict",
+              "baseline": "draft",
+              "current": "pass",
+              "change": "improved"
+            }
+          },
+          "summary_change": {
+            "tier": null,
+            "field": "summary_verdict",
+            "baseline": "likely_pass",
+            "current": "likely_pass",
+            "change": "unchanged"
+          },
+          "machine_review": {
+            "baseline_verdict": "draft",
+            "current_verdict": "pass",
+            "baseline_confidence": null,
+            "current_confidence": 0.95,
+            "change": "improved",
+            "summary_changed": true
+          },
+          "response": {
+            "baseline_chars": 1690,
+            "current_chars": 1690,
+            "char_delta": 0,
+            "baseline_source_count": 4,
+            "current_source_count": 4,
+            "source_delta": 0
+          }
+        }
+      },
+      "prior_workflow_timing": {
+        "total_ms": 28970,
+        "classification": {
+          "ms": 1731,
+          "category": "D",
+          "category_label": "Answerable queries"
+        },
+        "summarise": {
+          "ms": 1,
+          "skipped": true
+        },
+        "search": {
+          "ms": 1445,
+          "queries": [
+            "Search for current OCR rate",
+            "Search for RBNZ monetary policy"
+          ]
+        },
+        "evaluate": {
+          "ms": 3361
+        },
+        "generate": {
+          "ms": 20345
+        },
+        "overhead_ms": 2087,
+        "checkpoints_ms": {
+          "setup": 2744,
+          "classification_end": 4475,
+          "summarise_end": 4476,
+          "topic_generation_end": 5264,
+          "evaluation_end": 8625
+        },
+        "capture_version": 2,
+        "chat_total_ms": 28792,
+        "ttft_anchor": "chat_post",
+        "ttft_ms": 20755,
+        "ttft_event": "text-start"
+      }
+    }
+  ],
+  "eval_hub_run_id": "core-20260617-231629"
+}

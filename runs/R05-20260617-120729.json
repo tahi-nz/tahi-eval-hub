@@ -1,0 +1,2583 @@
+{
+  "run_at": "2026-06-17T12:07:29.028034+00:00",
+  "run_kind": "evaluation",
+  "suite_id": "",
+  "tahi_env": "PRD",
+  "caitlyn_base_url": "https://nzgeo.getcaitlyn.ai",
+  "caitlyn_agent_alias_id": "TSTALIASID",
+  "caitlyn_agent_mode": "prd-test-agent",
+  "rubric_version": "Tahi_Test_Suite-2",
+  "source_file": "Tahi Test Suite (2).xlsx",
+  "source_sha256": "698c1f20478370d44be0de232b3b2363aa1ce690ff880801b069c72d2bd3901c",
+  "pilot_tranche": [
+    "R01",
+    "R06",
+    "R05",
+    "S01",
+    "S07",
+    "G01",
+    "G03",
+    "A03",
+    "A01",
+    "U01",
+    "U14",
+    "C01"
+  ],
+  "only_ids": [
+    "R01",
+    "R02",
+    "R03",
+    "R04",
+    "R05",
+    "R06",
+    "R07",
+    "R08",
+    "R09",
+    "R10",
+    "R11",
+    "G01",
+    "G02",
+    "G03",
+    "G04",
+    "G05",
+    "G06",
+    "G07",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "C01",
+    "C02",
+    "C03",
+    "C04",
+    "C05",
+    "C06",
+    "C07",
+    "C08",
+    "C09",
+    "C10",
+    "C11",
+    "C12",
+    "C13",
+    "C14",
+    "C15",
+    "C16",
+    "A01",
+    "A02",
+    "A03",
+    "A04",
+    "A05",
+    "A06",
+    "A07",
+    "U01",
+    "U02",
+    "U03",
+    "U04",
+    "U05",
+    "U06",
+    "U07",
+    "U08",
+    "U09",
+    "U10",
+    "U11",
+    "U12",
+    "U13",
+    "U14",
+    "U15",
+    "U16",
+    "U17",
+    "U18"
+  ],
+  "case_count": 1,
+  "failed_count": 0,
+  "total_duration_seconds": 3058.82,
+  "cases": [
+    {
+      "test_id": "R05",
+      "ok": true,
+      "prompt": "Who is the Minister of Finance?",
+      "error": null,
+      "started_at": "2026-06-17T11:20:31.723133+00:00",
+      "finished_at": "2026-06-17T11:20:55.403860+00:00",
+      "duration_seconds": 23.68,
+      "repeat_index": null,
+      "warmup": false,
+      "rubric": {
+        "failure_class": "Retrieval",
+        "sub_class": "Semantic collision",
+        "evaluation_method": "Hybrid",
+        "pass_criteria": "Names the correct current minister with an appropriate date caveat if data may not be current. Does not name a former minister as current.",
+        "fail_criteria": "Names a former minister without qualification. Presents out-of-date information as current.",
+        "automation_eligible": true,
+        "staging_only": false,
+        "performance_class": "",
+        "what_it_isolates": "",
+        "expected_ttft_profile": ""
+      },
+      "response": {
+        "response_text": "New Zealand's minister of finance is **Nicola Willis**. [[1]](cite://1/1)\n\nWillis, a National Party MP, holds the finance portfolio under Prime Minister Christopher Luxon's government. Luxon personally asked her to take on the role. [[2]](cite://2/1) She delivered her first Budget as minister in May 2024. [[3]](cite://3/1)\n\nWillis has been a prominent and sometimes controversial figure in the role — former finance minister Sir Roger Douglas called on her to resign in September 2025, citing concerns about fiscal deficits and public debt, though Willis rejected that call and said Luxon retained full confidence in her. [[4]](cite://4/1)\n\nOn the opposition benches, Labour's finance spokesperson is **Barbara Edmonds**, who took on the role after former finance minister Grant Robertson retired from politics. [[5]](cite://5/1)\n\nWould you like to know more about Nicola Willis's key economic policies or priorities as minister of finance?\n\n## Sources\n\n[1] [Finance Minister Nicola Willis Delivers Anzac Address at Pukeahu National War Memorial Park](https://www.rnz.co.nz/national/programmes/anzacday/audio/2018984527/finance-minister-nicola-willis)\n[2] [Nicola Willis Hints at Visa Changes to Grow Economy](https://www.rnz.co.nz/news/national/539591/nicola-willis-hints-at-visa-changes-to-grow-economy)\n[3] [Nicola Willis Says She's Kept Pledge with Budget 2024](https://www.rnz.co.nz/national/programmes/checkpoint/audio/2018940670/nicola-willis-says-she-s-kept-pledge-with-budget)\n[4] [Former Finance Minister Roger Douglas Calls for Nicola Willis to Resign Over Economic Contraction](https://www.rnz.co.nz/news/political/573459/former-finance-minister-sir-roger-douglas-calls-for-finance-minister-nicola-willis-to-resign)\n[5] [Labour Reshuffle: Barbara Edmonds Moves Up as Finance Spokesperson](https://www.rnz.co.nz/news/political/509662/labour-reshuffle-edmonds-moves-up-as-finance-spokesperson)",
+        "mock": false,
+        "submitted_at": "2026-06-17T11:20:55.403840+00:00",
+        "stream_events": [
+          {
+            "type": "start",
+            "messageId": "Lo8YdoRe40xmhjaE",
+            "_received_at_ms": 313
+          },
+          {
+            "type": "data-progress",
+            "id": "turn_baseline",
+            "data": {
+              "progress": {
+                "id": "turn_baseline",
+                "description": "Reading",
+                "status": "active",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": true,
+            "_received_at_ms": 313
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "answerQuestion": {
+                  "type": "WORKFLOW_TOOLS_LOAD_START",
+                  "workflowName": "answerQuestion",
+                  "workflowType": "answerQuestion",
+                  "configuredToolKeys": [],
+                  "configuredToolCount": 0
+                }
+              }
+            },
+            "_received_at_ms": 898
+          },
+          {
+            "type": "data-progress",
+            "id": "turn_baseline",
+            "data": {
+              "progress": {
+                "id": "turn_baseline",
+                "description": "Reading message",
+                "status": "active",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 944
+          },
+          {
+            "type": "data-progress",
+            "id": "tool_selection-496da687-3894-45cf-8fd4-9a7784a72dd5",
+            "data": {
+              "progress": {
+                "id": "tool_selection-496da687-3894-45cf-8fd4-9a7784a72dd5",
+                "description": "Understanding request",
+                "status": "active",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 944
+          },
+          {
+            "type": "data-progress",
+            "id": "tool_selection-496da687-3894-45cf-8fd4-9a7784a72dd5",
+            "data": {
+              "progress": {
+                "id": "tool_selection-496da687-3894-45cf-8fd4-9a7784a72dd5",
+                "description": "Searching knowledge base",
+                "status": "active",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 3288
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "question": {
+                  "type": "TOOL_CALL_INTERRUPTED_PROCEED_WITH_USER_REQUEST",
+                  "usage": {
+                    "inputTokens": 3071,
+                    "inputTokenDetails": {
+                      "noCacheTokens": 3071,
+                      "cacheReadTokens": 0,
+                      "cacheWriteTokens": 0
+                    },
+                    "outputTokens": 121,
+                    "outputTokenDetails": {
+                      "textTokens": 121
+                    },
+                    "totalTokens": 3192,
+                    "raw": {
+                      "inputTokens": 3071,
+                      "outputTokens": 121,
+                      "totalTokens": 3192,
+                      "cacheReadInputTokens": 0,
+                      "cacheWriteInputTokens": 0
+                    },
+                    "cachedInputTokens": 0
+                  },
+                  "thinking": "The user is asking a straightforward question about who the current Minister of Finance is in New Zealand.",
+                  "question": "Who is the current Minister of Finance in New Zealand?",
+                  "metadata": null,
+                  "progressLabel": "Searching knowledge base",
+                  "elapsed": 3029
+                }
+              }
+            },
+            "_received_at_ms": 3288
+          },
+          {
+            "type": "data-progress",
+            "id": "tool_selection-496da687-3894-45cf-8fd4-9a7784a72dd5",
+            "data": {
+              "progress": {
+                "id": "tool_selection-496da687-3894-45cf-8fd4-9a7784a72dd5",
+                "description": "Searching knowledge base",
+                "status": "done",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 3288
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "classification": {
+                  "type": "QUESTION_CLASSIFICATION",
+                  "thinking": "The user is asking about the current Minister of Finance in New Zealand. This is a current affairs/political question that would likely be covered by RNZ's news content, which covers NZ politics and is updated daily since January 2024.",
+                  "category": "D",
+                  "usage": {
+                    "inputTokens": 4524,
+                    "inputTokenDetails": {
+                      "noCacheTokens": 4524,
+                      "cacheReadTokens": 0,
+                      "cacheWriteTokens": 0
+                    },
+                    "outputTokens": 148,
+                    "outputTokenDetails": {
+                      "textTokens": 148
+                    },
+                    "totalTokens": 4672,
+                    "raw": {
+                      "inputTokens": 4524,
+                      "outputTokens": 148,
+                      "totalTokens": 4672,
+                      "cacheReadInputTokens": 0,
+                      "cacheWriteInputTokens": 0
+                    },
+                    "cachedInputTokens": 0
+                  },
+                  "elapsed": 4252
+                }
+              }
+            },
+            "_received_at_ms": 4518
+          },
+          {
+            "type": "data-progress",
+            "id": "turn_baseline",
+            "data": {
+              "progress": {
+                "id": "turn_baseline",
+                "description": "Reading message",
+                "status": "done",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 4518
+          },
+          {
+            "type": "data-progress",
+            "id": "mode-retract-496da687-3894-45cf-8fd4-9a7784a72dd5",
+            "data": {
+              "mode": "retract"
+            },
+            "_received_at_ms": 4518
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "question": {
+                  "type": "QUESTION_GENERATION_SKIPPED",
+                  "question": "Who is the current Minister of Finance in New Zealand?",
+                  "source": "pre_kb_tool_calls",
+                  "elapsed": 4252
+                }
+              }
+            },
+            "_received_at_ms": 4518
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "search_topic_generation",
+                "status": "active",
+                "type": "SEARCHING_KB",
+                "description": "Preparing search topics"
+              }
+            },
+            "_received_at_ms": 9509
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "search_topic_generation",
+                "status": "done",
+                "type": "SEARCHING_KB",
+                "description": "Preparing search topics"
+              }
+            },
+            "_received_at_ms": 10113
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "kb_search_0",
+                "status": "active",
+                "description": "Search for Finance Minister role",
+                "type": "SEARCHING_KB"
+              }
+            },
+            "_received_at_ms": 10113
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "kb_search_1",
+                "status": "active",
+                "description": "Search for current Finance Minister",
+                "type": "SEARCHING_KB"
+              }
+            },
+            "_received_at_ms": 10113
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "kb_search_2",
+                "status": "active",
+                "description": "Search for Finance Minister 2024",
+                "type": "SEARCHING_KB"
+              }
+            },
+            "_received_at_ms": 10113
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "kb_evaluation",
+                "status": "pending",
+                "description": "Evaluating search results",
+                "type": "EVALUATING_KB"
+              }
+            },
+            "_received_at_ms": 10113
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "orchestration": [
+                  {
+                    "type": "TOPIC_GENERATION",
+                    "queries": [
+                      {
+                        "knowledgeBaseId": "VZTRPFNDVK",
+                        "query": "New Zealand Minister of Finance role history",
+                        "label": "Search for Finance Minister role",
+                        "filter": "none"
+                      },
+                      {
+                        "knowledgeBaseId": "QETGXQCZ48",
+                        "query": "New Zealand Minister of Finance current",
+                        "label": "Search for current Finance Minister",
+                        "filter": "none"
+                      },
+                      {
+                        "knowledgeBaseId": "QETGXQCZ48",
+                        "query": "New Zealand government Finance portfolio minister 2024",
+                        "label": "Search for Finance Minister 2024",
+                        "filter": {
+                          "equals": {
+                            "key": "category",
+                            "value": "politics"
+                          }
+                        }
+                      }
+                    ],
+                    "thinking": "The question asks about the current Minister of Finance in New Zealand. This is a current affairs/political question, so RNZ is the primary source. Te Ara may have historical context about the role. Since this is about a living/current figure, I should also check RNZ for recent news. The NZ Dictionary of Biography covers deceased New Zealanders, so it's less relevant for a current minister. I'll search RNZ primarily, and Te Ara for context about the role.",
+                    "usage": {
+                      "inputTokens": 5640,
+                      "inputTokenDetails": {
+                        "noCacheTokens": 5640,
+                        "cacheReadTokens": 0,
+                        "cacheWriteTokens": 0
+                      },
+                      "outputTokens": 284,
+                      "outputTokenDetails": {
+                        "textTokens": 284
+                      },
+                      "totalTokens": 5924,
+                      "raw": {
+                        "inputTokens": 5640,
+                        "outputTokens": 284,
+                        "totalTokens": 5924,
+                        "cacheReadInputTokens": 0,
+                        "cacheWriteInputTokens": 0
+                      },
+                      "cachedInputTokens": 0
+                    },
+                    "elapsed": 5596
+                  }
+                ]
+              }
+            },
+            "_received_at_ms": 10113
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "kb_search_2",
+                "status": "done",
+                "type": "SEARCHING_KB"
+              }
+            },
+            "_received_at_ms": 10459
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "kb_search_0",
+                "status": "done",
+                "type": "SEARCHING_KB"
+              }
+            },
+            "_received_at_ms": 10512
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "kb_search_1",
+                "status": "done",
+                "type": "SEARCHING_KB"
+              }
+            },
+            "_received_at_ms": 10662
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "kb_evaluation",
+                "description": "Evaluating search results",
+                "status": "active",
+                "type": "EVALUATING_KB"
+              }
+            },
+            "_received_at_ms": 10863
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "orchestration": [
+                  {
+                    "type": "KNOWLEDGE_BASE_SEARCH_RESULTS",
+                    "results": {
+                      "1": {
+                        "id": 1,
+                        "text": "[Page 1] Treasury ByMalcolm McKinnon Treasury, 1840 to 1935 The New Zealand Treasury was set up in 1840. The treasurer was responsible for overseeing the government’s accounts and preparing an annual financial statement and Budget much like the treasurer of an organisation today. From 1856 the treasurer was a minister in a cabinet government, and from 1907 was known as the minister of finance. The head of Treasury is called the secretary to the Treasury. Growing influence At first Treasury kept the government’s accounts but had little control over other departments. It became more influential after raising £43 million for the First World War. In the 1920s Treasury worked with other agencies to apply business practices to government departments such as the Post Office and railways. From 1930 Treasury had the right to report on all government proposals for new spending. 1935 to 1980 During the Second World War, Treasury Secretary Bernard Ashwin was one of three members of the economic stabilisation commission, which co ordinated economic activity. In the 1960s Treasury became the lead agency for managing the economy. From the 1970s it advocated economic liberalisation. After 1980 Under the Labour government elected in 1984, the dollar was floated, taxes were lowered, and protection and assistance to industry was reduced. The National government elected in 1990 deregulated the labour market, and cut government spending and benefits. With strong support from Treasury, the commercial functions of some government departments were split off as state owned enterprises from 1986. Many state owned enterprises were then sold to private buyers, from 1988. The 1999 2008 Labour led government ignored Treasury advice in some areas. It bought back (into partial or total state ownership) Air New Zealand and the railways, and set up a government owned bank, Kiwibank.\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=VZTRPFNDVK/chunks/5x47-X5MbU2BcFXFh8-HCmnbM63tk_Pwbbz7kCAMcEI/e67725a0-b519-4093-b789-2c807a74d392.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/5x47-X5MbU2BcFXFh8-HCmnbM63tk_Pwbbz7kCAMcEI.pdf",
+                          "filePath": "pdf/Treasury.pdf",
+                          "author": "Malcolm McKinnon, Henry Lang, Noel Lough, Roger Douglas",
+                          "published_date": "2012-03-28",
+                          "updated_date": "2025-08-05"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "VZTRPFNDVK",
+                            "query": "New Zealand Minister of Finance role history",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Treasury.pdf",
+                          "fileName": "Treasury.pdf",
+                          "checksumSHA256": "5x47+X5MbU2BcFXFh8+HCmnbM63tk/Pwbbz7kCAMcEI=",
+                          "checksumSHA256URL": "5x47-X5MbU2BcFXFh8-HCmnbM63tk_Pwbbz7kCAMcEI",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/5x47-X5MbU2BcFXFh8-HCmnbM63tk_Pwbbz7kCAMcEI.pdf"
+                        },
+                        "document_title": "New Zealand Treasury: Comprehensive History and Evolution from 1840 to 2011",
+                        "document_summary": "This comprehensive document traces the evolution of New Zealand's Treasury department across 171 years, from its establishment in 1840 through 2011. The narrative encompasses three distinct periods: (1) 1840-1980: Treasury's transformation from a modest bookkeeping operation under Lieutenant-Governor William Hobson to an influential policy-making institution, including its critical roles in financing World War I (£43 million), applying business practices to government in the 1920s, acquiring spending surveillance powers by 1930, and wielding significant economic control during World War II under Secretary Bernard Ashwin. (2) 1969-1999: Treasury's evolution as the lead agency in economic policy under Secretaries Henry Lang and Noel Lough, navigating the 1973 oil crisis, advocating liberalisation and market-based reforms including floating exchange rates, deregulation, and GST implementation under Finance Minister Roger Douglas (1984-87), while establishing key legislative frameworks through the Reserve Bank Act 1989 and Fiscal Responsibility Act 1994. (3) 1999-2011: Treasury's role during Labour-led (1999-2008) and National-led (2008-2011) governments, pursuing inclusive growth policies including Working for Families, managing the 2008 global financial crisis response, and overseeing state sector reforms. Throughout this period, Treasury's composition shifted from routine accounting to economic and financial analysis, reflecting its expanding responsibilities in managing the economy and welfare state."
+                      },
+                      "2": {
+                        "id": 2,
+                        "text": "[Page 7] To the surprise of most observers, the incoming Labour government scrapped nearly all of the controls over the banking industry and over the balance of payments accumulated since 1938. The exchange rate was floated in 1985. Monetary policy was now implemented through the market. Inflation rose strongly for a while after the end of the freeze, but interest rates were encouraged to rise to levels at which spending was dampened, and inflation was brought under control. The soaring New Zealand dollar reinforced the downward momentum of inflation. Roger Douglas, the minister of finance, was supportive of the Reserve Bank, and a partnership between the government and the central bank was restored. Under existing legislation, however, Douglas was still the boss. The central bank was not yet independent.\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=VZTRPFNDVK/chunks/Dw1MjLOgyM0PN0ChTsFIotEKA-RxeSaqLAFZi803sW4/56d2878a-50f9-444a-af3a-a7a2ce3e511a.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Dw1MjLOgyM0PN0ChTsFIotEKA-RxeSaqLAFZi803sW4.pdf",
+                          "filePath": "pdf/Reserve Bank.pdf",
+                          "author": "John Singleton",
+                          "published_date": "2012-03-20",
+                          "updated_date": "2025-06-11"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "VZTRPFNDVK",
+                            "query": "New Zealand Minister of Finance role history",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Reserve Bank.pdf",
+                          "fileName": "Reserve Bank.pdf",
+                          "checksumSHA256": "Dw1MjLOgyM0PN0ChTsFIotEKA+RxeSaqLAFZi803sW4=",
+                          "checksumSHA256URL": "Dw1MjLOgyM0PN0ChTsFIotEKA-RxeSaqLAFZi803sW4",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Dw1MjLOgyM0PN0ChTsFIotEKA-RxeSaqLAFZi803sW4.pdf"
+                        },
+                        "document_title": "New Zealand's Reserve Bank: History, Independence, and Monetary Policy Evolution",
+                        "document_summary": "This document traces New Zealand's Reserve Bank from its establishment in 1934 through the early 2000s. It details the Bank's role overseeing the banking system and influencing interest rates and inflation. Key developments include nationalization in 1936, tight government control during the Muldoon era (1938-1984), and transformation into an independent institution following the landmark 1989 Reserve Bank Act. This Act established central bank independence with accountability through inflation targeting—a framework New Zealand pioneered that became a global model, influencing the Bank of England Act 1998. Notable milestones include bank supervision introduction in 1987, adoption of the official cash rate in 1999, and expanded responsibilities during the 2007-2010 financial crisis. Governors Don Brash (1988-2002) and Alan Bollard (from 2002) led significant reforms. The 1980s-90s reforms transformed the Reserve Bank into a pioneer in central bank independence and inflation targeting, establishing practices that influenced global central banking."
+                      },
+                      "3": {
+                        "id": 3,
+                        "text": "[Page 15] The fourth Labour government was elected in 1984. The minister of finance, Roger Douglas, was an ardent advocate of economic liberalisation. He removed most controls over the economy, privatised many state enterprises and called aspects of the welfare state into question. Many saw these measures as an assault on New Zealand’s egalitarian traditions. In foreign affairs , Labour’s anti nuclear policy ruptured relations with the United States .\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=VZTRPFNDVK/chunks/dgnjUtwsbjsEGg42rqplVyHivN8jr3rVEMBt5l43WCQ/9a177559-ceda-402e-9ba9-b06b2b3e5e10.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/dgnjUtwsbjsEGg42rqplVyHivN8jr3rVEMBt5l43WCQ.pdf",
+                          "filePath": "pdf/History.pdf",
+                          "author": "John Wilson",
+                          "published_date": "2005-02-08",
+                          "updated_date": "2026-02-25"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "VZTRPFNDVK",
+                            "query": "New Zealand Minister of Finance role history",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/History.pdf",
+                          "fileName": "History.pdf",
+                          "checksumSHA256": "dgnjUtwsbjsEGg42rqplVyHivN8jr3rVEMBt5l43WCQ=",
+                          "checksumSHA256URL": "dgnjUtwsbjsEGg42rqplVyHivN8jr3rVEMBt5l43WCQ",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/dgnjUtwsbjsEGg42rqplVyHivN8jr3rVEMBt5l43WCQ.pdf"
+                        },
+                        "document_title": "New Zealand History: From Māori Settlement to Modern Bicultural Society",
+                        "document_summary": "This comprehensive document traces New Zealand's historical trajectory from Māori settlement around 1250-1300 CE through the early 21st century. It covers Polynesian settlement and tribal societies, European discovery by Abel Tasman (1642) and James Cook (1769-70), and early European interaction through sealers, whalers, and traders. From 1814, missionaries introduced Christianity and European farming techniques. The Treaty of Waitangi (1840) established British sovereignty while guaranteeing Māori rights, though interpretation differences complicated implementation. European settlement escalated through the New Zealand Company, the 1852 Constitution Act, and land conflicts resulting in the Taranaki Wars and Waikato campaign with large-scale land confiscation. Economic development progressed through wool production, gold discoveries, Julius Vogel's public works program, and the frozen-meat industry. Politically, the Liberal Party's 1890 victory established a \"family farm\" economy, women's suffrage followed in 1893, and the First World War established the Anzac tradition. Labour's 1935 victory under Michael Joseph Savage introduced welfare reforms, while Labour's 1984 economic liberalization transformed the nation. From the 1970s onwards, New Zealand underwent bicultural and multicultural transformation, highlighted by the 1981 Springbok rugby tour, the Waitangi Tribunal's establishment (1975), Māori cultural renaissance and language revitalization, and the emergence of significant Pasifika and Asian populations."
+                      },
+                      "4": {
+                        "id": 4,
+                        "text": "[Page 5] The most important financial officer in the New Zealand government was the agent general in London, who organised loans. In 1904, of £53 million of government debt, £46.5 million was raised in London: ‘England is for [New Zealanders] a banker provided by nature’ said one commentator. 1\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=VZTRPFNDVK/chunks/1-8uLwTQAkXiKWVT3NIocaebfQYrbcCuv7lLH3zP5tA/c551dc33-9d22-4f90-9326-1c352eb66eb8.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/1-8uLwTQAkXiKWVT3NIocaebfQYrbcCuv7lLH3zP5tA.pdf",
+                          "filePath": "pdf/International economic relations.pdf",
+                          "author": "Malcolm McKinnon",
+                          "published_date": "2010-03-02",
+                          "updated_date": "2025-06-11"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "VZTRPFNDVK",
+                            "query": "New Zealand Minister of Finance role history",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/International economic relations.pdf",
+                          "fileName": "International economic relations.pdf",
+                          "checksumSHA256": "1+8uLwTQAkXiKWVT3NIocaebfQYrbcCuv7lLH3zP5tA=",
+                          "checksumSHA256URL": "1-8uLwTQAkXiKWVT3NIocaebfQYrbcCuv7lLH3zP5tA",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/1-8uLwTQAkXiKWVT3NIocaebfQYrbcCuv7lLH3zP5tA.pdf"
+                        },
+                        "document_title": "New Zealand's International Economic Relations: From British Colonial Economy to Global Trade Integration (1800s-2000s)",
+                        "document_summary": "This comprehensive document traces New Zealand's evolution within the international economic system from the 19th century through the early 2000s. It examines New Zealand's transformation from a British colonial economy heavily dependent on trade with Britain (75% of exports by 1870s) to a globally integrated trading nation. Key phases include: British trade and investment dominance in colonial development; the shift of economic influence from Britain to the United States post-WWI; New Zealand's participation in multilateral institutions (GATT, OECD, IMF, WTO); and diversification of trading partners following Britain's EU entry in 1973. Major trading relationships analyzed include the 1983 Closer Economic Relationship (CER) agreement with Australia, partnerships with Japan and the United States, and China's rise as New Zealand's largest trading partner by 2017/18. The document explores protectionist policies, New Zealand's founding role in the Cairns Group advocating for agricultural free trade, and the impact of international trade agreements. It covers the sterling area arrangement post-WWII, the Luxembourg agreement guaranteeing dairy access to UK/EU markets, and the 2008 China-New Zealand free-trade agreement, emphasizing how global powers and international economic systems shaped New Zealand's transition from a peripheral colonial economy to an active Asia-Pacific commerce participant."
+                      },
+                      "5": {
+                        "id": 5,
+                        "text": "[Page 9] New Zealand’s financial system before 1984 was one of the most regulated of the developed countries. Interest rates were controlled by the government, and financial institutions like banks were expected to observe credit growth guidelines set by the minister of finance. The government actively discouraged growth in consumer credit. These and other restrictions were removed soon after the 1984 general election, giving New Zealand consumers access to more credit than ever before.\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=VZTRPFNDVK/chunks/8szUJXN7cc9wV2c8DnHRFm04ax3QGJB5bX5MeVCQH3c/1f8a0eb1-56f3-44ae-8e12-4a5ab9804740.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/8szUJXN7cc9wV2c8DnHRFm04ax3QGJB5bX5MeVCQH3c.pdf",
+                          "filePath": "pdf/Spending in the economy.pdf",
+                          "author": "Paul Dalziel",
+                          "published_date": "2010-03-03",
+                          "updated_date": "2019-10-06"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "VZTRPFNDVK",
+                            "query": "New Zealand Minister of Finance role history",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Spending in the economy.pdf",
+                          "fileName": "Spending in the economy.pdf",
+                          "checksumSHA256": "8szUJXN7cc9wV2c8DnHRFm04ax3QGJB5bX5MeVCQH3c=",
+                          "checksumSHA256URL": "8szUJXN7cc9wV2c8DnHRFm04ax3QGJB5bX5MeVCQH3c",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/8szUJXN7cc9wV2c8DnHRFm04ax3QGJB5bX5MeVCQH3c.pdf"
+                        },
+                        "document_title": "New Zealand's Economic Development: Spending, Policy, and Growth from the Great Depression to Modern Reforms",
+                        "document_summary": "This comprehensive document examines New Zealand's economic development from the Great Depression through modern reforms, focusing on spending's role in economic activity and growth. It traces how consumer and government spending creates income and jobs, and how the Reserve Bank controls spending through interest rates. Key historical events include the 1930s Great Depression when exports fell 37% and unemployment reached 15%, followed by the 1935 Labour government's social security establishment and post-WWII Keynesian policies. The document details the 1970s-80s stagflation crisis caused by oil shocks and the 1984 economic reforms that liberalized imports (reducing tariffs from 28% to 5%), deregulated shopping hours, and opened credit markets. It analyzes spending types—private consumption, government consumption, and fixed capital investment—noting private consumption was 58.8% of gross national expenditure in 1987/88, increasing to 57.9% by 2007/8. Modern policy responses discussed include the Superannuation Fund, KiwiSaver subsidized savings scheme, tax cuts debate, and the 2007 'Working for Families' tax rebate aimed at increasing low-income household spending power. The document highlights economist Bill Phillips' refinement of Keynesian stabilization theories and the multiplier effect."
+                      },
+                      "6": {
+                        "id": 6,
+                        "text": "[Page 1] The Treasury, 1840 to 1935 New Zealand’s Treasury department was established in 1840 as part of Lieutenant Governor William Hobson’s administration, along with a customs department and a colonial secretary’s office. Its longevity is testimony to the indispensable nature of the work of keeping the government’s accounts. However, the Treasury has gone through many different phases since 1840. At times it has been primarily a bookkeeper; at other times, notably in the 1980s, it has wielded immense influence both within the government and in the wider society. Lieutenant Governor William Hobson embarked from Sydney on the Herald on 19 January 1840, charged with establishing a colony in New Zealand. How was he to pay for this enterprise, or indeed pay for himself? The British government lent £5,000, of which £3,000 was deposited to the credit of the Bank of Australasia in Sydney. The balance was gold coin. On 16 January George Cooper, just appointed colonial treasurer, informed Hobson that ‘the money is to be taken out of the Treasury chest at Six o Clock tomorrow morning and ... taken on board immediately after in strong boxes provided for it.’ 1 Through the 19th century the senior official was the colonial treasurer, who carried out much of the work. In 1856 the treasurer became a minister in a cabinet government, but remained directly responsible for overseeing the accounts, preparing an annual financial statement and a Budget for the forthcoming year, exactly as the treasurer of an incorporated society might do in the early 21st century.\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=VZTRPFNDVK/chunks/5x47-X5MbU2BcFXFh8-HCmnbM63tk_Pwbbz7kCAMcEI/94766f40-e8d3-4379-9bdd-630a9361a417.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/5x47-X5MbU2BcFXFh8-HCmnbM63tk_Pwbbz7kCAMcEI.pdf",
+                          "filePath": "pdf/Treasury.pdf",
+                          "author": "Malcolm McKinnon, Henry Lang, Noel Lough, Roger Douglas",
+                          "published_date": "2012-03-28",
+                          "updated_date": "2025-08-05"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "VZTRPFNDVK",
+                            "query": "New Zealand Minister of Finance role history",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Treasury.pdf",
+                          "fileName": "Treasury.pdf",
+                          "checksumSHA256": "5x47+X5MbU2BcFXFh8+HCmnbM63tk/Pwbbz7kCAMcEI=",
+                          "checksumSHA256URL": "5x47-X5MbU2BcFXFh8-HCmnbM63tk_Pwbbz7kCAMcEI",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/5x47-X5MbU2BcFXFh8-HCmnbM63tk_Pwbbz7kCAMcEI.pdf"
+                        },
+                        "document_title": "New Zealand Treasury: Comprehensive History and Evolution from 1840 to 2011",
+                        "document_summary": "This comprehensive document traces the evolution of New Zealand's Treasury department across 171 years, from its establishment in 1840 through 2011. The narrative encompasses three distinct periods: (1) 1840-1980: Treasury's transformation from a modest bookkeeping operation under Lieutenant-Governor William Hobson to an influential policy-making institution, including its critical roles in financing World War I (£43 million), applying business practices to government in the 1920s, acquiring spending surveillance powers by 1930, and wielding significant economic control during World War II under Secretary Bernard Ashwin. (2) 1969-1999: Treasury's evolution as the lead agency in economic policy under Secretaries Henry Lang and Noel Lough, navigating the 1973 oil crisis, advocating liberalisation and market-based reforms including floating exchange rates, deregulation, and GST implementation under Finance Minister Roger Douglas (1984-87), while establishing key legislative frameworks through the Reserve Bank Act 1989 and Fiscal Responsibility Act 1994. (3) 1999-2011: Treasury's role during Labour-led (1999-2008) and National-led (2008-2011) governments, pursuing inclusive growth policies including Working for Families, managing the 2008 global financial crisis response, and overseeing state sector reforms. Throughout this period, Treasury's composition shifted from routine accounting to economic and financial analysis, reflecting its expanding responsibilities in managing the economy and welfare state."
+                      },
+                      "7": {
+                        "id": 7,
+                        "text": "[Page 3] difficulties were very considerable, and, when honorable members desired to have everything at once, they forgot the amount of work to be accomplished. … He therefore hoped that honorable members would have a little mercy, and not ride the willing horse to death.’ 2 In 1866 the Treasury had a staff of nine in Wellington and 14 outside Wellington (a sub treasurer in each province, and six others). The abolition of the provincial system in 1876 put an end to the sub treasurers, but the staff in Wellington steadily expanded to about 40 in 1880. The tasks of government expanded in the 1890s but Treasury’s influence did not. Major departments such as lands, labour, railways and post and telegraph remained firmly in the hands of their ministers and heads of department. Surpluses underpinned the system from 1892 to 1908, revenue each year exceeded expenditure by a substantial margin. Treasury influence grows, 1914 35 The Treasury raised £43 million in New Zealand to finance the country’s war effort in 1914 18. This, coupled with the forceful personality of Treasury Secretary G. F. C. Campbell, enhanced the department’s role. Campbell’s successor, James Esson, was equally influential in the harsh fiscal climate which accompanied the post war recession of 1921 23. Treasury’s rise in status coincided with the rise of accountancy, which had been statutorily recognised as a profession in 1908.\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=VZTRPFNDVK/chunks/5x47-X5MbU2BcFXFh8-HCmnbM63tk_Pwbbz7kCAMcEI/6e1e8f73-9ddf-4889-bf93-772b56076d62.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/5x47-X5MbU2BcFXFh8-HCmnbM63tk_Pwbbz7kCAMcEI.pdf",
+                          "filePath": "pdf/Treasury.pdf",
+                          "author": "Malcolm McKinnon, Henry Lang, Noel Lough, Roger Douglas",
+                          "published_date": "2012-03-28",
+                          "updated_date": "2025-08-05"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "VZTRPFNDVK",
+                            "query": "New Zealand Minister of Finance role history",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Treasury.pdf",
+                          "fileName": "Treasury.pdf",
+                          "checksumSHA256": "5x47+X5MbU2BcFXFh8+HCmnbM63tk/Pwbbz7kCAMcEI=",
+                          "checksumSHA256URL": "5x47-X5MbU2BcFXFh8-HCmnbM63tk_Pwbbz7kCAMcEI",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/5x47-X5MbU2BcFXFh8-HCmnbM63tk_Pwbbz7kCAMcEI.pdf"
+                        },
+                        "document_title": "New Zealand Treasury: Comprehensive History and Evolution from 1840 to 2011",
+                        "document_summary": "This comprehensive document traces the evolution of New Zealand's Treasury department across 171 years, from its establishment in 1840 through 2011. The narrative encompasses three distinct periods: (1) 1840-1980: Treasury's transformation from a modest bookkeeping operation under Lieutenant-Governor William Hobson to an influential policy-making institution, including its critical roles in financing World War I (£43 million), applying business practices to government in the 1920s, acquiring spending surveillance powers by 1930, and wielding significant economic control during World War II under Secretary Bernard Ashwin. (2) 1969-1999: Treasury's evolution as the lead agency in economic policy under Secretaries Henry Lang and Noel Lough, navigating the 1973 oil crisis, advocating liberalisation and market-based reforms including floating exchange rates, deregulation, and GST implementation under Finance Minister Roger Douglas (1984-87), while establishing key legislative frameworks through the Reserve Bank Act 1989 and Fiscal Responsibility Act 1994. (3) 1999-2011: Treasury's role during Labour-led (1999-2008) and National-led (2008-2011) governments, pursuing inclusive growth policies including Working for Families, managing the 2008 global financial crisis response, and overseeing state sector reforms. Throughout this period, Treasury's composition shifted from routine accounting to economic and financial analysis, reflecting its expanding responsibilities in managing the economy and welfare state."
+                      },
+                      "8": {
+                        "id": 8,
+                        "text": "[Page 5] Instability, 1970s In the mid 1970s the New Zealand economy entered a period of instability. Two oil crises, rising inflation, balance of payments difficulties, erratic economic growth and the end of full employment all taxed the skills of policy makers. Some younger Reserve Bank officials were already advocating less regulation and the adoption of a more flexible interest rate policy. By the 1970s many other central banks were trying to influence spending by adjusting interest rates, and some were beginning to set targets for the money supply. Starting in 1976, Robert Muldoon, the prime minister, experimented with flexible interest rates, but in 1981 82, after the second oil shock, he intensified all controls over the financial sector and introduced a wage and price freeze to halt inflation. Although the Reserve Bank and Treasury warned against these policies, they had lost the confidence of Muldoon, who ignored unpalatable advice. The early 1980s was a period of central bank impotence in New Zealand. By contrast, the Federal Reserve in the United States was then at its most decisive and effective.\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=VZTRPFNDVK/chunks/Dw1MjLOgyM0PN0ChTsFIotEKA-RxeSaqLAFZi803sW4/d2302f98-03cc-4232-8721-7b2290beb763.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Dw1MjLOgyM0PN0ChTsFIotEKA-RxeSaqLAFZi803sW4.pdf",
+                          "filePath": "pdf/Reserve Bank.pdf",
+                          "author": "John Singleton",
+                          "published_date": "2012-03-20",
+                          "updated_date": "2025-06-11"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "VZTRPFNDVK",
+                            "query": "New Zealand Minister of Finance role history",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Reserve Bank.pdf",
+                          "fileName": "Reserve Bank.pdf",
+                          "checksumSHA256": "Dw1MjLOgyM0PN0ChTsFIotEKA+RxeSaqLAFZi803sW4=",
+                          "checksumSHA256URL": "Dw1MjLOgyM0PN0ChTsFIotEKA-RxeSaqLAFZi803sW4",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Dw1MjLOgyM0PN0ChTsFIotEKA-RxeSaqLAFZi803sW4.pdf"
+                        },
+                        "document_title": "New Zealand's Reserve Bank: History, Independence, and Monetary Policy Evolution",
+                        "document_summary": "This document traces New Zealand's Reserve Bank from its establishment in 1934 through the early 2000s. It details the Bank's role overseeing the banking system and influencing interest rates and inflation. Key developments include nationalization in 1936, tight government control during the Muldoon era (1938-1984), and transformation into an independent institution following the landmark 1989 Reserve Bank Act. This Act established central bank independence with accountability through inflation targeting—a framework New Zealand pioneered that became a global model, influencing the Bank of England Act 1998. Notable milestones include bank supervision introduction in 1987, adoption of the official cash rate in 1999, and expanded responsibilities during the 2007-2010 financial crisis. Governors Don Brash (1988-2002) and Alan Bollard (from 2002) led significant reforms. The 1980s-90s reforms transformed the Reserve Bank into a pioneer in central bank independence and inflation targeting, establishing practices that influenced global central banking."
+                      },
+                      "9": {
+                        "id": 9,
+                        "text": "[Page 5] From 1840 New Zealand’s governors ruled autocratically (with absolute authority), advised by the Executive Council and Legislative Council and answerable to the authorities in London. In 1854, though the new Parliament was still only there to provide advice to the governor, politicians had already asked for self governance in domestic matters, rather than having to defer to Britain. That year, while awaiting the reply from London, the acting governor, Colonel Robert Wynyard, appointed politician James FitzGerald to his Executive Council. Thomas Forsaith succeeded FitzGerald in the role. However, neither the ‘FitzGerald ministry’ nor the ‘Forsaith ministry’ lasted long. Their leaders were not true premiers. New Zealand’s earliest genuine ministries, formed after Parliament became responsible (fully self governing for most internal policy) in 1856, were short lived. The first premier, Henry Sewell, was sworn in on 18 April 1856, but was gone by 20 May. His successor, William Fox, was replaced by Edward Stafford on 2 June. In all there were 24 ministries between 1856 and 1891. To many it is a blur of beards, names and dates, but power was transferred peacefully each time, showing that the fledgling democracy worked.\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=VZTRPFNDVK/chunks/e9iNy8nAXOKFOdmZWYYYW5VlMjbc6u1C9kjuTqedoTo/41f85506-30a2-4409-a45b-9f7b8273535a.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/e9iNy8nAXOKFOdmZWYYYW5VlMjbc6u1C9kjuTqedoTo.pdf",
+                          "filePath": "pdf/Premiers and prime ministers.pdf",
+                          "author": "Gavin McLean, Manatū Taonga (Ministry for Culture and Heritage)",
+                          "published_date": "2012-05-06",
+                          "updated_date": "2025-06-25"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "VZTRPFNDVK",
+                            "query": "New Zealand Minister of Finance role history",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Premiers and prime ministers.pdf",
+                          "fileName": "Premiers and prime ministers.pdf",
+                          "checksumSHA256": "e9iNy8nAXOKFOdmZWYYYW5VlMjbc6u1C9kjuTqedoTo=",
+                          "checksumSHA256URL": "e9iNy8nAXOKFOdmZWYYYW5VlMjbc6u1C9kjuTqedoTo",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/e9iNy8nAXOKFOdmZWYYYW5VlMjbc6u1C9kjuTqedoTo.pdf"
+                        },
+                        "document_title": "Premiers and Prime Ministers of New Zealand: Leadership Evolution, Political Systems, and Historical Development",
+                        "document_summary": "This comprehensive document traces the evolution of New Zealand's political leadership from 1856 to 2023. It explains how the prime minister's role evolved from \"colonial secretary\" to \"premier\" and finally \"prime minister\" (formally adopted in 1906). Early leadership was unstable with 24 ministries between 1856-1891, but the Liberal Federation's 1891-1912 tenure marked the rise of organized political parties. The document examines how technological advances—from train travel and aviation to radio (1920s), television (1960), and the internet—reshaped the prime minister's role as government spokesperson. It covers the shift from personality-driven, policy-focused governments to party-based systems, the abolition of provincial governments in 1876, and the introduction of the MMP electoral system in 1996 requiring coalition management. Key figures include Richard Seddon, Norman Kirk, Jacinda Ardern, and Chris Hipkins. By 2023, 41 prime ministers had served, with only 3 women. The document also documents institutional developments including the establishment of the Prime Minister's Department in 1926 and Premier House as an official residence, along with information about prime ministerial memoirs, rankings, and memorials."
+                      },
+                      "10": {
+                        "id": 10,
+                        "text": "[Page 4] New Zealand's first minister of Pacific Island affairs (Richard Prebble) was appointed in 1984. In 1990 the Pacific Island Affairs Unit became the Ministry of Pacific Island Affairs (later the Ministry for Pacific Peoples), which was concerned with the social, economic and cultural development of Pasifika in New Zealand.\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=VZTRPFNDVK/chunks/45uSkOl1xngSHe_XFT5KF051gcnJJ6KW0o_5iU8VvoQ/b436e977-e1fa-4f00-b7ed-e99cdaeb3322.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/45uSkOl1xngSHe_XFT5KF051gcnJJ6KW0o_5iU8VvoQ.pdf",
+                          "filePath": "pdf/Pacific Islands and New Zealand.pdf",
+                          "author": "Jon Fraenkel",
+                          "published_date": "2012-06-11",
+                          "updated_date": "2024-09-30"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "VZTRPFNDVK",
+                            "query": "New Zealand Minister of Finance role history",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Pacific Islands and New Zealand.pdf",
+                          "fileName": "Pacific Islands and New Zealand.pdf",
+                          "checksumSHA256": "45uSkOl1xngSHe/XFT5KF051gcnJJ6KW0o/5iU8VvoQ=",
+                          "checksumSHA256URL": "45uSkOl1xngSHe_XFT5KF051gcnJJ6KW0o_5iU8VvoQ",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/45uSkOl1xngSHe_XFT5KF051gcnJJ6KW0o_5iU8VvoQ.pdf"
+                        },
+                        "document_title": "New Zealand's Pacific Island Relations: Colonial History, Regional Diplomacy, and Contemporary Foreign Policy",
+                        "document_summary": "This comprehensive document examines New Zealand's multifaceted relationships with Pacific Island nations and territories from colonial expansion through contemporary foreign policy. It traces New Zealand's historical control over Samoa, Cook Islands, Niue, and Tokelau, detailing transitions to self-government through free association agreements. Key historical events include the 1918 influenza epidemic in Western Samoa, the Mau independence movement (1927-1930), Samoa's independence in 1962, and the controversial \"dawn raids\" targeting Pacific Islanders in the 1970s-80s. The document analyzes New Zealand's involvement in major regional crises including the Bougainville conflict (1988-97), Solomon Islands crisis (2000), and Fiji's military coups (1987, 2000, 2006). It discusses the Pacific Islands Forum (1971), migration patterns resulting in 266,000 Pacific Islanders in New Zealand by 2006, and the evolution of New Zealand's foreign aid strategy with over half directed to the Pacific region. The Biketawa Declaration (2000) is examined as a regional crisis response framework, alongside New Zealand's alignment with Australia on Pacific matters and the growing importance of Pacific cultural identity within New Zealand society."
+                      },
+                      "11": {
+                        "id": 11,
+                        "text": "[Page 1] New Zealand's best and worst finance ministers ranked 2025 09 01 20:15:17+12:00 It's often a thankless task but the finance minister’s influence and power can sometimes rival that of the prime minister. Since the turn of the 20th century, New Zealand has had 29 ministers of finance and while each played a role in the country’s financial success or, in some cases, its shortcomings not all of their impacts have been the same. Wellington based freelance journalist and former RNZ reporter Eric Frykberg ranked our best and worst in consultation with historians, economists and insiders in a piece for the Listener, published last month. He joins Emile Donovan in our Wellington studio.\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/dxylCmQDYCTF1MtNb43pF0kcUYgNNPbpKi4k5Sn_MDA/02b498cb-f79e-4ad3-a3ea-26ce0774d380.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/dxylCmQDYCTF1MtNb43pF0kcUYgNNPbpKi4k5Sn_MDA.pdf",
+                          "filePath": "pdf/New Zealand's best and worst finance ministers ranked.pdf",
+                          "author": "Eric Frykberg, Wellington-based freelance journalist and former RNZ reporter",
+                          "published_date": "2025-09-01",
+                          "updated_date": "2025-09-01"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "New Zealand Minister of Finance current",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/New Zealand's best and worst finance ministers ranked.pdf",
+                          "fileName": "New Zealand's best and worst finance ministers ranked.pdf",
+                          "checksumSHA256": "dxylCmQDYCTF1MtNb43pF0kcUYgNNPbpKi4k5Sn/MDA=",
+                          "checksumSHA256URL": "dxylCmQDYCTF1MtNb43pF0kcUYgNNPbpKi4k5Sn_MDA",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/dxylCmQDYCTF1MtNb43pF0kcUYgNNPbpKi4k5Sn_MDA.pdf"
+                        },
+                        "document_title": "New Zealand's Best and Worst Finance Ministers Ranked",
+                        "document_summary": "An article examining New Zealand's finance ministers since the 20th century, ranking the best and worst among the 29 ministers who have held the position. The piece, published in the Listener, was compiled by journalist Eric Frykberg in consultation with historians, economists, and insiders. It explores how each finance minister has influenced the country's financial success or shortcomings, noting that the role's influence and power can sometimes rival that of the prime minister."
+                      },
+                      "12": {
+                        "id": 12,
+                        "text": "[Page 2] jobs, it's good for growth and it's good for the wealth of individual New Zealand families.\" It comes as inflation is heading into more manageable territory, but GDP was still in the negatives when it was last updated in December. https://www.rnz.co.nz/national/programmes/morningreport/a udio/2018971735/finance minister nicola willis on inflation When asked, Willis noted her new role had previously been held by Melissa Lee, under the title of \"economic development\". Lee was demoted from cabinet in April last year and sacked from her remaining ministerial roles last week during a reshuffle. Prime Minister Christopher Luxon had asked Willis personally to take on the responsibility of the portfolio, Willis said. She later told RNZ tourism services themselves would have the best idea of how to grow the industry. \"I've been encouraged by the fact that we've seen more North Americans coming to New Zealand, I want to see more people coming from those major markets.\" Sign up for Ngā Pitopito Kōrero, a daily newsletter curated by our editors and delivered straight to your inbox every weekday. Related\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/EMrgTfCVd0WxZx6073gG8aQCM4PvdHfFoxxbSRrjzq0/3666f84d-2501-4091-95fc-2a86ebf6014a.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/EMrgTfCVd0WxZx6073gG8aQCM4PvdHfFoxxbSRrjzq0.pdf",
+                          "filePath": "pdf/Nicola Willis hints at visa changes to grow economy.pdf",
+                          "author": "RNZ (Radio New Zealand)",
+                          "published_date": "2025-01-22",
+                          "updated_date": "2025-01-22",
+                          "category": "New Zealand"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "New Zealand Minister of Finance current",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Nicola Willis hints at visa changes to grow economy.pdf",
+                          "fileName": "Nicola Willis hints at visa changes to grow economy.pdf",
+                          "checksumSHA256": "EMrgTfCVd0WxZx6073gG8aQCM4PvdHfFoxxbSRrjzq0=",
+                          "checksumSHA256URL": "EMrgTfCVd0WxZx6073gG8aQCM4PvdHfFoxxbSRrjzq0",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/EMrgTfCVd0WxZx6073gG8aQCM4PvdHfFoxxbSRrjzq0.pdf"
+                        },
+                        "document_title": "Nicola Willis Hints at Visa Changes to Grow Economy",
+                        "document_summary": "Finance Minister and newly appointed Minister for Economic Growth Nicola Willis outlines plans to boost tourism and economic growth through visa policy changes. Departing from Labour's high-value visitor strategy, Willis emphasizes attracting all tourists to increase spending in local businesses and create jobs. Key initiatives include reviewing tourism funding, streamlining visa processing, and leveraging the international visitor levy (increased from $35 to $100 in October). Willis aims to restore Chinese visitor numbers to pre-Covid levels and attract more North American tourists. She argues that increased tourism spending benefits regional infrastructure and small business owners, countering concerns about overtourism."
+                      },
+                      "13": {
+                        "id": 13,
+                        "text": "[Page 1] Hon. Grant Robertson joins Bryan Crump to share some of his favourite tunes. Grant was NZ's Minister of Finance from 2017 to 2023, he's a former deputy Prime Minister and was Labour MP for Wellington Central for 15 years. Earlier this month he became the Vice Chancellor at his alma mater, the University of Otago. Grant's a fan of rugby, New Zealand literature and music. He's also managed a few bands.\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/BXl-uslrFmJ9J-ndOEeONgjXQT0szsbZ5jdh9SHAeqg/7f92b84d-69e0-46bc-a932-c102d00db592.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/BXl-uslrFmJ9J-ndOEeONgjXQT0szsbZ5jdh9SHAeqg.pdf",
+                          "filePath": "pdf/Playing favourites: Grant Robertson.pdf",
+                          "author": "Bryan Crump",
+                          "published_date": "2024-07-13",
+                          "updated_date": "2024-07-13"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "New Zealand Minister of Finance current",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Playing favourites: Grant Robertson.pdf",
+                          "fileName": "Playing favourites: Grant Robertson.pdf",
+                          "checksumSHA256": "BXl+uslrFmJ9J+ndOEeONgjXQT0szsbZ5jdh9SHAeqg=",
+                          "checksumSHA256URL": "BXl-uslrFmJ9J-ndOEeONgjXQT0szsbZ5jdh9SHAeqg",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/BXl-uslrFmJ9J-ndOEeONgjXQT0szsbZ5jdh9SHAeqg.pdf"
+                        },
+                        "document_title": "Playing Favourites: Grant Robertson",
+                        "document_summary": "Grant Robertson, former New Zealand Minister of Finance (2017-2023) and deputy Prime Minister, joins Bryan Crump to discuss his favourite music. Robertson, who served as Labour MP for Wellington Central for 15 years, recently became Vice Chancellor at the University of Otago. He shares his interests in rugby, New Zealand literature, and music, and has experience managing bands. This interview explores Robertson's personal musical preferences and his diverse interests spanning politics, academia, and the arts."
+                      },
+                      "14": {
+                        "id": 14,
+                        "text": "[Page 1] 2024 05 30 17:23:28+12:00 The Finance Minister has delivered her first Budget and says she has kept her pledge to New Zealanders. Our political reporter Giles Dexter has more.\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/L_v71HsVMGHViWLmUBClkxK5oYHtH6eUSJuRd2rTTLE/130d7f4e-132a-4537-bf32-fec1bdd32463.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/L_v71HsVMGHViWLmUBClkxK5oYHtH6eUSJuRd2rTTLE.pdf",
+                          "filePath": "pdf/Nicola Willis says she's kept pledge with Budget.pdf",
+                          "author": "Giles Dexter, Political Reporter",
+                          "published_date": "2024-05-30",
+                          "updated_date": "2024-05-30"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "New Zealand Minister of Finance current",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Nicola Willis says she's kept pledge with Budget.pdf",
+                          "fileName": "Nicola Willis says she's kept pledge with Budget.pdf",
+                          "checksumSHA256": "L/v71HsVMGHViWLmUBClkxK5oYHtH6eUSJuRd2rTTLE=",
+                          "checksumSHA256URL": "L_v71HsVMGHViWLmUBClkxK5oYHtH6eUSJuRd2rTTLE",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/L_v71HsVMGHViWLmUBClkxK5oYHtH6eUSJuRd2rTTLE.pdf"
+                        },
+                        "document_title": "Nicola Willis Says She's Kept Pledge with Budget 2024",
+                        "document_summary": "Finance Minister Nicola Willis has delivered her first Budget and claims to have fulfilled her pledge to New Zealanders. Political reporter Giles Dexter provides comprehensive coverage of the Budget announcement and the Minister's commitment to her promises, detailing how the government has maintained its fiscal commitments and policy objectives outlined to the public."
+                      },
+                      "15": {
+                        "id": 15,
+                        "text": "[Page 1] Finance Minister Nicola Willis\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/i8ZJ1NprI1HG7Sm6L7rHUcYe__ayJbj0DGPyL-EFEko/a3c70f83-960d-4107-98bd-8ea37325a1b4.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/i8ZJ1NprI1HG7Sm6L7rHUcYe__ayJbj0DGPyL-EFEko.pdf",
+                          "filePath": "pdf/Finance Minister Nicola Willis.pdf",
+                          "author": "Stacey Morrison",
+                          "published_date": "2025-04-25",
+                          "updated_date": "2025-04-25"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "New Zealand Minister of Finance current",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Finance Minister Nicola Willis.pdf",
+                          "fileName": "Finance Minister Nicola Willis.pdf",
+                          "checksumSHA256": "i8ZJ1NprI1HG7Sm6L7rHUcYe//ayJbj0DGPyL+EFEko=",
+                          "checksumSHA256URL": "i8ZJ1NprI1HG7Sm6L7rHUcYe__ayJbj0DGPyL-EFEko",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/i8ZJ1NprI1HG7Sm6L7rHUcYe__ayJbj0DGPyL-EFEko.pdf"
+                        },
+                        "document_title": "Finance Minister Nicola Willis Delivers Anzac Address at Pukeahu National War Memorial Park",
+                        "document_summary": "Finance Minister Nicola Willis delivered an Anzac address at Pukeahu National War Memorial Park in Wellington on April 25, 2025. She was among those who gathered before sunrise for the commemorative event. The article features an interview with Willis conducted by Stacey Morrison following her address, capturing her reflections on Anzac Day and its significance."
+                      },
+                      "16": {
+                        "id": 16,
+                        "text": "[Page 1] Greater transparency and a focus on low and stable inflation were the key messages from the Reserve Bank's new governor, Anna Breman, in a confident and comfortable first public appearance. She appeared before Parliament's Finance and Expenditure select committee, alongside the newly appointed chair Roger Finlay, for the annual review of the central bank's performance. On only her second day in the job she was not in a position to comment on what Labour's finance spokesperson Barbara Edmonds called a \"tumultuous year\", in which former governor Adrian Orr abruptly resigned, the stand in governor Christian Hawkesby resigned when he failed to get the top job, and the RBNZ board chair Neil Quigley resigned for handling of the aftermath of Orr's departure. Breman essentially reprised her comments when she was unveiled as the new governor in October. \"Key focus for the bank under my leadership will be to stay laser focused on our core mandate, and that is low and stable inflation, stable financial system, and a safe and efficient payments system, and importantly that means ensuring cash is available to all New Zealanders.\" \"As we head in 2026 transparency and accountability and clear communication will be our focus to maintain trust and credibility with New Zealanders.\" How the rate committee voted Breman said she would discuss with members of the rate setting Monetary Policy Committee the prospect of publicly revealing individual voting decisions. However, the Labour Party MPs suggested having various views of the seven members of the committee made public might be confusing, and leave members open to lobbying. \"It is imperative to have a good discussion, that people are allowed diversity of thought, it's not just they are allowed it but should be encouraged,\" Breman said, adding whatever approach was taken would be based on what was good and appropriate for New Zealand. RBNZ governor Anna Breman. She said that could also include in the economic forecasting ahead of decisions, with people being asked to take contrary views to test all options. Asked about her view on the bond buying policy the RBNZ adopted to pump $53 billion into the economy during the pandemic, she said it was a mechanism that had been used by other central banks around the world at the time. \"This is an unusual monetary policy tool, you want to keep it in the overall toolbox , being very mindful of having the OCR (official cash rate) as your primary monetary policy instrument.\" Meanwhile, RBNZ officials said the recent restructuring to meet its reduced budget resulted in 68 redundancies at a cost of $2.6m. Chairman Finlay said the RBNZ would soon release its decisions on the amount of capital banks should hold. Sign up for Ngā Pitopito Kōrero, a daily newsletter curated by our editors and delivered straight to your inbox every weekday. Related\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/DsKbOg5HUUgFs-2Wy6DUxxt8v5rS7shSAf_K0mdegIU/54680275-080d-4b1f-a219-0e3eafe42f9f.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/DsKbOg5HUUgFs-2Wy6DUxxt8v5rS7shSAf_K0mdegIU.pdf",
+                          "filePath": "pdf/Reserve Bank governor Anna Breman appears before Parliament's Finance and Expenditure Committee.pdf",
+                          "author": "Gyles Beckford - Business Editor ",
+                          "published_date": "2025-12-02",
+                          "updated_date": "2025-12-02",
+                          "category": "Business"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "New Zealand Minister of Finance current",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Reserve Bank governor Anna Breman appears before Parliament's Finance and Expenditure Committee.pdf",
+                          "fileName": "Reserve Bank governor Anna Breman appears before Parliament's Finance and Expenditure Committee.pdf",
+                          "checksumSHA256": "DsKbOg5HUUgFs+2Wy6DUxxt8v5rS7shSAf/K0mdegIU=",
+                          "checksumSHA256URL": "DsKbOg5HUUgFs-2Wy6DUxxt8v5rS7shSAf_K0mdegIU",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/DsKbOg5HUUgFs-2Wy6DUxxt8v5rS7shSAf_K0mdegIU.pdf"
+                        },
+                        "document_title": "Reserve Bank Governor Anna Breman's First Parliamentary Appearance",
+                        "document_summary": "New Reserve Bank Governor Anna Breman made her confident first public appearance before Parliament's Finance and Expenditure Committee alongside newly appointed chair Roger Finlay. On her second day in office, Breman emphasized her laser focus on maintaining low and stable inflation, a strong financial system, and safe payments infrastructure. She committed to greater transparency and accountability in 2026, including discussions about publicly revealing individual Monetary Policy Committee voting decisions. Breman addressed the RBNZ's pandemic bond-buying policy as a necessary tool used globally, while maintaining the Official Cash Rate as the primary instrument. The bank underwent restructuring resulting in 68 redundancies costing $2.6 million due to budget reductions."
+                      },
+                      "17": {
+                        "id": 17,
+                        "text": "[Page 1] https://players.brightcove.net/6093072280001/Ad1vOKi0j_default/index. html?videoId=6347223369112 Labour has announced Barbara Edmonds will take over as Finance spokesperson, with new roles for Ginny Andersen, Peeni Henare and a handful of incoming MPs. It comes after former Finance Minister Grant Robertson announced he would be resigning from politics next month. Along with taking on the finance role, Edmonds moves up from number 11 to fourth, based on a poster the party unveiled on Tuesday morning. Megan Woods moves from fourth, behind Robertson, to third. All other rankings remain the same, apart from the removal of MPs leaving Parliament and the those coming in to replace them who were added to the end of the list. Ginny Andersen adds Treaty of Waitangi Negotiations to her other portfolios (Police, Prevention of Family and Sexual Violence, Social Investment, Associate Social Development). Damien O'Connor (Trade, Associate Foreign Affairs, Associate Transport) also adds Land Information to his portfolios, and Tangi Utikere (Chief Whip, Transport, Oceans and Fisheries and Associate Education) adds Racing. Barbara Edmonds (File photo) Shanan Halbert and Tracey McLellan, who re entered Parliament after the resignations of Kelvin Davis and Rino Tirikatene, will also pick up new portfolios. Halbert takes over Auckland Issues and Rainbow Issues a new role in the caucus. McLellan picks up Corrections, Associate Health. Glen Bennett, who will re enter Parliament after Robertson's resignation, will take over responsibility for Economic Development, and Associate Energy. Labour leader Chris Hipkins said Barbara Edmonds would be a fantastic Finance spokesperson and he looked forward to working closely with her. \"Barb has a background as a specialist tax lawyer and is a formidable Parliamentarian with experience across nine portfolios as minister, and several more as an advisor in a ministerial office,\" he said in a statement. \"She's held the ministerial portfolios of Associate Finance, Revenue, Economic Development, Internal Affairs, Pacific Peoples, Associate Health, Associate Housing, Associate Immigration and Associate Cyclone Recovery. Barb is not only incredibly clever with a broad knowledge base, she also has the interpersonal skills to work with people from every background across all sectors.\" Edmonds will be Labour's first female finance spokesperson, and takes over the role immediately though Robertson remains at Parliament into March. He said she was talented and had \"an ability to look through the crap\". She said his advice to her had been to \"just do it your way\", and she intended to. She said what she was seeing from the government was disappointing as they would affect many people across the country, paying tribute to her opposite number in National, Nicola Willis. \"Nicola is a consummate politician, my job will be to hold her decisions and her words to account,\" Edmonds said. She said Willis' promises did not seem to add up during the election campaign, and she would be keeping a close eye on promised tax changes. Hipkins said the new Labour lineup would hold the government to account on its promises. \"It is clear the Government is scratching around for someone to blame as reality sets in that the promises they made during the campaign are not deliverable,\" he said. Related https://www.rnz.co.nz/news/political/509661/former labour finance minis ter grant robertson to retire from politics in march https://www.rnz.co.n z/news/political/509615/benefit sanctions government building a legacy of cruelty critics say [LE\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/tcG9_QTdzkN9Io2gdwHCmrFHTtvvtjFRj1ghdg8nW4w/da19f66a-64c3-4133-9fdf-d4cc3465165b.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/tcG9_QTdzkN9Io2gdwHCmrFHTtvvtjFRj1ghdg8nW4w.pdf",
+                          "filePath": "pdf/Labour reshuffle: Edmonds moves up as Finance spokesperson.pdf",
+                          "author": "RNZ (Radio New Zealand)",
+                          "published_date": "2024-02-20",
+                          "updated_date": "2024-02-20",
+                          "category": "Politics"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "New Zealand Minister of Finance current",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Labour reshuffle: Edmonds moves up as Finance spokesperson.pdf",
+                          "fileName": "Labour reshuffle: Edmonds moves up as Finance spokesperson.pdf",
+                          "checksumSHA256": "tcG9/QTdzkN9Io2gdwHCmrFHTtvvtjFRj1ghdg8nW4w=",
+                          "checksumSHA256URL": "tcG9_QTdzkN9Io2gdwHCmrFHTtvvtjFRj1ghdg8nW4w",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/tcG9_QTdzkN9Io2gdwHCmrFHTtvvtjFRj1ghdg8nW4w.pdf"
+                        },
+                        "document_title": "Labour Reshuffle: Barbara Edmonds Moves Up as Finance Spokesperson",
+                        "document_summary": "Labour has announced Barbara Edmonds as the new Finance spokesperson, replacing Grant Robertson who is resigning from politics in March. Edmonds moves from 11th to 4th position in the party rankings. The reshuffle includes new roles for several MPs: Ginny Andersen adds Treaty of Waitangi Negotiations; Damien O'Connor adds Land Information; Tangi Utikere adds Racing; Shanan Halbert takes Auckland Issues and Rainbow Issues (a new role); Tracey McLellan takes Corrections and Associate Health; and Glen Bennett takes Economic Development and Associate Energy. Edmonds, a former tax lawyer with extensive ministerial experience across nine portfolios, becomes Labour's first female Finance spokesperson. Party leader Chris Hipkins praised her qualifications and interpersonal skills, while Edmonds committed to holding the government accountable on its campaign promises."
+                      },
+                      "18": {
+                        "id": 18,
+                        "text": "[Page 1] Labour's finance spokesperson for six years, Grant Robertson leaves politics with a contested legacy. Robertson grew up in Dunedin and studied politics at Otago University, where he will take over the top job as Vice Chancellor after leaving Parliament in March. He graduated with a BA (Hons) in 1995, and was a staunch student politician having been president of the school's Students' Association and co president of the national body. For a time he worked for the Ministry of Foreign Affairs and Trade, including managing the New Zealand aid programme to Samoa and being posted to the United Nations in New York. He also worked as an advisor to then prime minister Helen Clark. Robertson first entered Parliament in 2008 as the MP for Wellington after the previous MP, Labour's Marian Hobbs, announced her retirement. He defeated National candidate Stephen Franks by 1904 votes, and he continued to hold the electorate increasing his vote margin each time until his decision not to contest it at last year's election. A rising star in Labour's ranks when the party was in opposition, Robertson was appointed spokesperson for state services by Phil Goff, later taking on tertiary education and being elevated to 20th when Chris Carter was demoted and put on leave for misuse of credit cards. It put Robertson higher in the rankings than any other MP from the 2008 intake. When David Shearer took over the party leadership in late 2011, Robertson became his deputy and remained in the role for about 21 months until September 2013. With Shearer having resigned as leader the previous month, Robertson put his name forward for the leadership but was defeated by David Cunliffe. He ran again for the leadership after Cunliffe's disastrous election defeat in 2014, but lost to Andrew Little. In government, Robertson has at times been the deputy prime minister and leader of the House and held a total 10 ministerial positions with sport being a particular area of interest. Grant Robertson delivers his speech for Budget 2018. It's likely, however, he will be most remembered as the Finance Minister during Labour's six years in government first as Jacinda Ardern's money man, then Chris Hipkins'. His first Budget in 2018 was described as \"cautious\" and \"restrained\", sticking to the responsibility rules Labour and the Greens proposed during the previous year's election campaign. Those who had backed Labour expressed disappointment about a lack of spending on shoring up the public services the party said had been \"neglected\" under National. The next one, in 2019, was notable for Robertson's decision to roll out a new approach to spending. The \"Wellbeing\" Budget required ministers and departments to work more closely together, with spending decisions considered through a lens of long term, intergenerational benefit. If that approach was aspirational, the 2020 Budget was reactive: the emergence of the Covid 19 pandemic had forced him to scrap his plans and start again with just a few months . Forecasts of unemployment soaring above 9 percent and a slow return to growth saw him use the $13 billion that had been built up in surpluses since taking office and borrow heavily spending up large sums on schemes to safeguard jobs and businesses, stimulate the economy, and continue building houses. \"Today is about jobs. It's about creating new jobs and it's about preparing people for new jobs,\" Robertson said. As it happened, unemployment peaked at just 5.2 percent in September that year. Labour was rewarded for its pandemic response in the 2020 election, winning the largest ever vote for a single party since New Zealand switched to MMP, and with more than 54 percent the vote was the first and only single party majority government. Ardern, despite having named Kelvin Davis as deputy leader of the party, appointed Robertson as her deputy prime minister making him the first openly gay man to hold the role. With the economy having rebound faster than expected, Robertson's next couple of budgets continued to spend on topics close to Labour's heart: benefit increases in 2021; education and health infrastructure, and climate spending in 2022. By then, the challenge presented by rising inflation had grown, but the 2022 \"cost of living payment\" scheme proved politically problematic with National calling it a \"short term sugar hit\". The problematic rollout of the scheme, which saw funds given in some cases to dead people and foreigners, only added fuel to the fire. The opposition continued to attack Labour over the cost of living, National's Christopher Luxon leading the charge and making it his top priority. Ardern resigned in 2023, saying she did not have \"enough in the tank\" to ably lead the country through another election and whichever crises arose. Robertson was a top contender to replace her, but soon ruled himself out. Hipkins was selected to take over instead, and Robertson handed the deputy prime minister role to Carmel Sepuloni to focus on Finance. Within weeks, however, the first crisis of the new regime hit: the Auckland anniversary floods and Cyclone Gabrielle, prompting Robertson to undertake his second Budget rewrite, again splashing cash on recovery. He also chose not to contest his Wellington seat, supporting Labour's Ibrahim Omer to take over though Omer was ultimately beaten by young Green Party city councillor Tamatha Paul. Although Hipkins' entry as PM saw a brief boost in polling for Labour, National ultimately won the 2023 election thanks in no small part, no doubt, to that heavy focus on the economy and the cost of living. Facing the prospect of years in opposition having already been through nine of them Robertson is now set to exit politics in a month or so, his legacy a target for his political opponents. Whether they are right will be for history to judge. Related\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/s3gF2BuKEvhPEuxjvs5KjCyr6x6zO_uzvZa0oL_8h-M/19ffad57-da23-48dd-bab4-f3a88a2ed674.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/s3gF2BuKEvhPEuxjvs5KjCyr6x6zO_uzvZa0oL_8h-M.pdf",
+                          "filePath": "pdf/Grant Robertson's political history: A contested legacy.pdf",
+                          "author": "Russell Palmer - Political Reporter",
+                          "published_date": "2024-02-21",
+                          "updated_date": "2024-02-21",
+                          "category": "Politics"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "New Zealand Minister of Finance current",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Grant Robertson's political history: A contested legacy.pdf",
+                          "fileName": "Grant Robertson's political history: A contested legacy.pdf",
+                          "checksumSHA256": "s3gF2BuKEvhPEuxjvs5KjCyr6x6zO/uzvZa0oL/8h+M=",
+                          "checksumSHA256URL": "s3gF2BuKEvhPEuxjvs5KjCyr6x6zO_uzvZa0oL_8h-M",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/s3gF2BuKEvhPEuxjvs5KjCyr6x6zO_uzvZa0oL_8h-M.pdf"
+                        },
+                        "document_title": "Grant Robertson's Political History: A Contested Legacy",
+                        "document_summary": "Grant Robertson, Labour's finance spokesperson for six years, is leaving politics in March with a contested legacy. A Dunedin native and Otago University graduate, Robertson entered Parliament in 2008 as Wellington MP and held 10 ministerial positions, including Deputy Prime Minister. As Finance Minister under Jacinda Ardern and Chris Hipkins, he managed Labour's budgets from 2018-2023, including the cautious 2018 Budget, the innovative 2019 Wellbeing Budget, and the reactive 2020 Covid-19 response that prevented unemployment from exceeding 5.2%. Labour won the 2020 election with over 54% of the vote, but faced challenges with inflation and the controversial 2022 cost-of-living payment scheme. After Ardern's resignation in 2023, Robertson declined the leadership and remained Finance Minister under Hipkins. National won the 2023 election, partly due to focus on economic concerns. Robertson is now transitioning to become Vice Chancellor at Otago University."
+                      },
+                      "19": {
+                        "id": 19,
+                        "text": "[Page 1] Nicola Willis rejects call by former finance minister to resign https://play ers.brightcove.net/6093072280001/default_default/index.html?videoId= 6379719567112 Former Finance Minister Roger Douglas is calling for Finance Minister Nicola Willis to resign but she says their solution is not needed. He and University of Auckland Matthew Abel chair of macroeconomics Robert MacCulloch said the contraction in GDP revealed by Stats NZ on Thursday was because Willis was \"sending New Zealand bankrupt by failing to get to grips with our ballooning fiscal deficits and public debt\". \"Her own Treasury contradicts her claim that NZ is on a path to surplus. It is not. Treasury's long term fiscal forecasts show out of control deficits due to pensions and health care spending from an ageing population,\" they said in a statement. \"Willis is not up to the job and is not levelling with the New Zealand public.\" Willis said Prime Minister Christopher Luxon had confidence in her to keep growing the economy. She said she had spoken with Luxon about his confidence in her ability to hold the finance portfolio. MacCulloch said Willis kept saying the country was returning to surplus. \"The books are not improving. And this surplus she talked about today, that's a creative accounting trick. She changed the way the accounts were being measured... she keeps saying they're getting better, it's not true.\" The Stats NZ data showed the economy shrank more sharply than expected in the June quarter, down 0.9 percent. It is a longer and sharper downturn than that experienced in the global financial crisis. Willis blamed the slump on global turmoil and uncertainty driven by the United States' tariff roll out. \"The economy had been growing strongly in the previous six months, but suddenly had the stuffing knocked out of it,\" Willis said. \"I feel for people and businesses who have been affected.\" Willis stressed that the data was \"backwards looking\" and there were signs the economy was growing again as interest rates fell. Economists agreed that the outlook for the third quarter was better, but said given the sharp contraction, activity was still lower than had previously been expected. MacCulloch said it was disingenuous to blame the global picture. \"She mentioned the tariffs hitting much harder here that makes no sense at all. In fact, most countries overseas had far higher tariff uncertainty than New Zealand.\" Willis told RNZ she would not take up the pair's advice. \"Sir Roger and Professor MacCulloch want me to immediately slash government spending. I'm not going to do that. \"International evidence is that reducing deficits is best done over the course of several year. That is what the government is doing. We are on course to return the books to surplus in 2028/29.\" Labour's deputy Carmel Sepuloni said Australia's economy grew 0.6 percent over the same period. \"Where to next, you know? Is it the fault of the butcher, the baker, the candlestick maker, but not Nicola Willis? It's her responsibility she's the minister for finance.\" Sign up for Ngā Pitopito Kōrero, a daily newsletter curated by our editors and delivered straight to your inbox every weekday. Related https://www.rnz.co.nz/news/business/573416/economy contracts sharpl y as gdp falls 0 point 9 percent in june quarter https://www.rnz.co.nz/ne ws/political/573437/nicola willis points to global turmoil as economy shr inks sharply https://www.rnz.co.nz/news/political/572116/budget docum ents find 8 point 5 billion gap between costs and savings https://www.r nz.co.nz/news/political/570396/finance minister nicola willis accuses lab our of reckless approach to spending\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/0L8D-R8kmZhHajQWiz5-oFHVijTjsR-1xWtvaJU3dB4/e885c2d6-2886-4091-ac2c-f396fb048093.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/0L8D-R8kmZhHajQWiz5-oFHVijTjsR-1xWtvaJU3dB4.pdf",
+                          "filePath": "pdf/Former finance minister Sir Roger Douglas calls for Finance Minister Nicola Willis to resign.pdf",
+                          "author": "Susan Edmunds - Money Correspondent",
+                          "published_date": "2025-09-18",
+                          "updated_date": "2025-09-18",
+                          "category": "New Zealand"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "New Zealand Minister of Finance current",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Former finance minister Sir Roger Douglas calls for Finance Minister Nicola Willis to resign.pdf",
+                          "fileName": "Former finance minister Sir Roger Douglas calls for Finance Minister Nicola Willis to resign.pdf",
+                          "checksumSHA256": "0L8D+R8kmZhHajQWiz5+oFHVijTjsR+1xWtvaJU3dB4=",
+                          "checksumSHA256URL": "0L8D-R8kmZhHajQWiz5-oFHVijTjsR-1xWtvaJU3dB4",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/0L8D-R8kmZhHajQWiz5-oFHVijTjsR-1xWtvaJU3dB4.pdf"
+                        },
+                        "document_title": "Former Finance Minister Roger Douglas Calls for Nicola Willis to Resign Over Economic Contraction",
+                        "document_summary": "Former Finance Minister Sir Roger Douglas and University of Auckland macroeconomics chair Robert MacCulloch have called for Finance Minister Nicola Willis to resign following New Zealand's sharp GDP contraction of 0.9% in the June quarter. They argue Willis is mismanaging fiscal deficits and public debt, claiming her Treasury contradicts her surplus claims. Willis defends her position, attributing the downturn to global turmoil and US tariffs, and states she will not slash government spending immediately. She maintains the government is on track to return to surplus by 2028/29. Labour's deputy Carmel Sepuloni criticizes Willis's accountability, noting Australia's economy grew 0.6% over the same period."
+                      },
+                      "20": {
+                        "id": 20,
+                        "text": "[Page 1] Reserve Bank governor appointment looms who are the candidates? 2025 09 24 05:47:21+12:00 The government is expected to name the new Reserve Bank governor on Wednesday. You can watch the announcement and read about it here. The government will announce a new Reserve Bank governor this afternoon. Bloomberg News has suggested it may be a woman from outside New Zealand, but no one is confirming. Interim governor Christian Hawkesby has acted in the top role at the central bank since the surprise resignation of Adrian Orr in March. Adrian Orr resigned as Reserve Bank governor in March. Finance Minister Nicola Willis' office will not comment until the announcement. Who could be in the running? Catherine Mann The American economist has strong experience in macro economics and visited New Zealand for the Reserve Bank conference in March, just days after Orr resigned. She is a member of the Monetary Policy Committee of the Bank of England and has been chief economist at the OECD the Organisation for Economic Co operation and Development. She was the global chief economist at Citibank from 2018 21 and served on the Council of Economic Advisers during the Bush administration, advising on the European Monetary Union, and the economies of Latin American and the former USSR. Mann made headlines in February, after being considered a \"hawk\" on the Bank of England opposing interest rate cuts, then voted for a 50 basis point cut. Sarah Breeden Breeden is a deputy governor of the Bank of England, which she joined in 1991. She serves on the monetary policy and financial policy committees, as well as the bank's court of directors. Breeden has specific responsibility for financial stability and international issues, among other things. She is also responsible for managing climate change risks facing the bank and is the executive sponsor for the banks' ethnic minorities network. Breeden has an MA in Economics from Cambridge University and an MSc in Finance from the London Business School. Guy Debelle Said to be a punk rock and AFL fan, he recently warned economists they needed to help solve the huge challenge of the transfer of wealth from the 'Boomer' generation to their children. He is a former deputy governor of the Reserve Bank of Australia, working there for 25 years. In 2022, he resigned to become chief financial officer of Fortescue Future Industries, a green energy company. Christian Hawkesby The man currently running the Reserve Bank was appointed acting governor for six months, after Orr's resignation. He was previously deputy governor and general manager of the financial stability group. Christian Hawkesby was appointed acting Reserve Bank governor after Adrian Orr's resignation. Before joining the Reserve Bank, he was part of a team that established Harbour Asset Manager, which was Morningstar's Fund Manager of the Year for 2014, 2016 and 2017. He worked at the Bank of England, including during the 2008 global financial crisis. He was the public face of the Reserve Bank's most recent rate cut a reduction in the official cash rate by 25 basis points in August. Prasanna Gai He is professor of macro economics and head of economics, accounting and finance at the University of Auckland. Gai has written books on financial crises and risk. He was a special advisor to then Bank of Canada governor Mark Carney, who is now Canada's prime minister. Currently a member of the Reserve Bank monetary policy committee, he is also on the board of the Financial Markets Authority and is a fellow of various research institutes. Like others on the list, he worked at the Bank of England in his case, as senior advisor directing research into financial stability. He uses network and game theory to understand the causes of financial crises. Toni Gravelle Gravelle is the Bank of Canada deputy governor and sits on the bank's governing council. He has been deputy governor for the past six years, one of three at the Bank of Canada. He has been at the Bank of Canada since 1996, with a two year secondment to the Department of Finance Canada in 2013. Gravelle has international experience. In the early 2000s, he was an economist at the International Monetary Fund (IMF), where he studied the financial systems in France and Senegal. Gravelle has been sometimes named as one of the frontrunners in speculation over who might succeed Orr. John McDermott The former head of economics at the Reserve Bank, McDermott is currently the executive director of Motu Economic and Public Policy Research, and Red Cross Foundation chair. He started at Motu, an economics institute, six years ago and was previously Reserve Bank assistant governor. McDermott has also worked at the National Bank of New Zealand and the International Monetary Fund. Sign up for Ngā Pitopito Kōrero, a daily newsletter curated by our editors and delivered straight to your\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/VziR5SffmYAc8XvPrA4Ukwqc-8zYkwOwN8qxHrV3kN8/c23b6c95-5569-4e82-a3ef-7e26bdb5dbf9.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/VziR5SffmYAc8XvPrA4Ukwqc-8zYkwOwN8qxHrV3kN8.pdf",
+                          "filePath": "pdf/Reserve Bank governor appointment looms - who are the candidates?.pdf",
+                          "author": "RNZ (Radio New Zealand)",
+                          "published_date": "2025-09-24",
+                          "updated_date": "2025-09-24",
+                          "category": "Politics"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "New Zealand Minister of Finance current",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Reserve Bank governor appointment looms - who are the candidates?.pdf",
+                          "fileName": "Reserve Bank governor appointment looms - who are the candidates?.pdf",
+                          "checksumSHA256": "VziR5SffmYAc8XvPrA4Ukwqc+8zYkwOwN8qxHrV3kN8=",
+                          "checksumSHA256URL": "VziR5SffmYAc8XvPrA4Ukwqc-8zYkwOwN8qxHrV3kN8",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/VziR5SffmYAc8XvPrA4Ukwqc-8zYkwOwN8qxHrV3kN8.pdf"
+                        },
+                        "document_title": "Reserve Bank Governor Appointment: Candidate Analysis",
+                        "document_summary": "The New Zealand government is set to announce a new Reserve Bank governor, with interim governor Christian Hawkesby having acted in the role since Adrian Orr's surprise resignation in March. Bloomberg News suggests the appointment may be a woman from outside New Zealand. Key candidates include Catherine Mann (American economist with Bank of England experience), Sarah Breeden (Bank of England deputy governor), Guy Debelle (former Reserve Bank of Australia deputy governor), Christian Hawkesby (current interim governor), Prasanna Gai (University of Auckland macro-economics professor), Toni Gravelle (Bank of Canada deputy governor), and John McDermott (former Reserve Bank head of economics). Each candidate brings diverse experience in monetary policy, financial stability, and international economics."
+                      }
+                    },
+                    "elapsed": 653
+                  }
+                ]
+              }
+            },
+            "_received_at_ms": 10874
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "search_topic_generation",
+                "status": "done",
+                "type": "SEARCHING_KB",
+                "description": "Preparing search topics"
+              }
+            },
+            "_received_at_ms": 14566
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "orchestration": [
+                  {
+                    "type": "KNOWLEDGE_BASE_EVALUATION",
+                    "thinking": "The question asks who is the current Minister of Finance in New Zealand. I need to find results that identify the current (most recent) holder of this role. Looking through the results, several mention Nicola Willis as Finance Minister, with the most recent articles being from 2025 (IDs 15, 19, 20, 12, 14). Results 13 and 18 mention Grant Robertson as former Finance Minister (2017-2023). Results 11 mentions a ranking article from September 2025. The most directly relevant results are those identifying Nicola Willis as the current Finance Minister.",
+                    "relevant": [
+                      {
+                        "relevance": 1,
+                        "id": 15
+                      },
+                      {
+                        "relevance": 0.98,
+                        "id": 19
+                      },
+                      {
+                        "relevance": 0.95,
+                        "id": 12
+                      },
+                      {
+                        "relevance": 0.93,
+                        "id": 14
+                      },
+                      {
+                        "relevance": 0.85,
+                        "id": 20
+                      },
+                      {
+                        "relevance": 0.7,
+                        "id": 11
+                      },
+                      {
+                        "relevance": 0.6,
+                        "id": 17
+                      },
+                      {
+                        "relevance": 0.5,
+                        "id": 13
+                      }
+                    ],
+                    "searchEvaluationUsage": {
+                      "inputTokens": 24949,
+                      "inputTokenDetails": {
+                        "noCacheTokens": 24949,
+                        "cacheReadTokens": 0,
+                        "cacheWriteTokens": 0
+                      },
+                      "outputTokens": 302,
+                      "outputTokenDetails": {
+                        "textTokens": 302
+                      },
+                      "totalTokens": 25251,
+                      "raw": {
+                        "inputTokens": 24949,
+                        "outputTokens": 302,
+                        "totalTokens": 25251,
+                        "cacheReadInputTokens": 0,
+                        "cacheWriteInputTokens": 0
+                      },
+                      "cachedInputTokens": 0
+                    },
+                    "elapsed": 6450
+                  }
+                ]
+              }
+            },
+            "_received_at_ms": 17214
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "orchestration": [
+                  {
+                    "type": "COMBINED_RANKING_SUMMARY",
+                    "totalEvaluated": 8,
+                    "topRanked": 8,
+                    "afterFiltering": 7,
+                    "breakdown": {
+                      "accessible": 7,
+                      "denied": 0
+                    },
+                    "finalResults": {
+                      "accessible": 7,
+                      "denied": 0
+                    },
+                    "elapsed": 1
+                  }
+                ]
+              }
+            },
+            "_received_at_ms": 17214
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "kb_evaluation",
+                "description": "Evaluating search results",
+                "status": "done",
+                "type": "EVALUATING_KB"
+              }
+            },
+            "_received_at_ms": 17214
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "orchestration": [
+                  {
+                    "type": "KNOWLEDGE_BASE_ANSWER",
+                    "elapsed": 0
+                  }
+                ]
+              }
+            },
+            "_received_at_ms": 17215
+          },
+          {
+            "type": "data-progress",
+            "id": "answer_generation-496da687-3894-45cf-8fd4-9a7784a72dd5",
+            "data": {
+              "progress": {
+                "id": "answer_generation-496da687-3894-45cf-8fd4-9a7784a72dd5",
+                "description": "Preparing response",
+                "status": "active",
+                "type": "ANSWERING"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 17215
+          },
+          {
+            "type": "start-step",
+            "_received_at_ms": 17215
+          },
+          {
+            "type": "text-start",
+            "id": "0",
+            "_received_at_ms": 18372
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "New",
+            "_received_at_ms": 18372
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Zealand's minister",
+            "_received_at_ms": 18389
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " of finance is **",
+            "_received_at_ms": 18438
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "Nic",
+            "_received_at_ms": 18485
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "ola Willis",
+            "_received_at_ms": 18536
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "**. ",
+            "_received_at_ms": 18583
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "[[1]](cite://1/1)",
+            "_received_at_ms": 18689
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "\n\nWillis,",
+            "_received_at_ms": 18727
+          },
+          {
+            "type": "data-citation",
+            "data": {
+              "citation": {
+                "1": {
+                  "chunkSequence": -1,
+                  "citationNumber": 1,
+                  "fileChapters": [],
+                  "fileSubtitles": [],
+                  "fileThumbnailSrc": "",
+                  "fileTimestamp": 0,
+                  "fileType": "pdf",
+                  "sourceUrl": "https://www.rnz.co.nz/national/programmes/anzacday/audio/2018984527/finance-minister-nicola-willis",
+                  "sourceUrlExpiresAt": 1781698850855,
+                  "sourceType": "web",
+                  "fileName": "Finance Minister Nicola Willis.pdf",
+                  "checksumSHA256URL": "i8ZJ1NprI1HG7Sm6L7rHUcYe__ayJbj0DGPyL-EFEko",
+                  "checksumSHA256": "i8ZJ1NprI1HG7Sm6L7rHUcYe//ayJbj0DGPyL+EFEko=",
+                  "filePath": "pdf/Finance Minister Nicola Willis.pdf",
+                  "sourceKnowledgeBaseId": "QETGXQCZ48",
+                  "fileAuthor": [
+                    "Stacey Morrison"
+                  ],
+                  "fileDate": "2026-02-10T23:58:47",
+                  "fileDescription": "Finance Minister Nicola Willis delivered an Anzac address at Pukeahu National War Memorial Park in Wellington on April 25, 2025. She was among those who gathered before sunrise for the commemorative event. The article features an interview with Willis conducted by Stacey Morrison following her address, capturing her reflections on Anzac Day and its significance.",
+                  "chunkHighlights": [
+                    {
+                      "pageIndex": 0,
+                      "height": 4.120991876870457,
+                      "width": 61.37122128174122,
+                      "left": 12.059250302297462,
+                      "top": 9.162248824283882,
+                      "text": "Finance Minister Nicola Willis"
+                    }
+                  ],
+                  "filePage": 1,
+                  "fileTags": [
+                    "Anzac Day",
+                    "Finance Minister",
+                    "Nicola Willis",
+                    "Wellington",
+                    "War Memorial"
+                  ],
+                  "fileTitle": "Finance Minister Nicola Willis Delivers Anzac Address at Pukeahu National War Memorial Park",
+                  "customMetadata": {
+                    "publisher": "Radio New Zealand",
+                    "published_date": "2025-04-25"
+                  },
+                  "publishedDate": null
+                }
+              }
+            },
+            "_received_at_ms": 18766
+          },
+          {
+            "type": "data-citationReference",
+            "data": {
+              "reference": {
+                "start": 0,
+                "end": 56,
+                "referenceNumber": 1,
+                "citationNumber": 1
+              }
+            },
+            "_received_at_ms": 18766
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " a",
+            "_received_at_ms": 18774
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " National",
+            "_received_at_ms": 19458
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Party MP, holds",
+            "_received_at_ms": 19459
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " the finance",
+            "_received_at_ms": 19459
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " portfolio under",
+            "_received_at_ms": 19459
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Prime",
+            "_received_at_ms": 19459
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Minister Christopher",
+            "_received_at_ms": 19459
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Luxon's",
+            "_received_at_ms": 19460
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " government.",
+            "_received_at_ms": 19460
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Luxon personally",
+            "_received_at_ms": 19460
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " asked",
+            "_received_at_ms": 19460
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " her to take",
+            "_received_at_ms": 19460
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " on the role.",
+            "_received_at_ms": 19461
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " ",
+            "_received_at_ms": 19461
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "[[2]](cite://2/1)",
+            "_received_at_ms": 19463
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " She delivered",
+            "_received_at_ms": 19502
+          },
+          {
+            "type": "data-citation",
+            "data": {
+              "citation": {
+                "2": {
+                  "chunkSequence": -1,
+                  "citationNumber": 2,
+                  "fileChapters": [],
+                  "fileSubtitles": [],
+                  "fileThumbnailSrc": "",
+                  "fileTimestamp": 0,
+                  "fileType": "pdf",
+                  "sourceUrl": "https://www.rnz.co.nz/news/national/539591/nicola-willis-hints-at-visa-changes-to-grow-economy",
+                  "sourceUrlExpiresAt": 1781698851609,
+                  "sourceType": "web",
+                  "fileName": "Nicola Willis hints at visa changes to grow economy.pdf",
+                  "checksumSHA256URL": "EMrgTfCVd0WxZx6073gG8aQCM4PvdHfFoxxbSRrjzq0",
+                  "checksumSHA256": "EMrgTfCVd0WxZx6073gG8aQCM4PvdHfFoxxbSRrjzq0=",
+                  "filePath": "pdf/Nicola Willis hints at visa changes to grow economy.pdf",
+                  "sourceKnowledgeBaseId": "QETGXQCZ48",
+                  "fileAuthor": [
+                    "RNZ (Radio New Zealand)"
+                  ],
+                  "fileDate": "2026-02-10T14:03:38",
+                  "fileDescription": "Finance Minister and newly appointed Minister for Economic Growth Nicola Willis outlines plans to boost tourism and economic growth through visa policy changes. Departing from Labour's high-value visitor strategy, Willis emphasizes attracting all tourists to increase spending in local businesses and create jobs. Key initiatives include reviewing tourism funding, streamlining visa processing, and leveraging the international visitor levy (increased from $35 to $100 in October). Willis aims to restore Chinese visitor numbers to pre-Covid levels and attract more North American tourists. She argues that increased tourism spending benefits regional infrastructure and small business owners, countering concerns about overtourism.",
+                  "chunkHighlights": [
+                    {
+                      "pageIndex": 1,
+                      "height": 34.56135100470286,
+                      "width": 76.24425634824667,
+                      "left": 11.877871825876664,
+                      "top": 9.033988884138521,
+                      "text": "jobs, it's good for growth and it's good for the wealth of individual New Zealand families.\" It comes as inflation is heading into more manageable territory, but GDP was still in the negatives when it was last updated in December. https://www.rnz.co.nz/national/programmes/morningreport/a udio/2018971735/finance-minister-nicola-willis-on-inflation When asked, Willis noted her new role had previously been held by Melissa Lee, under the title of \"economic development\". Lee was demoted from cabinet in April last year and sacked from her remaining ministerial roles last week during a reshuffle. Prime Minister Christopher Luxon had asked Willis personally to take on the responsibility of the portfolio, Willis said. She later told RNZ tourism services themselves would have the best idea of how to grow the industry. \"I've been encouraged by the fact that we've seen more North Americans coming to New Zealand, I want to see more people coming from those major markets.\" Sign up for Ngā Pitopito Kōrero, a daily newsletter curated by our editors and delivered straight to your inbox every weekday. Related"
+                    }
+                  ],
+                  "filePage": 2,
+                  "fileTags": [
+                    "economy"
+                  ],
+                  "fileTitle": "Nicola Willis Hints at Visa Changes to Grow Economy",
+                  "customMetadata": {
+                    "publisher": "Radio New Zealand",
+                    "published_date": "2025-01-22"
+                  },
+                  "publishedDate": null
+                }
+              }
+            },
+            "_received_at_ms": 19517
+          },
+          {
+            "type": "data-citationReference",
+            "data": {
+              "reference": {
+                "start": 56,
+                "end": 289,
+                "referenceNumber": 1,
+                "citationNumber": 2
+              }
+            },
+            "_received_at_ms": 19517
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " her first",
+            "_received_at_ms": 19551
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Budget as",
+            "_received_at_ms": 19604
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " minister in May",
+            "_received_at_ms": 19649
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " 2024",
+            "_received_at_ms": 19696
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ".",
+            "_received_at_ms": 19744
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " ",
+            "_received_at_ms": 19795
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "[[3]](cite://3/1)",
+            "_received_at_ms": 19847
+          },
+          {
+            "type": "data-citation",
+            "data": {
+              "citation": {
+                "3": {
+                  "chunkSequence": -1,
+                  "citationNumber": 3,
+                  "fileChapters": [],
+                  "fileSubtitles": [],
+                  "fileThumbnailSrc": "",
+                  "fileTimestamp": 0,
+                  "fileType": "pdf",
+                  "sourceUrl": "https://www.rnz.co.nz/national/programmes/checkpoint/audio/2018940670/nicola-willis-says-she-s-kept-pledge-with-budget",
+                  "sourceUrlExpiresAt": 1781698851986,
+                  "sourceType": "web",
+                  "fileName": "Nicola Willis says she's kept pledge with Budget.pdf",
+                  "checksumSHA256URL": "L_v71HsVMGHViWLmUBClkxK5oYHtH6eUSJuRd2rTTLE",
+                  "checksumSHA256": "L/v71HsVMGHViWLmUBClkxK5oYHtH6eUSJuRd2rTTLE=",
+                  "filePath": "pdf/Nicola Willis says she's kept pledge with Budget.pdf",
+                  "sourceKnowledgeBaseId": "QETGXQCZ48",
+                  "fileAuthor": [
+                    "Giles Dexter, Political Reporter"
+                  ],
+                  "fileDate": "2026-02-09T06:14:49",
+                  "fileDescription": "Finance Minister Nicola Willis has delivered her first Budget and claims to have fulfilled her pledge to New Zealanders. Political reporter Giles Dexter provides comprehensive coverage of the Budget announcement and the Minister's commitment to her promises, detailing how the government has maintained its fiscal commitments and policy objectives outlined to the public.",
+                  "chunkHighlights": [
+                    {
+                      "pageIndex": 0,
+                      "height": 9.550662676357419,
+                      "width": 76.546553808948,
+                      "left": 11.817412333736398,
+                      "top": 16.344805472424113,
+                      "text": "2024-05-30 17:23:28+12:00\nThe Finance Minister has delivered her first Budget - and says she has kept her pledge to New Zealanders. Our political reporter Giles Dexter has more."
+                    }
+                  ],
+                  "filePage": 1,
+                  "fileTags": [
+                    "politics"
+                  ],
+                  "fileTitle": "Nicola Willis Says She's Kept Pledge with Budget 2024",
+                  "customMetadata": {
+                    "publisher": "Radio New Zealand",
+                    "published_date": "2024-05-30"
+                  },
+                  "publishedDate": null
+                }
+              }
+            },
+            "_received_at_ms": 19892
+          },
+          {
+            "type": "data-citationReference",
+            "data": {
+              "reference": {
+                "start": 289,
+                "end": 596,
+                "referenceNumber": 1,
+                "citationNumber": 3
+              }
+            },
+            "_received_at_ms": 19893
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "\n\nWillis",
+            "_received_at_ms": 19893
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " has",
+            "_received_at_ms": 19942
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " been a",
+            "_received_at_ms": 19989
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " prominent",
+            "_received_at_ms": 20037
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " and",
+            "_received_at_ms": 20111
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " sometimes",
+            "_received_at_ms": 20135
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " controversial figure in the",
+            "_received_at_ms": 20180
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " role",
+            "_received_at_ms": 20227
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " —",
+            "_received_at_ms": 20276
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " former",
+            "_received_at_ms": 20324
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " finance",
+            "_received_at_ms": 20374
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " minister Sir",
+            "_received_at_ms": 20429
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Roger",
+            "_received_at_ms": 20471
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Douglas called",
+            "_received_at_ms": 20522
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " on",
+            "_received_at_ms": 20568
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " her to resign",
+            "_received_at_ms": 20618
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " in September",
+            "_received_at_ms": 20667
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " 2025",
+            "_received_at_ms": 20768
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ",",
+            "_received_at_ms": 20802
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " citing concerns about fiscal",
+            "_received_at_ms": 20815
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " def",
+            "_received_at_ms": 20865
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "icits and public",
+            "_received_at_ms": 20910
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " debt",
+            "_received_at_ms": 20959
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ",",
+            "_received_at_ms": 21007
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " though",
+            "_received_at_ms": 21058
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Willis",
+            "_received_at_ms": 21109
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " rejected",
+            "_received_at_ms": 21153
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " that",
+            "_received_at_ms": 21204
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " call",
+            "_received_at_ms": 21267
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " and",
+            "_received_at_ms": 21302
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " said",
+            "_received_at_ms": 21349
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Luxon retained",
+            "_received_at_ms": 21446
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " full",
+            "_received_at_ms": 21494
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " confidence",
+            "_received_at_ms": 21546
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " in her. ",
+            "_received_at_ms": 21594
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "[[4]](cite://4/1)",
+            "_received_at_ms": 21643
+          },
+          {
+            "type": "data-citation",
+            "data": {
+              "citation": {
+                "4": {
+                  "chunkSequence": -1,
+                  "citationNumber": 4,
+                  "fileChapters": [],
+                  "fileSubtitles": [],
+                  "fileThumbnailSrc": "",
+                  "fileTimestamp": 0,
+                  "fileType": "pdf",
+                  "sourceUrl": "https://www.rnz.co.nz/news/political/573459/former-finance-minister-sir-roger-douglas-calls-for-finance-minister-nicola-willis-to-resign",
+                  "sourceUrlExpiresAt": 1781698853788,
+                  "sourceType": "web",
+                  "fileName": "Former finance minister Sir Roger Douglas calls for Finance Minister Nicola Willis to resign.pdf",
+                  "checksumSHA256URL": "0L8D-R8kmZhHajQWiz5-oFHVijTjsR-1xWtvaJU3dB4",
+                  "checksumSHA256": "0L8D+R8kmZhHajQWiz5+oFHVijTjsR+1xWtvaJU3dB4=",
+                  "filePath": "pdf/Former finance minister Sir Roger Douglas calls for Finance Minister Nicola Willis to resign.pdf",
+                  "sourceKnowledgeBaseId": "QETGXQCZ48",
+                  "fileAuthor": [
+                    "Susan Edmunds - Money Correspondent"
+                  ],
+                  "fileDate": "2026-02-11T20:13:27",
+                  "fileDescription": "Former Finance Minister Sir Roger Douglas and University of Auckland macroeconomics chair Robert MacCulloch have called for Finance Minister Nicola Willis to resign following New Zealand's sharp GDP contraction of 0.9% in the June quarter. They argue Willis is mismanaging fiscal deficits and public debt, claiming her Treasury contradicts her surplus claims. Willis defends her position, attributing the downturn to global turmoil and US tariffs, and states she will not slash government spending immediately. She maintains the government is on track to return to surplus by 2028/29. Labour's deputy Carmel Sepuloni criticizes Willis's accountability, noting Australia's economy grew 0.6% over the same period.",
+                  "chunkHighlights": [
+                    {
+                      "pageIndex": 0,
+                      "height": 64.44591705857204,
+                      "width": 75.76058041112455,
+                      "left": 12.119709794437725,
+                      "top": 24.3396750748183,
+                      "text": "Nicola Willis rejects call by former finance minister to resign https://play\ners.brightcove.net/6093072280001/default_default/index.html?videoId= 6379719567112 Former Finance Minister Roger Douglas is calling for Finance Minister Nicola Willis to resign - but she says their solution is not needed. He and University of Auckland Matthew Abel chair of macroeconomics Robert MacCulloch said the contraction in GDP revealed by Stats NZ on Thursday was because Willis was \"sending New Zealand bankrupt by failing to get to grips with our ballooning fiscal deficits and public debt\". \"Her own Treasury contradicts her claim that NZ is on a path to surplus. It is not. Treasury's long term fiscal forecasts show out-of-control deficits due to pensions and health-care spending from an ageing population,\" they said in a statement. \"Willis is not up to the job and is not levelling with the New Zealand public.\" Willis said Prime Minister Christopher Luxon had confidence in her to keep growing the economy. She said she had spoken with Luxon about his confidence in her ability to hold the finance portfolio. MacCulloch said Willis kept saying the country was returning to surplus. \"The books are not improving. And this surplus she talked about today, that's a creative accounting trick. She changed the way the accounts were being measured... she keeps saying they're getting better, it's not true.\" The Stats NZ data showed the economy shrank more sharply than expected in the June quarter, down 0.9 percent. It is a longer and sharper downturn than that experienced in the global financial crisis. Willis blamed the slump on global turmoil and uncertainty driven by the United States' tariff roll-out. \"The economy had been growing strongly in the previous six months, but suddenly had the stuffing knocked out of it,\" Willis said. \"I feel for people and businesses who have been affected.\" Willis stressed that the data was \"backwards-looking\" and there were signs the economy was growing again as interest rates fell. Economists\nagreed that the outlook for the third quarter was better, but said given"
+                    },
+                    {
+                      "pageIndex": 1,
+                      "height": 34.47584437793928,
+                      "width": 76.3651753325272,
+                      "left": 11.877871825876664,
+                      "top": 9.119495510902095,
+                      "text": "the sharp contraction, activity was still lower than had previously been expected. MacCulloch said it was disingenuous to blame the global picture. \"She mentioned the tariffs hitting much harder here - that makes no sense at all. In fact, most countries overseas had far higher tariff uncertainty than New Zealand.\" Willis told RNZ she would not take up the pair's advice. \"Sir Roger and Professor MacCulloch want me to immediately slash government spending. I'm not going to do that. \"International evidence is that reducing deficits is best done over the course of several year. That is what the government is doing. We are on course to return the books to surplus in 2028/29.\" Labour's deputy Carmel Sepuloni said Australia's economy grew 0.6 percent over the same period. \"Where to next, you know? Is it the fault of the butcher, the baker, the candlestick maker, but not Nicola Willis? It's her responsibility - she's the minister for finance.\" Sign up for Ngā Pitopito Kōrero, a daily\nnewsletter curated by our editors and delivered straight to your\ninbox every weekday. Related"
+                    },
+                    {
+                      "pageIndex": 1,
+                      "height": 15.40786660966225,
+                      "width": 75.76058041112455,
+                      "left": 12.119709794437725,
+                      "top": 45.844591705857205,
+                      "text": "https://www.rnz.co.nz/news/business/573416/economy-contracts-sharpl y-as-gdp-falls-0-point-9-percent-in-june-quarter https://www.rnz.co.nz/ne ws/political/573437/nicola-willis-points-to-global-turmoil-as-economy-shr inks-sharply https://www.rnz.co.nz/news/political/572116/budget-docum ents-find-8-point-5-billion-gap-between-costs-and-savings https://www.r nz.co.nz/news/political/570396/finance-minister-nicola-willis-accuses-lab our-of-reckless-approach-to-spending"
+                    }
+                  ],
+                  "filePage": 1,
+                  "fileTags": [
+                    "politics"
+                  ],
+                  "fileTitle": "Former Finance Minister Roger Douglas Calls for Nicola Willis to Resign Over Economic Contraction",
+                  "customMetadata": {
+                    "publisher": "Radio New Zealand",
+                    "published_date": "2025-09-18"
+                  },
+                  "publishedDate": null
+                }
+              }
+            },
+            "_received_at_ms": 21697
+          },
+          {
+            "type": "data-citationReference",
+            "data": {
+              "reference": {
+                "start": 596,
+                "end": 1220,
+                "referenceNumber": 1,
+                "citationNumber": 4
+              }
+            },
+            "_received_at_ms": 21698
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "\n\nOn the opposition",
+            "_received_at_ms": 21787
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " benches, Labour",
+            "_received_at_ms": 21807
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "'s",
+            "_received_at_ms": 21853
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " finance",
+            "_received_at_ms": 21903
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " spokesperson is",
+            "_received_at_ms": 21963
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " **",
+            "_received_at_ms": 21998
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "Barbara",
+            "_received_at_ms": 22047
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Edm",
+            "_received_at_ms": 22094
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "onds**, who took",
+            "_received_at_ms": 22142
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " on",
+            "_received_at_ms": 22189
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " the role after",
+            "_received_at_ms": 22236
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " former",
+            "_received_at_ms": 22288
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " finance minister Grant",
+            "_received_at_ms": 22332
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Robertson",
+            "_received_at_ms": 22399
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " retired",
+            "_received_at_ms": 22435
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " from",
+            "_received_at_ms": 22479
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " politics",
+            "_received_at_ms": 22528
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ". ",
+            "_received_at_ms": 22573
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "[[5]](cite://5/1)",
+            "_received_at_ms": 22635
+          },
+          {
+            "type": "data-citation",
+            "data": {
+              "citation": {
+                "5": {
+                  "chunkSequence": -1,
+                  "citationNumber": 5,
+                  "fileChapters": [],
+                  "fileSubtitles": [],
+                  "fileThumbnailSrc": "",
+                  "fileTimestamp": 0,
+                  "fileType": "pdf",
+                  "sourceUrl": "https://www.rnz.co.nz/news/political/509662/labour-reshuffle-edmonds-moves-up-as-finance-spokesperson",
+                  "sourceUrlExpiresAt": 1781698854765,
+                  "sourceType": "web",
+                  "fileName": "Labour reshuffle: Edmonds moves up as Finance spokesperson.pdf",
+                  "checksumSHA256URL": "tcG9_QTdzkN9Io2gdwHCmrFHTtvvtjFRj1ghdg8nW4w",
+                  "checksumSHA256": "tcG9/QTdzkN9Io2gdwHCmrFHTtvvtjFRj1ghdg8nW4w=",
+                  "filePath": "pdf/Labour reshuffle: Edmonds moves up as Finance spokesperson.pdf",
+                  "sourceKnowledgeBaseId": "QETGXQCZ48",
+                  "fileAuthor": [
+                    "RNZ (Radio New Zealand)"
+                  ],
+                  "fileDate": "2026-02-05T04:38:40",
+                  "fileDescription": "Labour has announced Barbara Edmonds as the new Finance spokesperson, replacing Grant Robertson who is resigning from politics in March. Edmonds moves from 11th to 4th position in the party rankings. The reshuffle includes new roles for several MPs: Ginny Andersen adds Treaty of Waitangi Negotiations; Damien O'Connor adds Land Information; Tangi Utikere adds Racing; Shanan Halbert takes Auckland Issues and Rainbow Issues (a new role); Tracey McLellan takes Corrections and Associate Health; and Glen Bennett takes Economic Development and Associate Energy. Edmonds, a former tax lawyer with extensive ministerial experience across nine portfolios, becomes Labour's first female Finance spokesperson. Party leader Chris Hipkins praised her qualifications and interpersonal skills, while Edmonds committed to holding the government accountable on its campaign promises.",
+                  "chunkHighlights": [
+                    {
+                      "pageIndex": 0,
+                      "height": 70.85891406584011,
+                      "width": 76.00241837968561,
+                      "left": 12.119709794437725,
+                      "top": 19.16652415562206,
+                      "text": "https://players.brightcove.net/6093072280001/Ad1vOKi0j_default/index.\nhtml?videoId=6347223369112 Labour has announced Barbara Edmonds will take over as Finance spokesperson, with new roles for Ginny Andersen, Peeni Henare and a handful of incoming MPs. It comes after former Finance Minister Grant Robertson announced he would be resigning from politics next month. Along with taking on the finance role, Edmonds moves up from number 11 to fourth, based on a poster the party unveiled on Tuesday morning. Megan Woods moves from fourth, behind Robertson, to third. All other rankings remain the same, apart from the removal of MPs leaving Parliament and the those coming in to replace them - who were added to the end of the list. Ginny Andersen adds Treaty of Waitangi Negotiations to her other portfolios (Police, Prevention of Family and Sexual Violence, Social Investment, Associate Social Development). Damien O'Connor (Trade, Associate Foreign Affairs, Associate Transport) also adds Land Information to his portfolios, and Tangi Utikere (Chief Whip, Transport, Oceans and Fisheries and Associate Education) adds Racing. Barbara Edmonds (File photo) Shanan Halbert and Tracey McLellan, who re-entered Parliament after the resignations of Kelvin Davis and Rino Tirikatene, will also pick up new portfolios. Halbert takes over Auckland Issues and Rainbow Issues - a new role in the caucus. McLellan picks up Corrections, Associate Health. Glen Bennett, who will re-enter Parliament after Robertson's resignation, will take over responsibility for Economic Development, and Associate Energy. Labour leader Chris Hipkins said Barbara Edmonds would be a fantastic Finance spokesperson and he looked forward to working closely with her. \"Barb has a background as a specialist tax lawyer and is a formidable Parliamentarian with experience across nine portfolios as minister, and several more as an advisor in a ministerial office,\" he said in a statement. \"She's held the ministerial portfolios of Associate Finance, Revenue, Economic Development, Internal Affairs, Pacific Peoples, Associate Health, Associate Housing, Associate Immigration and Associate Cyclone Recovery. Barb is not only incredibly clever with a\nbroad knowledge-base, she also has the interpersonal skills to work with"
+                    },
+                    {
+                      "pageIndex": 1,
+                      "height": 34.47584437793928,
+                      "width": 76.3651753325272,
+                      "left": 11.817412333736398,
+                      "top": 9.119495510902095,
+                      "text": "people from every background across all sectors.\" Edmonds will be Labour's first female finance spokesperson, and takes over the role immediately - though Robertson remains at Parliament into March. He said she was talented and had \"an ability to look through the crap\". She said his advice to her had been to \"just do it your way\", and she intended to. She said what she was seeing from the government was disappointing as they would affect many people across the country, paying tribute to her opposite number in National, Nicola Willis. \"Nicola is a consummate politician, my job will be to hold her decisions and her words to account,\" Edmonds said. She said Willis' promises did not seem to add up during the election campaign, and she would be keeping a close eye on promised tax changes. Hipkins said the new Labour lineup would hold the government to account on its promises. \"It is clear the Government is scratching around for someone to blame as reality sets in that the promises they made during the campaign are not deliverable,\" he said. Related"
+                    },
+                    {
+                      "pageIndex": 1,
+                      "height": 8.952116289012402,
+                      "width": 76.00241837968561,
+                      "left": 11.877871825876664,
+                      "top": 45.88734501923899,
+                      "text": "https://www.rnz.co.nz/news/political/509661/former-labour-finance-minis ter-grant-robertson-to-retire-from-politics-in-march https://www.rnz.co.n z/news/political/509615/benefit-sanctions-government-building-a-legacy -of-cruelty-critics-say [LE"
+                    }
+                  ],
+                  "filePage": 1,
+                  "fileTags": [
+                    "Labour reshuffle",
+                    "Barbara Edmonds",
+                    "Finance spokesperson",
+                    "Grant Robertson",
+                    "New Zealand politics"
+                  ],
+                  "fileTitle": "Labour Reshuffle: Barbara Edmonds Moves Up as Finance Spokesperson",
+                  "customMetadata": {
+                    "publisher": "Radio New Zealand",
+                    "published_date": "2024-02-20"
+                  },
+                  "publishedDate": null
+                }
+              }
+            },
+            "_received_at_ms": 22673
+          },
+          {
+            "type": "data-citationReference",
+            "data": {
+              "reference": {
+                "start": 1220,
+                "end": 2034,
+                "referenceNumber": 1,
+                "citationNumber": 5
+              }
+            },
+            "_received_at_ms": 22674
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "\n\nWould you like to know more about",
+            "_received_at_ms": 22674
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Nicola Willis's key",
+            "_received_at_ms": 22719
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " economic",
+            "_received_at_ms": 22780
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " policies or priorities",
+            "_received_at_ms": 22830
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " as",
+            "_received_at_ms": 22876
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " minister of",
+            "_received_at_ms": 22929
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " finance?",
+            "_received_at_ms": 22977
+          },
+          {
+            "type": "text-end",
+            "id": "0",
+            "_received_at_ms": 23043
+          },
+          {
+            "type": "finish-step",
+            "_received_at_ms": 23043
+          }
+        ],
+        "retrieved_chunks": [
+          {
+            "citation_number": 1,
+            "text": "Finance Minister Nicola Willis",
+            "title": "Finance Minister Nicola Willis.pdf",
+            "url": "https://www.rnz.co.nz/national/programmes/anzacday/audio/2018984527/finance-minister-nicola-willis",
+            "source_type": "web",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=VZTRPFNDVK/chunks/5x47-X5MbU2BcFXFh8-HCmnbM63tk_Pwbbz7kCAMcEI/e67725a0-b519-4093-b789-2c807a74d392.txt"
+          },
+          {
+            "citation_number": 2,
+            "text": "jobs, it's good for growth and it's good for the wealth of individual New Zealand families.\" It comes as inflation is heading into more manageable territory, but GDP was still in the negatives when it was last updated in December. https://www.rnz.co.nz/national/programmes/morningreport/a udio/2018971735/finance-minister-nicola-willis-on-inflation When asked, Willis noted her new role had previously been held by Melissa Lee, under the title of \"economic development\". Lee was demoted from cabinet in April last year and sacked from her remaining ministerial roles last week during a reshuffle. Prime Minister Christopher Luxon had asked Willis personally to take on the responsibility of the portfolio, Willis said. She later told RNZ tourism services themselves would have the best idea of how to grow the industry. \"I've been encouraged by the fact that we've seen more North Americans coming to New Zealand, I want to see more people coming from those major markets.\" Sign up for Ngā Pitopito Kōrero, a daily newsletter curated by our editors and delivered straight to your inbox every weekday. Related",
+            "title": "Nicola Willis hints at visa changes to grow economy.pdf",
+            "url": "https://www.rnz.co.nz/news/national/539591/nicola-willis-hints-at-visa-changes-to-grow-economy",
+            "source_type": "web",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=VZTRPFNDVK/chunks/Dw1MjLOgyM0PN0ChTsFIotEKA-RxeSaqLAFZi803sW4/56d2878a-50f9-444a-af3a-a7a2ce3e511a.txt"
+          },
+          {
+            "citation_number": 3,
+            "text": "2024-05-30 17:23:28+12:00\nThe Finance Minister has delivered her first Budget - and says she has kept her pledge to New Zealanders. Our political reporter Giles Dexter has more.",
+            "title": "Nicola Willis says she's kept pledge with Budget.pdf",
+            "url": "https://www.rnz.co.nz/national/programmes/checkpoint/audio/2018940670/nicola-willis-says-she-s-kept-pledge-with-budget",
+            "source_type": "web",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=VZTRPFNDVK/chunks/dgnjUtwsbjsEGg42rqplVyHivN8jr3rVEMBt5l43WCQ/9a177559-ceda-402e-9ba9-b06b2b3e5e10.txt"
+          },
+          {
+            "citation_number": 4,
+            "text": "Nicola Willis rejects call by former finance minister to resign https://play\ners.brightcove.net/6093072280001/default_default/index.html?videoId= 6379719567112 Former Finance Minister Roger Douglas is calling for Finance Minister Nicola Willis to resign - but she says their solution is not needed. He and University of Auckland Matthew Abel chair of macroeconomics Robert MacCulloch said the contraction in GDP revealed by Stats NZ on Thursday was because Willis was \"sending New Zealand bankrupt by failing to get to grips with our ballooning fiscal deficits and public debt\". \"Her own Treasury contradicts her claim that NZ is on a path to surplus. It is not. Treasury's long term fiscal forecasts show out-of-control deficits due to pensions and health-care spending from an ageing population,\" they said in a statement. \"Willis is not up to the job and is not levelling with the New Zealand public.\" Willis said Prime Minister Christopher Luxon had confidence in her to keep growing the economy. She said she had spoken with Luxon about his confidence in her ability to hold the finance portfolio. MacCulloch said Willis kept saying the country was returning to surplus. \"The books are not improving. And this surplus she talked about today, that's a creative accounting trick. She changed the way the accounts were being measured... she keeps saying they're getting better, it's not true.\" The Stats NZ data showed the economy shrank more sharply than expected in the June quarter, down 0.9 percent. It is a longer and sharper downturn than that experienced in the global financial crisis. Willis blamed the slump on global turmoil and uncertainty driven by the United States' tariff roll-out. \"The economy had been growing strongly in the previous six months, but suddenly had the stuffing knocked out of it,\" Willis said. \"I feel for people and businesses who have been affected.\" Willis stressed that the data was \"backwards-looking\" and there were signs the economy was growing again as in…",
+            "title": "Former finance minister Sir Roger Douglas calls for Finance Minister Nicola Willis to resign.pdf",
+            "url": "https://www.rnz.co.nz/news/political/573459/former-finance-minister-sir-roger-douglas-calls-for-finance-minister-nicola-willis-to-resign",
+            "source_type": "web",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=VZTRPFNDVK/chunks/1-8uLwTQAkXiKWVT3NIocaebfQYrbcCuv7lLH3zP5tA/c551dc33-9d22-4f90-9326-1c352eb66eb8.txt"
+          },
+          {
+            "citation_number": 5,
+            "text": "https://players.brightcove.net/6093072280001/Ad1vOKi0j_default/index.\nhtml?videoId=6347223369112 Labour has announced Barbara Edmonds will take over as Finance spokesperson, with new roles for Ginny Andersen, Peeni Henare and a handful of incoming MPs. It comes after former Finance Minister Grant Robertson announced he would be resigning from politics next month. Along with taking on the finance role, Edmonds moves up from number 11 to fourth, based on a poster the party unveiled on Tuesday morning. Megan Woods moves from fourth, behind Robertson, to third. All other rankings remain the same, apart from the removal of MPs leaving Parliament and the those coming in to replace them - who were added to the end of the list. Ginny Andersen adds Treaty of Waitangi Negotiations to her other portfolios (Police, Prevention of Family and Sexual Violence, Social Investment, Associate Social Development). Damien O'Connor (Trade, Associate Foreign Affairs, Associate Transport) also adds Land Information to his portfolios, and Tangi Utikere (Chief Whip, Transport, Oceans and Fisheries and Associate Education) adds Racing. Barbara Edmonds (File photo) Shanan Halbert and Tracey McLellan, who re-entered Parliament after the resignations of Kelvin Davis and Rino Tirikatene, will also pick up new portfolios. Halbert takes over Auckland Issues and Rainbow Issues - a new role in the caucus. McLellan picks up Corrections, Associate Health. Glen Bennett, who will re-enter Parliament after Robertson's resignation, will take over responsibility for Economic Development, and Associate Energy. Labour leader Chris Hipkins said Barbara Edmonds would be a fantastic Finance spokesperson and he looked forward to working closely with her. \"Barb has a background as a specialist tax lawyer and is a formidable Parliamentarian with experience across nine portfolios as minister, and several more as an advisor in a ministerial office,\" he said in a statement. \"She's held the ministerial portfolios of As…",
+            "title": "Labour reshuffle: Edmonds moves up as Finance spokesperson.pdf",
+            "url": "https://www.rnz.co.nz/news/political/509662/labour-reshuffle-edmonds-moves-up-as-finance-spokesperson",
+            "source_type": "web",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=VZTRPFNDVK/chunks/8szUJXN7cc9wV2c8DnHRFm04ax3QGJB5bX5MeVCQH3c/1f8a0eb1-56f3-44ae-8e12-4a5ab9804740.txt"
+          },
+          {
+            "id": 6,
+            "text": "[Page 1] The Treasury, 1840 to 1935 New Zealand’s Treasury department was established in 1840 as part of Lieutenant Governor William Hobson’s administration, along with a customs department and a colonial secretary’s office. Its longevity is testimony to the indispensable nature of the work of keeping the government’s accounts. However, the Treasury has gone through many different phases since 1840. At times it has been primarily a bookkeeper; at other times, notably in the 1980s, it has wielded immense influence both within the government and in the wider society. Lieutenant Governor William Hobson embarked from Sydney on the Herald on 19 January 1840, charged with establishing a colony in New Zealand. How was he to pay for this enterprise, or indeed pay for himself? The British government lent £5,000, of which £3,000 was deposited to the credit of the Bank of Australasia in Sydney. The balance was gold coin. On 16 January George Cooper, just appointed colonial treasurer, informed Hobson that ‘the money is to be taken out of the Treasury chest at Six o Clock tomorrow morning and ... taken on board immediately after in strong boxes provided for it.’ 1 Through the 19th century the senior official was the colonial treasurer, who carried out much of the work. In 1856 the treasurer became a minister in a cabinet government, but remained directly responsible for overseeing the accounts, preparing an annual financial statement and a Budget for the forthcoming year, exactly as the treasurer of an incorporated society might do in the early 21st century.\n{}",
+            "title": "New Zealand Treasury: Comprehensive History and Evolution from 1840 to 2011",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=VZTRPFNDVK/chunks/5x47-X5MbU2BcFXFh8-HCmnbM63tk_Pwbbz7kCAMcEI/94766f40-e8d3-4379-9bdd-630a9361a417.txt"
+          },
+          {
+            "id": 7,
+            "text": "[Page 3] difficulties were very considerable, and, when honorable members desired to have everything at once, they forgot the amount of work to be accomplished. … He therefore hoped that honorable members would have a little mercy, and not ride the willing horse to death.’ 2 In 1866 the Treasury had a staff of nine in Wellington and 14 outside Wellington (a sub treasurer in each province, and six others). The abolition of the provincial system in 1876 put an end to the sub treasurers, but the staff in Wellington steadily expanded to about 40 in 1880. The tasks of government expanded in the 1890s but Treasury’s influence did not. Major departments such as lands, labour, railways and post and telegraph remained firmly in the hands of their ministers and heads of department. Surpluses underpinned the system from 1892 to 1908, revenue each year exceeded expenditure by a substantial margin. Treasury influence grows, 1914 35 The Treasury raised £43 million in New Zealand to finance the country’s war effort in 1914 18. This, coupled with the forceful personality of Treasury Secretary G. F. C. Campbell, enhanced the department’s role. Campbell’s successor, James Esson, was equally influential in the harsh fiscal climate which accompanied the post war recession of 1921 23. Treasury’s rise in status coincided with the rise of accountancy, which had been statutorily recognised as a profession in 1908.\n{}",
+            "title": "New Zealand Treasury: Comprehensive History and Evolution from 1840 to 2011",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=VZTRPFNDVK/chunks/5x47-X5MbU2BcFXFh8-HCmnbM63tk_Pwbbz7kCAMcEI/6e1e8f73-9ddf-4889-bf93-772b56076d62.txt"
+          },
+          {
+            "id": 8,
+            "text": "[Page 5] Instability, 1970s In the mid 1970s the New Zealand economy entered a period of instability. Two oil crises, rising inflation, balance of payments difficulties, erratic economic growth and the end of full employment all taxed the skills of policy makers. Some younger Reserve Bank officials were already advocating less regulation and the adoption of a more flexible interest rate policy. By the 1970s many other central banks were trying to influence spending by adjusting interest rates, and some were beginning to set targets for the money supply. Starting in 1976, Robert Muldoon, the prime minister, experimented with flexible interest rates, but in 1981 82, after the second oil shock, he intensified all controls over the financial sector and introduced a wage and price freeze to halt inflation. Although the Reserve Bank and Treasury warned against these policies, they had lost the confidence of Muldoon, who ignored unpalatable advice. The early 1980s was a period of central bank impotence in New Zealand. By contrast, the Federal Reserve in the United States was then at its most decisive and effective.\n{}",
+            "title": "New Zealand's Reserve Bank: History, Independence, and Monetary Policy Evolution",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=VZTRPFNDVK/chunks/Dw1MjLOgyM0PN0ChTsFIotEKA-RxeSaqLAFZi803sW4/d2302f98-03cc-4232-8721-7b2290beb763.txt"
+          },
+          {
+            "id": 9,
+            "text": "[Page 5] From 1840 New Zealand’s governors ruled autocratically (with absolute authority), advised by the Executive Council and Legislative Council and answerable to the authorities in London. In 1854, though the new Parliament was still only there to provide advice to the governor, politicians had already asked for self governance in domestic matters, rather than having to defer to Britain. That year, while awaiting the reply from London, the acting governor, Colonel Robert Wynyard, appointed politician James FitzGerald to his Executive Council. Thomas Forsaith succeeded FitzGerald in the role. However, neither the ‘FitzGerald ministry’ nor the ‘Forsaith ministry’ lasted long. Their leaders were not true premiers. New Zealand’s earliest genuine ministries, formed after Parliament became responsible (fully self governing for most internal policy) in 1856, were short lived. The first premier, Henry Sewell, was sworn in on 18 April 1856, but was gone by 20 May. His successor, William Fox, was replaced by Edward Stafford on 2 June. In all there were 24 ministries between 1856 and 1891. To many it is a blur of beards, names and dates, but power was transferred peacefully each time, showing that the fledgling democracy worked.\n{}",
+            "title": "Premiers and Prime Ministers of New Zealand: Leadership Evolution, Political Systems, and Historical Development",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=VZTRPFNDVK/chunks/e9iNy8nAXOKFOdmZWYYYW5VlMjbc6u1C9kjuTqedoTo/41f85506-30a2-4409-a45b-9f7b8273535a.txt"
+          },
+          {
+            "id": 10,
+            "text": "[Page 4] New Zealand's first minister of Pacific Island affairs (Richard Prebble) was appointed in 1984. In 1990 the Pacific Island Affairs Unit became the Ministry of Pacific Island Affairs (later the Ministry for Pacific Peoples), which was concerned with the social, economic and cultural development of Pasifika in New Zealand.\n{}",
+            "title": "New Zealand's Pacific Island Relations: Colonial History, Regional Diplomacy, and Contemporary Foreign Policy",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=VZTRPFNDVK/chunks/45uSkOl1xngSHe_XFT5KF051gcnJJ6KW0o_5iU8VvoQ/b436e977-e1fa-4f00-b7ed-e99cdaeb3322.txt"
+          },
+          {
+            "id": 11,
+            "text": "[Page 1] New Zealand's best and worst finance ministers ranked 2025 09 01 20:15:17+12:00 It's often a thankless task but the finance minister’s influence and power can sometimes rival that of the prime minister. Since the turn of the 20th century, New Zealand has had 29 ministers of finance and while each played a role in the country’s financial success or, in some cases, its shortcomings not all of their impacts have been the same. Wellington based freelance journalist and former RNZ reporter Eric Frykberg ranked our best and worst in consultation with historians, economists and insiders in a piece for the Listener, published last month. He joins Emile Donovan in our Wellington studio.\n{}",
+            "title": "New Zealand's Best and Worst Finance Ministers Ranked",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/dxylCmQDYCTF1MtNb43pF0kcUYgNNPbpKi4k5Sn_MDA/02b498cb-f79e-4ad3-a3ea-26ce0774d380.txt"
+          },
+          {
+            "id": 12,
+            "text": "[Page 2] jobs, it's good for growth and it's good for the wealth of individual New Zealand families.\" It comes as inflation is heading into more manageable territory, but GDP was still in the negatives when it was last updated in December. https://www.rnz.co.nz/national/programmes/morningreport/a udio/2018971735/finance minister nicola willis on inflation When asked, Willis noted her new role had previously been held by Melissa Lee, under the title of \"economic development\". Lee was demoted from cabinet in April last year and sacked from her remaining ministerial roles last week during a reshuffle. Prime Minister Christopher Luxon had asked Willis personally to take on the responsibility of the portfolio, Willis said. She later told RNZ tourism services themselves would have the best idea of how to grow the industry. \"I've been encouraged by the fact that we've seen more North Americans coming to New Zealand, I want to see more people coming from those major markets.\" Sign up for Ngā Pitopito Kōrero, a daily newsletter curated by our editors and delivered straight to your inbox every weekday. Related\n{}",
+            "title": "Nicola Willis Hints at Visa Changes to Grow Economy",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/EMrgTfCVd0WxZx6073gG8aQCM4PvdHfFoxxbSRrjzq0/3666f84d-2501-4091-95fc-2a86ebf6014a.txt"
+          },
+          {
+            "id": 13,
+            "text": "[Page 1] Hon. Grant Robertson joins Bryan Crump to share some of his favourite tunes. Grant was NZ's Minister of Finance from 2017 to 2023, he's a former deputy Prime Minister and was Labour MP for Wellington Central for 15 years. Earlier this month he became the Vice Chancellor at his alma mater, the University of Otago. Grant's a fan of rugby, New Zealand literature and music. He's also managed a few bands.\n{}",
+            "title": "Playing Favourites: Grant Robertson",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/BXl-uslrFmJ9J-ndOEeONgjXQT0szsbZ5jdh9SHAeqg/7f92b84d-69e0-46bc-a932-c102d00db592.txt"
+          },
+          {
+            "id": 14,
+            "text": "[Page 1] 2024 05 30 17:23:28+12:00 The Finance Minister has delivered her first Budget and says she has kept her pledge to New Zealanders. Our political reporter Giles Dexter has more.\n{}",
+            "title": "Nicola Willis Says She's Kept Pledge with Budget 2024",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/L_v71HsVMGHViWLmUBClkxK5oYHtH6eUSJuRd2rTTLE/130d7f4e-132a-4537-bf32-fec1bdd32463.txt"
+          },
+          {
+            "id": 15,
+            "text": "[Page 1] Finance Minister Nicola Willis\n{}",
+            "title": "Finance Minister Nicola Willis Delivers Anzac Address at Pukeahu National War Memorial Park",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/i8ZJ1NprI1HG7Sm6L7rHUcYe__ayJbj0DGPyL-EFEko/a3c70f83-960d-4107-98bd-8ea37325a1b4.txt"
+          },
+          {
+            "id": 16,
+            "text": "[Page 1] Greater transparency and a focus on low and stable inflation were the key messages from the Reserve Bank's new governor, Anna Breman, in a confident and comfortable first public appearance. She appeared before Parliament's Finance and Expenditure select committee, alongside the newly appointed chair Roger Finlay, for the annual review of the central bank's performance. On only her second day in the job she was not in a position to comment on what Labour's finance spokesperson Barbara Edmonds called a \"tumultuous year\", in which former governor Adrian Orr abruptly resigned, the stand in governor Christian Hawkesby resigned when he failed to get the top job, and the RBNZ board chair Neil Quigley resigned for handling of the aftermath of Orr's departure. Breman essentially reprised her comments when she was unveiled as the new governor in October. \"Key focus for the bank under my leadership will be to stay laser focused on our core mandate, and that is low and stable inflation, stable financial system, and a safe and efficient payments system, and importantly that means ensuring cash is available to all New Zealanders.\" \"As we head in 2026 transparency and accountability and clear communication will be our focus to maintain trust and credibility with New Zealanders.\" How the rate committee voted Breman said she would discuss with members of the rate setting Monetary Policy Committee the prospect of publicly revealing individual voting decisions. However, the Labour Party MPs suggested having various views of the seven members of the committee made public might be confusing, and leave members open to lobbying. \"It is imperative to have a good discussion, that people are allowed diversity of thought, it's not just they are allowed it but should be encouraged,\" Breman said, adding whatever approach was taken would be based on what was good and appropriate for New Zealand. RBNZ governor Anna Breman. She said that could also include in the economic forecasting ahe…",
+            "title": "Reserve Bank Governor Anna Breman's First Parliamentary Appearance",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/DsKbOg5HUUgFs-2Wy6DUxxt8v5rS7shSAf_K0mdegIU/54680275-080d-4b1f-a219-0e3eafe42f9f.txt"
+          },
+          {
+            "id": 17,
+            "text": "[Page 1] https://players.brightcove.net/6093072280001/Ad1vOKi0j_default/index. html?videoId=6347223369112 Labour has announced Barbara Edmonds will take over as Finance spokesperson, with new roles for Ginny Andersen, Peeni Henare and a handful of incoming MPs. It comes after former Finance Minister Grant Robertson announced he would be resigning from politics next month. Along with taking on the finance role, Edmonds moves up from number 11 to fourth, based on a poster the party unveiled on Tuesday morning. Megan Woods moves from fourth, behind Robertson, to third. All other rankings remain the same, apart from the removal of MPs leaving Parliament and the those coming in to replace them who were added to the end of the list. Ginny Andersen adds Treaty of Waitangi Negotiations to her other portfolios (Police, Prevention of Family and Sexual Violence, Social Investment, Associate Social Development). Damien O'Connor (Trade, Associate Foreign Affairs, Associate Transport) also adds Land Information to his portfolios, and Tangi Utikere (Chief Whip, Transport, Oceans and Fisheries and Associate Education) adds Racing. Barbara Edmonds (File photo) Shanan Halbert and Tracey McLellan, who re entered Parliament after the resignations of Kelvin Davis and Rino Tirikatene, will also pick up new portfolios. Halbert takes over Auckland Issues and Rainbow Issues a new role in the caucus. McLellan picks up Corrections, Associate Health. Glen Bennett, who will re enter Parliament after Robertson's resignation, will take over responsibility for Economic Development, and Associate Energy. Labour leader Chris Hipkins said Barbara Edmonds would be a fantastic Finance spokesperson and he looked forward to working closely with her. \"Barb has a background as a specialist tax lawyer and is a formidable Parliamentarian with experience across nine portfolios as minister, and several more as an advisor in a ministerial office,\" he said in a statement. \"She's held the ministerial portfolios…",
+            "title": "Labour Reshuffle: Barbara Edmonds Moves Up as Finance Spokesperson",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/tcG9_QTdzkN9Io2gdwHCmrFHTtvvtjFRj1ghdg8nW4w/da19f66a-64c3-4133-9fdf-d4cc3465165b.txt"
+          },
+          {
+            "id": 18,
+            "text": "[Page 1] Labour's finance spokesperson for six years, Grant Robertson leaves politics with a contested legacy. Robertson grew up in Dunedin and studied politics at Otago University, where he will take over the top job as Vice Chancellor after leaving Parliament in March. He graduated with a BA (Hons) in 1995, and was a staunch student politician having been president of the school's Students' Association and co president of the national body. For a time he worked for the Ministry of Foreign Affairs and Trade, including managing the New Zealand aid programme to Samoa and being posted to the United Nations in New York. He also worked as an advisor to then prime minister Helen Clark. Robertson first entered Parliament in 2008 as the MP for Wellington after the previous MP, Labour's Marian Hobbs, announced her retirement. He defeated National candidate Stephen Franks by 1904 votes, and he continued to hold the electorate increasing his vote margin each time until his decision not to contest it at last year's election. A rising star in Labour's ranks when the party was in opposition, Robertson was appointed spokesperson for state services by Phil Goff, later taking on tertiary education and being elevated to 20th when Chris Carter was demoted and put on leave for misuse of credit cards. It put Robertson higher in the rankings than any other MP from the 2008 intake. When David Shearer took over the party leadership in late 2011, Robertson became his deputy and remained in the role for about 21 months until September 2013. With Shearer having resigned as leader the previous month, Robertson put his name forward for the leadership but was defeated by David Cunliffe. He ran again for the leadership after Cunliffe's disastrous election defeat in 2014, but lost to Andrew Little. In government, Robertson has at times been the deputy prime minister and leader of the House and held a total 10 ministerial positions with sport being a particular area of interest. Grant Robertson d…",
+            "title": "Grant Robertson's Political History: A Contested Legacy",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/s3gF2BuKEvhPEuxjvs5KjCyr6x6zO_uzvZa0oL_8h-M/19ffad57-da23-48dd-bab4-f3a88a2ed674.txt"
+          },
+          {
+            "id": 19,
+            "text": "[Page 1] Nicola Willis rejects call by former finance minister to resign https://play ers.brightcove.net/6093072280001/default_default/index.html?videoId= 6379719567112 Former Finance Minister Roger Douglas is calling for Finance Minister Nicola Willis to resign but she says their solution is not needed. He and University of Auckland Matthew Abel chair of macroeconomics Robert MacCulloch said the contraction in GDP revealed by Stats NZ on Thursday was because Willis was \"sending New Zealand bankrupt by failing to get to grips with our ballooning fiscal deficits and public debt\". \"Her own Treasury contradicts her claim that NZ is on a path to surplus. It is not. Treasury's long term fiscal forecasts show out of control deficits due to pensions and health care spending from an ageing population,\" they said in a statement. \"Willis is not up to the job and is not levelling with the New Zealand public.\" Willis said Prime Minister Christopher Luxon had confidence in her to keep growing the economy. She said she had spoken with Luxon about his confidence in her ability to hold the finance portfolio. MacCulloch said Willis kept saying the country was returning to surplus. \"The books are not improving. And this surplus she talked about today, that's a creative accounting trick. She changed the way the accounts were being measured... she keeps saying they're getting better, it's not true.\" The Stats NZ data showed the economy shrank more sharply than expected in the June quarter, down 0.9 percent. It is a longer and sharper downturn than that experienced in the global financial crisis. Willis blamed the slump on global turmoil and uncertainty driven by the United States' tariff roll out. \"The economy had been growing strongly in the previous six months, but suddenly had the stuffing knocked out of it,\" Willis said. \"I feel for people and businesses who have been affected.\" Willis stressed that the data was \"backwards looking\" and there were signs the economy was growing agai…",
+            "title": "Former Finance Minister Roger Douglas Calls for Nicola Willis to Resign Over Economic Contraction",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/0L8D-R8kmZhHajQWiz5-oFHVijTjsR-1xWtvaJU3dB4/e885c2d6-2886-4091-ac2c-f396fb048093.txt"
+          },
+          {
+            "id": 20,
+            "text": "[Page 1] Reserve Bank governor appointment looms who are the candidates? 2025 09 24 05:47:21+12:00 The government is expected to name the new Reserve Bank governor on Wednesday. You can watch the announcement and read about it here. The government will announce a new Reserve Bank governor this afternoon. Bloomberg News has suggested it may be a woman from outside New Zealand, but no one is confirming. Interim governor Christian Hawkesby has acted in the top role at the central bank since the surprise resignation of Adrian Orr in March. Adrian Orr resigned as Reserve Bank governor in March. Finance Minister Nicola Willis' office will not comment until the announcement. Who could be in the running? Catherine Mann The American economist has strong experience in macro economics and visited New Zealand for the Reserve Bank conference in March, just days after Orr resigned. She is a member of the Monetary Policy Committee of the Bank of England and has been chief economist at the OECD the Organisation for Economic Co operation and Development. She was the global chief economist at Citibank from 2018 21 and served on the Council of Economic Advisers during the Bush administration, advising on the European Monetary Union, and the economies of Latin American and the former USSR. Mann made headlines in February, after being considered a \"hawk\" on the Bank of England opposing interest rate cuts, then voted for a 50 basis point cut. Sarah Breeden Breeden is a deputy governor of the Bank of England, which she joined in 1991. She serves on the monetary policy and financial policy committees, as well as the bank's court of directors. Breeden has specific responsibility for financial stability and international issues, among other things. She is also responsible for managing climate change risks facing the bank and is the executive sponsor for the banks' ethnic minorities network. Breeden has an MA in Economics from Cambridge University and an MSc in Finance from the London Busine…",
+            "title": "Reserve Bank Governor Appointment: Candidate Analysis",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/VziR5SffmYAc8XvPrA4Ukwqc-8zYkwOwN8qxHrV3kN8/c23b6c95-5569-4e82-a3ef-7e26bdb5dbf9.txt"
+          }
+        ],
+        "session_id": "c28526d1-7f3f-43d6-9e6c-e5ade216e321",
+        "message_id": "d1c6850b-e544-4b0b-b4bc-8638f08b5b60",
+        "stream_timing": {
+          "ttft_anchor": "chat_post",
+          "ttft_ms": 18372,
+          "ttft_event": "text-start",
+          "chat_total_ms": 23046
+        },
+        "workflow_timing": {
+          "total_ms": 23680,
+          "classification": {
+            "ms": 1223,
+            "category": "D",
+            "category_label": "Answerable queries"
+          },
+          "summarise": {
+            "ms": 0,
+            "skipped": true
+          },
+          "search": {
+            "ms": 1997,
+            "queries": [
+              "Search for Finance Minister role",
+              "Search for current Finance Minister",
+              "Search for Finance Minister 2024"
+            ]
+          },
+          "evaluate": {
+            "ms": 854
+          },
+          "generate": {
+            "ms": 17230
+          },
+          "overhead_ms": 2376,
+          "checkpoints_ms": {
+            "setup": 3029,
+            "classification_end": 4252,
+            "summarise_end": 4252,
+            "topic_generation_end": 5596,
+            "evaluation_end": 6450
+          },
+          "capture_version": 2,
+          "chat_total_ms": 23046,
+          "ttft_anchor": "chat_post",
+          "ttft_ms": 18372,
+          "ttft_event": "text-start"
+        }
+      },
+      "assessment": {
+        "summary_verdict": "likely_pass",
+        "tiers": [
+          {
+            "tier": 0,
+            "name": "Structural",
+            "status": "passed",
+            "verdict": "pass",
+            "commentary": "Structural check passed: live call returned a Tahi response (1905 characters). This is not a rubric pass/fail.",
+            "detail": {
+              "response_chars": 1905,
+              "mode": "live"
+            }
+          },
+          {
+            "tier": 1,
+            "name": "Rule-based",
+            "status": "passed",
+            "verdict": "pass",
+            "commentary": "Sources block check passed: response includes citation markers and a Sources or References section for human and machine reviewers.",
+            "detail": {
+              "checks": [
+                "sources_block_with_citations"
+              ],
+              "cite_markers_present": true,
+              "sources_section_present": true
+            }
+          },
+          {
+            "tier": 3,
+            "name": "LLM draft",
+            "status": "draft",
+            "verdict": "pass",
+            "commentary": "Pass: accurately identifies the current Minister of Finance with supporting citations and relevant context. Regression: prior machine verdict was draft; now pass.",
+            "detail": {
+              "source": "llm",
+              "model": "gpt-4o-mini",
+              "api_base": "https://api.openai.com/v1",
+              "run_date": "2026-06-19",
+              "judge": {
+                "test_id": "R05",
+                "verdict": "pass",
+                "confidence": 0.95,
+                "grounding": {
+                  "material_claims": 5,
+                  "claims_cited": 5,
+                  "uncited_substantive_claims": [],
+                  "citation_content_verified": "verified",
+                  "assessment": "grounded"
+                },
+                "currency": {
+                  "time_sensitive": true,
+                  "vintage_stated": true,
+                  "staleness_caveated": false,
+                  "notes": "Current office-holder stated with relevant context; no staleness caveat needed as information is recent."
+                },
+                "policy": {
+                  "meets_pass_criteria": true,
+                  "reasoning": "Response accurately names the current Minister of Finance with appropriate context and citations."
+                },
+                "rubric_concern": null,
+                "cultural_review_required": false,
+                "summary": "Pass: accurately identifies the current Minister of Finance with supporting citations and relevant context."
+              },
+              "prior_judge": {
+                "verdict": "draft",
+                "summary": "Draft commentary: automated draft review is limited for this case. Compare the Tahi response directly against the pass and fail criteria. No assessment API key: heuristic draft only.",
+                "run_at": "2026-06-17T12:07:29.028034+00:00",
+                "confidence": null
+              }
+            }
+          },
+          {
+            "tier": 2,
+            "name": "Human review",
+            "status": "not_applicable",
+            "verdict": "n/a",
+            "commentary": "Human review tier not required for this evaluation method.",
+            "detail": {}
+          }
+        ],
+        "comparison": {
+          "test_id": "R05",
+          "baseline_run_at": "2026-06-17T11:20:31.723133+00:00",
+          "current_run_at": "2026-06-17T11:20:31.723133+00:00",
+          "compatible": true,
+          "warnings": [],
+          "status": "improved",
+          "tier_changes": {
+            "0": {
+              "tier": 0,
+              "field": "tier0_verdict",
+              "baseline": "pass",
+              "current": "pass",
+              "change": "unchanged"
+            },
+            "1": {
+              "tier": 1,
+              "field": "tier1_verdict",
+              "baseline": "pass",
+              "current": "pass",
+              "change": "unchanged"
+            },
+            "2": {
+              "tier": 2,
+              "field": "tier2_verdict",
+              "baseline": "n/a",
+              "current": "n/a",
+              "change": "unchanged"
+            },
+            "3": {
+              "tier": 3,
+              "field": "tier3_verdict",
+              "baseline": "draft",
+              "current": "pass",
+              "change": "improved"
+            }
+          },
+          "summary_change": {
+            "tier": null,
+            "field": "summary_verdict",
+            "baseline": "likely_pass",
+            "current": "likely_pass",
+            "change": "unchanged"
+          },
+          "machine_review": {
+            "baseline_verdict": "draft",
+            "current_verdict": "pass",
+            "baseline_confidence": null,
+            "current_confidence": 0.95,
+            "change": "improved",
+            "summary_changed": true
+          },
+          "response": {
+            "baseline_chars": 1905,
+            "current_chars": 1905,
+            "char_delta": 0,
+            "baseline_source_count": 5,
+            "current_source_count": 5,
+            "source_delta": 0
+          }
+        }
+      },
+      "prior_workflow_timing": {
+        "total_ms": 23680,
+        "classification": {
+          "ms": 1223,
+          "category": "D",
+          "category_label": "Answerable queries"
+        },
+        "summarise": {
+          "ms": 0,
+          "skipped": true
+        },
+        "search": {
+          "ms": 1997,
+          "queries": [
+            "Search for Finance Minister role",
+            "Search for current Finance Minister",
+            "Search for Finance Minister 2024"
+          ]
+        },
+        "evaluate": {
+          "ms": 854
+        },
+        "generate": {
+          "ms": 17230
+        },
+        "overhead_ms": 2376,
+        "checkpoints_ms": {
+          "setup": 3029,
+          "classification_end": 4252,
+          "summarise_end": 4252,
+          "topic_generation_end": 5596,
+          "evaluation_end": 6450
+        },
+        "capture_version": 2,
+        "chat_total_ms": 23046,
+        "ttft_anchor": "chat_post",
+        "ttft_ms": 18372,
+        "ttft_event": "text-start"
+      }
+    }
+  ],
+  "eval_hub_run_id": "core-20260617-231629"
+}

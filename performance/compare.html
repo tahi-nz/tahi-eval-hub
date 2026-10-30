@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Performance suite compare</title>
+  <style>
+:root {
+  color-scheme: light;
+  --text: #1c2430;
+  --muted: #5f6b7a;
+  --border: #dde3ea;
+  --surface: #f4f7fb;
+  --surface-2: #eef2f7;
+  --accent: #0f4c5c;
+  --accent-soft: #e8f3f6;
+  --pass: #0d6b3f;
+  --pass-bg: #e8f6ee;
+  --pass-bg-overall: #b8dcc8;
+  --pass-border: #9fd4b8;
+  --pass-border-overall: #6aab84;
+  --fail: #b42318;
+  --fail-bg: #fdeeed;
+  --fail-border: #f2b8b5;
+  --warn: #8a5a00;
+  --warn-bg: #fff8e8;
+  --warn-border: #f0d48a;
+  --neutral-bg: #f0f3f7;
+  --neutral-border: #c8d2dc;
+  --prompt: #0f3d75;
+  --prompt-text: #0a2847;
+  --prompt-soft: #d4e4f5;
+  --prompt-border: #7aa3d4;
+  --shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 8px 24px rgba(16, 24, 40, 0.06);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: #295f4b;
+}
+.wrap {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+.wrap--wide {
+  max-width: 96rem;
+}
+.wrap--hub {
+  max-width: 90rem;
+}
+.case-layout-columns {
+  display: grid;
+  grid-template-columns: minmax(14rem, 21rem) minmax(0, 1fr);
+  gap: 1rem 1.25rem;
+  align-items: start;
+  margin-top: 1rem;
+  overflow: visible;
+}
+.case-layout-columns.is-details-open {
+  grid-template-columns: minmax(14rem, 21rem) minmax(0, 1fr) minmax(16rem, 24rem);
+}
+.case-context-column,
+.case-response-column,
+.case-details-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+  overflow: visible;
+}
+.case-details-column {
+  display: none;
+  position: sticky;
+  top: 1rem;
+  align-self: start;
+  max-height: calc(100vh - 2rem);
+  overflow: auto;
+}
+.case-layout-columns.is-details-open .case-details-column {
+  display: flex;
+}
+.case-details-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+.case-details-head h2 {
+  margin: 0;
+  font-size: 0.98rem;
+  color: var(--accent);
+}
+.case-details-column .case-details-head h2 {
+  color: #f4faf7;
+}
+.case-details-placeholder {
+  margin: 0;
+  padding: 1rem;
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  background: var(--surface);
+}
+.case-details-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.case-details-panel[hidden] {
+  display: none !important;
+}
+.case-details-placeholder[hidden] {
+  display: none !important;
+}
+.tier-nav-card {
+  border-radius: 12px;
+  padding: 0.85rem 0.95rem;
+  box-shadow: var(--shadow);
+  text-align: left;
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  border: 1px solid transparent;
+  border-left-width: 4px;
+}
+body:not([data-reviewer-admin="true"]) [data-hub-admin-only] {
+  display: none !important;
+}
+.tier-nav-card--pass {
+  background: var(--pass-bg);
+  border-color: var(--pass-border);
+  border-left-color: var(--pass);
+}
+.tier-nav-card--fail {
+  background: var(--fail-bg);
+  border-color: var(--fail-border);
+  border-left-color: var(--fail);
+}
+.tier-nav-card--warn {
+  background: var(--warn-bg);
+  border-color: var(--warn-border);
+  border-left-color: var(--warn);
+}
+.tier-nav-card--neutral {
+  background: var(--neutral-bg);
+  border-color: var(--neutral-border);
+  border-left-color: #8a96a3;
+}
+button.tier-nav-card {
+  cursor: pointer;
+}
+button.tier-nav-card:hover {
+  filter: brightness(0.98);
+}
+.tier-nav-card.is-active {
+  box-shadow: 0 0 0 2px var(--accent);
+}
+.tier-nav-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.45rem;
+}
+.tier-nav-card h3 {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--text);
+}
+.tier-nav-card-commentary {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+.tier-nav-card-hint {
+  margin: 0.45rem 0 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+.case-review-column,
+.case-response-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+}
+.case-response-column {
+  align-self: start;
+}
+.case-llm-slot {
+  flex: 0 0 auto;
+}
+.tahi-response-body {
+  min-width: 0;
+}
+@media (max-width: 900px) {
+  .case-layout-columns,
+  .case-layout-columns.is-details-open {
+    grid-template-columns: 1fr;
+  }
+  .case-details-column {
+    position: static;
+    max-height: none;
+  }
+}
+.results-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+  gap: 0.75rem;
+  margin: 0 0 1.25rem;
+}
+.workflow-timing-card {
+  margin: 0 0 1.25rem;
+  padding: 1rem 1.1rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+.case-details-panel .workflow-timing-card {
+  margin: 0;
+  padding: 1rem 1.05rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: none;
+  background: #fff;
+}
+.workflow-timing-nav-delta {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.workflow-timing-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  margin-bottom: 0.85rem;
+}
+.workflow-timing-head h2 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--accent);
+}
+.workflow-timing-total {
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+.workflow-timing-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+.workflow-timing-table th,
+.workflow-timing-table td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.45rem 0.35rem;
+  text-align: left;
+  vertical-align: top;
+}
+.workflow-timing-table tr:last-child th,
+.workflow-timing-table tr:last-child td {
+  border-bottom: none;
+}
+.workflow-timing-table th {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.workflow-timing-stage {
+  font-weight: 600;
+  color: var(--text);
+}
+.workflow-timing-detail {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+.workflow-timing-queries {
+  margin: 0.35rem 0 0;
+  padding-left: 1.1rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.workflow-timing-queries li {
+  margin: 0.1rem 0;
+}
+.workflow-timing-delta--slower {
+  color: var(--warn);
+  font-weight: 600;
+}
+.workflow-timing-delta--faster {
+  color: var(--pass);
+  font-weight: 600;
+}
+.workflow-timing-delta--neutral {
+  color: var(--muted);
+}
+.workflow-timing-footnote {
+  margin: 0.75rem 0 0;
+  font-size: 0.76rem;
+  color: var(--muted);
+}
+.results-card {
+  border-radius: 12px;
+  padding: 0.85rem 0.95rem;
+  box-shadow: var(--shadow);
+  min-height: 5.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  border: 1px solid transparent;
+  border-left-width: 4px;
+}
+.results-card-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.results-card-name {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.25;
+}
+.results-card-value {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.results-card-footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.results-card-value--pass { color: var(--pass); }
+.results-card-value--fail { color: var(--fail); }
+.results-card-value--warn { color: var(--warn); }
+.results-card-value--neutral { color: var(--text); }
+.results-card-meta {
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.results-card--pass {
+  background: var(--pass-bg);
+  border-color: var(--pass-border);
+  border-left-color: var(--pass);
+}
+.results-card--pass .results-card-meta { color: var(--pass); }
+.results-card--fail {
+  background: var(--fail-bg);
+  border-color: var(--fail-border);
+  border-left-color: var(--fail);
+}
+.results-card--fail .results-card-meta { color: var(--fail); }
+.results-card--warn {
+  background: var(--warn-bg);
+  border-color: var(--warn-border);
+  border-left-color: var(--warn);
+}
+.results-card--warn .results-card-meta { color: var(--warn); }
+.results-card--neutral {
+  background: var(--neutral-bg);
+  border-color: var(--neutral-border);
+  border-left-color: #8a96a3;
+}
+.results-card--overall {
+  grid-column: span 1;
+}
+.results-card--overall.results-card--pass {
+  background: var(--pass-bg-overall);
+  border-color: var(--pass-border-overall);
+  border-left-color: var(--pass);
+}
+.results-card--overall.results-card--pass .results-card-value {
+  color: #084a2d;
+}
+@media (min-width: 720px) {
+  .results-card--overall {
+    grid-column: span 1;
+  }
+}
+.confidence-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid #b8dce6;
+}
+.viewer-gate-hint {
+  margin: 0.65rem 0 0;
+  padding: 0.65rem 0.75rem;
+  border-radius: 8px;
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+body[data-machine-review-visible="true"] [data-case-details-panel="machine"] .viewer-gate-hint {
+  display: none;
+}
+.machine-review-hidden {
+  display: none !important;
+}
+.machine-review-placeholder-card,
+.results-card--locked,
+.tier-nav-card--locked {
+  background: #eef1f4;
+  border-style: dashed;
+  border-color: #b8c2cc;
+  color: var(--text);
+}
+.results-card--locked .results-card-label,
+.results-card--locked .results-card-name,
+.tier-nav-card--locked .tier-nav-card-commentary {
+  color: var(--muted);
+}
+.results-card--locked .results-card-value {
+  color: #5c6875;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+.tier-nav-card--locked {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.hub-cell-locked {
+  color: #5c6875;
+  background: #eef1f4;
+  border-color: #c5ced8;
+}
+[data-machine-review-placeholder][hidden],
+[data-machine-review-content][hidden],
+[data-machine-review-gated] > [hidden] {
+  display: none !important;
+}
+[data-machine-review-gated] {
+  min-width: 0;
+}
+.reviewer-auth-bar-wrap {
+  flex: 0 0 auto;
+  margin: 0;
+  align-self: flex-start;
+}
+.reviewer-auth-bar {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  gap: 0.65rem;
+  align-items: center;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff0e0;
+  box-shadow: var(--shadow);
+}
+body[data-reviewer-signed-in="true"] .reviewer-auth-bar:not(.reviewer-auth-bar--error) {
+  background: #e6f4ea;
+}
+body[data-reviewer-signed-in="false"] .reviewer-auth-bar:not(.reviewer-auth-bar--error) {
+  background: #fff0e0;
+}
+.reviewer-auth-bar--error {
+  border-color: var(--fail-border);
+  background: var(--fail-bg);
+  flex-wrap: wrap;
+}
+.reviewer-auth-bar--shake {
+  animation: reviewer-auth-shake 0.35s ease;
+}
+@keyframes reviewer-auth-shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-4px); }
+  40%, 80% { transform: translateX(4px); }
+}
+.reviewer-auth-status {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.reviewer-auth-status--signed-in {
+  color: var(--text);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.reviewer-auth-status--error {
+  flex: 1 1 100%;
+  order: -1;
+  color: var(--fail);
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid var(--fail-border);
+  box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.12);
+}
+.reviewer-auth-status--loading {
+  color: var(--accent);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.reviewer-auth-actions {
+  display: inline-flex;
+  align-items: center;
+}
+.reviewer-auth-bar--error .reviewer-auth-field input {
+  border-color: var(--fail-border);
+  background: #fff;
+}
+.reviewer-auth-form {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.5rem 0.75rem;
+  align-items: flex-end;
+  margin: 0;
+}
+.reviewer-auth-form[hidden] {
+  display: none !important;
+}
+.reviewer-auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.reviewer-auth-form--locked .reviewer-auth-field input {
+  background: var(--surface);
+  color: var(--muted);
+  border-color: #d5dbe3;
+  cursor: not-allowed;
+  opacity: 0.85;
+}
+.reviewer-auth-form--locked .reviewer-auth-field span {
+  opacity: 0.75;
+}
+.reviewer-auth-field input {
+  min-width: 9rem;
+  padding: 0.35rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.88rem;
+}
+.llm-assessment-toggle:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.llm-assessment-toggle {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  cursor: pointer;
+}
+.llm-assessment-toggle:hover,
+.llm-assessment-toggle[aria-expanded="true"] {
+  background: var(--accent-soft);
+}
+.llm-detail-panel {
+  margin: 0;
+  padding: 1rem 1.1rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: var(--shadow);
+  align-self: start;
+}
+.llm-detail-panel.is-collapsed {
+  display: none;
+}
+.llm-detail-panel.is-open {
+  display: block;
+}
+.case-details-panel .llm-detail-panel {
+  margin: 0;
+}
+.case-details-panel .human-verdict-panel {
+  margin: 0;
+  box-shadow: none;
+}
+.llm-detail-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.llm-detail-panel-head h2 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--accent);
+}
+.llm-detail-panel-hint {
+  margin: 0 0 0.75rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.llm-detail-panel dl {
+  margin: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+.llm-detail-panel dt {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  cursor: help;
+  text-decoration: underline dotted var(--neutral-border);
+  text-underline-offset: 0.15em;
+  width: fit-content;
+}
+.llm-detail-panel dd {
+  margin: 0.15rem 0 0;
+  font-size: 0.92rem;
+}
+.llm-assessment-pop {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  cursor: pointer;
+}
+.llm-assessment-pop:hover {
+  background: var(--accent-soft);
+}
+.llm-assessment-dialog {
+  width: min(42rem, calc(100vw - 2rem));
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0;
+  box-shadow: var(--shadow);
+}
+.llm-assessment-dialog::backdrop {
+  background: rgba(15, 23, 42, 0.45);
+}
+.llm-assessment-dialog-inner {
+  padding: 1.1rem 1.25rem 1.25rem;
+}
+.llm-assessment-dialog-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.llm-assessment-dialog-head h2 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--accent);
+}
+.llm-assessment-dialog-close {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  padding: 0.25rem 0.65rem;
+  cursor: pointer;
+  font-size: 0.82rem;
+}
+.meta-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 1rem;
+  font-size: 0.92rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.meta-table th, .meta-table td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.55rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+.meta-table tr:last-child th, .meta-table tr:last-child td { border-bottom: none; }
+.meta-table th {
+  width: 34%;
+  background: var(--surface);
+  font-weight: 600;
+}
+.rubric-block {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+}
+.rubric-block h3 {
+  margin: 0 0 0.35rem;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+.rubric-block p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+.rubric-block--prompt {
+  background: linear-gradient(180deg, #c5daf2 0%, var(--prompt-soft) 100%);
+  border: 1px solid var(--prompt-border);
+  border-left: 4px solid var(--prompt);
+  box-shadow: 0 2px 8px rgba(15, 61, 117, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  padding: 1rem 1.05rem;
+}
+.rubric-block--prompt h3 {
+  color: var(--prompt);
+  font-weight: 700;
+}
+.rubric-block--prompt p {
+  color: var(--prompt-text);
+}
+@media (max-width: 900px) {
+  .case-layout-columns {
+    grid-template-columns: 1fr;
+  }
+}
+.banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem 1.25rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  margin-bottom: 2rem;
+  padding: 1.25rem 1.35rem;
+}
+.banner__main {
+  flex: 1 1 12rem;
+  min-width: 0;
+}
+.banner__tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem 0.65rem;
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+.banner h1 {
+  margin: 0 0 0.35rem;
+  font-size: 1.65rem;
+  font-weight: 650;
+  color: var(--accent);
+  letter-spacing: -0.01em;
+}
+.banner p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.content h1 {
+  font-size: 1.35rem;
+  margin: 2rem 0 1rem;
+  color: var(--accent);
+}
+.content h2 {
+  font-size: 1.05rem;
+  margin: 1.75rem 0 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.content h3, .content h4 {
+  margin: 1.25rem 0 0.5rem;
+}
+.content p, .content li { font-size: 1rem; }
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0 1.25rem;
+  font-size: 0.95rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.content th, .content td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.65rem 0.85rem;
+  text-align: left;
+  vertical-align: top;
+}
+.content tr:last-child th, .content tr:last-child td { border-bottom: none; }
+.content th {
+  background: var(--surface);
+  width: 32%;
+  font-weight: 600;
+}
+.content hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
+}
+.content em { color: var(--muted); font-size: 0.92rem; }
+.content a { color: var(--accent); text-decoration: none; }
+.content a:hover { text-decoration: underline; }
+.hub-nav {
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+.hub-nav--banner {
+  margin: 0;
+  flex: 0 0 auto;
+}
+.banner__tools .hub-nav--banner {
+  margin: 0;
+}
+.banner__tools .hub-nav--banner a {
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.hub-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+.assessment {
+  margin: 1.75rem 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+.assessment > h2 {
+  margin: 0 0 0.85rem;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.verdict-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.15rem;
+  border-radius: 12px;
+  border: 1px solid var(--neutral-border);
+  background: var(--neutral-bg);
+  box-shadow: var(--shadow);
+  margin-bottom: 1rem;
+}
+.verdict-banner-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.verdict-banner-value {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.verdict-banner--pass {
+  background: var(--pass-bg);
+  border-color: var(--pass-border);
+  color: var(--pass);
+}
+.verdict-banner--fail {
+  background: var(--fail-bg);
+  border-color: var(--fail-border);
+  color: var(--fail);
+}
+.verdict-banner--warn {
+  background: var(--warn-bg);
+  border-color: var(--warn-border);
+  color: var(--warn);
+}
+.verdict-banner--neutral {
+  background: var(--neutral-bg);
+  border-color: var(--neutral-border);
+  color: var(--text);
+}
+.assessment-tiers {
+  display: grid;
+  gap: 0.85rem;
+}
+.assessment-tier {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.95rem 1.05rem;
+  box-shadow: var(--shadow);
+  margin: 0;
+}
+.assessment-tier-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.55rem;
+}
+.assessment-tier h3 {
+  margin: 0;
+  font-size: 0.98rem;
+  color: var(--text);
+}
+.assessment-tier-commentary {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.verdict-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+.verdict-badge--pass {
+  color: var(--pass);
+  background: var(--pass-bg);
+  border-color: var(--pass-border);
+}
+.verdict-badge--fail {
+  color: var(--fail);
+  background: var(--fail-bg);
+  border-color: var(--fail-border);
+}
+.verdict-badge--warn {
+  color: var(--warn);
+  background: var(--warn-bg);
+  border-color: var(--warn-border);
+}
+.verdict-badge--neutral {
+  color: var(--muted);
+  background: var(--neutral-bg);
+  border-color: var(--neutral-border);
+}
+.verdict-pass { color: var(--pass); font-weight: 700; }
+.verdict-fail { color: var(--fail); font-weight: 700; }
+.verdict-pending, .verdict-review, .verdict-draft, .verdict-inconclusive, .verdict-likely_pass {
+  color: var(--warn);
+  font-weight: 700;
+}
+.hub-table-wrap {
+  overflow-x: auto;
+  max-width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  background: #fff;
+}
+.hub-table {
+  margin: 0;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  width: 100%;
+  min-width: 52rem;
+  font-size: 0.82rem;
+  table-layout: fixed;
+}
+.hub-table th,
+.hub-table td {
+  padding: 0.3rem 0.35rem;
+  vertical-align: top;
+}
+.hub-table th {
+  font-size: 0.72rem;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow-wrap: normal;
+}
+.hub-table td {
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+.hub-table .verdict-badge,
+.hub-table .confidence-badge {
+  display: inline-block;
+  max-width: 100%;
+  padding: 0.1rem 0.32rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: nowrap;
+  line-height: 1.25;
+  text-align: center;
+}
+.hub-table .verdict-badge--pass {
+  color: #0d6b52;
+  background: #e6f6ef;
+  border-color: #9fd4c0;
+}
+.hub-table .verdict-badge--warn {
+  color: #9a6400;
+  background: #fff6df;
+  border-color: #ecd084;
+}
+.hub-table .verdict-badge--neutral {
+  color: #4b5563;
+  background: #eef1f4;
+  border-color: #c5ced8;
+}
+.hub-table .confidence-badge {
+  color: #0b5568;
+  background: #e7f4f8;
+  border: 1px solid #b8dce6;
+  border-radius: 999px;
+  padding: 0.1rem 0.32rem;
+}
+.hub-col-test { width: 6.25rem; }
+.hub-col-class { width: 5.4rem; }
+.hub-col-method { width: 3.4rem; }
+.hub-col-run { width: 3.6rem; }
+.hub-col-dur { width: 2.8rem; }
+.hub-col-verdict { width: 4.1rem; }
+.hub-col-conf { width: 3rem; }
+.hub-col-summary { width: 4.4rem; }
+.hub-table-test {
+  padding-right: 0.35rem;
+}
+.hub-test-id-link {
+  display: inline-block;
+  text-decoration: none;
+}
+.hub-test-id-link:hover .hub-test-id {
+  border-color: var(--accent);
+  background: #dceefb;
+}
+.hub-test-id {
+  display: inline-block;
+  font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #0e4a6f;
+  background: #e8f2f8;
+  border: 1px solid #b8d4e8;
+  border-radius: 6px;
+  padding: 0.1rem 0.42rem;
+  line-height: 1.25;
+}
+.hub-table-test a.hub-test-id-link,
+.hub-table-test > strong {
+  white-space: nowrap;
+}
+.hub-table-test > strong {
+  display: inline-block;
+}
+.hub-run-at {
+  display: inline-block;
+  font-size: 0.76rem;
+  line-height: 1.2;
+  color: var(--text);
+  white-space: nowrap;
+}
+.hub-run-meta {
+  margin-top: 0.15rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--muted);
+  line-height: 1.2;
+}
+.hub-compare-link {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  margin-top: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  line-height: 1.25;
+  max-width: 100%;
+}
+.hub-compare-link .hub-compare-badge {
+  align-self: flex-start;
+}
+.hub-compare-link:hover { text-decoration: underline; }
+.hub-compare-badge {
+  display: inline-block;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+.hub-compare-badge--improved {
+  background: var(--pass-bg); color: var(--pass); border: 1px solid var(--pass-border);
+}
+.hub-compare-badge--regressed {
+  background: var(--fail-bg); color: var(--fail); border: 1px solid var(--fail-border);
+}
+.hub-compare-badge--stable {
+  background: var(--neutral-bg); color: #5c6875; border: 1px solid var(--neutral-border);
+}
+.hub-compare-badge--mixed {
+  background: var(--warn-bg); color: var(--warn); border: 1px solid var(--warn-border);
+}
+.compare-nav-card { margin-top: 0.35rem; }
+.hub-version {
+  font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
+  font-size: 0.82rem;
+  color: var(--text);
+  background: var(--surface);
+  padding: 0.1rem 0.35rem;
+  border-radius: 6px;
+}
+.human-verdict-panel {
+  margin: 0.75rem 0 0;
+  padding: 1rem 1.05rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+.human-verdict-panel h2 {
+  margin: 0 0 0.5rem;
+  font-size: 0.98rem;
+  color: var(--text);
+}
+.human-verdict-hint {
+  margin: 0 0 0.85rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.human-verdict-status {
+  margin: 0 0 0.75rem;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+.human-verdict-status--saved {
+  color: var(--pass);
+  font-weight: 600;
+}
+.human-verdict-status--error {
+  color: var(--fail);
+  font-weight: 600;
+}
+.human-verdict-form {
+  display: grid;
+  gap: 0.75rem;
+}
+.human-verdict-field {
+  display: grid;
+  gap: 0.3rem;
+  font-size: 0.88rem;
+}
+.human-verdict-field span {
+  font-weight: 600;
+  color: var(--muted);
+}
+.human-verdict-field select,
+.human-verdict-field textarea {
+  width: 100%;
+  padding: 0.45rem 0.55rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font: inherit;
+  font-size: 0.92rem;
+}
+.hub-table th { background: var(--surface-2); }
+.hub-table tbody tr:hover { background: #fafcff; }
+.content .hub-table-wrap .hub-table {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+.tahi-response {
+  margin-top: 0;
+  padding: 1.15rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+.tahi-response > h2 {
+  margin-top: 0;
+}
+.sources-block {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border);
+}
+.sources-block h3 {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.sources-list {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+.sources-list li + li {
+  margin-top: 0.35rem;
+}
+.source-entry-title {
+  line-height: 1.45;
+}
+.source-entry-num {
+  font-weight: 700;
+  color: var(--text);
+}
+.source-entry-label {
+  color: var(--text);
+}
+.source-entry-url {
+  display: block;
+  margin-top: 0.2rem;
+  color: var(--accent);
+  font-size: 0.84rem;
+  word-break: break-all;
+  text-decoration: none;
+}
+.source-entry-url:hover {
+  text-decoration: underline;
+}
+.sources-list a {
+  color: var(--accent);
+  word-break: break-word;
+}
+.tahi-response a {
+  color: var(--accent);
+}
+.cite-ref {
+  font-size: 0.78em;
+  line-height: 0;
+  margin-left: 0.05em;
+}
+.cite-ref a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+.cite-ref a:hover {
+  text-decoration: underline;
+}
+.sources-warning {
+  margin: 0 0 1rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--warn-border);
+  border-radius: 10px;
+  background: var(--warn-bg);
+}
+.sources-warning-title {
+  margin: 0 0 0.35rem;
+  font-weight: 700;
+  color: var(--warn);
+  font-size: 0.9rem;
+}
+.sources-warning-detail {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+.llm-assessment-detail {
+  margin: 0.75rem 0 0;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+}
+.llm-assessment-detail summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--accent);
+}
+.llm-assessment-detail dl {
+  margin: 0.75rem 0 0;
+  display: grid;
+  gap: 0.5rem;
+}
+.llm-assessment-detail dt {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+.llm-assessment-detail dd {
+  margin: 0.15rem 0 0;
+  font-size: 0.92rem;
+}
+.footer {
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+@media print {
+  body { background: #fff; }
+  .wrap { max-width: none; padding: 0.5in; }
+  .banner, .assessment-tier, .tahi-response, .content table { box-shadow: none; }
+  .banner { break-after: avoid; }
+  .content h1, .content h2 { break-after: avoid; }
+}
+
+.perf-layout { display: flex; flex-direction: column; gap: 1.25rem; }
+.perf-summary-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: 0.75rem;
+}
+.perf-summary-card {
+  padding: 0.85rem 1rem; border: 1px solid var(--border); border-radius: 12px;
+  background: #fff; box-shadow: var(--shadow);
+}
+.perf-summary-card-label {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em;
+  text-transform: uppercase; color: var(--muted);
+}
+.perf-summary-card-value { margin-top: 0.25rem; font-size: 1.15rem; font-weight: 700; color: var(--accent); }
+.perf-table-wrap {
+  overflow-x: auto;
+  max-width: 100%;
+}
+.perf-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  table-layout: fixed;
+  min-width: 48rem;
+}
+.perf-table th, .perf-table td {
+  border-bottom: 1px solid var(--border); padding: 0.38rem 0.35rem;
+  text-align: left; vertical-align: top;
+}
+.perf-col-test { width: 3rem; white-space: nowrap; }
+.perf-col-class { width: 8.5rem; }
+.perf-col-profile { width: auto; }
+.perf-col-delta { width: 4rem; white-space: nowrap; }
+.perf-col-ms { width: 4.25rem; white-space: nowrap; }
+.perf-col-runs { width: 8rem; font-family: ui-monospace, monospace; font-size: 0.78rem; }
+.perf-table th {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em;
+  text-transform: uppercase; color: var(--muted);
+  white-space: nowrap;
+}
+.perf-profile { font-size: 0.82rem; color: var(--muted); line-height: 1.35; }
+.perf-runs { font-family: ui-monospace, monospace; font-size: 0.78rem; color: var(--muted); }
+.perf-delta--faster { color: var(--pass); font-weight: 600; }
+.perf-delta--slower { color: var(--fail); font-weight: 600; }
+.perf-delta--neutral { color: var(--muted); }
+.compare-section {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 1.25rem 1.35rem;
+}
+.compare-section h2 {
+  margin: 0 0 0.85rem;
+  font-size: 0.98rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.compare-section p,
+.compare-section label { color: var(--text); }
+.perf-history-list {
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.perf-history-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.65rem;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+}
+.perf-history-list a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+.perf-history-list a:hover { text-decoration: underline; }
+.perf-history-meta { color: var(--muted); font-size: 0.88rem; }
+
+.perf-compare-toolbar {
+  display: flex; flex-wrap: wrap; align-items: flex-end; gap: 0.75rem 1.25rem;
+  margin-bottom: 0.5rem;
+}
+.perf-compare-toolbar label {
+  display: flex; flex-direction: column; gap: 0.25rem;
+  font-size: 0.78rem; font-weight: 600; color: var(--muted);
+}
+.perf-compare-toolbar select {
+  min-width: 16rem; font: inherit; padding: 0.35rem 0.5rem;
+  border-radius: 8px; border: 1px solid var(--border); background: #fff;
+}
+.perf-compare-toolbar button {
+  font: inherit; font-weight: 600; padding: 0.45rem 0.9rem;
+  border-radius: 8px; border: 1px solid var(--accent); background: var(--accent);
+  color: #fff; cursor: pointer;
+}
+.perf-compare-toolbar button:hover { filter: brightness(1.05); }
+.perf-compare-note { font-size: 0.88rem; color: var(--muted); margin: 0 0 0.75rem; }
+</style>
+</head>
+<body>
+  <div class="wrap wrap--wide">
+    <header class="banner">
+      <h1>Performance suite compare</h1>
+      <p>Run-over-run TTFT and total latency comparison</p>
+    </header>
+    <main class="content perf-layout">
+      <p class="hub-nav"><a href="index.html">← Back to performance suite</a></p>
+      <section class="compare-section">
+        <h2>Select suites</h2>
+        <p class="perf-compare-note">Negative Δ means faster than the prior suite; positive Δ means slower.</p>
+        <form class="perf-compare-toolbar" method="get" action="compare.html" id="perf-compare-form">
+          <label>Current suite
+            <select name="current"><option value="perf-20261030-012345">30 Oct 14:23 — perf-20261030-012345 (11 tests)</option><option value="perf-20260619-060458">19 Jun 18:04 — perf-20260619-060458 (11 tests)</option><option value="perf-20260617-203941">18 Jun 08:39 — perf-20260617-203941 (11 tests)</option><option value="perf-20260617-194826">18 Jun 07:48 — perf-20260617-194826 (11 tests)</option></select>
+          </label>
+          <label>Prior suite
+            <select name="prior"><option value="perf-20261030-012345">30 Oct 14:23 — perf-20261030-012345 (11 tests)</option><option value="perf-20260619-060458">19 Jun 18:04 — perf-20260619-060458 (11 tests)</option><option value="perf-20260617-203941">18 Jun 08:39 — perf-20260617-203941 (11 tests)</option><option value="perf-20260617-194826">18 Jun 07:48 — perf-20260617-194826 (11 tests)</option></select>
+          </label>
+          <button type="submit">Compare</button>
+        </form>
+      </section>
+      <div id="perf-compare-results">
+      <div class="perf-summary-grid" id="perf-compare-summary">
+        <div class="perf-summary-card">
+          <div class="perf-summary-card-label">Suite median TTFT</div>
+          <div class="perf-summary-card-value">16.7s</div>
+          <div class="perf-runs">was 24.0s</div>
+          <div class="perf-runs perf-delta--faster">-7,309ms</div>
+        </div>
+        <div class="perf-summary-card">
+          <div class="perf-summary-card-label">Suite median total</div>
+          <div class="perf-summary-card-value">33.4s</div>
+          <div class="perf-runs">was 48.5s</div>
+          <div class="perf-runs perf-delta--faster">-15,160ms</div>
+        </div>
+        <div class="perf-summary-card">
+          <div class="perf-summary-card-label">Compared suites</div>
+          <div class="perf-summary-card-value" style="font-size:0.95rem">perf-20261030-012345</div>
+          <div class="perf-runs">vs perf-20260619-060458</div>
+        </div>
+      </div>
+      <section class="compare-section" id="perf-compare-table-section">
+        <h2>Per-test comparison</h2>
+        <div class="perf-table-wrap">
+        <table class="perf-table">
+          <colgroup>
+            <col class="perf-col-test"><col class="perf-col-class"><col class="perf-col-profile">
+            <col class="perf-col-ms"><col class="perf-col-ms"><col class="perf-col-delta">
+            <col class="perf-col-ms"><col class="perf-col-ms"><col class="perf-col-delta">
+          </colgroup>
+          <thead>
+            <tr>
+              <th class="perf-col-test">Test</th><th class="perf-col-class">Class</th><th class="perf-col-profile">Expected profile</th>
+              <th class="perf-col-ms">Current TTFT</th><th class="perf-col-ms">Prior TTFT</th><th class="perf-col-delta">Δ TTFT</th>
+              <th class="perf-col-ms">Current total</th><th class="perf-col-ms">Prior total</th><th class="perf-col-delta">Δ total</th>
+            </tr>
+          </thead>
+          <tbody id="perf-compare-rows"><tr><td class="perf-col-test"><strong>P01</strong></td><td class="perf-col-class">Fast-path / simple fact</td><td class="perf-profile">Lowest TTFT. Baseline floor and the fast-path candidate.</td><td class="perf-col-ms">3.9s</td><td class="perf-col-ms">18.5s</td><td class="perf-col-delta perf-delta--faster">-14,641ms</td><td class="perf-col-ms">4.6s</td><td class="perf-col-ms">28.4s</td><td class="perf-col-delta perf-delta--faster">-23,770ms</td></tr>
+<tr><td class="perf-col-test"><strong>P02</strong></td><td class="perf-col-class">Fast-path / simple fact</td><td class="perf-profile">Lowest TTFT, ≈ P01.</td><td class="perf-col-ms">13.5s</td><td class="perf-col-ms">20.1s</td><td class="perf-col-delta perf-delta--faster">-6,645ms</td><td class="perf-col-ms">15.3s</td><td class="perf-col-ms">30.6s</td><td class="perf-col-delta perf-delta--faster">-15,290ms</td></tr>
+<tr><td class="perf-col-test"><strong>P03</strong></td><td class="perf-col-class">Multi-KB fan-out</td><td class="perf-profile">Higher than baseline. Gap vs P01 ≈ the fan-out + multi-KB eval cost.</td><td class="perf-col-ms">27.5s</td><td class="perf-col-ms">24.0s</td><td class="perf-col-delta perf-delta--slower">+3,562ms</td><td class="perf-col-ms">47.9s</td><td class="perf-col-ms">48.5s</td><td class="perf-col-delta perf-delta--faster">-610ms</td></tr>
+<tr><td class="perf-col-test"><strong>P04</strong></td><td class="perf-col-class">Multi-KB fan-out</td><td class="perf-profile">Moderate–high TTFT.</td><td class="perf-col-ms">16.7s</td><td class="perf-col-ms">27.3s</td><td class="perf-col-delta perf-delta--faster">-10,635ms</td><td class="perf-col-ms">37.1s</td><td class="perf-col-ms">51.9s</td><td class="perf-col-delta perf-delta--faster">-14,840ms</td></tr>
+<tr><td class="perf-col-test"><strong>P05</strong></td><td class="perf-col-class">Reasoning-heavy</td><td class="perf-profile">Highest pre-answer TTFT. Heavy topic-gen + eval; synthesis starts late.</td><td class="perf-col-ms">34.4s</td><td class="perf-col-ms">30.9s</td><td class="perf-col-delta perf-delta--slower">+3,561ms</td><td class="perf-col-ms">56.9s</td><td class="perf-col-ms">1m 14s</td><td class="perf-col-delta perf-delta--faster">-16,580ms</td></tr>
+<tr><td class="perf-col-test"><strong>P06</strong></td><td class="perf-col-class">Reasoning-heavy</td><td class="perf-profile">High TTFT.</td><td class="perf-col-ms">29.0s</td><td class="perf-col-ms">28.5s</td><td class="perf-col-delta perf-delta--slower">+529ms</td><td class="perf-col-ms">49.8s</td><td class="perf-col-ms">1m 5s</td><td class="perf-col-delta perf-delta--faster">-15,160ms</td></tr>
+<tr><td class="perf-col-test"><strong>P07</strong></td><td class="perf-col-class">Recency / temporal</td><td class="perf-profile">Moderate TTFT. Watch for extra latency from recency handling.</td><td class="perf-col-ms">17.0s</td><td class="perf-col-ms">22.7s</td><td class="perf-col-delta perf-delta--faster">-5,668ms</td><td class="perf-col-ms">33.4s</td><td class="perf-col-ms">43.8s</td><td class="perf-col-delta perf-delta--faster">-10,440ms</td></tr>
+<tr><td class="perf-col-test"><strong>P08</strong></td><td class="perf-col-class">Te reo Māori</td><td class="perf-profile">≈ baseline if the multilingual path is efficient; materially higher flags te-reo overhead.</td><td class="perf-col-ms">16.1s</td><td class="perf-col-ms">24.5s</td><td class="perf-col-delta perf-delta--faster">-8,467ms</td><td class="perf-col-ms">26.8s</td><td class="perf-col-ms">1m 0s</td><td class="perf-col-delta perf-delta--faster">-33,590ms</td></tr>
+<tr><td class="perf-col-test"><strong>P09</strong></td><td class="perf-col-class">Out-of-scope short-circuit</td><td class="perf-profile">Very low TTFT if the classifier short-circuits cleanly. If high, the classifier itself is the bottleneck.</td><td class="perf-col-ms">4.7s</td><td class="perf-col-ms">6.8s</td><td class="perf-col-delta perf-delta--faster">-2,120ms</td><td class="perf-col-ms">5.5s</td><td class="perf-col-ms">8.3s</td><td class="perf-col-delta perf-delta--faster">-2,770ms</td></tr>
+<tr><td class="perf-col-test"><strong>P10</strong></td><td class="perf-col-class">Long-answer control</td><td class="perf-profile">TTFT ≈ baseline; TOTAL high.</td><td class="perf-col-ms">26.6s</td><td class="perf-col-ms">30.2s</td><td class="perf-col-delta perf-delta--faster">-3,646ms</td><td class="perf-col-ms">56.0s</td><td class="perf-col-ms">1m 22s</td><td class="perf-col-delta perf-delta--faster">-25,650ms</td></tr>
+<tr><td class="perf-col-test"><strong>P11</strong></td><td class="perf-col-class">Tool-assisted (conditional)</td><td class="perf-profile">Variable — may ask a clarifying question or decline if no live tool is wired.</td><td class="perf-col-ms">3.8s</td><td class="perf-col-ms">5.2s</td><td class="perf-col-delta perf-delta--faster">-1,367ms</td><td class="perf-col-ms">4.7s</td><td class="perf-col-ms">6.3s</td><td class="perf-col-delta perf-delta--faster">-1,610ms</td></tr></tbody>
+        </table>
+        </div>
+      </section></div>
+    </main>
+  </div>
+  <script id="perf-suite-catalog" type="application/json">{"perf-20260617-194826": {"meta": {"suite_id": "perf-20260617-194826", "run_at": "2026-06-17T19:48:26.041753+00:00", "tahi_env": "PRD", "caitlyn_agent_alias_id": "TSTALIASID", "rubric_version": "Tahi_Test_Suite-2", "source_json": "runs/perf-20260617-194826.json", "test_count": 11, "suite_median_ttft_ms": 22801, "suite_median_total_ms": 49210, "failed_count": 0, "page": "performance/index.html"}, "summary": {"by_test": {"P01": {"test_id": "P01", "performance_class": "Fast-path / simple fact", "sub_class": "Single KB, single fact", "expected_ttft_profile": "Lowest TTFT. Baseline floor and the fast-path candidate.", "what_it_isolates": "Pipeline floor: one clean fact, query is its own search term. Minimal topic generation, single/few-KB retrieval, trivial evaluation, short answer.", "median_ttft_ms": 17853, "median_total_ms": 29700, "ttft_runs_ms": [17853, 18571, 17329], "total_runs_ms": [29700, 30390, 27780], "repeats": [{"repeat_index": 1, "ttft_ms": 17853, "total_ms": 29700, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 18571, "total_ms": 30390, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 17329, "total_ms": 27780, "ok": true, "error": null}], "failed_repeats": 0}, "P02": {"test_id": "P02", "performance_class": "Fast-path / simple fact", "sub_class": "Single fact, historical", "expected_ttft_profile": "Lowest TTFT, ≈ P01.", "what_it_isolates": "Confirms the floor isn't a one-off — another self-contained fact (Te Ara / NZDB).", "median_ttft_ms": 18806, "median_total_ms": 28720, "ttft_runs_ms": [18806, 19336, 17514], "total_runs_ms": [29570, 28720, 27400], "repeats": [{"repeat_index": 1, "ttft_ms": 18806, "total_ms": 29570, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 19336, "total_ms": 28720, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 17514, "total_ms": 27400, "ok": true, "error": null}], "failed_repeats": 0}, "P03": {"test_id": "P03", "performance_class": "Multi-KB fan-out", "sub_class": "Notable person across corpora", "expected_ttft_profile": "Higher than baseline. Gap vs P01 ≈ the fan-out + multi-KB eval cost.", "what_it_isolates": "Query that legitimately spans NZDB, Te Ara, RNZ (and NZGeo) — retrieval fan-out and per-KB evaluation. Where one KB left on LLM-as-Judge would gate the whole response.", "median_ttft_ms": 22801, "median_total_ms": 49210, "ttft_runs_ms": [22801, 22597, 25002], "total_runs_ms": [49210, 46570, 52940], "repeats": [{"repeat_index": 1, "ttft_ms": 22801, "total_ms": 49210, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 22597, "total_ms": 46570, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 25002, "total_ms": 52940, "ok": true, "error": null}], "failed_repeats": 0}, "P04": {"test_id": "P04", "performance_class": "Multi-KB fan-out", "sub_class": "Broad topic, many sources", "expected_ttft_profile": "Moderate–high TTFT.", "what_it_isolates": "Broad topic → multiple search queries across many KBs; stresses topic-generation breadth and multi-KB evaluation together.", "median_ttft_ms": 28961, "median_total_ms": 57150, "ttft_runs_ms": [26951, 28961, 35160], "total_runs_ms": [48350, 57150, 62100], "repeats": [{"repeat_index": 1, "ttft_ms": 26951, "total_ms": 48350, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 28961, "total_ms": 57150, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 35160, "total_ms": 62100, "ok": true, "error": null}], "failed_repeats": 0}, "P05": {"test_id": "P05", "performance_class": "Reasoning-heavy", "sub_class": "Temporal / comparative synthesis", "expected_ttft_profile": "Highest pre-answer TTFT. Heavy topic-gen + eval; synthesis starts late.", "what_it_isolates": "Multiple search queries, wide retrieval across time, genuine synthesis across many chunks. The case where a stronger answer model might pay off.", "median_ttft_ms": 29522, "median_total_ms": 69860, "ttft_runs_ms": [29384, 29522, 39087], "total_runs_ms": [64340, 69860, 84420], "repeats": [{"repeat_index": 1, "ttft_ms": 29384, "total_ms": 64340, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 29522, "total_ms": 69860, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 39087, "total_ms": 84420, "ok": true, "error": null}], "failed_repeats": 0}, "P06": {"test_id": "P06", "performance_class": "Reasoning-heavy", "sub_class": "Multi-entity comparison", "expected_ttft_profile": "High TTFT.", "what_it_isolates": "Multi-entity comparative reasoning; cross-source synthesis (NZGeo, RNZ, Te Ara).", "median_ttft_ms": 29460, "median_total_ms": 66030, "ttft_runs_ms": [30925, 29067, 29460], "total_runs_ms": [70070, 66030, 62210], "repeats": [{"repeat_index": 1, "ttft_ms": 30925, "total_ms": 70070, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 29067, "total_ms": 66030, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 29460, "total_ms": 62210, "ok": true, "error": null}], "failed_repeats": 0}, "P07": {"test_id": "P07", "performance_class": "Recency / temporal", "sub_class": "Date-relative retrieval", "expected_ttft_profile": "Moderate TTFT. Watch for extra latency from recency handling.", "what_it_isolates": "Recency-weighted retrieval, runtime date injection, recency evaluation logic; RNZ-heavy.", "median_ttft_ms": 21954, "median_total_ms": 40000, "ttft_runs_ms": [19039, 21954, 24048], "total_runs_ms": [37550, 40000, 45980], "repeats": [{"repeat_index": 1, "ttft_ms": 19039, "total_ms": 37550, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 21954, "total_ms": 40000, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 24048, "total_ms": 45980, "ok": true, "error": null}], "failed_repeats": 0}, "P08": {"test_id": "P08", "performance_class": "Te reo Māori", "sub_class": "Non-English input", "expected_ttft_profile": "≈ baseline if the multilingual path is efficient; materially higher flags te-reo overhead.", "what_it_isolates": "Bilingual classification, te reo handling, and the multilingual reranker (Cohere 3.5) on non-English input.", "median_ttft_ms": 24770, "median_total_ms": 58440, "ttft_runs_ms": [25196, 24770, 21675], "total_runs_ms": [58030, 65130, 58440], "repeats": [{"repeat_index": 1, "ttft_ms": 25196, "total_ms": 58030, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 24770, "total_ms": 65130, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 21675, "total_ms": 58440, "ok": true, "error": null}], "failed_repeats": 0}, "P09": {"test_id": "P09", "performance_class": "Out-of-scope short-circuit", "sub_class": "Classifier isolation", "expected_ttft_profile": "Very low TTFT if the classifier short-circuits cleanly. If high, the classifier itself is the bottleneck.", "what_it_isolates": "Classifier-only path — should be classed beyond-scope and short-circuit WITHOUT retrieval / eval / full synthesis. Isolates classification latency from the retrieval pipeline.", "median_ttft_ms": 5294, "median_total_ms": 7410, "ttft_runs_ms": [6003, 5294, 5257], "total_runs_ms": [7450, 7410, 6690], "repeats": [{"repeat_index": 1, "ttft_ms": 6003, "total_ms": 7450, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 5294, "total_ms": 7410, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 5257, "total_ms": 6690, "ok": true, "error": null}], "failed_repeats": 0}, "P10": {"test_id": "P10", "performance_class": "Long-answer control", "sub_class": "TTFT vs total separation", "expected_ttft_profile": "TTFT ≈ baseline; TOTAL high.", "what_it_isolates": "Methodological control — long ANSWER, so total is high, but TTFT should match a simple query (same pipeline up to first token).", "median_ttft_ms": 27455, "median_total_ms": 73970, "ttft_runs_ms": [26841, 32699, 27455], "total_runs_ms": [73750, 82930, 73970], "repeats": [{"repeat_index": 1, "ttft_ms": 26841, "total_ms": 73750, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 32699, "total_ms": 82930, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 27455, "total_ms": 73970, "ok": true, "error": null}], "failed_repeats": 0}, "P11": {"test_id": "P11", "performance_class": "Tool-assisted (conditional)", "sub_class": "Live-tool / gather-info path", "expected_ttft_profile": "Variable — may ask a clarifying question or decline if no live tool is wired.", "what_it_isolates": "Tool-assisted classification and any gather-info workflow / live API path.", "median_ttft_ms": 5462, "median_total_ms": 6840, "ttft_runs_ms": [5462, 5752, 5382], "total_runs_ms": [6840, 7300, 6450], "repeats": [{"repeat_index": 1, "ttft_ms": 5462, "total_ms": 6840, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 5752, "total_ms": 7300, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 5382, "total_ms": 6450, "ok": true, "error": null}], "failed_repeats": 0}}, "suite_median_ttft_ms": 22801, "suite_median_total_ms": 49210, "test_count": 11}}, "perf-20260617-203941": {"meta": {"suite_id": "perf-20260617-203941", "run_at": "2026-06-17T20:39:41.399976+00:00", "tahi_env": "PRD", "caitlyn_agent_alias_id": "TSTALIASID", "rubric_version": "Tahi_Test_Suite-2", "source_json": "runs/perf-20260617-203941.json", "test_count": 11, "suite_median_ttft_ms": 23982, "suite_median_total_ms": 50590, "failed_count": 0, "page": "performance/index.html"}, "summary": {"by_test": {"P01": {"test_id": "P01", "performance_class": "Fast-path / simple fact", "sub_class": "Single KB, single fact", "expected_ttft_profile": "Lowest TTFT. Baseline floor and the fast-path candidate.", "what_it_isolates": "Pipeline floor: one clean fact, query is its own search term. Minimal topic generation, single/few-KB retrieval, trivial evaluation, short answer.", "median_ttft_ms": 18463, "median_total_ms": 29510, "ttft_runs_ms": [18656, 18463, 16631], "total_runs_ms": [29510, 29610, 29330], "repeats": [{"repeat_index": 1, "ttft_ms": 18656, "total_ms": 29510, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 18463, "total_ms": 29610, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 16631, "total_ms": 29330, "ok": true, "error": null}], "failed_repeats": 0}, "P02": {"test_id": "P02", "performance_class": "Fast-path / simple fact", "sub_class": "Single fact, historical", "expected_ttft_profile": "Lowest TTFT, ≈ P01.", "what_it_isolates": "Confirms the floor isn't a one-off — another self-contained fact (Te Ara / NZDB).", "median_ttft_ms": 21712, "median_total_ms": 33360, "ttft_runs_ms": [17839, 23263, 21712], "total_runs_ms": [27870, 34550, 33360], "repeats": [{"repeat_index": 1, "ttft_ms": 17839, "total_ms": 27870, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 23263, "total_ms": 34550, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 21712, "total_ms": 33360, "ok": true, "error": null}], "failed_repeats": 0}, "P03": {"test_id": "P03", "performance_class": "Multi-KB fan-out", "sub_class": "Notable person across corpora", "expected_ttft_profile": "Higher than baseline. Gap vs P01 ≈ the fan-out + multi-KB eval cost.", "what_it_isolates": "Query that legitimately spans NZDB, Te Ara, RNZ (and NZGeo) — retrieval fan-out and per-KB evaluation. Where one KB left on LLM-as-Judge would gate the whole response.", "median_ttft_ms": 24991, "median_total_ms": 50590, "ttft_runs_ms": [26108, 24991, 23638], "total_runs_ms": [56850, 50590, 49730], "repeats": [{"repeat_index": 1, "ttft_ms": 26108, "total_ms": 56850, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 24991, "total_ms": 50590, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 23638, "total_ms": 49730, "ok": true, "error": null}], "failed_repeats": 0}, "P04": {"test_id": "P04", "performance_class": "Multi-KB fan-out", "sub_class": "Broad topic, many sources", "expected_ttft_profile": "Moderate–high TTFT.", "what_it_isolates": "Broad topic → multiple search queries across many KBs; stresses topic-generation breadth and multi-KB evaluation together.", "median_ttft_ms": 26945, "median_total_ms": 52450, "ttft_runs_ms": [25969, 26945, 27232], "total_runs_ms": [49480, 55390, 52450], "repeats": [{"repeat_index": 1, "ttft_ms": 25969, "total_ms": 49480, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 26945, "total_ms": 55390, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 27232, "total_ms": 52450, "ok": true, "error": null}], "failed_repeats": 0}, "P05": {"test_id": "P05", "performance_class": "Reasoning-heavy", "sub_class": "Temporal / comparative synthesis", "expected_ttft_profile": "Highest pre-answer TTFT. Heavy topic-gen + eval; synthesis starts late.", "what_it_isolates": "Multiple search queries, wide retrieval across time, genuine synthesis across many chunks. The case where a stronger answer model might pay off.", "median_ttft_ms": 30132, "median_total_ms": 72130, "ttft_runs_ms": [31524, 27923, 30132], "total_runs_ms": [73660, 66380, 72130], "repeats": [{"repeat_index": 1, "ttft_ms": 31524, "total_ms": 73660, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 27923, "total_ms": 66380, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 30132, "total_ms": 72130, "ok": true, "error": null}], "failed_repeats": 0}, "P06": {"test_id": "P06", "performance_class": "Reasoning-heavy", "sub_class": "Multi-entity comparison", "expected_ttft_profile": "High TTFT.", "what_it_isolates": "Multi-entity comparative reasoning; cross-source synthesis (NZGeo, RNZ, Te Ara).", "median_ttft_ms": 30798, "median_total_ms": 62880, "ttft_runs_ms": [27923, 32046, 30798], "total_runs_ms": [62880, 63790, 62190], "repeats": [{"repeat_index": 1, "ttft_ms": 27923, "total_ms": 62880, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 32046, "total_ms": 63790, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 30798, "total_ms": 62190, "ok": true, "error": null}], "failed_repeats": 0}, "P07": {"test_id": "P07", "performance_class": "Recency / temporal", "sub_class": "Date-relative retrieval", "expected_ttft_profile": "Moderate TTFT. Watch for extra latency from recency handling.", "what_it_isolates": "Recency-weighted retrieval, runtime date injection, recency evaluation logic; RNZ-heavy.", "median_ttft_ms": 23300, "median_total_ms": 45700, "ttft_runs_ms": [23300, 23326, 21820], "total_runs_ms": [45700, 45640, 46390], "repeats": [{"repeat_index": 1, "ttft_ms": 23300, "total_ms": 45700, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 23326, "total_ms": 45640, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 21820, "total_ms": 46390, "ok": true, "error": null}], "failed_repeats": 0}, "P08": {"test_id": "P08", "performance_class": "Te reo Māori", "sub_class": "Non-English input", "expected_ttft_profile": "≈ baseline if the multilingual path is efficient; materially higher flags te-reo overhead.", "what_it_isolates": "Bilingual classification, te reo handling, and the multilingual reranker (Cohere 3.5) on non-English input.", "median_ttft_ms": 23982, "median_total_ms": 57420, "ttft_runs_ms": [23982, 24337, 23519], "total_runs_ms": [55710, 57420, 60830], "repeats": [{"repeat_index": 1, "ttft_ms": 23982, "total_ms": 55710, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 24337, "total_ms": 57420, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 23519, "total_ms": 60830, "ok": true, "error": null}], "failed_repeats": 0}, "P09": {"test_id": "P09", "performance_class": "Out-of-scope short-circuit", "sub_class": "Classifier isolation", "expected_ttft_profile": "Very low TTFT if the classifier short-circuits cleanly. If high, the classifier itself is the bottleneck.", "what_it_isolates": "Classifier-only path — should be classed beyond-scope and short-circuit WITHOUT retrieval / eval / full synthesis. Isolates classification latency from the retrieval pipeline.", "median_ttft_ms": 7084, "median_total_ms": 8250, "ttft_runs_ms": [7084, 7196, 4980], "total_runs_ms": [8250, 8830, 6030], "repeats": [{"repeat_index": 1, "ttft_ms": 7084, "total_ms": 8250, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 7196, "total_ms": 8830, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 4980, "total_ms": 6030, "ok": true, "error": null}], "failed_repeats": 0}, "P10": {"test_id": "P10", "performance_class": "Long-answer control", "sub_class": "TTFT vs total separation", "expected_ttft_profile": "TTFT ≈ baseline; TOTAL high.", "what_it_isolates": "Methodological control — long ANSWER, so total is high, but TTFT should match a simple query (same pipeline up to first token).", "median_ttft_ms": 28589, "median_total_ms": 77890, "ttft_runs_ms": [28589, 41050, 26303], "total_runs_ms": [77890, 89540, 73590], "repeats": [{"repeat_index": 1, "ttft_ms": 28589, "total_ms": 77890, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 41050, "total_ms": 89540, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 26303, "total_ms": 73590, "ok": true, "error": null}], "failed_repeats": 0}, "P11": {"test_id": "P11", "performance_class": "Tool-assisted (conditional)", "sub_class": "Live-tool / gather-info path", "expected_ttft_profile": "Variable — may ask a clarifying question or decline if no live tool is wired.", "what_it_isolates": "Tool-assisted classification and any gather-info workflow / live API path.", "median_ttft_ms": 4798, "median_total_ms": 6480, "ttft_runs_ms": [4478, 4798, 5966], "total_runs_ms": [6480, 6210, 6900], "repeats": [{"repeat_index": 1, "ttft_ms": 4478, "total_ms": 6480, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 4798, "total_ms": 6210, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 5966, "total_ms": 6900, "ok": true, "error": null}], "failed_repeats": 0}}, "suite_median_ttft_ms": 23982, "suite_median_total_ms": 50590, "test_count": 11}}, "perf-20260619-060458": {"meta": {"suite_id": "perf-20260619-060458", "run_at": "2026-06-19T06:04:58.858819+00:00", "tahi_env": "PRD", "caitlyn_agent_alias_id": "TSTALIASID", "rubric_version": "Tahi_Test_Suite-2", "source_json": "runs/perf-20260619-060458.json", "test_count": 11, "suite_median_ttft_ms": 23974, "suite_median_total_ms": 48530, "failed_count": 0, "page": "performance/index.html"}, "summary": {"by_test": {"P01": {"test_id": "P01", "performance_class": "Fast-path / simple fact", "sub_class": "Single KB, single fact", "expected_ttft_profile": "Lowest TTFT. Baseline floor and the fast-path candidate.", "what_it_isolates": "Pipeline floor: one clean fact, query is its own search term. Minimal topic generation, single/few-KB retrieval, trivial evaluation, short answer.", "median_ttft_ms": 18546, "median_total_ms": 28380, "ttft_runs_ms": [18706, 18546, 18100], "total_runs_ms": [31390, 28380, 28100], "repeats": [{"repeat_index": 1, "ttft_ms": 18706, "total_ms": 31390, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 18546, "total_ms": 28380, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 18100, "total_ms": 28100, "ok": true, "error": null}], "failed_repeats": 0}, "P02": {"test_id": "P02", "performance_class": "Fast-path / simple fact", "sub_class": "Single fact, historical", "expected_ttft_profile": "Lowest TTFT, ≈ P01.", "what_it_isolates": "Confirms the floor isn't a one-off — another self-contained fact (Te Ara / NZDB).", "median_ttft_ms": 20137, "median_total_ms": 30580, "ttft_runs_ms": [20094, 20137, 20824], "total_runs_ms": [30890, 30580, 30530], "repeats": [{"repeat_index": 1, "ttft_ms": 20094, "total_ms": 30890, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 20137, "total_ms": 30580, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 20824, "total_ms": 30530, "ok": true, "error": null}], "failed_repeats": 0}, "P03": {"test_id": "P03", "performance_class": "Multi-KB fan-out", "sub_class": "Notable person across corpora", "expected_ttft_profile": "Higher than baseline. Gap vs P01 ≈ the fan-out + multi-KB eval cost.", "what_it_isolates": "Query that legitimately spans NZDB, Te Ara, RNZ (and NZGeo) — retrieval fan-out and per-KB evaluation. Where one KB left on LLM-as-Judge would gate the whole response.", "median_ttft_ms": 23974, "median_total_ms": 48530, "ttft_runs_ms": [21783, 23974, 24379], "total_runs_ms": [47000, 53720, 48530], "repeats": [{"repeat_index": 1, "ttft_ms": 21783, "total_ms": 47000, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 23974, "total_ms": 53720, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 24379, "total_ms": 48530, "ok": true, "error": null}], "failed_repeats": 0}, "P04": {"test_id": "P04", "performance_class": "Multi-KB fan-out", "sub_class": "Broad topic, many sources", "expected_ttft_profile": "Moderate–high TTFT.", "what_it_isolates": "Broad topic → multiple search queries across many KBs; stresses topic-generation breadth and multi-KB evaluation together.", "median_ttft_ms": 27300, "median_total_ms": 51940, "ttft_runs_ms": [25530, 27300, 27864], "total_runs_ms": [51750, 51940, 57460], "repeats": [{"repeat_index": 1, "ttft_ms": 25530, "total_ms": 51750, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 27300, "total_ms": 51940, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 27864, "total_ms": 57460, "ok": true, "error": null}], "failed_repeats": 0}, "P05": {"test_id": "P05", "performance_class": "Reasoning-heavy", "sub_class": "Temporal / comparative synthesis", "expected_ttft_profile": "Highest pre-answer TTFT. Heavy topic-gen + eval; synthesis starts late.", "what_it_isolates": "Multiple search queries, wide retrieval across time, genuine synthesis across many chunks. The case where a stronger answer model might pay off.", "median_ttft_ms": 30875, "median_total_ms": 73500, "ttft_runs_ms": [30946, 30875, 30600], "total_runs_ms": [80790, 73500, 68530], "repeats": [{"repeat_index": 1, "ttft_ms": 30946, "total_ms": 80790, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 30875, "total_ms": 73500, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 30600, "total_ms": 68530, "ok": true, "error": null}], "failed_repeats": 0}, "P06": {"test_id": "P06", "performance_class": "Reasoning-heavy", "sub_class": "Multi-entity comparison", "expected_ttft_profile": "High TTFT.", "what_it_isolates": "Multi-entity comparative reasoning; cross-source synthesis (NZGeo, RNZ, Te Ara).", "median_ttft_ms": 28484, "median_total_ms": 64930, "ttft_runs_ms": [27272, 28484, 32702], "total_runs_ms": [62610, 64930, 67150], "repeats": [{"repeat_index": 1, "ttft_ms": 27272, "total_ms": 62610, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 28484, "total_ms": 64930, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 32702, "total_ms": 67150, "ok": true, "error": null}], "failed_repeats": 0}, "P07": {"test_id": "P07", "performance_class": "Recency / temporal", "sub_class": "Date-relative retrieval", "expected_ttft_profile": "Moderate TTFT. Watch for extra latency from recency handling.", "what_it_isolates": "Recency-weighted retrieval, runtime date injection, recency evaluation logic; RNZ-heavy.", "median_ttft_ms": 22692, "median_total_ms": 43810, "ttft_runs_ms": [19008, 23878, 22692], "total_runs_ms": [38740, 48100, 43810], "repeats": [{"repeat_index": 1, "ttft_ms": 19008, "total_ms": 38740, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 23878, "total_ms": 48100, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 22692, "total_ms": 43810, "ok": true, "error": null}], "failed_repeats": 0}, "P08": {"test_id": "P08", "performance_class": "Te reo Māori", "sub_class": "Non-English input", "expected_ttft_profile": "≈ baseline if the multilingual path is efficient; materially higher flags te-reo overhead.", "what_it_isolates": "Bilingual classification, te reo handling, and the multilingual reranker (Cohere 3.5) on non-English input.", "median_ttft_ms": 24530, "median_total_ms": 60400, "ttft_runs_ms": [24530, 23666, 26929], "total_runs_ms": [53590, 60400, 63290], "repeats": [{"repeat_index": 1, "ttft_ms": 24530, "total_ms": 53590, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 23666, "total_ms": 60400, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 26929, "total_ms": 63290, "ok": true, "error": null}], "failed_repeats": 0}, "P09": {"test_id": "P09", "performance_class": "Out-of-scope short-circuit", "sub_class": "Classifier isolation", "expected_ttft_profile": "Very low TTFT if the classifier short-circuits cleanly. If high, the classifier itself is the bottleneck.", "what_it_isolates": "Classifier-only path — should be classed beyond-scope and short-circuit WITHOUT retrieval / eval / full synthesis. Isolates classification latency from the retrieval pipeline.", "median_ttft_ms": 6806, "median_total_ms": 8320, "ttft_runs_ms": [6387, 6806, 7032], "total_runs_ms": [7970, 8350, 8320], "repeats": [{"repeat_index": 1, "ttft_ms": 6387, "total_ms": 7970, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 6806, "total_ms": 8350, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 7032, "total_ms": 8320, "ok": true, "error": null}], "failed_repeats": 0}, "P10": {"test_id": "P10", "performance_class": "Long-answer control", "sub_class": "TTFT vs total separation", "expected_ttft_profile": "TTFT ≈ baseline; TOTAL high.", "what_it_isolates": "Methodological control — long ANSWER, so total is high, but TTFT should match a simple query (same pipeline up to first token).", "median_ttft_ms": 30209, "median_total_ms": 81660, "ttft_runs_ms": [30209, 26209, 42789], "total_runs_ms": [76120, 81660, 87210], "repeats": [{"repeat_index": 1, "ttft_ms": 30209, "total_ms": 76120, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 26209, "total_ms": 81660, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 42789, "total_ms": 87210, "ok": true, "error": null}], "failed_repeats": 0}, "P11": {"test_id": "P11", "performance_class": "Tool-assisted (conditional)", "sub_class": "Live-tool / gather-info path", "expected_ttft_profile": "Variable — may ask a clarifying question or decline if no live tool is wired.", "what_it_isolates": "Tool-assisted classification and any gather-info workflow / live API path.", "median_ttft_ms": 5181, "median_total_ms": 6320, "ttft_runs_ms": [6381, 3679, 5181], "total_runs_ms": [7280, 4890, 6320], "repeats": [{"repeat_index": 1, "ttft_ms": 6381, "total_ms": 7280, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 3679, "total_ms": 4890, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 5181, "total_ms": 6320, "ok": true, "error": null}], "failed_repeats": 0}}, "suite_median_ttft_ms": 23974, "suite_median_total_ms": 48530, "test_count": 11}}, "perf-20261030-012345": {"meta": {"suite_id": "perf-20261030-012345", "run_at": "2026-10-30T01:23:45.184935+00:00", "tahi_env": "PRD", "caitlyn_agent_alias_id": "TSTALIASID", "rubric_version": "Tahi_Test_Suite-2", "source_json": "runs/perf-20261030-012345.json", "test_count": 11, "suite_median_ttft_ms": 16665, "suite_median_total_ms": 33370, "failed_count": 0, "page": "performance/index.html"}, "summary": {"by_test": {"P01": {"test_id": "P01", "performance_class": "Fast-path / simple fact", "sub_class": "Single KB, single fact", "expected_ttft_profile": "Lowest TTFT. Baseline floor and the fast-path candidate.", "what_it_isolates": "Pipeline floor: one clean fact, query is its own search term. Minimal topic generation, single/few-KB retrieval, trivial evaluation, short answer.", "median_ttft_ms": 3905, "median_total_ms": 4610, "ttft_runs_ms": [3905, 21366, 3750], "total_runs_ms": [4610, 22440, 4460], "repeats": [{"repeat_index": 1, "ttft_ms": 3905, "total_ms": 4610, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 21366, "total_ms": 22440, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 3750, "total_ms": 4460, "ok": true, "error": null}], "failed_repeats": 0}, "P02": {"test_id": "P02", "performance_class": "Fast-path / simple fact", "sub_class": "Single fact, historical", "expected_ttft_profile": "Lowest TTFT, ≈ P01.", "what_it_isolates": "Confirms the floor isn't a one-off — another self-contained fact (Te Ara / NZDB).", "median_ttft_ms": 13492, "median_total_ms": 15290, "ttft_runs_ms": [4237, 13492, 14498], "total_runs_ms": [5280, 15290, 16050], "repeats": [{"repeat_index": 1, "ttft_ms": 4237, "total_ms": 5280, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 13492, "total_ms": 15290, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 14498, "total_ms": 16050, "ok": true, "error": null}], "failed_repeats": 0}, "P03": {"test_id": "P03", "performance_class": "Multi-KB fan-out", "sub_class": "Notable person across corpora", "expected_ttft_profile": "Higher than baseline. Gap vs P01 ≈ the fan-out + multi-KB eval cost.", "what_it_isolates": "Query that legitimately spans NZDB, Te Ara, RNZ (and NZGeo) — retrieval fan-out and per-KB evaluation. Where one KB left on LLM-as-Judge would gate the whole response.", "median_ttft_ms": 27536, "median_total_ms": 47920, "ttft_runs_ms": [27536, 5267, 28881], "total_runs_ms": [47920, 6900, 51480], "repeats": [{"repeat_index": 1, "ttft_ms": 27536, "total_ms": 47920, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 5267, "total_ms": 6900, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 28881, "total_ms": 51480, "ok": true, "error": null}], "failed_repeats": 0}, "P04": {"test_id": "P04", "performance_class": "Multi-KB fan-out", "sub_class": "Broad topic, many sources", "expected_ttft_profile": "Moderate–high TTFT.", "what_it_isolates": "Broad topic → multiple search queries across many KBs; stresses topic-generation breadth and multi-KB evaluation together.", "median_ttft_ms": 16665, "median_total_ms": 37100, "ttft_runs_ms": [16665, 27311, 4143], "total_runs_ms": [37100, 48920, 5200], "repeats": [{"repeat_index": 1, "ttft_ms": 16665, "total_ms": 37100, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 27311, "total_ms": 48920, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 4143, "total_ms": 5200, "ok": true, "error": null}], "failed_repeats": 0}, "P05": {"test_id": "P05", "performance_class": "Reasoning-heavy", "sub_class": "Temporal / comparative synthesis", "expected_ttft_profile": "Highest pre-answer TTFT. Heavy topic-gen + eval; synthesis starts late.", "what_it_isolates": "Multiple search queries, wide retrieval across time, genuine synthesis across many chunks. The case where a stronger answer model might pay off.", "median_ttft_ms": 34436, "median_total_ms": 56920, "ttft_runs_ms": [34436, 47972, 25988], "total_runs_ms": [56920, 71030, 52450], "repeats": [{"repeat_index": 1, "ttft_ms": 34436, "total_ms": 56920, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 47972, "total_ms": 71030, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 25988, "total_ms": 52450, "ok": true, "error": null}], "failed_repeats": 0}, "P06": {"test_id": "P06", "performance_class": "Reasoning-heavy", "sub_class": "Multi-entity comparison", "expected_ttft_profile": "High TTFT.", "what_it_isolates": "Multi-entity comparative reasoning; cross-source synthesis (NZGeo, RNZ, Te Ara).", "median_ttft_ms": 29013, "median_total_ms": 49770, "ttft_runs_ms": [29013, 18128, 36206], "total_runs_ms": [49770, 41220, 58940], "repeats": [{"repeat_index": 1, "ttft_ms": 29013, "total_ms": 49770, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 18128, "total_ms": 41220, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 36206, "total_ms": 58940, "ok": true, "error": null}], "failed_repeats": 0}, "P07": {"test_id": "P07", "performance_class": "Recency / temporal", "sub_class": "Date-relative retrieval", "expected_ttft_profile": "Moderate TTFT. Watch for extra latency from recency handling.", "what_it_isolates": "Recency-weighted retrieval, runtime date injection, recency evaluation logic; RNZ-heavy.", "median_ttft_ms": 17024, "median_total_ms": 33370, "ttft_runs_ms": [19224, 17024, 4457], "total_runs_ms": [36330, 33370, 5730], "repeats": [{"repeat_index": 1, "ttft_ms": 19224, "total_ms": 36330, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 17024, "total_ms": 33370, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 4457, "total_ms": 5730, "ok": true, "error": null}], "failed_repeats": 0}, "P08": {"test_id": "P08", "performance_class": "Te reo Māori", "sub_class": "Non-English input", "expected_ttft_profile": "≈ baseline if the multilingual path is efficient; materially higher flags te-reo overhead.", "what_it_isolates": "Bilingual classification, te reo handling, and the multilingual reranker (Cohere 3.5) on non-English input.", "median_ttft_ms": 16063, "median_total_ms": 26810, "ttft_runs_ms": [16063, 20681, 5040], "total_runs_ms": [26810, 31200, 6470], "repeats": [{"repeat_index": 1, "ttft_ms": 16063, "total_ms": 26810, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 20681, "total_ms": 31200, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 5040, "total_ms": 6470, "ok": true, "error": null}], "failed_repeats": 0}, "P09": {"test_id": "P09", "performance_class": "Out-of-scope short-circuit", "sub_class": "Classifier isolation", "expected_ttft_profile": "Very low TTFT if the classifier short-circuits cleanly. If high, the classifier itself is the bottleneck.", "what_it_isolates": "Classifier-only path — should be classed beyond-scope and short-circuit WITHOUT retrieval / eval / full synthesis. Isolates classification latency from the retrieval pipeline.", "median_ttft_ms": 4686, "median_total_ms": 5550, "ttft_runs_ms": [3621, 4686, 4938], "total_runs_ms": [4790, 5550, 5680], "repeats": [{"repeat_index": 1, "ttft_ms": 3621, "total_ms": 4790, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 4686, "total_ms": 5550, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 4938, "total_ms": 5680, "ok": true, "error": null}], "failed_repeats": 0}, "P10": {"test_id": "P10", "performance_class": "Long-answer control", "sub_class": "TTFT vs total separation", "expected_ttft_profile": "TTFT ≈ baseline; TOTAL high.", "what_it_isolates": "Methodological control — long ANSWER, so total is high, but TTFT should match a simple query (same pipeline up to first token).", "median_ttft_ms": 26563, "median_total_ms": 56010, "ttft_runs_ms": [22492, 26563, 35304], "total_runs_ms": [53810, 56010, 65710], "repeats": [{"repeat_index": 1, "ttft_ms": 22492, "total_ms": 53810, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 26563, "total_ms": 56010, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 35304, "total_ms": 65710, "ok": true, "error": null}], "failed_repeats": 0}, "P11": {"test_id": "P11", "performance_class": "Tool-assisted (conditional)", "sub_class": "Live-tool / gather-info path", "expected_ttft_profile": "Variable — may ask a clarifying question or decline if no live tool is wired.", "what_it_isolates": "Tool-assisted classification and any gather-info workflow / live API path.", "median_ttft_ms": 3814, "median_total_ms": 4710, "ttft_runs_ms": [3814, 3845, 3697], "total_runs_ms": [4860, 4710, 4680], "repeats": [{"repeat_index": 1, "ttft_ms": 3814, "total_ms": 4860, "ok": true, "error": null}, {"repeat_index": 2, "ttft_ms": 3845, "total_ms": 4710, "ok": true, "error": null}, {"repeat_index": 3, "ttft_ms": 3697, "total_ms": 4680, "ok": true, "error": null}], "failed_repeats": 0}}, "suite_median_ttft_ms": 16665, "suite_median_total_ms": 33370, "test_count": 11}}}</script>
+  <script>
+    (function () {
+      var catalog = JSON.parse(document.getElementById("perf-suite-catalog").textContent || "{}");
+      var suiteIds = Object.keys(catalog).sort(function (a, b) {
+        return String(catalog[b].meta.run_at || "").localeCompare(String(catalog[a].meta.run_at || ""));
+      });
+      var params = new URLSearchParams(window.location.search);
+      var current = params.get("current") || "perf-20261030-012345";
+      var prior = params.get("prior") || "perf-20260619-060458";
+      var currentSelect = document.querySelector('select[name="current"]');
+      var priorSelect = document.querySelector('select[name="prior"]');
+      if (currentSelect) currentSelect.value = current;
+      if (priorSelect) priorSelect.value = prior;
+
+      function formatMs(value) {
+        if (typeof value !== "number") return "—";
+        if (value >= 60000) return Math.round(value / 1000) + "m " + Math.round((value % 60000) / 1000) + "s";
+        if (value >= 1000) return (value / 1000).toFixed(1) + "s";
+        return value + "ms";
+      }
+      function formatDelta(delta) {
+        if (typeof delta !== "number") return "—";
+        return (delta > 0 ? "+" : "") + delta.toLocaleString() + "ms";
+      }
+      function deltaClass(delta) {
+        if (typeof delta !== "number") return "perf-delta--neutral";
+        if (delta < 0) return "perf-delta--faster";
+        if (delta > 0) return "perf-delta--slower";
+        return "perf-delta--neutral";
+      }
+      function intDelta(cur, prev) {
+        if (typeof cur !== "number" || typeof prev !== "number") return null;
+        return cur - prev;
+      }
+      function compareSummaries(currentSummary, priorSummary) {
+        var currentTests = (currentSummary && currentSummary.by_test) || {};
+        var priorTests = (priorSummary && priorSummary.by_test) || {};
+        var testIds = Object.keys(Object.assign({}, currentTests, priorTests)).sort();
+        var rows = testIds.map(function (testId) {
+          var cur = currentTests[testId] || {};
+          var prev = priorTests[testId] || {};
+          return {
+            test_id: testId,
+            performance_class: cur.performance_class || prev.performance_class || "",
+            expected_ttft_profile: cur.expected_ttft_profile || prev.expected_ttft_profile || "",
+            current_ttft_ms: cur.median_ttft_ms,
+            prior_ttft_ms: prev.median_ttft_ms,
+            ttft_delta_ms: intDelta(cur.median_ttft_ms, prev.median_ttft_ms),
+            current_total_ms: cur.median_total_ms,
+            prior_total_ms: prev.median_total_ms,
+            total_delta_ms: intDelta(cur.median_total_ms, prev.median_total_ms)
+          };
+        });
+        return {
+          suite_ttft_delta_ms: intDelta(currentSummary.suite_median_ttft_ms, priorSummary.suite_median_ttft_ms),
+          suite_total_delta_ms: intDelta(currentSummary.suite_median_total_ms, priorSummary.suite_median_total_ms),
+          current_suite_ttft_ms: currentSummary.suite_median_ttft_ms,
+          prior_suite_ttft_ms: priorSummary.suite_median_ttft_ms,
+          current_suite_total_ms: currentSummary.suite_median_total_ms,
+          prior_suite_total_ms: priorSummary.suite_median_total_ms,
+          rows: rows
+        };
+      }
+      function renderComparison(currentId, priorId) {
+        var mount = document.getElementById("perf-compare-results");
+        if (!mount) return;
+        if (!currentId || !priorId || currentId === priorId) {
+          mount.innerHTML = '<section class="compare-section"><p>Select two different suite runs to compare.</p></section>';
+          return;
+        }
+        if (!catalog[currentId] || !catalog[priorId]) {
+          mount.innerHTML = '<section class="compare-section"><p>Suite data not found.</p></section>';
+          return;
+        }
+        var comparison = compareSummaries(catalog[currentId].summary, catalog[priorId].summary);
+        var rows = comparison.rows.map(function (row) {
+          return '<tr>'
+            + '<td class="perf-col-test"><strong>' + row.test_id + '</strong></td>'
+            + '<td class="perf-col-class">' + row.performance_class + '</td>'
+            + '<td class="perf-profile">' + row.expected_ttft_profile + '</td>'
+            + '<td class="perf-col-ms">' + formatMs(row.current_ttft_ms) + '</td>'
+            + '<td class="perf-col-ms">' + formatMs(row.prior_ttft_ms) + '</td>'
+            + '<td class="perf-col-delta ' + deltaClass(row.ttft_delta_ms) + '">' + formatDelta(row.ttft_delta_ms) + '</td>'
+            + '<td class="perf-col-ms">' + formatMs(row.current_total_ms) + '</td>'
+            + '<td class="perf-col-ms">' + formatMs(row.prior_total_ms) + '</td>'
+            + '<td class="perf-col-delta ' + deltaClass(row.total_delta_ms) + '">' + formatDelta(row.total_delta_ms) + '</td>'
+            + '</tr>';
+        }).join("");
+        mount.innerHTML = ''
+          + '<div class="perf-summary-grid" id="perf-compare-summary">'
+          + '<div class="perf-summary-card"><div class="perf-summary-card-label">Suite median TTFT</div>'
+          + '<div class="perf-summary-card-value">' + formatMs(comparison.current_suite_ttft_ms) + '</div>'
+          + '<div class="perf-runs">was ' + formatMs(comparison.prior_suite_ttft_ms) + '</div>'
+          + '<div class="perf-runs ' + deltaClass(comparison.suite_ttft_delta_ms) + '">' + formatDelta(comparison.suite_ttft_delta_ms) + '</div></div>'
+          + '<div class="perf-summary-card"><div class="perf-summary-card-label">Suite median total</div>'
+          + '<div class="perf-summary-card-value">' + formatMs(comparison.current_suite_total_ms) + '</div>'
+          + '<div class="perf-runs">was ' + formatMs(comparison.prior_suite_total_ms) + '</div>'
+          + '<div class="perf-runs ' + deltaClass(comparison.suite_total_delta_ms) + '">' + formatDelta(comparison.suite_total_delta_ms) + '</div></div>'
+          + '<div class="perf-summary-card"><div class="perf-summary-card-label">Compared suites</div>'
+          + '<div class="perf-summary-card-value" style="font-size:0.95rem">' + currentId + '</div>'
+          + '<div class="perf-runs">vs ' + priorId + '</div></div></div>'
+          + '<section class="compare-section" id="perf-compare-table-section"><h2>Per-test comparison</h2>'
+          + '<div class="perf-table-wrap"><table class="perf-table">'
+          + '<colgroup><col class="perf-col-test"><col class="perf-col-class"><col class="perf-col-profile">'
+          + '<col class="perf-col-ms"><col class="perf-col-ms"><col class="perf-col-delta">'
+          + '<col class="perf-col-ms"><col class="perf-col-ms"><col class="perf-col-delta"></colgroup>'
+          + '<thead><tr>'
+          + '<th class="perf-col-test">Test</th><th class="perf-col-class">Class</th><th class="perf-col-profile">Expected profile</th>'
+          + '<th class="perf-col-ms">Current TTFT</th><th class="perf-col-ms">Prior TTFT</th><th class="perf-col-delta">Δ TTFT</th>'
+          + '<th class="perf-col-ms">Current total</th><th class="perf-col-ms">Prior total</th><th class="perf-col-delta">Δ total</th>'
+          + '</tr></thead>'
+          + '<tbody id="perf-compare-rows">' + (rows || '<tr><td colspan="9">No tests to compare.</td></tr>') + '</tbody></table></div></section>';
+      }
+      if (suiteIds.length >= 2) {
+        renderComparison(current, prior);
+      }
+    })();
+  </script>
+</body>
+</html>

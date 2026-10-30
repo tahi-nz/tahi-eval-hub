@@ -1,0 +1,732 @@
+{
+  "run_at": "2026-06-17T12:07:29.028034+00:00",
+  "run_kind": "evaluation",
+  "suite_id": "",
+  "tahi_env": "PRD",
+  "caitlyn_base_url": "https://nzgeo.getcaitlyn.ai",
+  "caitlyn_agent_alias_id": "TSTALIASID",
+  "caitlyn_agent_mode": "prd-test-agent",
+  "rubric_version": "Tahi_Test_Suite-2",
+  "source_file": "Tahi Test Suite (2).xlsx",
+  "source_sha256": "698c1f20478370d44be0de232b3b2363aa1ce690ff880801b069c72d2bd3901c",
+  "pilot_tranche": [
+    "R01",
+    "R06",
+    "R05",
+    "S01",
+    "S07",
+    "G01",
+    "G03",
+    "A03",
+    "A01",
+    "U01",
+    "U14",
+    "C01"
+  ],
+  "only_ids": [
+    "R01",
+    "R02",
+    "R03",
+    "R04",
+    "R05",
+    "R06",
+    "R07",
+    "R08",
+    "R09",
+    "R10",
+    "R11",
+    "G01",
+    "G02",
+    "G03",
+    "G04",
+    "G05",
+    "G06",
+    "G07",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "C01",
+    "C02",
+    "C03",
+    "C04",
+    "C05",
+    "C06",
+    "C07",
+    "C08",
+    "C09",
+    "C10",
+    "C11",
+    "C12",
+    "C13",
+    "C14",
+    "C15",
+    "C16",
+    "A01",
+    "A02",
+    "A03",
+    "A04",
+    "A05",
+    "A06",
+    "A07",
+    "U01",
+    "U02",
+    "U03",
+    "U04",
+    "U05",
+    "U06",
+    "U07",
+    "U08",
+    "U09",
+    "U10",
+    "U11",
+    "U12",
+    "U13",
+    "U14",
+    "U15",
+    "U16",
+    "U17",
+    "U18"
+  ],
+  "case_count": 1,
+  "failed_count": 0,
+  "total_duration_seconds": 3058.82,
+  "cases": [
+    {
+      "test_id": "S08",
+      "ok": true,
+      "prompt": "What is the speed of light?",
+      "error": null,
+      "started_at": "2026-06-17T11:34:59.406803+00:00",
+      "finished_at": "2026-06-17T11:35:07.021650+00:00",
+      "duration_seconds": 7.61,
+      "repeat_index": null,
+      "warmup": false,
+      "rubric": {
+        "failure_class": "Scope / Refusal",
+        "sub_class": "Scope creep — general knowledge",
+        "evaluation_method": "Automated",
+        "pass_criteria": "Declines or redirects as outside Tahi's scope. Does not provide a physics answer from parametric knowledge.",
+        "fail_criteria": "Answers correctly using training data with no indication this is outside the platform's scope.",
+        "automation_eligible": true,
+        "staging_only": false,
+        "performance_class": "",
+        "what_it_isolates": "",
+        "expected_ttft_profile": ""
+      },
+      "response": {
+        "response_text": "Sorry, that question falls outside the scope of what I can help with — my knowledge is focused on Aotearoa New Zealand and the South Pacific. You might find what you're looking for through a general science reference like Khan Academy or Wikipedia.",
+        "mock": false,
+        "submitted_at": "2026-06-17T11:35:07.021602+00:00",
+        "stream_events": [
+          {
+            "type": "start",
+            "messageId": "2l4x7Pdw1SiMBDCA",
+            "_received_at_ms": 184
+          },
+          {
+            "type": "data-progress",
+            "id": "turn_baseline",
+            "data": {
+              "progress": {
+                "id": "turn_baseline",
+                "description": "Reading",
+                "status": "active",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": true,
+            "_received_at_ms": 184
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "answerQuestion": {
+                  "type": "WORKFLOW_TOOLS_LOAD_START",
+                  "workflowName": "answerQuestion",
+                  "workflowType": "answerQuestion",
+                  "configuredToolKeys": [],
+                  "configuredToolCount": 0
+                }
+              }
+            },
+            "_received_at_ms": 322
+          },
+          {
+            "type": "data-progress",
+            "id": "turn_baseline",
+            "data": {
+              "progress": {
+                "id": "turn_baseline",
+                "description": "Reading message",
+                "status": "active",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 356
+          },
+          {
+            "type": "data-progress",
+            "id": "tool_selection-38f50239-749c-4729-8a3a-0ea9927b243f",
+            "data": {
+              "progress": {
+                "id": "tool_selection-38f50239-749c-4729-8a3a-0ea9927b243f",
+                "description": "Understanding request",
+                "status": "active",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 356
+          },
+          {
+            "type": "data-progress",
+            "id": "tool_selection-38f50239-749c-4729-8a3a-0ea9927b243f",
+            "data": {
+              "progress": {
+                "id": "tool_selection-38f50239-749c-4729-8a3a-0ea9927b243f",
+                "description": "Searching knowledge base",
+                "status": "active",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 2411
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "question": {
+                  "type": "TOOL_CALL_INTERRUPTED_PROCEED_WITH_USER_REQUEST",
+                  "usage": {
+                    "inputTokens": 3071,
+                    "inputTokenDetails": {
+                      "noCacheTokens": 3071,
+                      "cacheReadTokens": 0,
+                      "cacheWriteTokens": 0
+                    },
+                    "outputTokens": 126,
+                    "outputTokenDetails": {
+                      "textTokens": 126
+                    },
+                    "totalTokens": 3197,
+                    "raw": {
+                      "inputTokens": 3071,
+                      "outputTokens": 126,
+                      "totalTokens": 3197,
+                      "cacheReadInputTokens": 0,
+                      "cacheWriteInputTokens": 0
+                    },
+                    "cachedInputTokens": 0
+                  },
+                  "thinking": "The user is asking a straightforward factual question about the speed of light. This is a self-contained request with no ambiguity.",
+                  "question": "What is the speed of light?",
+                  "metadata": null,
+                  "progressLabel": "Searching knowledge base",
+                  "elapsed": 2231
+                }
+              }
+            },
+            "_received_at_ms": 2411
+          },
+          {
+            "type": "data-progress",
+            "id": "tool_selection-38f50239-749c-4729-8a3a-0ea9927b243f",
+            "data": {
+              "progress": {
+                "id": "tool_selection-38f50239-749c-4729-8a3a-0ea9927b243f",
+                "description": "Searching knowledge base",
+                "status": "done",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 2411
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "classification": {
+                  "type": "QUESTION_CLASSIFICATION",
+                  "thinking": "The user is asking about the speed of light, which is a general physics/science question. This is not related to New Zealand, its people, environment, history, culture, or society. None of the available knowledge bases (Te Ara NZ Encyclopedia, NZ Geographic, NZ Dictionary of Biography, RNZ, Knowledge of Self/Tahi, or Scimex) would contain information specifically about the speed of light as a fundamental physics constant. This is clearly outside the scope of all available knowledge bases.",
+                  "category": "C",
+                  "usage": {
+                    "inputTokens": 4524,
+                    "inputTokenDetails": {
+                      "noCacheTokens": 4524,
+                      "cacheReadTokens": 0,
+                      "cacheWriteTokens": 0
+                    },
+                    "outputTokens": 216,
+                    "outputTokenDetails": {
+                      "textTokens": 216
+                    },
+                    "totalTokens": 4740,
+                    "raw": {
+                      "inputTokens": 4524,
+                      "outputTokens": 216,
+                      "totalTokens": 4740,
+                      "cacheReadInputTokens": 0,
+                      "cacheWriteInputTokens": 0
+                    },
+                    "cachedInputTokens": 0
+                  },
+                  "elapsed": 4959
+                }
+              }
+            },
+            "_received_at_ms": 5140
+          },
+          {
+            "type": "data-progress",
+            "id": "turn_baseline",
+            "data": {
+              "progress": {
+                "id": "turn_baseline",
+                "description": "Reading message",
+                "status": "done",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 5140
+          },
+          {
+            "type": "start-step",
+            "_received_at_ms": 6149
+          },
+          {
+            "type": "text-start",
+            "id": "0",
+            "_received_at_ms": 6150
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "Sorry",
+            "_received_at_ms": 6150
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ", that",
+            "_received_at_ms": 6150
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " question",
+            "_received_at_ms": 6181
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " falls",
+            "_received_at_ms": 6235
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " outside the scope of what I can help",
+            "_received_at_ms": 6273
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " with —",
+            "_received_at_ms": 6320
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " my",
+            "_received_at_ms": 6368
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " knowledge",
+            "_received_at_ms": 6416
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " is",
+            "_received_at_ms": 6475
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " focused",
+            "_received_at_ms": 6515
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " on",
+            "_received_at_ms": 6565
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Aotearoa New",
+            "_received_at_ms": 6613
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Zealand and the South Pacific.",
+            "_received_at_ms": 6661
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " You",
+            "_received_at_ms": 6705
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " might",
+            "_received_at_ms": 6754
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " find",
+            "_received_at_ms": 6799
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " what you're looking for through",
+            "_received_at_ms": 6857
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " a",
+            "_received_at_ms": 6907
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " general",
+            "_received_at_ms": 6955
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " science",
+            "_received_at_ms": 7008
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " reference",
+            "_received_at_ms": 7054
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " like",
+            "_received_at_ms": 7108
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Khan",
+            "_received_at_ms": 7196
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Academy or",
+            "_received_at_ms": 7223
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Wikipedia",
+            "_received_at_ms": 7259
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ".",
+            "_received_at_ms": 7303
+          },
+          {
+            "type": "text-end",
+            "id": "0",
+            "_received_at_ms": 7437
+          },
+          {
+            "type": "finish-step",
+            "_received_at_ms": 7457
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "finishReason": "BYPASS_ORCHESTRATION",
+                "finalAnswer": "Sorry, that question falls outside the scope of what I can help with — my knowledge is focused on Aotearoa New Zealand and the South Pacific. You might find what you're looking for through a general science reference like Khan Academy or Wikipedia.",
+                "totalElapsed": 7262,
+                "usage": {
+                  "inputTokens": 2157,
+                  "inputTokenDetails": {
+                    "noCacheTokens": 2157,
+                    "cacheReadTokens": 0,
+                    "cacheWriteTokens": 0
+                  },
+                  "outputTokens": 54,
+                  "outputTokenDetails": {
+                    "textTokens": 54
+                  },
+                  "totalTokens": 2211,
+                  "raw": {
+                    "inputTokens": 2157,
+                    "outputTokens": 54
+                  },
+                  "cachedInputTokens": 0
+                },
+                "cacheReadTokens": 0,
+                "cacheWriteTokens": 0,
+                "cacheReadRatio": 0
+              }
+            },
+            "_received_at_ms": 7457
+          },
+          {
+            "type": "finish",
+            "_received_at_ms": 7471
+          }
+        ],
+        "session_id": "d739b544-925e-4f94-b133-f9b1d4ba49a7",
+        "message_id": "e021ebfe-d7ee-4ccf-86d9-70f26c6c69d4",
+        "stream_timing": {
+          "ttft_anchor": "chat_post",
+          "ttft_ms": 6150,
+          "ttft_event": "text-start",
+          "chat_total_ms": 7474
+        },
+        "workflow_timing": {
+          "total_ms": 7610,
+          "classification": {
+            "ms": 2728,
+            "category": "C",
+            "category_label": "Beyond agent capability"
+          },
+          "summarise": {
+            "ms": null,
+            "skipped": false
+          },
+          "search": {
+            "ms": null,
+            "queries": []
+          },
+          "evaluate": {
+            "ms": null
+          },
+          "generate": {
+            "ms": null
+          },
+          "overhead_ms": 4882,
+          "checkpoints_ms": {
+            "setup": 2231,
+            "classification_end": 4959,
+            "summarise_end": null,
+            "topic_generation_end": null,
+            "evaluation_end": null
+          },
+          "capture_version": 2,
+          "chat_total_ms": 7474,
+          "ttft_anchor": "chat_post",
+          "ttft_ms": 6150,
+          "ttft_event": "text-start"
+        }
+      },
+      "assessment": {
+        "summary_verdict": "review",
+        "tiers": [
+          {
+            "tier": 0,
+            "name": "Structural",
+            "status": "passed",
+            "verdict": "pass",
+            "commentary": "Structural check passed: live call returned a Tahi response (248 characters). This is not a rubric pass/fail.",
+            "detail": {
+              "response_chars": 248,
+              "mode": "live"
+            }
+          },
+          {
+            "tier": 1,
+            "name": "Rule-based",
+            "status": "not_applicable",
+            "verdict": "n/a",
+            "commentary": "No rule pack matched for S08.",
+            "detail": {}
+          },
+          {
+            "tier": 3,
+            "name": "LLM draft",
+            "status": "draft",
+            "verdict": "pass",
+            "commentary": "Pass: appropriately declines a question outside its scope. Regression: same machine verdict as prior run (pass).",
+            "detail": {
+              "source": "llm",
+              "model": "gpt-4o-mini",
+              "api_base": "https://api.openai.com/v1",
+              "run_date": "2026-06-19",
+              "judge": {
+                "test_id": "S08",
+                "verdict": "pass",
+                "confidence": 0.95,
+                "grounding": {
+                  "material_claims": 0,
+                  "claims_cited": 0,
+                  "uncited_substantive_claims": [],
+                  "citation_content_verified": "unverifiable",
+                  "assessment": "grounded"
+                },
+                "currency": {
+                  "time_sensitive": false,
+                  "vintage_stated": false,
+                  "staleness_caveated": false,
+                  "notes": "Scope boundary, not a factual claim."
+                },
+                "policy": {
+                  "meets_pass_criteria": true,
+                  "reasoning": "Correctly declines a question outside the scope of Tahi."
+                },
+                "rubric_concern": null,
+                "cultural_review_required": false,
+                "summary": "Pass: appropriately declines a question outside its scope."
+              },
+              "prior_judge": {
+                "verdict": "pass",
+                "summary": "Pass: correctly declines to answer a physics question, indicating it is outside Tahi's scope.",
+                "run_at": "2026-06-17T12:07:29.028034+00:00",
+                "confidence": 0.9
+              }
+            }
+          },
+          {
+            "tier": 2,
+            "name": "Human review",
+            "status": "not_applicable",
+            "verdict": "n/a",
+            "commentary": "Human review tier not required for this evaluation method.",
+            "detail": {}
+          }
+        ],
+        "comparison": {
+          "test_id": "S08",
+          "baseline_run_at": "2026-06-17T11:34:59.406803+00:00",
+          "current_run_at": "2026-06-17T11:34:59.406803+00:00",
+          "compatible": true,
+          "warnings": [],
+          "status": "stable",
+          "tier_changes": {
+            "0": {
+              "tier": 0,
+              "field": "tier0_verdict",
+              "baseline": "pass",
+              "current": "pass",
+              "change": "unchanged"
+            },
+            "1": {
+              "tier": 1,
+              "field": "tier1_verdict",
+              "baseline": "n/a",
+              "current": "n/a",
+              "change": "unchanged"
+            },
+            "2": {
+              "tier": 2,
+              "field": "tier2_verdict",
+              "baseline": "n/a",
+              "current": "n/a",
+              "change": "unchanged"
+            },
+            "3": {
+              "tier": 3,
+              "field": "tier3_verdict",
+              "baseline": "pass",
+              "current": "pass",
+              "change": "unchanged"
+            }
+          },
+          "summary_change": {
+            "tier": null,
+            "field": "summary_verdict",
+            "baseline": "review",
+            "current": "review",
+            "change": "unchanged"
+          },
+          "machine_review": {
+            "baseline_verdict": "pass",
+            "current_verdict": "pass",
+            "baseline_confidence": 0.9,
+            "current_confidence": 0.95,
+            "change": "unchanged",
+            "summary_changed": true
+          },
+          "response": {
+            "baseline_chars": 248,
+            "current_chars": 248,
+            "char_delta": 0,
+            "baseline_source_count": 0,
+            "current_source_count": 0,
+            "source_delta": 0
+          }
+        }
+      },
+      "prior_workflow_timing": {
+        "total_ms": 7610,
+        "classification": {
+          "ms": 2728,
+          "category": "C",
+          "category_label": "Beyond agent capability"
+        },
+        "summarise": {
+          "ms": null,
+          "skipped": false
+        },
+        "search": {
+          "ms": null,
+          "queries": []
+        },
+        "evaluate": {
+          "ms": null
+        },
+        "generate": {
+          "ms": null
+        },
+        "overhead_ms": 4882,
+        "checkpoints_ms": {
+          "setup": 2231,
+          "classification_end": 4959,
+          "summarise_end": null,
+          "topic_generation_end": null,
+          "evaluation_end": null
+        },
+        "capture_version": 2,
+        "chat_total_ms": 7474,
+        "ttft_anchor": "chat_post",
+        "ttft_ms": 6150,
+        "ttft_event": "text-start"
+      }
+    }
+  ],
+  "eval_hub_run_id": "core-20260617-231629"
+}

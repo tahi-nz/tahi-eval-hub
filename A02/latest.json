@@ -1,0 +1,3008 @@
+{
+  "run_at": "2026-06-17T12:07:29.028034+00:00",
+  "run_kind": "evaluation",
+  "suite_id": "",
+  "tahi_env": "PRD",
+  "caitlyn_base_url": "https://nzgeo.getcaitlyn.ai",
+  "caitlyn_agent_alias_id": "TSTALIASID",
+  "caitlyn_agent_mode": "prd-test-agent",
+  "rubric_version": "Tahi_Test_Suite-2",
+  "source_file": "Tahi Test Suite (2).xlsx",
+  "source_sha256": "698c1f20478370d44be0de232b3b2363aa1ce690ff880801b069c72d2bd3901c",
+  "pilot_tranche": [
+    "R01",
+    "R06",
+    "R05",
+    "S01",
+    "S07",
+    "G01",
+    "G03",
+    "A03",
+    "A01",
+    "U01",
+    "U14",
+    "C01"
+  ],
+  "only_ids": [
+    "R01",
+    "R02",
+    "R03",
+    "R04",
+    "R05",
+    "R06",
+    "R07",
+    "R08",
+    "R09",
+    "R10",
+    "R11",
+    "G01",
+    "G02",
+    "G03",
+    "G04",
+    "G05",
+    "G06",
+    "G07",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "C01",
+    "C02",
+    "C03",
+    "C04",
+    "C05",
+    "C06",
+    "C07",
+    "C08",
+    "C09",
+    "C10",
+    "C11",
+    "C12",
+    "C13",
+    "C14",
+    "C15",
+    "C16",
+    "A01",
+    "A02",
+    "A03",
+    "A04",
+    "A05",
+    "A06",
+    "A07",
+    "U01",
+    "U02",
+    "U03",
+    "U04",
+    "U05",
+    "U06",
+    "U07",
+    "U08",
+    "U09",
+    "U10",
+    "U11",
+    "U12",
+    "U13",
+    "U14",
+    "U15",
+    "U16",
+    "U17",
+    "U18"
+  ],
+  "case_count": 1,
+  "failed_count": 0,
+  "total_duration_seconds": 3058.82,
+  "cases": [
+    {
+      "test_id": "A02",
+      "ok": true,
+      "prompt": "What is the most recent budget delivered by the New Zealand government?",
+      "error": null,
+      "started_at": "2026-06-17T11:50:15.948217+00:00",
+      "finished_at": "2026-06-17T11:50:54.340907+00:00",
+      "duration_seconds": 38.39,
+      "repeat_index": null,
+      "warmup": false,
+      "rubric": {
+        "failure_class": "Architectural / Systemic",
+        "sub_class": "Date injection",
+        "evaluation_method": "Hybrid",
+        "pass_criteria": "Identifies the correct budget year and Finance Minister at the time of testing. Does not treat an older budget as the most recent.",
+        "fail_criteria": "Names a budget from a prior year as most recent. No temporal qualifier in response.",
+        "automation_eligible": true,
+        "staging_only": false,
+        "performance_class": "",
+        "what_it_isolates": "",
+        "expected_ttft_profile": ""
+      },
+      "response": {
+        "response_text": "## Budget 2026: New Zealand's Most Recent Budget\n\nThe most recent budget delivered by the New Zealand government is **Budget 2026**, presented by Finance Minister Nicola Willis and published on 29 May 2026. [[1]](cite://1/1)\n\n### Key Highlights\n\nWillis framed the budget around the idea that New Zealand is 'digging its way out of the post-Covid hole', with her central message focused on fiscal prudence — described as her 'responsibility to be careful and prudent now to protect New Zealand's future.' [[2]](cite://2/1)\n\nA notable feature of the budget was an early return to surplus, forecast to arrive a year sooner than previously expected. [[2]](cite://2/2)\n\n**Health** was the standout winner, receiving:\n- A $5.8 billion boost to health spending\n- $682 million in capital investment, directed towards hospital upgrades, more beds, and a new IT system [[1]](cite://1/2)[[2]](cite://2/3)\n\n### Context and Background\n\nBudget 2026 follows Budget 2025, which was delivered on 22 May 2025 and focused heavily on fiscal restraint — cutting the operating allowance from $2.4 billion to $1.3 billion, and using close to $13 billion from a revamped pay equity scheme to shore up the government's books. [[3]](cite://3/1)[[4]](cite://4/1) The 2025 budget projected the deficit would peak at $12.1 billion before a return to surplus of $200 million in 2029. [[3]](cite://3/2)\n\nBudget 2026 appears to represent a shift in tone, with greater investment in frontline services while maintaining the government's broader commitment to fiscal discipline. [[2]](cite://2/4)\n\nWould you like to know more about what Budget 2026 means for specific sectors like health or education?\n\n## Sources\n\n[1] [PM and Health Minister Make Post-Budget Announcement](https://www.rnz.co.nz/news/health/596703/watch-live-pm-and-health-minister-make-post-budget-announcement)\n[2] [Budget 2026 Could Be a Tough Pill for Those Feeling the Pinch](https://www.rnz.co.nz/news/political/596655/budget-2026-could-be-a-tough-pill-for-those-feeling-the-pinch)\n[3] [Budget 2025: Government Books to Return to Surplus After Three Years](https://www.rnz.co.nz/news/business/561817/budget-2025-government-books-to-return-to-surplus-after-three-years)\n[4] [Budget 2025: What's been announced so far](https://www.rnz.co.nz/news/budget-2025/561449/budget-2025-what-s-been-announced-so-far)",
+        "mock": false,
+        "submitted_at": "2026-06-17T11:50:54.340874+00:00",
+        "stream_events": [
+          {
+            "type": "start",
+            "messageId": "9rFRuXxR9CRGatTK",
+            "_received_at_ms": 337
+          },
+          {
+            "type": "data-progress",
+            "id": "turn_baseline",
+            "data": {
+              "progress": {
+                "id": "turn_baseline",
+                "description": "Reading",
+                "status": "active",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": true,
+            "_received_at_ms": 337
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "answerQuestion": {
+                  "type": "WORKFLOW_TOOLS_LOAD_START",
+                  "workflowName": "answerQuestion",
+                  "workflowType": "answerQuestion",
+                  "configuredToolKeys": [],
+                  "configuredToolCount": 0
+                }
+              }
+            },
+            "_received_at_ms": 1013
+          },
+          {
+            "type": "data-progress",
+            "id": "turn_baseline",
+            "data": {
+              "progress": {
+                "id": "turn_baseline",
+                "description": "Reading message",
+                "status": "active",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 1101
+          },
+          {
+            "type": "data-progress",
+            "id": "tool_selection-00c27032-8b65-47db-acf5-6bebb4201416",
+            "data": {
+              "progress": {
+                "id": "tool_selection-00c27032-8b65-47db-acf5-6bebb4201416",
+                "description": "Understanding request",
+                "status": "active",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 1101
+          },
+          {
+            "type": "data-progress",
+            "id": "tool_selection-00c27032-8b65-47db-acf5-6bebb4201416",
+            "data": {
+              "progress": {
+                "id": "tool_selection-00c27032-8b65-47db-acf5-6bebb4201416",
+                "description": "Searching knowledge base",
+                "status": "active",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 3234
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "question": {
+                  "type": "TOOL_CALL_INTERRUPTED_PROCEED_WITH_USER_REQUEST",
+                  "usage": {
+                    "inputTokens": 3077,
+                    "inputTokenDetails": {
+                      "noCacheTokens": 3077,
+                      "cacheReadTokens": 0,
+                      "cacheWriteTokens": 0
+                    },
+                    "outputTokens": 135,
+                    "outputTokenDetails": {
+                      "textTokens": 135
+                    },
+                    "totalTokens": 3212,
+                    "raw": {
+                      "inputTokens": 3077,
+                      "outputTokens": 135,
+                      "totalTokens": 3212,
+                      "cacheReadInputTokens": 0,
+                      "cacheWriteInputTokens": 0
+                    },
+                    "cachedInputTokens": 0
+                  },
+                  "thinking": "The user is asking about the most recent budget delivered by the New Zealand government. This is a clear, self-contained question about NZ politics/finance.",
+                  "question": "What is the most recent budget delivered by the New Zealand government?",
+                  "metadata": null,
+                  "progressLabel": "Searching knowledge base",
+                  "elapsed": 2899
+                }
+              }
+            },
+            "_received_at_ms": 3234
+          },
+          {
+            "type": "data-progress",
+            "id": "tool_selection-00c27032-8b65-47db-acf5-6bebb4201416",
+            "data": {
+              "progress": {
+                "id": "tool_selection-00c27032-8b65-47db-acf5-6bebb4201416",
+                "description": "Searching knowledge base",
+                "status": "done",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 3234
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "classification": {
+                  "type": "QUESTION_CLASSIFICATION",
+                  "thinking": "The user is asking about the most recent New Zealand government budget. This is a current events/news topic that would be covered by RNZ (Radio New Zealand), which covers NZ politics, economy, and business news updated daily since January 2024. This is clearly answerable using the available knowledge bases.",
+                  "category": "D",
+                  "usage": {
+                    "inputTokens": 4530,
+                    "inputTokenDetails": {
+                      "noCacheTokens": 4530,
+                      "cacheReadTokens": 0,
+                      "cacheWriteTokens": 0
+                    },
+                    "outputTokens": 167,
+                    "outputTokenDetails": {
+                      "textTokens": 167
+                    },
+                    "totalTokens": 4697,
+                    "raw": {
+                      "inputTokens": 4530,
+                      "outputTokens": 167,
+                      "totalTokens": 4697,
+                      "cacheReadInputTokens": 0,
+                      "cacheWriteInputTokens": 0
+                    },
+                    "cachedInputTokens": 0
+                  },
+                  "elapsed": 9230
+                }
+              }
+            },
+            "_received_at_ms": 9574
+          },
+          {
+            "type": "data-progress",
+            "id": "turn_baseline",
+            "data": {
+              "progress": {
+                "id": "turn_baseline",
+                "description": "Reading message",
+                "status": "done",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 9574
+          },
+          {
+            "type": "data-progress",
+            "id": "mode-retract-00c27032-8b65-47db-acf5-6bebb4201416",
+            "data": {
+              "mode": "retract"
+            },
+            "_received_at_ms": 9574
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "question": {
+                  "type": "QUESTION_GENERATION_SKIPPED",
+                  "question": "What is the most recent budget delivered by the New Zealand government?",
+                  "source": "pre_kb_tool_calls",
+                  "elapsed": 9231
+                }
+              }
+            },
+            "_received_at_ms": 9574
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "search_topic_generation",
+                "status": "active",
+                "type": "SEARCHING_KB",
+                "description": "Preparing search topics"
+              }
+            },
+            "_received_at_ms": 14564
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "search_topic_generation",
+                "status": "done",
+                "type": "SEARCHING_KB",
+                "description": "Preparing search topics"
+              }
+            },
+            "_received_at_ms": 15383
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "kb_search_0",
+                "status": "active",
+                "description": "Search for NZ Budget 2025",
+                "type": "SEARCHING_KB"
+              }
+            },
+            "_received_at_ms": 15383
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "kb_search_1",
+                "status": "active",
+                "description": "Search for NZ Budget announcement",
+                "type": "SEARCHING_KB"
+              }
+            },
+            "_received_at_ms": 15383
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "kb_evaluation",
+                "status": "pending",
+                "description": "Evaluating search results",
+                "type": "EVALUATING_KB"
+              }
+            },
+            "_received_at_ms": 15383
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "orchestration": [
+                  {
+                    "type": "TOPIC_GENERATION",
+                    "queries": [
+                      {
+                        "knowledgeBaseId": "QETGXQCZ48",
+                        "query": "New Zealand government budget 2025 fiscal spending",
+                        "label": "Search for NZ Budget 2025",
+                        "filter": "none"
+                      },
+                      {
+                        "knowledgeBaseId": "QETGXQCZ48",
+                        "query": "New Zealand Budget announcement Minister of Finance economic plan",
+                        "label": "Search for NZ Budget announcement",
+                        "filter": "none"
+                      }
+                    ],
+                    "thinking": "The question asks about the most recent budget delivered by the New Zealand government. This is a current affairs/political question, so RNZ is the primary source. The budget is a political/parliamentary topic, so I should focus on RNZ. Te Ara might have historical context about NZ budgets but won't have the most recent one. I'll search RNZ for the most recent NZ government budget.",
+                    "usage": {
+                      "inputTokens": 5642,
+                      "inputTokenDetails": {
+                        "noCacheTokens": 5642,
+                        "cacheReadTokens": 0,
+                        "cacheWriteTokens": 0
+                      },
+                      "outputTokens": 220,
+                      "outputTokenDetails": {
+                        "textTokens": 220
+                      },
+                      "totalTokens": 5862,
+                      "raw": {
+                        "inputTokens": 5642,
+                        "outputTokens": 220,
+                        "totalTokens": 5862,
+                        "cacheReadInputTokens": 0,
+                        "cacheWriteInputTokens": 0
+                      },
+                      "cachedInputTokens": 0
+                    },
+                    "elapsed": 5815
+                  }
+                ]
+              }
+            },
+            "_received_at_ms": 15383
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "kb_search_0",
+                "status": "done",
+                "type": "SEARCHING_KB"
+              }
+            },
+            "_received_at_ms": 15801
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "kb_search_1",
+                "status": "done",
+                "type": "SEARCHING_KB"
+              }
+            },
+            "_received_at_ms": 15833
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "kb_evaluation",
+                "description": "Evaluating search results",
+                "status": "active",
+                "type": "EVALUATING_KB"
+              }
+            },
+            "_received_at_ms": 16030
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "orchestration": [
+                  {
+                    "type": "KNOWLEDGE_BASE_SEARCH_RESULTS",
+                    "results": {
+                      "1": {
+                        "id": 1,
+                        "text": "[Page 1] https://www.rnz.co.nz/news/budget 2025/561449/budget 2025 what s b een announced so far\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/IYsTD3R3jWW9BvDnALlsG1eltC2JcggfigUXHvXWHoQ/cbdfb4db-6624-43ae-b4e0-e43bdc441d0c.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/IYsTD3R3jWW9BvDnALlsG1eltC2JcggfigUXHvXWHoQ.pdf",
+                          "filePath": "pdf/Over 1500 to strike over Ministry of Education's proposed pay freeze.pdf",
+                          "author": "RNZ (Radio New Zealand)",
+                          "published_date": "2025-05-21",
+                          "updated_date": "2025-05-21",
+                          "category": "New Zealand"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "New Zealand government budget 2025 fiscal spending",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Over 1500 to strike over Ministry of Education's proposed pay freeze.pdf",
+                          "fileName": "Over 1500 to strike over Ministry of Education's proposed pay freeze.pdf",
+                          "checksumSHA256": "IYsTD3R3jWW9BvDnALlsG1eltC2JcggfigUXHvXWHoQ=",
+                          "checksumSHA256URL": "IYsTD3R3jWW9BvDnALlsG1eltC2JcggfigUXHvXWHoQ",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/IYsTD3R3jWW9BvDnALlsG1eltC2JcggfigUXHvXWHoQ.pdf"
+                        },
+                        "document_title": "Over 1500 Ministry of Education Workers to Strike Over Proposed Pay Freeze",
+                        "document_summary": "More than 1500 workers at New Zealand's Ministry of Education will strike for one hour on Wednesday to protest a proposed two-year pay freeze. The Public Service Association (PSA) states this is the first strike by its members at the Ministry in 20 years. The union argues the freeze fails to address the increased cost of living and would prevent most members from receiving pay rises. Additional concerns include proposed cuts to staff consultation on change processes and removal of flexible working provisions. Negotiations have stalled since December, though the Ministry's Acting Leader Rob Campbell expressed commitment to good-faith bargaining and hopes for progress during Wednesday's talks and scheduled mediation at month's end."
+                      },
+                      "2": {
+                        "id": 2,
+                        "text": "[Page 1] Analysis The government has proclaimed 2025 the year of growth, but with an avowed commitment to fiscal prudence of a return to surplus by 2027/28 and control of rising debt, can it deliver when all the indications are that it is close to running on empty? According to Finance Minister Nicola Willis, this year's Budget is a real \"no BS\" affair that will create real growth for New Zealand. The Budget will be again dominated by the government concentrating on balancing the books through cuts and reprioritisation in spending. It has cut the operational allowance for the coming year to $1.3 billion from the previous $2.4b, which if extended over the forecast period would deliver another $4b in savings. Treasury forecasts are likely to be revised lower to reflect the softer economic recovery and uncertain global environment caused by the potential impact of US tariffs on world growth and trade. An economy growing less than 2 percent with unemployment sitting above 5 percent may translate to lower government income, offsetting spending cuts and resulting in weaker finances and higher government debt. Rays of sunshine There have been some glimpses of improvement in the latest set of government accounts for the nine months ended March, with the deficit tracking close to the half year economic forecasts, with the tax take running just ahead of forecasts and spending just below, although some of that might be timing. The government has already committed to more than $3b spending over four years on various initiatives, along with $6.8b for capital spending to upgrade or buy new assets. Government borrowing is expected to be up a modest $5b extra over the forecast period, after Treasury frontloaded and borrowed big last year, but net debt levels are still expected to reach more than 46 percent of the value of the economy and edging towards the stated debt lid of 50 percent. The 2025 Budget. No lolly scramble Willis has said the Budget has no rainbows, no unicorns, with departments needing to find further savings through staff and/or programme cuts or changes. Difficult choices loom. This is the robbing Peter to pay Paul scenario, where no one wants to be Peter. Businesses would dearly love a cut to company tax, but that is never going to happen in the near term at least but perhaps some tinkering with the fringe benefits tax or targeted depreciation to encourage investment may be offered. KiwiSavers have been teased with hints of moves to improve savings, which perhaps may mean an increase in contribution rates, but might be at the expense of the government's $521 a year contribution. Which leads to the prospective gains from the reshaping of the pay equity, which have not been quantified in the past but have been credited as \"saving\" the Budget with billions. Persistent government spending cuts will take money out of the economy, putting the onus for making the economy grow on the private sector and the Reserve Bank through further interest rate cuts. The challenge in this and future Budgets is the government getting its 'A into G' austerity into growth. Sign up for Ngā Pitopito Kōrero, a daily newsletter curated by our editors and delivered straight to your inbox every weekday. Related https://www.rnz.co.nz/news/Budget 2025/561449/Budget 2025 what s b een announced so far https://www.rnz.co.nz/news/business/559618/kiwi saver providers mull possible changes to free 521 a year https://www.r nz.co.nz/national/programmes/ninetonoon/audio/2018973622/unemploy\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/JqlroKJotlJcaZ93ROorpKZu6RppLVBkNHSmDJ841z0/235d8c12-c8dc-4e45-8e52-aa705bce6fff.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/JqlroKJotlJcaZ93ROorpKZu6RppLVBkNHSmDJ841z0.pdf",
+                          "filePath": "pdf/Budget 2025: Can austerity be turned into growth?.pdf",
+                          "author": "Gyles Beckford - Business Editor ",
+                          "published_date": "2025-05-21",
+                          "updated_date": "2025-05-21",
+                          "category": "Politics"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "New Zealand government budget 2025 fiscal spending",
+                            "filter": null
+                          },
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "New Zealand Budget announcement Minister of Finance economic plan",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Budget 2025: Can austerity be turned into growth?.pdf",
+                          "fileName": "Budget 2025: Can austerity be turned into growth?.pdf",
+                          "checksumSHA256": "JqlroKJotlJcaZ93ROorpKZu6RppLVBkNHSmDJ841z0=",
+                          "checksumSHA256URL": "JqlroKJotlJcaZ93ROorpKZu6RppLVBkNHSmDJ841z0",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/JqlroKJotlJcaZ93ROorpKZu6RppLVBkNHSmDJ841z0.pdf"
+                        },
+                        "document_title": "Budget 2025: Can Austerity Be Turned Into Growth?",
+                        "document_summary": "New Zealand's 2025 Budget attempts to balance fiscal prudence with economic growth amid challenging conditions. Finance Minister Nicola Willis presents a \"no BS\" budget focused on spending cuts and reprioritization to return to surplus by 2027/28. The operational allowance has been cut to $1.3 billion from $2.4 billion, potentially delivering $4 billion in savings. However, with economic growth below 2 percent, unemployment above 5 percent, and uncertain global conditions from US tariffs, government income may decline. Treasury forecasts are expected to be revised lower. Net debt is projected to reach 46 percent of GDP, approaching the 50 percent ceiling. The government has committed to $3 billion in spending initiatives and $6.8 billion for capital spending, with borrowing increasing by $5 billion. The key challenge is converting austerity into growth, relying on private sector investment and Reserve Bank interest rate cuts to stimulate the economy while government spending cuts reduce money circulation."
+                      },
+                      "3": {
+                        "id": 3,
+                        "text": "[Page 3] https://www.rnz.co.nz/news/budget 2025/561449/budget 2025 what s b een announced so far https://www.rnz.co.nz/news/budget 2025/561550/ budget day 2025 what you need to know https://www.rnz.co.nz/news/po litical/561442/nz budget 2025 economic forecasting is notoriously diffic ult but global uncertainty is making it harder https://www.rnz.co.nz/new s/budget 2025/561616/new zealanders across political spectrum want i ncreased spending on public services poll finds\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/Og_WxBKu_63MtumrXGLbi5SIVldEegjwjGpS4zM4zKk/32c2c669-8c68-4734-9e11-843b5c50d968.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/Og_WxBKu_63MtumrXGLbi5SIVldEegjwjGpS4zM4zKk.pdf",
+                          "filePath": "pdf/Budget 2025 at a glance: The big changes, winners and losers.pdf",
+                          "author": "RNZ (Radio New Zealand)",
+                          "published_date": "2025-05-22",
+                          "updated_date": "2025-05-22",
+                          "category": "New Zealand"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "New Zealand government budget 2025 fiscal spending",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Budget 2025 at a glance: The big changes, winners and losers.pdf",
+                          "fileName": "Budget 2025 at a glance: The big changes, winners and losers.pdf",
+                          "checksumSHA256": "Og/WxBKu/63MtumrXGLbi5SIVldEegjwjGpS4zM4zKk=",
+                          "checksumSHA256URL": "Og_WxBKu_63MtumrXGLbi5SIVldEegjwjGpS4zM4zKk",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/Og_WxBKu_63MtumrXGLbi5SIVldEegjwjGpS4zM4zKk.pdf"
+                        },
+                        "document_title": "Budget 2025 at a Glance: The Big Changes, Winners and Losers",
+                        "document_summary": "New Zealand's 2025 Budget introduces significant changes across multiple sectors. Key announcements include: KiwiSaver government contributions halved to 25c per dollar (max $261/year), minimum contributions rising to 4%, and high earners ($180k+) excluded from contributions. Pay equity claims are restricted, saving $2.7b. Best Start payments become fully income-tested with a $97k threshold. Businesses receive a tax break allowing 20% write-off on new assets. Benefits for 18-19 year-olds are tightened with parental income testing. The government forecasts no surplus until 2029. Education spending growth slows, health receives $3.1b (up 4.77%), and law/order gets $500m+ for police and courts. Cost-of-living support includes increased Working for Families thresholds benefiting 142,000 families and expanded SuperGold card rebates."
+                      },
+                      "4": {
+                        "id": 4,
+                        "text": "[Page 3] https://www.rnz.co.nz/news/budget 2025/561449/budget 2025 what s b een announced so far https://www.rnz.co.nz/news/budget 2025/561550/ budget day 2025 what you need to know https://www.rnz.co.nz/news/po litical/561442/nz budget 2025 economic forecasting is notoriously diffic ult but global uncertainty is making it harder https://www.rnz.co.nz/new s/budget 2025/561616/new zealanders across political spectrum want i ncreased spending on public services poll finds\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/t7l0cPjZXXMaL6eIvq4kT2rtNBG0M42EsCCwPLgAYU8/ce3671ba-1e03-4ec1-b3e9-9848aee0facb.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/t7l0cPjZXXMaL6eIvq4kT2rtNBG0M42EsCCwPLgAYU8.pdf",
+                          "filePath": "pdf/Breaking it down: Budget 2025 in charts.pdf",
+                          "author": "Kate Newton - Climate Change Correspondent",
+                          "published_date": "2025-05-22",
+                          "updated_date": "2025-05-22",
+                          "category": "New Zealand"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "New Zealand government budget 2025 fiscal spending",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Breaking it down: Budget 2025 in charts.pdf",
+                          "fileName": "Breaking it down: Budget 2025 in charts.pdf",
+                          "checksumSHA256": "t7l0cPjZXXMaL6eIvq4kT2rtNBG0M42EsCCwPLgAYU8=",
+                          "checksumSHA256URL": "t7l0cPjZXXMaL6eIvq4kT2rtNBG0M42EsCCwPLgAYU8",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/t7l0cPjZXXMaL6eIvq4kT2rtNBG0M42EsCCwPLgAYU8.pdf"
+                        },
+                        "document_title": "Breaking it down: Budget 2025 in charts",
+                        "document_summary": "This article provides a comprehensive breakdown of New Zealand's 2025 Budget, explaining how government spending affects everyday services like healthcare, education, and infrastructure. Key highlights include: the government's return to surplus delayed to 2029 (though still in deficit by traditional measures), the tightest budget in a decade with only $1.3 billion in new spending, and a projected GDP contraction of 0.8% this year before recovery. The government is managing tight finances by reallocating $5 billion annually to health, education, and defence through departmental savings and welfare cuts. Inflation has fallen significantly, though unemployment is expected to peak at 5.4% this year with rising underemployment affecting 12% of the workforce. The article emphasizes how budget decisions directly impact all New Zealanders through changes to services, taxes, and economic conditions."
+                      },
+                      "5": {
+                        "id": 5,
+                        "text": "[Page 1] Big numbers for Budget 2025 but will they be big enough? ByDavina Zimmer Associate producer for The Detail 2025 05 16 04:54:36+12:00 Even if the government throws more than a billion extra dollars into health and education, those sectors will be standing still the money eaten up by inflation eaten up by inflation [wk_audio]3ce83223 7a4c 4aa7 909c 00fad6e5c5d3 Budget 2025 will deliver some big numbers, but closer examination suggests they might not be all they seem. Next Thursday (22 May) Nicola Willis will deliver her second annual Budget, setting out how and where money will be spent over the next financial year. There are some giant figures; $190 million for social investment, $100m for kids needing extra maths help and a whopping $12 billion over the next four years for defence. But according to Brian Roper, an associate professor in the political programme at Otago University, a key phrase to keep in mind when looking at these figures is \"in relation to inflation\". \"You always have to take account of inflation, because that's really what the government is spending in real terms as opposed to nominal terms,\" he says. For example, you might have previously got by with $100 per week for groceries. But this year you find things are more expensive and you have to add $20 to your budget to keep buying the same list of items. That's an example of change in real spending. But let's say you only upped your budget by $10. While it's technically an increase it's not enough to cover the more expensive grocery bill so it's really a cut. That's a nominal spending change. Treasury has forecast 1.8 percent CPI inflation for this year and 2.1 percent inflation for 2026. Roper has crunched the numbers and says health needs an additional $588m and education needs an extra $435m, just to continue operating the way it is now. But he's not confident that's what this Budget will deliver. \"Looking at the pre Budget speeches of Nicola Willis and Christopher Luxon they are both crystal clear that they want to see a decline in government spending as a percentage of GDP,\" he says. Roper says that means we can expect nominal increases to social sector budgets that won't be enough to match the rate of inflation. Whether or not that's a good thing depends on which side of the political divide you're on. \"If you're Business New Zealand, or Federated Farmers or one of New Zealand's business lobby groups, then really what you want to see this government doing is cutting taxes on the one side and cutting social spending on the other. Pretty much what this government has been doing,\" he says. But for low to middle income earners, or those who are reliant on public services such as health, housing, education and retirement income, Roper says this budget is unlikely to bring many benefits. The Detail also speaks to Luke Malpass, political editor for The Post and The Press, who says both sides of the political sector will try to swing the budget narrative in their favour in the lead up to Budget Day. That includes labelling them. \"So for example the 2023 Budget ... the government said, 'this will be a bread and butter Budget'. \"That was obviously when inflation was high, cost of living was very high on people's priority list and the idea of a bread and butter Budget is 'we're paring it back to basics',\" he explains. Malpass says an example of where the opposition won control of the narrative was the 2008 \"block of cheese Budget\", a label coined by Labour after working out that John Key's tax cut package actually only gave the average wage earner an extra $16 per week, the equivalent to a block of cheese at the time. Malpass says this government is following a similar track to previous governments when it comes to what they deliver in each budget over their term. \"When you first get into power you want to spend money on your priorities ... and the second budget is usually a response to basically to whatever the economic conditions of the day are. \"It's worth noting that Grant Robertson, when he was still Finance Minister, had very much pointed out that this was what was coming down the line regardless of who won the 2023 election. So, politically the question is, how the government responds to that and how fair and reasonable New Zealanders think that response is.\" Check out how to listen to and follow The Detail here. You can also stay up to date by liking us on Facebook or following us on Twitter. Related\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/YObBgZ15MLykxYW7TSpth2c0qh1RZN4VDO0q-kzX4B4/20cec73c-b9d8-4dfd-9706-610a0623d2cc.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/YObBgZ15MLykxYW7TSpth2c0qh1RZN4VDO0q-kzX4B4.pdf",
+                          "filePath": "pdf/Big numbers for Budget 2025 - but will they be big enough?.pdf",
+                          "author": "Davina Zimmer - Associate producer for The Detail",
+                          "published_date": "2025-05-16",
+                          "updated_date": "2025-05-16",
+                          "category": "New Zealand"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "New Zealand government budget 2025 fiscal spending",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Big numbers for Budget 2025 - but will they be big enough?.pdf",
+                          "fileName": "Big numbers for Budget 2025 - but will they be big enough?.pdf",
+                          "checksumSHA256": "YObBgZ15MLykxYW7TSpth2c0qh1RZN4VDO0q+kzX4B4=",
+                          "checksumSHA256URL": "YObBgZ15MLykxYW7TSpth2c0qh1RZN4VDO0q-kzX4B4",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/YObBgZ15MLykxYW7TSpth2c0qh1RZN4VDO0q-kzX4B4.pdf"
+                        },
+                        "document_title": "Big Numbers for Budget 2025 - But Will They Be Big Enough?",
+                        "document_summary": "Budget 2025 presents large spending figures including $190 million for social investment, $100 million for maths help, and $12 billion for defence. However, according to political analyst Brian Roper, these nominal increases may not represent real spending growth when adjusted for inflation. Treasury forecasts 1.8-2.1% CPI inflation, while health and education require $588 million and $435 million respectively just to maintain current operations. The government's stated goal to reduce spending as a percentage of GDP suggests social sector budgets will likely increase nominally but fall short of inflation rates, potentially resulting in real cuts. This approach benefits business groups but disadvantages low-to-middle income earners and public service users."
+                      },
+                      "6": {
+                        "id": 6,
+                        "text": "[Page 1] An uncertain economic outlook and slower recovery will keep government finances in deficit for the next three years before a return to surplus. The Budget forecasts a $3 billion a year lower tax take, while expenses are about $1 billion higher than forecast in the December update, resulting in the budget deficit peaking at $12 billion in the coming year and staying higher than expected before a surplus of $200 million in 2029. Finance Minister Nicola Willis said the Budget was aimed at securing and enhancing economic recovery. \"Budget 2025 responds to New Zealand's long term challenges with initiatives to boost growth, investment, and savings,\" Willis said. \"There are targeted investments in essential services and infrastructure... And reforms fix financial holes in the government books.\" [flourish] 22903206 Treasury forecast this year's deficit, using the newly introduced calculation excluding ACC costs, to the end of June would be $10.2 billion, about $2.7 billion lower than forecasted. The deficit will peak in the coming year at $12.1 billion, nearly $2 billion more than the December forecast, with the 2027 forecast nearly double the previous forecast at $8.1 billion. Willis said she was proud to get deficits lower and reduce debt levels. The Budget has used close to $13 billion from the now revamped pay equity scheme. [flourish] 22903200 Economic outlook Treasury economic forecasts were pulled back in the near term because of uncertainty about the global outlook and a slower economic rebound after last year's recession. Growth was forecast to be slower for the rest of this year before picking up and sitting near three percent a year for the next three years. Unemployment is forecast to be near the peak and is expected to fall below five percent in the next two years, while inflation is forecast to stay close to the Reserve Bank's two percent target point for the next few years. [flourish] 22902626 Business tax breaks Businesses were offered a tax break for new machinery and plants through a larger and quicker depreciation of assets. The Investment Boost incentive will allow businesses to claim 20 percent of the cost of the asset immediately, compared to the current 10.5 percent rate. Willis said the enhanced tax\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/KmX6qe51zd8akUHRVueKjwxQEybuzhx1tLHFus_kAcc/6aea53e8-d5d9-4b70-98c2-e5f0fc4cc52e.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/KmX6qe51zd8akUHRVueKjwxQEybuzhx1tLHFus_kAcc.pdf",
+                          "filePath": "pdf/Budget 2025: Government books to return to surplus after three years.pdf",
+                          "author": "Gyles Beckford - Business Editor ",
+                          "published_date": "2025-05-22",
+                          "updated_date": "2025-05-22",
+                          "category": "Politics"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "New Zealand government budget 2025 fiscal spending",
+                            "filter": null
+                          },
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "New Zealand Budget announcement Minister of Finance economic plan",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Budget 2025: Government books to return to surplus after three years.pdf",
+                          "fileName": "Budget 2025: Government books to return to surplus after three years.pdf",
+                          "checksumSHA256": "KmX6qe51zd8akUHRVueKjwxQEybuzhx1tLHFus/kAcc=",
+                          "checksumSHA256URL": "KmX6qe51zd8akUHRVueKjwxQEybuzhx1tLHFus_kAcc",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/KmX6qe51zd8akUHRVueKjwxQEybuzhx1tLHFus_kAcc.pdf"
+                        },
+                        "document_title": "Budget 2025: Government Books to Return to Surplus After Three Years",
+                        "document_summary": "New Zealand's Budget 2025 forecasts government finances will remain in deficit for three years before returning to surplus of $200 million in 2029. The budget deficit will peak at $12.1 billion in the coming year due to a $3 billion lower tax take and $1 billion higher expenses. Finance Minister Nicola Willis emphasized the budget targets economic recovery through growth initiatives, infrastructure investment, and financial reforms. Key measures include business tax breaks for new machinery (Investment Boost incentive allowing 20% immediate depreciation claims), KiwiSaver scheme changes with increased contribution rates to 4% and expanded eligibility for 16-18 year olds, and halved government contributions to KiwiSaver. Economic forecasts show slower near-term growth due to global uncertainty, with unemployment expected to fall below 5% within two years and inflation near the Reserve Bank's 2% target. Net debt is projected to peak at 43.5% of GDP in 2025, remaining above the 40% government ceiling for three years."
+                      },
+                      "7": {
+                        "id": 7,
+                        "text": "[Page 1] https://www.rnz.co.nz/news/political/596610/budget 2026 at a glance th e big changes winners and losers what you need to know https://www.r nz.co.nz/news/budget 2026/596615/budget 2026 health spend delivers for hospital upgrades more beds and new it system https://www.rnz.co. nz/news/business/596612/budget 2026 new zealand digging its way out of the post covid hole finance minister says https://www.rnz.co.nz/news /political/596642/budget 2026 nine charts that show how nicola willis g ot her budget boast\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/vwNlCP6NA7GNZi8Ih1f7lv9n9F9nj4zIjwTiqkw5Njg/1a57a8de-d578-4223-89fa-bd9596596a13.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/vwNlCP6NA7GNZi8Ih1f7lv9n9F9nj4zIjwTiqkw5Njg.pdf",
+                          "filePath": "pdf/Watch live: PM and Health Minister make post-Budget announcement.pdf",
+                          "author": "RNZ (Radio New Zealand)",
+                          "published_date": "2026-05-29",
+                          "updated_date": "2026-05-29",
+                          "category": "Politics"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "New Zealand government budget 2025 fiscal spending",
+                            "filter": null
+                          },
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "New Zealand Budget announcement Minister of Finance economic plan",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Watch live: PM and Health Minister make post-Budget announcement.pdf",
+                          "fileName": "Watch live: PM and Health Minister make post-Budget announcement.pdf",
+                          "checksumSHA256": "vwNlCP6NA7GNZi8Ih1f7lv9n9F9nj4zIjwTiqkw5Njg=",
+                          "checksumSHA256URL": "vwNlCP6NA7GNZi8Ih1f7lv9n9F9nj4zIjwTiqkw5Njg",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/vwNlCP6NA7GNZi8Ih1f7lv9n9F9nj4zIjwTiqkw5Njg.pdf"
+                        },
+                        "document_title": "PM and Health Minister Make Post-Budget Announcement",
+                        "document_summary": "Prime Minister Christopher Luxon and Health Minister Simeon Brown held a post-Budget announcement in Auckland on May 29, 2026. The pair toured the Botany Downs Birthing Unit and addressed media around 10am to discuss health-related Budget announcements. The Budget 2026 health spending focused on hospital upgrades, additional beds, and a new IT system. This announcement followed the broader Budget 2026 announcements covering various policy areas and economic initiatives."
+                      },
+                      "8": {
+                        "id": 8,
+                        "text": "[Page 2] Landlords There's $729m being spent on restoring interest deductibility for residential rental property. Police Police are getting $226.1m over four years for an extra 500 police and there's also $424.9m over four years to support frontline policing. Education Schools and kura kaupapa property are getting a $1.48b boost over four years and there's also $200m in grants for operating schools, too. There are also boosts for school IT infrastructure and subsidies for ECEs and tertiary tuition and training. Māori There's $12 million over four years for Kōhanga Reo property maintenance. Te Matatini received another boost in this years budget, from 2025 they will get $48.7m over three years. That goes with the $34m over two years the National kapa haka festival received in Budget 2023. Natural disaster response There's a fair bit in the Budget for this sector and it's perhaps no surprise, coming in the wake of the mop up for events like Cyclone Gabrielle. This $939.3m is clearly that spread over four years, it's to repair roads damaged during Cyclone Gabrielle, the Auckland floods and other North Island weather events. There's $200m for flood infrastructure upgrades in the $1.2b Regional Infrastructure Fund. In the same sphere, there's $5m for the creation of the National Infrastructure Agency and the somewhat adjacent $106.9m over four years operational funding for GeoNet and the National Seismic Hazard Model. There's also $23.1m over four years for critical frontline rescue services to respond to severe weather events and emergencies. In addition, the Climate Emergency Response Fund is getting $597m, paid for through the ETS. Local councils The Waste Disposal Levy is being expanded to cover a wider range of projects with an expected result of $1.195b over four years. The 'losers' The country's debt level The government borrowing programme over the next four years was increased by $12b from December's forecast. Net debt is forecast to peak at 43.5 percent of GDP in 2025 and is forecast to remain above the government's 40 percent ceiling for the following three years. Tax evaders It's not a good day if you're a tax evader the government is pumping $147m into cracking down on tax evasion. The next lot of first year uni students The government is switching fees free from first year to final year of university with an expected saving of $220m. Overseas student loan borrowers Interest rates for overseas borrowers are set to increase from 3.9 percent to 4.9 percent from 1 April 2025. Online gambling operators It's expected there will\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/jNNhJPl20nn2rPjym7hz7DjxTsZgKKwHiDuIwGxnXBM/ea99304d-2790-4fda-b390-b1f24dfbc717.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/jNNhJPl20nn2rPjym7hz7DjxTsZgKKwHiDuIwGxnXBM.pdf",
+                          "filePath": "pdf/Budget 2024: Winners and losers.pdf",
+                          "author": "RNZ (Radio New Zealand)",
+                          "published_date": "2024-05-30",
+                          "updated_date": "2024-05-30",
+                          "category": "New Zealand"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "New Zealand government budget 2025 fiscal spending",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Budget 2024: Winners and losers.pdf",
+                          "fileName": "Budget 2024: Winners and losers.pdf",
+                          "checksumSHA256": "jNNhJPl20nn2rPjym7hz7DjxTsZgKKwHiDuIwGxnXBM=",
+                          "checksumSHA256URL": "jNNhJPl20nn2rPjym7hz7DjxTsZgKKwHiDuIwGxnXBM",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/jNNhJPl20nn2rPjym7hz7DjxTsZgKKwHiDuIwGxnXBM.pdf"
+                        },
+                        "document_title": "Budget 2024: Winners and Losers",
+                        "document_summary": "New Zealand's Budget 2024 analysis identifying major beneficiaries and those negatively impacted. Winners include 1.9 million households receiving tax relief averaging $30/week, with expanded childcare payments and in-work tax credits. Healthcare receives $16.7b in new funding, roads get $2.68b over four years, and police receive $226.1m for 500 additional officers. Education, Māori cultural initiatives, and natural disaster recovery also benefit significantly. Losers include first-year university students (fees-free switched to final year), overseas student loan borrowers facing higher interest rates, and various cultural institutions facing funding cuts. Government debt increases by $12b, peaking at 43.5% of GDP. Pharmac's promised $70m annual cancer funding commitment was deferred."
+                      },
+                      "9": {
+                        "id": 9,
+                        "text": "[Page 2] Budget 2026: 'New Zealand digging its way out of the post Covid hole', Finance Minister says Her messaging was succinct and well rehearsed in the Budget lock up, the House, and her post Budget interviews that it was her \"responsibility to be careful and prudent now to protect New Zealand's future\". Outside of the surplus forecast being due to arrive a year earlier, the big sell to New Zealanders was investment in core frontline services. Health was the big winner on that front with a $5.8b boost, along with $682 million of capital investment.\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/Rjh4c2-GXsepZ337PigjMpPT0YwB_ta6uYwGC1ZqK00/2ba46a84-08a5-44a7-93b0-0acd1ece602e.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/Rjh4c2-GXsepZ337PigjMpPT0YwB_ta6uYwGC1ZqK00.pdf",
+                          "filePath": "pdf/Budget 2026 could be a tough pill for those feeling the pinch.pdf",
+                          "author": "Jo Moir - Political Editor",
+                          "published_date": "2026-05-29",
+                          "updated_date": "2026-05-29",
+                          "category": "Politics"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "New Zealand government budget 2025 fiscal spending",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Budget 2026 could be a tough pill for those feeling the pinch.pdf",
+                          "fileName": "Budget 2026 could be a tough pill for those feeling the pinch.pdf",
+                          "checksumSHA256": "Rjh4c2+GXsepZ337PigjMpPT0YwB/ta6uYwGC1ZqK00=",
+                          "checksumSHA256URL": "Rjh4c2-GXsepZ337PigjMpPT0YwB_ta6uYwGC1ZqK00",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/Rjh4c2-GXsepZ337PigjMpPT0YwB_ta6uYwGC1ZqK00.pdf"
+                        },
+                        "document_title": "Budget 2026 Could Be a Tough Pill for Those Feeling the Pinch",
+                        "document_summary": "Finance Minister Nicola Willis delivered Budget 2026 with a focus on fiscal responsibility and long-term economic recovery, prioritizing a return to surplus a year earlier than expected. While the budget includes significant investments in health ($5.8b boost), defence ($2.3b capital, $1.2b operating), and infrastructure like the Cambridge to Piarere expressway ($1.8b), it offers limited immediate relief for low-income households struggling with cost-of-living pressures. Willis's strategy emphasizes future gains over present relief, which may resonate with financially secure voters but presents challenges for those living paycheck-to-paycheck. The government set aside nearly $500 million for fuel crisis spending but chose not to allocate it. In an election year, this prudent approach creates political risks for National while placing pressure on Labour to articulate a credible alternative vision."
+                      },
+                      "10": {
+                        "id": 10,
+                        "text": "[Page 1] https://www.rnz.co.nz/news/political/561810/budget 2025 at a glance th e big changes winners and losers https://www.rnz.co.nz/news/in depth/5 61811/breaking it down budget 2025 in charts https://www.rnz.co.nz/ne ws/political/561864/analysis finance minister delivers nip and tuck budg et https://www.rnz.co.nz/news/business/561835/budget 2025 governme nt rolls out 20 percent incentive for businesses\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/cjeyDneGZj2Bf7bhrrIimgjS0kkvaymF0fu4OXWwam8/c538159a-3bee-4d80-9396-bca9490d780e.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/cjeyDneGZj2Bf7bhrrIimgjS0kkvaymF0fu4OXWwam8.pdf",
+                          "filePath": "pdf/Watch: Christopher Luxon and Nicola Willis speak in Auckland.pdf",
+                          "author": "RNZ (Radio New Zealand)",
+                          "published_date": "2025-05-27",
+                          "updated_date": "2025-05-27",
+                          "category": "New Zealand"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "New Zealand government budget 2025 fiscal spending",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Watch: Christopher Luxon and Nicola Willis speak in Auckland.pdf",
+                          "fileName": "Watch: Christopher Luxon and Nicola Willis speak in Auckland.pdf",
+                          "checksumSHA256": "cjeyDneGZj2Bf7bhrrIimgjS0kkvaymF0fu4OXWwam8=",
+                          "checksumSHA256URL": "cjeyDneGZj2Bf7bhrrIimgjS0kkvaymF0fu4OXWwam8",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/cjeyDneGZj2Bf7bhrrIimgjS0kkvaymF0fu4OXWwam8.pdf"
+                        },
+                        "document_title": "Christopher Luxon and Nicola Willis Speak in Auckland on Investment Boost Policy",
+                        "document_summary": "Prime Minister Christopher Luxon and Finance Minister Nicola Willis addressed media in Auckland following a visit to Griffins Foods in Papakura. They discussed the government's Investment Boost policy, a tax incentive announced in the Budget that allows businesses to immediately deduct 20 percent of the cost of new assets on top of depreciation. The policy applies to assets purchased in New Zealand and new/used imported assets, including commercial buildings but excluding land, residential buildings, and assets already in use. The policy came into force immediately with no cap on eligible investment values, benefiting all businesses."
+                      },
+                      "11": {
+                        "id": 11,
+                        "text": "[Page 1] 2024 05 30 17:23:28+12:00 The Finance Minister has delivered her first Budget and says she has kept her pledge to New Zealanders. Our political reporter Giles Dexter has more.\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/L_v71HsVMGHViWLmUBClkxK5oYHtH6eUSJuRd2rTTLE/130d7f4e-132a-4537-bf32-fec1bdd32463.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/L_v71HsVMGHViWLmUBClkxK5oYHtH6eUSJuRd2rTTLE.pdf",
+                          "filePath": "pdf/Nicola Willis says she's kept pledge with Budget.pdf",
+                          "author": "Giles Dexter, Political Reporter",
+                          "published_date": "2024-05-30",
+                          "updated_date": "2024-05-30"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "New Zealand Budget announcement Minister of Finance economic plan",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Nicola Willis says she's kept pledge with Budget.pdf",
+                          "fileName": "Nicola Willis says she's kept pledge with Budget.pdf",
+                          "checksumSHA256": "L/v71HsVMGHViWLmUBClkxK5oYHtH6eUSJuRd2rTTLE=",
+                          "checksumSHA256URL": "L_v71HsVMGHViWLmUBClkxK5oYHtH6eUSJuRd2rTTLE",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/L_v71HsVMGHViWLmUBClkxK5oYHtH6eUSJuRd2rTTLE.pdf"
+                        },
+                        "document_title": "Nicola Willis Says She's Kept Pledge with Budget 2024",
+                        "document_summary": "Finance Minister Nicola Willis has delivered her first Budget and claims to have fulfilled her pledge to New Zealanders. Political reporter Giles Dexter provides comprehensive coverage of the Budget announcement and the Minister's commitment to her promises, detailing how the government has maintained its fiscal commitments and policy objectives outlined to the public."
+                      },
+                      "12": {
+                        "id": 12,
+                        "text": "[Page 1] 2025 01 30 10:05:58+13:00 The government says driving economic growth is it's number one priority. Finance Minister Nicola Willis will deliver her second budget on May 22, promising \"bold steps to support economic growth, including measures to address New Zealand's long standing productivity challenges.\" However Treasury has pointed out the now structural deficit in the government's books is currently set to be addressed by cuts to per person spending virtually unprecedented in modern times. Looking beyond the immediate challenges, Treasury is warning pressure on future governments' budgets, from demographic change, has worsened on projections from ten or twenty years ago. Kathryn speaks with Treasury's Chief Economics adviser Dominick Stephens.\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/7WB0MRqqo5ZUdI7nIdoHyL1yepDLEp2oFU1m2YuHpvQ/dcf8e522-c879-41d6-9f37-299c56c1398c.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/7WB0MRqqo5ZUdI7nIdoHyL1yepDLEp2oFU1m2YuHpvQ.pdf",
+                          "filePath": "pdf/Treasury's chief economist on the state of the books.pdf",
+                          "author": "Kathryn (interviewer); Dominick Stephens (Treasury Chief Economics Adviser)",
+                          "published_date": "2025-01-30",
+                          "updated_date": "2025-01-30"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "New Zealand Budget announcement Minister of Finance economic plan",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Treasury's chief economist on the state of the books.pdf",
+                          "fileName": "Treasury's chief economist on the state of the books.pdf",
+                          "checksumSHA256": "7WB0MRqqo5ZUdI7nIdoHyL1yepDLEp2oFU1m2YuHpvQ=",
+                          "checksumSHA256URL": "7WB0MRqqo5ZUdI7nIdoHyL1yepDLEp2oFU1m2YuHpvQ",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/7WB0MRqqo5ZUdI7nIdoHyL1yepDLEp2oFU1m2YuHpvQ.pdf"
+                        },
+                        "document_title": "Treasury's Chief Economist on the State of the Books",
+                        "document_summary": "Finance Minister Nicola Willis will deliver her second budget on May 22, 2025, focusing on economic growth and productivity challenges. Treasury warns of a structural deficit requiring unprecedented cuts to per-person spending. The government prioritizes driving economic growth, but faces long-term budget pressures from demographic changes that have worsened compared to projections from a decade or two ago. Treasury's Chief Economics Adviser Dominick Stephens discusses these fiscal challenges and the state of New Zealand's government finances, addressing the critical economic and budgetary issues facing the nation."
+                      },
+                      "13": {
+                        "id": 13,
+                        "text": "[Page 1] NZ's coalition government unveils maiden budget\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/O0kkgCHhd-kzXw9a3_tXR_96tL2OVXxbbcfqx9IoXqY/29162619-5b04-4c18-ba65-177c5ad08921.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/O0kkgCHhd-kzXw9a3_tXR_96tL2OVXxbbcfqx9IoXqY.pdf",
+                          "filePath": "pdf/Pacific Waves for 31 May 2024.pdf",
+                          "author": "Pacific Waves",
+                          "published_date": "2024-05-30",
+                          "updated_date": "2024-05-31"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "New Zealand Budget announcement Minister of Finance economic plan",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Pacific Waves for 31 May 2024.pdf",
+                          "fileName": "Pacific Waves for 31 May 2024.pdf",
+                          "checksumSHA256": "O0kkgCHhd+kzXw9a3/tXR/96tL2OVXxbbcfqx9IoXqY=",
+                          "checksumSHA256URL": "O0kkgCHhd-kzXw9a3_tXR_96tL2OVXxbbcfqx9IoXqY",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/O0kkgCHhd-kzXw9a3_tXR_96tL2OVXxbbcfqx9IoXqY.pdf"
+                        },
+                        "document_title": "Pacific Waves News Bulletin - 31 May 2024",
+                        "document_summary": "Pacific Waves news bulletin from 31 May 2024 covering major regional developments in the Pacific region. The bulletin highlights New Zealand's coalition government presenting its inaugural budget, Papua New Guinea's ongoing crisis following a devastating landslide in Enga with uncertainty regarding the death toll, political responses from PNG officials to the disaster, and updates on Super Rugby's Pasifika teams competing for top eight positions in the competition. This comprehensive regional news update provides critical information on political, environmental, and sporting developments affecting the Pacific nations."
+                      },
+                      "14": {
+                        "id": 14,
+                        "text": "[Page 1] Finding it hard to keep up with Budget news? Here's everything announced so far Finance Minister Nicola Willis. Finance Minister Nicola Willis will deliver the government's Budget 2025 the Growth Budget on Thursday. It will be her second annual Budget, setting out how and where money will be spent over the next financial year. Willis has warned that the Budget will be very tight, reflecting uncertainty in the global economy. Here is everything that has been announced so far: 'Billions' could be saved through pay equity overhaul The prime minister said new pay equity legislation announced earlier this month could save the government \"billions of dollars\". The Pay Equity Amendment Bill passed through all stages in Parliament, after being rushed through under urgency. The controversial legislation raises the threshold for proving work has been historically undervalued when making a pay equity claim and halted all 33 current claims. Christopher Luxon said that money had been set aside in the Budget to deal with claims under the new legislation. He said the costs could be lower by \"billions of dollars\". $6.8b boost to capital spend Capital expenditure new money set aside in the Budget to maintain or upgrade assets will be higher than originally forecast when the government delivers its Budget. The prime minister said the money, which would be split mostly across health, education, defence, and transport, will total $6.8 billion. It means the net capital allowance, once savings identified in the Budget have been accounted for, will increase from the $3.6b previously signalled to $4b. Prime Minister Christopher Luxon. $1b cut to operating allowance The government has freed up \"billions\" of dollars through additional public service cuts to be redeployed into \"New Zealand's most pressing priorities\". The government is halving its operating allowance the new money it has available to spend at the May Budget from $2.4b to $1.3b. That will result in only a small number of government departments receiving additional funding this year with Willis characterising next month's Budget as \"no lolly scramble\". No new compensation scheme, but nearly $800m for abuse survivors The government opted against setting up a new compensation scheme for\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/tYFENXnx-enY-Iba04lFtLW64MxqR1Vl2fqyumLZdyo/e83bb741-17eb-46fa-9743-8e3bf6d1b2e3.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/tYFENXnx-enY-Iba04lFtLW64MxqR1Vl2fqyumLZdyo.pdf",
+                          "filePath": "pdf/Budget 2025: What's been announced so far.pdf",
+                          "author": "RNZ (Radio New Zealand)",
+                          "published_date": "2025-05-19",
+                          "updated_date": "2025-05-19",
+                          "category": "Politics"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "New Zealand Budget announcement Minister of Finance economic plan",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Budget 2025: What's been announced so far.pdf",
+                          "fileName": "Budget 2025: What's been announced so far.pdf",
+                          "checksumSHA256": "tYFENXnx+enY+Iba04lFtLW64MxqR1Vl2fqyumLZdyo=",
+                          "checksumSHA256URL": "tYFENXnx-enY-Iba04lFtLW64MxqR1Vl2fqyumLZdyo",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/tYFENXnx-enY-Iba04lFtLW64MxqR1Vl2fqyumLZdyo.pdf"
+                        },
+                        "document_title": "Budget 2025: What's been announced so far",
+                        "document_summary": "New Zealand's Budget 2025, delivered by Finance Minister Nicola Willis, focuses on growth amid global economic uncertainty. Key announcements include: $6.8 billion boost to capital spending across health, education, defence, and transport; $1 billion cut to operating allowance; $604 million for Pharmac covering 54 new medicines including cancer treatments; $577 million for film industry rebates; $600 million for rail network upgrades; $190 million Social Investment Fund; $164 million for after-hours healthcare; $140 million for school attendance services to tackle truancy; $100 million for expert maths teachers; and $35 million to combat drugs and organized crime. The government also passed controversial pay equity legislation expected to save \"billions\" and allocated $774 million to improve abuse survivor compensation systems rather than creating a new scheme."
+                      },
+                      "15": {
+                        "id": 15,
+                        "text": "[Page 1] ByRussell Palmer Political Reporter 2024 03 27 13:08:04+13:00 The government has announced it will set itself a smaller Budget allowance than the previous government did, with no new borrowing, but will reveal the exact amount in the Budget. The Treasury is expecting growth to be $42.8 billion lower in the coming years than was estimated in the Half Year Update (HYEFU) in December, with core tax revenue tracking about $4b lower by the 2027/28 year compared to that estimate. The HYEFU had also estimated a 2026/27 return to an operating balance before gains and losses (OBEGAL) surplus, but that $4b lower revenue figure pushed the $3.4b surplus estimated for the 2027/28 year down to a $600m deficit instead. Changes to spending in the Budget would inevitably affect the final figures, but Willis acknowledged that \"on these particular forecasts, achieving a surplus in 2026/27 is almost certainly not achievable, a surplus in 2027/28 is still achievable but not a given\". Finance Minister Nicola Willis said her Budget Policy Statement, released on Wednesday, put the government on a more sustainable track while delivering \"urgently needed tax relief to hard working New Zealanders\". The statement sets out the government's priorities for the Budget due out in May, including:\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/WZKkrMCEyfDjfHo9gvAOkt-bsnv17BEJH_dowwon0Kc/7eb65eb3-e51a-463d-8464-df3587e80d4e.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/WZKkrMCEyfDjfHo9gvAOkt-bsnv17BEJH_dowwon0Kc.pdf",
+                          "filePath": "pdf/Budget Policy Statement: Willis promises cuts despite late return to surplus.pdf",
+                          "author": "Russell Palmer - Political Reporter",
+                          "published_date": "2024-03-27",
+                          "updated_date": "2024-03-27",
+                          "category": "Politics"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "New Zealand Budget announcement Minister of Finance economic plan",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Budget Policy Statement: Willis promises cuts despite late return to surplus.pdf",
+                          "fileName": "Budget Policy Statement: Willis promises cuts despite late return to surplus.pdf",
+                          "checksumSHA256": "WZKkrMCEyfDjfHo9gvAOkt+bsnv17BEJH/dowwon0Kc=",
+                          "checksumSHA256URL": "WZKkrMCEyfDjfHo9gvAOkt-bsnv17BEJH_dowwon0Kc",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/WZKkrMCEyfDjfHo9gvAOkt-bsnv17BEJH_dowwon0Kc.pdf"
+                        },
+                        "document_title": "Budget Policy Statement: Willis Promises Cuts Despite Late Return to Surplus",
+                        "document_summary": "Finance Minister Nicola Willis announced the government's Budget Policy Statement, setting a smaller budget allowance than the previous government with no new borrowing. Treasury forecasts show $42.8 billion lower growth and $4 billion lower tax revenue by 2027/28 compared to December estimates, pushing the projected 2027/28 surplus into a $600 million deficit. Willis confirmed the government will deliver meaningful tax relief funded through reprioritized spending and savings without additional borrowing or inflationary pressure. Key priorities include tax reductions, departmental savings, improved public services in health, education, and law and order, and sustainable infrastructure investment. The government aims to reduce core Crown expenditure toward 30% of GDP long-term and return to net core Crown debt as the default debt measure, with a prudent ceiling of 50% of GDP. Willis denied the approach mirrors austerity, emphasizing targeted tax relief for middle-income New Zealanders who have seen no tax decrease since 2010. Exact budget details will be revealed in May."
+                      },
+                      "16": {
+                        "id": 16,
+                        "text": "[Page 1] Finance Minister Nicola Willis on the choices and trade offs yesterday's budget. A promised boost to health, education, and law and order and defence, plus tax breaks for businesses to boost investment But $12.8 billion came from funds set aside for pay equity claims to boost 180,000 mostly female, low income workers. There's also pared back government contribution to KiwiSaver less support for Best Start, and shifting responsiblity to parents to pay for unemployed 18 and 19 year olds. Meanwhile a return to surplus keeps getting pushed out further the books expected to stay in deficit until 2028, with a wafer thin surplus of $200 million forecast for 2029. Nicola Willis joins Kathryn. in\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/Dad-P-pOVksc9l4ybI1aiSWjOoXqUqSdpwpNS0gmNEk/c2a77d02-05ab-442e-b897-90122a63192c.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/Dad-P-pOVksc9l4ybI1aiSWjOoXqUqSdpwpNS0gmNEk.pdf",
+                          "filePath": "pdf/Budget 2025: Finance Minister Nicola Willis.pdf",
+                          "author": "Nicola Willis, Finance Minister",
+                          "published_date": "2025-05-23",
+                          "updated_date": "2025-05-23"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "New Zealand Budget announcement Minister of Finance economic plan",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/Budget 2025: Finance Minister Nicola Willis.pdf",
+                          "fileName": "Budget 2025: Finance Minister Nicola Willis.pdf",
+                          "checksumSHA256": "Dad+P+pOVksc9l4ybI1aiSWjOoXqUqSdpwpNS0gmNEk=",
+                          "checksumSHA256URL": "Dad-P-pOVksc9l4ybI1aiSWjOoXqUqSdpwpNS0gmNEk",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/Dad-P-pOVksc9l4ybI1aiSWjOoXqUqSdpwpNS0gmNEk.pdf"
+                        },
+                        "document_title": "Budget 2025: Finance Minister Nicola Willis on Budget Choices and Trade-offs",
+                        "document_summary": "Finance Minister Nicola Willis discusses the 2025 budget's key decisions and trade-offs. The budget allocates increased funding to health, education, law and order, and defence, while offering tax breaks for businesses to encourage investment. However, $12.8 billion was redirected from pay equity funds intended for 180,000 low-income workers, predominantly women. Additional cuts include reduced government contributions to KiwiSaver, decreased Best Start support, and shifted responsibility to parents for unemployed 18-19 year-olds. The government's return to surplus continues to be delayed, with deficits expected through 2028 and only a modest $200 million surplus projected for 2029."
+                      },
+                      "17": {
+                        "id": 17,
+                        "text": "[Page 1] NZ's coalition govt unveils its maiden budget\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/lPZ8t__mF7rf98BPgTB_CcT9Un1oKsg8I4nERgkAFTk/f2daea88-8731-4f4e-91fc-1797572236ca.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/lPZ8t__mF7rf98BPgTB_CcT9Un1oKsg8I4nERgkAFTk.pdf",
+                          "filePath": "pdf/NZ's coalition govt unveils its maiden budget.pdf",
+                          "author": "<UNKNOWN>",
+                          "published_date": "2024-05-30",
+                          "updated_date": "2024-05-31"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "QETGXQCZ48",
+                            "query": "New Zealand Budget announcement Minister of Finance economic plan",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "pdf/NZ's coalition govt unveils its maiden budget.pdf",
+                          "fileName": "NZ's coalition govt unveils its maiden budget.pdf",
+                          "checksumSHA256": "lPZ8t//mF7rf98BPgTB/CcT9Un1oKsg8I4nERgkAFTk=",
+                          "checksumSHA256URL": "lPZ8t__mF7rf98BPgTB_CcT9Un1oKsg8I4nERgkAFTk",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/lPZ8t__mF7rf98BPgTB_CcT9Un1oKsg8I4nERgkAFTk.pdf"
+                        },
+                        "document_title": "NZ's Coalition Government Unveils Its Maiden Budget",
+                        "document_summary": "This document reports on New Zealand's coalition government's first budget announcement, released on May 30, 2024. The maiden budget represents the government's initial fiscal policy framework and spending priorities following the formation of the coalition administration. The announcement outlines key budgetary allocations and policy directions for the government's term, providing comprehensive insights into the coalition's economic and fiscal strategy for the nation."
+                      }
+                    },
+                    "elapsed": 638
+                  }
+                ]
+              }
+            },
+            "_received_at_ms": 16043
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "search_topic_generation",
+                "status": "done",
+                "type": "SEARCHING_KB",
+                "description": "Preparing search topics"
+              }
+            },
+            "_received_at_ms": 19565
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "orchestration": [
+                  {
+                    "type": "KNOWLEDGE_BASE_EVALUATION",
+                    "thinking": "The question asks about the most recent budget delivered by the New Zealand government. Looking at the search results, I can see references to Budget 2025 (delivered May 22, 2025) and Budget 2026 (delivered May 29, 2026). The most recent budget would be Budget 2026, based on the published dates of results 7 and 9. I need to identify all results that are relevant to the most recent NZ budget, which appears to be Budget 2026.",
+                    "relevant": [
+                      {
+                        "relevance": 0.98,
+                        "id": 7
+                      },
+                      {
+                        "relevance": 0.97,
+                        "id": 9
+                      },
+                      {
+                        "relevance": 0.85,
+                        "id": 6
+                      },
+                      {
+                        "relevance": 0.82,
+                        "id": 3
+                      },
+                      {
+                        "relevance": 0.8,
+                        "id": 4
+                      },
+                      {
+                        "relevance": 0.8,
+                        "id": 16
+                      },
+                      {
+                        "relevance": 0.78,
+                        "id": 2
+                      },
+                      {
+                        "relevance": 0.72,
+                        "id": 5
+                      },
+                      {
+                        "relevance": 0.7,
+                        "id": 14
+                      },
+                      {
+                        "relevance": 0.65,
+                        "id": 10
+                      },
+                      {
+                        "relevance": 0.6,
+                        "id": 12
+                      },
+                      {
+                        "relevance": 0.55,
+                        "id": 8
+                      },
+                      {
+                        "relevance": 0.4,
+                        "id": 11
+                      },
+                      {
+                        "relevance": 0.35,
+                        "id": 13
+                      },
+                      {
+                        "relevance": 0.3,
+                        "id": 17
+                      }
+                    ],
+                    "searchEvaluationUsage": {
+                      "inputTokens": 19952,
+                      "inputTokenDetails": {
+                        "noCacheTokens": 19952,
+                        "cacheReadTokens": 0,
+                        "cacheWriteTokens": 0
+                      },
+                      "outputTokens": 385,
+                      "outputTokenDetails": {
+                        "textTokens": 385
+                      },
+                      "totalTokens": 20337,
+                      "raw": {
+                        "inputTokens": 19952,
+                        "outputTokens": 385,
+                        "totalTokens": 20337,
+                        "cacheReadInputTokens": 0,
+                        "cacheWriteInputTokens": 0
+                      },
+                      "cachedInputTokens": 0
+                    },
+                    "elapsed": 8525
+                  }
+                ]
+              }
+            },
+            "_received_at_ms": 24549
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "orchestration": [
+                  {
+                    "type": "COMBINED_RANKING_SUMMARY",
+                    "totalEvaluated": 15,
+                    "topRanked": 15,
+                    "afterFiltering": 12,
+                    "breakdown": {
+                      "accessible": 12,
+                      "denied": 0
+                    },
+                    "finalResults": {
+                      "accessible": 12,
+                      "denied": 0
+                    },
+                    "elapsed": 0
+                  }
+                ]
+              }
+            },
+            "_received_at_ms": 24549
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "kb_evaluation",
+                "description": "Evaluating search results",
+                "status": "done",
+                "type": "EVALUATING_KB"
+              }
+            },
+            "_received_at_ms": 24549
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "orchestration": [
+                  {
+                    "type": "KNOWLEDGE_BASE_ANSWER",
+                    "elapsed": 0
+                  }
+                ]
+              }
+            },
+            "_received_at_ms": 24549
+          },
+          {
+            "type": "data-progress",
+            "id": "answer_generation-00c27032-8b65-47db-acf5-6bebb4201416",
+            "data": {
+              "progress": {
+                "id": "answer_generation-00c27032-8b65-47db-acf5-6bebb4201416",
+                "description": "Preparing response",
+                "status": "active",
+                "type": "ANSWERING"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 24549
+          },
+          {
+            "type": "start-step",
+            "_received_at_ms": 24549
+          },
+          {
+            "type": "text-start",
+            "id": "0",
+            "_received_at_ms": 28023
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "##",
+            "_received_at_ms": 28023
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Budget",
+            "_received_at_ms": 28039
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " 2026",
+            "_received_at_ms": 28106
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ":",
+            "_received_at_ms": 28216
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " New Zealand's",
+            "_received_at_ms": 28217
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Most",
+            "_received_at_ms": 28270
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Recent Budget",
+            "_received_at_ms": 28318
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "\n\nThe most recent budget delivered by the",
+            "_received_at_ms": 28367
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " New Zealand government is",
+            "_received_at_ms": 28420
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " **",
+            "_received_at_ms": 28464
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "Budget 2026**, presented",
+            "_received_at_ms": 28517
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " by Finance",
+            "_received_at_ms": 28566
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Minister Nic",
+            "_received_at_ms": 28639
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "ola Willis",
+            "_received_at_ms": 28714
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " and",
+            "_received_at_ms": 28759
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " published",
+            "_received_at_ms": 28810
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " on ",
+            "_received_at_ms": 28867
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "29",
+            "_received_at_ms": 28913
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " May",
+            "_received_at_ms": 28965
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " 2026.",
+            "_received_at_ms": 29014
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " ",
+            "_received_at_ms": 29064
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "[[1]](cite://1/1)",
+            "_received_at_ms": 29165
+          },
+          {
+            "type": "data-citation",
+            "data": {
+              "citation": {
+                "1": {
+                  "chunkSequence": -1,
+                  "citationNumber": 1,
+                  "fileChapters": [],
+                  "fileSubtitles": [],
+                  "fileThumbnailSrc": "",
+                  "fileTimestamp": 0,
+                  "fileType": "pdf",
+                  "sourceUrl": "https://www.rnz.co.nz/news/health/596703/watch-live-pm-and-health-minister-make-post-budget-announcement",
+                  "sourceUrlExpiresAt": 1781700645248,
+                  "sourceType": "web",
+                  "fileName": "Watch live: PM and Health Minister make post-Budget announcement.pdf",
+                  "checksumSHA256URL": "vwNlCP6NA7GNZi8Ih1f7lv9n9F9nj4zIjwTiqkw5Njg",
+                  "checksumSHA256": "vwNlCP6NA7GNZi8Ih1f7lv9n9F9nj4zIjwTiqkw5Njg=",
+                  "filePath": "pdf/Watch live: PM and Health Minister make post-Budget announcement.pdf",
+                  "sourceKnowledgeBaseId": "QETGXQCZ48",
+                  "fileAuthor": [
+                    "RNZ (Radio New Zealand)"
+                  ],
+                  "fileDate": "2026-05-28T22:24:04",
+                  "fileDescription": "Prime Minister Christopher Luxon and Health Minister Simeon Brown held a post-Budget announcement in Auckland on May 29, 2026. The pair toured the Botany Downs Birthing Unit and addressed media around 10am to discuss health-related Budget announcements. The Budget 2026 health spending focused on hospital upgrades, additional beds, and a new IT system. This announcement followed the broader Budget 2026 announcements covering various policy areas and economic initiatives.",
+                  "chunkHighlights": [
+                    {
+                      "pageIndex": 0,
+                      "height": 17.460025651988026,
+                      "width": 75.88149939540509,
+                      "left": 11.998790810157196,
+                      "top": 36.780889268918344,
+                      "text": "https://www.rnz.co.nz/news/political/596610/budget-2026-at-a-glance-th e-big-changes-winners-and-losers-what-you-need-to-know https://www.r nz.co.nz/news/budget-2026/596615/budget-2026-health-spend-delivers- for-hospital-upgrades-more-beds-and-new-it-system https://www.rnz.co. nz/news/business/596612/budget-2026-new-zealand-digging-its-way-out -of-the-post-covid-hole-finance-minister-says https://www.rnz.co.nz/news /political/596642/budget-2026-nine-charts-that-show-how-nicola-willis-g ot-her-budget-boast"
+                    }
+                  ],
+                  "filePage": 1,
+                  "fileTags": [
+                    "Budget 2026",
+                    "Health Minister",
+                    "Prime Minister",
+                    "Post-Budget announcement",
+                    "Healthcare spending"
+                  ],
+                  "fileTitle": "PM and Health Minister Make Post-Budget Announcement",
+                  "customMetadata": {
+                    "publisher": "Radio New Zealand",
+                    "published_date": "2026-05-29"
+                  },
+                  "publishedDate": null
+                }
+              }
+            },
+            "_received_at_ms": 29247
+          },
+          {
+            "type": "data-citationReference",
+            "data": {
+              "reference": {
+                "start": 0,
+                "end": 207,
+                "referenceNumber": 1,
+                "citationNumber": 1
+              }
+            },
+            "_received_at_ms": 29247
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "\n\n### Key Highlights",
+            "_received_at_ms": 29252
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "\n\nWillis",
+            "_received_at_ms": 29267
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " fr",
+            "_received_at_ms": 29311
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "amed the budget around",
+            "_received_at_ms": 29362
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " the",
+            "_received_at_ms": 29411
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " idea",
+            "_received_at_ms": 29460
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " that",
+            "_received_at_ms": 29510
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " New Zealand is ",
+            "_received_at_ms": 29562
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "'di",
+            "_received_at_ms": 29611
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "gging",
+            "_received_at_ms": 29825
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " its",
+            "_received_at_ms": 29826
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " way",
+            "_received_at_ms": 29826
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " out of the post",
+            "_received_at_ms": 29826
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "-Covid",
+            "_received_at_ms": 30037
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " hole",
+            "_received_at_ms": 30038
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "',",
+            "_received_at_ms": 30038
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " with",
+            "_received_at_ms": 30071
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " her",
+            "_received_at_ms": 30258
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " central",
+            "_received_at_ms": 30259
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " message focused",
+            "_received_at_ms": 30259
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " on fiscal",
+            "_received_at_ms": 30259
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " prudence —",
+            "_received_at_ms": 30296
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " described",
+            "_received_at_ms": 30480
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " as her",
+            "_received_at_ms": 30481
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " 'responsibility",
+            "_received_at_ms": 30481
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " to",
+            "_received_at_ms": 30509
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " be",
+            "_received_at_ms": 30700
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " careful",
+            "_received_at_ms": 30700
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " and",
+            "_received_at_ms": 30700
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " prud",
+            "_received_at_ms": 30700
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "ent now",
+            "_received_at_ms": 30918
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " to",
+            "_received_at_ms": 30919
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " protect",
+            "_received_at_ms": 30919
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " New",
+            "_received_at_ms": 30946
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Zealand's future.'",
+            "_received_at_ms": 30954
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " ",
+            "_received_at_ms": 31138
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "[[2]](cite://2/1)",
+            "_received_at_ms": 31138
+          },
+          {
+            "type": "data-citation",
+            "data": {
+              "citation": {
+                "2": {
+                  "chunkSequence": -1,
+                  "citationNumber": 2,
+                  "fileChapters": [],
+                  "fileSubtitles": [],
+                  "fileThumbnailSrc": "",
+                  "fileTimestamp": 0,
+                  "fileType": "pdf",
+                  "sourceUrl": "https://www.rnz.co.nz/news/political/596655/budget-2026-could-be-a-tough-pill-for-those-feeling-the-pinch",
+                  "sourceUrlExpiresAt": 1781700647096,
+                  "sourceType": "web",
+                  "fileName": "Budget 2026 could be a tough pill for those feeling the pinch.pdf",
+                  "checksumSHA256URL": "Rjh4c2-GXsepZ337PigjMpPT0YwB_ta6uYwGC1ZqK00",
+                  "checksumSHA256": "Rjh4c2+GXsepZ337PigjMpPT0YwB/ta6uYwGC1ZqK00=",
+                  "filePath": "pdf/Budget 2026 could be a tough pill for those feeling the pinch.pdf",
+                  "sourceKnowledgeBaseId": "QETGXQCZ48",
+                  "fileAuthor": [
+                    "Jo Moir - Political Editor"
+                  ],
+                  "fileDate": "2026-05-28T23:24:21",
+                  "fileDescription": "Finance Minister Nicola Willis delivered Budget 2026 with a focus on fiscal responsibility and long-term economic recovery, prioritizing a return to surplus a year earlier than expected. While the budget includes significant investments in health ($5.8b boost), defence ($2.3b capital, $1.2b operating), and infrastructure like the Cambridge to Piarere expressway ($1.8b), it offers limited immediate relief for low-income households struggling with cost-of-living pressures. Willis's strategy emphasizes future gains over present relief, which may resonate with financially secure voters but presents challenges for those living paycheck-to-paycheck. The government set aside nearly $500 million for fuel crisis spending but chose not to allocate it. In an election year, this prudent approach creates political risks for National while placing pressure on Labour to articulate a credible alternative vision.",
+                  "chunkHighlights": [
+                    {
+                      "pageIndex": 1,
+                      "height": 17.545532278751608,
+                      "width": 75.88149939540509,
+                      "left": 11.998790810157196,
+                      "top": 28.786019666524155,
+                      "text": "Budget 2026: 'New Zealand digging its way out of the post-Covid hole', Finance Minister says Her messaging was succinct and well-rehearsed in the Budget lock-up, the House, and her post-Budget interviews - that it was her \"responsibility to be careful and prudent now to protect New Zealand's future\". Outside of the surplus forecast being due to arrive a year earlier, the big sell to New Zealanders was investment in core frontline services. Health was the big winner on that front with a $5.8b boost, along with $682 million of capital investment."
+                    }
+                  ],
+                  "filePage": 2,
+                  "fileTags": [
+                    "Budget 2026",
+                    "Fiscal Policy",
+                    "Cost of Living",
+                    "Election Year",
+                    "Economic Recovery"
+                  ],
+                  "fileTitle": "Budget 2026 Could Be a Tough Pill for Those Feeling the Pinch",
+                  "customMetadata": {
+                    "publisher": "Radio New Zealand",
+                    "published_date": "2026-05-29"
+                  },
+                  "publishedDate": null
+                }
+              }
+            },
+            "_received_at_ms": 31138
+          },
+          {
+            "type": "data-citationReference",
+            "data": {
+              "reference": {
+                "start": 207,
+                "end": 711,
+                "referenceNumber": 1,
+                "citationNumber": 2
+              }
+            },
+            "_received_at_ms": 31138
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "\n\nA notable feature of the budget was",
+            "_received_at_ms": 31138
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " an",
+            "_received_at_ms": 31152
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " early",
+            "_received_at_ms": 31357
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " return",
+            "_received_at_ms": 31357
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " to surplus",
+            "_received_at_ms": 31358
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ", forecast",
+            "_received_at_ms": 31359
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " to arrive",
+            "_received_at_ms": 31579
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " a",
+            "_received_at_ms": 31579
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " year so",
+            "_received_at_ms": 31579
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "oner than previously",
+            "_received_at_ms": 31589
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " expected",
+            "_received_at_ms": 31800
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ". ",
+            "_received_at_ms": 31807
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "[[2]](cite://2/2)",
+            "_received_at_ms": 31807
+          },
+          {
+            "type": "data-citationReference",
+            "data": {
+              "reference": {
+                "start": 711,
+                "end": 1357,
+                "referenceNumber": 2,
+                "citationNumber": 2
+              }
+            },
+            "_received_at_ms": 31807
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "\n\n**Health",
+            "_received_at_ms": 31807
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "**",
+            "_received_at_ms": 31842
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " was the",
+            "_received_at_ms": 32018
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " stand",
+            "_received_at_ms": 32018
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "out winner",
+            "_received_at_ms": 32018
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ", receiving",
+            "_received_at_ms": 32044
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ":",
+            "_received_at_ms": 32249
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "\n- A $",
+            "_received_at_ms": 32249
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "5",
+            "_received_at_ms": 32249
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ".",
+            "_received_at_ms": 32285
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "8",
+            "_received_at_ms": 32336
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " billion boost",
+            "_received_at_ms": 32385
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " to health",
+            "_received_at_ms": 32435
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " spending",
+            "_received_at_ms": 32487
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "\n- $",
+            "_received_at_ms": 32539
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "682",
+            "_received_at_ms": 32589
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " million in capital",
+            "_received_at_ms": 32638
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " investment,",
+            "_received_at_ms": 32687
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " directed",
+            "_received_at_ms": 32739
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " towards",
+            "_received_at_ms": 32892
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " hospital",
+            "_received_at_ms": 32983
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " upg",
+            "_received_at_ms": 33001
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "rades,",
+            "_received_at_ms": 33109
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " more",
+            "_received_at_ms": 33121
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " beds",
+            "_received_at_ms": 33167
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ", and a",
+            "_received_at_ms": 33214
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " new IT",
+            "_received_at_ms": 33273
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " system ",
+            "_received_at_ms": 33324
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "[[1]](cite://1/2)",
+            "_received_at_ms": 33429
+          },
+          {
+            "type": "data-citationReference",
+            "data": {
+              "reference": {
+                "start": 1357,
+                "end": 2216,
+                "referenceNumber": 2,
+                "citationNumber": 1
+              }
+            },
+            "_received_at_ms": 33429
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "[[2]](cite://2/3)",
+            "_received_at_ms": 33482
+          },
+          {
+            "type": "data-citationReference",
+            "data": {
+              "reference": {
+                "start": 2216,
+                "end": 3092,
+                "referenceNumber": 3,
+                "citationNumber": 2
+              }
+            },
+            "_received_at_ms": 33482
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "\n\n### Context",
+            "_received_at_ms": 33540
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " and Background",
+            "_received_at_ms": 33581
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "\n\nBudget",
+            "_received_at_ms": 33632
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " 2026 follows",
+            "_received_at_ms": 33683
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Budget",
+            "_received_at_ms": 33731
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " 2025, which was delivered",
+            "_received_at_ms": 33785
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " on",
+            "_received_at_ms": 33831
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " 22",
+            "_received_at_ms": 33889
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " May",
+            "_received_at_ms": 33931
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " 2025 ",
+            "_received_at_ms": 33990
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "and focused",
+            "_received_at_ms": 34084
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " heavily",
+            "_received_at_ms": 34108
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " on fiscal",
+            "_received_at_ms": 34157
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " restra",
+            "_received_at_ms": 34205
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "int —",
+            "_received_at_ms": 34257
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " cutting",
+            "_received_at_ms": 34304
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " the",
+            "_received_at_ms": 34354
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " operating",
+            "_received_at_ms": 34407
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " allow",
+            "_received_at_ms": 34455
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "ance from",
+            "_received_at_ms": 34505
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " $",
+            "_received_at_ms": 34558
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "2",
+            "_received_at_ms": 34604
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ".4",
+            "_received_at_ms": 34654
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " billion to $1.3",
+            "_received_at_ms": 34723
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " billion,",
+            "_received_at_ms": 34754
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " and using",
+            "_received_at_ms": 34832
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " close",
+            "_received_at_ms": 34874
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " to",
+            "_received_at_ms": 34930
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " $13",
+            "_received_at_ms": 35010
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " billion from",
+            "_received_at_ms": 35059
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " a",
+            "_received_at_ms": 35109
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " rev",
+            "_received_at_ms": 35195
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "am",
+            "_received_at_ms": 35210
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "ped pay",
+            "_received_at_ms": 35278
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " equity",
+            "_received_at_ms": 35309
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " scheme to",
+            "_received_at_ms": 35357
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " shore",
+            "_received_at_ms": 35406
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " up the government's books",
+            "_received_at_ms": 35466
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ". ",
+            "_received_at_ms": 35529
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "[[3]](cite://3/1)",
+            "_received_at_ms": 35564
+          },
+          {
+            "type": "data-citation",
+            "data": {
+              "citation": {
+                "3": {
+                  "chunkSequence": -1,
+                  "citationNumber": 3,
+                  "fileChapters": [],
+                  "fileSubtitles": [],
+                  "fileThumbnailSrc": "",
+                  "fileTimestamp": 0,
+                  "fileType": "pdf",
+                  "sourceUrl": "https://www.rnz.co.nz/news/business/561817/budget-2025-government-books-to-return-to-surplus-after-three-years",
+                  "sourceUrlExpiresAt": 1781700651594,
+                  "sourceType": "web",
+                  "fileName": "Budget 2025: Government books to return to surplus after three years.pdf",
+                  "checksumSHA256URL": "KmX6qe51zd8akUHRVueKjwxQEybuzhx1tLHFus_kAcc",
+                  "checksumSHA256": "KmX6qe51zd8akUHRVueKjwxQEybuzhx1tLHFus/kAcc=",
+                  "filePath": "pdf/Budget 2025: Government books to return to surplus after three years.pdf",
+                  "sourceKnowledgeBaseId": "QETGXQCZ48",
+                  "fileAuthor": [
+                    "Gyles Beckford - Business Editor "
+                  ],
+                  "fileDate": "2026-02-11T04:04:38",
+                  "fileDescription": "New Zealand's Budget 2025 forecasts government finances will remain in deficit for three years before returning to surplus of $200 million in 2029. The budget deficit will peak at $12.1 billion in the coming year due to a $3 billion lower tax take and $1 billion higher expenses. Finance Minister Nicola Willis emphasized the budget targets economic recovery through growth initiatives, infrastructure investment, and financial reforms. Key measures include business tax breaks for new machinery (Investment Boost incentive allowing 20% immediate depreciation claims), KiwiSaver scheme changes with increased contribution rates to 4% and expanded eligibility for 16-18 year olds, and halved government contributions to KiwiSaver. Economic forecasts show slower near-term growth due to global uncertainty, with unemployment expected to fall below 5% within two years and inflation near the Reserve Bank's 2% target. Net debt is projected to peak at 43.5% of GDP in 2025, remaining above the 40% government ceiling for three years.",
+                  "chunkHighlights": [
+                    {
+                      "pageIndex": 0,
+                      "height": 68.72124839675074,
+                      "width": 76.06287787182588,
+                      "left": 12.119709794437725,
+                      "top": 21.731722958529286,
+                      "text": "An uncertain economic outlook and slower recovery will keep\ngovernment finances in deficit for the next three years before a return to surplus. The Budget forecasts a $3 billion a year lower tax take, while expenses are about $1 billion higher than forecast in the December update, resulting in the budget deficit peaking at $12 billion in the coming year and staying higher than expected before a surplus of $200 million in 2029. Finance Minister Nicola Willis said the Budget was aimed at securing and enhancing economic recovery. \"Budget 2025 responds to New Zealand's long term challenges with initiatives to boost growth, investment, and savings,\" Willis said. \"There are targeted investments in essential services and infrastructure... And reforms fix financial holes in the government books.\" [flourish] 22903206 Treasury forecast this year's deficit, using the newly introduced calculation excluding ACC costs, to the end of June would be $10.2 billion, about $2.7 billion lower than forecasted. The deficit will peak in the coming year at $12.1 billion, nearly $2 billion more than the December forecast, with the 2027 forecast nearly double the previous forecast at $8.1 billion. Willis said she was proud to get deficits lower and reduce debt levels. The Budget has used close to $13 billion from the now-revamped pay equity scheme. [flourish] 22903200 Economic outlook Treasury economic forecasts were pulled back in the near term because of uncertainty about the global outlook and a slower economic rebound after last year's recession. Growth was forecast to be slower for the rest of this year before picking up and sitting near three percent a year for the next three years. Unemployment is forecast to be near the peak and is expected to fall below five percent in the next two years, while inflation is forecast to stay close to the Reserve Bank's two percent target point for the next few years. [flourish] 22902626 Business tax breaks Businesses were offered a tax break for new machinery and plants through a larger and quicker depreciation of assets. The Investment Boost incentive will allow businesses to claim 20 percent of the cost of the asset immediately, compared to the current 10.5 percent rate. Willis said the enhanced tax"
+                    }
+                  ],
+                  "filePage": 1,
+                  "fileTags": [
+                    "economy"
+                  ],
+                  "fileTitle": "Budget 2025: Government Books to Return to Surplus After Three Years",
+                  "customMetadata": {
+                    "publisher": "Radio New Zealand",
+                    "published_date": "2025-05-22"
+                  },
+                  "publishedDate": null
+                }
+              }
+            },
+            "_received_at_ms": 35595
+          },
+          {
+            "type": "data-citationReference",
+            "data": {
+              "reference": {
+                "start": 3092,
+                "end": 4293,
+                "referenceNumber": 1,
+                "citationNumber": 3
+              }
+            },
+            "_received_at_ms": 35595
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "[[4]](cite://4/1)",
+            "_received_at_ms": 35697
+          },
+          {
+            "type": "data-citation",
+            "data": {
+              "citation": {
+                "4": {
+                  "chunkSequence": -1,
+                  "citationNumber": 4,
+                  "fileChapters": [],
+                  "fileSubtitles": [],
+                  "fileThumbnailSrc": "",
+                  "fileTimestamp": 0,
+                  "fileType": "pdf",
+                  "sourceUrl": "https://www.rnz.co.nz/news/budget-2025/561449/budget-2025-what-s-been-announced-so-far",
+                  "sourceUrlExpiresAt": 1781700651740,
+                  "sourceType": "web",
+                  "fileName": "Budget 2025: What's been announced so far.pdf",
+                  "checksumSHA256URL": "tYFENXnx-enY-Iba04lFtLW64MxqR1Vl2fqyumLZdyo",
+                  "checksumSHA256": "tYFENXnx+enY+Iba04lFtLW64MxqR1Vl2fqyumLZdyo=",
+                  "filePath": "pdf/Budget 2025: What's been announced so far.pdf",
+                  "sourceKnowledgeBaseId": "QETGXQCZ48",
+                  "fileAuthor": [
+                    "RNZ (Radio New Zealand)"
+                  ],
+                  "fileDate": "2026-02-11T04:34:23",
+                  "fileDescription": "New Zealand's Budget 2025, delivered by Finance Minister Nicola Willis, focuses on growth amid global economic uncertainty. Key announcements include: $6.8 billion boost to capital spending across health, education, defence, and transport; $1 billion cut to operating allowance; $604 million for Pharmac covering 54 new medicines including cancer treatments; $577 million for film industry rebates; $600 million for rail network upgrades; $190 million Social Investment Fund; $164 million for after-hours healthcare; $140 million for school attendance services to tackle truancy; $100 million for expert maths teachers; and $35 million to combat drugs and organized crime. The government also passed controversial pay equity legislation expected to save \"billions\" and allocated $774 million to improve abuse survivor compensation systems rather than creating a new scheme.",
+                  "chunkHighlights": [
+                    {
+                      "pageIndex": 0,
+                      "height": 70.85891406584011,
+                      "width": 76.30471584038693,
+                      "left": 11.998790810157196,
+                      "top": 19.16652415562206,
+                      "text": "Finding it hard to keep up with Budget news? Here's everything\nannounced so far Finance Minister Nicola Willis. Finance Minister Nicola Willis will deliver the government's Budget 2025 - the Growth Budget - on Thursday. It will be her second annual Budget, setting out how and where money will be spent over the next financial year. Willis has warned that the Budget will be very tight, reflecting uncertainty in the global economy. Here is everything that has been announced so far: 'Billions' could be saved through pay equity overhaul The prime minister said new pay equity legislation announced earlier this month could save the government \"billions of dollars\". The Pay Equity Amendment Bill passed through all stages in Parliament, after being rushed through under urgency. The controversial legislation raises the threshold for proving work has been historically undervalued when making a pay equity claim and halted all 33 current claims. Christopher Luxon said that money had been set aside in the Budget to deal with claims under the new legislation. He said the costs could be lower by \"billions of dollars\". $6.8b boost to capital spend Capital expenditure - new money set aside in the Budget to maintain or upgrade assets - will be higher than originally forecast when the government delivers its Budget. The prime minister said the money, which would be split mostly across health, education, defence, and transport, will total $6.8 billion. It means the net capital allowance, once savings identified in the Budget have been accounted for, will increase from the $3.6b previously signalled to $4b. Prime Minister Christopher Luxon. $1b cut to operating allowance The government has freed up \"billions\" of dollars through additional public service cuts to be redeployed into \"New Zealand's most pressing priorities\". The government is halving its operating allowance - the new money it has available to spend at the May Budget - from $2.4b to $1.3b. That will result in only a small number of government departments receiving additional funding this year with Willis characterising next month's Budget as \"no lolly scramble\". No new\ncompensation scheme, but nearly $800m for abuse survivors The\ngovernment opted against setting up a new compensation scheme for"
+                    }
+                  ],
+                  "filePage": 1,
+                  "fileTags": [
+                    "economy",
+                    "money"
+                  ],
+                  "fileTitle": "Budget 2025: What's been announced so far",
+                  "customMetadata": {
+                    "publisher": "Radio New Zealand",
+                    "published_date": "2025-05-19"
+                  },
+                  "publishedDate": null
+                }
+              }
+            },
+            "_received_at_ms": 35741
+          },
+          {
+            "type": "data-citationReference",
+            "data": {
+              "reference": {
+                "start": 4293,
+                "end": 5511,
+                "referenceNumber": 1,
+                "citationNumber": 4
+              }
+            },
+            "_received_at_ms": 35741
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " The",
+            "_received_at_ms": 35770
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " ",
+            "_received_at_ms": 35847
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "2025 budget projected",
+            "_received_at_ms": 35892
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " the",
+            "_received_at_ms": 35939
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " deficit",
+            "_received_at_ms": 36048
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " would",
+            "_received_at_ms": 36123
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " peak",
+            "_received_at_ms": 36173
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " at $12",
+            "_received_at_ms": 36224
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ".1",
+            "_received_at_ms": 36273
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " billion before",
+            "_received_at_ms": 36354
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " a",
+            "_received_at_ms": 36371
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " return",
+            "_received_at_ms": 36422
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " to surplus of",
+            "_received_at_ms": 36471
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " $200",
+            "_received_at_ms": 36521
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " million in",
+            "_received_at_ms": 36569
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " 2029",
+            "_received_at_ms": 36626
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ". ",
+            "_received_at_ms": 36690
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "[[3]](cite://3/2)",
+            "_received_at_ms": 36690
+          },
+          {
+            "type": "data-citationReference",
+            "data": {
+              "reference": {
+                "start": 5511,
+                "end": 6865,
+                "referenceNumber": 2,
+                "citationNumber": 3
+              }
+            },
+            "_received_at_ms": 36690
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "\n\nBudget 2026",
+            "_received_at_ms": 36739
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " appears",
+            "_received_at_ms": 36789
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " to represent",
+            "_received_at_ms": 36839
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " a shift",
+            "_received_at_ms": 36934
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " in",
+            "_received_at_ms": 36939
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " tone",
+            "_received_at_ms": 36987
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ", with greater",
+            "_received_at_ms": 37040
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " investment",
+            "_received_at_ms": 37088
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " in front",
+            "_received_at_ms": 37137
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "line services while",
+            "_received_at_ms": 37188
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " maintaining the",
+            "_received_at_ms": 37241
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " government",
+            "_received_at_ms": 37291
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "'s broader",
+            "_received_at_ms": 37344
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " commitment",
+            "_received_at_ms": 37388
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " to fiscal discipline",
+            "_received_at_ms": 37440
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ". ",
+            "_received_at_ms": 37492
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "[[2]](cite://2/4)",
+            "_received_at_ms": 37541
+          },
+          {
+            "type": "data-citationReference",
+            "data": {
+              "reference": {
+                "start": 6865,
+                "end": 8410,
+                "referenceNumber": 4,
+                "citationNumber": 2
+              }
+            },
+            "_received_at_ms": 37541
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "\n\nWould you like to",
+            "_received_at_ms": 37591
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " know more about what",
+            "_received_at_ms": 37668
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Budget 2026 means",
+            "_received_at_ms": 37690
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " for specific",
+            "_received_at_ms": 37742
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " sectors",
+            "_received_at_ms": 37797
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " like",
+            "_received_at_ms": 37885
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " health",
+            "_received_at_ms": 37918
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " or education?",
+            "_received_at_ms": 37991
+          },
+          {
+            "type": "text-end",
+            "id": "0",
+            "_received_at_ms": 38059
+          },
+          {
+            "type": "finish-step",
+            "_received_at_ms": 38060
+          }
+        ],
+        "retrieved_chunks": [
+          {
+            "citation_number": 1,
+            "text": "https://www.rnz.co.nz/news/political/596610/budget-2026-at-a-glance-th e-big-changes-winners-and-losers-what-you-need-to-know https://www.r nz.co.nz/news/budget-2026/596615/budget-2026-health-spend-delivers- for-hospital-upgrades-more-beds-and-new-it-system https://www.rnz.co. nz/news/business/596612/budget-2026-new-zealand-digging-its-way-out -of-the-post-covid-hole-finance-minister-says https://www.rnz.co.nz/news /political/596642/budget-2026-nine-charts-that-show-how-nicola-willis-g ot-her-budget-boast",
+            "title": "Watch live: PM and Health Minister make post-Budget announcement.pdf",
+            "url": "https://www.rnz.co.nz/news/health/596703/watch-live-pm-and-health-minister-make-post-budget-announcement",
+            "source_type": "web",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/IYsTD3R3jWW9BvDnALlsG1eltC2JcggfigUXHvXWHoQ/cbdfb4db-6624-43ae-b4e0-e43bdc441d0c.txt"
+          },
+          {
+            "citation_number": 2,
+            "text": "Budget 2026: 'New Zealand digging its way out of the post-Covid hole', Finance Minister says Her messaging was succinct and well-rehearsed in the Budget lock-up, the House, and her post-Budget interviews - that it was her \"responsibility to be careful and prudent now to protect New Zealand's future\". Outside of the surplus forecast being due to arrive a year earlier, the big sell to New Zealanders was investment in core frontline services. Health was the big winner on that front with a $5.8b boost, along with $682 million of capital investment.",
+            "title": "Budget 2026 could be a tough pill for those feeling the pinch.pdf",
+            "url": "https://www.rnz.co.nz/news/political/596655/budget-2026-could-be-a-tough-pill-for-those-feeling-the-pinch",
+            "source_type": "web",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/JqlroKJotlJcaZ93ROorpKZu6RppLVBkNHSmDJ841z0/235d8c12-c8dc-4e45-8e52-aa705bce6fff.txt"
+          },
+          {
+            "citation_number": 3,
+            "text": "An uncertain economic outlook and slower recovery will keep\ngovernment finances in deficit for the next three years before a return to surplus. The Budget forecasts a $3 billion a year lower tax take, while expenses are about $1 billion higher than forecast in the December update, resulting in the budget deficit peaking at $12 billion in the coming year and staying higher than expected before a surplus of $200 million in 2029. Finance Minister Nicola Willis said the Budget was aimed at securing and enhancing economic recovery. \"Budget 2025 responds to New Zealand's long term challenges with initiatives to boost growth, investment, and savings,\" Willis said. \"There are targeted investments in essential services and infrastructure... And reforms fix financial holes in the government books.\" [flourish] 22903206 Treasury forecast this year's deficit, using the newly introduced calculation excluding ACC costs, to the end of June would be $10.2 billion, about $2.7 billion lower than forecasted. The deficit will peak in the coming year at $12.1 billion, nearly $2 billion more than the December forecast, with the 2027 forecast nearly double the previous forecast at $8.1 billion. Willis said she was proud to get deficits lower and reduce debt levels. The Budget has used close to $13 billion from the now-revamped pay equity scheme. [flourish] 22903200 Economic outlook Treasury economic forecasts were pulled back in the near term because of uncertainty about the global outlook and a slower economic rebound after last year's recession. Growth was forecast to be slower for the rest of this year before picking up and sitting near three percent a year for the next three years. Unemployment is forecast to be near the peak and is expected to fall below five percent in the next two years, while inflation is forecast to stay close to the Reserve Bank's two percent target point for the next few years. [flourish] 22902626 Business tax breaks Businesses were offered a tax break for new…",
+            "title": "Budget 2025: Government books to return to surplus after three years.pdf",
+            "url": "https://www.rnz.co.nz/news/business/561817/budget-2025-government-books-to-return-to-surplus-after-three-years",
+            "source_type": "web",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/Og_WxBKu_63MtumrXGLbi5SIVldEegjwjGpS4zM4zKk/32c2c669-8c68-4734-9e11-843b5c50d968.txt"
+          },
+          {
+            "citation_number": 4,
+            "text": "Finding it hard to keep up with Budget news? Here's everything\nannounced so far Finance Minister Nicola Willis. Finance Minister Nicola Willis will deliver the government's Budget 2025 - the Growth Budget - on Thursday. It will be her second annual Budget, setting out how and where money will be spent over the next financial year. Willis has warned that the Budget will be very tight, reflecting uncertainty in the global economy. Here is everything that has been announced so far: 'Billions' could be saved through pay equity overhaul The prime minister said new pay equity legislation announced earlier this month could save the government \"billions of dollars\". The Pay Equity Amendment Bill passed through all stages in Parliament, after being rushed through under urgency. The controversial legislation raises the threshold for proving work has been historically undervalued when making a pay equity claim and halted all 33 current claims. Christopher Luxon said that money had been set aside in the Budget to deal with claims under the new legislation. He said the costs could be lower by \"billions of dollars\". $6.8b boost to capital spend Capital expenditure - new money set aside in the Budget to maintain or upgrade assets - will be higher than originally forecast when the government delivers its Budget. The prime minister said the money, which would be split mostly across health, education, defence, and transport, will total $6.8 billion. It means the net capital allowance, once savings identified in the Budget have been accounted for, will increase from the $3.6b previously signalled to $4b. Prime Minister Christopher Luxon. $1b cut to operating allowance The government has freed up \"billions\" of dollars through additional public service cuts to be redeployed into \"New Zealand's most pressing priorities\". The government is halving its operating allowance - the new money it has available to spend at the May Budget - from $2.4b to $1.3b. That will result in only a small nu…",
+            "title": "Budget 2025: What's been announced so far.pdf",
+            "url": "https://www.rnz.co.nz/news/budget-2025/561449/budget-2025-what-s-been-announced-so-far",
+            "source_type": "web",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/t7l0cPjZXXMaL6eIvq4kT2rtNBG0M42EsCCwPLgAYU8/ce3671ba-1e03-4ec1-b3e9-9848aee0facb.txt"
+          },
+          {
+            "id": 5,
+            "text": "[Page 1] Big numbers for Budget 2025 but will they be big enough? ByDavina Zimmer Associate producer for The Detail 2025 05 16 04:54:36+12:00 Even if the government throws more than a billion extra dollars into health and education, those sectors will be standing still the money eaten up by inflation eaten up by inflation [wk_audio]3ce83223 7a4c 4aa7 909c 00fad6e5c5d3 Budget 2025 will deliver some big numbers, but closer examination suggests they might not be all they seem. Next Thursday (22 May) Nicola Willis will deliver her second annual Budget, setting out how and where money will be spent over the next financial year. There are some giant figures; $190 million for social investment, $100m for kids needing extra maths help and a whopping $12 billion over the next four years for defence. But according to Brian Roper, an associate professor in the political programme at Otago University, a key phrase to keep in mind when looking at these figures is \"in relation to inflation\". \"You always have to take account of inflation, because that's really what the government is spending in real terms as opposed to nominal terms,\" he says. For example, you might have previously got by with $100 per week for groceries. But this year you find things are more expensive and you have to add $20 to your budget to keep buying the same list of items. That's an example of change in real spending. But let's say you only upped your budget by $10. While it's technically an increase it's not enough to cover the more expensive grocery bill so it's really a cut. That's a nominal spending change. Treasury has forecast 1.8 percent CPI inflation for this year and 2.1 percent inflation for 2026. Roper has crunched the numbers and says health needs an additional $588m and education needs an extra $435m, just to continue operating the way it is now. But he's not confident that's what this Budget will deliver. \"Looking at the pre Budget speeches of Nicola Willis and Christopher Luxon they are both…",
+            "title": "Big Numbers for Budget 2025 - But Will They Be Big Enough?",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/YObBgZ15MLykxYW7TSpth2c0qh1RZN4VDO0q-kzX4B4/20cec73c-b9d8-4dfd-9706-610a0623d2cc.txt"
+          },
+          {
+            "id": 6,
+            "text": "[Page 1] An uncertain economic outlook and slower recovery will keep government finances in deficit for the next three years before a return to surplus. The Budget forecasts a $3 billion a year lower tax take, while expenses are about $1 billion higher than forecast in the December update, resulting in the budget deficit peaking at $12 billion in the coming year and staying higher than expected before a surplus of $200 million in 2029. Finance Minister Nicola Willis said the Budget was aimed at securing and enhancing economic recovery. \"Budget 2025 responds to New Zealand's long term challenges with initiatives to boost growth, investment, and savings,\" Willis said. \"There are targeted investments in essential services and infrastructure... And reforms fix financial holes in the government books.\" [flourish] 22903206 Treasury forecast this year's deficit, using the newly introduced calculation excluding ACC costs, to the end of June would be $10.2 billion, about $2.7 billion lower than forecasted. The deficit will peak in the coming year at $12.1 billion, nearly $2 billion more than the December forecast, with the 2027 forecast nearly double the previous forecast at $8.1 billion. Willis said she was proud to get deficits lower and reduce debt levels. The Budget has used close to $13 billion from the now revamped pay equity scheme. [flourish] 22903200 Economic outlook Treasury economic forecasts were pulled back in the near term because of uncertainty about the global outlook and a slower economic rebound after last year's recession. Growth was forecast to be slower for the rest of this year before picking up and sitting near three percent a year for the next three years. Unemployment is forecast to be near the peak and is expected to fall below five percent in the next two years, while inflation is forecast to stay close to the Reserve Bank's two percent target point for the next few years. [flourish] 22902626 Business tax breaks Businesses were offered a tax break…",
+            "title": "Budget 2025: Government Books to Return to Surplus After Three Years",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/KmX6qe51zd8akUHRVueKjwxQEybuzhx1tLHFus_kAcc/6aea53e8-d5d9-4b70-98c2-e5f0fc4cc52e.txt"
+          },
+          {
+            "id": 7,
+            "text": "[Page 1] https://www.rnz.co.nz/news/political/596610/budget 2026 at a glance th e big changes winners and losers what you need to know https://www.r nz.co.nz/news/budget 2026/596615/budget 2026 health spend delivers for hospital upgrades more beds and new it system https://www.rnz.co. nz/news/business/596612/budget 2026 new zealand digging its way out of the post covid hole finance minister says https://www.rnz.co.nz/news /political/596642/budget 2026 nine charts that show how nicola willis g ot her budget boast\n{}",
+            "title": "PM and Health Minister Make Post-Budget Announcement",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/vwNlCP6NA7GNZi8Ih1f7lv9n9F9nj4zIjwTiqkw5Njg/1a57a8de-d578-4223-89fa-bd9596596a13.txt"
+          },
+          {
+            "id": 8,
+            "text": "[Page 2] Landlords There's $729m being spent on restoring interest deductibility for residential rental property. Police Police are getting $226.1m over four years for an extra 500 police and there's also $424.9m over four years to support frontline policing. Education Schools and kura kaupapa property are getting a $1.48b boost over four years and there's also $200m in grants for operating schools, too. There are also boosts for school IT infrastructure and subsidies for ECEs and tertiary tuition and training. Māori There's $12 million over four years for Kōhanga Reo property maintenance. Te Matatini received another boost in this years budget, from 2025 they will get $48.7m over three years. That goes with the $34m over two years the National kapa haka festival received in Budget 2023. Natural disaster response There's a fair bit in the Budget for this sector and it's perhaps no surprise, coming in the wake of the mop up for events like Cyclone Gabrielle. This $939.3m is clearly that spread over four years, it's to repair roads damaged during Cyclone Gabrielle, the Auckland floods and other North Island weather events. There's $200m for flood infrastructure upgrades in the $1.2b Regional Infrastructure Fund. In the same sphere, there's $5m for the creation of the National Infrastructure Agency and the somewhat adjacent $106.9m over four years operational funding for GeoNet and the National Seismic Hazard Model. There's also $23.1m over four years for critical frontline rescue services to respond to severe weather events and emergencies. In addition, the Climate Emergency Response Fund is getting $597m, paid for through the ETS. Local councils The Waste Disposal Levy is being expanded to cover a wider range of projects with an expected result of $1.195b over four years. The 'losers' The country's debt level The government borrowing programme over the next four years was increased by $12b from December's forecast. Net debt is forecast to peak at 43.5 percent of GDP…",
+            "title": "Budget 2024: Winners and Losers",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/jNNhJPl20nn2rPjym7hz7DjxTsZgKKwHiDuIwGxnXBM/ea99304d-2790-4fda-b390-b1f24dfbc717.txt"
+          },
+          {
+            "id": 9,
+            "text": "[Page 2] Budget 2026: 'New Zealand digging its way out of the post Covid hole', Finance Minister says Her messaging was succinct and well rehearsed in the Budget lock up, the House, and her post Budget interviews that it was her \"responsibility to be careful and prudent now to protect New Zealand's future\". Outside of the surplus forecast being due to arrive a year earlier, the big sell to New Zealanders was investment in core frontline services. Health was the big winner on that front with a $5.8b boost, along with $682 million of capital investment.\n{}",
+            "title": "Budget 2026 Could Be a Tough Pill for Those Feeling the Pinch",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/Rjh4c2-GXsepZ337PigjMpPT0YwB_ta6uYwGC1ZqK00/2ba46a84-08a5-44a7-93b0-0acd1ece602e.txt"
+          },
+          {
+            "id": 10,
+            "text": "[Page 1] https://www.rnz.co.nz/news/political/561810/budget 2025 at a glance th e big changes winners and losers https://www.rnz.co.nz/news/in depth/5 61811/breaking it down budget 2025 in charts https://www.rnz.co.nz/ne ws/political/561864/analysis finance minister delivers nip and tuck budg et https://www.rnz.co.nz/news/business/561835/budget 2025 governme nt rolls out 20 percent incentive for businesses\n{}",
+            "title": "Christopher Luxon and Nicola Willis Speak in Auckland on Investment Boost Policy",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/cjeyDneGZj2Bf7bhrrIimgjS0kkvaymF0fu4OXWwam8/c538159a-3bee-4d80-9396-bca9490d780e.txt"
+          },
+          {
+            "id": 11,
+            "text": "[Page 1] 2024 05 30 17:23:28+12:00 The Finance Minister has delivered her first Budget and says she has kept her pledge to New Zealanders. Our political reporter Giles Dexter has more.\n{}",
+            "title": "Nicola Willis Says She's Kept Pledge with Budget 2024",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/L_v71HsVMGHViWLmUBClkxK5oYHtH6eUSJuRd2rTTLE/130d7f4e-132a-4537-bf32-fec1bdd32463.txt"
+          },
+          {
+            "id": 12,
+            "text": "[Page 1] 2025 01 30 10:05:58+13:00 The government says driving economic growth is it's number one priority. Finance Minister Nicola Willis will deliver her second budget on May 22, promising \"bold steps to support economic growth, including measures to address New Zealand's long standing productivity challenges.\" However Treasury has pointed out the now structural deficit in the government's books is currently set to be addressed by cuts to per person spending virtually unprecedented in modern times. Looking beyond the immediate challenges, Treasury is warning pressure on future governments' budgets, from demographic change, has worsened on projections from ten or twenty years ago. Kathryn speaks with Treasury's Chief Economics adviser Dominick Stephens.\n{}",
+            "title": "Treasury's Chief Economist on the State of the Books",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/7WB0MRqqo5ZUdI7nIdoHyL1yepDLEp2oFU1m2YuHpvQ/dcf8e522-c879-41d6-9f37-299c56c1398c.txt"
+          },
+          {
+            "id": 13,
+            "text": "[Page 1] NZ's coalition government unveils maiden budget\n{}",
+            "title": "Pacific Waves News Bulletin - 31 May 2024",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/O0kkgCHhd-kzXw9a3_tXR_96tL2OVXxbbcfqx9IoXqY/29162619-5b04-4c18-ba65-177c5ad08921.txt"
+          },
+          {
+            "id": 14,
+            "text": "[Page 1] Finding it hard to keep up with Budget news? Here's everything announced so far Finance Minister Nicola Willis. Finance Minister Nicola Willis will deliver the government's Budget 2025 the Growth Budget on Thursday. It will be her second annual Budget, setting out how and where money will be spent over the next financial year. Willis has warned that the Budget will be very tight, reflecting uncertainty in the global economy. Here is everything that has been announced so far: 'Billions' could be saved through pay equity overhaul The prime minister said new pay equity legislation announced earlier this month could save the government \"billions of dollars\". The Pay Equity Amendment Bill passed through all stages in Parliament, after being rushed through under urgency. The controversial legislation raises the threshold for proving work has been historically undervalued when making a pay equity claim and halted all 33 current claims. Christopher Luxon said that money had been set aside in the Budget to deal with claims under the new legislation. He said the costs could be lower by \"billions of dollars\". $6.8b boost to capital spend Capital expenditure new money set aside in the Budget to maintain or upgrade assets will be higher than originally forecast when the government delivers its Budget. The prime minister said the money, which would be split mostly across health, education, defence, and transport, will total $6.8 billion. It means the net capital allowance, once savings identified in the Budget have been accounted for, will increase from the $3.6b previously signalled to $4b. Prime Minister Christopher Luxon. $1b cut to operating allowance The government has freed up \"billions\" of dollars through additional public service cuts to be redeployed into \"New Zealand's most pressing priorities\". The government is halving its operating allowance the new money it has available to spend at the May Budget from $2.4b to $1.3b. That will result in only a small numbe…",
+            "title": "Budget 2025: What's been announced so far",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/tYFENXnx-enY-Iba04lFtLW64MxqR1Vl2fqyumLZdyo/e83bb741-17eb-46fa-9743-8e3bf6d1b2e3.txt"
+          },
+          {
+            "id": 15,
+            "text": "[Page 1] ByRussell Palmer Political Reporter 2024 03 27 13:08:04+13:00 The government has announced it will set itself a smaller Budget allowance than the previous government did, with no new borrowing, but will reveal the exact amount in the Budget. The Treasury is expecting growth to be $42.8 billion lower in the coming years than was estimated in the Half Year Update (HYEFU) in December, with core tax revenue tracking about $4b lower by the 2027/28 year compared to that estimate. The HYEFU had also estimated a 2026/27 return to an operating balance before gains and losses (OBEGAL) surplus, but that $4b lower revenue figure pushed the $3.4b surplus estimated for the 2027/28 year down to a $600m deficit instead. Changes to spending in the Budget would inevitably affect the final figures, but Willis acknowledged that \"on these particular forecasts, achieving a surplus in 2026/27 is almost certainly not achievable, a surplus in 2027/28 is still achievable but not a given\". Finance Minister Nicola Willis said her Budget Policy Statement, released on Wednesday, put the government on a more sustainable track while delivering \"urgently needed tax relief to hard working New Zealanders\". The statement sets out the government's priorities for the Budget due out in May, including:\n{}",
+            "title": "Budget Policy Statement: Willis Promises Cuts Despite Late Return to Surplus",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/WZKkrMCEyfDjfHo9gvAOkt-bsnv17BEJH_dowwon0Kc/7eb65eb3-e51a-463d-8464-df3587e80d4e.txt"
+          },
+          {
+            "id": 16,
+            "text": "[Page 1] Finance Minister Nicola Willis on the choices and trade offs yesterday's budget. A promised boost to health, education, and law and order and defence, plus tax breaks for businesses to boost investment But $12.8 billion came from funds set aside for pay equity claims to boost 180,000 mostly female, low income workers. There's also pared back government contribution to KiwiSaver less support for Best Start, and shifting responsiblity to parents to pay for unemployed 18 and 19 year olds. Meanwhile a return to surplus keeps getting pushed out further the books expected to stay in deficit until 2028, with a wafer thin surplus of $200 million forecast for 2029. Nicola Willis joins Kathryn. in\n{}",
+            "title": "Budget 2025: Finance Minister Nicola Willis on Budget Choices and Trade-offs",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/Dad-P-pOVksc9l4ybI1aiSWjOoXqUqSdpwpNS0gmNEk/c2a77d02-05ab-442e-b897-90122a63192c.txt"
+          },
+          {
+            "id": 17,
+            "text": "[Page 1] NZ's coalition govt unveils its maiden budget\n{}",
+            "title": "NZ's Coalition Government Unveils Its Maiden Budget",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=QETGXQCZ48/chunks/lPZ8t__mF7rf98BPgTB_CcT9Un1oKsg8I4nERgkAFTk/f2daea88-8731-4f4e-91fc-1797572236ca.txt"
+          }
+        ],
+        "session_id": "836ac961-761f-417d-b91f-2333726de10a",
+        "message_id": "d83da827-de6f-4e82-bae7-3f01c8b5f1c2",
+        "stream_timing": {
+          "ttft_anchor": "chat_post",
+          "ttft_ms": 28023,
+          "ttft_event": "text-start",
+          "chat_total_ms": 38064
+        },
+        "workflow_timing": {
+          "total_ms": 38390,
+          "classification": {
+            "ms": 6331,
+            "category": "D",
+            "category_label": "Answerable queries"
+          },
+          "summarise": {
+            "ms": 1,
+            "skipped": true
+          },
+          "search": {
+            "ms": 638,
+            "queries": [
+              "Search for NZ Budget 2025",
+              "Search for NZ Budget announcement"
+            ]
+          },
+          "evaluate": {
+            "ms": 2710
+          },
+          "generate": {
+            "ms": 29865
+          },
+          "overhead_ms": 0,
+          "checkpoints_ms": {
+            "setup": 2899,
+            "classification_end": 9230,
+            "summarise_end": 9231,
+            "topic_generation_end": 5815,
+            "evaluation_end": 8525
+          },
+          "capture_version": 2,
+          "chat_total_ms": 38064,
+          "ttft_anchor": "chat_post",
+          "ttft_ms": 28023,
+          "ttft_event": "text-start"
+        }
+      },
+      "assessment": {
+        "summary_verdict": "likely_pass",
+        "tiers": [
+          {
+            "tier": 0,
+            "name": "Structural",
+            "status": "passed",
+            "verdict": "pass",
+            "commentary": "Structural check passed: live call returned a Tahi response (2343 characters). This is not a rubric pass/fail.",
+            "detail": {
+              "response_chars": 2343,
+              "mode": "live"
+            }
+          },
+          {
+            "tier": 1,
+            "name": "Rule-based",
+            "status": "passed",
+            "verdict": "pass",
+            "commentary": "Sources block check passed: response includes citation markers and a Sources or References section for human and machine reviewers.",
+            "detail": {
+              "checks": [
+                "sources_block_with_citations"
+              ],
+              "cite_markers_present": true,
+              "sources_section_present": true
+            }
+          },
+          {
+            "tier": 3,
+            "name": "LLM draft",
+            "status": "draft",
+            "verdict": "pass",
+            "commentary": "Pass: accurately identifies the most recent budget and Finance Minister with proper citations. Regression: prior machine verdict was draft; now pass.",
+            "detail": {
+              "source": "llm",
+              "model": "gpt-4o-mini",
+              "api_base": "https://api.openai.com/v1",
+              "run_date": "2026-06-19",
+              "judge": {
+                "test_id": "A02",
+                "verdict": "pass",
+                "confidence": 0.95,
+                "grounding": {
+                  "material_claims": 5,
+                  "claims_cited": 5,
+                  "uncited_substantive_claims": [],
+                  "citation_content_verified": "verified",
+                  "assessment": "grounded"
+                },
+                "currency": {
+                  "time_sensitive": true,
+                  "vintage_stated": true,
+                  "staleness_caveated": false,
+                  "notes": "Response correctly identifies Budget 2026 as the most recent with a specific date."
+                },
+                "policy": {
+                  "meets_pass_criteria": true,
+                  "reasoning": "Response accurately identifies the current budget year and Finance Minister."
+                },
+                "rubric_concern": null,
+                "cultural_review_required": false,
+                "summary": "Pass: accurately identifies the most recent budget and Finance Minister with proper citations."
+              },
+              "prior_judge": {
+                "verdict": "draft",
+                "summary": "Draft commentary: automated draft review is limited for this case. Compare the Tahi response directly against the pass and fail criteria. No assessment API key: heuristic draft only.",
+                "run_at": "2026-06-17T12:07:29.028034+00:00",
+                "confidence": null
+              }
+            }
+          },
+          {
+            "tier": 2,
+            "name": "Human review",
+            "status": "not_applicable",
+            "verdict": "n/a",
+            "commentary": "Human review tier not required for this evaluation method.",
+            "detail": {}
+          }
+        ],
+        "comparison": {
+          "test_id": "A02",
+          "baseline_run_at": "2026-06-17T11:50:15.948217+00:00",
+          "current_run_at": "2026-06-17T11:50:15.948217+00:00",
+          "compatible": true,
+          "warnings": [],
+          "status": "improved",
+          "tier_changes": {
+            "0": {
+              "tier": 0,
+              "field": "tier0_verdict",
+              "baseline": "pass",
+              "current": "pass",
+              "change": "unchanged"
+            },
+            "1": {
+              "tier": 1,
+              "field": "tier1_verdict",
+              "baseline": "pass",
+              "current": "pass",
+              "change": "unchanged"
+            },
+            "2": {
+              "tier": 2,
+              "field": "tier2_verdict",
+              "baseline": "n/a",
+              "current": "n/a",
+              "change": "unchanged"
+            },
+            "3": {
+              "tier": 3,
+              "field": "tier3_verdict",
+              "baseline": "draft",
+              "current": "pass",
+              "change": "improved"
+            }
+          },
+          "summary_change": {
+            "tier": null,
+            "field": "summary_verdict",
+            "baseline": "likely_pass",
+            "current": "likely_pass",
+            "change": "unchanged"
+          },
+          "machine_review": {
+            "baseline_verdict": "draft",
+            "current_verdict": "pass",
+            "baseline_confidence": null,
+            "current_confidence": 0.95,
+            "change": "improved",
+            "summary_changed": true
+          },
+          "response": {
+            "baseline_chars": 2343,
+            "current_chars": 2343,
+            "char_delta": 0,
+            "baseline_source_count": 9,
+            "current_source_count": 9,
+            "source_delta": 0
+          }
+        }
+      },
+      "prior_workflow_timing": {
+        "total_ms": 38390,
+        "classification": {
+          "ms": 6331,
+          "category": "D",
+          "category_label": "Answerable queries"
+        },
+        "summarise": {
+          "ms": 1,
+          "skipped": true
+        },
+        "search": {
+          "ms": 638,
+          "queries": [
+            "Search for NZ Budget 2025",
+            "Search for NZ Budget announcement"
+          ]
+        },
+        "evaluate": {
+          "ms": 2710
+        },
+        "generate": {
+          "ms": 29865
+        },
+        "overhead_ms": 0,
+        "checkpoints_ms": {
+          "setup": 2899,
+          "classification_end": 9230,
+          "summarise_end": 9231,
+          "topic_generation_end": 5815,
+          "evaluation_end": 8525
+        },
+        "capture_version": 2,
+        "chat_total_ms": 38064,
+        "ttft_anchor": "chat_post",
+        "ttft_ms": 28023,
+        "ttft_event": "text-start"
+      }
+    }
+  ],
+  "eval_hub_run_id": "core-20260617-231629"
+}

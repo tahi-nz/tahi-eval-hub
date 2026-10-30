@@ -1,0 +1,23 @@
+{
+  "updated_at": "2026-06-17",
+  "reviewers": [
+    {
+      "email": "barlconz@gmail.com",
+      "name": "Barry",
+      "role": "admin",
+      "username": "barry"
+    },
+    {
+      "email": "james@nzgeographic.co.nz",
+      "name": "James Frankham",
+      "role": "admin",
+      "username": "james"
+    },
+    {
+      "email": "testreviewer@example.com",
+      "name": "Test Reviewer",
+      "role": "reviewer",
+      "username": "testreviewer"
+    }
+  ]
+}

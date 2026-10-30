@@ -1,0 +1,594 @@
+{
+  "bundle_schema_version": 3,
+  "bundle_kind": "slim",
+  "run_id": "perf-20261030-012345",
+  "test_id": "P10",
+  "ok": true,
+  "prompt": "Give me a comprehensive overview of the history of New Zealand's national parks.",
+  "error": null,
+  "started_at": "2026-10-30T01:22:19.936577+00:00",
+  "finished_at": "2026-10-30T01:23:25.651229+00:00",
+  "duration_seconds": 65.71,
+  "repeat_index": 3,
+  "warmup": false,
+  "response": {
+    "response_text": "# The History of New Zealand's National Parks\n\nNew Zealand's national parks are among the country's most treasured taonga (treasures) — a network of protected landscapes stretching from the volcanic plateau of the central North Island to the remote fiords of the deep south. Their story is one of Māori generosity, settler conservation instincts, legislative milestones, and an evolving understanding of what it means to protect the natural world. [[1]](cite://1/1)\n\n![embed-1](embed://1)\n\n## The First National Park: A Gift from Ngāti Tūwharetoa\n\nThe origins of New Zealand's national park system lie in an extraordinary act of rangatiratanga (chiefly authority) in 1887. Tūwharetoa paramount chief Horonuku Te Heuheu was facing a real threat: different tribes were disputing ownership of the volcanic peaks of Ruapehu, Ngāuruhoe and Tongariro, and there was a danger they would be divided and sold to Pākehā settlers. [[2]](cite://2/1)\n\nHoronuku's response was to sign a deed with the Crown, ensuring the mountains could never be sold. As he put it: \"Tongariro is my ancestor, my tupuna; it is my head; my mana centres around Tongariro.\" [[3]](cite://3/1) The government subsequently purchased additional Māori land to supplement the mountaintops, and Tongariro National Park was formally established by an 1894 act of Parliament — making it New Zealand's first national park, and one of the earliest in the world. [[2]](cite://2/2)\n\nThe park is today a dual World Heritage Site, recognised for both its cultural and natural significance. [[4]](cite://4/1)\n\n## Early Expansion: The Turn of the 20th Century\n\nThe creation of Tongariro sparked momentum. By 1900, national parks had also been established on Taranaki (Mt Egmont) — the forest around the mountain had been protected by a reserve as early as 1875, with the area within six miles of the summit formally gazetted as the country's second national park in 1900. [[5]](cite://5/1) Large areas of South Island mountain lands were also set aside at Aoraki/Mt Cook and Arthur's Pass, and almost a million hectares was reserved in Fiordland in 1905. [[5]](cite://5/2)\n\nThe motivations behind this early wave of protection were mixed. Some settlers were alarmed that clearing forest for farms was destroying scenic landscapes; a few scientists worried about the loss of native plants and wildlife; and the government was increasingly aware of the tourism potential of New Zealand's natural wonders. [[6]](cite://6/1)\n\nConservationist Harry Ell was a key figure of this era. His persistent advocacy in Parliament led to the Scenery Preservation Act of 1903, which established a commission to investigate which areas were suitable for preservation. By the time Ell left Parliament, more than 500 reserves had been created nationwide — many of which, such as those at Aoraki/Mt Cook and in the Paparoa Range, later formed the basis of future national parks. [[7]](cite://7/1)\n\n## Tourism, Recreation and Early Management\n\nUntil the 1940s, New Zealand's national parks were managed primarily as places for recreation and tourism, following the American model that prioritised visitor pleasure over nature conservation. [[8]](cite://8/1)[[9]](cite://9/1) The Tourist Department developed Tongariro as a visitor destination, building huts at Ketetahi and Waihohonu by 1904, and in 1929 the grand Chateau Tongariro hotel opened on the slopes of Mt Ruapehu. [[10]](cite://10/1)[[9]](cite://9/2)\n\nThis era was not without controversy. For a decade from 1914, Police Commissioner John Cullen spread tonnes of Scottish heather seed in Tongariro National Park to encourage grouse hunting — a move that drew sharp criticism from conservationists. [[9]](cite://9/3) Meanwhile, iwi involvement in park management was progressively diminished: after 1914, Tongariro was transferred from its founding trust board to the Tourist Department, and repeated requests for iwi recognition were refused for many years. [[11]](cite://11/1)\n\n## The National Parks Act 1952: A New Framework\n\nThe post-war period brought a significant shift. Groups such as the Forest and Bird Society and the Federated Mountain Clubs argued for centralised control of the parks, and this movement culminated in the landmark National Parks Act 1952. [[12]](cite://12/1)\n\nThe new law established the National Parks Authority to provide guidance and policy, with boards overseeing individual parks alongside the Department of Lands and Survey. Crucially, the Act emphasised that native plants and animals would be preserved, and introduced species controlled or exterminated. [[12]](cite://12/2)\n\nThe 1950s and 1960s became something of a golden age for the parks. The number of national parks quickly grew from four to ten within a few years of the Act's passing. [[13]](cite://13/1) The New Zealand Forest Service entered the picture in 1954 with the first State Forest Park — Tararua — offering an alternative model of protected land management. [[13]](cite://13/2) The government also embarked on a massive programme of hut building, track cutting and footbridge construction: between 1957 and 1972, the Forest Service built 680 huts and shelters, 166 footbridges and cableways, and 4,000 kilometres of tramping tracks. [[13]](cite://13/3)\n\n## Wilderness Areas: Protection Within Protection\n\nAs access to the backcountry improved, conservationists began to worry that the wildness of remote New Zealand was being tamed by overdevelopment. The answer was the creation of designated Wilderness Areas — places free of huts, tracks, bridges, and even helicopter access. [[13]](cite://13/4)\n\nThe first wilderness area, Otehake (12,000 hectares) in Arthur's Pass National Park, was established in 1955. [[14]](cite://14/1) By 1974, the first large wilderness areas — Pembroke, near Milford Sound, and Glaisnock (125,000 hectares) — were created in Fiordland National Park. [[15]](cite://15/1) A national wilderness conference held at Rotoiti Lodge in Nelson Lakes National Park in 1981 helped formalise policy, at which point there were seven wilderness areas, all within national parks. [[15]](cite://15/2)\n\nFrom 1988, wilderness areas were also created outside the national park system, including the 40,000-hectare Raukumara on the East Cape and the 87,000-hectare Tasman in what is now Kahurangi National Park. [[16]](cite://16/1) By 2006, New Zealand had 11 wilderness areas in total. [[16]](cite://16/2)\n\n## Legislative Evolution and the Department of Conservation\n\nThe National Parks Act 1980 added ecological systems to the list of features meriting national park status, and allowed for \"specially protected areas\" within parks to guard against harmful human activity. [[17]](cite://17/1) Then in 1987, the Department of Conservation (DOC) was established, and its founding act referenced the Treaty of Waitangi — leading to greater consultation with iwi across all parks and reserves. [[17]](cite://17/2)\n\nIn 1990, the National Parks Authority and park boards were abolished, replaced by the New Zealand Conservation Authority and local conservation boards. [[18]](cite://18/1) These new bodies were made responsible for all conservation land, balancing public access with the need to protect plants, animals and natural features, and placing restrictions on buildings, roads, vehicles and aircraft. [[19]](cite://19/1)\n\n## New Parks and Māori Recognition\n\nThe later decades of the 20th century saw further additions to the network. Kahurangi National Park — New Zealand's 13th national park — was established in 1995 after years of lobbying, having faced significant opposition from mining and development interests. [[20]](cite://20/1) Abel Tasman National Park had been created much earlier, in 1942, to mark the tercentenary of Abel Tasman's arrival in New Zealand, largely through the advocacy of Nelson conservationist Perrine Moncrieff. [[20]](cite://20/2)\n\nA landmark moment for Māori came in 2014, when Te Urewera National Park was disestablished and the land recognised as a legal entity in its own right — with mana (authority) and mauri (life force) — and Tūhoe confirmed as its guardians and governors. This represented a transformative model for incorporating Indigenous worldviews into New Zealand's conservation policy. [[21]](cite://21/1)\n\nToday, New Zealand has 13 national parks, protecting some of the country's most spectacular landscapes — from the glaciers of Westland Tai Poutini and the limestone caves of Kahurangi to the volcanic peaks of Tongariro and the fiords of Fiordland. [[21]](cite://21/2)[[1]](cite://1/2) With 1.7 million overseas visitors recorded in 2017 alone, the parks remain central to both New Zealand's identity and its economy. [[21]](cite://21/3)\n\n## Sources\n\n[1] [New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation](https://teara.govt.nz/en/national-parks)\n[2] [New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation](https://teara.govt.nz/en/national-parks)\n[3] [New Zealand's Mountains: Comprehensive Guide to Geology, Ecosystems, Culture, and Recreation](https://teara.govt.nz/en/mountains)\n[4] [Adventure Central: Lake Taupō and Tongariro National Park](https://www.nzgeo.com/stories/adventure-central/)\n[5] [New Zealand's Mountains: Comprehensive Guide to Geology, Ecosystems, Culture, and Recreation](https://teara.govt.nz/en/mountains)\n[6] [New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation](https://teara.govt.nz/en/national-parks)\n[7] [Harry Ell's Vision for the Port Hills: Conservation, Summit Road Development, and Legacy](https://www.nzgeo.com/stories/a-heart-for-the-hills/)\n[8] [New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation](https://teara.govt.nz/en/national-parks)\n[9] [New Zealand Tourism: A Comprehensive History from the 1880s to the 2020s](https://teara.govt.nz/en/tourist-industry)\n[10] [Walking Tracks in New Zealand: From Māori Pathways to Modern Recreation and Conservation](https://teara.govt.nz/en/walking-tracks)\n[11] [Te tāpoi Māori – Māori Tourism: Evolution, Cultural Preservation, and Business Development in New Zealand](https://teara.govt.nz/en/te-tapoi-maori-maori-tourism)\n[12] [New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation](https://teara.govt.nz/en/national-parks)\n[13] [Tramping: A New Zealand History](https://www.nzgeo.com/stories/tramping-a-new-zealand-history/)\n[14] [Hunt for the Wilder Places: New Zealand's Wilderness Areas, Policy, and Indigenous Land Management](https://www.nzgeo.com/stories/hunt-for-the-wilder-places/)\n[15] [Hunt for the Wilder Places: New Zealand's Wilderness Areas, Policy, and Indigenous Land Management](https://www.nzgeo.com/stories/hunt-for-the-wilder-places/)\n[16] [Hunt for the Wilder Places: New Zealand's Wilderness Areas, Policy, and Indigenous Land Management](https://www.nzgeo.com/stories/hunt-for-the-wilder-places/)\n[17] [New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation](https://teara.govt.nz/en/national-parks)\n[18] [New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation](https://teara.govt.nz/en/national-parks)\n[19] [New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation](https://teara.govt.nz/en/national-parks)\n[20] [Kahurangi National Park: Wilderness, Conservation, Adventure, and Conflict in New Zealand](https://www.nzgeo.com/stories/kahurangi-our-newest-national-park/)\n[21] [New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation](https://teara.govt.nz/en/national-parks)",
+    "mock": false,
+    "submitted_at": "2026-10-30T01:23:25.651205+00:00",
+    "workflow_timing": {
+      "total_ms": 65710,
+      "classification": {
+        "ms": 3136,
+        "category": "D",
+        "category_label": "Answerable queries"
+      },
+      "summarise": {
+        "ms": null,
+        "skipped": true
+      },
+      "search": {
+        "ms": 15641,
+        "queries": [
+          "Search for national parks narrative history",
+          "Search for conservation wilderness areas",
+          "Search for national parks current news",
+          "Search for national parks history",
+          "Search for Tongariro National Park origins",
+          "Search for national parks legislation"
+        ],
+        "includes_pre_search_prep": true,
+        "queries_by_kb": [
+          {
+            "knowledge_base_id": "MMHABK6HFZ",
+            "query": "history and formation of New Zealand national parks",
+            "label": "Search for national parks narrative history"
+          },
+          {
+            "knowledge_base_id": "MMHABK6HFZ",
+            "query": "conservation and protected wilderness areas New Zealand national parks",
+            "label": "Search for conservation wilderness areas"
+          },
+          {
+            "knowledge_base_id": "QETGXQCZ48",
+            "query": "New Zealand national parks news conservation management Department of Conservation",
+            "label": "Search for national parks current news"
+          },
+          {
+            "knowledge_base_id": "VZTRPFNDVK",
+            "query": "history of New Zealand's national parks",
+            "label": "Search for national parks history"
+          },
+          {
+            "knowledge_base_id": "VZTRPFNDVK",
+            "query": "Tongariro National Park establishment first national park New Zealand",
+            "label": "Search for Tongariro National Park origins"
+          },
+          {
+            "knowledge_base_id": "VZTRPFNDVK",
+            "query": "National Parks Act conservation legislation New Zealand",
+            "label": "Search for national parks legislation"
+          }
+        ]
+      },
+      "evaluate": {
+        "ms": 14866
+      },
+      "prefill": {
+        "ms": 1163
+      },
+      "generate": {
+        "ms": 30406
+      },
+      "overhead_ms": 498,
+      "checkpoints_ms": {
+        "processing_active": 498,
+        "processing_done": 3634,
+        "search_active": 19275,
+        "topic_generation_done": 19275,
+        "eval_pending": 19275,
+        "eval_done": 34141,
+        "answering_active": 34141,
+        "text_start": 35304
+      },
+      "capture_version": 5,
+      "chat_total_ms": 64783,
+      "ttft_anchor": "chat_post",
+      "ttft_ms": 35304,
+      "ttft_event": "text-start"
+    },
+    "stream_timing": {
+      "ttft_anchor": "chat_post",
+      "ttft_ms": 35304,
+      "ttft_event": "text-start",
+      "chat_total_ms": 64783
+    },
+    "retrieved_chunks": [
+      {
+        "title": "New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/huVZvqdCs5YQzNe-68IUfupLyOCGRid8BtspqkyfyCk.pdf",
+        "published_date": "2016-07-01"
+      },
+      {
+        "title": "New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/huVZvqdCs5YQzNe-68IUfupLyOCGRid8BtspqkyfyCk.pdf",
+        "published_date": "2016-07-01"
+      },
+      {
+        "title": "New Zealand's Mountains: Comprehensive Guide to Geology, Ecosystems, Culture, and Recreation",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/Q_f9y_9jmj1264Oy0Z_IaLZcSZe7EcgzXkS7uxEaZdo.pdf",
+        "published_date": "2015-01-01"
+      },
+      {
+        "title": "Adventure Central: Lake Taupō and Tongariro National Park",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/xBvvQL_xEb7lWxpRxVtnrywQ11_zIoTNtUQyVlS9yno.pdf",
+        "published_date": "1995-07-01"
+      },
+      {
+        "title": "New Zealand's Mountains: Comprehensive Guide to Geology, Ecosystems, Culture, and Recreation",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/9pYKDB0GIfdNWHDZwy_WBE28uJ_MR3RSoQDLuKKZN-M.pdf",
+        "published_date": "2002-11-01"
+      },
+      {
+        "title": "New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/KxCXYxHq9VZj7bvdAkH3vfjqMcLK10sZh6LktYJ-aiQ.pdf",
+        "published_date": "2005-03-01"
+      },
+      {
+        "title": "Harry Ell's Vision for the Port Hills: Conservation, Summit Road Development, and Legacy",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/KqQhTeKq-J99wpUQNlbQ3s3ZunYfhi5G8OHn3Pc28y0.pdf",
+        "published_date": "2015-05-01"
+      },
+      {
+        "title": "New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/huVZvqdCs5YQzNe-68IUfupLyOCGRid8BtspqkyfyCk.pdf",
+        "published_date": "2016-07-01"
+      },
+      {
+        "title": "New Zealand Tourism: A Comprehensive History from the 1880s to the 2020s",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/pzemt0j_Mx2-0iMQEZQ5QjtrelVm4xouw1ePerJPX8g.pdf",
+        "published_date": "2014-07-01"
+      },
+      {
+        "title": "Walking Tracks in New Zealand: From Māori Pathways to Modern Recreation and Conservation",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/xBvvQL_xEb7lWxpRxVtnrywQ11_zIoTNtUQyVlS9yno.pdf",
+        "published_date": "1995-07-01"
+      },
+      {
+        "title": "Te tāpoi Māori – Māori Tourism: Evolution, Cultural Preservation, and Business Development in New Zealand",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/huVZvqdCs5YQzNe-68IUfupLyOCGRid8BtspqkyfyCk.pdf",
+        "published_date": "2016-07-01"
+      },
+      {
+        "title": "New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/EH2CBgSRUvZkuHenAvfEKqG85Rh280PG3OhTis1MXL4.pdf",
+        "published_date": "2008-03-01"
+      },
+      {
+        "title": "Tramping: A New Zealand History",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/_Bdz_UOLy67-y9cEglEoAQpWUBkhIcAIvhPKteNFKXs.pdf",
+        "published_date": "2003-11-01"
+      },
+      {
+        "title": "Hunt for the Wilder Places: New Zealand's Wilderness Areas, Policy, and Indigenous Land Management",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/EtO8GSC7qhZ1qp45TfBgaY3Ha24tr8gGokrMLRUCo5s.pdf",
+        "published_date": "1992-01-01"
+      },
+      {
+        "title": "Hunt for the Wilder Places: New Zealand's Wilderness Areas, Policy, and Indigenous Land Management",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/pRXBU_WlEg6K2iHMVDiUcWDL3KH_rGAXjvUJ2w6pFGc.pdf",
+        "published_date": "2015-05-01"
+      },
+      {
+        "title": "Hunt for the Wilder Places: New Zealand's Wilderness Areas, Policy, and Indigenous Land Management",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/bsqbQvUeWfsIo7BsATRqEOGOWj0EcH66DHjvZwxRcAk.pdf",
+        "published_date": "2020-08-28"
+      },
+      {
+        "title": "New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/huVZvqdCs5YQzNe-68IUfupLyOCGRid8BtspqkyfyCk.pdf",
+        "published_date": "2016-07-01"
+      },
+      {
+        "title": "New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/6xMKVg9EO6oo1djV41sz_Wq4ztnx50-rk235c3gfaOU.pdf",
+        "published_date": "2024-11-15",
+        "updated_date": "2024-11-15"
+      },
+      {
+        "title": "New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/ZxznXrwOwukW9wRnLLGvyJQbrAH1GZ83Kz4gqZOBVPs.pdf",
+        "published_date": "2024-04-10",
+        "updated_date": "2024-04-10"
+      },
+      {
+        "title": "Kahurangi National Park: Wilderness, Conservation, Adventure, and Conflict in New Zealand",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/5FhRfAfEqiTiUihtfF5xgH5qs3mXogKgoF6pcCK-pUo.pdf",
+        "published_date": "2026-07-16",
+        "updated_date": "2026-07-16"
+      },
+      {
+        "title": "New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/VKaqWnTyNCi1DuJjJLZq00dZDCCf1EfUfmZCred-0XE.pdf",
+        "published_date": "2024-11-15",
+        "updated_date": "2024-11-15"
+      },
+      {
+        "id": 22,
+        "title": "Department of Conservation Targets Businesses and Philanthropists in Funding Drive",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/rOrwddEQnV_QmAoqLbixmzyH_JGVthhn2dEwVN9uEko.pdf",
+        "published_date": "2025-08-18",
+        "updated_date": "2025-08-18"
+      },
+      {
+        "id": 23,
+        "title": "Government Considers Charging More for National Parks and Conservation Areas",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/nZ--ZlrwOpOi4eDcHSGOBrFahC6p4bvXq9Xwml3irDI.pdf",
+        "published_date": "2024-11-15",
+        "updated_date": "2024-11-15"
+      },
+      {
+        "id": 24,
+        "title": "Who Should Make Decisions Over Conservation Land?",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/KueApU-37U1IZ0J6-IE4JIkIL5PZ4GNVxeyns4WxqZs.pdf",
+        "published_date": "2025-09-12",
+        "updated_date": "2025-09-12"
+      },
+      {
+        "id": 25,
+        "title": "Plans for Conservation Minister to Make All Decisions",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/Yk34P7HVpq7UccXp6aZ6BQm_YTp81znNYtsvJTFro8U.pdf",
+        "published_date": "2025-09-01",
+        "updated_date": "2025-09-01"
+      },
+      {
+        "id": 26,
+        "title": "Department of Conservation Announces Restructure: 20 New Ranger Roles Amid 130 Net Job Cuts",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/7o2eiET5os6EcpuB-j8vW8rWhLz25fBM06NRAbo7QSo.pdf",
+        "published_date": "2024-04-11",
+        "updated_date": "2024-04-11"
+      },
+      {
+        "id": 27,
+        "title": "New Zealanders' Most Attractive Workplace Revealed in New Survey",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/knZzcLorxPpOmjZen0viWweMHnizrKTrtO0h20DM4KI.pdf",
+        "published_date": "2024-07-11",
+        "updated_date": "2024-07-11"
+      },
+      {
+        "id": 28,
+        "title": "New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/N2UKN5Xlc_mVgbWzeEvOdf2oYyaNczitetGfcrRPP-M.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "id": 29,
+        "title": "New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/N2UKN5Xlc_mVgbWzeEvOdf2oYyaNczitetGfcrRPP-M.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "id": 30,
+        "title": "New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/N2UKN5Xlc_mVgbWzeEvOdf2oYyaNczitetGfcrRPP-M.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "id": 31,
+        "title": "New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/N2UKN5Xlc_mVgbWzeEvOdf2oYyaNczitetGfcrRPP-M.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "id": 32,
+        "title": "New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/N2UKN5Xlc_mVgbWzeEvOdf2oYyaNczitetGfcrRPP-M.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "id": 33,
+        "title": "New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/N2UKN5Xlc_mVgbWzeEvOdf2oYyaNczitetGfcrRPP-M.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "id": 34,
+        "title": "New Zealand Tourism: A Comprehensive History from the 1880s to the 2020s",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/kaXfo144FYIg6Tu3Kn2fpsGknEZYPecXCTOgoshWqqw.pdf",
+        "published_date": "2010-03-02"
+      },
+      {
+        "id": 35,
+        "title": "New Zealand's Mountains: Comprehensive Guide to Geology, Ecosystems, Culture, and Recreation",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/1jQCT2QqCEpyDe3PiQMzTgM9WBUcQRuhUEQ_JOXSpQs.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "id": 36,
+        "title": "New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/N2UKN5Xlc_mVgbWzeEvOdf2oYyaNczitetGfcrRPP-M.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "id": 37,
+        "title": "West Coast New Zealand: Comprehensive Regional Guide - Geography, History, Economy, and Culture",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Pb9LpHMwuiHpmWya6iT5_XlN9Wucnv-al97bv_-L1KU.pdf",
+        "published_date": "2009-03-02"
+      },
+      {
+        "id": 38,
+        "title": "Ngāti Tūwharetoa: History, Leadership, Cultural Heritage, and Contemporary Development",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/9LYXRXLQWx13inMP4NxebbqDN___900lXoOJ-9tjjOo.pdf",
+        "published_date": "2012-09-22"
+      },
+      {
+        "id": 39,
+        "title": "New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/N2UKN5Xlc_mVgbWzeEvOdf2oYyaNczitetGfcrRPP-M.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "id": 40,
+        "title": "The Volcanic Plateau Region: Comprehensive Study of Geology, Māori Heritage, Tourism, and Economic Development in New Zealand's Taupō and Rotorua Areas",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/1unn8OvzPAGbrGVp98G4MJIH8afOjm7FJqrxSERYZUY.pdf",
+        "published_date": "2009-03-02"
+      },
+      {
+        "id": 41,
+        "title": "Te tāpoi Māori – Māori Tourism: Evolution, Cultural Preservation, and Business Development in New Zealand",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/D_yi0xG0_BFTLgxwzPlz-7WyBnwJfWXYdqRmO8Cpx6Q.pdf",
+        "published_date": "2010-03-11"
+      },
+      {
+        "id": 42,
+        "title": "New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/N2UKN5Xlc_mVgbWzeEvOdf2oYyaNczitetGfcrRPP-M.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "id": 43,
+        "title": "Walking Tracks in New Zealand: From Māori Pathways to Modern Recreation and Conservation",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/JaVVU1NWqjp7O3IfwgiN8C0YDDAFz6T9zBij46EWDKQ.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "id": 44,
+        "title": "New Zealand's Mountains: Comprehensive Guide to Geology, Ecosystems, Culture, and Recreation",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/1jQCT2QqCEpyDe3PiQMzTgM9WBUcQRuhUEQ_JOXSpQs.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "id": 45,
+        "title": "New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/N2UKN5Xlc_mVgbWzeEvOdf2oYyaNczitetGfcrRPP-M.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "id": 46,
+        "title": "New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/N2UKN5Xlc_mVgbWzeEvOdf2oYyaNczitetGfcrRPP-M.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "id": 47,
+        "title": "New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/N2UKN5Xlc_mVgbWzeEvOdf2oYyaNczitetGfcrRPP-M.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "id": 48,
+        "title": "New Zealand's Threatened Species: Conservation Status, Strategies, and Recovery Efforts",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/qoGBpI0H1nnlD8hGEJfUEwr2v0IfYG3graOUXFrOij8.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "id": 49,
+        "title": "Water Quality in New Zealand: Comprehensive Assessment of Threats, Management Strategies, and Case Studies",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/nZ5-T2OOVlh6DUTrKHfZNjQ_SQPTPHGEVzp7tw0FwbE.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "id": 50,
+        "title": "New Zealand's Threatened Species: Conservation Status, Strategies, and Recovery Efforts",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/qoGBpI0H1nnlD8hGEJfUEwr2v0IfYG3graOUXFrOij8.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "id": 51,
+        "title": "New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/N2UKN5Xlc_mVgbWzeEvOdf2oYyaNczitetGfcrRPP-M.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "id": 52,
+        "title": "Commercial Pine Plantations in New Zealand",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/GZnjm8Z-dClmit4n93_EtGV2sFdbGBHnnUmL3Bq5bFI.jpg",
+        "published_date": "2021-02-24"
+      },
+      {
+        "id": 53,
+        "title": "Commercial Pine Plantations in New Zealand",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/GZnjm8Z-dClmit4n93_EtGV2sFdbGBHnnUmL3Bq5bFI.jpg",
+        "published_date": "2021-02-24"
+      },
+      {
+        "id": 54,
+        "title": "Ancient Lake Otago",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/O_mtvdKJq7dV20m3iqS-S3MTEoPFGfbSv3n6duoIXso.jpg",
+        "published_date": "2011-01-01"
+      },
+      {
+        "id": 55,
+        "title": "Taranaki Forest Road",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/7jpyaA-_JBsdnJdECFKc4XBiqm63_1KVfCJzBUndOCo.jpg",
+        "published_date": "2004-01-01"
+      },
+      {
+        "id": 56,
+        "title": "Kaingaroa Forest, New Zealand",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/bd1TXh2yxoatRaIPo0SwljLXt4gzyHsemZX2dK3YOC8.jpg",
+        "published_date": "2005-03-01"
+      },
+      {
+        "id": 57,
+        "title": "Stewardship Land Distribution in New Zealand",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/fmOVTQsRZz4v-5Jy2Vds_5NgLaSVGNUudn086qWNX4E.jpg",
+        "published_date": "2022-05-03"
+      },
+      {
+        "id": 58,
+        "title": "Sir Edmund Hillary at Public Event",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/sKHql4g2BZjXUtN6ED9KMmvQnuLIXUSYc_nXXcR3lf0.jpg",
+        "published_date": "2008-03-01"
+      },
+      {
+        "id": 59,
+        "title": "Fairy Tern Breeding and Roosting Sites in New Zealand",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/pOO4WSAjpjC0wZmJ53kLkqQ_7r1NLEaS3s53xb2xLS8.jpg",
+        "published_date": "2020-03-03"
+      },
+      {
+        "id": 60,
+        "title": "New Zealand Geographic Magazine Covers",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/2_mIbSFFagfRg9s0JEZtgbELt_R6HbAMDvQTNMojG20.jpg",
+        "published_date": "2025-10-27"
+      },
+      {
+        "id": 61,
+        "title": "Mountain Biking in Wanaka, New Zealand",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/3zM3KfsUWdwmhgWSeTUcWSVbh9LB03grt9pV7Shk0nM.jpg",
+        "published_date": "2000-10-01"
+      }
+    ],
+    "sources": [
+      {
+        "num": 1,
+        "label": "New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation",
+        "url": "https://teara.govt.nz/en/national-parks"
+      },
+      {
+        "num": 2,
+        "label": "New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation",
+        "url": "https://teara.govt.nz/en/national-parks"
+      },
+      {
+        "num": 3,
+        "label": "New Zealand's Mountains: Comprehensive Guide to Geology, Ecosystems, Culture, and Recreation",
+        "url": "https://teara.govt.nz/en/mountains"
+      },
+      {
+        "num": 4,
+        "label": "Adventure Central: Lake Taupō and Tongariro National Park",
+        "url": "https://www.nzgeo.com/stories/adventure-central/"
+      },
+      {
+        "num": 5,
+        "label": "New Zealand's Mountains: Comprehensive Guide to Geology, Ecosystems, Culture, and Recreation",
+        "url": "https://teara.govt.nz/en/mountains"
+      },
+      {
+        "num": 6,
+        "label": "New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation",
+        "url": "https://teara.govt.nz/en/national-parks"
+      },
+      {
+        "num": 7,
+        "label": "Harry Ell's Vision for the Port Hills: Conservation, Summit Road Development, and Legacy",
+        "url": "https://www.nzgeo.com/stories/a-heart-for-the-hills/"
+      },
+      {
+        "num": 8,
+        "label": "New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation",
+        "url": "https://teara.govt.nz/en/national-parks"
+      },
+      {
+        "num": 9,
+        "label": "New Zealand Tourism: A Comprehensive History from the 1880s to the 2020s",
+        "url": "https://teara.govt.nz/en/tourist-industry"
+      },
+      {
+        "num": 10,
+        "label": "Walking Tracks in New Zealand: From Māori Pathways to Modern Recreation and Conservation",
+        "url": "https://teara.govt.nz/en/walking-tracks"
+      },
+      {
+        "num": 11,
+        "label": "Te tāpoi Māori – Māori Tourism: Evolution, Cultural Preservation, and Business Development in New Zealand",
+        "url": "https://teara.govt.nz/en/te-tapoi-maori-maori-tourism"
+      },
+      {
+        "num": 12,
+        "label": "New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation",
+        "url": "https://teara.govt.nz/en/national-parks"
+      },
+      {
+        "num": 13,
+        "label": "Tramping: A New Zealand History",
+        "url": "https://www.nzgeo.com/stories/tramping-a-new-zealand-history/"
+      },
+      {
+        "num": 14,
+        "label": "Hunt for the Wilder Places: New Zealand's Wilderness Areas, Policy, and Indigenous Land Management",
+        "url": "https://www.nzgeo.com/stories/hunt-for-the-wilder-places/"
+      },
+      {
+        "num": 15,
+        "label": "Hunt for the Wilder Places: New Zealand's Wilderness Areas, Policy, and Indigenous Land Management",
+        "url": "https://www.nzgeo.com/stories/hunt-for-the-wilder-places/"
+      },
+      {
+        "num": 16,
+        "label": "Hunt for the Wilder Places: New Zealand's Wilderness Areas, Policy, and Indigenous Land Management",
+        "url": "https://www.nzgeo.com/stories/hunt-for-the-wilder-places/"
+      },
+      {
+        "num": 17,
+        "label": "New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation",
+        "url": "https://teara.govt.nz/en/national-parks"
+      },
+      {
+        "num": 18,
+        "label": "New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation",
+        "url": "https://teara.govt.nz/en/national-parks"
+      },
+      {
+        "num": 19,
+        "label": "New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation",
+        "url": "https://teara.govt.nz/en/national-parks"
+      },
+      {
+        "num": 20,
+        "label": "Kahurangi National Park: Wilderness, Conservation, Adventure, and Conflict in New Zealand",
+        "url": "https://www.nzgeo.com/stories/kahurangi-our-newest-national-park/"
+      },
+      {
+        "num": 21,
+        "label": "New Zealand National Parks: Comprehensive Guide to Conservation, Heritage, and Recreation",
+        "url": "https://teara.govt.nz/en/national-parks"
+      }
+    ],
+    "recency": {
+      "max_published_date_retrieved": "2026-07-16",
+      "max_updated_date_retrieved": "2026-07-16",
+      "max_published_date_cited": null,
+      "max_updated_date_cited": null,
+      "retrieved_chunk_count": 61,
+      "retrieved_dated_count": 61,
+      "cited_marker_count": 21,
+      "cited_dated_count": 0,
+      "cited_unmatched_count": 21
+    }
+  },
+  "rubric": {
+    "failure_class": "Long-answer control",
+    "sub_class": "TTFT vs total separation",
+    "evaluation_method": "Automated — TTFT + total",
+    "pass_criteria": "",
+    "fail_criteria": "",
+    "automation_eligible": true,
+    "staging_only": false,
+    "performance_class": "Long-answer control",
+    "what_it_isolates": "Methodological control — long ANSWER, so total is high, but TTFT should match a simple query (same pipeline up to first token).",
+    "expected_ttft_profile": "TTFT ≈ baseline; TOTAL high."
+  },
+  "report_link": "https://tahi-nz.github.io/tahi-eval-hub/P10/index.html"
+}

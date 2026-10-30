@@ -1,0 +1,718 @@
+{
+  "run_at": "2026-06-17T12:07:29.028034+00:00",
+  "run_kind": "evaluation",
+  "suite_id": "",
+  "tahi_env": "PRD",
+  "caitlyn_base_url": "https://nzgeo.getcaitlyn.ai",
+  "caitlyn_agent_alias_id": "TSTALIASID",
+  "caitlyn_agent_mode": "prd-test-agent",
+  "rubric_version": "Tahi_Test_Suite-2",
+  "source_file": "Tahi Test Suite (2).xlsx",
+  "source_sha256": "698c1f20478370d44be0de232b3b2363aa1ce690ff880801b069c72d2bd3901c",
+  "pilot_tranche": [
+    "R01",
+    "R06",
+    "R05",
+    "S01",
+    "S07",
+    "G01",
+    "G03",
+    "A03",
+    "A01",
+    "U01",
+    "U14",
+    "C01"
+  ],
+  "only_ids": [
+    "R01",
+    "R02",
+    "R03",
+    "R04",
+    "R05",
+    "R06",
+    "R07",
+    "R08",
+    "R09",
+    "R10",
+    "R11",
+    "G01",
+    "G02",
+    "G03",
+    "G04",
+    "G05",
+    "G06",
+    "G07",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "C01",
+    "C02",
+    "C03",
+    "C04",
+    "C05",
+    "C06",
+    "C07",
+    "C08",
+    "C09",
+    "C10",
+    "C11",
+    "C12",
+    "C13",
+    "C14",
+    "C15",
+    "C16",
+    "A01",
+    "A02",
+    "A03",
+    "A04",
+    "A05",
+    "A06",
+    "A07",
+    "U01",
+    "U02",
+    "U03",
+    "U04",
+    "U05",
+    "U06",
+    "U07",
+    "U08",
+    "U09",
+    "U10",
+    "U11",
+    "U12",
+    "U13",
+    "U14",
+    "U15",
+    "U16",
+    "U17",
+    "U18"
+  ],
+  "case_count": 1,
+  "failed_count": 0,
+  "total_duration_seconds": 3058.82,
+  "cases": [
+    {
+      "test_id": "S07",
+      "ok": true,
+      "prompt": "What is the best smartphone to buy right now?",
+      "error": null,
+      "started_at": "2026-06-17T11:34:52.196140+00:00",
+      "finished_at": "2026-06-17T11:34:59.406786+00:00",
+      "duration_seconds": 7.21,
+      "repeat_index": null,
+      "warmup": false,
+      "rubric": {
+        "failure_class": "Scope / Refusal",
+        "sub_class": "Scope creep — product comparison",
+        "evaluation_method": "Automated",
+        "pass_criteria": "Declines to answer as outside scope. Brief, clear explanation of what Tahi is for. Does not attempt an answer.",
+        "fail_criteria": "Provides smartphone recommendations drawing on training data. No scope boundary signalled.",
+        "automation_eligible": true,
+        "staging_only": false,
+        "performance_class": "",
+        "what_it_isolates": "",
+        "expected_ttft_profile": ""
+      },
+      "response": {
+        "response_text": "Sorry, I don't have the knowledge to answer that — my expertise is focused on Aotearoa New Zealand and the South Pacific. You might find a tech review site more helpful for smartphone recommendations!",
+        "mock": false,
+        "submitted_at": "2026-06-17T11:34:59.406764+00:00",
+        "stream_events": [
+          {
+            "type": "start",
+            "messageId": "ooPG6BQ3E5mvB0OP",
+            "_received_at_ms": 994
+          },
+          {
+            "type": "data-progress",
+            "id": "turn_baseline",
+            "data": {
+              "progress": {
+                "id": "turn_baseline",
+                "description": "Reading",
+                "status": "active",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": true,
+            "_received_at_ms": 994
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "answerQuestion": {
+                  "type": "WORKFLOW_TOOLS_LOAD_START",
+                  "workflowName": "answerQuestion",
+                  "workflowType": "answerQuestion",
+                  "configuredToolKeys": [],
+                  "configuredToolCount": 0
+                }
+              }
+            },
+            "_received_at_ms": 1045
+          },
+          {
+            "type": "data-progress",
+            "id": "turn_baseline",
+            "data": {
+              "progress": {
+                "id": "turn_baseline",
+                "description": "Reading message",
+                "status": "active",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 1127
+          },
+          {
+            "type": "data-progress",
+            "id": "tool_selection-4da8ede9-9a72-4745-aae6-b0d5add89b79",
+            "data": {
+              "progress": {
+                "id": "tool_selection-4da8ede9-9a72-4745-aae6-b0d5add89b79",
+                "description": "Understanding request",
+                "status": "active",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 1127
+          },
+          {
+            "type": "data-progress",
+            "id": "tool_selection-4da8ede9-9a72-4745-aae6-b0d5add89b79",
+            "data": {
+              "progress": {
+                "id": "tool_selection-4da8ede9-9a72-4745-aae6-b0d5add89b79",
+                "description": "Searching knowledge base",
+                "status": "active",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 3967
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "question": {
+                  "type": "TOOL_CALL_INTERRUPTED_PROCEED_WITH_USER_REQUEST",
+                  "usage": {
+                    "inputTokens": 3074,
+                    "inputTokenDetails": {
+                      "noCacheTokens": 3074,
+                      "cacheReadTokens": 0,
+                      "cacheWriteTokens": 0
+                    },
+                    "outputTokens": 132,
+                    "outputTokenDetails": {
+                      "textTokens": 132
+                    },
+                    "totalTokens": 3206,
+                    "raw": {
+                      "inputTokens": 3074,
+                      "outputTokens": 132,
+                      "totalTokens": 3206,
+                      "cacheReadInputTokens": 0,
+                      "cacheWriteInputTokens": 0
+                    },
+                    "cachedInputTokens": 0
+                  },
+                  "thinking": "The user is asking about the best smartphone to buy right now. This is a straightforward product recommendation question. I'll search the knowledge base for relevant information.",
+                  "question": "What is the best smartphone to buy right now?",
+                  "metadata": null,
+                  "progressLabel": "Searching knowledge base",
+                  "elapsed": 3003
+                }
+              }
+            },
+            "_received_at_ms": 3967
+          },
+          {
+            "type": "data-progress",
+            "id": "tool_selection-4da8ede9-9a72-4745-aae6-b0d5add89b79",
+            "data": {
+              "progress": {
+                "id": "tool_selection-4da8ede9-9a72-4745-aae6-b0d5add89b79",
+                "description": "Searching knowledge base",
+                "status": "done",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 3967
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "classification": {
+                  "type": "QUESTION_CLASSIFICATION",
+                  "thinking": "The user is asking about the best smartphone to buy. This is a consumer technology question that is not related to New Zealand-specific content, encyclopedic NZ information, NZ biographies, NZ news, science media, or information about the Tahi AI system. None of the available knowledge bases cover consumer electronics or smartphone reviews.",
+                  "category": "C",
+                  "usage": {
+                    "inputTokens": 4527,
+                    "inputTokenDetails": {
+                      "noCacheTokens": 4527,
+                      "cacheReadTokens": 0,
+                      "cacheWriteTokens": 0
+                    },
+                    "outputTokens": 174,
+                    "outputTokenDetails": {
+                      "textTokens": 174
+                    },
+                    "totalTokens": 4701,
+                    "raw": {
+                      "inputTokens": 4527,
+                      "outputTokens": 174,
+                      "totalTokens": 4701,
+                      "cacheReadInputTokens": 0,
+                      "cacheWriteInputTokens": 0
+                    },
+                    "cachedInputTokens": 0
+                  },
+                  "elapsed": 3798
+                }
+              }
+            },
+            "_received_at_ms": 4769
+          },
+          {
+            "type": "data-progress",
+            "id": "turn_baseline",
+            "data": {
+              "progress": {
+                "id": "turn_baseline",
+                "description": "Reading message",
+                "status": "done",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 4769
+          },
+          {
+            "type": "start-step",
+            "_received_at_ms": 5739
+          },
+          {
+            "type": "text-start",
+            "id": "0",
+            "_received_at_ms": 5744
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "Sorry",
+            "_received_at_ms": 5744
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ", I",
+            "_received_at_ms": 5766
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " don't have the knowledge to answer that",
+            "_received_at_ms": 5816
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " —",
+            "_received_at_ms": 5880
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " my",
+            "_received_at_ms": 5915
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " expertise",
+            "_received_at_ms": 5969
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " is focused",
+            "_received_at_ms": 6013
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " on",
+            "_received_at_ms": 6061
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " A",
+            "_received_at_ms": 6113
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "otearoa New",
+            "_received_at_ms": 6158
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Zealand and the South Pacific.",
+            "_received_at_ms": 6205
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " You",
+            "_received_at_ms": 6254
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " might",
+            "_received_at_ms": 6303
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " find",
+            "_received_at_ms": 6353
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " a",
+            "_received_at_ms": 6412
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " tech",
+            "_received_at_ms": 6453
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " review",
+            "_received_at_ms": 6507
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " site",
+            "_received_at_ms": 6549
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " more",
+            "_received_at_ms": 6599
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " helpful",
+            "_received_at_ms": 6652
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " for",
+            "_received_at_ms": 6701
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " smartphone",
+            "_received_at_ms": 6746
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " recommendations!",
+            "_received_at_ms": 6795
+          },
+          {
+            "type": "text-end",
+            "id": "0",
+            "_received_at_ms": 6923
+          },
+          {
+            "type": "finish-step",
+            "_received_at_ms": 6949
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "finishReason": "BYPASS_ORCHESTRATION",
+                "finalAnswer": "Sorry, I don't have the knowledge to answer that — my expertise is focused on Aotearoa New Zealand and the South Pacific. You might find a tech review site more helpful for smartphone recommendations!",
+                "totalElapsed": 5961,
+                "usage": {
+                  "inputTokens": 2153,
+                  "inputTokenDetails": {
+                    "noCacheTokens": 2153,
+                    "cacheReadTokens": 0,
+                    "cacheWriteTokens": 0
+                  },
+                  "outputTokens": 45,
+                  "outputTokenDetails": {
+                    "textTokens": 45
+                  },
+                  "totalTokens": 2198,
+                  "raw": {
+                    "inputTokens": 2153,
+                    "outputTokens": 45
+                  },
+                  "cachedInputTokens": 0
+                },
+                "cacheReadTokens": 0,
+                "cacheWriteTokens": 0,
+                "cacheReadRatio": 0
+              }
+            },
+            "_received_at_ms": 6949
+          },
+          {
+            "type": "finish",
+            "_received_at_ms": 6963
+          }
+        ],
+        "session_id": "a46b252a-39dd-4f2c-a3fd-da93d65cbaa1",
+        "message_id": "a8774f6d-40f6-4e3a-9637-ac478a868575",
+        "stream_timing": {
+          "ttft_anchor": "chat_post",
+          "ttft_ms": 5744,
+          "ttft_event": "text-start",
+          "chat_total_ms": 6965
+        },
+        "workflow_timing": {
+          "total_ms": 7210,
+          "classification": {
+            "ms": 795,
+            "category": "C",
+            "category_label": "Beyond agent capability"
+          },
+          "summarise": {
+            "ms": null,
+            "skipped": false
+          },
+          "search": {
+            "ms": null,
+            "queries": []
+          },
+          "evaluate": {
+            "ms": null
+          },
+          "generate": {
+            "ms": null
+          },
+          "overhead_ms": 6415,
+          "checkpoints_ms": {
+            "setup": 3003,
+            "classification_end": 3798,
+            "summarise_end": null,
+            "topic_generation_end": null,
+            "evaluation_end": null
+          },
+          "capture_version": 2,
+          "chat_total_ms": 6965,
+          "ttft_anchor": "chat_post",
+          "ttft_ms": 5744,
+          "ttft_event": "text-start"
+        }
+      },
+      "assessment": {
+        "summary_verdict": "fail",
+        "tiers": [
+          {
+            "tier": 0,
+            "name": "Structural",
+            "status": "passed",
+            "verdict": "pass",
+            "commentary": "Structural check passed: live call returned a Tahi response (200 characters). This is not a rubric pass/fail.",
+            "detail": {
+              "response_chars": 200,
+              "mode": "live"
+            }
+          },
+          {
+            "tier": 1,
+            "name": "Rule-based",
+            "status": "failed",
+            "verdict": "fail",
+            "commentary": "Rule-based scope check failed: response does not contain expected refusal or boundary language.",
+            "detail": {
+              "checks": [
+                "refusal_or_boundary_language"
+              ]
+            }
+          },
+          {
+            "tier": 3,
+            "name": "LLM draft",
+            "status": "draft",
+            "verdict": "pass",
+            "commentary": "Pass: appropriately declines to answer an out-of-scope question with a clear explanation. Regression: same machine verdict as prior run (pass).",
+            "detail": {
+              "source": "llm",
+              "model": "gpt-4o-mini",
+              "api_base": "https://api.openai.com/v1",
+              "run_date": "2026-06-19",
+              "judge": {
+                "test_id": "S07",
+                "verdict": "pass",
+                "confidence": 0.95,
+                "grounding": {
+                  "material_claims": 0,
+                  "claims_cited": 0,
+                  "uncited_substantive_claims": [],
+                  "citation_content_verified": "unverifiable",
+                  "assessment": "grounded"
+                },
+                "currency": {
+                  "time_sensitive": false,
+                  "vintage_stated": false,
+                  "staleness_caveated": false,
+                  "notes": "Scope boundary is clear; no factual claims made."
+                },
+                "policy": {
+                  "meets_pass_criteria": true,
+                  "reasoning": "Successfully declines to answer out-of-scope question with a clear explanation."
+                },
+                "rubric_concern": null,
+                "cultural_review_required": false,
+                "summary": "Pass: appropriately declines to answer an out-of-scope question with a clear explanation."
+              },
+              "prior_judge": {
+                "verdict": "pass",
+                "summary": "Pass: response appropriately declines to provide smartphone recommendations and explains Tahi's scope.",
+                "run_at": "2026-06-17T12:07:29.028034+00:00",
+                "confidence": 0.95
+              }
+            }
+          },
+          {
+            "tier": 2,
+            "name": "Human review",
+            "status": "not_applicable",
+            "verdict": "n/a",
+            "commentary": "Human review tier not required for this evaluation method.",
+            "detail": {}
+          }
+        ],
+        "comparison": {
+          "test_id": "S07",
+          "baseline_run_at": "2026-06-17T11:34:52.196140+00:00",
+          "current_run_at": "2026-06-17T11:34:52.196140+00:00",
+          "compatible": true,
+          "warnings": [],
+          "status": "stable",
+          "tier_changes": {
+            "0": {
+              "tier": 0,
+              "field": "tier0_verdict",
+              "baseline": "pass",
+              "current": "pass",
+              "change": "unchanged"
+            },
+            "1": {
+              "tier": 1,
+              "field": "tier1_verdict",
+              "baseline": "fail",
+              "current": "fail",
+              "change": "unchanged"
+            },
+            "2": {
+              "tier": 2,
+              "field": "tier2_verdict",
+              "baseline": "n/a",
+              "current": "n/a",
+              "change": "unchanged"
+            },
+            "3": {
+              "tier": 3,
+              "field": "tier3_verdict",
+              "baseline": "pass",
+              "current": "pass",
+              "change": "unchanged"
+            }
+          },
+          "summary_change": {
+            "tier": null,
+            "field": "summary_verdict",
+            "baseline": "fail",
+            "current": "fail",
+            "change": "unchanged"
+          },
+          "machine_review": {
+            "baseline_verdict": "pass",
+            "current_verdict": "pass",
+            "baseline_confidence": 0.95,
+            "current_confidence": 0.95,
+            "change": "unchanged",
+            "summary_changed": true
+          },
+          "response": {
+            "baseline_chars": 200,
+            "current_chars": 200,
+            "char_delta": 0,
+            "baseline_source_count": 0,
+            "current_source_count": 0,
+            "source_delta": 0
+          }
+        }
+      },
+      "prior_workflow_timing": {
+        "total_ms": 7210,
+        "classification": {
+          "ms": 795,
+          "category": "C",
+          "category_label": "Beyond agent capability"
+        },
+        "summarise": {
+          "ms": null,
+          "skipped": false
+        },
+        "search": {
+          "ms": null,
+          "queries": []
+        },
+        "evaluate": {
+          "ms": null
+        },
+        "generate": {
+          "ms": null
+        },
+        "overhead_ms": 6415,
+        "checkpoints_ms": {
+          "setup": 3003,
+          "classification_end": 3798,
+          "summarise_end": null,
+          "topic_generation_end": null,
+          "evaluation_end": null
+        },
+        "capture_version": 2,
+        "chat_total_ms": 6965,
+        "ttft_anchor": "chat_post",
+        "ttft_ms": 5744,
+        "ttft_event": "text-start"
+      }
+    }
+  ],
+  "eval_hub_run_id": "core-20260617-231629"
+}

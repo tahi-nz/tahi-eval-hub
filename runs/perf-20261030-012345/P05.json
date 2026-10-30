@@ -1,0 +1,583 @@
+{
+  "bundle_schema_version": 3,
+  "bundle_kind": "slim",
+  "run_id": "perf-20261030-012345",
+  "test_id": "P05",
+  "ok": true,
+  "prompt": "How has New Zealand's freshwater management policy changed over the past decade, and what are the main points of disagreement?",
+  "error": null,
+  "started_at": "2026-10-30T01:11:55.149685+00:00",
+  "finished_at": "2026-10-30T01:12:47.601755+00:00",
+  "duration_seconds": 52.45,
+  "repeat_index": 3,
+  "warmup": false,
+  "response": {
+    "response_text": "# New Zealand's Freshwater Management: A Decade of Change and Conflict\n\nNew Zealand's freshwater policy has been one of the most contested areas of environmental governance over the past decade — swinging between tighter protections under Labour-led governments and significant deregulation under the current National-led coalition. The debate cuts to the heart of who New Zealand is: a farming nation, or a country of healthy rivers and lakes.\n\n## The State of the Water\n\nThe backdrop to all of this policy churn is a genuine environmental crisis. A 2010 Ministry for the Environment report found that 28 percent of assessed lakes had worsened between 2005 and 2009, while nitrogen levels in major rivers had been climbing at roughly 1.4 percent per year across most of the country since 1989, with no sites recording a drop. [[1]](cite://1/1) The Manawatū River was assessed by the Cawthron Institute as the most polluted river in the Western world, scoring twice as poorly as the next worst river sampled downstream from a Berlin sewage outfall. [[1]](cite://1/2)\n\nMore than three-quarters of New Zealand's water take goes to agriculture, with most of it sprayed onto dairy farms — a land-use transformation that scientists describe as dramatic and contentious. [[2]](cite://2/1) A 2016 survey found that almost two-thirds of New Zealanders regarded farming as the main culprit for water degradation, more than double the number who held that view in 2000. [[3]](cite://3/1)\n\n## Building a Framework: 2011–2020\n\nFor much of New Zealand's history, water management plans were not compulsory for regional councils. Fish & Game's Nelson Marlborough manager Neil Deans noted that the government's 2011 National Policy Statement (NPS), which compelled councils to produce water management plans, was \"30 years late\" — and that in Canterbury alone, tens of thousands of permits had been allocated in the preceding 35 years without any such plan. [[4]](cite://4/1)\n\nThe concept of *Te Mana o te Wai* — a hierarchy of values placing the health and wellbeing of the waterway first, then the health needs of people, and commercial interests third — was introduced to freshwater management policy in 2014 by the then-National government to stop waterways from degrading. [[5]](cite://5/1) It was significantly strengthened in 2020 when the Labour government introduced the Essential Freshwater package, which updated the NPS for Freshwater Management (NPS FM) and introduced freshwater farm plans requiring farmers with 20 or more hectares in pastoral or arable use to document and manage their environmental risks. [[6]](cite://6/1)\n\nAn updated NPS FM due to come into force in September 2020 placed new requirements on local authorities to improve water quality and stop further degradation of waterways and wetlands — though enforcement responsibility remained with regional councils, which had historically struggled to act. [[7]](cite://7/1)\n\n## The Rollback: 2023 Onwards\n\nThe election of the National-led coalition government in late 2023 marked a sharp reversal. The new government repealed Labour's Natural and Built Environment Act and Spatial Planning Act, and set about dismantling much of the 2020 freshwater framework. [[8]](cite://8/1)\n\nIn April 2024, the government announced its first Resource Management Act (RMA) changes, including repealing intensive winter grazing regulations, removing low-slope maps from stock exclusion rules, and — most significantly — removing the requirement for resource consent applicants to show they could meet the *Te Mana o te Wai* hierarchy of obligations. [[5]](cite://5/2) The government also began reviewing the rollout of freshwater farm plans, with associate environment minister Andrew Hoggard saying the current system was \"too costly and complex, and too broadly applied.\" [[6]](cite://6/2)\n\nBy October 2024, Parliament had passed the Resource Management (Freshwater and Other Matters) Amendment Bill, which excluded the NPS FM 2020 hierarchy from resource consents, amended winter grazing and stock exclusion rules, and — controversially, via a last-minute amendment — restricted regional councils from notifying new freshwater plans until a replacement NPS FM was in place. [[8]](cite://8/2) The Otago Regional Council, which had spent five years and $18 million developing its Land and Water Regional Plan, was blocked from even voting on whether to proceed. [[9]](cite://9/1)\n\nIn May 2025, the government released sweeping proposals to replace the NPS FM entirely and \"rebalance\" *Te Mana o te Wai* to give councils more flexibility and better reflect the interests of all water users. [[10]](cite://10/1)[[11]](cite://11/1) By September 2025, Environment Canterbury had declared a nitrate emergency, with groundwater surveys showing E. coli in 14 percent of wells and rising nitrate trends in 62 percent of wells over the past decade. [[12]](cite://12/1)\n\n## The Main Points of Disagreement\n\nThe debate has fractured along several fault lines:\n\n**Environment versus economy.** Federated Farmers welcomed the 2024 changes as marking \"the end of the war on farming,\" with spokesperson Colin Hurst saying the 2020 rules were \"rushed through by overzealous regulators\" and had to be amended eight times in three years. [[5]](cite://5/3) Freshwater ecologist Mike Joy countered that most lowland rivers were no longer swimmable or fishable, and that removing protections would make things \"worse and worse.\" [[10]](cite://10/2)\n\n**The role of *Te Mana o te Wai*.** The government and its coalition partner ACT are divided even among themselves: National wants to \"rebalance\" the concept, while ACT leader David Seymour has called for it to be \"dumped\" entirely, describing it as \"vague\" and counterproductive. [[10]](cite://10/3) Ngāi Tahu rūnanga chair Justin Tipa called removing *Te Mana o te Wai* \"absolutely unacceptable,\" arguing the hierarchy's protection of freshwater health was \"critical, particularly where freshwater ecosystems are under serious threat.\" [[13]](cite://13/1)\n\n**Central government versus local democracy.** The government's last-minute amendment blocking regional councils from notifying freshwater plans drew fierce criticism. Otago councillor Alexa Forbes said councils were \"horrified at this overreach,\" while Federated Farmers branded it \"a win for common sense.\" [[9]](cite://9/2) The Green Party's Lan Pham called it a \"complete democratic override of local decision making.\" [[9]](cite://9/3)\n\n**How fast to act.** In Taranaki, community consultation in 2024 found most residents and iwi wanted faster action on polluted rivers, while the farming industry wanted a slowdown, worried about shouldering too high a cost. Iwi and hapū consistently called for the highest freshwater standards, with awa healthy enough for people to collect kai. [[14]](cite://14/1)\n\n**Complexity and compliance.** Even farming groups are not uniformly happy with the government's proposals. Beef + Lamb New Zealand warned that farmers could end up worse off under new legislation, potentially needing both a farm plan *and* a resource consent — more red tape, not less. [[15]](cite://15/1) The Environmental Defence Society, meanwhile, said the proposed changes stripped away public participation and lacked clarity on environmental limits. [[15]](cite://15/2)\n\nThe most recent material used in this answer is from RNZ's coverage dated 17/09/2025. The situation may have changed since then.\n\n## Sources\n\n[1] [New Zealand's Water Crisis: Economic Growth, Environmental Degradation, and Governance Challenges](https://www.nzgeo.com/stories/liquidation/)\n[2] [Troubled Waters: Agriculture, Water Quality, and Environmental Sustainability in New Zealand](https://www.nzgeo.com/stories/troubled-waters/)\n[3] [Troubled Waters: Agriculture, Water Quality, and Environmental Sustainability in New Zealand](https://www.nzgeo.com/stories/troubled-waters/)\n[4] [New Zealand's Water Crisis: Economic Growth, Environmental Degradation, and Governance Challenges](https://www.nzgeo.com/stories/liquidation/)\n[5] [Government Reveals First Changes to Resource Management Act](https://www.rnz.co.nz/news/political/514993/government-reveals-first-changes-to-resource-management-act)\n[6] [Fresh Water Farm Plans Rollout to be Reviewed, Work Underway May be Halted](https://www.rnz.co.nz/news/country/513952/fresh-water-farm-plans-rollout-to-be-reviewed-work-underway-may-be-halted)\n[7] [How to Fix the Manawatū River](https://www.nzgeo.com/stories/how-to-fix-the-manawatu-river/)\n[8] [Government Passes Resource Management Act Changes to Freshwater](https://www.rnz.co.nz/news/thehouse/531811/the-house-government-passes-resource-management-act-changes-to-freshwater)\n[9] [Regional Council Fumes Over Late Changes to RMA](https://www.rnz.co.nz/news/national/531775/regional-council-fumes-over-late-changes-to-rma)\n[10] [Farmers Hail End of 'Unworkable' RMA Rules as Government Proposes Sweeping Resource Management Act Changes](https://www.rnz.co.nz/news/political/562600/farmers-hail-end-of-unworkable-rma-greens-say-changes-dismantle-protections)\n[11] [Sweeping RMA Changes for Housing, Freshwater, Infrastructure Rules Proposed](https://www.rnz.co.nz/news/political/562530/sweeping-rma-changes-for-housing-freshwater-infrastructure-rules-proposed)\n[12] [ECan Declares Nitrate Emergency Amid Rising Water Pollution Protests](https://www.rnz.co.nz/news/national/573310/ecan-declares-nitrate-emergency-amid-rising-water-pollution-protests)\n[13] [Government's Freshwater Bill Will Result in More Polluted Waterways, Critics Say](https://www.rnz.co.nz/news/political/518424/government-s-freshwater-bill-will-result-in-more-polluted-waterways-critics-say)\n[14] [Public Wants Fast Rivers Clean-up but Farmers Call for Handbrake](https://www.rnz.co.nz/news/ldr/531115/public-wants-fast-rivers-clean-up-but-farmers-call-for-handbrake)\n[15] [Rural Sector Groups' Response to Proposed Resource Management Legislation](https://www.rnz.co.nz/news/political/589244/what-do-rural-sector-groups-think-of-the-rma)",
+    "mock": false,
+    "submitted_at": "2026-10-30T01:12:47.601731+00:00",
+    "workflow_timing": {
+      "total_ms": 52450,
+      "classification": {
+        "ms": 2941,
+        "category": "D",
+        "category_label": "Answerable queries"
+      },
+      "summarise": {
+        "ms": null,
+        "skipped": true
+      },
+      "search": {
+        "ms": 12546,
+        "queries": [
+          "Search for freshwater management history",
+          "Search for farming freshwater conflict",
+          "Search for freshwater policy changes",
+          "Search for freshwater policy disagreement",
+          "Search for recent freshwater law changes",
+          "Search for freshwater management overview"
+        ],
+        "includes_pre_search_prep": true,
+        "queries_by_kb": [
+          {
+            "knowledge_base_id": "MMHABK6HFZ",
+            "query": "New Zealand freshwater management policy history water quality rivers lakes",
+            "label": "Search for freshwater management history"
+          },
+          {
+            "knowledge_base_id": "MMHABK6HFZ",
+            "query": "farming environment conflict water pollution nitrogen freshwater debate",
+            "label": "Search for farming freshwater conflict"
+          },
+          {
+            "knowledge_base_id": "QETGXQCZ48",
+            "query": "New Zealand freshwater management policy changes Te Mana o te Wai",
+            "label": "Search for freshwater policy changes"
+          },
+          {
+            "knowledge_base_id": "QETGXQCZ48",
+            "query": "freshwater reforms farmers regional councils disagreement water quality rules",
+            "label": "Search for freshwater policy disagreement"
+          },
+          {
+            "knowledge_base_id": "QETGXQCZ48",
+            "query": "Resource Management Act freshwater national policy statement fast track changes 2024 2025",
+            "label": "Search for recent freshwater law changes"
+          },
+          {
+            "knowledge_base_id": "VZTRPFNDVK",
+            "query": "freshwater management in New Zealand history and policy",
+            "label": "Search for freshwater management overview"
+          }
+        ]
+      },
+      "evaluate": {
+        "ms": 8751
+      },
+      "prefill": {
+        "ms": 1259
+      },
+      "generate": {
+        "ms": 26462
+      },
+      "overhead_ms": 491,
+      "checkpoints_ms": {
+        "processing_active": 491,
+        "processing_done": 3432,
+        "search_active": 15978,
+        "topic_generation_done": 15978,
+        "eval_pending": 15978,
+        "eval_done": 24729,
+        "answering_active": 24729,
+        "text_start": 25988
+      },
+      "capture_version": 5,
+      "chat_total_ms": 51546,
+      "ttft_anchor": "chat_post",
+      "ttft_ms": 25988,
+      "ttft_event": "text-start"
+    },
+    "stream_timing": {
+      "ttft_anchor": "chat_post",
+      "ttft_ms": 25988,
+      "ttft_event": "text-start",
+      "chat_total_ms": 51546
+    },
+    "retrieved_chunks": [
+      {
+        "title": "New Zealand's Water Crisis: Economic Growth, Environmental Degradation, and Governance Challenges",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/Pmfr9eEbe3o7g9Okz4TRdrIpyfUOGdEn_1pAFPR47-0.pdf",
+        "published_date": "2014-01-01"
+      },
+      {
+        "title": "Troubled Waters: Agriculture, Water Quality, and Environmental Sustainability in New Zealand",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/Pmfr9eEbe3o7g9Okz4TRdrIpyfUOGdEn_1pAFPR47-0.pdf",
+        "published_date": "2014-01-01"
+      },
+      {
+        "title": "Troubled Waters: Agriculture, Water Quality, and Environmental Sustainability in New Zealand",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/Pmfr9eEbe3o7g9Okz4TRdrIpyfUOGdEn_1pAFPR47-0.pdf",
+        "published_date": "2014-01-01"
+      },
+      {
+        "title": "New Zealand's Water Crisis: Economic Growth, Environmental Degradation, and Governance Challenges",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/LWAKYTPz3Qnc0jQsXKlCWT8WRWUXYn0-X4zKyJ0cW8I.pdf",
+        "published_date": "2017-06-23"
+      },
+      {
+        "title": "Government Reveals First Changes to Resource Management Act",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/Pmfr9eEbe3o7g9Okz4TRdrIpyfUOGdEn_1pAFPR47-0.pdf",
+        "published_date": "2014-01-01"
+      },
+      {
+        "title": "Fresh Water Farm Plans Rollout to be Reviewed, Work Underway May be Halted",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/QFi7TBcT5zowFiuM8iCn3bf69K2VLws7iO6Xrre4tws.pdf",
+        "published_date": "2020-08-28"
+      },
+      {
+        "title": "How to Fix the Manawatū River",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/C-KI6sAZaO7Wn5rglo0s1NRChFNhuTKZJLV37Gr5F0M.jpg",
+        "published_date": "2017-06-23"
+      },
+      {
+        "title": "Government Passes Resource Management Act Changes to Freshwater",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/gXkNWsLYsaQ0xOrHX6ermuSBRhCZf1abQV8vwy2vrOE.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "title": "Regional Council Fumes Over Late Changes to RMA",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/z1s4_GcFjbBGolXkDFLkB17yaM8obrlCkJK1G3XSNuc.pdf",
+        "published_date": "2014-03-01"
+      },
+      {
+        "title": "Farmers Hail End of 'Unworkable' RMA Rules as Government Proposes Sweeping Resource Management Act Changes",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/LWAKYTPz3Qnc0jQsXKlCWT8WRWUXYn0-X4zKyJ0cW8I.pdf",
+        "published_date": "2017-06-23"
+      },
+      {
+        "title": "Sweeping RMA Changes for Housing, Freshwater, Infrastructure Rules Proposed",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/LWAKYTPz3Qnc0jQsXKlCWT8WRWUXYn0-X4zKyJ0cW8I.pdf",
+        "published_date": "2017-06-23"
+      },
+      {
+        "title": "ECan Declares Nitrate Emergency Amid Rising Water Pollution Protests",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/k21y4MR4dJmnxZvSAe0J-UNbO3yzoKlW1wOHY9OuZBo.pdf",
+        "published_date": "2015-05-01"
+      },
+      {
+        "title": "Government's Freshwater Bill Will Result in More Polluted Waterways, Critics Say",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/k21y4MR4dJmnxZvSAe0J-UNbO3yzoKlW1wOHY9OuZBo.pdf",
+        "published_date": "2015-05-01"
+      },
+      {
+        "title": "Public Wants Fast Rivers Clean-up but Farmers Call for Handbrake",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/LWAKYTPz3Qnc0jQsXKlCWT8WRWUXYn0-X4zKyJ0cW8I.pdf",
+        "published_date": "2017-06-23"
+      },
+      {
+        "title": "Rural Sector Groups' Response to Proposed Resource Management Legislation",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/LWAKYTPz3Qnc0jQsXKlCWT8WRWUXYn0-X4zKyJ0cW8I.pdf",
+        "published_date": "2017-06-23"
+      },
+      {
+        "id": 16,
+        "title": "Making Paper: New Zealand's Pulp and Paper Industry - Production, Innovation, and Environmental Impact",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/a4CNjNs1ABrTxWzTpf9cwpo7pHBGUm-93f-zPhDGhcc.pdf",
+        "published_date": "1990-10-01"
+      },
+      {
+        "id": 17,
+        "title": "Switch and Bait: How Word Order Shapes Environmental Priorities",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/_nEFU6hrwN_KmDpAGWcGqUkGp5cj5CrSUHg8ic74V_A.pdf",
+        "published_date": "2017-06-23"
+      },
+      {
+        "id": 18,
+        "title": "New Zealand's Water Crisis: Economic Growth, Environmental Degradation, and Governance Challenges",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/Pmfr9eEbe3o7g9Okz4TRdrIpyfUOGdEn_1pAFPR47-0.pdf",
+        "published_date": "2014-01-01"
+      },
+      {
+        "id": 19,
+        "title": "Troubled Waters: Agriculture, Water Quality, and Environmental Sustainability in New Zealand",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/LWAKYTPz3Qnc0jQsXKlCWT8WRWUXYn0-X4zKyJ0cW8I.pdf",
+        "published_date": "2017-06-23"
+      },
+      {
+        "id": 20,
+        "title": "Government Reveals First Changes to Resource Management Act",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/ZNaerjvCRDDAHFGZkRv9xuBLl8ojZaawyGrk_F9n9m0.pdf",
+        "published_date": "2024-04-23",
+        "updated_date": "2024-04-23"
+      },
+      {
+        "id": 21,
+        "title": "Thinking Too Big Over Infrastructure",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/7E4omfFZcGx43AqKhowcIHvHeol6sYffmZrsnT5PZhM.pdf",
+        "published_date": "2024-02-12",
+        "updated_date": "2024-02-13"
+      },
+      {
+        "id": 22,
+        "title": "Māori Health Leader Lady Tureiti Moxon Delivers Complaint to UN in Geneva",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/PO8QgG01QIF3-t_lT-iW_MX-qSQG3utfqxB6VLU6glM.pdf",
+        "published_date": "2025-11-25",
+        "updated_date": "2025-11-25"
+      },
+      {
+        "id": 23,
+        "title": "Freshwater Management: Auditor-General Stresses Value of Close Ties Between Regional Councils and Māori",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/VhVpcaKkF0KR0v1nYO-YEd-93drF1Tt5b8P-w9kNQhw.pdf",
+        "published_date": "2024-05-21",
+        "updated_date": "2024-05-21"
+      },
+      {
+        "id": 24,
+        "title": "ACT pledges ban on compulsory karakia in resource consents",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/5lBu0YckRIhj8h-bn9_5_lUB4CpVxZ-xOo7vnkCtUuw.pdf",
+        "published_date": "2026-10-04",
+        "updated_date": "2026-10-04"
+      },
+      {
+        "id": 25,
+        "title": "Farmers Hail End of 'Unworkable' RMA Rules as Government Proposes Sweeping Resource Management Act Changes",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/G6iK-GDd77Eevna6ghyb53VWGEG6b6H59VLGU_71h4Y.pdf",
+        "published_date": "2025-05-30",
+        "updated_date": "2025-05-30"
+      },
+      {
+        "id": 26,
+        "title": "Farmers Rejoice: Freshwater Rules Put on Pause",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/iTINtfi6FCBcenkVa8TZGzeyBTrrw8LoB_worLledpQ.pdf",
+        "published_date": "2024-10-28",
+        "updated_date": "2024-10-28"
+      },
+      {
+        "id": 27,
+        "title": "Farmers Hail End of 'Unworkable' RMA Rules as Government Proposes Sweeping Resource Management Act Changes",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/G6iK-GDd77Eevna6ghyb53VWGEG6b6H59VLGU_71h4Y.pdf",
+        "published_date": "2025-05-30",
+        "updated_date": "2025-05-30"
+      },
+      {
+        "id": 28,
+        "title": "Sweeping RMA Changes for Housing, Freshwater, Infrastructure Rules Proposed",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/Ht2dnwGLgH2FXI05VjKf8dxvA8siEEVtHbL1rk6nlkk.pdf",
+        "published_date": "2025-05-29",
+        "updated_date": "2025-05-29"
+      },
+      {
+        "id": 29,
+        "title": "Government's Freshwater Bill Will Result in More Polluted Waterways, Critics Say",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/RPF0D62KjjB9oPOiwYsGHTk_-UA6H6VwmLqThcxU7U0.pdf",
+        "published_date": "2024-06-01",
+        "updated_date": "2024-06-01"
+      },
+      {
+        "id": 30,
+        "title": "Regional Council Fumes Over Late Changes to RMA",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/3dnq44HFxhUz-4S85V_jInEQPp4UO20_RO-lg_8ZSsA.pdf",
+        "published_date": "2024-10-24",
+        "updated_date": "2024-10-24"
+      },
+      {
+        "id": 31,
+        "title": "Fresh Water Farm Plans Rollout to be Reviewed, Work Underway May be Halted",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/sNWHiOUaIHR2ATQY3L3oc0RtDakJBLxzczHwyz5xRUc.pdf",
+        "published_date": "2024-04-10",
+        "updated_date": "2024-04-10"
+      },
+      {
+        "id": 32,
+        "title": "Growers warn vege prices will soar if production not priority in freshwater reform",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/0iS2c_N0dNExqbZATg2x08XMwSKvCTqbl1rUgC-73fk.pdf",
+        "published_date": "2024-11-04",
+        "updated_date": "2024-11-04"
+      },
+      {
+        "id": 33,
+        "title": "Rural Sector Groups' Response to Proposed Resource Management Legislation",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/I0pfq1qgxar9lLg8CV6FGDjaGu_8UxyVdtOBUfyjFRs.pdf",
+        "published_date": "2026-03-11",
+        "updated_date": "2026-03-11"
+      },
+      {
+        "id": 34,
+        "title": "Public Wants Fast Rivers Clean-up but Farmers Call for Handbrake",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/Jr9-Kinf0GPLlb90oFyeE118cwUwGrRuqX1ME0u3f-Y.pdf",
+        "published_date": "2024-10-17",
+        "updated_date": "2024-10-17"
+      },
+      {
+        "id": 35,
+        "title": "Minister on Restricting Council Fresh Water Rules",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/lr5bdsDsT8SX5DGy4lUGcTcwcW4OXwZyoww6Gp6n4w4.pdf",
+        "published_date": "2024-10-23",
+        "updated_date": "2024-10-23"
+      },
+      {
+        "id": 36,
+        "title": "Poor Quality Drinking Water Issue for Some Rural Schools",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/FA0mL0HU8cORR137Ki1ack8Pk16yGkzxqp2K90_mKAE.pdf",
+        "published_date": "2024-11-19",
+        "updated_date": "2024-11-19"
+      },
+      {
+        "id": 37,
+        "title": "Ecologist on proposed changes to freshwater regulations",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/4g1Qj-zKEaK4ieoJ9gL6CBaDyPkJE5oPO3ka-e5u4DM.pdf",
+        "published_date": "2025-05-30",
+        "updated_date": "2025-05-30"
+      },
+      {
+        "id": 38,
+        "title": "The House: Parliamentary Insights on Government Growth Policy and 2025 Agenda",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/RI2wOBQFx4_VT11OeacsdazO_91XkbxT2Z9iLvZftJM.pdf",
+        "published_date": "2025-02-16",
+        "updated_date": "2025-02-17"
+      },
+      {
+        "id": 39,
+        "title": "New Zealand Government Policy Announcements and Legislative Updates",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/YLaHBr-VlR2hKxNo5a4Ihe1Z_kSOiNZblvfj-2uwv0k.pdf",
+        "published_date": "2024-04-02",
+        "updated_date": "2024-04-02"
+      },
+      {
+        "id": 40,
+        "title": "Government Passes Resource Management Act Changes to Freshwater",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/f_7qIStD8GHPptc6ciLWDSPbOYAEvTERc8taOhH0-OQ.pdf",
+        "published_date": "2024-10-24",
+        "updated_date": "2024-10-24"
+      },
+      {
+        "id": 41,
+        "title": "Budget 2024: 'Assault on nature' as government cuts funding for environmental programmes",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/tO3FEJNaOJPE3f7HzoRF9cy8ydSwzvusIWPWlwvB2HA.pdf",
+        "published_date": "2024-05-30",
+        "updated_date": "2024-05-30"
+      },
+      {
+        "id": 42,
+        "title": "ECan Declares Nitrate Emergency Amid Rising Water Pollution Protests",
+        "source": "s3://tahi-document-source/knowledgeBaseId=QETGXQCZ48/stage=published/5lHicL3nlLl-FQEQS-NNldL0prDfu96LHu_ah4JnOmc.pdf",
+        "published_date": "2025-09-17",
+        "updated_date": "2025-09-17"
+      },
+      {
+        "id": 43,
+        "title": "Water Quality in New Zealand: Comprehensive Assessment of Threats, Management Strategies, and Case Studies",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/nZ5-T2OOVlh6DUTrKHfZNjQ_SQPTPHGEVzp7tw0FwbE.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "id": 44,
+        "title": "Soil Erosion and Conservation in New Zealand: Comprehensive Analysis of Causes, Types, Management, and Control Methods",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/uCcNdq-F7yPg9dasrQFL1EwA7zdR19eycuThOiU4Zho.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "id": 45,
+        "title": "Water Quality in New Zealand: Comprehensive Assessment of Threats, Management Strategies, and Case Studies",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/nZ5-T2OOVlh6DUTrKHfZNjQ_SQPTPHGEVzp7tw0FwbE.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "id": 46,
+        "title": "Water Quality in New Zealand: Comprehensive Assessment of Threats, Management Strategies, and Case Studies",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/nZ5-T2OOVlh6DUTrKHfZNjQ_SQPTPHGEVzp7tw0FwbE.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "id": 47,
+        "title": "New Zealand Aquaculture: Industry Overview, Farming Practices, and Regulatory Framework",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Dvu1_mC4z0T0uRb2U5l8fezQgdXbj15MP-q-CFd9aSk.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "id": 48,
+        "title": "New Zealand Lakes: Formation, Ecology, Management, and Māori Land Rights",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/_Oly9106eWfautfwFT2mRW0sua7p7t243m5rQ7r61Sg.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "id": 49,
+        "title": "Water Quality in New Zealand: Comprehensive Assessment of Threats, Management Strategies, and Case Studies",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/nZ5-T2OOVlh6DUTrKHfZNjQ_SQPTPHGEVzp7tw0FwbE.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "id": 50,
+        "title": "New Zealand Rivers: Comprehensive Guide to Geography, Ecology, Culture, and Conservation",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/dsmAchfUv8EpQG0xb5FdA8Mn4B003SWv6WhWEcMFazw.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "id": 51,
+        "title": "New Zealand Aquaculture: Industry Overview, Farming Practices, and Regulatory Framework",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Dvu1_mC4z0T0uRb2U5l8fezQgdXbj15MP-q-CFd9aSk.pdf",
+        "published_date": "2009-03-01"
+      },
+      {
+        "id": 52,
+        "title": "Public Health in New Zealand: Prevention, Promotion, and Population Health",
+        "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/SAP0nUA6wlkp2c9_JLLCTekKroktR-X6Y-L4v1Sm1PE.pdf",
+        "published_date": "2011-04-18"
+      },
+      {
+        "id": 53,
+        "title": "Centre-Pivot Irrigator on Dairy Farm",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/ROG8E3Lqu0h8y9tTSNzhVuNTB0yFJMAnaN2kX6ha9Fk.jpg",
+        "published_date": "2017-06-23"
+      },
+      {
+        "id": 54,
+        "title": "Centre-Pivot Irrigator on Dairy Farm",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/ROG8E3Lqu0h8y9tTSNzhVuNTB0yFJMAnaN2kX6ha9Fk.jpg",
+        "published_date": "2017-06-23"
+      },
+      {
+        "id": 55,
+        "title": "Water Quality Management in New Zealand",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/C-KI6sAZaO7Wn5rglo0s1NRChFNhuTKZJLV37Gr5F0M.jpg",
+        "published_date": "2017-06-23"
+      },
+      {
+        "id": 56,
+        "title": "Aerial view of Lakes Tekapo, Pukaki, and Ohau with the Waitaki hydro scheme",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/8y9vNBewYCB97tgZ8b6Mesd_qa-zANFhRBr4yFHQe5c.jpg",
+        "published_date": "2014-01-01"
+      },
+      {
+        "id": 57,
+        "title": "Clear Waters of Blue Spring",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/vbJmgfZgR69GOn5UGBjiNe2dmyPwoWQqfSs2J6I4ywU.jpg",
+        "published_date": "2014-01-01"
+      },
+      {
+        "id": 58,
+        "title": "Aerial view of Lakes Tekapo, Pukaki, and Ohau with the Waitaki hydro scheme",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/8y9vNBewYCB97tgZ8b6Mesd_qa-zANFhRBr4yFHQe5c.jpg",
+        "published_date": "2014-01-01"
+      },
+      {
+        "id": 59,
+        "title": "Clear Waters of Blue Spring",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/vbJmgfZgR69GOn5UGBjiNe2dmyPwoWQqfSs2J6I4ywU.jpg",
+        "published_date": "2014-01-01"
+      },
+      {
+        "id": 60,
+        "title": "New Zealand Hydroelectric Generation and Climate Change",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/ogw-7aHp5MfuRzNoyoqe8G7abuuW9XS96HhvLZ7qpRU.jpg",
+        "published_date": "2018-10-29"
+      },
+      {
+        "id": 61,
+        "title": "New Zealand Hydroelectric Generation and Climate Change",
+        "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/ogw-7aHp5MfuRzNoyoqe8G7abuuW9XS96HhvLZ7qpRU.jpg",
+        "published_date": "2018-10-29"
+      }
+    ],
+    "sources": [
+      {
+        "num": 1,
+        "label": "New Zealand's Water Crisis: Economic Growth, Environmental Degradation, and Governance Challenges",
+        "url": "https://www.nzgeo.com/stories/liquidation/"
+      },
+      {
+        "num": 2,
+        "label": "Troubled Waters: Agriculture, Water Quality, and Environmental Sustainability in New Zealand",
+        "url": "https://www.nzgeo.com/stories/troubled-waters/"
+      },
+      {
+        "num": 3,
+        "label": "Troubled Waters: Agriculture, Water Quality, and Environmental Sustainability in New Zealand",
+        "url": "https://www.nzgeo.com/stories/troubled-waters/"
+      },
+      {
+        "num": 4,
+        "label": "New Zealand's Water Crisis: Economic Growth, Environmental Degradation, and Governance Challenges",
+        "url": "https://www.nzgeo.com/stories/liquidation/"
+      },
+      {
+        "num": 5,
+        "label": "Government Reveals First Changes to Resource Management Act",
+        "url": "https://www.rnz.co.nz/news/political/514993/government-reveals-first-changes-to-resource-management-act"
+      },
+      {
+        "num": 6,
+        "label": "Fresh Water Farm Plans Rollout to be Reviewed, Work Underway May be Halted",
+        "url": "https://www.rnz.co.nz/news/country/513952/fresh-water-farm-plans-rollout-to-be-reviewed-work-underway-may-be-halted"
+      },
+      {
+        "num": 7,
+        "label": "How to Fix the Manawatū River",
+        "url": "https://www.nzgeo.com/stories/how-to-fix-the-manawatu-river/"
+      },
+      {
+        "num": 8,
+        "label": "Government Passes Resource Management Act Changes to Freshwater",
+        "url": "https://www.rnz.co.nz/news/thehouse/531811/the-house-government-passes-resource-management-act-changes-to-freshwater"
+      },
+      {
+        "num": 9,
+        "label": "Regional Council Fumes Over Late Changes to RMA",
+        "url": "https://www.rnz.co.nz/news/national/531775/regional-council-fumes-over-late-changes-to-rma"
+      },
+      {
+        "num": 10,
+        "label": "Farmers Hail End of 'Unworkable' RMA Rules as Government Proposes Sweeping Resource Management Act Changes",
+        "url": "https://www.rnz.co.nz/news/political/562600/farmers-hail-end-of-unworkable-rma-greens-say-changes-dismantle-protections"
+      },
+      {
+        "num": 11,
+        "label": "Sweeping RMA Changes for Housing, Freshwater, Infrastructure Rules Proposed",
+        "url": "https://www.rnz.co.nz/news/political/562530/sweeping-rma-changes-for-housing-freshwater-infrastructure-rules-proposed"
+      },
+      {
+        "num": 12,
+        "label": "ECan Declares Nitrate Emergency Amid Rising Water Pollution Protests",
+        "url": "https://www.rnz.co.nz/news/national/573310/ecan-declares-nitrate-emergency-amid-rising-water-pollution-protests"
+      },
+      {
+        "num": 13,
+        "label": "Government's Freshwater Bill Will Result in More Polluted Waterways, Critics Say",
+        "url": "https://www.rnz.co.nz/news/political/518424/government-s-freshwater-bill-will-result-in-more-polluted-waterways-critics-say"
+      },
+      {
+        "num": 14,
+        "label": "Public Wants Fast Rivers Clean-up but Farmers Call for Handbrake",
+        "url": "https://www.rnz.co.nz/news/ldr/531115/public-wants-fast-rivers-clean-up-but-farmers-call-for-handbrake"
+      },
+      {
+        "num": 15,
+        "label": "Rural Sector Groups' Response to Proposed Resource Management Legislation",
+        "url": "https://www.rnz.co.nz/news/political/589244/what-do-rural-sector-groups-think-of-the-rma"
+      }
+    ],
+    "recency": {
+      "max_published_date_retrieved": "2026-10-04",
+      "max_updated_date_retrieved": "2026-10-04",
+      "max_published_date_cited": null,
+      "max_updated_date_cited": null,
+      "retrieved_chunk_count": 61,
+      "retrieved_dated_count": 61,
+      "cited_marker_count": 15,
+      "cited_dated_count": 0,
+      "cited_unmatched_count": 15
+    }
+  },
+  "rubric": {
+    "failure_class": "Reasoning-heavy",
+    "sub_class": "Temporal / comparative synthesis",
+    "evaluation_method": "Automated — TTFT",
+    "pass_criteria": "",
+    "fail_criteria": "",
+    "automation_eligible": true,
+    "staging_only": false,
+    "performance_class": "Reasoning-heavy",
+    "what_it_isolates": "Multiple search queries, wide retrieval across time, genuine synthesis across many chunks. The case where a stronger answer model might pay off.",
+    "expected_ttft_profile": "Highest pre-answer TTFT. Heavy topic-gen + eval; synthesis starts late."
+  },
+  "report_link": "https://tahi-nz.github.io/tahi-eval-hub/P05/index.html"
+}

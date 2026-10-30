@@ -1,0 +1,3422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>R04 / Retrieval / Semantic collision</title>
+  <meta name="tahi-hub-config-url" content="../hub-config.json"><meta name="tahi-reviewers-url" content="../reviewers.json"><meta name="tahi-report-json-url" content="latest.json"><script>
+(function () {
+  var TOKEN_KEY = "tahi_auth_token";
+  var NAME_KEY = "tahi_reviewer_name";
+  var USER_KEY = "tahi_reviewer_username";
+  var ROLE_KEY = "tahi_reviewer_role";
+  if (!sessionStorage.getItem(TOKEN_KEY)) {
+    return;
+  }
+  function syncReviewerAdminAttr() {
+    if (!document.body) {
+      return;
+    }
+    if (String(sessionStorage.getItem(ROLE_KEY) || "").toLowerCase() === "admin") {
+      document.body.setAttribute("data-reviewer-admin", "true");
+    } else {
+      document.body.removeAttribute("data-reviewer-admin");
+    }
+  }
+  function applyBootstrap() {
+    if (!document.body) {
+      return;
+    }
+    document.body.setAttribute("data-reviewer-signed-in", "true");
+    document.body.setAttribute("data-auth-pending", "true");
+    syncReviewerAdminAttr();
+    var status = document.querySelector("[data-reviewer-auth-status]");
+    var form = document.querySelector("[data-reviewer-auth-form]");
+    var actions = document.querySelector("[data-reviewer-auth-actions]");
+    var name = sessionStorage.getItem(NAME_KEY) || sessionStorage.getItem(USER_KEY) || "";
+    if (status) {
+      status.hidden = false;
+      status.textContent = name;
+      status.classList.add("reviewer-auth-status--signed-in");
+    }
+    if (form) {
+      form.hidden = true;
+    }
+    if (actions) {
+      actions.hidden = false;
+      actions.innerHTML =
+        '<button type="button" class="llm-assessment-toggle" data-reviewer-sign-out>Sign out</button>';
+    }
+  }
+  if (document.body) {
+    applyBootstrap();
+  } else {
+    document.addEventListener("DOMContentLoaded", applyBootstrap, { once: true });
+  }
+})();
+</script>
+  <style>
+:root {
+  color-scheme: light;
+  --text: #1c2430;
+  --muted: #5f6b7a;
+  --border: #dde3ea;
+  --surface: #f4f7fb;
+  --surface-2: #eef2f7;
+  --accent: #0f4c5c;
+  --accent-soft: #e8f3f6;
+  --pass: #0d6b3f;
+  --pass-bg: #e8f6ee;
+  --pass-bg-overall: #b8dcc8;
+  --pass-border: #9fd4b8;
+  --pass-border-overall: #6aab84;
+  --fail: #b42318;
+  --fail-bg: #fdeeed;
+  --fail-border: #f2b8b5;
+  --warn: #8a5a00;
+  --warn-bg: #fff8e8;
+  --warn-border: #f0d48a;
+  --neutral-bg: #f0f3f7;
+  --neutral-border: #c8d2dc;
+  --prompt: #0f3d75;
+  --prompt-text: #0a2847;
+  --prompt-soft: #d4e4f5;
+  --prompt-border: #7aa3d4;
+  --shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 8px 24px rgba(16, 24, 40, 0.06);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: #295f4b;
+}
+.wrap {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+.wrap--wide {
+  max-width: 96rem;
+}
+.wrap--hub {
+  max-width: 90rem;
+}
+.case-layout-columns {
+  display: grid;
+  grid-template-columns: minmax(14rem, 21rem) minmax(0, 1fr);
+  gap: 1rem 1.25rem;
+  align-items: start;
+  margin-top: 1rem;
+  overflow: visible;
+}
+.case-layout-columns.is-details-open {
+  grid-template-columns: minmax(14rem, 21rem) minmax(0, 1fr) minmax(16rem, 24rem);
+}
+.case-context-column,
+.case-response-column,
+.case-details-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+  overflow: visible;
+}
+.case-details-column {
+  display: none;
+  position: sticky;
+  top: 1rem;
+  align-self: start;
+  max-height: calc(100vh - 2rem);
+  overflow: auto;
+}
+.case-layout-columns.is-details-open .case-details-column {
+  display: flex;
+}
+.case-details-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+.case-details-head h2 {
+  margin: 0;
+  font-size: 0.98rem;
+  color: var(--accent);
+}
+.case-details-column .case-details-head h2 {
+  color: #f4faf7;
+}
+.case-details-placeholder {
+  margin: 0;
+  padding: 1rem;
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  background: var(--surface);
+}
+.case-details-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.case-details-panel[hidden] {
+  display: none !important;
+}
+.case-details-placeholder[hidden] {
+  display: none !important;
+}
+.tier-nav-card {
+  border-radius: 12px;
+  padding: 0.85rem 0.95rem;
+  box-shadow: var(--shadow);
+  text-align: left;
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  border: 1px solid transparent;
+  border-left-width: 4px;
+}
+body:not([data-reviewer-admin="true"]) [data-hub-admin-only] {
+  display: none !important;
+}
+.tier-nav-card--pass {
+  background: var(--pass-bg);
+  border-color: var(--pass-border);
+  border-left-color: var(--pass);
+}
+.tier-nav-card--fail {
+  background: var(--fail-bg);
+  border-color: var(--fail-border);
+  border-left-color: var(--fail);
+}
+.tier-nav-card--warn {
+  background: var(--warn-bg);
+  border-color: var(--warn-border);
+  border-left-color: var(--warn);
+}
+.tier-nav-card--neutral {
+  background: var(--neutral-bg);
+  border-color: var(--neutral-border);
+  border-left-color: #8a96a3;
+}
+button.tier-nav-card {
+  cursor: pointer;
+}
+button.tier-nav-card:hover {
+  filter: brightness(0.98);
+}
+.tier-nav-card.is-active {
+  box-shadow: 0 0 0 2px var(--accent);
+}
+.tier-nav-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.45rem;
+}
+.tier-nav-card h3 {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--text);
+}
+.tier-nav-card-commentary {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+.tier-nav-card-hint {
+  margin: 0.45rem 0 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+.case-review-column,
+.case-response-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+}
+.case-response-column {
+  align-self: start;
+}
+.case-llm-slot {
+  flex: 0 0 auto;
+}
+.tahi-response-body {
+  min-width: 0;
+}
+@media (max-width: 900px) {
+  .case-layout-columns,
+  .case-layout-columns.is-details-open {
+    grid-template-columns: 1fr;
+  }
+  .case-details-column {
+    position: static;
+    max-height: none;
+  }
+}
+.results-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+  gap: 0.75rem;
+  margin: 0 0 1.25rem;
+}
+.workflow-timing-card {
+  margin: 0 0 1.25rem;
+  padding: 1rem 1.1rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+.case-details-panel .workflow-timing-card {
+  margin: 0;
+  padding: 1rem 1.05rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: none;
+  background: #fff;
+}
+.workflow-timing-nav-delta {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.workflow-timing-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  margin-bottom: 0.85rem;
+}
+.workflow-timing-head h2 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--accent);
+}
+.workflow-timing-total {
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+.workflow-timing-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+.workflow-timing-table th,
+.workflow-timing-table td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.45rem 0.35rem;
+  text-align: left;
+  vertical-align: top;
+}
+.workflow-timing-table tr:last-child th,
+.workflow-timing-table tr:last-child td {
+  border-bottom: none;
+}
+.workflow-timing-table th {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.workflow-timing-stage {
+  font-weight: 600;
+  color: var(--text);
+}
+.workflow-timing-detail {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+.workflow-timing-queries {
+  margin: 0.35rem 0 0;
+  padding-left: 1.1rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.workflow-timing-queries li {
+  margin: 0.1rem 0;
+}
+.workflow-timing-delta--slower {
+  color: var(--warn);
+  font-weight: 600;
+}
+.workflow-timing-delta--faster {
+  color: var(--pass);
+  font-weight: 600;
+}
+.workflow-timing-delta--neutral {
+  color: var(--muted);
+}
+.workflow-timing-footnote {
+  margin: 0.75rem 0 0;
+  font-size: 0.76rem;
+  color: var(--muted);
+}
+.results-card {
+  border-radius: 12px;
+  padding: 0.85rem 0.95rem;
+  box-shadow: var(--shadow);
+  min-height: 5.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  border: 1px solid transparent;
+  border-left-width: 4px;
+}
+.results-card-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.results-card-name {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.25;
+}
+.results-card-value {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.results-card-footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.results-card-value--pass { color: var(--pass); }
+.results-card-value--fail { color: var(--fail); }
+.results-card-value--warn { color: var(--warn); }
+.results-card-value--neutral { color: var(--text); }
+.results-card-meta {
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.results-card--pass {
+  background: var(--pass-bg);
+  border-color: var(--pass-border);
+  border-left-color: var(--pass);
+}
+.results-card--pass .results-card-meta { color: var(--pass); }
+.results-card--fail {
+  background: var(--fail-bg);
+  border-color: var(--fail-border);
+  border-left-color: var(--fail);
+}
+.results-card--fail .results-card-meta { color: var(--fail); }
+.results-card--warn {
+  background: var(--warn-bg);
+  border-color: var(--warn-border);
+  border-left-color: var(--warn);
+}
+.results-card--warn .results-card-meta { color: var(--warn); }
+.results-card--neutral {
+  background: var(--neutral-bg);
+  border-color: var(--neutral-border);
+  border-left-color: #8a96a3;
+}
+.results-card--overall {
+  grid-column: span 1;
+}
+.results-card--overall.results-card--pass {
+  background: var(--pass-bg-overall);
+  border-color: var(--pass-border-overall);
+  border-left-color: var(--pass);
+}
+.results-card--overall.results-card--pass .results-card-value {
+  color: #084a2d;
+}
+@media (min-width: 720px) {
+  .results-card--overall {
+    grid-column: span 1;
+  }
+}
+.confidence-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid #b8dce6;
+}
+.viewer-gate-hint {
+  margin: 0.65rem 0 0;
+  padding: 0.65rem 0.75rem;
+  border-radius: 8px;
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+body[data-machine-review-visible="true"] [data-case-details-panel="machine"] .viewer-gate-hint {
+  display: none;
+}
+.machine-review-hidden {
+  display: none !important;
+}
+.machine-review-placeholder-card,
+.results-card--locked,
+.tier-nav-card--locked {
+  background: #eef1f4;
+  border-style: dashed;
+  border-color: #b8c2cc;
+  color: var(--text);
+}
+.results-card--locked .results-card-label,
+.results-card--locked .results-card-name,
+.tier-nav-card--locked .tier-nav-card-commentary {
+  color: var(--muted);
+}
+.results-card--locked .results-card-value {
+  color: #5c6875;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+.tier-nav-card--locked {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.hub-cell-locked {
+  color: #5c6875;
+  background: #eef1f4;
+  border-color: #c5ced8;
+}
+[data-machine-review-placeholder][hidden],
+[data-machine-review-content][hidden],
+[data-machine-review-gated] > [hidden] {
+  display: none !important;
+}
+[data-machine-review-gated] {
+  min-width: 0;
+}
+.reviewer-auth-bar-wrap {
+  flex: 0 0 auto;
+  margin: 0;
+  align-self: flex-start;
+}
+.reviewer-auth-bar {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  gap: 0.65rem;
+  align-items: center;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff0e0;
+  box-shadow: var(--shadow);
+}
+body[data-reviewer-signed-in="true"] .reviewer-auth-bar:not(.reviewer-auth-bar--error) {
+  background: #e6f4ea;
+}
+body[data-reviewer-signed-in="false"] .reviewer-auth-bar:not(.reviewer-auth-bar--error) {
+  background: #fff0e0;
+}
+.reviewer-auth-bar--error {
+  border-color: var(--fail-border);
+  background: var(--fail-bg);
+  flex-wrap: wrap;
+}
+.reviewer-auth-bar--shake {
+  animation: reviewer-auth-shake 0.35s ease;
+}
+@keyframes reviewer-auth-shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-4px); }
+  40%, 80% { transform: translateX(4px); }
+}
+.reviewer-auth-status {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.reviewer-auth-status--signed-in {
+  color: var(--text);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.reviewer-auth-status--error {
+  flex: 1 1 100%;
+  order: -1;
+  color: var(--fail);
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid var(--fail-border);
+  box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.12);
+}
+.reviewer-auth-status--loading {
+  color: var(--accent);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.reviewer-auth-actions {
+  display: inline-flex;
+  align-items: center;
+}
+.reviewer-auth-bar--error .reviewer-auth-field input {
+  border-color: var(--fail-border);
+  background: #fff;
+}
+.reviewer-auth-form {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.5rem 0.75rem;
+  align-items: flex-end;
+  margin: 0;
+}
+.reviewer-auth-form[hidden] {
+  display: none !important;
+}
+.reviewer-auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.reviewer-auth-form--locked .reviewer-auth-field input {
+  background: var(--surface);
+  color: var(--muted);
+  border-color: #d5dbe3;
+  cursor: not-allowed;
+  opacity: 0.85;
+}
+.reviewer-auth-form--locked .reviewer-auth-field span {
+  opacity: 0.75;
+}
+.reviewer-auth-field input {
+  min-width: 9rem;
+  padding: 0.35rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.88rem;
+}
+.llm-assessment-toggle:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.llm-assessment-toggle {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  cursor: pointer;
+}
+.llm-assessment-toggle:hover,
+.llm-assessment-toggle[aria-expanded="true"] {
+  background: var(--accent-soft);
+}
+.llm-detail-panel {
+  margin: 0;
+  padding: 1rem 1.1rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: var(--shadow);
+  align-self: start;
+}
+.llm-detail-panel.is-collapsed {
+  display: none;
+}
+.llm-detail-panel.is-open {
+  display: block;
+}
+.case-details-panel .llm-detail-panel {
+  margin: 0;
+}
+.case-details-panel .human-verdict-panel {
+  margin: 0;
+  box-shadow: none;
+}
+.llm-detail-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.llm-detail-panel-head h2 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--accent);
+}
+.llm-detail-panel-hint {
+  margin: 0 0 0.75rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.llm-detail-panel dl {
+  margin: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+.llm-detail-panel dt {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  cursor: help;
+  text-decoration: underline dotted var(--neutral-border);
+  text-underline-offset: 0.15em;
+  width: fit-content;
+}
+.llm-detail-panel dd {
+  margin: 0.15rem 0 0;
+  font-size: 0.92rem;
+}
+.llm-assessment-pop {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  cursor: pointer;
+}
+.llm-assessment-pop:hover {
+  background: var(--accent-soft);
+}
+.llm-assessment-dialog {
+  width: min(42rem, calc(100vw - 2rem));
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0;
+  box-shadow: var(--shadow);
+}
+.llm-assessment-dialog::backdrop {
+  background: rgba(15, 23, 42, 0.45);
+}
+.llm-assessment-dialog-inner {
+  padding: 1.1rem 1.25rem 1.25rem;
+}
+.llm-assessment-dialog-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.llm-assessment-dialog-head h2 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--accent);
+}
+.llm-assessment-dialog-close {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  padding: 0.25rem 0.65rem;
+  cursor: pointer;
+  font-size: 0.82rem;
+}
+.meta-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 1rem;
+  font-size: 0.92rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.meta-table th, .meta-table td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.55rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+.meta-table tr:last-child th, .meta-table tr:last-child td { border-bottom: none; }
+.meta-table th {
+  width: 34%;
+  background: var(--surface);
+  font-weight: 600;
+}
+.rubric-block {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+}
+.rubric-block h3 {
+  margin: 0 0 0.35rem;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+.rubric-block p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+.rubric-block--prompt {
+  background: linear-gradient(180deg, #c5daf2 0%, var(--prompt-soft) 100%);
+  border: 1px solid var(--prompt-border);
+  border-left: 4px solid var(--prompt);
+  box-shadow: 0 2px 8px rgba(15, 61, 117, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  padding: 1rem 1.05rem;
+}
+.rubric-block--prompt h3 {
+  color: var(--prompt);
+  font-weight: 700;
+}
+.rubric-block--prompt p {
+  color: var(--prompt-text);
+}
+@media (max-width: 900px) {
+  .case-layout-columns {
+    grid-template-columns: 1fr;
+  }
+}
+.banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem 1.25rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  margin-bottom: 2rem;
+  padding: 1.25rem 1.35rem;
+}
+.banner__main {
+  flex: 1 1 12rem;
+  min-width: 0;
+}
+.banner__tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem 0.65rem;
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+.banner h1 {
+  margin: 0 0 0.35rem;
+  font-size: 1.65rem;
+  font-weight: 650;
+  color: var(--accent);
+  letter-spacing: -0.01em;
+}
+.banner p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.content h1 {
+  font-size: 1.35rem;
+  margin: 2rem 0 1rem;
+  color: var(--accent);
+}
+.content h2 {
+  font-size: 1.05rem;
+  margin: 1.75rem 0 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.content h3, .content h4 {
+  margin: 1.25rem 0 0.5rem;
+}
+.content p, .content li { font-size: 1rem; }
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0 1.25rem;
+  font-size: 0.95rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.content th, .content td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.65rem 0.85rem;
+  text-align: left;
+  vertical-align: top;
+}
+.content tr:last-child th, .content tr:last-child td { border-bottom: none; }
+.content th {
+  background: var(--surface);
+  width: 32%;
+  font-weight: 600;
+}
+.content hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
+}
+.content em { color: var(--muted); font-size: 0.92rem; }
+.content a { color: var(--accent); text-decoration: none; }
+.content a:hover { text-decoration: underline; }
+.hub-nav {
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+.hub-nav--banner {
+  margin: 0;
+  flex: 0 0 auto;
+}
+.banner__tools .hub-nav--banner {
+  margin: 0;
+}
+.banner__tools .hub-nav--banner a {
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.hub-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+.assessment {
+  margin: 1.75rem 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+.assessment > h2 {
+  margin: 0 0 0.85rem;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.verdict-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.15rem;
+  border-radius: 12px;
+  border: 1px solid var(--neutral-border);
+  background: var(--neutral-bg);
+  box-shadow: var(--shadow);
+  margin-bottom: 1rem;
+}
+.verdict-banner-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.verdict-banner-value {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.verdict-banner--pass {
+  background: var(--pass-bg);
+  border-color: var(--pass-border);
+  color: var(--pass);
+}
+.verdict-banner--fail {
+  background: var(--fail-bg);
+  border-color: var(--fail-border);
+  color: var(--fail);
+}
+.verdict-banner--warn {
+  background: var(--warn-bg);
+  border-color: var(--warn-border);
+  color: var(--warn);
+}
+.verdict-banner--neutral {
+  background: var(--neutral-bg);
+  border-color: var(--neutral-border);
+  color: var(--text);
+}
+.assessment-tiers {
+  display: grid;
+  gap: 0.85rem;
+}
+.assessment-tier {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.95rem 1.05rem;
+  box-shadow: var(--shadow);
+  margin: 0;
+}
+.assessment-tier-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.55rem;
+}
+.assessment-tier h3 {
+  margin: 0;
+  font-size: 0.98rem;
+  color: var(--text);
+}
+.assessment-tier-commentary {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.verdict-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+.verdict-badge--pass {
+  color: var(--pass);
+  background: var(--pass-bg);
+  border-color: var(--pass-border);
+}
+.verdict-badge--fail {
+  color: var(--fail);
+  background: var(--fail-bg);
+  border-color: var(--fail-border);
+}
+.verdict-badge--warn {
+  color: var(--warn);
+  background: var(--warn-bg);
+  border-color: var(--warn-border);
+}
+.verdict-badge--neutral {
+  color: var(--muted);
+  background: var(--neutral-bg);
+  border-color: var(--neutral-border);
+}
+.verdict-pass { color: var(--pass); font-weight: 700; }
+.verdict-fail { color: var(--fail); font-weight: 700; }
+.verdict-pending, .verdict-review, .verdict-draft, .verdict-inconclusive, .verdict-likely_pass {
+  color: var(--warn);
+  font-weight: 700;
+}
+.hub-table-wrap {
+  overflow-x: auto;
+  max-width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  background: #fff;
+}
+.hub-table {
+  margin: 0;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  width: 100%;
+  min-width: 52rem;
+  font-size: 0.82rem;
+  table-layout: fixed;
+}
+.hub-table th,
+.hub-table td {
+  padding: 0.3rem 0.35rem;
+  vertical-align: top;
+}
+.hub-table th {
+  font-size: 0.72rem;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow-wrap: normal;
+}
+.hub-table td {
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+.hub-table .verdict-badge,
+.hub-table .confidence-badge {
+  display: inline-block;
+  max-width: 100%;
+  padding: 0.1rem 0.32rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: nowrap;
+  line-height: 1.25;
+  text-align: center;
+}
+.hub-table .verdict-badge--pass {
+  color: #0d6b52;
+  background: #e6f6ef;
+  border-color: #9fd4c0;
+}
+.hub-table .verdict-badge--warn {
+  color: #9a6400;
+  background: #fff6df;
+  border-color: #ecd084;
+}
+.hub-table .verdict-badge--neutral {
+  color: #4b5563;
+  background: #eef1f4;
+  border-color: #c5ced8;
+}
+.hub-table .confidence-badge {
+  color: #0b5568;
+  background: #e7f4f8;
+  border: 1px solid #b8dce6;
+  border-radius: 999px;
+  padding: 0.1rem 0.32rem;
+}
+.hub-col-test { width: 6.25rem; }
+.hub-col-class { width: 5.4rem; }
+.hub-col-method { width: 3.4rem; }
+.hub-col-run { width: 3.6rem; }
+.hub-col-dur { width: 2.8rem; }
+.hub-col-verdict { width: 4.1rem; }
+.hub-col-conf { width: 3rem; }
+.hub-col-summary { width: 4.4rem; }
+.hub-table-test {
+  padding-right: 0.35rem;
+}
+.hub-test-id-link {
+  display: inline-block;
+  text-decoration: none;
+}
+.hub-test-id-link:hover .hub-test-id {
+  border-color: var(--accent);
+  background: #dceefb;
+}
+.hub-test-id {
+  display: inline-block;
+  font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #0e4a6f;
+  background: #e8f2f8;
+  border: 1px solid #b8d4e8;
+  border-radius: 6px;
+  padding: 0.1rem 0.42rem;
+  line-height: 1.25;
+}
+.hub-table-test a.hub-test-id-link,
+.hub-table-test > strong {
+  white-space: nowrap;
+}
+.hub-table-test > strong {
+  display: inline-block;
+}
+.hub-run-at {
+  display: inline-block;
+  font-size: 0.76rem;
+  line-height: 1.2;
+  color: var(--text);
+  white-space: nowrap;
+}
+.hub-run-meta {
+  margin-top: 0.15rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--muted);
+  line-height: 1.2;
+}
+.hub-compare-link {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  margin-top: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  line-height: 1.25;
+  max-width: 100%;
+}
+.hub-compare-link .hub-compare-badge {
+  align-self: flex-start;
+}
+.hub-compare-link:hover { text-decoration: underline; }
+.hub-compare-badge {
+  display: inline-block;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+.hub-compare-badge--improved {
+  background: var(--pass-bg); color: var(--pass); border: 1px solid var(--pass-border);
+}
+.hub-compare-badge--regressed {
+  background: var(--fail-bg); color: var(--fail); border: 1px solid var(--fail-border);
+}
+.hub-compare-badge--stable {
+  background: var(--neutral-bg); color: #5c6875; border: 1px solid var(--neutral-border);
+}
+.hub-compare-badge--mixed {
+  background: var(--warn-bg); color: var(--warn); border: 1px solid var(--warn-border);
+}
+.compare-nav-card { margin-top: 0.35rem; }
+.hub-version {
+  font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
+  font-size: 0.82rem;
+  color: var(--text);
+  background: var(--surface);
+  padding: 0.1rem 0.35rem;
+  border-radius: 6px;
+}
+.human-verdict-panel {
+  margin: 0.75rem 0 0;
+  padding: 1rem 1.05rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+.human-verdict-panel h2 {
+  margin: 0 0 0.5rem;
+  font-size: 0.98rem;
+  color: var(--text);
+}
+.human-verdict-hint {
+  margin: 0 0 0.85rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.human-verdict-status {
+  margin: 0 0 0.75rem;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+.human-verdict-status--saved {
+  color: var(--pass);
+  font-weight: 600;
+}
+.human-verdict-status--error {
+  color: var(--fail);
+  font-weight: 600;
+}
+.human-verdict-form {
+  display: grid;
+  gap: 0.75rem;
+}
+.human-verdict-field {
+  display: grid;
+  gap: 0.3rem;
+  font-size: 0.88rem;
+}
+.human-verdict-field span {
+  font-weight: 600;
+  color: var(--muted);
+}
+.human-verdict-field select,
+.human-verdict-field textarea {
+  width: 100%;
+  padding: 0.45rem 0.55rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font: inherit;
+  font-size: 0.92rem;
+}
+.hub-table th { background: var(--surface-2); }
+.hub-table tbody tr:hover { background: #fafcff; }
+.content .hub-table-wrap .hub-table {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+.tahi-response {
+  margin-top: 0;
+  padding: 1.15rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+.tahi-response > h2 {
+  margin-top: 0;
+}
+.sources-block {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border);
+}
+.sources-block h3 {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.sources-list {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+.sources-list li + li {
+  margin-top: 0.35rem;
+}
+.source-entry-title {
+  line-height: 1.45;
+}
+.source-entry-num {
+  font-weight: 700;
+  color: var(--text);
+}
+.source-entry-label {
+  color: var(--text);
+}
+.source-entry-url {
+  display: block;
+  margin-top: 0.2rem;
+  color: var(--accent);
+  font-size: 0.84rem;
+  word-break: break-all;
+  text-decoration: none;
+}
+.source-entry-url:hover {
+  text-decoration: underline;
+}
+.sources-list a {
+  color: var(--accent);
+  word-break: break-word;
+}
+.tahi-response a {
+  color: var(--accent);
+}
+.cite-ref {
+  font-size: 0.78em;
+  line-height: 0;
+  margin-left: 0.05em;
+}
+.cite-ref a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+.cite-ref a:hover {
+  text-decoration: underline;
+}
+.sources-warning {
+  margin: 0 0 1rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--warn-border);
+  border-radius: 10px;
+  background: var(--warn-bg);
+}
+.sources-warning-title {
+  margin: 0 0 0.35rem;
+  font-weight: 700;
+  color: var(--warn);
+  font-size: 0.9rem;
+}
+.sources-warning-detail {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+.llm-assessment-detail {
+  margin: 0.75rem 0 0;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+}
+.llm-assessment-detail summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--accent);
+}
+.llm-assessment-detail dl {
+  margin: 0.75rem 0 0;
+  display: grid;
+  gap: 0.5rem;
+}
+.llm-assessment-detail dt {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+.llm-assessment-detail dd {
+  margin: 0.15rem 0 0;
+  font-size: 0.92rem;
+}
+.footer {
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+@media print {
+  body { background: #fff; }
+  .wrap { max-width: none; padding: 0.5in; }
+  .banner, .assessment-tier, .tahi-response, .content table { box-shadow: none; }
+  .banner { break-after: avoid; }
+  .content h1, .content h2 { break-after: avoid; }
+}
+
+.hub-case-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding: 0.55rem 0.75rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+.hub-case-nav-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.15rem;
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+.hub-case-nav-back:hover {
+  text-decoration: underline;
+}
+.hub-case-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 2rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--accent);
+  font-size: 0.88rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.hub-case-nav-link:hover {
+  text-decoration: none;
+  border-color: var(--accent);
+}
+.hub-case-nav-link[hidden],
+.hub-case-nav-seq[hidden] {
+  display: none !important;
+}
+.hub-case-nav-seq {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+.hub-case-nav-pos {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.hub-admin-artifacts {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.45rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #f8fafc;
+}
+.hub-admin-artifacts[hidden] { display: none !important; }
+.hub-admin-artifacts-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-right: 0.15rem;
+}
+.hub-admin-artifacts-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.28rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.hub-admin-artifacts-link:hover {
+  text-decoration: none;
+  border-color: var(--accent);
+}
+</style>
+</head>
+<body data-viewer-can-view-llm-detail="false" data-test-id="R04" data-eval-hub-run-id="core-20260617-231629" data-reviewer-signed-in="false">
+  <div class="wrap wrap--wide">
+    <header class="banner">
+      <div class="banner__main">
+        <h1>R04 / Retrieval / Semantic collision</h1>
+        <p>NZ Geo Tahi evaluation evidence · 2026-06-18 00:07 NZST · PRD · Tahi_Test_Suite-2</p>
+      </div>
+      <div class="banner__tools"><div class="hub-admin-artifacts" data-hub-admin-artifacts data-hub-admin-only hidden aria-label="Run artifacts"><span class="hub-admin-artifacts-label">Artifacts</span><a class="hub-admin-artifacts-link" href="https://github.com/barlconz/tahi-test-runner/actions/workflows/remote-run.yml" target="_blank" rel="noopener noreferrer">GitHub</a><a class="hub-admin-artifacts-link" href="https://docs.google.com/spreadsheets/d/1nDEi-nmaYSyRi6HuO0zQQC2TIaMhzwhW6XnqQGydAvg/edit" target="_blank" rel="noopener noreferrer">Eval Hub</a><a class="hub-admin-artifacts-link" href="latest.json">Run JSON</a></div><div class="reviewer-auth-bar-wrap"><div class="reviewer-auth-bar" data-reviewer-auth-bar><span class="reviewer-auth-status" data-reviewer-auth-status hidden>Sign in to view machine review drafts and submit human verdicts.</span><form class="reviewer-auth-form" data-reviewer-auth-form><label class="reviewer-auth-field"><span>Username</span><input type="text" name="username" autocomplete="username" required></label><label class="reviewer-auth-field"><span>Password</span><input type="password" name="password" autocomplete="current-password" required></label><button type="submit" class="llm-assessment-toggle">Sign in</button></form><span class="reviewer-auth-actions" data-reviewer-auth-actions hidden></span></div></div></div>
+    </header>
+    <main class="content">
+      <nav class="hub-case-nav" data-hub-case-nav aria-label="Test navigation"><a class="hub-case-nav-back" href="../index.html">← Back to report hub</a><div class="hub-case-nav-seq" data-hub-case-nav-seq><a class="hub-case-nav-link" data-hub-case-nav-prev href="../R03/index.html">← R03</a><span class="hub-case-nav-pos" data-hub-case-nav-pos>34 of 67</span><a class="hub-case-nav-link" data-hub-case-nav-next href="../R05/index.html">R05 →</a></div></nav>
+<div class="results-strip"><div class="results-card results-card--pass results-card--overall"><div class="results-card-label">Overall</div><div class="results-card-name">Assessment summary</div><div class="results-card-footer"><div class="results-card-value results-card-value--pass">Likely pass</div></div></div><div class="results-card results-card--pass"><div class="results-card-label">Tier 0</div><div class="results-card-name">Structural</div><div class="results-card-footer"><div class="results-card-value results-card-value--pass">Pass</div></div></div><div class="results-card results-card--pass"><div class="results-card-label">Tier 1</div><div class="results-card-name">Rule-based</div><div class="results-card-footer"><div class="results-card-value results-card-value--pass">Pass</div></div></div><div class="results-card results-card--pass"><div class="results-card-label">Tier 2</div><div class="results-card-name">Machine review (LLM draft)</div><div class="results-card-footer"><div class="results-card-meta">Confidence 95%</div><div class="results-card-value results-card-value--pass">Pass</div></div></div><div class="results-card results-card--warn" data-human-verdict-strip><div class="results-card-label">Tier 3</div><div class="results-card-name">Human review</div><div class="results-card-footer"><div class="results-card-value results-card-value--warn">Pending review</div></div></div></div><div class="case-layout-columns" data-case-layout><div class="case-context-column"><div class="rubric-block rubric-block--prompt"><h3>Prompt</h3><p>What is the Resource Management Act and what reforms have been proposed?</p></div><div class="rubric-block"><h3>Pass criteria</h3><p>Distinguishes original RMA (1991) from subsequent reform proposals. Does not conflate different reform bills as if they are the same proposal.</p></div><div class="rubric-block"><h3>Fail criteria</h3><p>Collapses multiple distinct reform proposals into one. Attributes features of one bill to another. Omits that the RMA itself predates the reforms by decades.</p></div><button type="button" class="tier-nav-card tier-nav-card--neutral" data-tier-nav-card data-details-target="workflow-timing" data-hub-admin-only aria-expanded="false"><div class="tier-nav-card-head"><h3>Workflow timing</h3><span class="verdict-badge verdict-badge--neutral">1m 5s</span></div><p class="tier-nav-card-commentary">TTFT 25.8s · Class D · Generate 56.1s</p><span class="workflow-timing-nav-delta workflow-timing-delta--neutral">0ms vs prior</span><p class="tier-nav-card-hint">Open workflow timing breakdown</p></button><a class="tier-nav-card tier-nav-card--neutral compare-nav-card" href="compare.html" data-hub-admin-only><div class="tier-nav-card-head"><h3>Compare runs</h3><span class="verdict-badge verdict-badge--neutral">improved</span></div><p class="tier-nav-card-commentary">Verdict, performance, and response vs another run</p><p class="tier-nav-card-hint">Open run comparison</p></a><button type="button" class="tier-nav-card tier-nav-card--pass" data-tier-nav-card data-details-target="tier0" aria-expanded="false"><div class="tier-nav-card-head"><h3>Structural</h3><span class="verdict-badge verdict-badge--pass">Pass</span></div><p class="tier-nav-card-commentary">Structural check passed: live call returned a Tahi response (10714 characters). This is not a rubric pass/fail.</p></button><button type="button" class="tier-nav-card tier-nav-card--pass" data-tier-nav-card data-details-target="tier1" aria-expanded="false"><div class="tier-nav-card-head"><h3>Rule-based</h3><span class="verdict-badge verdict-badge--pass">Pass</span></div><p class="tier-nav-card-commentary">Sources block check passed: response includes citation markers and a Sources or References section for human and machine reviewers.</p></button><button type="button" class="tier-nav-card tier-nav-card--pass" data-tier-nav-card data-details-target="machine" aria-expanded="false"><div class="tier-nav-card-head"><h3>Machine review (LLM draft)</h3><span class="verdict-badge verdict-badge--pass">Pass</span></div><p class="tier-nav-card-commentary">Pass: well-grounded response that clearly distinguishes the RMA from its reforms, with comprehensive citations.</p><p class="tier-nav-card-hint">Open machine review draft</p></button><button type="button" class="tier-nav-card tier-nav-card--warn" data-tier-nav-card data-details-target="human" aria-expanded="false" data-human-verdict-card><div class="tier-nav-card-head"><h3>Human review</h3><span class="verdict-badge verdict-badge--warn">Pending review</span></div><p class="tier-nav-card-commentary">Human review pending: no reviewer verdict has been recorded yet. Tier 0-1 and tier 2 machine draft commentary do not replace expert sign-off.</p><p class="tier-nav-card-hint">Record human verdict</p></button></div><div class="case-response-column"><section class="tahi-response" data-tahi-response><h2>Tahi response</h2><div class="tahi-response-body"><h2>The Resource Management Act: Aotearoa's Planning Backbone</h2>
+<p>The Resource Management Act (RMA) 1991 is New Zealand's principal piece of environmental and planning legislation. Hailed at the time as the first comprehensive law in the world to require sustainable management of resources, it replaced roughly 80 earlier acts and orders in one sweeping reform <sup class="cite-ref"><a href="https://teara.govt.nz/en/economy-and-the-environment" target="_blank" rel="noopener noreferrer">1</a></sup>. Its architect was Sir Geoffrey Palmer, who described it as 'one of the most comprehensive reforms in the Western world' <sup class="cite-ref"><a href="https://www.nzgeo.com/stories/state-of-grace/" target="_blank" rel="noopener noreferrer">2</a></sup>.</p>
+<p>At its core, the RMA requires all developments — with the exception of mineral extraction, which is covered separately by the Crown Minerals Act 1991 — to avoid, mitigate, or remedy adverse environmental effects <sup class="cite-ref"><a href="https://teara.govt.nz/en/economy-and-the-environment" target="_blank" rel="noopener noreferrer">1</a></sup>. Resource consents for the use of water, air, soil, and land must be obtained from the relevant regional, city, or district councils, with provision for public participation in decision-making <sup class="cite-ref"><a href="https://teara.govt.nz/en/economy-and-the-environment" target="_blank" rel="noopener noreferrer">1</a></sup>.</p>
+<p>The act also replaced the old Town and Country Planning Act and required councils to prepare new district plans to manage land use in an environmentally sustainable way. An Environment Court replaced the Planning Tribunal <sup class="cite-ref"><a href="https://teara.govt.nz/en/city-planning" target="_blank" rel="noopener noreferrer">3</a></sup>. Its philosophical ethos, at least initially, was 'more free market than regulatory' — as long as there was no environmental harm, people were largely free to build as they wished <sup class="cite-ref"><a href="https://teara.govt.nz/en/city-planning" target="_blank" rel="noopener noreferrer">3</a></sup>.</p>
+<h3>What the RMA Covers</h3>
+<p>The RMA's reach is broad. It controls land use, manages water quality, regulates air emissions, and protects coastal areas and estuaries <sup class="cite-ref"><a href="https://teara.govt.nz/en/mining-and-underground-resources" target="_blank" rel="noopener noreferrer">4</a></sup><sup class="cite-ref"><a href="https://teara.govt.nz/en/atmosphere" target="_blank" rel="noopener noreferrer">5</a></sup><sup class="cite-ref"><a href="https://teara.govt.nz/en/estuaries" target="_blank" rel="noopener noreferrer">6</a></sup><sup class="cite-ref"><a href="https://teara.govt.nz/en/water-quality" target="_blank" rel="noopener noreferrer">7</a></sup>. Regional councils are responsible for monitoring these areas and issuing permits and consents accordingly <sup class="cite-ref"><a href="https://teara.govt.nz/en/soil-erosion-and-conservation" target="_blank" rel="noopener noreferrer">8</a></sup><sup class="cite-ref"><a href="https://teara.govt.nz/en/atmosphere" target="_blank" rel="noopener noreferrer">5</a></sup>.</p>
+<p>Notably, the 1991 act was a landmark moment for Māori. Prior legislation had largely ignored Māori historical, spiritual, and cultural concerns. The RMA explicitly recognised Māori spiritual and cultural values and the principles of the Treaty of Waitangi. Environmental developments required consultation with iwi (tribes), and resource consent applications had to be sent to iwi authorities <sup class="cite-ref"><a href="https://teara.govt.nz/en/te-ture-maori-and-legislation" target="_blank" rel="noopener noreferrer">9</a></sup>.</p>
+<p>However, not everything falls under the RMA's umbrella. Biosecurity — including border protection for agriculture and forestry — is governed separately under the Biosecurity Act 1993 <sup class="cite-ref"><a href="https://teara.govt.nz/en/economy-and-the-environment" target="_blank" rel="noopener noreferrer">10</a></sup>.</p>
+<h3>The Case for Reform</h3>
+<p>Despite its ambitions, the RMA has been criticised from multiple directions over the years. Palmer himself acknowledged it wasn't perfect: 'You can have development, or you can have sustainability. There's an inherent contradiction in this which we haven't resolved yet' <sup class="cite-ref"><a href="https://www.nzgeo.com/stories/state-of-grace/" target="_blank" rel="noopener noreferrer">11</a></sup>.</p>
+<p>Environmental advocates have argued that successive governments failed to provide adequate policy guidance to regional councils, and that councils themselves had increasingly become 'development agencies on behalf of government', undermining the act's protective intent <sup class="cite-ref"><a href="https://www.nzgeo.com/stories/standing-up-for-habitat/" target="_blank" rel="noopener noreferrer">12</a></sup>. Parliamentary Commissioner for the Environment Jan Wright warned that proposed changes amounted to a 'Trojan horse', arguing the RMA itself provides the balance to economic imperatives and 'is not, and should not become, an economic development act' <sup class="cite-ref"><a href="https://www.nzgeo.com/stories/watchful-in-wellington-parliamentary-commissioner-for-the-environment-jan-wright/" target="_blank" rel="noopener noreferrer">13</a></sup>.</p>
+<p>On the other side, critics have long complained the RMA makes it too hard and too costly to build housing, infrastructure, and renewable energy. Federated Farmers called the current system 'broken', with farmers spending excessive time and money on resource consents for straightforward activities <sup class="cite-ref"><a href="https://www.rnz.co.nz/news/country/547569/farmer-productivity-should-improve-under-rma-reforms-federated-farmers" target="_blank" rel="noopener noreferrer">14</a></sup>.</p>
+<p>There has been bipartisan recognition that the act has both failed to protect the environment sufficiently and wrapped projects in excessive red tape <sup class="cite-ref"><a href="https://www.rnz.co.nz/news/in-depth/531367/the-big-change-to-the-resource-management-act-very-little-is-known-about" target="_blank" rel="noopener noreferrer">15</a></sup>.</p>
+<h2>The Coalition Government's Reform Programme</h2>
+<p>The current National-led coalition government has pursued the most ambitious overhaul of the RMA in its history, structured in three phases.</p>
+<p><strong>Phase one</strong> involved repealing legislation introduced by the previous Labour government and making urgent early amendments, including revisions to stock exclusion rules, winter grazing, Te Mana o te Wai (the concept of water as a taonga — a treasured resource), mining consenting, and the suspension of Significant Natural Area (SNA) requirements <sup class="cite-ref"><a href="https://www.rnz.co.nz/news/political/514993/government-reveals-first-changes-to-resource-management-act" target="_blank" rel="noopener noreferrer">16</a></sup>.</p>
+<p><strong>Phase two</strong> introduced a second RMA Amendment Bill focused on infrastructure, energy, housing, farming, and natural hazards, alongside the single largest package of national direction changes in New Zealand's history — seven new national direction instruments and amendments to 14 existing ones <sup class="cite-ref"><a href="https://www.rnz.co.nz/news/political/525925/second-tranche-of-resource-management-act-reforms-on-the-way" target="_blank" rel="noopener noreferrer">17</a></sup>. A Fast-track Approvals Bill was also introduced as a 'one-stop shop' consenting regime for significant projects <sup class="cite-ref"><a href="https://www.rnz.co.nz/national/programmes/middayreport/audio/2018929105/fast-track-approvals-bill-announced" target="_blank" rel="noopener noreferrer">18</a></sup>.</p>
+<p><strong>Phase three</strong> — the most sweeping — proposes to scrap the RMA entirely and replace it with two new laws <sup class="cite-ref"><a href="https://www.rnz.co.nz/news/national/528567/resource-management-act-to-be-replaced-by-two-new-laws" target="_blank" rel="noopener noreferrer">19</a></sup><sup class="cite-ref"><a href="https://www.rnz.co.nz/news/in-depth/531367/the-big-change-to-the-resource-management-act-very-little-is-known-about" target="_blank" rel="noopener noreferrer">15</a></sup>:</p>
+<ul>
+<li>A <strong>Natural Environment Act</strong>, focused on managing environmental effects from activities, including setting quantified environmental limits at a regional level <sup class="cite-ref"><a href="https://www.rnz.co.nz/news/in-depth/531367/the-big-change-to-the-resource-management-act-very-little-is-known-about" target="_blank" rel="noopener noreferrer">15</a></sup></li>
+<li>A <strong>Planning Act</strong>, focused on enabling urban development and infrastructure <sup class="cite-ref"><a href="https://www.rnz.co.nz/news/national/528567/resource-management-act-to-be-replaced-by-two-new-laws" target="_blank" rel="noopener noreferrer">19</a></sup></li>
+</ul>
+<p>RMA Reform minister Chris Bishop said the goal is to cut administrative and compliance costs by 45 percent, grounded in the principle of 'the enjoyment of property rights' — allowing people to do more on their own land as long as it doesn't harm others <sup class="cite-ref"><a href="https://www.rnz.co.nz/news/political/545835/christopher-luxon-reveals-resource-management-act-reform" target="_blank" rel="noopener noreferrer">20</a></sup>. The reforms also propose more standardised zoning nationally (New Zealand currently has 1,175 different zone types across its councils, compared to just 13 in Japan) and a new planning disputes tribunal for faster, lower-cost resolution of disagreements <sup class="cite-ref"><a href="https://www.rnz.co.nz/news/political/545835/christopher-luxon-reveals-resource-management-act-reform" target="_blank" rel="noopener noreferrer">20</a></sup><sup class="cite-ref"><a href="https://www.rnz.co.nz/news/in-depth/531367/the-big-change-to-the-resource-management-act-very-little-is-known-about" target="_blank" rel="noopener noreferrer">15</a></sup>.</p>
+<p>Notably, the reforms would remove the Treaty of Waitangi clause currently in the RMA <sup class="cite-ref"><a href="https://www.rnz.co.nz/news/political/545835/christopher-luxon-reveals-resource-management-act-reform" target="_blank" rel="noopener noreferrer">20</a></sup>.</p>
+<p>In December 2025, the coalition formally introduced the Planning Bill and Natural Environment Bill to Parliament, with the aim of passing them before the 2026 election <sup class="cite-ref"><a href="https://www.rnz.co.nz/news/national/581324/coalition-reveals-resource-management-act-replacement-but-will-it-stand-the-test-of-time" target="_blank" rel="noopener noreferrer">21</a></sup>. Labour leader Chris Hipkins indicated his party would not repeal the legislation if elected, though it would likely make amendments — suggesting the 'repeal and replace cycle' that has plagued RMA reform for decades may finally be drawing to a close <sup class="cite-ref"><a href="https://www.rnz.co.nz/news/national/581324/coalition-reveals-resource-management-act-replacement-but-will-it-stand-the-test-of-time" target="_blank" rel="noopener noreferrer">21</a></sup>.</p>
+<h3>Reactions</h3>
+<p>Responses to the reforms have been mixed. Federated Farmers welcomed the shift, saying the RMA had been 'the single biggest handbrake on growing agricultural productivity' <sup class="cite-ref"><a href="https://www.rnz.co.nz/news/national/581324/coalition-reveals-resource-management-act-replacement-but-will-it-stand-the-test-of-time" target="_blank" rel="noopener noreferrer">21</a></sup>. Local Government New Zealand expressed readiness to adapt, though its representatives acknowledged a 'tsunami of change' ahead for councils <sup class="cite-ref"><a href="https://www.rnz.co.nz/news/national/581324/coalition-reveals-resource-management-act-replacement-but-will-it-stand-the-test-of-time" target="_blank" rel="noopener noreferrer">21</a></sup>. Environmental groups such as Forest &amp; Bird have raised concerns about the pace of reform and potential erosion of environmental protections, particularly around freshwater <sup class="cite-ref"><a href="https://www.rnz.co.nz/news/political/570002/another-resource-management-act-change-passes-in-parliament" target="_blank" rel="noopener noreferrer">22</a></sup><sup class="cite-ref"><a href="https://www.rnz.co.nz/news/in-depth/531367/the-big-change-to-the-resource-management-act-very-little-is-known-about" target="_blank" rel="noopener noreferrer">15</a></sup>.</p>
+<p>Would you like to explore a specific aspect of the reforms in more detail — for example, the freshwater protections, or how the Fast-track Approvals regime works?</p><section class="sources-block"><h3>Sources</h3><ul class="sources-list"><li id="source-1" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[1]</span> <span class="source-entry-label">New Zealand&#x27;s Economy and Environment: From Agricultural Expansion to Sustainable Resource Management and Carbon Neutrality</span></div><a class="source-entry-url" href="https://teara.govt.nz/en/economy-and-the-environment" target="_blank" rel="noopener noreferrer">https://teara.govt.nz/en/economy-and-the-environment</a></li><li id="source-2" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[2]</span> <span class="source-entry-label">State of Grace: Sir Geoffrey Palmer and New Zealand&#x27;s Environmental Legacy</span></div><a class="source-entry-url" href="https://www.nzgeo.com/stories/state-of-grace/" target="_blank" rel="noopener noreferrer">https://www.nzgeo.com/stories/state-of-grace/</a></li><li id="source-3" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[3]</span> <span class="source-entry-label">City Planning in New Zealand: Evolution from Colonial Settlement to Sustainable Urban Design</span></div><a class="source-entry-url" href="https://teara.govt.nz/en/city-planning" target="_blank" rel="noopener noreferrer">https://teara.govt.nz/en/city-planning</a></li><li id="source-4" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[4]</span> <span class="source-entry-label">New Zealand Mining Industry: History, Regulation, and Resources</span></div><a class="source-entry-url" href="https://teara.govt.nz/en/mining-and-underground-resources" target="_blank" rel="noopener noreferrer">https://teara.govt.nz/en/mining-and-underground-resources</a></li><li id="source-5" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[5]</span> <span class="source-entry-label">Earth&#x27;s Atmosphere: Structure, Environmental Impacts, and New Zealand&#x27;s Perspective on Climate and Air Quality</span></div><a class="source-entry-url" href="https://teara.govt.nz/en/atmosphere" target="_blank" rel="noopener noreferrer">https://teara.govt.nz/en/atmosphere</a></li><li id="source-6" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[6]</span> <span class="source-entry-label">New Zealand Estuaries: Comprehensive Guide to Ecosystems, Wildlife, and Conservation</span></div><a class="source-entry-url" href="https://teara.govt.nz/en/estuaries" target="_blank" rel="noopener noreferrer">https://teara.govt.nz/en/estuaries</a></li><li id="source-7" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[7]</span> <span class="source-entry-label">Water Quality in New Zealand: Comprehensive Assessment of Threats, Management Strategies, and Case Studies</span></div><a class="source-entry-url" href="https://teara.govt.nz/en/water-quality" target="_blank" rel="noopener noreferrer">https://teara.govt.nz/en/water-quality</a></li><li id="source-8" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[8]</span> <span class="source-entry-label">Soil Erosion and Conservation in New Zealand: Comprehensive Analysis of Causes, Types, Management, and Control Methods</span></div><a class="source-entry-url" href="https://teara.govt.nz/en/soil-erosion-and-conservation" target="_blank" rel="noopener noreferrer">https://teara.govt.nz/en/soil-erosion-and-conservation</a></li><li id="source-9" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[9]</span> <span class="source-entry-label">Māori Land Rights, Indigenous Law, and Colonial Legislation in New Zealand: A Historical and Legal Analysis</span></div><a class="source-entry-url" href="https://teara.govt.nz/en/te-ture-maori-and-legislation" target="_blank" rel="noopener noreferrer">https://teara.govt.nz/en/te-ture-maori-and-legislation</a></li><li id="source-10" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[10]</span> <span class="source-entry-label">New Zealand&#x27;s Economy and Environment: From Agricultural Expansion to Sustainable Resource Management and Carbon Neutrality</span></div><a class="source-entry-url" href="https://teara.govt.nz/en/economy-and-the-environment" target="_blank" rel="noopener noreferrer">https://teara.govt.nz/en/economy-and-the-environment</a></li><li id="source-11" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[11]</span> <span class="source-entry-label">State of Grace: Sir Geoffrey Palmer and New Zealand&#x27;s Environmental Legacy</span></div><a class="source-entry-url" href="https://www.nzgeo.com/stories/state-of-grace/" target="_blank" rel="noopener noreferrer">https://www.nzgeo.com/stories/state-of-grace/</a></li><li id="source-12" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[12]</span> <span class="source-entry-label">Standing up for habitat</span></div><a class="source-entry-url" href="https://www.nzgeo.com/stories/standing-up-for-habitat/" target="_blank" rel="noopener noreferrer">https://www.nzgeo.com/stories/standing-up-for-habitat/</a></li><li id="source-13" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[13]</span> <span class="source-entry-label">Watchful in Wellington: The Parliamentary Commissioner for the Environment</span></div><a class="source-entry-url" href="https://www.nzgeo.com/stories/watchful-in-wellington-parliamentary-commissioner-for-the-environment-jan-wright/" target="_blank" rel="noopener noreferrer">https://www.nzgeo.com/stories/watchful-in-wellington-parliamentary-commissioner-for-the-environment-jan-wright/</a></li><li id="source-14" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[14]</span> <span class="source-entry-label">Farmer Productivity to Improve Under RMA Reforms - Federated Farmers</span></div><a class="source-entry-url" href="https://www.rnz.co.nz/news/country/547569/farmer-productivity-should-improve-under-rma-reforms-federated-farmers" target="_blank" rel="noopener noreferrer">https://www.rnz.co.nz/news/country/547569/farmer-productivity-should-improve-under-rma-reforms-federated-farmers</a></li><li id="source-15" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[15]</span> <span class="source-entry-label">New Zealand Resource Management Act Reforms: Comprehensive Overview of Legislative Changes and Fast-Track Approvals</span></div><a class="source-entry-url" href="https://www.rnz.co.nz/news/in-depth/531367/the-big-change-to-the-resource-management-act-very-little-is-known-about" target="_blank" rel="noopener noreferrer">https://www.rnz.co.nz/news/in-depth/531367/the-big-change-to-the-resource-management-act-very-little-is-known-about</a></li><li id="source-16" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[16]</span> <span class="source-entry-label">Government Reveals First Changes to Resource Management Act</span></div><a class="source-entry-url" href="https://www.rnz.co.nz/news/political/514993/government-reveals-first-changes-to-resource-management-act" target="_blank" rel="noopener noreferrer">https://www.rnz.co.nz/news/political/514993/government-reveals-first-changes-to-resource-management-act</a></li><li id="source-17" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[17]</span> <span class="source-entry-label">Second Tranche of Resource Management Act Reforms on the Way</span></div><a class="source-entry-url" href="https://www.rnz.co.nz/news/political/525925/second-tranche-of-resource-management-act-reforms-on-the-way" target="_blank" rel="noopener noreferrer">https://www.rnz.co.nz/news/political/525925/second-tranche-of-resource-management-act-reforms-on-the-way</a></li><li id="source-18" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[18]</span> <span class="source-entry-label">Fast Track Approvals Bill Announced</span></div><a class="source-entry-url" href="https://www.rnz.co.nz/national/programmes/middayreport/audio/2018929105/fast-track-approvals-bill-announced" target="_blank" rel="noopener noreferrer">https://www.rnz.co.nz/national/programmes/middayreport/audio/2018929105/fast-track-approvals-bill-announced</a></li><li id="source-19" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[19]</span> <span class="source-entry-label">Resource Management Act to be Replaced by Two New Laws</span></div><a class="source-entry-url" href="https://www.rnz.co.nz/news/national/528567/resource-management-act-to-be-replaced-by-two-new-laws" target="_blank" rel="noopener noreferrer">https://www.rnz.co.nz/news/national/528567/resource-management-act-to-be-replaced-by-two-new-laws</a></li><li id="source-20" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[20]</span> <span class="source-entry-label">Christopher Luxon Reveals Resource Management Act Reform</span></div><a class="source-entry-url" href="https://www.rnz.co.nz/news/political/545835/christopher-luxon-reveals-resource-management-act-reform" target="_blank" rel="noopener noreferrer">https://www.rnz.co.nz/news/political/545835/christopher-luxon-reveals-resource-management-act-reform</a></li><li id="source-21" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[21]</span> <span class="source-entry-label">Coalition Reveals Resource Management Act Replacement: Will It Stand the Test of Time?</span></div><a class="source-entry-url" href="https://www.rnz.co.nz/news/national/581324/coalition-reveals-resource-management-act-replacement-but-will-it-stand-the-test-of-time" target="_blank" rel="noopener noreferrer">https://www.rnz.co.nz/news/national/581324/coalition-reveals-resource-management-act-replacement-but-will-it-stand-the-test-of-time</a></li><li id="source-22" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[22]</span> <span class="source-entry-label">Resource Management Act Amendment Bill Passes Parliament</span></div><a class="source-entry-url" href="https://www.rnz.co.nz/news/political/570002/another-resource-management-act-change-passes-in-parliament" target="_blank" rel="noopener noreferrer">https://www.rnz.co.nz/news/political/570002/another-resource-management-act-change-passes-in-parliament</a></li></ul></section></div></section></div><aside class="case-details-column" data-case-details-column><div class="case-details-head"><h2 data-case-details-title>Review</h2><button type="button" class="llm-assessment-toggle" data-case-details-close>Close</button></div><p class="case-details-placeholder" data-case-details-placeholder>Select a card to open review details or actions.</p><div class="case-details-panel" data-case-details-panel="tier0" hidden><p class="assessment-tier-commentary">Structural check passed: live call returned a Tahi response (10714 characters). This is not a rubric pass/fail.</p></div><div class="case-details-panel" data-case-details-panel="tier1" hidden><p class="assessment-tier-commentary">Sources block check passed: response includes citation markers and a Sources or References section for human and machine reviewers.</p></div><div class="case-details-panel" data-case-details-panel="machine" hidden><div class="case-llm-slot" data-llm-slot><section class="llm-detail-panel is-open" id="llm-detail-panel"><div class="llm-detail-panel-head"><h2>Machine review draft</h2></div><p class="llm-detail-panel-hint">Hover a label for what each field means.</p><dl><dt title="One-line verdict from the independent judge model. This is a draft for reviewers—not a human sign-off.">Summary</dt><dd>Pass: well-grounded response that clearly distinguishes the RMA from its reforms, with comprehensive citations.</dd><dt title="How confident the judge model is in its verdict (0–1). Low scores warrant closer human review.">Confidence</dt><dd>95%</dd><dt title="Axis A (process): are material claims backed by citations from Tahi&#x27;s retrieved corpus, rather than parametric memory?">Grounding</dt><dd title="Claims appear supported by citations to retrieved sources.">grounded</dd><dt title="Whether cited claims were checked against retrieved source passages. Unverifiable means only citation markers were checked, not chunk content.">Citation check</dt><dd title="Retrieved chunks were provided; cited claims were checked against source text.">verified</dd><dt title="Count of material factual claims that carry a citation marker ([[n]](cite://…)) versus the total material claims identified.">Citations</dt><dd>20 cited of 20 material claims</dd><dt title="Axis B (rubric): does the response meet this test&#x27;s pass and fail criteria as written in the workbook?">Policy</dt><dd>Response accurately distinguishes the original RMA from proposed reforms and does not conflate different proposals.</dd><dt title="For time-sensitive topics: did the response state when information is from, and caveat that things may have changed?">Currency</dt><dd>Response discusses ongoing reforms with a 2025 context.</dd></dl></section></div></div><div class="case-details-panel" data-case-details-panel="human" hidden><section class="human-verdict-panel" data-human-verdict-panel data-run-id="core-20260617-231629" data-test-id="R04"><h2>Human review (Tier 3)</h2><p class="human-verdict-hint">Record your verdict for this case. It is saved to the <strong>Tahi Eval Hub</strong> sheet (CaseResults).</p><div class="human-verdict-status" data-human-verdict-status></div><form class="human-verdict-form" data-human-verdict-form><label class="human-verdict-field"><span>Verdict</span><select name="verdict" required><option value="">Select verdict…</option><option value="pass">Pass</option>
+<option value="fail">Fail</option>
+<option value="inconclusive">Inconclusive</option>
+<option value="borderline">Borderline</option></select></label><label class="human-verdict-field"><span>Notes</span><textarea name="notes" rows="4" placeholder="Rationale, follow-up tests, or expert context"></textarea></label><button type="submit" class="llm-assessment-toggle" data-human-verdict-submit>Submit verdict</button></form></section></div><div class="case-details-panel" data-case-details-panel="workflow-timing" data-hub-admin-only hidden><section class="workflow-timing-card" data-workflow-timing-card><p class="workflow-timing-total">Total 1m 5s</p><table class="workflow-timing-table"><thead><tr><th>Stage</th><th>This run</th><th>Prior run</th><th>Delta</th></tr></thead><tbody><tr><td><span class="workflow-timing-stage">Classification</span><span class="workflow-timing-detail">Category D · Answerable queries</span></td><td>916ms</td><td>916ms</td><td><span class="workflow-timing-delta--neutral">0ms</span></td></tr><tr><td><span class="workflow-timing-stage">Summarise question</span><span class="workflow-timing-detail">Skipped (used prompt as-is)</span></td><td>—</td><td>1ms</td><td><span class="workflow-timing-delta--neutral">0ms</span></td></tr><tr><td><span class="workflow-timing-stage">Search</span><span class="workflow-timing-detail">6 queries<ul class="workflow-timing-queries"><li>Search for RMA overview</li><li>Search for RMA reforms</li><li>Search for RMA environmental policy</li><li>Search for NZ resource management images</li><li>Search for RMA reform news</li><li>Search for RMA replacement legislation</li></ul></span></td><td>6.7s</td><td>6.7s</td><td><span class="workflow-timing-delta--neutral">0ms</span></td></tr><tr><td><span class="workflow-timing-stage">Evaluate results</span></td><td>0ms</td><td>0ms</td><td><span class="workflow-timing-delta--neutral">0ms</span></td></tr><tr><td><span class="workflow-timing-stage">TTFT</span><span class="workflow-timing-detail">Chat POST → first token</span></td><td>25.8s</td><td>25.8s</td><td><span class="workflow-timing-delta--neutral">0ms</span></td></tr><tr><td><span class="workflow-timing-stage">Generate answer</span></td><td>56.1s</td><td>56.1s</td><td><span class="workflow-timing-delta--neutral">0ms</span></td></tr><tr><td><span class="workflow-timing-stage">Overhead / other</span></td><td>888ms</td><td>888ms</td><td><span class="workflow-timing-delta--neutral">0ms</span></td></tr><tr><td><span class="workflow-timing-stage">Total</span></td><td>1m 5s</td><td>1m 5s</td><td><span class="workflow-timing-delta--neutral">0ms</span></td></tr></tbody></table><p class="workflow-timing-footnote">Timings are derived from Caitlyn workflow traces and wall-clock duration. Generate answer includes response streaming after knowledge-base evaluation.</p></section></div></aside></div>
+<p><em>Rubric: Tahi_Test_Suite-2 · Tahi Test Suite (2).xlsx · PRD (https://nzgeo.getcaitlyn.ai)</em></p>
+    </main>
+    <footer class="footer">
+      Generated by tahi-test-runner. Open in a browser and use Print → Save as PDF to share.
+    </footer>
+  </div>
+  <script>
+(function () {
+  var DETAILS_TITLES = {
+    machine: "Machine review (Tier 2)",
+    human: "Human review (Tier 3)",
+    tier0: "Structural checks (Tier 0)",
+    tier1: "Rule-based checks (Tier 1)",
+    tier2: "Human review (Tier 3)",
+    "workflow-timing": "Workflow timing",
+  };
+
+  function openDetailsPanel(target) {
+    var layout = document.querySelector("[data-case-layout]");
+    var placeholder = document.querySelector("[data-case-details-placeholder]");
+    var title = document.querySelector("[data-case-details-title]");
+    if (!layout || !target) {
+      return;
+    }
+    layout.classList.add("is-details-open");
+    document.querySelectorAll("[data-case-details-panel]").forEach(function (panel) {
+      panel.hidden = panel.getAttribute("data-case-details-panel") !== target;
+    });
+    if (placeholder) {
+      placeholder.hidden = true;
+    }
+    if (title) {
+      title.textContent = DETAILS_TITLES[target] || "Review";
+    }
+    document.querySelectorAll("[data-tier-nav-card]").forEach(function (card) {
+      var active = card.getAttribute("data-details-target") === target;
+      card.classList.toggle("is-active", active);
+      card.setAttribute("aria-expanded", active ? "true" : "false");
+    });
+    if (target === "machine" && window.tahiLoadMachineDraft) {
+      window.tahiLoadMachineDraft();
+    }
+    if (target === "human" && window.tahiSyncVerdictPanel) {
+      window.tahiSyncVerdictPanel();
+    }
+  }
+
+  function closeDetailsPanel() {
+    var layout = document.querySelector("[data-case-layout]");
+    var placeholder = document.querySelector("[data-case-details-placeholder]");
+    if (!layout) {
+      return;
+    }
+    layout.classList.remove("is-details-open");
+    document.querySelectorAll("[data-case-details-panel]").forEach(function (panel) {
+      panel.hidden = true;
+    });
+    if (placeholder) {
+      placeholder.hidden = false;
+    }
+    document.querySelectorAll("[data-tier-nav-card]").forEach(function (card) {
+      card.classList.remove("is-active");
+      card.setAttribute("aria-expanded", "false");
+    });
+  }
+
+  window.tahiOpenDetailsPanel = openDetailsPanel;
+  window.tahiCloseDetailsPanel = closeDetailsPanel;
+
+  document.querySelectorAll("[data-tier-nav-card]").forEach(function (card) {
+    card.addEventListener("click", function () {
+      var target = card.getAttribute("data-details-target");
+      if (!target) {
+        return;
+      }
+      var layout = document.querySelector("[data-case-layout]");
+      var isActive = card.classList.contains("is-active");
+      if (isActive && layout && layout.classList.contains("is-details-open")) {
+        closeDetailsPanel();
+        return;
+      }
+      openDetailsPanel(target);
+    });
+  });
+  document.querySelectorAll("[data-case-details-close]").forEach(function (btn) {
+    btn.addEventListener("click", closeDetailsPanel);
+  });
+
+  document.querySelectorAll("[data-llm-dialog-open]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var id = btn.getAttribute("data-llm-dialog-open");
+      var dialog = id ? document.getElementById(id) : null;
+      if (dialog && typeof dialog.showModal === "function") {
+        dialog.showModal();
+      }
+    });
+  });
+  document.querySelectorAll("[data-llm-dialog-close]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var dialog = btn.closest("dialog");
+      if (dialog) {
+        dialog.close();
+      }
+    });
+  });
+})();
+</script>
+  <script>
+(function () {
+  var TOKEN_KEY = "tahi_auth_token";
+  var USER_KEY = "tahi_reviewer_username";
+  var NAME_KEY = "tahi_reviewer_name";
+  var ROLE_KEY = "tahi_reviewer_role";
+  var EMAIL_KEY = "tahi_reviewer_email";
+  var JUDGE_FIELD_HINTS = {"summary": "One-line verdict from the independent judge model. This is a draft for reviewers—not a human sign-off.", "confidence": "How confident the judge model is in its verdict (0–1). Low scores warrant closer human review.", "grounding": "Axis A (process): are material claims backed by citations from Tahi's retrieved corpus, rather than parametric memory?", "citation_check": "Whether cited claims were checked against retrieved source passages. Unverifiable means only citation markers were checked, not chunk content.", "citations": "Count of material factual claims that carry a citation marker ([[n]](cite://…)) versus the total material claims identified.", "policy": "Axis B (rubric): does the response meet this test's pass and fail criteria as written in the workbook?", "currency": "For time-sensitive topics: did the response state when information is from, and caveat that things may have changed?", "rubric_concern": "The judge thinks the rubric criteria may be mis-specified for this response (e.g. demanding refusal when the corpus clearly covers the topic)."};
+  var JUDGE_VALUE_HINTS = {"grounded": "Claims appear supported by citations to retrieved sources.", "partially_grounded": "Some claims are cited; others may lack grounding.", "ungrounded": "Substantive factual claims without citation markers—parametric leakage risk.", "verified": "Retrieved chunks were provided; cited claims were checked against source text.", "unverifiable": "No chunk text was available; only citation presence was assessed.", "contradicted": "A cited claim does not match its retrieved source passage.", "pass": "Judge recommends pass on grounding and/or rubric alignment.", "fail": "Judge found a genuine deficiency (ungrounded claims, currency, or policy breach).", "borderline": "Grounding may be sound but the rubric or policy fit is unclear—see rubric concern."};
+  var configUrl = document.querySelector('meta[name="tahi-hub-config-url"]');
+  var reportUrl = document.querySelector('meta[name="tahi-report-json-url"]');
+  var configPath = configUrl ? configUrl.getAttribute("content") : "";
+  var reportPath = reportUrl ? reportUrl.getAttribute("content") : "latest.json";
+  var authUrl = "";
+
+  function setSignedIn(session) {
+    sessionStorage.setItem(TOKEN_KEY, session.token);
+    sessionStorage.setItem(USER_KEY, session.username || "");
+    sessionStorage.setItem(NAME_KEY, session.name || session.username || "");
+    sessionStorage.setItem(ROLE_KEY, session.role || "reviewer");
+    sessionStorage.setItem(EMAIL_KEY, session.email || "");
+    updateAuthUi(session);
+    document.body.setAttribute("data-reviewer-signed-in", "true");
+    if (String(session.role || "reviewer").toLowerCase() === "admin") {
+      document.body.setAttribute("data-reviewer-admin", "true");
+    } else {
+      document.body.removeAttribute("data-reviewer-admin");
+    }
+    var hubContent = document.querySelector("[data-hub-auth-content]");
+    var limitedReviewer =
+      hubContent &&
+      String(session.role || "reviewer").toLowerCase() !== "admin";
+    if (limitedReviewer) {
+      document.body.setAttribute("data-auth-pending", "true");
+    } else {
+      document.body.removeAttribute("data-auth-pending");
+    }
+    if (window.tahiSyncVerdictPanel) {
+      window.tahiSyncVerdictPanel();
+    }
+    if (window.tahiSyncMachineReviewVisibility) {
+      window.tahiSyncMachineReviewVisibility();
+    }
+    if (window.tahiLoadReviewerAssignments) {
+      window.tahiLoadReviewerAssignments().finally(function () {
+        if (window.tahiSyncHubCaseNav) {
+          window.tahiSyncHubCaseNav();
+        }
+      });
+    } else if (window.tahiSyncHubCaseNav) {
+      window.tahiSyncHubCaseNav();
+    }
+    if (window.tahiLoadHubAdminAssignments) {
+      window.tahiLoadHubAdminAssignments();
+    }
+    if (window.tahiSyncPerformanceAccess) {
+      window.tahiSyncPerformanceAccess();
+    }
+    if (window.tahiSyncHubAuthContent) {
+      window.tahiSyncHubAuthContent();
+    }
+    if (window.tahiSyncRemoteRunPanel) {
+      window.tahiSyncRemoteRunPanel();
+    }
+    if (window.tahiSyncUsersNav) {
+      window.tahiSyncUsersNav();
+    }
+    if (window.tahiLoadHubUserAdmin) {
+      window.tahiLoadHubUserAdmin();
+    }
+  }
+
+  function signOut() {
+    sessionStorage.removeItem(TOKEN_KEY);
+    sessionStorage.removeItem(USER_KEY);
+    sessionStorage.removeItem(NAME_KEY);
+    sessionStorage.removeItem(ROLE_KEY);
+    sessionStorage.removeItem(EMAIL_KEY);
+    updateAuthUi(null);
+    document.body.setAttribute("data-reviewer-signed-in", "false");
+    document.body.removeAttribute("data-reviewer-admin");
+    document.body.removeAttribute("data-auth-pending");
+    document.body.setAttribute("data-viewer-can-view-llm-detail", "false");
+    if (window.tahiSyncVerdictPanel) {
+      window.tahiSyncVerdictPanel();
+    }
+    if (window.tahiSyncMachineReviewVisibility) {
+      window.tahiSyncMachineReviewVisibility();
+    }
+    if (window.tahiSyncHubAssignmentFilter) {
+      window.tahiSyncHubAssignmentFilter();
+    }
+    if (window.tahiSyncHubCaseNav) {
+      window.tahiSyncHubCaseNav();
+    }
+    if (window.tahiSyncHubAdminAssignments) {
+      window.tahiSyncHubAdminAssignments();
+    }
+    if (window.tahiSyncPerformanceAccess) {
+      window.tahiSyncPerformanceAccess();
+    }
+    if (window.tahiSyncHubAuthContent) {
+      window.tahiSyncHubAuthContent();
+    }
+    if (window.tahiSyncRemoteRunPanel) {
+      window.tahiSyncRemoteRunPanel();
+    }
+    if (window.tahiSyncUsersNav) {
+      window.tahiSyncUsersNav();
+    }
+    if (window.tahiLoadHubUserAdmin) {
+      window.tahiLoadHubUserAdmin();
+    }
+    var slot = document.querySelector("[data-llm-slot]");
+    if (slot) {
+      slot.innerHTML = "";
+    }
+  }
+
+  function updateAuthUi(session) {
+    var status = document.querySelector("[data-reviewer-auth-status]");
+    var actions = document.querySelector("[data-reviewer-auth-actions]");
+    var form = document.querySelector("[data-reviewer-auth-form]");
+    if (!status) {
+      return;
+    }
+    if (session && session.username) {
+      clearAuthFeedback();
+      status.hidden = false;
+      status.textContent = session.name || session.username;
+      status.classList.add("reviewer-auth-status--signed-in");
+      if (form) {
+        form.hidden = true;
+      }
+      if (actions) {
+        actions.hidden = false;
+        actions.innerHTML = '<button type="button" class="llm-assessment-toggle" data-reviewer-sign-out>Sign out</button>';
+        actions.querySelector("[data-reviewer-sign-out]").addEventListener("click", signOut);
+      }
+      return;
+    }
+    clearAuthFeedback();
+    status.textContent = "Sign in to view machine review drafts and submit human verdicts.";
+    status.classList.remove("reviewer-auth-status--signed-in");
+    status.hidden = true;
+    if (form) {
+      form.hidden = false;
+    }
+    if (actions) {
+      actions.hidden = true;
+      actions.innerHTML = "";
+    }
+  }
+
+  function clearAuthFeedback() {
+    var status = document.querySelector("[data-reviewer-auth-status]");
+    var bar = document.querySelector("[data-reviewer-auth-bar]");
+    if (status) {
+      status.classList.remove("reviewer-auth-status--error", "reviewer-auth-status--loading");
+    }
+    if (bar) {
+      bar.classList.remove("reviewer-auth-bar--error", "reviewer-auth-bar--shake");
+    }
+    setAuthFormLocked(false);
+  }
+
+  function setAuthFormLocked(locked) {
+    var form = document.querySelector("[data-reviewer-auth-form]");
+    if (!form) {
+      return;
+    }
+    var submitButton = form.querySelector('button[type="submit"]');
+    form.classList.toggle("reviewer-auth-form--locked", locked);
+    form.querySelectorAll("input").forEach(function (input) {
+      input.readOnly = locked;
+      if (locked) {
+        input.setAttribute("aria-readonly", "true");
+      } else {
+        input.removeAttribute("aria-readonly");
+      }
+    });
+    if (submitButton) {
+      submitButton.disabled = locked;
+    }
+  }
+
+  function setAuthLoading(message) {
+    clearAuthFeedback();
+    setAuthFormLocked(true);
+    var status = document.querySelector("[data-reviewer-auth-status]");
+    if (status) {
+      status.hidden = false;
+      status.textContent = message;
+      status.classList.add("reviewer-auth-status--loading");
+    }
+  }
+
+  function formatAuthErrorMessage(err) {
+    var message = (err && err.message) || "Sign-in failed. Check username and password.";
+    if (message === "Invalid credentials") {
+      return "Sign-in failed. Check username and password.";
+    }
+    return message;
+  }
+
+  function setAuthError(message) {
+    var status = document.querySelector("[data-reviewer-auth-status]");
+    var bar = document.querySelector("[data-reviewer-auth-bar]");
+    var passwordInput = document.querySelector('[data-reviewer-auth-form] input[name="password"]');
+    setAuthFormLocked(false);
+    if (status) {
+      status.hidden = false;
+      status.textContent = message;
+      status.classList.remove("reviewer-auth-status--loading");
+      status.classList.add("reviewer-auth-status--error");
+    }
+    if (bar) {
+      bar.classList.add("reviewer-auth-bar--error");
+      bar.classList.remove("reviewer-auth-bar--shake");
+      void bar.offsetWidth;
+      bar.classList.add("reviewer-auth-bar--shake");
+    }
+    if (passwordInput) {
+      passwordInput.focus();
+      passwordInput.select();
+    }
+  }
+
+  function bindAuthInputReset() {
+    var form = document.querySelector("[data-reviewer-auth-form]");
+    if (!form) {
+      return;
+    }
+    form.querySelectorAll("input").forEach(function (input) {
+      input.addEventListener("input", clearAuthFeedback);
+    });
+  }
+
+  function postAuth(payload) {
+    return fetch(authUrl, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload),
+    }).then(function (resp) {
+      return resp.json();
+    });
+  }
+
+  function isMachineReviewBlinded() {
+    return document.body.getAttribute("data-machine-review-blinded") === "true";
+  }
+
+  function machineReviewUnlocked() {
+    if (!isMachineReviewBlinded()) {
+      if (document.body.getAttribute("data-machine-review-visible") === "false") {
+        return false;
+      }
+      return true;
+    }
+    if (document.body.getAttribute("data-machine-review-visible") === "false") {
+      return false;
+    }
+    var gated = document.querySelector("[data-machine-review-gated]");
+    if (gated) {
+      var content = gated.querySelector("[data-machine-review-content]");
+      if (content && content.hidden) {
+        return false;
+      }
+    }
+    var panel = document.querySelector('[data-case-details-panel="machine"]');
+    if (panel && panel.classList.contains("machine-review-hidden")) {
+      return false;
+    }
+    return Boolean(sessionStorage.getItem(TOKEN_KEY));
+  }
+
+  function renderJudgePanel(judge) {
+    if (!judge) {
+      return "";
+    }
+    var grounding = judge.grounding || {};
+    var policy = judge.policy || {};
+    var currency = judge.currency || {};
+    var rows = [];
+    if (judge.summary) {
+      rows.push({ label: "Summary", value: judge.summary, hintKey: "summary" });
+    }
+    if (judge.confidence != null && judge.confidence !== "") {
+      var conf = Number(judge.confidence);
+      var confText = !isNaN(conf)
+        ? (conf <= 1 ? Math.round(conf * 100) + "%" : String(conf))
+        : String(judge.confidence);
+      rows.push({ label: "Confidence", value: confText, hintKey: "confidence" });
+    }
+    if (grounding.assessment) {
+      rows.push({ label: "Grounding", value: grounding.assessment, hintKey: "grounding" });
+    }
+    if (grounding.citation_content_verified) {
+      rows.push({
+        label: "Citation check",
+        value: grounding.citation_content_verified,
+        hintKey: "citation_check",
+      });
+    }
+    if (grounding.claims_cited != null || grounding.material_claims != null) {
+      rows.push({
+        label: "Citations",
+        value:
+          String(grounding.claims_cited != null ? grounding.claims_cited : "?") +
+          " cited of " +
+          String(grounding.material_claims != null ? grounding.material_claims : "?") +
+          " material claims",
+        hintKey: "citations",
+      });
+    }
+    if (policy.reasoning) {
+      rows.push({ label: "Policy", value: policy.reasoning, hintKey: "policy" });
+    }
+    if (currency.notes) {
+      rows.push({ label: "Currency", value: currency.notes, hintKey: "currency" });
+    }
+    if (judge.rubric_concern) {
+      rows.push({
+        label: "Rubric concern",
+        value: judge.rubric_concern,
+        hintKey: "rubric_concern",
+      });
+    }
+    function escapeHtml(text) {
+      return String(text || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+    function judgeValueHint(value) {
+      var key = String(value || "").toLowerCase().trim();
+      return JUDGE_VALUE_HINTS[key] || "";
+    }
+    function titleAttr(text) {
+      var value = String(text || "").trim();
+      return value ? ' title="' + escapeHtml(value) + '"' : "";
+    }
+    var body = rows
+      .filter(function (row) { return row.value; })
+      .map(function (row) {
+        var fieldHint = JUDGE_FIELD_HINTS[row.hintKey] || "";
+        var valueHint = judgeValueHint(row.value);
+        return (
+          "<dt" + titleAttr(fieldHint) + ">" + escapeHtml(row.label) + "</dt>" +
+          "<dd" + titleAttr(valueHint) + ">" + escapeHtml(row.value) + "</dd>"
+        );
+      })
+      .join("");
+    return (
+      '<section class="llm-detail-panel is-open" id="llm-detail-panel">' +
+      '<div class="llm-detail-panel-head">' +
+      "<h2>Machine review draft</h2>" +
+      "</div>" +
+      '<p class="llm-detail-panel-hint">Hover a label for what each field means.</p>' +
+      "<dl>" +
+      body +
+      "</dl></section>"
+    );
+  }
+
+  function judgeFromReport(report) {
+    var cases = (report && report.cases) || [];
+    if (!cases.length) {
+      return null;
+    }
+    var tiers = ((cases[0].assessment || {}).tiers) || [];
+    for (var i = 0; i < tiers.length; i++) {
+      if (tiers[i].tier === 3) {
+        var judge = ((tiers[i].detail || {}).judge);
+        return judge && typeof judge === "object" ? judge : null;
+      }
+    }
+    return null;
+  }
+
+  function tier3FromReport(report) {
+    var cases = (report && report.cases) || [];
+    if (!cases.length) {
+      return null;
+    }
+    var tiers = ((cases[0].assessment || {}).tiers) || [];
+    for (var i = 0; i < tiers.length; i++) {
+      if (tiers[i].tier === 3) {
+        return tiers[i];
+      }
+    }
+    return null;
+  }
+
+  function verdictLabelForNav(verdict) {
+    var key = String(verdict || "").toLowerCase();
+    var labels = {
+      pass: "Pass",
+      fail: "Fail",
+      likely_pass: "Likely pass",
+      pending: "Pending review",
+      review: "Needs review",
+      draft: "Draft",
+      inconclusive: "Inconclusive",
+      "n/a": "N/A",
+    };
+    return labels[key] || key.replace(/_/g, " ");
+  }
+
+  function verdictToneForNav(verdict) {
+    var key = String(verdict || "").toLowerCase();
+    if (key === "pass" || key === "likely_pass") {
+      return "pass";
+    }
+    if (key === "fail") {
+      return "fail";
+    }
+    if (key === "pending" || key === "review" || key === "draft" || key === "inconclusive") {
+      return "warn";
+    }
+    return "neutral";
+  }
+
+  function syncMachineNavFromReport(report) {
+    var tier = tier3FromReport(report);
+    if (!tier) {
+      return;
+    }
+    var judge = ((tier.detail || {}).judge);
+    if (!judge || typeof judge !== "object") {
+      return;
+    }
+    var summary = String(judge.summary || "").trim();
+    if (!summary) {
+      return;
+    }
+    var card = document.querySelector(
+      '[data-tier-nav-card][data-details-target="machine"]:not([hidden])'
+    );
+    if (!card) {
+      card = document.querySelector(
+        '[data-tier-nav-card][data-details-target="machine"][data-machine-review-content]'
+      );
+    }
+    if (!card || card.hidden) {
+      return;
+    }
+    var heading = card.querySelector("h3");
+    var badge = card.querySelector(".verdict-badge");
+    var commentary = card.querySelector(".tier-nav-card-commentary");
+    var verdict = String(judge.verdict || tier.verdict || "draft").toLowerCase();
+    if (heading) {
+      heading.textContent = "Machine review (LLM draft)";
+    }
+    if (badge) {
+      badge.textContent = verdictLabelForNav(verdict);
+      badge.className = "verdict-badge verdict-badge--" + verdictToneForNav(verdict);
+    }
+    if (commentary) {
+      commentary.textContent = summary;
+    }
+    var stripCards = document.querySelectorAll(".results-card");
+    for (var i = 0; i < stripCards.length; i++) {
+      var nameEl = stripCards[i].querySelector(".results-card-name");
+      if (!nameEl) {
+        continue;
+      }
+      if (String(nameEl.textContent || "").indexOf("Machine review") === -1) {
+        continue;
+      }
+      nameEl.textContent = "Machine review (LLM draft)";
+      var valueEl = stripCards[i].querySelector(".results-card-value");
+      if (valueEl) {
+        valueEl.textContent = verdictLabelForNav(verdict);
+      }
+      stripCards[i].className = stripCards[i].className
+        .replace(/\s*results-card--(?:pass|fail|warn|neutral)/g, "")
+        .trim();
+      stripCards[i].classList.add("results-card--" + verdictToneForNav(verdict));
+      break;
+    }
+  }
+
+  function refreshNavFromReportJson() {
+    if (!reportPath) {
+      return Promise.resolve(null);
+    }
+    return fetch(reportPath)
+      .then(function (resp) { return resp.json(); })
+      .then(function (report) {
+        syncMachineNavFromReport(report);
+        return report;
+      })
+      .catch(function () { return null; });
+  }
+
+  window.tahiSyncMachineNavFromReport = syncMachineNavFromReport;
+  window.tahiRefreshNavFromReportJson = refreshNavFromReportJson;
+
+  function ensureDraftPanelLoaded(callback) {
+    var machinePanel = document.querySelector('[data-case-details-panel="machine"]');
+    var slot = machinePanel ? machinePanel.querySelector("[data-llm-slot]") : null;
+    if (!slot) {
+      callback(false);
+      return;
+    }
+    if (document.getElementById("llm-detail-panel")) {
+      callback(true);
+      return;
+    }
+    if (!machineReviewUnlocked()) {
+      callback(false);
+      return;
+    }
+    if (isMachineReviewBlinded() && !sessionStorage.getItem(TOKEN_KEY)) {
+      callback(false);
+      return;
+    }
+    fetch(reportPath)
+      .then(function (resp) { return resp.json(); })
+      .then(function (report) {
+        syncMachineNavFromReport(report);
+        slot.innerHTML = renderJudgePanel(judgeFromReport(report));
+        document.body.setAttribute("data-viewer-can-view-llm-detail", "true");
+        callback(Boolean(document.getElementById("llm-detail-panel")));
+      })
+      .catch(function () { callback(false); });
+  }
+
+  window.tahiLoadMachineDraft = function () {
+    var machinePanel = document.querySelector('[data-case-details-panel="machine"]');
+    if (!machinePanel || machinePanel.hidden) {
+      return;
+    }
+    if (machinePanel.classList.contains("machine-review-hidden")) {
+      return;
+    }
+    if (!machineReviewUnlocked()) {
+      return;
+    }
+    if (isMachineReviewBlinded() && !sessionStorage.getItem(TOKEN_KEY)) {
+      return;
+    }
+    ensureDraftPanelLoaded(function () {});
+  };
+
+  function restoreSession(token) {
+    return postAuth({ action: "validate", token: token }).then(function (result) {
+      if (!result || !result.ok) {
+        signOut();
+        return false;
+      }
+      setSignedIn({
+        token: token,
+        username: result.username,
+        name: result.name,
+        email: result.email,
+        role: result.role,
+      });
+      return true;
+    });
+  }
+
+  function bindLoginForm() {
+    var form = document.querySelector("[data-reviewer-auth-form]");
+    if (!form) {
+      return;
+    }
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var usernameInput = form.querySelector('input[name="username"]');
+      var passwordInput = form.querySelector('input[name="password"]');
+      var username = usernameInput ? String(usernameInput.value || "").trim() : "";
+      var password = passwordInput ? String(passwordInput.value || "") : "";
+      if (!username || !password) {
+        setAuthError("Enter username and password.");
+        return;
+      }
+      setAuthLoading("Signing in…");
+      postAuth({ action: "login", username: username, password: password })
+        .then(function (result) {
+          if (!result || !result.ok || !result.token) {
+            throw new Error((result && result.error) || "Sign-in failed");
+          }
+          if (passwordInput) {
+            passwordInput.value = "";
+          }
+          setSignedIn(result);
+        })
+        .catch(function (err) {
+          setAuthError(formatAuthErrorMessage(err));
+        });
+    });
+    bindAuthInputReset();
+  }
+
+  if (!configPath) {
+    return;
+  }
+  fetch(configPath)
+    .then(function (resp) {
+      if (!resp.ok) {
+        throw new Error("hub config HTTP " + resp.status);
+      }
+      return resp.json();
+    })
+    .then(function (cfg) {
+      authUrl = String(cfg.auth_url || "").trim();
+      if (!authUrl) {
+        setAuthError("Hub config is missing auth_url. Re-run write_pages_auth.py.");
+        return;
+      }
+      bindLoginForm();
+      refreshNavFromReportJson();
+      var savedToken = sessionStorage.getItem(TOKEN_KEY);
+      if (savedToken) {
+        restoreSession(savedToken).catch(function () {
+          signOut();
+        });
+        return;
+      }
+      updateAuthUi(null);
+    })
+    .catch(function (err) {
+      setAuthError("Could not load hub config (" + configPath + "). " + (err && err.message ? err.message : ""));
+    });
+})();
+
+(function () {
+  var TOKEN_KEY = "tahi_auth_token";
+  var ROLE_KEY = "tahi_reviewer_role";
+  var ASSIGNMENTS_KEY = "tahi_reviewer_assignments";
+  var SHOW_ALL_KEY = "tahi_reviewer_show_all_tests";
+
+  function isAdmin() {
+    return String(sessionStorage.getItem(ROLE_KEY) || "").toLowerCase() === "admin";
+  }
+
+  function authUrlFromConfig() {
+    var node = document.querySelector('meta[name="tahi-hub-config-url"]');
+    var path = node ? node.getAttribute("content") : "";
+    if (!path) {
+      return Promise.resolve("");
+    }
+    return fetch(path)
+      .then(function (resp) { return resp.json(); })
+      .then(function (cfg) { return String(cfg.auth_url || "").trim(); });
+  }
+
+  function postAuth(authUrl, payload) {
+    return fetch(authUrl, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload),
+    }).then(function (resp) { return resp.json(); });
+  }
+
+  function assignedSet() {
+    if (sessionStorage.getItem(SHOW_ALL_KEY) === "true" || isAdmin()) {
+      return null;
+    }
+    var raw = sessionStorage.getItem(ASSIGNMENTS_KEY);
+    if (!raw) {
+      return new Set();
+    }
+    try {
+      var ids = JSON.parse(raw);
+      if (!Array.isArray(ids)) {
+        return new Set();
+      }
+      return new Set(ids.map(function (id) { return String(id || "").trim().toUpperCase(); }));
+    } catch (ignore) {
+      return new Set();
+    }
+  }
+
+  function setNotice(message, kind) {
+    var panel = document.querySelector("[data-hub-assignment-notice]");
+    if (!panel) {
+      return;
+    }
+    panel.hidden = !message;
+    panel.className = "hub-assignment-notice" + (kind ? " hub-assignment-notice--" + kind : "");
+    panel.textContent = message;
+  }
+
+  function applyHubTableFilter() {
+    var allowed = assignedSet();
+    var rows = document.querySelectorAll("tr[data-hub-test-id]");
+    if (!rows.length) {
+      return;
+    }
+    if (!allowed) {
+      rows.forEach(function (row) {
+        row.classList.remove("hub-row-assignment-hidden");
+      });
+      setNotice("", "");
+      if (window.tahiApplyHubColumnFilters) {
+        window.tahiApplyHubColumnFilters();
+      }
+      return;
+    }
+    var visible = 0;
+    rows.forEach(function (row) {
+      var testId = String(row.getAttribute("data-hub-test-id") || "").trim().toUpperCase();
+      var show = allowed.has(testId);
+      row.classList.toggle("hub-row-assignment-hidden", !show);
+      if (show) {
+        visible += 1;
+      }
+    });
+    if (visible === 0) {
+      setNotice("No tests are assigned to you in Eval Hub yet.", "error");
+    } else {
+      setNotice("Showing " + visible + " assigned test" + (visible === 1 ? "" : "s") + ".", "");
+    }
+    if (window.tahiApplyHubColumnFilters) {
+      window.tahiApplyHubColumnFilters();
+    }
+  }
+
+  function applyCasePageGate() {
+    var allowed = assignedSet();
+    if (!allowed) {
+      return;
+    }
+    var testId = String(document.body.getAttribute("data-test-id") || "").trim().toUpperCase();
+    if (!testId || allowed.has(testId)) {
+      return;
+    }
+    var wrap = document.querySelector(".wrap");
+    if (!wrap || document.querySelector("[data-hub-case-not-assigned]")) {
+      return;
+    }
+    var hubHref = document.querySelector('meta[name="tahi-hub-config-url"]')
+      ? "../index.html"
+      : "index.html";
+    var block = document.createElement("div");
+    block.className = "hub-case-not-assigned";
+    block.setAttribute("data-hub-case-not-assigned", "");
+    block.innerHTML =
+      "<p><strong>" + testId + "</strong> is not assigned to you.</p>" +
+      '<p><a href="' + hubHref + '">Back to evaluation hub</a></p>';
+    wrap.prepend(block);
+    wrap.querySelectorAll(":scope > main.content, :scope > footer.footer").forEach(function (node) {
+      node.hidden = true;
+    });
+  }
+
+  function clearAssignmentFilter() {
+    sessionStorage.removeItem(ASSIGNMENTS_KEY);
+    sessionStorage.removeItem(SHOW_ALL_KEY);
+    applyHubTableFilter();
+    setNotice("", "");
+  }
+
+  function finishAssignmentLoad() {
+    applyHubTableFilter();
+    applyCasePageGate();
+    if (document.body) {
+      document.body.removeAttribute("data-auth-pending");
+    }
+    if (window.tahiSyncHubAuthContent) {
+      window.tahiSyncHubAuthContent();
+    }
+    if (window.tahiSyncHubCaseNav) {
+      window.tahiSyncHubCaseNav();
+    }
+  }
+
+  function maybeReleaseAuthPendingFromCache() {
+    if (!document.body || !document.body.hasAttribute("data-auth-pending")) {
+      return;
+    }
+    if (!sessionStorage.getItem(TOKEN_KEY)) {
+      document.body.removeAttribute("data-auth-pending");
+      return;
+    }
+    if (isAdmin() || sessionStorage.getItem(SHOW_ALL_KEY) === "true") {
+      finishAssignmentLoad();
+      return;
+    }
+    if (sessionStorage.getItem(ASSIGNMENTS_KEY)) {
+      finishAssignmentLoad();
+    }
+  }
+
+  function syncBootstrapFromCache() {
+    if (!sessionStorage.getItem(TOKEN_KEY)) {
+      return;
+    }
+    applyHubTableFilter();
+    applyCasePageGate();
+    maybeReleaseAuthPendingFromCache();
+  }
+
+  window.tahiLoadReviewerAssignments = function () {
+    var token = sessionStorage.getItem(TOKEN_KEY);
+    if (!token) {
+      clearAssignmentFilter();
+      return Promise.resolve(false);
+    }
+    if (isAdmin()) {
+      sessionStorage.setItem(SHOW_ALL_KEY, "true");
+      sessionStorage.removeItem(ASSIGNMENTS_KEY);
+      finishAssignmentLoad();
+      return Promise.resolve(true);
+    }
+    return authUrlFromConfig().then(function (authUrl) {
+      if (!authUrl) {
+        return false;
+      }
+      return postAuth(authUrl, { action: "getReviewerAssignments", token: token })
+        .then(function (result) {
+          if (!result || !result.ok) {
+            throw new Error((result && result.error) || "Could not load assignments");
+          }
+          if (result.show_all) {
+            sessionStorage.setItem(SHOW_ALL_KEY, "true");
+            sessionStorage.removeItem(ASSIGNMENTS_KEY);
+          } else {
+            sessionStorage.setItem(SHOW_ALL_KEY, "false");
+            sessionStorage.setItem(
+              ASSIGNMENTS_KEY,
+              JSON.stringify(result.test_ids || [])
+            );
+          }
+          return true;
+        });
+    }).finally(function () {
+      finishAssignmentLoad();
+    });
+  };
+
+  window.tahiSyncHubAssignmentFilter = function () {
+    if (!sessionStorage.getItem(TOKEN_KEY)) {
+      clearAssignmentFilter();
+      return;
+    }
+    applyHubTableFilter();
+    applyCasePageGate();
+  };
+
+  syncBootstrapFromCache();
+
+  document.addEventListener("DOMContentLoaded", function () {
+    if (sessionStorage.getItem(TOKEN_KEY)) {
+      window.tahiLoadReviewerAssignments().catch(function () {
+        finishAssignmentLoad();
+      });
+    }
+  });
+})();
+
+(function () {
+  var TOKEN_KEY = "tahi_auth_token";
+  var USER_KEY = "tahi_reviewer_username";
+  var EMAIL_KEY = "tahi_reviewer_email";
+  var ROLE_KEY = "tahi_reviewer_role";
+
+  function authUrlFromConfig() {
+    var node = document.querySelector('meta[name="tahi-hub-config-url"]');
+    var path = node ? node.getAttribute("content") : "";
+    if (!path) {
+      return Promise.resolve("");
+    }
+    return fetch(path)
+      .then(function (resp) { return resp.json(); })
+      .then(function (cfg) { return String(cfg.auth_url || "").trim(); });
+  }
+
+  function postHub(authUrl, payload) {
+    return fetch(authUrl, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload),
+    }).then(function (resp) { return resp.json(); });
+  }
+
+  function reviewerRole() {
+    return String(sessionStorage.getItem(ROLE_KEY) || "").toLowerCase();
+  }
+
+  function isAdmin() {
+    return reviewerRole() === "admin";
+  }
+
+  function reviewerEmail() {
+    return String(sessionStorage.getItem(EMAIL_KEY) || "").toLowerCase();
+  }
+
+  function reviewerUsername() {
+    return String(sessionStorage.getItem(USER_KEY) || "").toLowerCase();
+  }
+
+  function verdictUnlocks(result) {
+    if (!result || !result.ok) {
+      return false;
+    }
+    if (isAdmin()) {
+      return true;
+    }
+    var verdict = String(result.verdict || "").toLowerCase();
+    if (!verdict || verdict === "pending") {
+      return false;
+    }
+    var recordedBy = String(result.reviewer_email || "").toLowerCase();
+    if (!recordedBy) {
+      return false;
+    }
+    return recordedBy === reviewerEmail() || recordedBy === reviewerUsername();
+  }
+
+  function setItemVisible(item, visible) {
+    if (!item) {
+      return;
+    }
+    item.classList.toggle("machine-review-unlocked", visible);
+    var placeholder = item.querySelector("[data-machine-review-placeholder]");
+    var content = item.querySelector("[data-machine-review-content]");
+    if (placeholder) {
+      placeholder.hidden = visible;
+    }
+    if (content) {
+      content.hidden = !visible;
+    }
+  }
+
+  function setMachinePanelUnlocked(unlocked) {
+    var panel = document.querySelector('[data-case-details-panel="machine"]');
+    if (!panel) {
+      return;
+    }
+    if (unlocked) {
+      panel.classList.remove("machine-review-hidden");
+    } else if (document.body.getAttribute("data-machine-review-blinded") === "true") {
+      panel.classList.add("machine-review-hidden");
+    }
+  }
+
+  function setScopeVisible(scope, visible) {
+    var root = scope || document;
+    root.querySelectorAll("[data-machine-review-gated]").forEach(function (item) {
+      setItemVisible(item, visible);
+    });
+    if (!scope || scope === document.body) {
+      document.body.setAttribute("data-machine-review-visible", visible ? "true" : "false");
+      setMachinePanelUnlocked(visible);
+      document.querySelectorAll('[data-case-details-panel="machine"] .viewer-gate-hint').forEach(function (el) {
+        el.hidden = visible;
+      });
+      if (visible && window.tahiLoadMachineDraft) {
+        var machinePanel = document.querySelector('[data-case-details-panel="machine"]');
+        if (machinePanel && !machinePanel.hidden) {
+          window.tahiLoadMachineDraft();
+        }
+      }
+    }
+  }
+
+  var CASE_VERDICT_LABELS = {
+    pass: "Pass",
+    fail: "Fail",
+    likely_pass: "Likely pass",
+    pending: "Pending review",
+    review: "Needs review",
+    draft: "Draft",
+    inconclusive: "Inconclusive",
+    borderline: "Borderline",
+    "n/a": "N/A"
+  };
+
+  function caseVerdictLabel(verdict) {
+    var value = String(verdict || "").toLowerCase();
+    return CASE_VERDICT_LABELS[value] || value.replace(/_/g, " ");
+  }
+
+  function setToneClass(el, baseClass, tone) {
+    Array.prototype.slice.call(el.classList).forEach(function (className) {
+      if (className.indexOf(baseClass + "--") === 0) {
+        el.classList.remove(className);
+      }
+    });
+    el.classList.add(baseClass + "--" + tone);
+  }
+
+  function syncHumanVerdictCards(verdict) {
+    var value = String(verdict || "").toLowerCase();
+    if (!value || value === "pending") {
+      return;
+    }
+    var label = caseVerdictLabel(value);
+    var tone = hubVerdictTone(value);
+
+    document.querySelectorAll("[data-human-verdict-card]").forEach(function (card) {
+      setToneClass(card, "tier-nav-card", tone);
+      var badge = card.querySelector(".verdict-badge");
+      if (badge) {
+        badge.className = "verdict-badge verdict-badge--" + tone;
+        badge.textContent = label;
+      }
+      var hint = card.querySelector(".tier-nav-card-hint");
+      if (hint) {
+        hint.textContent = "Update human verdict";
+      }
+    });
+
+    document.querySelectorAll("[data-human-verdict-strip]").forEach(function (card) {
+      setToneClass(card, "results-card", tone);
+      var valueEl = card.querySelector(".results-card-value");
+      if (valueEl) {
+        valueEl.className = "results-card-value results-card-value--" + tone;
+        valueEl.textContent = label;
+      }
+    });
+  }
+
+  function hubRunContext() {
+    var runId = document.body.getAttribute("data-eval-hub-run-id") || "";
+    var testId = document.body.getAttribute("data-test-id") || "";
+    if (!runId || !testId) {
+      var panel = document.querySelector("[data-human-verdict-panel]");
+      if (panel) {
+        runId = runId || panel.getAttribute("data-run-id") || "";
+        testId = testId || panel.getAttribute("data-test-id") || "";
+      }
+    }
+    return { runId: runId, testId: testId };
+  }
+
+  function syncHumanVerdictFromHub(authUrl) {
+    if (!document.querySelector("[data-human-verdict-card]")) {
+      return Promise.resolve();
+    }
+    var ctx = hubRunContext();
+    var runId = ctx.runId;
+    var testId = ctx.testId;
+    var token = sessionStorage.getItem(TOKEN_KEY);
+    if (!token || !authUrl || !runId || !testId) {
+      return Promise.resolve();
+    }
+    return postHub(authUrl, {
+      action: "getVerdict",
+      token: token,
+      run_id: runId,
+      test_id: testId,
+    })
+      .then(function (result) {
+        if (result && result.ok) {
+          syncHumanVerdictCards(result.verdict);
+        }
+      })
+      .catch(function () {});
+  }
+
+  window.tahiSyncHumanVerdictCards = syncHumanVerdictCards;
+
+  function syncCasePage(authUrl) {
+    var blinded = document.body.getAttribute("data-machine-review-blinded") === "true";
+    var runId = document.body.getAttribute("data-eval-hub-run-id") || "";
+    var testId = document.body.getAttribute("data-test-id") || "";
+    var token = sessionStorage.getItem(TOKEN_KEY);
+
+    if (isAdmin()) {
+      setScopeVisible(document.body, true);
+      if (window.tahiLoadMachineDraft) {
+        window.tahiLoadMachineDraft();
+      }
+      return syncHumanVerdictFromHub(authUrl);
+    }
+    if (!blinded) {
+      setScopeVisible(document.body, true);
+      if (window.tahiLoadMachineDraft) {
+        window.tahiLoadMachineDraft();
+      }
+      return syncHumanVerdictFromHub(authUrl);
+    }
+    if (!token || !authUrl || !runId || !testId) {
+      setScopeVisible(document.body, false);
+      return Promise.resolve();
+    }
+    return postHub(authUrl, {
+      action: "getVerdict",
+      token: token,
+      run_id: runId,
+      test_id: testId,
+    }).then(function (result) {
+      var visible = verdictUnlocks(result);
+      setScopeVisible(document.body, visible);
+      syncHumanVerdictCards(result.verdict);
+      if (visible && window.tahiLoadMachineDraft) {
+        window.tahiLoadMachineDraft();
+      }
+    }).catch(function () {
+      setScopeVisible(document.body, false);
+    });
+  }
+
+  var HUB_VERDICT_LABELS = {
+    pass: "Pass",
+    fail: "Fail",
+    likely_pass: "Likely",
+    pending: "Pending",
+    review: "Review",
+    draft: "Draft",
+    inconclusive: "Split",
+    borderline: "Border",
+    "n/a": "N/A"
+  };
+
+  function hubVerdictTone(verdict) {
+    var value = String(verdict || "").toLowerCase();
+    if (value === "pass" || value === "likely_pass") {
+      return "pass";
+    }
+    if (value === "fail") {
+      return "fail";
+    }
+    if (value === "pending" || value === "review" || value === "draft" || value === "inconclusive") {
+      return "warn";
+    }
+    return "neutral";
+  }
+
+  function hubVerdictLabel(verdict) {
+    var value = String(verdict || "").toLowerCase();
+    return HUB_VERDICT_LABELS[value] || value.replace(/_/g, " ");
+  }
+
+  function hubVerdictBadgeHtml(verdict, title) {
+    var value = String(verdict || "").toLowerCase();
+    if (!value || value === "pending") {
+      var awaitingTitle = title || "Awaiting reviewer verdict";
+      return (
+        '<span class="verdict-badge verdict-badge--warn" title="' +
+        awaitingTitle +
+        '">Awaiting</span>'
+      );
+    }
+    return (
+      '<span class="verdict-badge verdict-badge--' +
+      hubVerdictTone(value) +
+      '">' +
+      hubVerdictLabel(value) +
+      "</span>"
+    );
+  }
+
+  function applyHubHumanVerdict(row, result) {
+    var humanCell = row.querySelector("[data-hub-human-verdict]");
+    if (!humanCell) {
+      return;
+    }
+    var verdict = String((result && result.verdict) || "").toLowerCase();
+    if (!verdict || verdict === "pending") {
+      return;
+    }
+    var humanContent = humanCell.querySelector("[data-hub-human-verdict-content]");
+    if (humanContent) {
+      humanContent.innerHTML = hubVerdictBadgeHtml(verdict);
+    }
+    var summaryCell = row.querySelector("[data-hub-summary-cell]");
+    if (!summaryCell) {
+      return;
+    }
+    if (summaryCell.getAttribute("data-machine-review-blinded") !== "true") {
+      return;
+    }
+    var summaryVerdict = summaryCell.getAttribute("data-summary-verdict") || "review";
+    var summaryContent = summaryCell.querySelector("[data-hub-summary-content]");
+    if (summaryContent) {
+      summaryContent.innerHTML = hubVerdictBadgeHtml(summaryVerdict);
+    }
+  }
+
+  function applyHubMachineVisibility(row, result, token) {
+    row.querySelectorAll("[data-hub-machine-row]").forEach(function (item) {
+      var blinded = item.getAttribute("data-machine-review-blinded") === "true";
+      if (isAdmin()) {
+        setItemVisible(item, true);
+        return;
+      }
+      if (!blinded) {
+        setItemVisible(item, true);
+        return;
+      }
+      if (!token) {
+        setItemVisible(item, false);
+        return;
+      }
+      setItemVisible(item, verdictUnlocks(result));
+    });
+  }
+
+  function syncHubTableRow(row, authUrl) {
+    var anchor =
+      row.querySelector("[data-hub-machine-row]") ||
+      row.querySelector("[data-hub-human-verdict]");
+    if (!anchor) {
+      return Promise.resolve();
+    }
+    var runId = anchor.getAttribute("data-run-id") || "";
+    var testId = anchor.getAttribute("data-test-id") || "";
+    var token = sessionStorage.getItem(TOKEN_KEY);
+    var machineCells = row.querySelectorAll("[data-hub-machine-row]");
+    var humanCell = row.querySelector("[data-hub-human-verdict]");
+
+    if (!token) {
+      var allOpen = machineCells.length > 0 && Array.prototype.every.call(machineCells, function (item) {
+        return item.getAttribute("data-machine-review-blinded") !== "true";
+      });
+      machineCells.forEach(function (item) {
+        setItemVisible(item, allOpen);
+      });
+      return Promise.resolve();
+    }
+    if (!authUrl || !runId || !testId) {
+      machineCells.forEach(function (item) {
+        setItemVisible(item, false);
+      });
+      return Promise.resolve();
+    }
+
+    var needsVerdict = Boolean(humanCell) || Array.prototype.some.call(machineCells, function (item) {
+      return item.getAttribute("data-machine-review-blinded") === "true";
+    });
+    if (!needsVerdict && !isAdmin()) {
+      machineCells.forEach(function (item) {
+        if (item.getAttribute("data-machine-review-blinded") !== "true") {
+          setItemVisible(item, true);
+        }
+      });
+      return Promise.resolve();
+    }
+
+    return postHub(authUrl, {
+      action: "getVerdict",
+      token: token,
+      run_id: runId,
+      test_id: testId,
+    })
+      .then(function (result) {
+        applyHubMachineVisibility(row, result, token);
+        applyHubHumanVerdict(row, result);
+      })
+      .catch(function () {
+        machineCells.forEach(function (item) {
+          setItemVisible(item, false);
+        });
+      });
+  }
+
+  function syncHub(authUrl) {
+    var rows = document.querySelectorAll(".hub-table tbody tr");
+    if (!rows.length) {
+      return Promise.resolve();
+    }
+    return Promise.all(Array.prototype.map.call(rows, function (row) {
+      return syncHubTableRow(row, authUrl);
+    }));
+  }
+
+  window.tahiSyncMachineReviewVisibility = function () {
+    return authUrlFromConfig().then(function (authUrl) {
+      if (document.body.getAttribute("data-test-id")) {
+        return syncCasePage(authUrl);
+      }
+      return syncHub(authUrl);
+    });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", function () {
+      window.tahiSyncMachineReviewVisibility();
+    });
+  } else {
+    window.tahiSyncMachineReviewVisibility();
+  }
+})();
+
+(function () {
+  var TOKEN_KEY = "tahi_auth_token";
+  var ROLE_KEY = "tahi_reviewer_role";
+
+  function isAdmin() {
+    return (
+      String(sessionStorage.getItem(ROLE_KEY) || "").toLowerCase() === "admin" &&
+      Boolean(sessionStorage.getItem(TOKEN_KEY))
+    );
+  }
+
+  function isReviewer() {
+    return (
+      String(sessionStorage.getItem(ROLE_KEY) || "").toLowerCase() === "reviewer" &&
+      Boolean(sessionStorage.getItem(TOKEN_KEY))
+    );
+  }
+
+  function syncUsersNav() {
+    var hide = !isAdmin();
+    document.querySelectorAll(".hub-nav--users").forEach(function (node) {
+      node.hidden = hide;
+    });
+  }
+
+  function syncAdminArtifacts() {
+    var show = isAdmin();
+    document.querySelectorAll("[data-hub-admin-artifacts]").forEach(function (node) {
+      node.hidden = !show;
+    });
+  }
+
+  function syncPerformanceNav() {
+    var show = isAdmin();
+    document.querySelectorAll(".hub-nav--performance").forEach(function (node) {
+      node.hidden = !show;
+    });
+  }
+
+  function gatePerformancePage() {
+    if (!document.body.hasAttribute("data-perf-hub")) {
+      return;
+    }
+    if (!isReviewer()) {
+      return;
+    }
+    var wrap = document.querySelector(".wrap");
+    if (!wrap || document.querySelector("[data-hub-perf-blocked]")) {
+      return;
+    }
+    var block = document.createElement("div");
+    block.className = "hub-perf-blocked";
+    block.setAttribute("data-hub-perf-blocked", "");
+    block.innerHTML =
+      "<p><strong>Performance suite</strong> is for admins only.</p>" +
+      '<p><a href="../index.html">Back to evaluation hub</a></p>';
+    wrap.querySelectorAll(":scope > main.content, :scope > footer.footer").forEach(function (node) {
+      node.hidden = true;
+    });
+    wrap.appendChild(block);
+  }
+
+  function syncHubAuthContent() {
+    var content = document.querySelector("[data-hub-auth-content]");
+    if (!content) {
+      return;
+    }
+    var signedIn =
+      document.body.getAttribute("data-reviewer-signed-in") === "true" &&
+      Boolean(sessionStorage.getItem(TOKEN_KEY));
+    var pending = document.body.hasAttribute("data-auth-pending");
+    content.hidden = !signedIn || pending;
+    var prompt = document.querySelector("[data-hub-auth-required]");
+    if (prompt) {
+      prompt.hidden = signedIn || pending;
+    }
+    var notice = document.querySelector("[data-hub-assignment-notice]");
+    if (notice && !signedIn) {
+      notice.hidden = true;
+      notice.textContent = "";
+    }
+  }
+
+  window.tahiSyncHubAuthContent = syncHubAuthContent;
+
+  window.tahiSyncPerformanceAccess = function () {
+    syncPerformanceNav();
+    gatePerformancePage();
+    syncUsersNav();
+    syncAdminArtifacts();
+    syncHubAuthContent();
+  };
+
+  window.tahiSyncUsersNav = syncUsersNav;
+
+  document.addEventListener("DOMContentLoaded", function () {
+    window.tahiSyncPerformanceAccess();
+  });
+})();
+
+(function () {
+  var TOKEN_KEY = "tahi_auth_token";
+  var ROLE_KEY = "tahi_reviewer_role";
+  var ASSIGNMENTS_KEY = "tahi_reviewer_assignments";
+  var SHOW_ALL_KEY = "tahi_reviewer_show_all_tests";
+  var COLUMN_FILTERS_KEY = "tahi_hub_column_filters";
+  var FILTER_KEYS = ["class", "method", "struct", "rules", "machine", "human", "summary"];
+
+  function isAdmin() {
+    return String(sessionStorage.getItem(ROLE_KEY) || "").toLowerCase() === "admin";
+  }
+
+  function authConfigured() {
+    return Boolean(document.querySelector('meta[name="tahi-hub-config-url"]'));
+  }
+
+  function assignedSet() {
+    if (sessionStorage.getItem(SHOW_ALL_KEY) === "true" || isAdmin()) {
+      return null;
+    }
+    var raw = sessionStorage.getItem(ASSIGNMENTS_KEY);
+    if (!raw) {
+      return new Set();
+    }
+    try {
+      var ids = JSON.parse(raw);
+      if (!Array.isArray(ids)) {
+        return new Set();
+      }
+      return new Set(ids.map(function (id) {
+        return String(id || "").trim().toUpperCase();
+      }));
+    } catch (ignore) {
+      return new Set();
+    }
+  }
+
+  function columnFilters() {
+    if (typeof window.tahiHubColumnFilters === "function") {
+      return window.tahiHubColumnFilters();
+    }
+    try {
+      var raw = sessionStorage.getItem(COLUMN_FILTERS_KEY);
+      if (!raw) {
+        return {};
+      }
+      var parsed = JSON.parse(raw);
+      if (!parsed || typeof parsed !== "object") {
+        return {};
+      }
+      var filters = {};
+      FILTER_KEYS.forEach(function (key) {
+        var value = String(parsed[key] || "").trim();
+        if (value) {
+          filters[key] = value;
+        }
+      });
+      return filters;
+    } catch (ignore) {
+      return {};
+    }
+  }
+
+  function testFilterLabels(entry) {
+    var labels = (entry && entry.filter_labels) || {};
+    if (labels && typeof labels === "object") {
+      return labels;
+    }
+    return {};
+  }
+
+  function matchesColumnFilters(entry, filters) {
+    var keys = Object.keys(filters);
+    if (!keys.length) {
+      return true;
+    }
+    var labels = testFilterLabels(entry);
+    return keys.every(function (key) {
+      return String(labels[key] || "").trim() === filters[key];
+    });
+  }
+
+  function hubManifestUrl() {
+    var back = document.querySelector("[data-hub-case-nav] .hub-case-nav-back");
+    if (!back) {
+      return "../hub.json";
+    }
+    var hubHref = back.getAttribute("href") || "../index.html";
+    var base = hubHref.replace(/[^/]*$/, "");
+    return base + "hub.json";
+  }
+
+  function visibleTestIds(sortedIds, testsById) {
+    var ids = sortedIds;
+    var filters = columnFilters();
+    if (authConfigured()) {
+      if (!sessionStorage.getItem(TOKEN_KEY)) {
+        return [];
+      }
+      var allowed = assignedSet();
+      if (allowed) {
+        ids = ids.filter(function (testId) {
+          return allowed.has(String(testId || "").trim().toUpperCase());
+        });
+      }
+    }
+    if (!Object.keys(filters).length) {
+      return ids;
+    }
+    return ids.filter(function (testId) {
+      return matchesColumnFilters(testsById[testId], filters);
+    });
+  }
+
+  function caseHref(testId) {
+    return "../" + encodeURIComponent(testId) + "/index.html";
+  }
+
+  function applyNavState(ids, currentId) {
+    var nav = document.querySelector("[data-hub-case-nav]");
+    if (!nav) {
+      return;
+    }
+    var seq = nav.querySelector("[data-hub-case-nav-seq]");
+    var prev = nav.querySelector("[data-hub-case-nav-prev]");
+    var next = nav.querySelector("[data-hub-case-nav-next]");
+    var pos = nav.querySelector("[data-hub-case-nav-pos]");
+    if (!seq || !prev || !next || !pos) {
+      return;
+    }
+    var idx = ids.findIndex(function (id) {
+      return String(id || "").trim().toUpperCase() === currentId;
+    });
+    if (ids.length <= 1 || idx < 0) {
+      seq.hidden = true;
+      prev.hidden = true;
+      next.hidden = true;
+      pos.hidden = true;
+      return;
+    }
+    seq.hidden = false;
+    pos.hidden = false;
+    pos.textContent = (idx + 1) + " of " + ids.length;
+    if (idx > 0) {
+      var prevId = ids[idx - 1];
+      prev.hidden = false;
+      prev.textContent = "\u2190 " + prevId;
+      prev.setAttribute("href", caseHref(prevId));
+    } else {
+      prev.hidden = true;
+    }
+    if (idx < ids.length - 1) {
+      var nextId = ids[idx + 1];
+      next.hidden = false;
+      next.textContent = nextId + " \u2192";
+      next.setAttribute("href", caseHref(nextId));
+    } else {
+      next.hidden = true;
+    }
+  }
+
+  function syncHubCaseNav() {
+    var nav = document.querySelector("[data-hub-case-nav]");
+    if (!nav) {
+      return Promise.resolve();
+    }
+    var currentId = String(document.body.getAttribute("data-test-id") || "").trim().toUpperCase();
+    if (!currentId) {
+      return Promise.resolve();
+    }
+    var filters = columnFilters();
+    var needsRefinement = authConfigured() || Object.keys(filters).length > 0;
+    if (!needsRefinement) {
+      return Promise.resolve();
+    }
+    return fetch(hubManifestUrl())
+      .then(function (resp) { return resp.json(); })
+      .then(function (index) {
+        var tests = (index && index.tests) || {};
+        var sortedIds = Object.keys(tests).sort(function (a, b) {
+          return a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" });
+        });
+        applyNavState(visibleTestIds(sortedIds, tests), currentId);
+      })
+      .catch(function () {});
+  }
+
+  window.tahiSyncHubCaseNav = syncHubCaseNav;
+
+  if (document.querySelector("[data-hub-case-nav]")) {
+    syncHubCaseNav();
+  }
+  document.addEventListener("DOMContentLoaded", syncHubCaseNav);
+})();
+
+(function () {
+  var TOKEN_KEY = "tahi_auth_token";
+  var panel = document.querySelector("[data-human-verdict-panel]");
+  if (!panel) {
+    return;
+  }
+  var runId = panel.getAttribute("data-run-id") || "";
+  var testId = panel.getAttribute("data-test-id") || "";
+  var statusEl = panel.querySelector("[data-human-verdict-status]");
+  var form = panel.querySelector("[data-human-verdict-form]");
+  var authUrl = "";
+
+  function setStatus(message, tone) {
+    if (!statusEl) {
+      return;
+    }
+    statusEl.textContent = message;
+    statusEl.className = "human-verdict-status";
+    if (tone) {
+      statusEl.classList.add("human-verdict-status--" + tone);
+    }
+  }
+
+  function configPath() {
+    var node = document.querySelector('meta[name="tahi-hub-config-url"]');
+    return node ? node.getAttribute("content") : "";
+  }
+
+  function postHub(payload) {
+    return fetch(authUrl, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload),
+    }).then(function (resp) {
+      return resp.json();
+    });
+  }
+
+  function applyVerdict(result) {
+    if (!form) {
+      return;
+    }
+    var verdict = String(result.verdict || "").toLowerCase();
+    var notes = String(result.notes || "");
+    var verdictSelect = form.querySelector('select[name="verdict"]');
+    var notesInput = form.querySelector('textarea[name="notes"]');
+    if (verdictSelect && verdict) {
+      verdictSelect.value = verdict;
+    }
+    if (notesInput) {
+      notesInput.value = notes;
+    }
+    if (verdict && verdict !== "pending" && window.tahiSyncHumanVerdictCards) {
+      window.tahiSyncHumanVerdictCards(verdict);
+    }
+    if (result.verdict_at) {
+      setStatus(
+        "Recorded " + result.verdict_at + (result.reviewer_email ? " by " + result.reviewer_email : ""),
+        "saved"
+      );
+      return;
+    }
+    if (verdict && verdict !== "pending") {
+      setStatus("Current verdict: " + verdict, "saved");
+    }
+  }
+
+  function loadVerdict() {
+    var token = sessionStorage.getItem(TOKEN_KEY);
+    if (!token || !runId || !testId || !authUrl) {
+      return;
+    }
+    setStatus("Loading saved verdict…", "loading");
+    postHub({
+      action: "getVerdict",
+      token: token,
+      run_id: runId,
+      test_id: testId,
+    })
+      .then(function (result) {
+        if (!result || !result.ok) {
+          throw new Error((result && result.error) || "Could not load verdict");
+        }
+        applyVerdict(result);
+        if (!result.verdict || result.verdict === "pending") {
+          setStatus("No human verdict recorded yet.", "pending");
+        }
+      })
+        .catch(function (err) {
+          var message = (err && err.message) || "Could not load verdict.";
+          if (message === "Unauthorized") {
+            message =
+              "Eval Hub Apps Script needs redeploy with submitVerdict support. Ask an admin to deploy the latest Code.gs.";
+          }
+          setStatus(message, "error");
+        });
+  }
+
+  function syncVisibility() {
+    var signedIn = document.body.getAttribute("data-reviewer-signed-in") === "true";
+    var humanDetails = document.querySelector('[data-case-details-panel="human"]');
+    var humanOpen = humanDetails && !humanDetails.hidden;
+    if (!humanOpen) {
+      return;
+    }
+    if (signedIn) {
+      loadVerdict();
+    } else {
+      setStatus("Sign in above to submit a human verdict.", "pending");
+    }
+  }
+
+  window.tahiSyncVerdictPanel = syncVisibility;
+
+  function bindForm() {
+    if (!form) {
+      return;
+    }
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var token = sessionStorage.getItem(TOKEN_KEY);
+      if (!token) {
+        setStatus("Sign in to submit a verdict.", "error");
+        return;
+      }
+      var verdictSelect = form.querySelector('select[name="verdict"]');
+      var notesInput = form.querySelector('textarea[name="notes"]');
+      var verdict = verdictSelect ? String(verdictSelect.value || "").trim() : "";
+      var notes = notesInput ? String(notesInput.value || "").trim() : "";
+      if (!verdict) {
+        setStatus("Select a verdict.", "error");
+        return;
+      }
+      setStatus("Saving…", "loading");
+      postHub({
+        action: "submitVerdict",
+        token: token,
+        run_id: runId,
+        test_id: testId,
+        verdict: verdict,
+        notes: notes,
+      })
+        .then(function (result) {
+          if (!result || !result.ok) {
+            var errMsg = (result && result.error) || "Submit failed";
+            if (errMsg === "Unauthorized") {
+              throw new Error(
+                "Eval Hub Apps Script needs redeploy with submitVerdict support. Ask an admin to deploy the latest Code.gs."
+              );
+            }
+            throw new Error(errMsg);
+          }
+          applyVerdict(result);
+          setStatus("Verdict saved to Eval Hub.", "saved");
+          if (window.tahiSyncMachineReviewVisibility) {
+            window.tahiSyncMachineReviewVisibility();
+          }
+        })
+        .catch(function (err) {
+          setStatus((err && err.message) || "Submit failed.", "error");
+        });
+    });
+  }
+
+  var path = configPath();
+  if (!path) {
+    return;
+  }
+  fetch(path)
+    .then(function (resp) {
+      return resp.json();
+    })
+    .then(function (cfg) {
+      authUrl = String(cfg.auth_url || "").trim();
+      bindForm();
+      if (sessionStorage.getItem(TOKEN_KEY)) {
+        loadVerdict();
+      }
+      syncVisibility();
+    })
+    .catch(function () {
+      setStatus("Could not load hub config.", "error");
+    });
+})();
+</script>
+</body>
+</html>
