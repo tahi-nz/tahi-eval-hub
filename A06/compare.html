@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A06 run comparison</title>
+  <style>
+:root {
+  color-scheme: light;
+  --text: #1c2430;
+  --muted: #5f6b7a;
+  --border: #dde3ea;
+  --surface: #f4f7fb;
+  --surface-2: #eef2f7;
+  --accent: #0f4c5c;
+  --accent-soft: #e8f3f6;
+  --pass: #0d6b3f;
+  --pass-bg: #e8f6ee;
+  --pass-bg-overall: #b8dcc8;
+  --pass-border: #9fd4b8;
+  --pass-border-overall: #6aab84;
+  --fail: #b42318;
+  --fail-bg: #fdeeed;
+  --fail-border: #f2b8b5;
+  --warn: #8a5a00;
+  --warn-bg: #fff8e8;
+  --warn-border: #f0d48a;
+  --neutral-bg: #f0f3f7;
+  --neutral-border: #c8d2dc;
+  --prompt: #0f3d75;
+  --prompt-text: #0a2847;
+  --prompt-soft: #d4e4f5;
+  --prompt-border: #7aa3d4;
+  --shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 8px 24px rgba(16, 24, 40, 0.06);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: #295f4b;
+}
+.wrap {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+.wrap--wide {
+  max-width: 96rem;
+}
+.wrap--hub {
+  max-width: 90rem;
+}
+.case-layout-columns {
+  display: grid;
+  grid-template-columns: minmax(14rem, 21rem) minmax(0, 1fr);
+  gap: 1rem 1.25rem;
+  align-items: start;
+  margin-top: 1rem;
+  overflow: visible;
+}
+.case-layout-columns.is-details-open {
+  grid-template-columns: minmax(14rem, 21rem) minmax(0, 1fr) minmax(16rem, 24rem);
+}
+.case-context-column,
+.case-response-column,
+.case-details-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+  overflow: visible;
+}
+.case-details-column {
+  display: none;
+  position: sticky;
+  top: 1rem;
+  align-self: start;
+  max-height: calc(100vh - 2rem);
+  overflow: auto;
+}
+.case-layout-columns.is-details-open .case-details-column {
+  display: flex;
+}
+.case-details-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+.case-details-head h2 {
+  margin: 0;
+  font-size: 0.98rem;
+  color: var(--accent);
+}
+.case-details-column .case-details-head h2 {
+  color: #f4faf7;
+}
+.case-details-placeholder {
+  margin: 0;
+  padding: 1rem;
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  background: var(--surface);
+}
+.case-details-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.case-details-panel[hidden] {
+  display: none !important;
+}
+.case-details-placeholder[hidden] {
+  display: none !important;
+}
+.tier-nav-card {
+  border-radius: 12px;
+  padding: 0.85rem 0.95rem;
+  box-shadow: var(--shadow);
+  text-align: left;
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  border: 1px solid transparent;
+  border-left-width: 4px;
+}
+body:not([data-reviewer-admin="true"]) [data-hub-admin-only] {
+  display: none !important;
+}
+.tier-nav-card--pass {
+  background: var(--pass-bg);
+  border-color: var(--pass-border);
+  border-left-color: var(--pass);
+}
+.tier-nav-card--fail {
+  background: var(--fail-bg);
+  border-color: var(--fail-border);
+  border-left-color: var(--fail);
+}
+.tier-nav-card--warn {
+  background: var(--warn-bg);
+  border-color: var(--warn-border);
+  border-left-color: var(--warn);
+}
+.tier-nav-card--neutral {
+  background: var(--neutral-bg);
+  border-color: var(--neutral-border);
+  border-left-color: #8a96a3;
+}
+button.tier-nav-card {
+  cursor: pointer;
+}
+button.tier-nav-card:hover {
+  filter: brightness(0.98);
+}
+.tier-nav-card.is-active {
+  box-shadow: 0 0 0 2px var(--accent);
+}
+.tier-nav-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.45rem;
+}
+.tier-nav-card h3 {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--text);
+}
+.tier-nav-card-commentary {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+.tier-nav-card-hint {
+  margin: 0.45rem 0 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+.case-review-column,
+.case-response-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+}
+.case-response-column {
+  align-self: start;
+}
+.case-llm-slot {
+  flex: 0 0 auto;
+}
+.tahi-response-body {
+  min-width: 0;
+}
+@media (max-width: 900px) {
+  .case-layout-columns,
+  .case-layout-columns.is-details-open {
+    grid-template-columns: 1fr;
+  }
+  .case-details-column {
+    position: static;
+    max-height: none;
+  }
+}
+.results-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+  gap: 0.75rem;
+  margin: 0 0 1.25rem;
+}
+.workflow-timing-card {
+  margin: 0 0 1.25rem;
+  padding: 1rem 1.1rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+.case-details-panel .workflow-timing-card {
+  margin: 0;
+  padding: 1rem 1.05rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: none;
+  background: #fff;
+}
+.workflow-timing-nav-delta {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.workflow-timing-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  margin-bottom: 0.85rem;
+}
+.workflow-timing-head h2 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--accent);
+}
+.workflow-timing-total {
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+.workflow-timing-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+.workflow-timing-table th,
+.workflow-timing-table td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.45rem 0.35rem;
+  text-align: left;
+  vertical-align: top;
+}
+.workflow-timing-table tr:last-child th,
+.workflow-timing-table tr:last-child td {
+  border-bottom: none;
+}
+.workflow-timing-table th {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.workflow-timing-stage {
+  font-weight: 600;
+  color: var(--text);
+}
+.workflow-timing-detail {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+.workflow-timing-queries {
+  margin: 0.35rem 0 0;
+  padding-left: 1.1rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.workflow-timing-queries li {
+  margin: 0.1rem 0;
+}
+.workflow-timing-delta--slower {
+  color: var(--warn);
+  font-weight: 600;
+}
+.workflow-timing-delta--faster {
+  color: var(--pass);
+  font-weight: 600;
+}
+.workflow-timing-delta--neutral {
+  color: var(--muted);
+}
+.workflow-timing-footnote {
+  margin: 0.75rem 0 0;
+  font-size: 0.76rem;
+  color: var(--muted);
+}
+.results-card {
+  border-radius: 12px;
+  padding: 0.85rem 0.95rem;
+  box-shadow: var(--shadow);
+  min-height: 5.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  border: 1px solid transparent;
+  border-left-width: 4px;
+}
+.results-card-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.results-card-name {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.25;
+}
+.results-card-value {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.results-card-footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.results-card-value--pass { color: var(--pass); }
+.results-card-value--fail { color: var(--fail); }
+.results-card-value--warn { color: var(--warn); }
+.results-card-value--neutral { color: var(--text); }
+.results-card-meta {
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.results-card--pass {
+  background: var(--pass-bg);
+  border-color: var(--pass-border);
+  border-left-color: var(--pass);
+}
+.results-card--pass .results-card-meta { color: var(--pass); }
+.results-card--fail {
+  background: var(--fail-bg);
+  border-color: var(--fail-border);
+  border-left-color: var(--fail);
+}
+.results-card--fail .results-card-meta { color: var(--fail); }
+.results-card--warn {
+  background: var(--warn-bg);
+  border-color: var(--warn-border);
+  border-left-color: var(--warn);
+}
+.results-card--warn .results-card-meta { color: var(--warn); }
+.results-card--neutral {
+  background: var(--neutral-bg);
+  border-color: var(--neutral-border);
+  border-left-color: #8a96a3;
+}
+.results-card--overall {
+  grid-column: span 1;
+}
+.results-card--overall.results-card--pass {
+  background: var(--pass-bg-overall);
+  border-color: var(--pass-border-overall);
+  border-left-color: var(--pass);
+}
+.results-card--overall.results-card--pass .results-card-value {
+  color: #084a2d;
+}
+@media (min-width: 720px) {
+  .results-card--overall {
+    grid-column: span 1;
+  }
+}
+.confidence-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid #b8dce6;
+}
+.viewer-gate-hint {
+  margin: 0.65rem 0 0;
+  padding: 0.65rem 0.75rem;
+  border-radius: 8px;
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+body[data-machine-review-visible="true"] [data-case-details-panel="machine"] .viewer-gate-hint {
+  display: none;
+}
+.machine-review-hidden {
+  display: none !important;
+}
+.machine-review-placeholder-card,
+.results-card--locked,
+.tier-nav-card--locked {
+  background: #eef1f4;
+  border-style: dashed;
+  border-color: #b8c2cc;
+  color: var(--text);
+}
+.results-card--locked .results-card-label,
+.results-card--locked .results-card-name,
+.tier-nav-card--locked .tier-nav-card-commentary {
+  color: var(--muted);
+}
+.results-card--locked .results-card-value {
+  color: #5c6875;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+.tier-nav-card--locked {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.hub-cell-locked {
+  color: #5c6875;
+  background: #eef1f4;
+  border-color: #c5ced8;
+}
+[data-machine-review-placeholder][hidden],
+[data-machine-review-content][hidden],
+[data-machine-review-gated] > [hidden] {
+  display: none !important;
+}
+[data-machine-review-gated] {
+  min-width: 0;
+}
+.reviewer-auth-bar-wrap {
+  flex: 0 0 auto;
+  margin: 0;
+  align-self: flex-start;
+}
+.reviewer-auth-bar {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  gap: 0.65rem;
+  align-items: center;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff0e0;
+  box-shadow: var(--shadow);
+}
+body[data-reviewer-signed-in="true"] .reviewer-auth-bar:not(.reviewer-auth-bar--error) {
+  background: #e6f4ea;
+}
+body[data-reviewer-signed-in="false"] .reviewer-auth-bar:not(.reviewer-auth-bar--error) {
+  background: #fff0e0;
+}
+.reviewer-auth-bar--error {
+  border-color: var(--fail-border);
+  background: var(--fail-bg);
+  flex-wrap: wrap;
+}
+.reviewer-auth-bar--shake {
+  animation: reviewer-auth-shake 0.35s ease;
+}
+@keyframes reviewer-auth-shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-4px); }
+  40%, 80% { transform: translateX(4px); }
+}
+.reviewer-auth-status {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.reviewer-auth-status--signed-in {
+  color: var(--text);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.reviewer-auth-status--error {
+  flex: 1 1 100%;
+  order: -1;
+  color: var(--fail);
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid var(--fail-border);
+  box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.12);
+}
+.reviewer-auth-status--loading {
+  color: var(--accent);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.reviewer-auth-actions {
+  display: inline-flex;
+  align-items: center;
+}
+.reviewer-auth-bar--error .reviewer-auth-field input {
+  border-color: var(--fail-border);
+  background: #fff;
+}
+.reviewer-auth-form {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.5rem 0.75rem;
+  align-items: flex-end;
+  margin: 0;
+}
+.reviewer-auth-form[hidden] {
+  display: none !important;
+}
+.reviewer-auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.reviewer-auth-form--locked .reviewer-auth-field input {
+  background: var(--surface);
+  color: var(--muted);
+  border-color: #d5dbe3;
+  cursor: not-allowed;
+  opacity: 0.85;
+}
+.reviewer-auth-form--locked .reviewer-auth-field span {
+  opacity: 0.75;
+}
+.reviewer-auth-field input {
+  min-width: 9rem;
+  padding: 0.35rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.88rem;
+}
+.llm-assessment-toggle:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.llm-assessment-toggle {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  cursor: pointer;
+}
+.llm-assessment-toggle:hover,
+.llm-assessment-toggle[aria-expanded="true"] {
+  background: var(--accent-soft);
+}
+.llm-detail-panel {
+  margin: 0;
+  padding: 1rem 1.1rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: var(--shadow);
+  align-self: start;
+}
+.llm-detail-panel.is-collapsed {
+  display: none;
+}
+.llm-detail-panel.is-open {
+  display: block;
+}
+.case-details-panel .llm-detail-panel {
+  margin: 0;
+}
+.case-details-panel .human-verdict-panel {
+  margin: 0;
+  box-shadow: none;
+}
+.llm-detail-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.llm-detail-panel-head h2 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--accent);
+}
+.llm-detail-panel-hint {
+  margin: 0 0 0.75rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.llm-detail-panel dl {
+  margin: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+.llm-detail-panel dt {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  cursor: help;
+  text-decoration: underline dotted var(--neutral-border);
+  text-underline-offset: 0.15em;
+  width: fit-content;
+}
+.llm-detail-panel dd {
+  margin: 0.15rem 0 0;
+  font-size: 0.92rem;
+}
+.llm-assessment-pop {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  cursor: pointer;
+}
+.llm-assessment-pop:hover {
+  background: var(--accent-soft);
+}
+.llm-assessment-dialog {
+  width: min(42rem, calc(100vw - 2rem));
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0;
+  box-shadow: var(--shadow);
+}
+.llm-assessment-dialog::backdrop {
+  background: rgba(15, 23, 42, 0.45);
+}
+.llm-assessment-dialog-inner {
+  padding: 1.1rem 1.25rem 1.25rem;
+}
+.llm-assessment-dialog-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.llm-assessment-dialog-head h2 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--accent);
+}
+.llm-assessment-dialog-close {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  padding: 0.25rem 0.65rem;
+  cursor: pointer;
+  font-size: 0.82rem;
+}
+.meta-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 1rem;
+  font-size: 0.92rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.meta-table th, .meta-table td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.55rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+.meta-table tr:last-child th, .meta-table tr:last-child td { border-bottom: none; }
+.meta-table th {
+  width: 34%;
+  background: var(--surface);
+  font-weight: 600;
+}
+.rubric-block {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+}
+.rubric-block h3 {
+  margin: 0 0 0.35rem;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+.rubric-block p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+.rubric-block--prompt {
+  background: linear-gradient(180deg, #c5daf2 0%, var(--prompt-soft) 100%);
+  border: 1px solid var(--prompt-border);
+  border-left: 4px solid var(--prompt);
+  box-shadow: 0 2px 8px rgba(15, 61, 117, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  padding: 1rem 1.05rem;
+}
+.rubric-block--prompt h3 {
+  color: var(--prompt);
+  font-weight: 700;
+}
+.rubric-block--prompt p {
+  color: var(--prompt-text);
+}
+@media (max-width: 900px) {
+  .case-layout-columns {
+    grid-template-columns: 1fr;
+  }
+}
+.banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem 1.25rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  margin-bottom: 2rem;
+  padding: 1.25rem 1.35rem;
+}
+.banner__main {
+  flex: 1 1 12rem;
+  min-width: 0;
+}
+.banner__tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem 0.65rem;
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+.banner h1 {
+  margin: 0 0 0.35rem;
+  font-size: 1.65rem;
+  font-weight: 650;
+  color: var(--accent);
+  letter-spacing: -0.01em;
+}
+.banner p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.content h1 {
+  font-size: 1.35rem;
+  margin: 2rem 0 1rem;
+  color: var(--accent);
+}
+.content h2 {
+  font-size: 1.05rem;
+  margin: 1.75rem 0 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.content h3, .content h4 {
+  margin: 1.25rem 0 0.5rem;
+}
+.content p, .content li { font-size: 1rem; }
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0 1.25rem;
+  font-size: 0.95rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.content th, .content td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.65rem 0.85rem;
+  text-align: left;
+  vertical-align: top;
+}
+.content tr:last-child th, .content tr:last-child td { border-bottom: none; }
+.content th {
+  background: var(--surface);
+  width: 32%;
+  font-weight: 600;
+}
+.content hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
+}
+.content em { color: var(--muted); font-size: 0.92rem; }
+.content a { color: var(--accent); text-decoration: none; }
+.content a:hover { text-decoration: underline; }
+.hub-nav {
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+.hub-nav--banner {
+  margin: 0;
+  flex: 0 0 auto;
+}
+.banner__tools .hub-nav--banner {
+  margin: 0;
+}
+.banner__tools .hub-nav--banner a {
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.hub-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+.assessment {
+  margin: 1.75rem 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+.assessment > h2 {
+  margin: 0 0 0.85rem;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.verdict-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.15rem;
+  border-radius: 12px;
+  border: 1px solid var(--neutral-border);
+  background: var(--neutral-bg);
+  box-shadow: var(--shadow);
+  margin-bottom: 1rem;
+}
+.verdict-banner-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.verdict-banner-value {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.verdict-banner--pass {
+  background: var(--pass-bg);
+  border-color: var(--pass-border);
+  color: var(--pass);
+}
+.verdict-banner--fail {
+  background: var(--fail-bg);
+  border-color: var(--fail-border);
+  color: var(--fail);
+}
+.verdict-banner--warn {
+  background: var(--warn-bg);
+  border-color: var(--warn-border);
+  color: var(--warn);
+}
+.verdict-banner--neutral {
+  background: var(--neutral-bg);
+  border-color: var(--neutral-border);
+  color: var(--text);
+}
+.assessment-tiers {
+  display: grid;
+  gap: 0.85rem;
+}
+.assessment-tier {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.95rem 1.05rem;
+  box-shadow: var(--shadow);
+  margin: 0;
+}
+.assessment-tier-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.55rem;
+}
+.assessment-tier h3 {
+  margin: 0;
+  font-size: 0.98rem;
+  color: var(--text);
+}
+.assessment-tier-commentary {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.verdict-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+.verdict-badge--pass {
+  color: var(--pass);
+  background: var(--pass-bg);
+  border-color: var(--pass-border);
+}
+.verdict-badge--fail {
+  color: var(--fail);
+  background: var(--fail-bg);
+  border-color: var(--fail-border);
+}
+.verdict-badge--warn {
+  color: var(--warn);
+  background: var(--warn-bg);
+  border-color: var(--warn-border);
+}
+.verdict-badge--neutral {
+  color: var(--muted);
+  background: var(--neutral-bg);
+  border-color: var(--neutral-border);
+}
+.verdict-pass { color: var(--pass); font-weight: 700; }
+.verdict-fail { color: var(--fail); font-weight: 700; }
+.verdict-pending, .verdict-review, .verdict-draft, .verdict-inconclusive, .verdict-likely_pass {
+  color: var(--warn);
+  font-weight: 700;
+}
+.hub-table-wrap {
+  overflow-x: auto;
+  max-width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  background: #fff;
+}
+.hub-table {
+  margin: 0;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  width: 100%;
+  min-width: 52rem;
+  font-size: 0.82rem;
+  table-layout: fixed;
+}
+.hub-table th,
+.hub-table td {
+  padding: 0.3rem 0.35rem;
+  vertical-align: top;
+}
+.hub-table th {
+  font-size: 0.72rem;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow-wrap: normal;
+}
+.hub-table td {
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+.hub-table .verdict-badge,
+.hub-table .confidence-badge {
+  display: inline-block;
+  max-width: 100%;
+  padding: 0.1rem 0.32rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: nowrap;
+  line-height: 1.25;
+  text-align: center;
+}
+.hub-table .verdict-badge--pass {
+  color: #0d6b52;
+  background: #e6f6ef;
+  border-color: #9fd4c0;
+}
+.hub-table .verdict-badge--warn {
+  color: #9a6400;
+  background: #fff6df;
+  border-color: #ecd084;
+}
+.hub-table .verdict-badge--neutral {
+  color: #4b5563;
+  background: #eef1f4;
+  border-color: #c5ced8;
+}
+.hub-table .confidence-badge {
+  color: #0b5568;
+  background: #e7f4f8;
+  border: 1px solid #b8dce6;
+  border-radius: 999px;
+  padding: 0.1rem 0.32rem;
+}
+.hub-col-test { width: 6.25rem; }
+.hub-col-class { width: 5.4rem; }
+.hub-col-method { width: 3.4rem; }
+.hub-col-run { width: 3.6rem; }
+.hub-col-dur { width: 2.8rem; }
+.hub-col-verdict { width: 4.1rem; }
+.hub-col-conf { width: 3rem; }
+.hub-col-summary { width: 4.4rem; }
+.hub-table-test {
+  padding-right: 0.35rem;
+}
+.hub-test-id-link {
+  display: inline-block;
+  text-decoration: none;
+}
+.hub-test-id-link:hover .hub-test-id {
+  border-color: var(--accent);
+  background: #dceefb;
+}
+.hub-test-id {
+  display: inline-block;
+  font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #0e4a6f;
+  background: #e8f2f8;
+  border: 1px solid #b8d4e8;
+  border-radius: 6px;
+  padding: 0.1rem 0.42rem;
+  line-height: 1.25;
+}
+.hub-table-test a.hub-test-id-link,
+.hub-table-test > strong {
+  white-space: nowrap;
+}
+.hub-table-test > strong {
+  display: inline-block;
+}
+.hub-run-at {
+  display: inline-block;
+  font-size: 0.76rem;
+  line-height: 1.2;
+  color: var(--text);
+  white-space: nowrap;
+}
+.hub-run-meta {
+  margin-top: 0.15rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--muted);
+  line-height: 1.2;
+}
+.hub-compare-link {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  margin-top: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  line-height: 1.25;
+  max-width: 100%;
+}
+.hub-compare-link .hub-compare-badge {
+  align-self: flex-start;
+}
+.hub-compare-link:hover { text-decoration: underline; }
+.hub-compare-badge {
+  display: inline-block;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+.hub-compare-badge--improved {
+  background: var(--pass-bg); color: var(--pass); border: 1px solid var(--pass-border);
+}
+.hub-compare-badge--regressed {
+  background: var(--fail-bg); color: var(--fail); border: 1px solid var(--fail-border);
+}
+.hub-compare-badge--stable {
+  background: var(--neutral-bg); color: #5c6875; border: 1px solid var(--neutral-border);
+}
+.hub-compare-badge--mixed {
+  background: var(--warn-bg); color: var(--warn); border: 1px solid var(--warn-border);
+}
+.compare-nav-card { margin-top: 0.35rem; }
+.hub-version {
+  font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
+  font-size: 0.82rem;
+  color: var(--text);
+  background: var(--surface);
+  padding: 0.1rem 0.35rem;
+  border-radius: 6px;
+}
+.human-verdict-panel {
+  margin: 0.75rem 0 0;
+  padding: 1rem 1.05rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+.human-verdict-panel h2 {
+  margin: 0 0 0.5rem;
+  font-size: 0.98rem;
+  color: var(--text);
+}
+.human-verdict-hint {
+  margin: 0 0 0.85rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.human-verdict-status {
+  margin: 0 0 0.75rem;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+.human-verdict-status--saved {
+  color: var(--pass);
+  font-weight: 600;
+}
+.human-verdict-status--error {
+  color: var(--fail);
+  font-weight: 600;
+}
+.human-verdict-form {
+  display: grid;
+  gap: 0.75rem;
+}
+.human-verdict-field {
+  display: grid;
+  gap: 0.3rem;
+  font-size: 0.88rem;
+}
+.human-verdict-field span {
+  font-weight: 600;
+  color: var(--muted);
+}
+.human-verdict-field select,
+.human-verdict-field textarea {
+  width: 100%;
+  padding: 0.45rem 0.55rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font: inherit;
+  font-size: 0.92rem;
+}
+.hub-table th { background: var(--surface-2); }
+.hub-table tbody tr:hover { background: #fafcff; }
+.content .hub-table-wrap .hub-table {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+.tahi-response {
+  margin-top: 0;
+  padding: 1.15rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+.tahi-response > h2 {
+  margin-top: 0;
+}
+.sources-block {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border);
+}
+.sources-block h3 {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.sources-list {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+.sources-list li + li {
+  margin-top: 0.35rem;
+}
+.source-entry-title {
+  line-height: 1.45;
+}
+.source-entry-num {
+  font-weight: 700;
+  color: var(--text);
+}
+.source-entry-label {
+  color: var(--text);
+}
+.source-entry-url {
+  display: block;
+  margin-top: 0.2rem;
+  color: var(--accent);
+  font-size: 0.84rem;
+  word-break: break-all;
+  text-decoration: none;
+}
+.source-entry-url:hover {
+  text-decoration: underline;
+}
+.sources-list a {
+  color: var(--accent);
+  word-break: break-word;
+}
+.tahi-response a {
+  color: var(--accent);
+}
+.cite-ref {
+  font-size: 0.78em;
+  line-height: 0;
+  margin-left: 0.05em;
+}
+.cite-ref a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+.cite-ref a:hover {
+  text-decoration: underline;
+}
+.sources-warning {
+  margin: 0 0 1rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--warn-border);
+  border-radius: 10px;
+  background: var(--warn-bg);
+}
+.sources-warning-title {
+  margin: 0 0 0.35rem;
+  font-weight: 700;
+  color: var(--warn);
+  font-size: 0.9rem;
+}
+.sources-warning-detail {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+.llm-assessment-detail {
+  margin: 0.75rem 0 0;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+}
+.llm-assessment-detail summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--accent);
+}
+.llm-assessment-detail dl {
+  margin: 0.75rem 0 0;
+  display: grid;
+  gap: 0.5rem;
+}
+.llm-assessment-detail dt {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+.llm-assessment-detail dd {
+  margin: 0.15rem 0 0;
+  font-size: 0.92rem;
+}
+.footer {
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+@media print {
+  body { background: #fff; }
+  .wrap { max-width: none; padding: 0.5in; }
+  .banner, .assessment-tier, .tahi-response, .content table { box-shadow: none; }
+  .banner { break-after: avoid; }
+  .content h1, .content h2 { break-after: avoid; }
+}
+
+.compare-layout { display: flex; flex-direction: column; gap: 1.25rem; }
+.compare-toolbar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.25rem;
+  padding: 1rem 1.1rem; border: 1px solid var(--border); border-radius: 12px;
+  background: #fff; box-shadow: var(--shadow);
+}
+.compare-toolbar label {
+  display: flex; flex-direction: column; gap: 0.25rem;
+  font-size: 0.78rem; font-weight: 600; color: var(--muted);
+}
+.compare-toolbar select {
+  min-width: 14rem; font: inherit; padding: 0.35rem 0.5rem;
+  border-radius: 8px; border: 1px solid var(--border);
+}
+.compare-status-badge {
+  display: inline-block; padding: 0.25rem 0.65rem; border-radius: 999px;
+  font-size: 0.82rem; font-weight: 700; text-transform: capitalize;
+}
+.compare-status-badge--improved {
+  background: var(--pass-bg); color: var(--pass); border: 1px solid var(--pass-border);
+}
+.compare-status-badge--regressed {
+  background: var(--fail-bg); color: var(--fail); border: 1px solid var(--fail-border);
+}
+.compare-status-badge--stable {
+  background: var(--neutral-bg); color: #5c6875; border: 1px solid var(--neutral-border);
+}
+.compare-status-badge--mixed {
+  background: var(--warn-bg); color: var(--warn); border: 1px solid var(--warn-border);
+}
+.compare-section {
+  padding: 1rem 1.1rem 1.1rem; border: 1px solid var(--border);
+  border-radius: 12px; background: #fff; box-shadow: var(--shadow);
+}
+.compare-section h2 { margin: 0 0 0.85rem; font-size: 0.98rem; color: var(--accent); }
+.compare-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.compare-table th, .compare-table td {
+  border-bottom: 1px solid var(--border); padding: 0.45rem 0.35rem;
+  text-align: left; vertical-align: top;
+}
+.compare-table tr:last-child th, .compare-table tr:last-child td { border-bottom: none; }
+.compare-table th {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em;
+  text-transform: uppercase; color: var(--muted);
+}
+.compare-change--improved { color: var(--pass); font-weight: 600; }
+.compare-change--regressed { color: var(--fail); font-weight: 600; }
+.compare-change--unchanged, .compare-change--neutral { color: var(--muted); }
+.compare-table .verdict-badge,
+.compare-table .confidence-badge {
+  font-size: 0.72rem;
+  padding: 0.15rem 0.5rem;
+  letter-spacing: 0.03em;
+}
+.compare-table td { vertical-align: middle; }
+.compare-warnings {
+  margin: 0 0 0.75rem; padding: 0.65rem 0.75rem; border-radius: 8px;
+  background: var(--warn-bg); border: 1px solid var(--warn-border);
+  color: var(--warn); font-size: 0.88rem;
+}
+.compare-response-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; align-items: start;
+}
+.compare-response-panel {
+  min-width: 0; border: 1px solid var(--border); border-radius: 10px;
+  padding: 0.75rem 0.85rem; background: var(--surface);
+}
+.compare-response-panel h3 { margin: 0 0 0.65rem; font-size: 0.85rem; color: var(--muted); }
+.compare-response-meta { margin: 0 0 0.5rem; font-size: 0.78rem; color: var(--muted); }
+.compare-content-toolbar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem;
+  margin: 0 0 0.75rem;
+}
+.compare-view-btn {
+  font: inherit; font-size: 0.78rem; font-weight: 600;
+  padding: 0.3rem 0.7rem; border-radius: 999px;
+  border: 1px solid var(--border); background: #fff; color: var(--muted);
+  cursor: pointer;
+}
+.compare-view-btn:hover { border-color: var(--accent); color: var(--accent); }
+.compare-view-btn--active {
+  background: var(--accent-soft); border-color: #b8dce6; color: var(--accent);
+}
+.compare-diff-stats {
+  margin: 0 0 0.65rem; font-size: 0.78rem; color: var(--muted);
+}
+.compare-diff-body {
+  white-space: pre-wrap; word-break: break-word;
+  font-size: 0.9rem; line-height: 1.55;
+  padding: 0.85rem 0.95rem; border: 1px solid var(--border);
+  border-radius: 10px; background: var(--surface);
+}
+.compare-diff-del {
+  background: var(--fail-bg); color: var(--fail);
+  text-decoration: line-through;
+}
+.compare-diff-add {
+  background: var(--pass-bg); color: var(--pass);
+  text-decoration: none;
+}
+.compare-diff-empty { margin: 0; color: var(--muted); font-size: 0.88rem; }
+.compare-diff-legend {
+  display: flex; flex-wrap: wrap; gap: 0.65rem 1rem;
+  margin: 0 0 0.65rem; font-size: 0.72rem; color: var(--muted);
+}
+.compare-diff-legend span { display: inline-flex; align-items: center; gap: 0.3rem; }
+.compare-diff-legend-sample {
+  display: inline-block; padding: 0.05rem 0.35rem; border-radius: 4px;
+}
+.compare-diff-legend-sample--del {
+  background: var(--fail-bg); color: var(--fail); text-decoration: line-through;
+}
+.compare-diff-legend-sample--add {
+  background: var(--pass-bg); color: var(--pass);
+}
+.hub-compare-link { display: inline-block; margin-top: 0.25rem; font-size: 0.78rem; font-weight: 600; }
+.hub-compare-badge {
+  display: inline-block; margin-left: 0.35rem; padding: 0.1rem 0.45rem;
+  border-radius: 999px; font-size: 0.72rem; font-weight: 700; text-transform: capitalize;
+}
+.hub-compare-badge--improved { background: var(--pass-bg); color: var(--pass); }
+.hub-compare-badge--regressed { background: var(--fail-bg); color: var(--fail); }
+.hub-compare-badge--stable { background: var(--neutral-bg); color: #5c6875; }
+.hub-compare-badge--mixed { background: var(--warn-bg); color: var(--warn); }
+a.compare-nav-card { text-decoration: none; color: inherit; display: block; }
+@media (max-width: 900px) { .compare-response-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+  <div class="wrap wrap--wide">
+    <header class="banner">
+      <h1>A06 / Architectural / Systemic / Metadata-only dating</h1>
+      <p>Run comparison · verdict, performance, and response</p>
+    </header>
+    <main class="content compare-layout" data-compare-page>
+      <p class="hub-nav">
+        <a href="../index.html">← Back to report hub</a>
+        · <a href="index.html">Latest run report</a>
+      </p>
+      <div class="compare-toolbar">
+        <span class="compare-status-badge compare-status-badge--stable" data-compare-status">stable</span>
+        <label>Baseline run
+          <select data-compare-baseline><option value="A06-20260617-120729">17 Jun 23:53 (A06-20260617-120729)</option><option value="latest" selected>17 Jun 23:53 (latest)</option></select>
+        </label>
+        <label>Current run
+          <select data-compare-current><option value="A06-20260617-120729" selected>17 Jun 23:53 (A06-20260617-120729)</option><option value="latest">17 Jun 23:53 (latest)</option></select>
+        </label>
+      </div>
+      <div class="compare-warnings" data-compare-warnings hidden></div>
+      <section class="compare-section">
+        <h2>Assessment delta</h2>
+        <div data-compare-verdicts><table class="compare-table"><thead><tr><th>Check</th><th>Baseline</th><th>Current</th><th>Change</th></tr></thead><tbody><tr><td>Overall summary</td><td><span class="verdict-badge verdict-badge--pass">Likely</span></td><td><span class="verdict-badge verdict-badge--pass">Likely</span></td><td><span class="verdict-badge verdict-badge--neutral">Unchanged</span></td></tr><tr><td>Tier 0 · Structural</td><td><span class="verdict-badge verdict-badge--pass">Pass</span></td><td><span class="verdict-badge verdict-badge--pass">Pass</span></td><td><span class="verdict-badge verdict-badge--neutral">Unchanged</span></td></tr><tr><td>Tier 1 · Rule-based</td><td><span class="verdict-badge verdict-badge--pass">Pass</span></td><td><span class="verdict-badge verdict-badge--pass">Pass</span></td><td><span class="verdict-badge verdict-badge--neutral">Unchanged</span></td></tr><tr><td>Tier 2 · Human review</td><td><span class="verdict-badge verdict-badge--warn">Pending</span></td><td><span class="verdict-badge verdict-badge--warn">Pending</span></td><td><span class="verdict-badge verdict-badge--neutral">Unchanged</span></td></tr><tr><td>Tier 3 · Machine review</td><td><span class="verdict-badge verdict-badge--pass">Pass</span></td><td><span class="verdict-badge verdict-badge--pass">Pass</span></td><td><span class="verdict-badge verdict-badge--neutral">Unchanged</span></td></tr><tr><td>Machine confidence</td><td><span class="confidence-badge">95%</span></td><td><span class="confidence-badge">95%</span></td><td><span class="verdict-badge verdict-badge--neutral">Unchanged</span></td></tr></tbody></table></div>
+      </section>
+      <section class="compare-section">
+        <h2>Performance delta</h2>
+        <div data-compare-performance><p class="workflow-timing-total">Total 59.0s</p><table class="workflow-timing-table"><thead><tr><th>Stage</th><th>Current</th><th>Baseline</th><th>Delta</th></tr></thead><tbody><tr><td><span class="workflow-timing-stage">Classification</span><span class="workflow-timing-detail">Category D · Answerable queries</span></td><td>737ms</td><td>737ms</td><td><span class="workflow-timing-delta--neutral">0ms</span></td></tr><tr><td><span class="workflow-timing-stage">Summarise question</span><span class="workflow-timing-detail">Skipped (used prompt as-is)</span></td><td>—</td><td>2ms</td><td><span class="workflow-timing-delta--neutral">0ms</span></td></tr><tr><td><span class="workflow-timing-stage">Search</span><span class="workflow-timing-detail">7 queries<ul class="workflow-timing-queries"><li>Search for Kaikōura earthquake 2016</li><li>Search for Wellington earthquake 2016</li><li>Search for Kaikōura earthquake NZGeo</li><li>Search for Wellington earthquake NZGeo</li><li>Search for Kaikōura earthquake RNZ</li><li>Search for Wellington earthquake RNZ</li><li>Search for NZ earthquakes 2016 science</li></ul></span></td><td>7.3s</td><td>7.3s</td><td><span class="workflow-timing-delta--neutral">0ms</span></td></tr><tr><td><span class="workflow-timing-stage">Evaluate results</span></td><td>3.3s</td><td>3.3s</td><td><span class="workflow-timing-delta--neutral">0ms</span></td></tr><tr><td><span class="workflow-timing-stage">TTFT</span><span class="workflow-timing-detail">Chat POST → first token</span></td><td>33.2s</td><td>33.2s</td><td><span class="workflow-timing-delta--neutral">0ms</span></td></tr><tr><td><span class="workflow-timing-stage">Generate answer</span></td><td>44.6s</td><td>44.6s</td><td><span class="workflow-timing-delta--neutral">0ms</span></td></tr><tr><td><span class="workflow-timing-stage">Overhead / other</span></td><td>3.1s</td><td>3.1s</td><td><span class="workflow-timing-delta--neutral">0ms</span></td></tr><tr><td><span class="workflow-timing-stage">Total</span></td><td>59.0s</td><td>59.0s</td><td><span class="workflow-timing-delta--neutral">0ms</span></td></tr></tbody></table></div>
+      </section>
+      <section class="compare-section">
+        <h2>Response content</h2>
+        <div data-compare-content><div class="compare-response-section" data-compare-response><div class="compare-content-toolbar"><button type="button" class="compare-view-btn compare-view-btn--active" data-compare-view="diff">Inline diff</button><button type="button" class="compare-view-btn" data-compare-view="side">Side by side</button></div><div data-compare-diff-view><p class="compare-diff-stats">0 chars</p><div class="compare-diff-legend"><span><span class="compare-diff-legend-sample compare-diff-legend-sample--del">removed</span> baseline only</span><span><span class="compare-diff-legend-sample compare-diff-legend-sample--add">added</span> current only</span></div><p class="compare-diff-empty"><em>No text changes between runs.</em></p></div><div data-compare-side-view hidden><div class="compare-response-grid"><div class="compare-response-panel"><h3>Baseline · 17 Jun 23:53</h3><p class="compare-response-meta">Duration: 58.96s</p><div class="tahi-response-body"><h2>The 2016 Kaikōura Earthquake</h2>
+<p>At 12.02am on Monday 14 November 2016, a magnitude 7.8 earthquake struck central New Zealand, making it one of the most powerful — and complex — seismic events in the country's recorded history. <sup class="cite-ref"><a href="https://teara.govt.nz/en/marlborough-places" target="_blank" rel="noopener noreferrer">1</a></sup><sup class="cite-ref"><a href="https://teara.govt.nz/en/canterbury-region" target="_blank" rel="noopener noreferrer">2</a></sup></p>
+<p><img alt="embed-1" src="embed://1"></p>
+<h3>A Remarkably Complex Rupture</h3>
+<p>What made this earthquake so scientifically extraordinary was its behaviour. At least 21 faults ruptured across 160 kilometres, with seismic energy leaping between them in ways that defied existing scientific models. <sup class="cite-ref"><a href="https://www.nzgeo.com/stories/what-kaikoura-taught-us/" target="_blank" rel="noopener noreferrer">3</a></sup> Scientists had previously believed a fault could only trigger a neighbouring fault if they were less than about six kilometres apart — but the Kaikōura earthquake jumped across faults 15–20 kilometres apart. <sup class="cite-ref"><a href="https://www.nzgeo.com/stories/what-kaikoura-taught-us/" target="_blank" rel="noopener noreferrer">3</a></sup> It is now considered one of the most complex earthquakes ever recorded. <sup class="cite-ref"><a href="https://www.nzgeo.com/stories/what-kaikoura-taught-us/" target="_blank" rel="noopener noreferrer">4</a></sup></p>
+<p>One eyewitness, Scott Waterford, was literally astride the Kekerengu Fault as it ruptured. He described "the incredible noise" and watching trees lean over then right themselves, before the ground split open beneath his feet — his right leg going up and his left going down. The fault picked his house off its foundations and shunted it 10 metres away. <sup class="cite-ref"><a href="https://www.nzgeo.com/stories/what-kaikoura-taught-us/" target="_blank" rel="noopener noreferrer">4</a></sup></p>
+<h3>Damage and Casualties</h3>
+<p>Two people lost their lives: one at Mt Lyford as a result of a heart attack, and another when a house collapsed in Kaikōura. <sup class="cite-ref"><a href="https://teara.govt.nz/en/canterbury-region" target="_blank" rel="noopener noreferrer">2</a></sup> Landslides cut off road and rail links to Kaikōura, stranding large numbers of visitors in the popular tourist town. <sup class="cite-ref"><a href="https://teara.govt.nz/en/canterbury-region" target="_blank" rel="noopener noreferrer">2</a></sup> State Highway 1 at Waipapa Bay was so badly mangled that the fault forced one section of road nearly four metres upward, while landslides blocked the road entirely around the headland — cutting locals off from schools and jobs. Repairing road and rail links was expected to take months, even years, and cost billions of dollars. <sup class="cite-ref"><a href="https://www.nzgeo.com/stories/in-the-wake-of-the-quake/" target="_blank" rel="noopener noreferrer">5</a></sup></p>
+<p>Beneath the sea, the earthquake unleashed a massive underwater landslide in the Kaikōura Canyon — a 1,200-metre-deep chasm south of the Kaikōura Peninsula. Around 50–60 metres of sediment roared down the canyon, scouring the sea floor to a depth of 20–30 metres and flowing at least 700 kilometres up the Hikurangi Trough. <sup class="cite-ref"><a href="https://www.nzgeo.com/stories/what-kaikoura-taught-us/" target="_blank" rel="noopener noreferrer">6</a></sup></p>
+<h3>Tsunami</h3>
+<p>The earthquake also triggered the most significant local-source tsunami since 1947. <sup class="cite-ref"><a href="https://www.nzgeo.com/stories/what-kaikoura-taught-us/" target="_blank" rel="noopener noreferrer">3</a></sup> Hundreds of people were evacuated from their homes to higher ground in Kaikōura and from low-lying suburbs of cities including Wellington and Christchurch. <sup class="cite-ref"><a href="https://teara.govt.nz/en/tsunamis" target="_blank" rel="noopener noreferrer">7</a></sup> The maximum wave height onshore was 6–7 metres at Goose Bay, with 2.5-metre waves at Kaikōura and 1.6-metre waves reaching Wellington. <sup class="cite-ref"><a href="https://teara.govt.nz/en/tsunamis" target="_blank" rel="noopener noreferrer">8</a></sup><sup class="cite-ref"><a href="https://teara.govt.nz/en/tsunamis" target="_blank" rel="noopener noreferrer">9</a></sup> At Little Pigeon Bay on Banks Peninsula, a three-metre wave shoved a holiday house off its foundations. <sup class="cite-ref"><a href="https://teara.govt.nz/en/tsunamis" target="_blank" rel="noopener noreferrer">8</a></sup></p>
+<p>However, the tsunami's effects were dampened by a combination of low tide and coastal uplift along long stretches of the shoreline. <sup class="cite-ref"><a href="https://teara.govt.nz/en/tsunamis" target="_blank" rel="noopener noreferrer">8</a></sup> There was also considerable confusion in the emergency response — in some areas, including Wellington, warning sirens weren't sounded until after the waves had already arrived. <sup class="cite-ref"><a href="https://teara.govt.nz/en/tsunamis" target="_blank" rel="noopener noreferrer">7</a></sup></p>
+<h2>The 2016 Wellington Earthquake</h2>
+<p>The search results treat these as related but distinct events. The 2016 earthquake that affected Wellington was, in fact, the Kaikōura earthquake itself — but Wellington experienced it in a particularly significant way due to the unusual nature of the rupture.</p>
+<p>Because the earthquake moved along at least five separate faults extending around 150 kilometres up the east coast of the South Island, its extraordinary release of energy was directed much closer to Wellington than to Kaikōura itself. <sup class="cite-ref"><a href="https://www.nzgeo.com/stories/what-kaikoura-taught-us-about-wellington/" target="_blank" rel="noopener noreferrer">10</a></sup></p>
+<p><img alt="embed-2" src="embed://2"></p>
+<p>The earthquake necessitated the demolition of several modern office buildings erected on reclaimed land on Wellington's waterfront — a sobering outcome given that these were relatively new structures. <sup class="cite-ref"><a href="https://teara.govt.nz/en/wellington-region" target="_blank" rel="noopener noreferrer">11</a></sup> The event reinforced long-standing warnings that Wellington faces significant seismic risk, with further large earthquakes considered not just likely but potentially overdue, meaning new buildings must be designed to survive such events and older buildings must be either strengthened or demolished. <sup class="cite-ref"><a href="https://teara.govt.nz/en/wellington-region" target="_blank" rel="noopener noreferrer">11</a></sup></p>
+<p>The Kaikōura earthquake also challenged Wellington's tsunami preparedness. Warning sirens in some areas of the city weren't sounded until after the waves had arrived, exposing gaps in the city's civil defence response. <sup class="cite-ref"><a href="https://teara.govt.nz/en/tsunamis" target="_blank" rel="noopener noreferrer">7</a></sup></p>
+<p>Would you like to explore more about what the Kaikōura earthquake revealed about Wellington's vulnerability to future seismic events?</p><section class="sources-block"><h3>Sources</h3><ul class="sources-list"><li id="source-1" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[1]</span> <span class="source-entry-label">Marlborough Region: Comprehensive Geographical and Historical Guide</span></div><a class="source-entry-url" href="https://teara.govt.nz/en/marlborough-places" target="_blank" rel="noopener noreferrer">https://teara.govt.nz/en/marlborough-places</a></li><li id="source-2" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[2]</span> <span class="source-entry-label">Canterbury Region: Comprehensive Geography, History, Culture, and Development</span></div><a class="source-entry-url" href="https://teara.govt.nz/en/canterbury-region" target="_blank" rel="noopener noreferrer">https://teara.govt.nz/en/canterbury-region</a></li><li id="source-3" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[3]</span> <span class="source-entry-label">What Kaikōura Taught Us</span></div><a class="source-entry-url" href="https://www.nzgeo.com/stories/what-kaikoura-taught-us/" target="_blank" rel="noopener noreferrer">https://www.nzgeo.com/stories/what-kaikoura-taught-us/</a></li><li id="source-4" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[4]</span> <span class="source-entry-label">What Kaikōura Taught Us</span></div><a class="source-entry-url" href="https://www.nzgeo.com/stories/what-kaikoura-taught-us/" target="_blank" rel="noopener noreferrer">https://www.nzgeo.com/stories/what-kaikoura-taught-us/</a></li><li id="source-5" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[5]</span> <span class="source-entry-label">The 2016 Kaikōura Earthquake: Comprehensive Scientific Research, Fault Rupture Analysis, and Community Impact</span></div><a class="source-entry-url" href="https://www.nzgeo.com/stories/in-the-wake-of-the-quake/" target="_blank" rel="noopener noreferrer">https://www.nzgeo.com/stories/in-the-wake-of-the-quake/</a></li><li id="source-6" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[6]</span> <span class="source-entry-label">What Kaikōura Taught Us</span></div><a class="source-entry-url" href="https://www.nzgeo.com/stories/what-kaikoura-taught-us/" target="_blank" rel="noopener noreferrer">https://www.nzgeo.com/stories/what-kaikoura-taught-us/</a></li><li id="source-7" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[7]</span> <span class="source-entry-label">Tsunamis in New Zealand: Hazards, History, and Warning Systems</span></div><a class="source-entry-url" href="https://teara.govt.nz/en/tsunamis" target="_blank" rel="noopener noreferrer">https://teara.govt.nz/en/tsunamis</a></li><li id="source-8" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[8]</span> <span class="source-entry-label">Tsunamis in New Zealand: Hazards, History, and Warning Systems</span></div><a class="source-entry-url" href="https://teara.govt.nz/en/tsunamis" target="_blank" rel="noopener noreferrer">https://teara.govt.nz/en/tsunamis</a></li><li id="source-9" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[9]</span> <span class="source-entry-label">Tsunamis in New Zealand: Hazards, History, and Warning Systems</span></div><a class="source-entry-url" href="https://teara.govt.nz/en/tsunamis" target="_blank" rel="noopener noreferrer">https://teara.govt.nz/en/tsunamis</a></li><li id="source-10" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[10]</span> <span class="source-entry-label">What Kaikōura Taught Us About Wellington</span></div><a class="source-entry-url" href="https://www.nzgeo.com/stories/what-kaikoura-taught-us-about-wellington/" target="_blank" rel="noopener noreferrer">https://www.nzgeo.com/stories/what-kaikoura-taught-us-about-wellington/</a></li><li id="source-11" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[11]</span> <span class="source-entry-label">Wellington Region: A Comprehensive Guide to Geography, History, Culture, and Development</span></div><a class="source-entry-url" href="https://teara.govt.nz/en/wellington-region" target="_blank" rel="noopener noreferrer">https://teara.govt.nz/en/wellington-region</a></li></ul></section></div></div><div class="compare-response-panel"><h3>Current · 17 Jun 23:53</h3><p class="compare-response-meta">Duration: 58.96s</p><div class="tahi-response-body"><h2>The 2016 Kaikōura Earthquake</h2>
+<p>At 12.02am on Monday 14 November 2016, a magnitude 7.8 earthquake struck central New Zealand, making it one of the most powerful — and complex — seismic events in the country's recorded history. <sup class="cite-ref"><a href="https://teara.govt.nz/en/marlborough-places" target="_blank" rel="noopener noreferrer">1</a></sup><sup class="cite-ref"><a href="https://teara.govt.nz/en/canterbury-region" target="_blank" rel="noopener noreferrer">2</a></sup></p>
+<p><img alt="embed-1" src="embed://1"></p>
+<h3>A Remarkably Complex Rupture</h3>
+<p>What made this earthquake so scientifically extraordinary was its behaviour. At least 21 faults ruptured across 160 kilometres, with seismic energy leaping between them in ways that defied existing scientific models. <sup class="cite-ref"><a href="https://www.nzgeo.com/stories/what-kaikoura-taught-us/" target="_blank" rel="noopener noreferrer">3</a></sup> Scientists had previously believed a fault could only trigger a neighbouring fault if they were less than about six kilometres apart — but the Kaikōura earthquake jumped across faults 15–20 kilometres apart. <sup class="cite-ref"><a href="https://www.nzgeo.com/stories/what-kaikoura-taught-us/" target="_blank" rel="noopener noreferrer">3</a></sup> It is now considered one of the most complex earthquakes ever recorded. <sup class="cite-ref"><a href="https://www.nzgeo.com/stories/what-kaikoura-taught-us/" target="_blank" rel="noopener noreferrer">4</a></sup></p>
+<p>One eyewitness, Scott Waterford, was literally astride the Kekerengu Fault as it ruptured. He described "the incredible noise" and watching trees lean over then right themselves, before the ground split open beneath his feet — his right leg going up and his left going down. The fault picked his house off its foundations and shunted it 10 metres away. <sup class="cite-ref"><a href="https://www.nzgeo.com/stories/what-kaikoura-taught-us/" target="_blank" rel="noopener noreferrer">4</a></sup></p>
+<h3>Damage and Casualties</h3>
+<p>Two people lost their lives: one at Mt Lyford as a result of a heart attack, and another when a house collapsed in Kaikōura. <sup class="cite-ref"><a href="https://teara.govt.nz/en/canterbury-region" target="_blank" rel="noopener noreferrer">2</a></sup> Landslides cut off road and rail links to Kaikōura, stranding large numbers of visitors in the popular tourist town. <sup class="cite-ref"><a href="https://teara.govt.nz/en/canterbury-region" target="_blank" rel="noopener noreferrer">2</a></sup> State Highway 1 at Waipapa Bay was so badly mangled that the fault forced one section of road nearly four metres upward, while landslides blocked the road entirely around the headland — cutting locals off from schools and jobs. Repairing road and rail links was expected to take months, even years, and cost billions of dollars. <sup class="cite-ref"><a href="https://www.nzgeo.com/stories/in-the-wake-of-the-quake/" target="_blank" rel="noopener noreferrer">5</a></sup></p>
+<p>Beneath the sea, the earthquake unleashed a massive underwater landslide in the Kaikōura Canyon — a 1,200-metre-deep chasm south of the Kaikōura Peninsula. Around 50–60 metres of sediment roared down the canyon, scouring the sea floor to a depth of 20–30 metres and flowing at least 700 kilometres up the Hikurangi Trough. <sup class="cite-ref"><a href="https://www.nzgeo.com/stories/what-kaikoura-taught-us/" target="_blank" rel="noopener noreferrer">6</a></sup></p>
+<h3>Tsunami</h3>
+<p>The earthquake also triggered the most significant local-source tsunami since 1947. <sup class="cite-ref"><a href="https://www.nzgeo.com/stories/what-kaikoura-taught-us/" target="_blank" rel="noopener noreferrer">3</a></sup> Hundreds of people were evacuated from their homes to higher ground in Kaikōura and from low-lying suburbs of cities including Wellington and Christchurch. <sup class="cite-ref"><a href="https://teara.govt.nz/en/tsunamis" target="_blank" rel="noopener noreferrer">7</a></sup> The maximum wave height onshore was 6–7 metres at Goose Bay, with 2.5-metre waves at Kaikōura and 1.6-metre waves reaching Wellington. <sup class="cite-ref"><a href="https://teara.govt.nz/en/tsunamis" target="_blank" rel="noopener noreferrer">8</a></sup><sup class="cite-ref"><a href="https://teara.govt.nz/en/tsunamis" target="_blank" rel="noopener noreferrer">9</a></sup> At Little Pigeon Bay on Banks Peninsula, a three-metre wave shoved a holiday house off its foundations. <sup class="cite-ref"><a href="https://teara.govt.nz/en/tsunamis" target="_blank" rel="noopener noreferrer">8</a></sup></p>
+<p>However, the tsunami's effects were dampened by a combination of low tide and coastal uplift along long stretches of the shoreline. <sup class="cite-ref"><a href="https://teara.govt.nz/en/tsunamis" target="_blank" rel="noopener noreferrer">8</a></sup> There was also considerable confusion in the emergency response — in some areas, including Wellington, warning sirens weren't sounded until after the waves had already arrived. <sup class="cite-ref"><a href="https://teara.govt.nz/en/tsunamis" target="_blank" rel="noopener noreferrer">7</a></sup></p>
+<h2>The 2016 Wellington Earthquake</h2>
+<p>The search results treat these as related but distinct events. The 2016 earthquake that affected Wellington was, in fact, the Kaikōura earthquake itself — but Wellington experienced it in a particularly significant way due to the unusual nature of the rupture.</p>
+<p>Because the earthquake moved along at least five separate faults extending around 150 kilometres up the east coast of the South Island, its extraordinary release of energy was directed much closer to Wellington than to Kaikōura itself. <sup class="cite-ref"><a href="https://www.nzgeo.com/stories/what-kaikoura-taught-us-about-wellington/" target="_blank" rel="noopener noreferrer">10</a></sup></p>
+<p><img alt="embed-2" src="embed://2"></p>
+<p>The earthquake necessitated the demolition of several modern office buildings erected on reclaimed land on Wellington's waterfront — a sobering outcome given that these were relatively new structures. <sup class="cite-ref"><a href="https://teara.govt.nz/en/wellington-region" target="_blank" rel="noopener noreferrer">11</a></sup> The event reinforced long-standing warnings that Wellington faces significant seismic risk, with further large earthquakes considered not just likely but potentially overdue, meaning new buildings must be designed to survive such events and older buildings must be either strengthened or demolished. <sup class="cite-ref"><a href="https://teara.govt.nz/en/wellington-region" target="_blank" rel="noopener noreferrer">11</a></sup></p>
+<p>The Kaikōura earthquake also challenged Wellington's tsunami preparedness. Warning sirens in some areas of the city weren't sounded until after the waves had arrived, exposing gaps in the city's civil defence response. <sup class="cite-ref"><a href="https://teara.govt.nz/en/tsunamis" target="_blank" rel="noopener noreferrer">7</a></sup></p>
+<p>Would you like to explore more about what the Kaikōura earthquake revealed about Wellington's vulnerability to future seismic events?</p><section class="sources-block"><h3>Sources</h3><ul class="sources-list"><li id="source-1" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[1]</span> <span class="source-entry-label">Marlborough Region: Comprehensive Geographical and Historical Guide</span></div><a class="source-entry-url" href="https://teara.govt.nz/en/marlborough-places" target="_blank" rel="noopener noreferrer">https://teara.govt.nz/en/marlborough-places</a></li><li id="source-2" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[2]</span> <span class="source-entry-label">Canterbury Region: Comprehensive Geography, History, Culture, and Development</span></div><a class="source-entry-url" href="https://teara.govt.nz/en/canterbury-region" target="_blank" rel="noopener noreferrer">https://teara.govt.nz/en/canterbury-region</a></li><li id="source-3" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[3]</span> <span class="source-entry-label">What Kaikōura Taught Us</span></div><a class="source-entry-url" href="https://www.nzgeo.com/stories/what-kaikoura-taught-us/" target="_blank" rel="noopener noreferrer">https://www.nzgeo.com/stories/what-kaikoura-taught-us/</a></li><li id="source-4" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[4]</span> <span class="source-entry-label">What Kaikōura Taught Us</span></div><a class="source-entry-url" href="https://www.nzgeo.com/stories/what-kaikoura-taught-us/" target="_blank" rel="noopener noreferrer">https://www.nzgeo.com/stories/what-kaikoura-taught-us/</a></li><li id="source-5" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[5]</span> <span class="source-entry-label">The 2016 Kaikōura Earthquake: Comprehensive Scientific Research, Fault Rupture Analysis, and Community Impact</span></div><a class="source-entry-url" href="https://www.nzgeo.com/stories/in-the-wake-of-the-quake/" target="_blank" rel="noopener noreferrer">https://www.nzgeo.com/stories/in-the-wake-of-the-quake/</a></li><li id="source-6" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[6]</span> <span class="source-entry-label">What Kaikōura Taught Us</span></div><a class="source-entry-url" href="https://www.nzgeo.com/stories/what-kaikoura-taught-us/" target="_blank" rel="noopener noreferrer">https://www.nzgeo.com/stories/what-kaikoura-taught-us/</a></li><li id="source-7" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[7]</span> <span class="source-entry-label">Tsunamis in New Zealand: Hazards, History, and Warning Systems</span></div><a class="source-entry-url" href="https://teara.govt.nz/en/tsunamis" target="_blank" rel="noopener noreferrer">https://teara.govt.nz/en/tsunamis</a></li><li id="source-8" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[8]</span> <span class="source-entry-label">Tsunamis in New Zealand: Hazards, History, and Warning Systems</span></div><a class="source-entry-url" href="https://teara.govt.nz/en/tsunamis" target="_blank" rel="noopener noreferrer">https://teara.govt.nz/en/tsunamis</a></li><li id="source-9" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[9]</span> <span class="source-entry-label">Tsunamis in New Zealand: Hazards, History, and Warning Systems</span></div><a class="source-entry-url" href="https://teara.govt.nz/en/tsunamis" target="_blank" rel="noopener noreferrer">https://teara.govt.nz/en/tsunamis</a></li><li id="source-10" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[10]</span> <span class="source-entry-label">What Kaikōura Taught Us About Wellington</span></div><a class="source-entry-url" href="https://www.nzgeo.com/stories/what-kaikoura-taught-us-about-wellington/" target="_blank" rel="noopener noreferrer">https://www.nzgeo.com/stories/what-kaikoura-taught-us-about-wellington/</a></li><li id="source-11" class="source-entry"><div class="source-entry-title"><span class="source-entry-num">[11]</span> <span class="source-entry-label">Wellington Region: A Comprehensive Guide to Geography, History, Culture, and Development</span></div><a class="source-entry-url" href="https://teara.govt.nz/en/wellington-region" target="_blank" rel="noopener noreferrer">https://teara.govt.nz/en/wellington-region</a></li></ul></section></div></div></div></div></div></div>
+      </section>
+    </main>
+  </div>
+  <script type="application/json" id="compare-data">{"test_id": "A06", "manifest": [{"id": "A06-20260617-120729", "run_at": "2026-06-17T11:53:16.982955+00:00", "label": "17 Jun 23:53", "json_path": "runs/A06-20260617-120729.json"}, {"id": "latest", "run_at": "2026-06-17T11:53:16.982955+00:00", "label": "17 Jun 23:53", "json_path": "A06/latest.json"}], "default_baseline_id": "latest", "default_current_id": "A06-20260617-120729", "pairs": {"A06-20260617-120729|latest": {"test_id": "A06", "baseline_run_at": "2026-06-17T11:53:16.982955+00:00", "current_run_at": "2026-06-17T11:53:16.982955+00:00", "compatible": true, "warnings": [], "status": "stable", "tier_changes": {"0": {"tier": 0, "field": "tier0_verdict", "baseline": "pass", "current": "pass", "change": "unchanged"}, "1": {"tier": 1, "field": "tier1_verdict", "baseline": "pass", "current": "pass", "change": "unchanged"}, "2": {"tier": 2, "field": "tier2_verdict", "baseline": "pending", "current": "pending", "change": "unchanged"}, "3": {"tier": 3, "field": "tier3_verdict", "baseline": "pass", "current": "pass", "change": "unchanged"}}, "summary_change": {"tier": null, "field": "summary_verdict", "baseline": "likely_pass", "current": "likely_pass", "change": "unchanged"}, "machine_review": {"baseline_verdict": "pass", "current_verdict": "pass", "baseline_confidence": 0.95, "current_confidence": 0.95, "change": "unchanged", "summary_changed": false}, "response": {"baseline_chars": 5922, "current_chars": 5922, "char_delta": 0, "baseline_source_count": 21, "current_source_count": 21, "source_delta": 0}, "_verdict_html": "<table class=\"compare-table\"><thead><tr><th>Check</th><th>Baseline</th><th>Current</th><th>Change</th></tr></thead><tbody><tr><td>Overall summary</td><td><span class=\"verdict-badge verdict-badge--pass\">Likely</span></td><td><span class=\"verdict-badge verdict-badge--pass\">Likely</span></td><td><span class=\"verdict-badge verdict-badge--neutral\">Unchanged</span></td></tr><tr><td>Tier 0 \u00b7 Structural</td><td><span class=\"verdict-badge verdict-badge--pass\">Pass</span></td><td><span class=\"verdict-badge verdict-badge--pass\">Pass</span></td><td><span class=\"verdict-badge verdict-badge--neutral\">Unchanged</span></td></tr><tr><td>Tier 1 \u00b7 Rule-based</td><td><span class=\"verdict-badge verdict-badge--pass\">Pass</span></td><td><span class=\"verdict-badge verdict-badge--pass\">Pass</span></td><td><span class=\"verdict-badge verdict-badge--neutral\">Unchanged</span></td></tr><tr><td>Tier 2 \u00b7 Human review</td><td><span class=\"verdict-badge verdict-badge--warn\">Pending</span></td><td><span class=\"verdict-badge verdict-badge--warn\">Pending</span></td><td><span class=\"verdict-badge verdict-badge--neutral\">Unchanged</span></td></tr><tr><td>Tier 3 \u00b7 Machine review</td><td><span class=\"verdict-badge verdict-badge--pass\">Pass</span></td><td><span class=\"verdict-badge verdict-badge--pass\">Pass</span></td><td><span class=\"verdict-badge verdict-badge--neutral\">Unchanged</span></td></tr><tr><td>Machine confidence</td><td><span class=\"confidence-badge\">95%</span></td><td><span class=\"confidence-badge\">95%</span></td><td><span class=\"verdict-badge verdict-badge--neutral\">Unchanged</span></td></tr></tbody></table>"}, "latest|A06-20260617-120729": {"test_id": "A06", "baseline_run_at": "2026-06-17T11:53:16.982955+00:00", "current_run_at": "2026-06-17T11:53:16.982955+00:00", "compatible": true, "warnings": [], "status": "stable", "tier_changes": {"0": {"tier": 0, "field": "tier0_verdict", "baseline": "pass", "current": "pass", "change": "unchanged"}, "1": {"tier": 1, "field": "tier1_verdict", "baseline": "pass", "current": "pass", "change": "unchanged"}, "2": {"tier": 2, "field": "tier2_verdict", "baseline": "pending", "current": "pending", "change": "unchanged"}, "3": {"tier": 3, "field": "tier3_verdict", "baseline": "pass", "current": "pass", "change": "unchanged"}}, "summary_change": {"tier": null, "field": "summary_verdict", "baseline": "likely_pass", "current": "likely_pass", "change": "unchanged"}, "machine_review": {"baseline_verdict": "pass", "current_verdict": "pass", "baseline_confidence": 0.95, "current_confidence": 0.95, "change": "unchanged", "summary_changed": false}, "response": {"baseline_chars": 5922, "current_chars": 5922, "char_delta": 0, "baseline_source_count": 21, "current_source_count": 21, "source_delta": 0}, "_verdict_html": "<table class=\"compare-table\"><thead><tr><th>Check</th><th>Baseline</th><th>Current</th><th>Change</th></tr></thead><tbody><tr><td>Overall summary</td><td><span class=\"verdict-badge verdict-badge--pass\">Likely</span></td><td><span class=\"verdict-badge verdict-badge--pass\">Likely</span></td><td><span class=\"verdict-badge verdict-badge--neutral\">Unchanged</span></td></tr><tr><td>Tier 0 \u00b7 Structural</td><td><span class=\"verdict-badge verdict-badge--pass\">Pass</span></td><td><span class=\"verdict-badge verdict-badge--pass\">Pass</span></td><td><span class=\"verdict-badge verdict-badge--neutral\">Unchanged</span></td></tr><tr><td>Tier 1 \u00b7 Rule-based</td><td><span class=\"verdict-badge verdict-badge--pass\">Pass</span></td><td><span class=\"verdict-badge verdict-badge--pass\">Pass</span></td><td><span class=\"verdict-badge verdict-badge--neutral\">Unchanged</span></td></tr><tr><td>Tier 2 \u00b7 Human review</td><td><span class=\"verdict-badge verdict-badge--warn\">Pending</span></td><td><span class=\"verdict-badge verdict-badge--warn\">Pending</span></td><td><span class=\"verdict-badge verdict-badge--neutral\">Unchanged</span></td></tr><tr><td>Tier 3 \u00b7 Machine review</td><td><span class=\"verdict-badge verdict-badge--pass\">Pass</span></td><td><span class=\"verdict-badge verdict-badge--pass\">Pass</span></td><td><span class=\"verdict-badge verdict-badge--neutral\">Unchanged</span></td></tr><tr><td>Machine confidence</td><td><span class=\"confidence-badge\">95%</span></td><td><span class=\"confidence-badge\">95%</span></td><td><span class=\"verdict-badge verdict-badge--neutral\">Unchanged</span></td></tr></tbody></table>"}}, "fragments": {"A06-20260617-120729|latest__perf": "<p class=\"workflow-timing-total\">Total 59.0s</p><table class=\"workflow-timing-table\"><thead><tr><th>Stage</th><th>Current</th><th>Baseline</th><th>Delta</th></tr></thead><tbody><tr><td><span class=\"workflow-timing-stage\">Classification</span><span class=\"workflow-timing-detail\">Category D \u00b7 Answerable queries</span></td><td>737ms</td><td>737ms</td><td><span class=\"workflow-timing-delta--neutral\">0ms</span></td></tr><tr><td><span class=\"workflow-timing-stage\">Summarise question</span><span class=\"workflow-timing-detail\">Skipped (used prompt as-is)</span></td><td>\u2014</td><td>2ms</td><td><span class=\"workflow-timing-delta--neutral\">0ms</span></td></tr><tr><td><span class=\"workflow-timing-stage\">Search</span><span class=\"workflow-timing-detail\">7 queries<ul class=\"workflow-timing-queries\"><li>Search for Kaik\u014dura earthquake 2016</li><li>Search for Wellington earthquake 2016</li><li>Search for Kaik\u014dura earthquake NZGeo</li><li>Search for Wellington earthquake NZGeo</li><li>Search for Kaik\u014dura earthquake RNZ</li><li>Search for Wellington earthquake RNZ</li><li>Search for NZ earthquakes 2016 science</li></ul></span></td><td>7.3s</td><td>7.3s</td><td><span class=\"workflow-timing-delta--neutral\">0ms</span></td></tr><tr><td><span class=\"workflow-timing-stage\">Evaluate results</span></td><td>3.3s</td><td>3.3s</td><td><span class=\"workflow-timing-delta--neutral\">0ms</span></td></tr><tr><td><span class=\"workflow-timing-stage\">TTFT</span><span class=\"workflow-timing-detail\">Chat POST \u2192 first token</span></td><td>33.2s</td><td>33.2s</td><td><span class=\"workflow-timing-delta--neutral\">0ms</span></td></tr><tr><td><span class=\"workflow-timing-stage\">Generate answer</span></td><td>44.6s</td><td>44.6s</td><td><span class=\"workflow-timing-delta--neutral\">0ms</span></td></tr><tr><td><span class=\"workflow-timing-stage\">Overhead / other</span></td><td>3.1s</td><td>3.1s</td><td><span class=\"workflow-timing-delta--neutral\">0ms</span></td></tr><tr><td><span class=\"workflow-timing-stage\">Total</span></td><td>59.0s</td><td>59.0s</td><td><span class=\"workflow-timing-delta--neutral\">0ms</span></td></tr></tbody></table>", "A06-20260617-120729|latest__content": "<div class=\"compare-response-section\" data-compare-response><div class=\"compare-content-toolbar\"><button type=\"button\" class=\"compare-view-btn compare-view-btn--active\" data-compare-view=\"diff\">Inline diff</button><button type=\"button\" class=\"compare-view-btn\" data-compare-view=\"side\">Side by side</button></div><div data-compare-diff-view><p class=\"compare-diff-stats\">0 chars</p><div class=\"compare-diff-legend\"><span><span class=\"compare-diff-legend-sample compare-diff-legend-sample--del\">removed</span> baseline only</span><span><span class=\"compare-diff-legend-sample compare-diff-legend-sample--add\">added</span> current only</span></div><p class=\"compare-diff-empty\"><em>No text changes between runs.</em></p></div><div data-compare-side-view hidden><div class=\"compare-response-grid\"><div class=\"compare-response-panel\"><h3>Baseline \u00b7 17 Jun 23:53</h3><p class=\"compare-response-meta\">Duration: 58.96s</p><div class=\"tahi-response-body\"><h2>The 2016 Kaik\u014dura Earthquake</h2>\n<p>At 12.02am on Monday 14 November 2016, a magnitude 7.8 earthquake struck central New Zealand, making it one of the most powerful \u2014 and complex \u2014 seismic events in the country's recorded history. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/marlborough-places\" target=\"_blank\" rel=\"noopener noreferrer\">1</a></sup><sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/canterbury-region\" target=\"_blank\" rel=\"noopener noreferrer\">2</a></sup></p>\n<p><img alt=\"embed-1\" src=\"embed://1\"></p>\n<h3>A Remarkably Complex Rupture</h3>\n<p>What made this earthquake so scientifically extraordinary was its behaviour. At least 21 faults ruptured across 160 kilometres, with seismic energy leaping between them in ways that defied existing scientific models. <sup class=\"cite-ref\"><a href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">3</a></sup> Scientists had previously believed a fault could only trigger a neighbouring fault if they were less than about six kilometres apart \u2014 but the Kaik\u014dura earthquake jumped across faults 15\u201320 kilometres apart. <sup class=\"cite-ref\"><a href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">3</a></sup> It is now considered one of the most complex earthquakes ever recorded. <sup class=\"cite-ref\"><a href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">4</a></sup></p>\n<p>One eyewitness, Scott Waterford, was literally astride the Kekerengu Fault as it ruptured. He described \"the incredible noise\" and watching trees lean over then right themselves, before the ground split open beneath his feet \u2014 his right leg going up and his left going down. The fault picked his house off its foundations and shunted it 10 metres away. <sup class=\"cite-ref\"><a href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">4</a></sup></p>\n<h3>Damage and Casualties</h3>\n<p>Two people lost their lives: one at Mt Lyford as a result of a heart attack, and another when a house collapsed in Kaik\u014dura. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/canterbury-region\" target=\"_blank\" rel=\"noopener noreferrer\">2</a></sup> Landslides cut off road and rail links to Kaik\u014dura, stranding large numbers of visitors in the popular tourist town. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/canterbury-region\" target=\"_blank\" rel=\"noopener noreferrer\">2</a></sup> State Highway 1 at Waipapa Bay was so badly mangled that the fault forced one section of road nearly four metres upward, while landslides blocked the road entirely around the headland \u2014 cutting locals off from schools and jobs. Repairing road and rail links was expected to take months, even years, and cost billions of dollars. <sup class=\"cite-ref\"><a href=\"https://www.nzgeo.com/stories/in-the-wake-of-the-quake/\" target=\"_blank\" rel=\"noopener noreferrer\">5</a></sup></p>\n<p>Beneath the sea, the earthquake unleashed a massive underwater landslide in the Kaik\u014dura Canyon \u2014 a 1,200-metre-deep chasm south of the Kaik\u014dura Peninsula. Around 50\u201360 metres of sediment roared down the canyon, scouring the sea floor to a depth of 20\u201330 metres and flowing at least 700 kilometres up the Hikurangi Trough. <sup class=\"cite-ref\"><a href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">6</a></sup></p>\n<h3>Tsunami</h3>\n<p>The earthquake also triggered the most significant local-source tsunami since 1947. <sup class=\"cite-ref\"><a href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">3</a></sup> Hundreds of people were evacuated from their homes to higher ground in Kaik\u014dura and from low-lying suburbs of cities including Wellington and Christchurch. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">7</a></sup> The maximum wave height onshore was 6\u20137 metres at Goose Bay, with 2.5-metre waves at Kaik\u014dura and 1.6-metre waves reaching Wellington. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">8</a></sup><sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">9</a></sup> At Little Pigeon Bay on Banks Peninsula, a three-metre wave shoved a holiday house off its foundations. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">8</a></sup></p>\n<p>However, the tsunami's effects were dampened by a combination of low tide and coastal uplift along long stretches of the shoreline. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">8</a></sup> There was also considerable confusion in the emergency response \u2014 in some areas, including Wellington, warning sirens weren't sounded until after the waves had already arrived. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">7</a></sup></p>\n<h2>The 2016 Wellington Earthquake</h2>\n<p>The search results treat these as related but distinct events. The 2016 earthquake that affected Wellington was, in fact, the Kaik\u014dura earthquake itself \u2014 but Wellington experienced it in a particularly significant way due to the unusual nature of the rupture.</p>\n<p>Because the earthquake moved along at least five separate faults extending around 150 kilometres up the east coast of the South Island, its extraordinary release of energy was directed much closer to Wellington than to Kaik\u014dura itself. <sup class=\"cite-ref\"><a href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us-about-wellington/\" target=\"_blank\" rel=\"noopener noreferrer\">10</a></sup></p>\n<p><img alt=\"embed-2\" src=\"embed://2\"></p>\n<p>The earthquake necessitated the demolition of several modern office buildings erected on reclaimed land on Wellington's waterfront \u2014 a sobering outcome given that these were relatively new structures. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/wellington-region\" target=\"_blank\" rel=\"noopener noreferrer\">11</a></sup> The event reinforced long-standing warnings that Wellington faces significant seismic risk, with further large earthquakes considered not just likely but potentially overdue, meaning new buildings must be designed to survive such events and older buildings must be either strengthened or demolished. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/wellington-region\" target=\"_blank\" rel=\"noopener noreferrer\">11</a></sup></p>\n<p>The Kaik\u014dura earthquake also challenged Wellington's tsunami preparedness. Warning sirens in some areas of the city weren't sounded until after the waves had arrived, exposing gaps in the city's civil defence response. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">7</a></sup></p>\n<p>Would you like to explore more about what the Kaik\u014dura earthquake revealed about Wellington's vulnerability to future seismic events?</p><section class=\"sources-block\"><h3>Sources</h3><ul class=\"sources-list\"><li id=\"source-1\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[1]</span> <span class=\"source-entry-label\">Marlborough Region: Comprehensive Geographical and Historical Guide</span></div><a class=\"source-entry-url\" href=\"https://teara.govt.nz/en/marlborough-places\" target=\"_blank\" rel=\"noopener noreferrer\">https://teara.govt.nz/en/marlborough-places</a></li><li id=\"source-2\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[2]</span> <span class=\"source-entry-label\">Canterbury Region: Comprehensive Geography, History, Culture, and Development</span></div><a class=\"source-entry-url\" href=\"https://teara.govt.nz/en/canterbury-region\" target=\"_blank\" rel=\"noopener noreferrer\">https://teara.govt.nz/en/canterbury-region</a></li><li id=\"source-3\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[3]</span> <span class=\"source-entry-label\">What Kaik\u014dura Taught Us</span></div><a class=\"source-entry-url\" href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.nzgeo.com/stories/what-kaikoura-taught-us/</a></li><li id=\"source-4\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[4]</span> <span class=\"source-entry-label\">What Kaik\u014dura Taught Us</span></div><a class=\"source-entry-url\" href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.nzgeo.com/stories/what-kaikoura-taught-us/</a></li><li id=\"source-5\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[5]</span> <span class=\"source-entry-label\">The 2016 Kaik\u014dura Earthquake: Comprehensive Scientific Research, Fault Rupture Analysis, and Community Impact</span></div><a class=\"source-entry-url\" href=\"https://www.nzgeo.com/stories/in-the-wake-of-the-quake/\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.nzgeo.com/stories/in-the-wake-of-the-quake/</a></li><li id=\"source-6\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[6]</span> <span class=\"source-entry-label\">What Kaik\u014dura Taught Us</span></div><a class=\"source-entry-url\" href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.nzgeo.com/stories/what-kaikoura-taught-us/</a></li><li id=\"source-7\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[7]</span> <span class=\"source-entry-label\">Tsunamis in New Zealand: Hazards, History, and Warning Systems</span></div><a class=\"source-entry-url\" href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">https://teara.govt.nz/en/tsunamis</a></li><li id=\"source-8\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[8]</span> <span class=\"source-entry-label\">Tsunamis in New Zealand: Hazards, History, and Warning Systems</span></div><a class=\"source-entry-url\" href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">https://teara.govt.nz/en/tsunamis</a></li><li id=\"source-9\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[9]</span> <span class=\"source-entry-label\">Tsunamis in New Zealand: Hazards, History, and Warning Systems</span></div><a class=\"source-entry-url\" href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">https://teara.govt.nz/en/tsunamis</a></li><li id=\"source-10\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[10]</span> <span class=\"source-entry-label\">What Kaik\u014dura Taught Us About Wellington</span></div><a class=\"source-entry-url\" href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us-about-wellington/\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.nzgeo.com/stories/what-kaikoura-taught-us-about-wellington/</a></li><li id=\"source-11\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[11]</span> <span class=\"source-entry-label\">Wellington Region: A Comprehensive Guide to Geography, History, Culture, and Development</span></div><a class=\"source-entry-url\" href=\"https://teara.govt.nz/en/wellington-region\" target=\"_blank\" rel=\"noopener noreferrer\">https://teara.govt.nz/en/wellington-region</a></li></ul></section></div></div><div class=\"compare-response-panel\"><h3>Current \u00b7 17 Jun 23:53</h3><p class=\"compare-response-meta\">Duration: 58.96s</p><div class=\"tahi-response-body\"><h2>The 2016 Kaik\u014dura Earthquake</h2>\n<p>At 12.02am on Monday 14 November 2016, a magnitude 7.8 earthquake struck central New Zealand, making it one of the most powerful \u2014 and complex \u2014 seismic events in the country's recorded history. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/marlborough-places\" target=\"_blank\" rel=\"noopener noreferrer\">1</a></sup><sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/canterbury-region\" target=\"_blank\" rel=\"noopener noreferrer\">2</a></sup></p>\n<p><img alt=\"embed-1\" src=\"embed://1\"></p>\n<h3>A Remarkably Complex Rupture</h3>\n<p>What made this earthquake so scientifically extraordinary was its behaviour. At least 21 faults ruptured across 160 kilometres, with seismic energy leaping between them in ways that defied existing scientific models. <sup class=\"cite-ref\"><a href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">3</a></sup> Scientists had previously believed a fault could only trigger a neighbouring fault if they were less than about six kilometres apart \u2014 but the Kaik\u014dura earthquake jumped across faults 15\u201320 kilometres apart. <sup class=\"cite-ref\"><a href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">3</a></sup> It is now considered one of the most complex earthquakes ever recorded. <sup class=\"cite-ref\"><a href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">4</a></sup></p>\n<p>One eyewitness, Scott Waterford, was literally astride the Kekerengu Fault as it ruptured. He described \"the incredible noise\" and watching trees lean over then right themselves, before the ground split open beneath his feet \u2014 his right leg going up and his left going down. The fault picked his house off its foundations and shunted it 10 metres away. <sup class=\"cite-ref\"><a href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">4</a></sup></p>\n<h3>Damage and Casualties</h3>\n<p>Two people lost their lives: one at Mt Lyford as a result of a heart attack, and another when a house collapsed in Kaik\u014dura. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/canterbury-region\" target=\"_blank\" rel=\"noopener noreferrer\">2</a></sup> Landslides cut off road and rail links to Kaik\u014dura, stranding large numbers of visitors in the popular tourist town. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/canterbury-region\" target=\"_blank\" rel=\"noopener noreferrer\">2</a></sup> State Highway 1 at Waipapa Bay was so badly mangled that the fault forced one section of road nearly four metres upward, while landslides blocked the road entirely around the headland \u2014 cutting locals off from schools and jobs. Repairing road and rail links was expected to take months, even years, and cost billions of dollars. <sup class=\"cite-ref\"><a href=\"https://www.nzgeo.com/stories/in-the-wake-of-the-quake/\" target=\"_blank\" rel=\"noopener noreferrer\">5</a></sup></p>\n<p>Beneath the sea, the earthquake unleashed a massive underwater landslide in the Kaik\u014dura Canyon \u2014 a 1,200-metre-deep chasm south of the Kaik\u014dura Peninsula. Around 50\u201360 metres of sediment roared down the canyon, scouring the sea floor to a depth of 20\u201330 metres and flowing at least 700 kilometres up the Hikurangi Trough. <sup class=\"cite-ref\"><a href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">6</a></sup></p>\n<h3>Tsunami</h3>\n<p>The earthquake also triggered the most significant local-source tsunami since 1947. <sup class=\"cite-ref\"><a href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">3</a></sup> Hundreds of people were evacuated from their homes to higher ground in Kaik\u014dura and from low-lying suburbs of cities including Wellington and Christchurch. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">7</a></sup> The maximum wave height onshore was 6\u20137 metres at Goose Bay, with 2.5-metre waves at Kaik\u014dura and 1.6-metre waves reaching Wellington. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">8</a></sup><sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">9</a></sup> At Little Pigeon Bay on Banks Peninsula, a three-metre wave shoved a holiday house off its foundations. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">8</a></sup></p>\n<p>However, the tsunami's effects were dampened by a combination of low tide and coastal uplift along long stretches of the shoreline. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">8</a></sup> There was also considerable confusion in the emergency response \u2014 in some areas, including Wellington, warning sirens weren't sounded until after the waves had already arrived. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">7</a></sup></p>\n<h2>The 2016 Wellington Earthquake</h2>\n<p>The search results treat these as related but distinct events. The 2016 earthquake that affected Wellington was, in fact, the Kaik\u014dura earthquake itself \u2014 but Wellington experienced it in a particularly significant way due to the unusual nature of the rupture.</p>\n<p>Because the earthquake moved along at least five separate faults extending around 150 kilometres up the east coast of the South Island, its extraordinary release of energy was directed much closer to Wellington than to Kaik\u014dura itself. <sup class=\"cite-ref\"><a href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us-about-wellington/\" target=\"_blank\" rel=\"noopener noreferrer\">10</a></sup></p>\n<p><img alt=\"embed-2\" src=\"embed://2\"></p>\n<p>The earthquake necessitated the demolition of several modern office buildings erected on reclaimed land on Wellington's waterfront \u2014 a sobering outcome given that these were relatively new structures. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/wellington-region\" target=\"_blank\" rel=\"noopener noreferrer\">11</a></sup> The event reinforced long-standing warnings that Wellington faces significant seismic risk, with further large earthquakes considered not just likely but potentially overdue, meaning new buildings must be designed to survive such events and older buildings must be either strengthened or demolished. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/wellington-region\" target=\"_blank\" rel=\"noopener noreferrer\">11</a></sup></p>\n<p>The Kaik\u014dura earthquake also challenged Wellington's tsunami preparedness. Warning sirens in some areas of the city weren't sounded until after the waves had arrived, exposing gaps in the city's civil defence response. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">7</a></sup></p>\n<p>Would you like to explore more about what the Kaik\u014dura earthquake revealed about Wellington's vulnerability to future seismic events?</p><section class=\"sources-block\"><h3>Sources</h3><ul class=\"sources-list\"><li id=\"source-1\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[1]</span> <span class=\"source-entry-label\">Marlborough Region: Comprehensive Geographical and Historical Guide</span></div><a class=\"source-entry-url\" href=\"https://teara.govt.nz/en/marlborough-places\" target=\"_blank\" rel=\"noopener noreferrer\">https://teara.govt.nz/en/marlborough-places</a></li><li id=\"source-2\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[2]</span> <span class=\"source-entry-label\">Canterbury Region: Comprehensive Geography, History, Culture, and Development</span></div><a class=\"source-entry-url\" href=\"https://teara.govt.nz/en/canterbury-region\" target=\"_blank\" rel=\"noopener noreferrer\">https://teara.govt.nz/en/canterbury-region</a></li><li id=\"source-3\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[3]</span> <span class=\"source-entry-label\">What Kaik\u014dura Taught Us</span></div><a class=\"source-entry-url\" href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.nzgeo.com/stories/what-kaikoura-taught-us/</a></li><li id=\"source-4\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[4]</span> <span class=\"source-entry-label\">What Kaik\u014dura Taught Us</span></div><a class=\"source-entry-url\" href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.nzgeo.com/stories/what-kaikoura-taught-us/</a></li><li id=\"source-5\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[5]</span> <span class=\"source-entry-label\">The 2016 Kaik\u014dura Earthquake: Comprehensive Scientific Research, Fault Rupture Analysis, and Community Impact</span></div><a class=\"source-entry-url\" href=\"https://www.nzgeo.com/stories/in-the-wake-of-the-quake/\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.nzgeo.com/stories/in-the-wake-of-the-quake/</a></li><li id=\"source-6\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[6]</span> <span class=\"source-entry-label\">What Kaik\u014dura Taught Us</span></div><a class=\"source-entry-url\" href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.nzgeo.com/stories/what-kaikoura-taught-us/</a></li><li id=\"source-7\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[7]</span> <span class=\"source-entry-label\">Tsunamis in New Zealand: Hazards, History, and Warning Systems</span></div><a class=\"source-entry-url\" href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">https://teara.govt.nz/en/tsunamis</a></li><li id=\"source-8\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[8]</span> <span class=\"source-entry-label\">Tsunamis in New Zealand: Hazards, History, and Warning Systems</span></div><a class=\"source-entry-url\" href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">https://teara.govt.nz/en/tsunamis</a></li><li id=\"source-9\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[9]</span> <span class=\"source-entry-label\">Tsunamis in New Zealand: Hazards, History, and Warning Systems</span></div><a class=\"source-entry-url\" href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">https://teara.govt.nz/en/tsunamis</a></li><li id=\"source-10\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[10]</span> <span class=\"source-entry-label\">What Kaik\u014dura Taught Us About Wellington</span></div><a class=\"source-entry-url\" href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us-about-wellington/\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.nzgeo.com/stories/what-kaikoura-taught-us-about-wellington/</a></li><li id=\"source-11\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[11]</span> <span class=\"source-entry-label\">Wellington Region: A Comprehensive Guide to Geography, History, Culture, and Development</span></div><a class=\"source-entry-url\" href=\"https://teara.govt.nz/en/wellington-region\" target=\"_blank\" rel=\"noopener noreferrer\">https://teara.govt.nz/en/wellington-region</a></li></ul></section></div></div></div></div></div>", "latest|A06-20260617-120729__perf": "<p class=\"workflow-timing-total\">Total 59.0s</p><table class=\"workflow-timing-table\"><thead><tr><th>Stage</th><th>Current</th><th>Baseline</th><th>Delta</th></tr></thead><tbody><tr><td><span class=\"workflow-timing-stage\">Classification</span><span class=\"workflow-timing-detail\">Category D \u00b7 Answerable queries</span></td><td>737ms</td><td>737ms</td><td><span class=\"workflow-timing-delta--neutral\">0ms</span></td></tr><tr><td><span class=\"workflow-timing-stage\">Summarise question</span><span class=\"workflow-timing-detail\">Skipped (used prompt as-is)</span></td><td>\u2014</td><td>2ms</td><td><span class=\"workflow-timing-delta--neutral\">0ms</span></td></tr><tr><td><span class=\"workflow-timing-stage\">Search</span><span class=\"workflow-timing-detail\">7 queries<ul class=\"workflow-timing-queries\"><li>Search for Kaik\u014dura earthquake 2016</li><li>Search for Wellington earthquake 2016</li><li>Search for Kaik\u014dura earthquake NZGeo</li><li>Search for Wellington earthquake NZGeo</li><li>Search for Kaik\u014dura earthquake RNZ</li><li>Search for Wellington earthquake RNZ</li><li>Search for NZ earthquakes 2016 science</li></ul></span></td><td>7.3s</td><td>7.3s</td><td><span class=\"workflow-timing-delta--neutral\">0ms</span></td></tr><tr><td><span class=\"workflow-timing-stage\">Evaluate results</span></td><td>3.3s</td><td>3.3s</td><td><span class=\"workflow-timing-delta--neutral\">0ms</span></td></tr><tr><td><span class=\"workflow-timing-stage\">TTFT</span><span class=\"workflow-timing-detail\">Chat POST \u2192 first token</span></td><td>33.2s</td><td>33.2s</td><td><span class=\"workflow-timing-delta--neutral\">0ms</span></td></tr><tr><td><span class=\"workflow-timing-stage\">Generate answer</span></td><td>44.6s</td><td>44.6s</td><td><span class=\"workflow-timing-delta--neutral\">0ms</span></td></tr><tr><td><span class=\"workflow-timing-stage\">Overhead / other</span></td><td>3.1s</td><td>3.1s</td><td><span class=\"workflow-timing-delta--neutral\">0ms</span></td></tr><tr><td><span class=\"workflow-timing-stage\">Total</span></td><td>59.0s</td><td>59.0s</td><td><span class=\"workflow-timing-delta--neutral\">0ms</span></td></tr></tbody></table>", "latest|A06-20260617-120729__content": "<div class=\"compare-response-section\" data-compare-response><div class=\"compare-content-toolbar\"><button type=\"button\" class=\"compare-view-btn compare-view-btn--active\" data-compare-view=\"diff\">Inline diff</button><button type=\"button\" class=\"compare-view-btn\" data-compare-view=\"side\">Side by side</button></div><div data-compare-diff-view><p class=\"compare-diff-stats\">0 chars</p><div class=\"compare-diff-legend\"><span><span class=\"compare-diff-legend-sample compare-diff-legend-sample--del\">removed</span> baseline only</span><span><span class=\"compare-diff-legend-sample compare-diff-legend-sample--add\">added</span> current only</span></div><p class=\"compare-diff-empty\"><em>No text changes between runs.</em></p></div><div data-compare-side-view hidden><div class=\"compare-response-grid\"><div class=\"compare-response-panel\"><h3>Baseline \u00b7 17 Jun 23:53</h3><p class=\"compare-response-meta\">Duration: 58.96s</p><div class=\"tahi-response-body\"><h2>The 2016 Kaik\u014dura Earthquake</h2>\n<p>At 12.02am on Monday 14 November 2016, a magnitude 7.8 earthquake struck central New Zealand, making it one of the most powerful \u2014 and complex \u2014 seismic events in the country's recorded history. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/marlborough-places\" target=\"_blank\" rel=\"noopener noreferrer\">1</a></sup><sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/canterbury-region\" target=\"_blank\" rel=\"noopener noreferrer\">2</a></sup></p>\n<p><img alt=\"embed-1\" src=\"embed://1\"></p>\n<h3>A Remarkably Complex Rupture</h3>\n<p>What made this earthquake so scientifically extraordinary was its behaviour. At least 21 faults ruptured across 160 kilometres, with seismic energy leaping between them in ways that defied existing scientific models. <sup class=\"cite-ref\"><a href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">3</a></sup> Scientists had previously believed a fault could only trigger a neighbouring fault if they were less than about six kilometres apart \u2014 but the Kaik\u014dura earthquake jumped across faults 15\u201320 kilometres apart. <sup class=\"cite-ref\"><a href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">3</a></sup> It is now considered one of the most complex earthquakes ever recorded. <sup class=\"cite-ref\"><a href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">4</a></sup></p>\n<p>One eyewitness, Scott Waterford, was literally astride the Kekerengu Fault as it ruptured. He described \"the incredible noise\" and watching trees lean over then right themselves, before the ground split open beneath his feet \u2014 his right leg going up and his left going down. The fault picked his house off its foundations and shunted it 10 metres away. <sup class=\"cite-ref\"><a href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">4</a></sup></p>\n<h3>Damage and Casualties</h3>\n<p>Two people lost their lives: one at Mt Lyford as a result of a heart attack, and another when a house collapsed in Kaik\u014dura. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/canterbury-region\" target=\"_blank\" rel=\"noopener noreferrer\">2</a></sup> Landslides cut off road and rail links to Kaik\u014dura, stranding large numbers of visitors in the popular tourist town. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/canterbury-region\" target=\"_blank\" rel=\"noopener noreferrer\">2</a></sup> State Highway 1 at Waipapa Bay was so badly mangled that the fault forced one section of road nearly four metres upward, while landslides blocked the road entirely around the headland \u2014 cutting locals off from schools and jobs. Repairing road and rail links was expected to take months, even years, and cost billions of dollars. <sup class=\"cite-ref\"><a href=\"https://www.nzgeo.com/stories/in-the-wake-of-the-quake/\" target=\"_blank\" rel=\"noopener noreferrer\">5</a></sup></p>\n<p>Beneath the sea, the earthquake unleashed a massive underwater landslide in the Kaik\u014dura Canyon \u2014 a 1,200-metre-deep chasm south of the Kaik\u014dura Peninsula. Around 50\u201360 metres of sediment roared down the canyon, scouring the sea floor to a depth of 20\u201330 metres and flowing at least 700 kilometres up the Hikurangi Trough. <sup class=\"cite-ref\"><a href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">6</a></sup></p>\n<h3>Tsunami</h3>\n<p>The earthquake also triggered the most significant local-source tsunami since 1947. <sup class=\"cite-ref\"><a href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">3</a></sup> Hundreds of people were evacuated from their homes to higher ground in Kaik\u014dura and from low-lying suburbs of cities including Wellington and Christchurch. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">7</a></sup> The maximum wave height onshore was 6\u20137 metres at Goose Bay, with 2.5-metre waves at Kaik\u014dura and 1.6-metre waves reaching Wellington. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">8</a></sup><sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">9</a></sup> At Little Pigeon Bay on Banks Peninsula, a three-metre wave shoved a holiday house off its foundations. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">8</a></sup></p>\n<p>However, the tsunami's effects were dampened by a combination of low tide and coastal uplift along long stretches of the shoreline. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">8</a></sup> There was also considerable confusion in the emergency response \u2014 in some areas, including Wellington, warning sirens weren't sounded until after the waves had already arrived. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">7</a></sup></p>\n<h2>The 2016 Wellington Earthquake</h2>\n<p>The search results treat these as related but distinct events. The 2016 earthquake that affected Wellington was, in fact, the Kaik\u014dura earthquake itself \u2014 but Wellington experienced it in a particularly significant way due to the unusual nature of the rupture.</p>\n<p>Because the earthquake moved along at least five separate faults extending around 150 kilometres up the east coast of the South Island, its extraordinary release of energy was directed much closer to Wellington than to Kaik\u014dura itself. <sup class=\"cite-ref\"><a href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us-about-wellington/\" target=\"_blank\" rel=\"noopener noreferrer\">10</a></sup></p>\n<p><img alt=\"embed-2\" src=\"embed://2\"></p>\n<p>The earthquake necessitated the demolition of several modern office buildings erected on reclaimed land on Wellington's waterfront \u2014 a sobering outcome given that these were relatively new structures. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/wellington-region\" target=\"_blank\" rel=\"noopener noreferrer\">11</a></sup> The event reinforced long-standing warnings that Wellington faces significant seismic risk, with further large earthquakes considered not just likely but potentially overdue, meaning new buildings must be designed to survive such events and older buildings must be either strengthened or demolished. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/wellington-region\" target=\"_blank\" rel=\"noopener noreferrer\">11</a></sup></p>\n<p>The Kaik\u014dura earthquake also challenged Wellington's tsunami preparedness. Warning sirens in some areas of the city weren't sounded until after the waves had arrived, exposing gaps in the city's civil defence response. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">7</a></sup></p>\n<p>Would you like to explore more about what the Kaik\u014dura earthquake revealed about Wellington's vulnerability to future seismic events?</p><section class=\"sources-block\"><h3>Sources</h3><ul class=\"sources-list\"><li id=\"source-1\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[1]</span> <span class=\"source-entry-label\">Marlborough Region: Comprehensive Geographical and Historical Guide</span></div><a class=\"source-entry-url\" href=\"https://teara.govt.nz/en/marlborough-places\" target=\"_blank\" rel=\"noopener noreferrer\">https://teara.govt.nz/en/marlborough-places</a></li><li id=\"source-2\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[2]</span> <span class=\"source-entry-label\">Canterbury Region: Comprehensive Geography, History, Culture, and Development</span></div><a class=\"source-entry-url\" href=\"https://teara.govt.nz/en/canterbury-region\" target=\"_blank\" rel=\"noopener noreferrer\">https://teara.govt.nz/en/canterbury-region</a></li><li id=\"source-3\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[3]</span> <span class=\"source-entry-label\">What Kaik\u014dura Taught Us</span></div><a class=\"source-entry-url\" href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.nzgeo.com/stories/what-kaikoura-taught-us/</a></li><li id=\"source-4\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[4]</span> <span class=\"source-entry-label\">What Kaik\u014dura Taught Us</span></div><a class=\"source-entry-url\" href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.nzgeo.com/stories/what-kaikoura-taught-us/</a></li><li id=\"source-5\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[5]</span> <span class=\"source-entry-label\">The 2016 Kaik\u014dura Earthquake: Comprehensive Scientific Research, Fault Rupture Analysis, and Community Impact</span></div><a class=\"source-entry-url\" href=\"https://www.nzgeo.com/stories/in-the-wake-of-the-quake/\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.nzgeo.com/stories/in-the-wake-of-the-quake/</a></li><li id=\"source-6\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[6]</span> <span class=\"source-entry-label\">What Kaik\u014dura Taught Us</span></div><a class=\"source-entry-url\" href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.nzgeo.com/stories/what-kaikoura-taught-us/</a></li><li id=\"source-7\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[7]</span> <span class=\"source-entry-label\">Tsunamis in New Zealand: Hazards, History, and Warning Systems</span></div><a class=\"source-entry-url\" href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">https://teara.govt.nz/en/tsunamis</a></li><li id=\"source-8\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[8]</span> <span class=\"source-entry-label\">Tsunamis in New Zealand: Hazards, History, and Warning Systems</span></div><a class=\"source-entry-url\" href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">https://teara.govt.nz/en/tsunamis</a></li><li id=\"source-9\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[9]</span> <span class=\"source-entry-label\">Tsunamis in New Zealand: Hazards, History, and Warning Systems</span></div><a class=\"source-entry-url\" href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">https://teara.govt.nz/en/tsunamis</a></li><li id=\"source-10\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[10]</span> <span class=\"source-entry-label\">What Kaik\u014dura Taught Us About Wellington</span></div><a class=\"source-entry-url\" href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us-about-wellington/\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.nzgeo.com/stories/what-kaikoura-taught-us-about-wellington/</a></li><li id=\"source-11\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[11]</span> <span class=\"source-entry-label\">Wellington Region: A Comprehensive Guide to Geography, History, Culture, and Development</span></div><a class=\"source-entry-url\" href=\"https://teara.govt.nz/en/wellington-region\" target=\"_blank\" rel=\"noopener noreferrer\">https://teara.govt.nz/en/wellington-region</a></li></ul></section></div></div><div class=\"compare-response-panel\"><h3>Current \u00b7 17 Jun 23:53</h3><p class=\"compare-response-meta\">Duration: 58.96s</p><div class=\"tahi-response-body\"><h2>The 2016 Kaik\u014dura Earthquake</h2>\n<p>At 12.02am on Monday 14 November 2016, a magnitude 7.8 earthquake struck central New Zealand, making it one of the most powerful \u2014 and complex \u2014 seismic events in the country's recorded history. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/marlborough-places\" target=\"_blank\" rel=\"noopener noreferrer\">1</a></sup><sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/canterbury-region\" target=\"_blank\" rel=\"noopener noreferrer\">2</a></sup></p>\n<p><img alt=\"embed-1\" src=\"embed://1\"></p>\n<h3>A Remarkably Complex Rupture</h3>\n<p>What made this earthquake so scientifically extraordinary was its behaviour. At least 21 faults ruptured across 160 kilometres, with seismic energy leaping between them in ways that defied existing scientific models. <sup class=\"cite-ref\"><a href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">3</a></sup> Scientists had previously believed a fault could only trigger a neighbouring fault if they were less than about six kilometres apart \u2014 but the Kaik\u014dura earthquake jumped across faults 15\u201320 kilometres apart. <sup class=\"cite-ref\"><a href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">3</a></sup> It is now considered one of the most complex earthquakes ever recorded. <sup class=\"cite-ref\"><a href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">4</a></sup></p>\n<p>One eyewitness, Scott Waterford, was literally astride the Kekerengu Fault as it ruptured. He described \"the incredible noise\" and watching trees lean over then right themselves, before the ground split open beneath his feet \u2014 his right leg going up and his left going down. The fault picked his house off its foundations and shunted it 10 metres away. <sup class=\"cite-ref\"><a href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">4</a></sup></p>\n<h3>Damage and Casualties</h3>\n<p>Two people lost their lives: one at Mt Lyford as a result of a heart attack, and another when a house collapsed in Kaik\u014dura. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/canterbury-region\" target=\"_blank\" rel=\"noopener noreferrer\">2</a></sup> Landslides cut off road and rail links to Kaik\u014dura, stranding large numbers of visitors in the popular tourist town. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/canterbury-region\" target=\"_blank\" rel=\"noopener noreferrer\">2</a></sup> State Highway 1 at Waipapa Bay was so badly mangled that the fault forced one section of road nearly four metres upward, while landslides blocked the road entirely around the headland \u2014 cutting locals off from schools and jobs. Repairing road and rail links was expected to take months, even years, and cost billions of dollars. <sup class=\"cite-ref\"><a href=\"https://www.nzgeo.com/stories/in-the-wake-of-the-quake/\" target=\"_blank\" rel=\"noopener noreferrer\">5</a></sup></p>\n<p>Beneath the sea, the earthquake unleashed a massive underwater landslide in the Kaik\u014dura Canyon \u2014 a 1,200-metre-deep chasm south of the Kaik\u014dura Peninsula. Around 50\u201360 metres of sediment roared down the canyon, scouring the sea floor to a depth of 20\u201330 metres and flowing at least 700 kilometres up the Hikurangi Trough. <sup class=\"cite-ref\"><a href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">6</a></sup></p>\n<h3>Tsunami</h3>\n<p>The earthquake also triggered the most significant local-source tsunami since 1947. <sup class=\"cite-ref\"><a href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">3</a></sup> Hundreds of people were evacuated from their homes to higher ground in Kaik\u014dura and from low-lying suburbs of cities including Wellington and Christchurch. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">7</a></sup> The maximum wave height onshore was 6\u20137 metres at Goose Bay, with 2.5-metre waves at Kaik\u014dura and 1.6-metre waves reaching Wellington. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">8</a></sup><sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">9</a></sup> At Little Pigeon Bay on Banks Peninsula, a three-metre wave shoved a holiday house off its foundations. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">8</a></sup></p>\n<p>However, the tsunami's effects were dampened by a combination of low tide and coastal uplift along long stretches of the shoreline. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">8</a></sup> There was also considerable confusion in the emergency response \u2014 in some areas, including Wellington, warning sirens weren't sounded until after the waves had already arrived. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">7</a></sup></p>\n<h2>The 2016 Wellington Earthquake</h2>\n<p>The search results treat these as related but distinct events. The 2016 earthquake that affected Wellington was, in fact, the Kaik\u014dura earthquake itself \u2014 but Wellington experienced it in a particularly significant way due to the unusual nature of the rupture.</p>\n<p>Because the earthquake moved along at least five separate faults extending around 150 kilometres up the east coast of the South Island, its extraordinary release of energy was directed much closer to Wellington than to Kaik\u014dura itself. <sup class=\"cite-ref\"><a href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us-about-wellington/\" target=\"_blank\" rel=\"noopener noreferrer\">10</a></sup></p>\n<p><img alt=\"embed-2\" src=\"embed://2\"></p>\n<p>The earthquake necessitated the demolition of several modern office buildings erected on reclaimed land on Wellington's waterfront \u2014 a sobering outcome given that these were relatively new structures. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/wellington-region\" target=\"_blank\" rel=\"noopener noreferrer\">11</a></sup> The event reinforced long-standing warnings that Wellington faces significant seismic risk, with further large earthquakes considered not just likely but potentially overdue, meaning new buildings must be designed to survive such events and older buildings must be either strengthened or demolished. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/wellington-region\" target=\"_blank\" rel=\"noopener noreferrer\">11</a></sup></p>\n<p>The Kaik\u014dura earthquake also challenged Wellington's tsunami preparedness. Warning sirens in some areas of the city weren't sounded until after the waves had arrived, exposing gaps in the city's civil defence response. <sup class=\"cite-ref\"><a href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">7</a></sup></p>\n<p>Would you like to explore more about what the Kaik\u014dura earthquake revealed about Wellington's vulnerability to future seismic events?</p><section class=\"sources-block\"><h3>Sources</h3><ul class=\"sources-list\"><li id=\"source-1\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[1]</span> <span class=\"source-entry-label\">Marlborough Region: Comprehensive Geographical and Historical Guide</span></div><a class=\"source-entry-url\" href=\"https://teara.govt.nz/en/marlborough-places\" target=\"_blank\" rel=\"noopener noreferrer\">https://teara.govt.nz/en/marlborough-places</a></li><li id=\"source-2\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[2]</span> <span class=\"source-entry-label\">Canterbury Region: Comprehensive Geography, History, Culture, and Development</span></div><a class=\"source-entry-url\" href=\"https://teara.govt.nz/en/canterbury-region\" target=\"_blank\" rel=\"noopener noreferrer\">https://teara.govt.nz/en/canterbury-region</a></li><li id=\"source-3\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[3]</span> <span class=\"source-entry-label\">What Kaik\u014dura Taught Us</span></div><a class=\"source-entry-url\" href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.nzgeo.com/stories/what-kaikoura-taught-us/</a></li><li id=\"source-4\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[4]</span> <span class=\"source-entry-label\">What Kaik\u014dura Taught Us</span></div><a class=\"source-entry-url\" href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.nzgeo.com/stories/what-kaikoura-taught-us/</a></li><li id=\"source-5\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[5]</span> <span class=\"source-entry-label\">The 2016 Kaik\u014dura Earthquake: Comprehensive Scientific Research, Fault Rupture Analysis, and Community Impact</span></div><a class=\"source-entry-url\" href=\"https://www.nzgeo.com/stories/in-the-wake-of-the-quake/\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.nzgeo.com/stories/in-the-wake-of-the-quake/</a></li><li id=\"source-6\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[6]</span> <span class=\"source-entry-label\">What Kaik\u014dura Taught Us</span></div><a class=\"source-entry-url\" href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us/\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.nzgeo.com/stories/what-kaikoura-taught-us/</a></li><li id=\"source-7\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[7]</span> <span class=\"source-entry-label\">Tsunamis in New Zealand: Hazards, History, and Warning Systems</span></div><a class=\"source-entry-url\" href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">https://teara.govt.nz/en/tsunamis</a></li><li id=\"source-8\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[8]</span> <span class=\"source-entry-label\">Tsunamis in New Zealand: Hazards, History, and Warning Systems</span></div><a class=\"source-entry-url\" href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">https://teara.govt.nz/en/tsunamis</a></li><li id=\"source-9\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[9]</span> <span class=\"source-entry-label\">Tsunamis in New Zealand: Hazards, History, and Warning Systems</span></div><a class=\"source-entry-url\" href=\"https://teara.govt.nz/en/tsunamis\" target=\"_blank\" rel=\"noopener noreferrer\">https://teara.govt.nz/en/tsunamis</a></li><li id=\"source-10\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[10]</span> <span class=\"source-entry-label\">What Kaik\u014dura Taught Us About Wellington</span></div><a class=\"source-entry-url\" href=\"https://www.nzgeo.com/stories/what-kaikoura-taught-us-about-wellington/\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.nzgeo.com/stories/what-kaikoura-taught-us-about-wellington/</a></li><li id=\"source-11\" class=\"source-entry\"><div class=\"source-entry-title\"><span class=\"source-entry-num\">[11]</span> <span class=\"source-entry-label\">Wellington Region: A Comprehensive Guide to Geography, History, Culture, and Development</span></div><a class=\"source-entry-url\" href=\"https://teara.govt.nz/en/wellington-region\" target=\"_blank\" rel=\"noopener noreferrer\">https://teara.govt.nz/en/wellington-region</a></li></ul></section></div></div></div></div></div>"}}</script>
+  <script>
+(function () {
+  var root = document.querySelector("[data-compare-page]");
+  var dataEl = document.getElementById("compare-data");
+  if (!root || !dataEl) { return; }
+  var bundle = JSON.parse(dataEl.textContent || "{}");
+  var baselineSelect = root.querySelector("[data-compare-baseline]");
+  var currentSelect = root.querySelector("[data-compare-current]");
+  var statusEl = root.querySelector("[data-compare-status]");
+  var warningsEl = root.querySelector("[data-compare-warnings]");
+  var verdictsEl = root.querySelector("[data-compare-verdicts]");
+  var performanceEl = root.querySelector("[data-compare-performance]");
+  var contentEl = root.querySelector("[data-compare-content]");
+
+  function applyPair(baseId, curId) {
+    var key = baseId + "|" + curId;
+    var comparison = (bundle.pairs || {})[key];
+    if (!comparison) { return; }
+    if (statusEl) {
+      var status = comparison.status || "stable";
+      statusEl.textContent = status;
+      statusEl.className = "compare-status-badge compare-status-badge--" + status;
+    }
+    if (warningsEl) {
+      var warnings = comparison.warnings || [];
+      if (!warnings.length) {
+        warningsEl.hidden = true;
+        warningsEl.innerHTML = "";
+      } else {
+        warningsEl.hidden = false;
+        warningsEl.innerHTML = "<strong>Compatibility:</strong> " + warnings.join(" ");
+      }
+    }
+    if (verdictsEl) {
+      verdictsEl.innerHTML = comparison._verdict_html || "";
+    }
+    if (performanceEl) {
+      performanceEl.innerHTML = (bundle.fragments || {})[key + "__perf"] || "";
+    }
+    if (contentEl) {
+      contentEl.innerHTML = (bundle.fragments || {})[key + "__content"] || "";
+    }
+  }
+
+  function populateSelect(select, selectedId) {
+    if (!select) { return; }
+    select.innerHTML = "";
+    (bundle.manifest || []).forEach(function (entry) {
+      var opt = document.createElement("option");
+      opt.value = entry.id;
+      opt.textContent = entry.label + " (" + entry.id + ")";
+      if (entry.id === selectedId) { opt.selected = true; }
+      select.appendChild(opt);
+    });
+  }
+
+  populateSelect(baselineSelect, bundle.default_baseline_id);
+  populateSelect(currentSelect, bundle.default_current_id);
+  applyPair(bundle.default_baseline_id, bundle.default_current_id);
+
+  function onChange() {
+    var baseId = baselineSelect ? baselineSelect.value : bundle.default_baseline_id;
+    var curId = currentSelect ? currentSelect.value : bundle.default_current_id;
+    if (baseId === curId) { return; }
+    applyPair(baseId, curId);
+  }
+  if (baselineSelect) { baselineSelect.addEventListener("change", onChange); }
+  if (currentSelect) { currentSelect.addEventListener("change", onChange); }
+
+  root.addEventListener("click", function (e) {
+    var btn = e.target.closest("[data-compare-view]");
+    if (!btn || !root.contains(btn)) { return; }
+    var section = btn.closest("[data-compare-response]");
+    if (!section) { return; }
+    var view = btn.getAttribute("data-compare-view");
+    var diffView = section.querySelector("[data-compare-diff-view]");
+    var sideView = section.querySelector("[data-compare-side-view]");
+    section.querySelectorAll("[data-compare-view]").forEach(function (item) {
+      item.classList.toggle("compare-view-btn--active", item === btn);
+    });
+    if (diffView) { diffView.hidden = view !== "diff"; }
+    if (sideView) { sideView.hidden = view !== "side"; }
+  });
+})();
+</script>
+</body>
+</html>

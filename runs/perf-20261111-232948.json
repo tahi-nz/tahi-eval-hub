@@ -1,0 +1,1014 @@
+{
+  "bundle_schema_version": 3,
+  "bundle_kind": "slim",
+  "run_id": "perf-20261111-232948",
+  "run_at": "2026-11-11T23:29:48.621871+00:00",
+  "run_kind": "performance",
+  "suite_id": "perf-20261111-232948",
+  "tahi_env": "PRD",
+  "caitlyn_base_url": "https://tahi.nz",
+  "caitlyn_agent_alias_id": "TSTALIASID",
+  "caitlyn_agent_mode": "prd-test-agent",
+  "rubric_version": "Tahi_Test_Suite-2",
+  "source_file": "Tahi Test Suite (2).xlsx",
+  "case_count": 4,
+  "failed_count": 0,
+  "total_duration_seconds": 84.93,
+  "cases": [
+    {
+      "bundle_schema_version": 3,
+      "bundle_kind": "slim",
+      "run_id": "perf-20261111-232948",
+      "test_id": "P08",
+      "ok": true,
+      "prompt": "He aha te tikanga o te kupu 'kaitiakitanga'?",
+      "error": null,
+      "started_at": "2026-11-11T23:28:23.693621+00:00",
+      "finished_at": "2026-11-11T23:28:47.303685+00:00",
+      "duration_seconds": 23.61,
+      "repeat_index": null,
+      "warmup": true,
+      "response": {
+        "response_text": "Ko te kaitiakitanga te tiaki me te whakamarumaru. He huarahi hei whakahaere i te taiao e takea ana i te tirohanga Māori ki te ao [[1]](cite://1/1). He kaitiaki te tangata, te rōpū rānei e mōhiotia ana hei kaitiaki e te tangata whenua. Hei tauira, ka whakahaerehia pea tētahi roto, ngahere rānei e tētahi hapū [[2]](cite://2/1). Ka tipu mai te kaitiakitanga i te hononga hohonu o te tangata ki te whenua me te ao tūroa [[3]](cite://3/1). He whakamārama whānui noa tēnei, ehara i te kōrero mō tētahi iwi motuhake.\n\n## Sources\n\n[1] [Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices](https://teara.govt.nz/en/kaitiakitanga-guardianship-and-conservation)\n[2] [Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices](https://teara.govt.nz/en/kaitiakitanga-guardianship-and-conservation)\n[3] [Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices](https://teara.govt.nz/en/kaitiakitanga-guardianship-and-conservation)",
+        "mock": false,
+        "submitted_at": "2026-11-11T23:28:47.303661+00:00",
+        "workflow_timing": {
+          "total_ms": 23610,
+          "classification": {
+            "ms": 1618,
+            "category": "D",
+            "category_label": "Answerable queries"
+          },
+          "summarise": {
+            "ms": 4548,
+            "skipped": false
+          },
+          "search": {
+            "ms": 0,
+            "queries": [
+              "Search for kaitiakitanga meaning"
+            ],
+            "queries_by_kb": [
+              {
+                "knowledge_base_id": "VZTRPFNDVK",
+                "query": "kaitiakitanga Māori concept of guardianship and stewardship of the environment, kaitiaki",
+                "label": "Search for kaitiakitanga meaning"
+              }
+            ]
+          },
+          "evaluate": {
+            "ms": 2311
+          },
+          "prefill": {
+            "ms": 12602
+          },
+          "generate": {
+            "ms": 1837
+          },
+          "overhead_ms": 694,
+          "checkpoints_ms": {
+            "processing_active": 694,
+            "processing_done": 2312,
+            "search_active": 6860,
+            "topic_generation_done": null,
+            "eval_pending": 6860,
+            "eval_done": 9171,
+            "answering_active": 9171,
+            "text_start": 21773
+          },
+          "capture_version": 5,
+          "chat_total_ms": 21996,
+          "ttft_anchor": "chat_post",
+          "ttft_ms": 21773,
+          "ttft_event": "text-start"
+        },
+        "stream_timing": {
+          "ttft_anchor": "chat_post",
+          "ttft_ms": 21773,
+          "ttft_event": "text-start",
+          "chat_total_ms": 21996
+        },
+        "retrieved_chunks": [
+          {
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "id": 4,
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "id": 5,
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "id": 6,
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "id": 7,
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "id": 8,
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "id": 9,
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "id": 10,
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "id": 11,
+            "title": "Unfinished Kaitaka Paepaeroa",
+            "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/S9-boWtVyh7tjOOExPFLwFECq-VkEmgyIq3lbottV-w.jpg",
+            "published_date": "2020-11-01"
+          },
+          {
+            "id": 12,
+            "title": "Traditional Kaitaka Huaki",
+            "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/IDuQ_wx3G8CLxLxNLXeozTNHy0fh0tVmezV6spRxUo0.jpg",
+            "published_date": "2020-11-01"
+          },
+          {
+            "id": 13,
+            "title": "Grandfather and Granddaughter in Whare",
+            "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/IKn56m3YKLu1inWA6msGFB5nl4oGLhLmOAsyHzljg_k.jpg",
+            "published_date": "2013-01-01"
+          },
+          {
+            "id": 14,
+            "title": "Grandfather and Granddaughter in Whare",
+            "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/IKn56m3YKLu1inWA6msGFB5nl4oGLhLmOAsyHzljg_k.jpg",
+            "published_date": "2013-01-01"
+          },
+          {
+            "id": 15,
+            "title": "Reassembling Te Awhi Pātaka",
+            "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/VFGEGs4p4d8QBd-f3qO5ngxcMq_n4cblqAVEGBtzBgs.jpg",
+            "published_date": "2022-12-18"
+          },
+          {
+            "id": 16,
+            "title": "Awhina Tamarapa Unfolding Māori Cloak",
+            "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/BG1YUV9PcXwcdexLZz9E3SozICIHI_Uo62VGCC4VZhY.jpg",
+            "published_date": "2020-11-01"
+          },
+          {
+            "id": 17,
+            "title": "Waitaki River and Māori Moa Hunting Site",
+            "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/qZYzSx5pZmXTI4wwoHIbkrBLCPQzhwgTiYHrRPkzUaI.jpg",
+            "published_date": "2017-02-24"
+          },
+          {
+            "id": 18,
+            "title": "Te Ngāwari, the buried wharenui of Ngā Ariki Kaipūtahi",
+            "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/M9YOcI5BASp_d09yqXiDdA5nkCpF_Xk3mLH-i-g0NlE.jpg",
+            "published_date": "2024-08-26"
+          },
+          {
+            "id": 19,
+            "title": "Historical Depiction of Moa and Kiwi in New Zealand",
+            "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/S0hF2jq_mfGIgQUX_33cJI23FhXxXAa7IqkkARp-EkI.jpg",
+            "published_date": "2000-01-01"
+          },
+          {
+            "id": 20,
+            "title": "Waitaki River and Māori Moa Hunting Site",
+            "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/qZYzSx5pZmXTI4wwoHIbkrBLCPQzhwgTiYHrRPkzUaI.jpg",
+            "published_date": "2017-02-24"
+          }
+        ],
+        "sources": [
+          {
+            "num": 1,
+            "label": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "url": "https://teara.govt.nz/en/kaitiakitanga-guardianship-and-conservation"
+          },
+          {
+            "num": 2,
+            "label": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "url": "https://teara.govt.nz/en/kaitiakitanga-guardianship-and-conservation"
+          },
+          {
+            "num": 3,
+            "label": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "url": "https://teara.govt.nz/en/kaitiakitanga-guardianship-and-conservation"
+          }
+        ],
+        "recency": {
+          "max_published_date_retrieved": "2024-08-26",
+          "max_updated_date_retrieved": null,
+          "max_published_date_cited": null,
+          "max_updated_date_cited": null,
+          "retrieved_chunk_count": 20,
+          "retrieved_dated_count": 20,
+          "cited_marker_count": 3,
+          "cited_dated_count": 0,
+          "cited_unmatched_count": 3
+        }
+      },
+      "rubric": {
+        "failure_class": "Te reo Māori",
+        "sub_class": "Non-English input",
+        "evaluation_method": "Automated — TTFT",
+        "pass_criteria": "",
+        "fail_criteria": "",
+        "automation_eligible": true,
+        "staging_only": false,
+        "performance_class": "Te reo Māori",
+        "what_it_isolates": "Bilingual classification, te reo handling, and the multilingual reranker (Cohere 3.5) on non-English input.",
+        "expected_ttft_profile": "≈ baseline if the multilingual path is efficient; materially higher flags te-reo overhead."
+      },
+      "report_link": "https://tahi-nz.github.io/tahi-eval-hub/P08/index.html"
+    },
+    {
+      "bundle_schema_version": 3,
+      "bundle_kind": "slim",
+      "run_id": "perf-20261111-232948",
+      "test_id": "P08",
+      "ok": true,
+      "prompt": "He aha te tikanga o te kupu 'kaitiakitanga'?",
+      "error": null,
+      "started_at": "2026-11-11T23:28:47.303749+00:00",
+      "finished_at": "2026-11-11T23:29:08.481200+00:00",
+      "duration_seconds": 21.18,
+      "repeat_index": 1,
+      "warmup": false,
+      "response": {
+        "response_text": "Ko te kaitiakitanga te tiaki, te pupuri me te whakamarumaru i te taiao, ā, i ahu mai i te tirohanga Māori ki te ao [[1]](cite://1/1). Ko te kaitiaki he tangata, he rōpū rānei e mōhiotia ana hei kaitiaki e te tangata whenua. Hei tauira, ka noho pea tētahi hapū hei kaitiaki mō tētahi roto, ngahere rānei [[2]](cite://2/1). Ka tipu mai te kaitiakitanga i te hononga hōhonu o te tangata ki te whenua me te ao tūroa [[3]](cite://3/1). E ai ki te Resource Management Act 1991, ko te kaitiakitanga te whakahaere i te kaitiakitanga e te tangata whenua o tētahi rohe, i runga i ngā tikanga Māori, tae atu ki te matatika o te manaaki taiao [[4]](cite://4/1). He mōhiohio whānui tēnei, ehara i te reo o tētahi iwi motuhake.\n\n## Sources\n\n[1] [Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices](https://teara.govt.nz/en/kaitiakitanga-guardianship-and-conservation)\n[2] [Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices](https://teara.govt.nz/en/kaitiakitanga-guardianship-and-conservation)\n[3] [Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices](https://teara.govt.nz/en/kaitiakitanga-guardianship-and-conservation)\n[4] [Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices](https://teara.govt.nz/en/kaitiakitanga-guardianship-and-conservation)",
+        "mock": false,
+        "submitted_at": "2026-11-11T23:29:08.481177+00:00",
+        "workflow_timing": {
+          "total_ms": 21180,
+          "classification": {
+            "ms": 1392,
+            "category": "D",
+            "category_label": "Answerable queries"
+          },
+          "summarise": {
+            "ms": 5311,
+            "skipped": false
+          },
+          "search": {
+            "ms": 0,
+            "queries": [
+              "Search for kaitiakitanga meaning"
+            ],
+            "queries_by_kb": [
+              {
+                "knowledge_base_id": "VZTRPFNDVK",
+                "query": "kaitiakitanga Māori concept of guardianship and stewardship of the environment, kaitiaki",
+                "label": "Search for kaitiakitanga meaning"
+              }
+            ]
+          },
+          "evaluate": {
+            "ms": 2392
+          },
+          "prefill": {
+            "ms": 8893
+          },
+          "generate": {
+            "ms": 2668
+          },
+          "overhead_ms": 524,
+          "checkpoints_ms": {
+            "processing_active": 524,
+            "processing_done": 1916,
+            "search_active": 7227,
+            "topic_generation_done": null,
+            "eval_pending": 7227,
+            "eval_done": 9619,
+            "answering_active": 9619,
+            "text_start": 18512
+          },
+          "capture_version": 5,
+          "chat_total_ms": 20905,
+          "ttft_anchor": "chat_post",
+          "ttft_ms": 18512,
+          "ttft_event": "text-start"
+        },
+        "stream_timing": {
+          "ttft_anchor": "chat_post",
+          "ttft_ms": 18512,
+          "ttft_event": "text-start",
+          "chat_total_ms": 20905
+        },
+        "retrieved_chunks": [
+          {
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "id": 5,
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "id": 6,
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "id": 7,
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "id": 8,
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "id": 9,
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "id": 10,
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "id": 11,
+            "title": "Unfinished Kaitaka Paepaeroa",
+            "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/S9-boWtVyh7tjOOExPFLwFECq-VkEmgyIq3lbottV-w.jpg",
+            "published_date": "2020-11-01"
+          },
+          {
+            "id": 12,
+            "title": "Traditional Kaitaka Huaki",
+            "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/IDuQ_wx3G8CLxLxNLXeozTNHy0fh0tVmezV6spRxUo0.jpg",
+            "published_date": "2020-11-01"
+          },
+          {
+            "id": 13,
+            "title": "Grandfather and Granddaughter in Whare",
+            "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/IKn56m3YKLu1inWA6msGFB5nl4oGLhLmOAsyHzljg_k.jpg",
+            "published_date": "2013-01-01"
+          },
+          {
+            "id": 14,
+            "title": "Grandfather and Granddaughter in Whare",
+            "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/IKn56m3YKLu1inWA6msGFB5nl4oGLhLmOAsyHzljg_k.jpg",
+            "published_date": "2013-01-01"
+          },
+          {
+            "id": 15,
+            "title": "Awhina Tamarapa Unfolding Māori Cloak",
+            "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/BG1YUV9PcXwcdexLZz9E3SozICIHI_Uo62VGCC4VZhY.jpg",
+            "published_date": "2020-11-01"
+          },
+          {
+            "id": 16,
+            "title": "Reassembling Te Awhi Pātaka",
+            "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/VFGEGs4p4d8QBd-f3qO5ngxcMq_n4cblqAVEGBtzBgs.jpg",
+            "published_date": "2022-12-18"
+          },
+          {
+            "id": 17,
+            "title": "Waitaki River and Māori Moa Hunting Site",
+            "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/qZYzSx5pZmXTI4wwoHIbkrBLCPQzhwgTiYHrRPkzUaI.jpg",
+            "published_date": "2017-02-24"
+          },
+          {
+            "id": 18,
+            "title": "Te Ngāwari, the buried wharenui of Ngā Ariki Kaipūtahi",
+            "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/M9YOcI5BASp_d09yqXiDdA5nkCpF_Xk3mLH-i-g0NlE.jpg",
+            "published_date": "2024-08-26"
+          },
+          {
+            "id": 19,
+            "title": "Historical Depiction of Moa and Kiwi in New Zealand",
+            "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/S0hF2jq_mfGIgQUX_33cJI23FhXxXAa7IqkkARp-EkI.jpg",
+            "published_date": "2000-01-01"
+          },
+          {
+            "id": 20,
+            "title": "Stylised Hei Matau",
+            "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/izViITR3VnyfURL4TVLY3xHMktq3T1vgU5n_MeqWr6c.jpg",
+            "published_date": "2010-07-01"
+          }
+        ],
+        "sources": [
+          {
+            "num": 1,
+            "label": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "url": "https://teara.govt.nz/en/kaitiakitanga-guardianship-and-conservation"
+          },
+          {
+            "num": 2,
+            "label": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "url": "https://teara.govt.nz/en/kaitiakitanga-guardianship-and-conservation"
+          },
+          {
+            "num": 3,
+            "label": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "url": "https://teara.govt.nz/en/kaitiakitanga-guardianship-and-conservation"
+          },
+          {
+            "num": 4,
+            "label": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "url": "https://teara.govt.nz/en/kaitiakitanga-guardianship-and-conservation"
+          }
+        ],
+        "recency": {
+          "max_published_date_retrieved": "2024-08-26",
+          "max_updated_date_retrieved": null,
+          "max_published_date_cited": null,
+          "max_updated_date_cited": null,
+          "retrieved_chunk_count": 20,
+          "retrieved_dated_count": 20,
+          "cited_marker_count": 4,
+          "cited_dated_count": 0,
+          "cited_unmatched_count": 4
+        }
+      },
+      "rubric": {
+        "failure_class": "Te reo Māori",
+        "sub_class": "Non-English input",
+        "evaluation_method": "Automated — TTFT",
+        "pass_criteria": "",
+        "fail_criteria": "",
+        "automation_eligible": true,
+        "staging_only": false,
+        "performance_class": "Te reo Māori",
+        "what_it_isolates": "Bilingual classification, te reo handling, and the multilingual reranker (Cohere 3.5) on non-English input.",
+        "expected_ttft_profile": "≈ baseline if the multilingual path is efficient; materially higher flags te-reo overhead."
+      },
+      "report_link": "https://tahi-nz.github.io/tahi-eval-hub/P08/index.html"
+    },
+    {
+      "bundle_schema_version": 3,
+      "bundle_kind": "slim",
+      "run_id": "perf-20261111-232948",
+      "test_id": "P08",
+      "ok": true,
+      "prompt": "He aha te tikanga o te kupu 'kaitiakitanga'?",
+      "error": null,
+      "started_at": "2026-11-11T23:29:08.481258+00:00",
+      "finished_at": "2026-11-11T23:29:29.797145+00:00",
+      "duration_seconds": 21.32,
+      "repeat_index": 2,
+      "warmup": false,
+      "response": {
+        "response_text": "Ko te kaitiakitanga te tiaki me te pupuri, he tikanga whakahaere i te taiao e ahu mai ana i te tirohanga Māori ki te ao [[1]](cite://1/1). Nō te kupu \"tiaki\" taua kupu, ā, ko tōna tikanga he tiaki, he pupuri, he atawhai, he whakamarumaru hoki [[2]](cite://2/1). Ko te kaitiaki he tangata, he rōpū rānei e mōhiotia ana e te tangata whenua hei kaitiaki mō tētahi wāhi, pēnei i tētahi roto, i tētahi ngahere rānei [[3]](cite://3/1). E tipu mai ana te kaitiakitanga i te hononga o te tangata ki te whenua me te ao tūroa [[4]](cite://4/1). He kōrero whānui noa tēnei, ehara i te kōrero mō tētahi iwi motuhake.\n\n## Sources\n\n[1] [Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices](https://teara.govt.nz/en/kaitiakitanga-guardianship-and-conservation)\n[2] [Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices](https://teara.govt.nz/en/kaitiakitanga-guardianship-and-conservation)\n[3] [Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices](https://teara.govt.nz/en/kaitiakitanga-guardianship-and-conservation)\n[4] [Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices](https://teara.govt.nz/en/kaitiakitanga-guardianship-and-conservation)",
+        "mock": false,
+        "submitted_at": "2026-11-11T23:29:29.797124+00:00",
+        "workflow_timing": {
+          "total_ms": 21320,
+          "classification": {
+            "ms": 2401,
+            "category": "D",
+            "category_label": "Answerable queries"
+          },
+          "summarise": {
+            "ms": 4601,
+            "skipped": false
+          },
+          "search": {
+            "ms": 0,
+            "queries": [
+              "Search for kaitiakitanga meaning"
+            ],
+            "queries_by_kb": [
+              {
+                "knowledge_base_id": "VZTRPFNDVK",
+                "query": "kaitiakitanga meaning Māori guardianship stewardship of the environment kaitiaki",
+                "label": "Search for kaitiakitanga meaning"
+              }
+            ]
+          },
+          "evaluate": {
+            "ms": 2225
+          },
+          "prefill": {
+            "ms": 11205
+          },
+          "generate": {
+            "ms": 368
+          },
+          "overhead_ms": 520,
+          "checkpoints_ms": {
+            "processing_active": 520,
+            "processing_done": 2921,
+            "search_active": 7522,
+            "topic_generation_done": null,
+            "eval_pending": 7522,
+            "eval_done": 9747,
+            "answering_active": 9747,
+            "text_start": 20952
+          },
+          "capture_version": 5,
+          "chat_total_ms": 21044,
+          "ttft_anchor": "chat_post",
+          "ttft_ms": 20952,
+          "ttft_event": "text-start"
+        },
+        "stream_timing": {
+          "ttft_anchor": "chat_post",
+          "ttft_ms": 20952,
+          "ttft_event": "text-start",
+          "chat_total_ms": 21044
+        },
+        "retrieved_chunks": [
+          {
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "id": 5,
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "id": 6,
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "id": 7,
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "id": 8,
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "id": 9,
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "id": 10,
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "id": 11,
+            "title": "Traditional Kaitaka Huaki",
+            "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/IDuQ_wx3G8CLxLxNLXeozTNHy0fh0tVmezV6spRxUo0.jpg",
+            "published_date": "2020-11-01"
+          },
+          {
+            "id": 12,
+            "title": "Unfinished Kaitaka Paepaeroa",
+            "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/S9-boWtVyh7tjOOExPFLwFECq-VkEmgyIq3lbottV-w.jpg",
+            "published_date": "2020-11-01"
+          },
+          {
+            "id": 13,
+            "title": "Grandfather and Granddaughter in Whare",
+            "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/IKn56m3YKLu1inWA6msGFB5nl4oGLhLmOAsyHzljg_k.jpg",
+            "published_date": "2013-01-01"
+          },
+          {
+            "id": 14,
+            "title": "Grandfather and Granddaughter in Whare",
+            "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/IKn56m3YKLu1inWA6msGFB5nl4oGLhLmOAsyHzljg_k.jpg",
+            "published_date": "2013-01-01"
+          },
+          {
+            "id": 15,
+            "title": "Reassembling Te Awhi Pātaka",
+            "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/VFGEGs4p4d8QBd-f3qO5ngxcMq_n4cblqAVEGBtzBgs.jpg",
+            "published_date": "2022-12-18"
+          },
+          {
+            "id": 16,
+            "title": "Traditional Kaitaka Huaki",
+            "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/IDuQ_wx3G8CLxLxNLXeozTNHy0fh0tVmezV6spRxUo0.jpg",
+            "published_date": "2020-11-01"
+          }
+        ],
+        "sources": [
+          {
+            "num": 1,
+            "label": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "url": "https://teara.govt.nz/en/kaitiakitanga-guardianship-and-conservation"
+          },
+          {
+            "num": 2,
+            "label": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "url": "https://teara.govt.nz/en/kaitiakitanga-guardianship-and-conservation"
+          },
+          {
+            "num": 3,
+            "label": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "url": "https://teara.govt.nz/en/kaitiakitanga-guardianship-and-conservation"
+          },
+          {
+            "num": 4,
+            "label": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "url": "https://teara.govt.nz/en/kaitiakitanga-guardianship-and-conservation"
+          }
+        ],
+        "recency": {
+          "max_published_date_retrieved": "2022-12-18",
+          "max_updated_date_retrieved": null,
+          "max_published_date_cited": null,
+          "max_updated_date_cited": null,
+          "retrieved_chunk_count": 16,
+          "retrieved_dated_count": 16,
+          "cited_marker_count": 4,
+          "cited_dated_count": 0,
+          "cited_unmatched_count": 4
+        }
+      },
+      "rubric": {
+        "failure_class": "Te reo Māori",
+        "sub_class": "Non-English input",
+        "evaluation_method": "Automated — TTFT",
+        "pass_criteria": "",
+        "fail_criteria": "",
+        "automation_eligible": true,
+        "staging_only": false,
+        "performance_class": "Te reo Māori",
+        "what_it_isolates": "Bilingual classification, te reo handling, and the multilingual reranker (Cohere 3.5) on non-English input.",
+        "expected_ttft_profile": "≈ baseline if the multilingual path is efficient; materially higher flags te-reo overhead."
+      },
+      "report_link": "https://tahi-nz.github.io/tahi-eval-hub/P08/index.html"
+    },
+    {
+      "bundle_schema_version": 3,
+      "bundle_kind": "slim",
+      "run_id": "perf-20261111-232948",
+      "test_id": "P08",
+      "ok": true,
+      "prompt": "He aha te tikanga o te kupu 'kaitiakitanga'?",
+      "error": null,
+      "started_at": "2026-11-11T23:29:29.797203+00:00",
+      "finished_at": "2026-11-11T23:29:48.617696+00:00",
+      "duration_seconds": 18.82,
+      "repeat_index": 3,
+      "warmup": false,
+      "response": {
+        "response_text": "Ko te kaitiakitanga te tiaki me te manaaki i te taiao, ā, i ahu mai i te tirohanga Māori ki te ao [[1]](cite://1/1). Ko te kupu *tiaki* te pūtake o te kupu nei, ā, ko tōna tikanga he tiaki, he pupuri, he manaaki, he whakaruru hoki [[2]](cite://2/1). Ko te kaitiaki he tangata, he rōpū rānei e mōhiotia ana e te tangata whenua hei kaitiaki mō tētahi wāhi, pērā i te roto, i te ngahere rānei [[3]](cite://3/1). I tipu mai te kaitiakitanga i te hononga hohonu o te tangata ki te whenua me te ao tūroa [[4]](cite://4/1).\n\n## Sources\n\n[1] [Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices](https://teara.govt.nz/en/kaitiakitanga-guardianship-and-conservation)\n[2] [Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices](https://teara.govt.nz/en/kaitiakitanga-guardianship-and-conservation)\n[3] [Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices](https://teara.govt.nz/en/kaitiakitanga-guardianship-and-conservation)\n[4] [Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices](https://teara.govt.nz/en/kaitiakitanga-guardianship-and-conservation)",
+        "mock": false,
+        "submitted_at": "2026-11-11T23:29:48.617676+00:00",
+        "workflow_timing": {
+          "total_ms": 18820,
+          "classification": {
+            "ms": 1352,
+            "category": "D",
+            "category_label": "Answerable queries"
+          },
+          "summarise": {
+            "ms": 5226,
+            "skipped": false
+          },
+          "search": {
+            "ms": 0,
+            "queries": [
+              "Search for kaitiakitanga meaning"
+            ],
+            "queries_by_kb": [
+              {
+                "knowledge_base_id": "VZTRPFNDVK",
+                "query": "kaitiakitanga meaning guardianship stewardship of the environment kaitiaki Māori",
+                "label": "Search for kaitiakitanga meaning"
+              }
+            ]
+          },
+          "evaluate": {
+            "ms": 2082
+          },
+          "prefill": {
+            "ms": 8218
+          },
+          "generate": {
+            "ms": 1404
+          },
+          "overhead_ms": 538,
+          "checkpoints_ms": {
+            "processing_active": 538,
+            "processing_done": 1890,
+            "search_active": 7116,
+            "topic_generation_done": null,
+            "eval_pending": 7116,
+            "eval_done": 9198,
+            "answering_active": 9199,
+            "text_start": 17416
+          },
+          "capture_version": 5,
+          "chat_total_ms": 18347,
+          "ttft_anchor": "chat_post",
+          "ttft_ms": 17416,
+          "ttft_event": "text-start"
+        },
+        "stream_timing": {
+          "ttft_anchor": "chat_post",
+          "ttft_ms": 17416,
+          "ttft_event": "text-start",
+          "chat_total_ms": 18347
+        },
+        "retrieved_chunks": [
+          {
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "id": 5,
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "id": 6,
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "id": 7,
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "id": 8,
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "id": 9,
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "id": 10,
+            "title": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "source": "s3://tahi-document-source/knowledgeBaseId=VZTRPFNDVK/stage=published/Hy1e6NyXhopkLpjE2mwquWExcdnmNUVq71iCZTOfPJM.pdf",
+            "published_date": "2012-09-22"
+          },
+          {
+            "id": 11,
+            "title": "Traditional Kaitaka Huaki",
+            "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/IDuQ_wx3G8CLxLxNLXeozTNHy0fh0tVmezV6spRxUo0.jpg",
+            "published_date": "2020-11-01"
+          },
+          {
+            "id": 12,
+            "title": "Unfinished Kaitaka Paepaeroa",
+            "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/S9-boWtVyh7tjOOExPFLwFECq-VkEmgyIq3lbottV-w.jpg",
+            "published_date": "2020-11-01"
+          },
+          {
+            "id": 13,
+            "title": "Grandfather and Granddaughter in Whare",
+            "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/IKn56m3YKLu1inWA6msGFB5nl4oGLhLmOAsyHzljg_k.jpg",
+            "published_date": "2013-01-01"
+          },
+          {
+            "id": 14,
+            "title": "Grandfather and Granddaughter in Whare",
+            "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/IKn56m3YKLu1inWA6msGFB5nl4oGLhLmOAsyHzljg_k.jpg",
+            "published_date": "2013-01-01"
+          },
+          {
+            "id": 15,
+            "title": "Reassembling Te Awhi Pātaka",
+            "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/VFGEGs4p4d8QBd-f3qO5ngxcMq_n4cblqAVEGBtzBgs.jpg",
+            "published_date": "2022-12-18"
+          },
+          {
+            "id": 16,
+            "title": "Traditional Kaitaka Huaki",
+            "source": "s3://tahi-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/IDuQ_wx3G8CLxLxNLXeozTNHy0fh0tVmezV6spRxUo0.jpg",
+            "published_date": "2020-11-01"
+          }
+        ],
+        "sources": [
+          {
+            "num": 1,
+            "label": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "url": "https://teara.govt.nz/en/kaitiakitanga-guardianship-and-conservation"
+          },
+          {
+            "num": 2,
+            "label": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "url": "https://teara.govt.nz/en/kaitiakitanga-guardianship-and-conservation"
+          },
+          {
+            "num": 3,
+            "label": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "url": "https://teara.govt.nz/en/kaitiakitanga-guardianship-and-conservation"
+          },
+          {
+            "num": 4,
+            "label": "Kaitiakitanga: Māori Guardianship, Environmental Stewardship, and Traditional Conservation Practices",
+            "url": "https://teara.govt.nz/en/kaitiakitanga-guardianship-and-conservation"
+          }
+        ],
+        "recency": {
+          "max_published_date_retrieved": "2022-12-18",
+          "max_updated_date_retrieved": null,
+          "max_published_date_cited": null,
+          "max_updated_date_cited": null,
+          "retrieved_chunk_count": 16,
+          "retrieved_dated_count": 16,
+          "cited_marker_count": 4,
+          "cited_dated_count": 0,
+          "cited_unmatched_count": 4
+        }
+      },
+      "rubric": {
+        "failure_class": "Te reo Māori",
+        "sub_class": "Non-English input",
+        "evaluation_method": "Automated — TTFT",
+        "pass_criteria": "",
+        "fail_criteria": "",
+        "automation_eligible": true,
+        "staging_only": false,
+        "performance_class": "Te reo Māori",
+        "what_it_isolates": "Bilingual classification, te reo handling, and the multilingual reranker (Cohere 3.5) on non-English input.",
+        "expected_ttft_profile": "≈ baseline if the multilingual path is efficient; materially higher flags te-reo overhead."
+      },
+      "report_link": "https://tahi-nz.github.io/tahi-eval-hub/P08/index.html"
+    }
+  ],
+  "pilot_tranche": [
+    "R01",
+    "R06",
+    "R05",
+    "S01",
+    "S07",
+    "G01",
+    "G03",
+    "A03",
+    "A01",
+    "U01",
+    "U14",
+    "C01"
+  ],
+  "only_ids": [
+    "P08"
+  ],
+  "performance_config": {
+    "warmup_runs": 1,
+    "measured_repeats": 3
+  },
+  "performance_summary": {
+    "by_test": {
+      "P08": {
+        "test_id": "P08",
+        "performance_class": "Te reo Māori",
+        "sub_class": "Non-English input",
+        "expected_ttft_profile": "≈ baseline if the multilingual path is efficient; materially higher flags te-reo overhead.",
+        "what_it_isolates": "Bilingual classification, te reo handling, and the multilingual reranker (Cohere 3.5) on non-English input.",
+        "median_ttft_ms": 18512,
+        "median_total_ms": 21180,
+        "ttft_runs_ms": [
+          18512,
+          20952,
+          17416
+        ],
+        "total_runs_ms": [
+          21180,
+          21320,
+          18820
+        ],
+        "repeats": [
+          {
+            "repeat_index": 1,
+            "ttft_ms": 18512,
+            "total_ms": 21180,
+            "ok": true,
+            "error": null
+          },
+          {
+            "repeat_index": 2,
+            "ttft_ms": 20952,
+            "total_ms": 21320,
+            "ok": true,
+            "error": null
+          },
+          {
+            "repeat_index": 3,
+            "ttft_ms": 17416,
+            "total_ms": 18820,
+            "ok": true,
+            "error": null
+          }
+        ],
+        "failed_repeats": 0
+      }
+    },
+    "suite_median_ttft_ms": 18512,
+    "suite_median_total_ms": 21180,
+    "test_count": 1
+  },
+  "run_config": {
+    "source": "caitlyn_api",
+    "capture_version": 1,
+    "captured_at": "2026-11-11T23:28:23.693633+00:00",
+    "agent_id": "5NR3N2X1DU",
+    "agent_alias_id": "TSTALIASID",
+    "error": "Caitlyn HTTP 403 for https://tahi.nz/api/v2/agents/5NR3N2X1DU/aliases/TSTALIASID: Your IP address has been blocked."
+  },
+  "recency_summary": {
+    "case_count": 3,
+    "min_max_published_date_retrieved": "2022-12-18",
+    "min_max_published_date_cited": null,
+    "min_max_updated_date_retrieved": null,
+    "min_max_updated_date_cited": null,
+    "cases_with_currency_warning": [],
+    "currency_warning_count": 0
+  },
+  "hub_url": "https://tahi-nz.github.io/tahi-eval-hub/",
+  "run_json_link": "https://tahi-nz.github.io/tahi-eval-hub/runs/perf-20261111-232948.json",
+  "performance_hub_link": "https://tahi-nz.github.io/tahi-eval-hub/performance/index.html"
+}

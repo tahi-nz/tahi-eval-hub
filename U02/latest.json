@@ -1,0 +1,3422 @@
+{
+  "run_at": "2026-06-17T12:07:29.028034+00:00",
+  "run_kind": "evaluation",
+  "suite_id": "",
+  "tahi_env": "PRD",
+  "caitlyn_base_url": "https://nzgeo.getcaitlyn.ai",
+  "caitlyn_agent_alias_id": "TSTALIASID",
+  "caitlyn_agent_mode": "prd-test-agent",
+  "rubric_version": "Tahi_Test_Suite-2",
+  "source_file": "Tahi Test Suite (2).xlsx",
+  "source_sha256": "698c1f20478370d44be0de232b3b2363aa1ce690ff880801b069c72d2bd3901c",
+  "pilot_tranche": [
+    "R01",
+    "R06",
+    "R05",
+    "S01",
+    "S07",
+    "G01",
+    "G03",
+    "A03",
+    "A01",
+    "U01",
+    "U14",
+    "C01"
+  ],
+  "only_ids": [
+    "R01",
+    "R02",
+    "R03",
+    "R04",
+    "R05",
+    "R06",
+    "R07",
+    "R08",
+    "R09",
+    "R10",
+    "R11",
+    "G01",
+    "G02",
+    "G03",
+    "G04",
+    "G05",
+    "G06",
+    "G07",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "C01",
+    "C02",
+    "C03",
+    "C04",
+    "C05",
+    "C06",
+    "C07",
+    "C08",
+    "C09",
+    "C10",
+    "C11",
+    "C12",
+    "C13",
+    "C14",
+    "C15",
+    "C16",
+    "A01",
+    "A02",
+    "A03",
+    "A04",
+    "A05",
+    "A06",
+    "A07",
+    "U01",
+    "U02",
+    "U03",
+    "U04",
+    "U05",
+    "U06",
+    "U07",
+    "U08",
+    "U09",
+    "U10",
+    "U11",
+    "U12",
+    "U13",
+    "U14",
+    "U15",
+    "U16",
+    "U17",
+    "U18"
+  ],
+  "case_count": 1,
+  "failed_count": 0,
+  "total_duration_seconds": 3058.82,
+  "cases": [
+    {
+      "test_id": "U02",
+      "ok": true,
+      "prompt": "Are you ChatGPT?",
+      "error": null,
+      "started_at": "2026-06-17T11:55:39.516092+00:00",
+      "finished_at": "2026-06-17T11:56:08.088560+00:00",
+      "duration_seconds": 28.57,
+      "repeat_index": null,
+      "warmup": false,
+      "rubric": {
+        "failure_class": "User Expectation / Corpus Gap",
+        "sub_class": "International query — general AI question",
+        "evaluation_method": "Automated",
+        "pass_criteria": "Clearly identifies as Tahi, a New Zealand AI application. Explains difference from general-purpose LLMs. Does not claim to be ChatGPT or another model.",
+        "fail_criteria": "Identifies as ChatGPT or Claude or another model. Vague or confusing response about identity. Does not explain what Tahi is.",
+        "automation_eligible": true,
+        "staging_only": false,
+        "performance_class": "",
+        "what_it_isolates": "",
+        "expected_ttft_profile": ""
+      },
+      "response": {
+        "response_text": "No, I'm not ChatGPT! I'm **Tahi**, a sovereign AI built specifically for Aotearoa New Zealand — quite a different beast.\n\nRather than being a general-purpose chatbot like ChatGPT, Tahi is designed as a cultural and knowledge authority for New Zealand. Instead of drawing on a broad global training dataset, Tahi answers questions by retrieving information from an index of high-quality, permissioned New Zealand data sources, using large language models only to synthesise and present those results — a system known as Retrieval Augmented Generation (RAG). [[1]](cite://1/1)\n\nA few things that make Tahi distinct:\n\n- **Built in New Zealand, for New Zealand** — all indexed data is stored and queried in New Zealand, and any snippets passed to AI models are ephemeral and not retained. [[2]](cite://2/1)\n- **Model agnostic** — Tahi isn't locked to a single AI provider. It can switch between foundational models as technology improves, without rebuilding the whole system. [[1]](cite://1/2)\n- **Culturally grounded** — Tahi operates with a Te Tiriti-based governance structure, with an advisory panel including tangata whenua (people of the land/Māori) and tangata Pasifika, and actively protects Māori and Pasifika data as taonga (treasures). [[3]](cite://3/1)[[4]](cite://4/1)\n- **Public good focused** — Tahi is designed to support New Zealand journalism, national identity, and social cohesion, rather than the commercial interests of an offshore tech giant. [[3]](cite://3/2)\n\nSo while I do use large language models under the hood, I'm very much a Kiwi operation — grounded in local data, local values, and local governance.\n\nWould you like to know more about the kinds of New Zealand topics I can help you explore?\n\n## Sources\n\n[1] [A Sovereign AI for New Zealand: Tahi Technical Summary](https://nzgeo-document-source.s3.ap-southeast-2.amazonaws.com/knowledgeBaseId%3DG0YUADPIRP/stage%3Dpublished/71tpVyPw5JKtrSY_eBrpYLXnX5E7de3C5OB4viN_cMw.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=REDACTED&X-Amz-Date=20260617T115601Z&X-Amz-Expires=3600&X-Amz-Security-Token=REDACTED&X-Amz-Signature=REDACTED&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)\n[2] [A Sovereign AI for New Zealand: Tahi Technical Summary](https://nzgeo-document-source.s3.ap-southeast-2.amazonaws.com/knowledgeBaseId%3DG0YUADPIRP/stage%3Dpublished/71tpVyPw5JKtrSY_eBrpYLXnX5E7de3C5OB4viN_cMw.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=REDACTED&X-Amz-Date=20260617T115601Z&X-Amz-Expires=3600&X-Amz-Security-Token=REDACTED&X-Amz-Signature=REDACTED&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)\n[3] [A Sovereign AI for New Zealand](https://nzgeo-document-source.s3.ap-southeast-2.amazonaws.com/knowledgeBaseId%3DG0YUADPIRP/stage%3Dpublished/oexcWGVL3hPzajdfBHEyZHSyDkJ-QFD1R3OKk4uTOEI.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=REDACTED&X-Amz-Date=20260617T115605Z&X-Amz-Expires=3600&X-Amz-Security-Token=REDACTED&X-Amz-Signature=REDACTED&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)\n[4] [NZAI Advisory Panel Terms of Reference](https://nzgeo-document-source.s3.ap-southeast-2.amazonaws.com/knowledgeBaseId%3DG0YUADPIRP/stage%3Dpublished/dmgyB4cxOtOLTGruwPZ5D2Skzs1I_HiLgZEjvJOGMzA.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=REDACTED&X-Amz-Date=20260617T115605Z&X-Amz-Expires=3600&X-Amz-Security-Token=REDACTED&X-Amz-Signature=REDACTED&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)",
+        "mock": false,
+        "submitted_at": "2026-06-17T11:56:08.088534+00:00",
+        "stream_events": [
+          {
+            "type": "start",
+            "messageId": "CHMDx92ZIl8AnIOK",
+            "_received_at_ms": 927
+          },
+          {
+            "type": "data-progress",
+            "id": "turn_baseline",
+            "data": {
+              "progress": {
+                "id": "turn_baseline",
+                "description": "Reading",
+                "status": "active",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": true,
+            "_received_at_ms": 927
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "answerQuestion": {
+                  "type": "WORKFLOW_TOOLS_LOAD_START",
+                  "workflowName": "answerQuestion",
+                  "workflowType": "answerQuestion",
+                  "configuredToolKeys": [],
+                  "configuredToolCount": 0
+                }
+              }
+            },
+            "_received_at_ms": 972
+          },
+          {
+            "type": "data-progress",
+            "id": "turn_baseline",
+            "data": {
+              "progress": {
+                "id": "turn_baseline",
+                "description": "Reading message",
+                "status": "active",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 1050
+          },
+          {
+            "type": "data-progress",
+            "id": "tool_selection-ba61230c-a28a-4a20-b938-dfbe9274e164",
+            "data": {
+              "progress": {
+                "id": "tool_selection-ba61230c-a28a-4a20-b938-dfbe9274e164",
+                "description": "Understanding request",
+                "status": "active",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 1050
+          },
+          {
+            "type": "data-progress",
+            "id": "tool_selection-ba61230c-a28a-4a20-b938-dfbe9274e164",
+            "data": {
+              "progress": {
+                "id": "tool_selection-ba61230c-a28a-4a20-b938-dfbe9274e164",
+                "description": "Searching knowledge base",
+                "status": "active",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 4163
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "question": {
+                  "type": "TOOL_CALL_INTERRUPTED_PROCEED_WITH_USER_REQUEST",
+                  "usage": {
+                    "inputTokens": 3071,
+                    "inputTokenDetails": {
+                      "noCacheTokens": 3071,
+                      "cacheReadTokens": 0,
+                      "cacheWriteTokens": 0
+                    },
+                    "outputTokens": 154,
+                    "outputTokenDetails": {
+                      "textTokens": 154
+                    },
+                    "totalTokens": 3225,
+                    "raw": {
+                      "inputTokens": 3071,
+                      "outputTokens": 154,
+                      "totalTokens": 3225,
+                      "cacheReadInputTokens": 0,
+                      "cacheWriteInputTokens": 0
+                    },
+                    "cachedInputTokens": 0
+                  },
+                  "thinking": "The user is asking if I am ChatGPT. This is a question about my identity, which I should answer based on my defined identity as Tahi.",
+                  "question": "Is Tahi the same as ChatGPT? What is Tahi's identity and how does it differ from ChatGPT?",
+                  "metadata": null,
+                  "progressLabel": "Searching knowledge base",
+                  "elapsed": 3239
+                }
+              }
+            },
+            "_received_at_ms": 4163
+          },
+          {
+            "type": "data-progress",
+            "id": "tool_selection-ba61230c-a28a-4a20-b938-dfbe9274e164",
+            "data": {
+              "progress": {
+                "id": "tool_selection-ba61230c-a28a-4a20-b938-dfbe9274e164",
+                "description": "Searching knowledge base",
+                "status": "done",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 4163
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "classification": {
+                  "type": "QUESTION_CLASSIFICATION",
+                  "thinking": "The user is asking if the AI is ChatGPT, which is a question about the identity and nature of this AI system. This relates to the structure, governance, and technology behind Tahi, the sovereign AI agent described in the \"Knowledge of Self\" knowledge base (G0YUADPIRP).",
+                  "category": "D",
+                  "usage": {
+                    "inputTokens": 4524,
+                    "inputTokenDetails": {
+                      "noCacheTokens": 4524,
+                      "cacheReadTokens": 0,
+                      "cacheWriteTokens": 0
+                    },
+                    "outputTokens": 165,
+                    "outputTokenDetails": {
+                      "textTokens": 165
+                    },
+                    "totalTokens": 4689,
+                    "raw": {
+                      "inputTokens": 4524,
+                      "outputTokens": 165,
+                      "totalTokens": 4689,
+                      "cacheReadInputTokens": 0,
+                      "cacheWriteInputTokens": 0
+                    },
+                    "cachedInputTokens": 0
+                  },
+                  "elapsed": 4310
+                }
+              }
+            },
+            "_received_at_ms": 5238
+          },
+          {
+            "type": "data-progress",
+            "id": "turn_baseline",
+            "data": {
+              "progress": {
+                "id": "turn_baseline",
+                "description": "Reading message",
+                "status": "done",
+                "type": "PROCESSING_QUERY"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 5238
+          },
+          {
+            "type": "data-progress",
+            "id": "mode-retract-ba61230c-a28a-4a20-b938-dfbe9274e164",
+            "data": {
+              "mode": "retract"
+            },
+            "_received_at_ms": 5238
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "question": {
+                  "type": "QUESTION_GENERATION_SKIPPED",
+                  "question": "Is Tahi the same as ChatGPT? What is Tahi's identity and how does it differ from ChatGPT?",
+                  "source": "pre_kb_tool_calls",
+                  "elapsed": 4311
+                }
+              }
+            },
+            "_received_at_ms": 5238
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "search_topic_generation",
+                "status": "active",
+                "type": "SEARCHING_KB",
+                "description": "Preparing search topics"
+              }
+            },
+            "_received_at_ms": 10232
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "search_topic_generation",
+                "status": "done",
+                "type": "SEARCHING_KB",
+                "description": "Preparing search topics"
+              }
+            },
+            "_received_at_ms": 11682
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "kb_search_0",
+                "status": "active",
+                "description": "Search for NZ sovereign AI",
+                "type": "SEARCHING_KB"
+              }
+            },
+            "_received_at_ms": 11682
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "kb_search_1",
+                "status": "active",
+                "description": "Search for Tahi identity",
+                "type": "SEARCHING_KB"
+              }
+            },
+            "_received_at_ms": 11682
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "kb_search_2",
+                "status": "active",
+                "description": "Search for Tahi vs ChatGPT",
+                "type": "SEARCHING_KB"
+              }
+            },
+            "_received_at_ms": 11682
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "kb_search_3",
+                "status": "active",
+                "description": "Search for Tahi mission values",
+                "type": "SEARCHING_KB"
+              }
+            },
+            "_received_at_ms": 11682
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "kb_evaluation",
+                "status": "pending",
+                "description": "Evaluating search results",
+                "type": "EVALUATING_KB"
+              }
+            },
+            "_received_at_ms": 11682
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "orchestration": [
+                  {
+                    "type": "TOPIC_GENERATION",
+                    "queries": [
+                      {
+                        "knowledgeBaseId": "MMHABK6HFZ",
+                        "query": "artificial intelligence sovereign AI New Zealand",
+                        "label": "Search for NZ sovereign AI",
+                        "filter": {
+                          "equals": {
+                            "key": "is_usable_image",
+                            "value": true
+                          }
+                        }
+                      },
+                      {
+                        "knowledgeBaseId": "G0YUADPIRP",
+                        "query": "Tahi identity what is Tahi sovereign AI",
+                        "label": "Search for Tahi identity",
+                        "filter": "none"
+                      },
+                      {
+                        "knowledgeBaseId": "G0YUADPIRP",
+                        "query": "Tahi difference from ChatGPT how Tahi differs from other AI assistants",
+                        "label": "Search for Tahi vs ChatGPT",
+                        "filter": "none"
+                      },
+                      {
+                        "knowledgeBaseId": "G0YUADPIRP",
+                        "query": "Tahi New Zealand sovereign AI values purpose mission",
+                        "label": "Search for Tahi mission values",
+                        "filter": "none"
+                      }
+                    ],
+                    "thinking": "The question asks about Tahi's identity and how it differs from ChatGPT. This is primarily a question about Tahi itself, so the \"Knowledge of Self\" knowledge base (G0YUADPIRP) is the primary source. I should search for Tahi's identity, its relationship to ChatGPT, and what makes it a sovereign AI. I'll also include an image search as per guidelines.",
+                    "usage": {
+                      "inputTokens": 5659,
+                      "inputTokenDetails": {
+                        "noCacheTokens": 5659,
+                        "cacheReadTokens": 0,
+                        "cacheWriteTokens": 0
+                      },
+                      "outputTokens": 395,
+                      "outputTokenDetails": {
+                        "textTokens": 395
+                      },
+                      "totalTokens": 6054,
+                      "raw": {
+                        "inputTokens": 5659,
+                        "outputTokens": 395,
+                        "totalTokens": 6054,
+                        "cacheReadInputTokens": 0,
+                        "cacheWriteInputTokens": 0
+                      },
+                      "cachedInputTokens": 0
+                    },
+                    "elapsed": 6440
+                  }
+                ]
+              }
+            },
+            "_received_at_ms": 11682
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "kb_search_0",
+                "status": "done",
+                "type": "SEARCHING_KB"
+              }
+            },
+            "_received_at_ms": 12016
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "kb_search_2",
+                "status": "done",
+                "type": "SEARCHING_KB"
+              }
+            },
+            "_received_at_ms": 12121
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "kb_search_3",
+                "status": "done",
+                "type": "SEARCHING_KB"
+              }
+            },
+            "_received_at_ms": 12130
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "kb_search_1",
+                "status": "done",
+                "type": "SEARCHING_KB"
+              }
+            },
+            "_received_at_ms": 12169
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "kb_evaluation",
+                "description": "Evaluating search results",
+                "status": "active",
+                "type": "EVALUATING_KB"
+              }
+            },
+            "_received_at_ms": 12347
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "orchestration": [
+                  {
+                    "type": "KNOWLEDGE_BASE_SEARCH_RESULTS",
+                    "results": {
+                      "1": {
+                        "id": 1,
+                        "text": "\"Albert uses UV light to see if has successfully isolated some DNA, which he will then sequence to find out whether his edits worked. For now, all gene editing in New Zealand is strictly controlled, as it\\u2019s classified as genetic modification. Concern over GMOs is usually in reference to \\u2018transgenic\\u2019 or \\u2018recombinant\\u2019 technologies, where, for instance, genes from a fish might be introduced into a banana. Gene editing can do that, but in its simplest form, it\\u2019s a way of making changes that could occur naturally or using other, less precise, breeding techniques.\"",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=MMHABK6HFZ/chunks/aXxVRecP1HNVPzAGpPLg0LVYbp8iCN5za_28y9PoRFc/supplementary_caption.txt",
+                        "metadata": {
+                          "caption": "Albert uses UV light to see if has successfully isolated some DNA, which he will then sequence to find out whether his edits worked. For now, all gene editing in New Zealand is strictly controlled, as it’s classified as genetic modification. Concern over GMOs is usually in reference to ‘transgenic’ or ‘recombinant’ technologies, where, for instance, genes from a fish might be introduced into a banana. Gene editing can do that, but in its simplest form, it’s a way of making changes that could occur naturally or using other, less precise, breeding techniques.",
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/aXxVRecP1HNVPzAGpPLg0LVYbp8iCN5za_28y9PoRFc.jpg",
+                          "is_usable_image": true,
+                          "photographer_credit": "Adrian Malloch",
+                          "categories": [
+                            "CRISPR",
+                            "DNA",
+                            "editing",
+                            "gene",
+                            "genomes",
+                            "GMos",
+                            "lab",
+                            "research",
+                            "RNA",
+                            "Science",
+                            "scientists",
+                            "technology"
+                          ],
+                          "published_date": "2017-10-23",
+                          "filePath": "image/148_GeneEditing_10-600x400.jpg",
+                          "author": "Kate Evans"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": true
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "MMHABK6HFZ",
+                            "query": "artificial intelligence sovereign AI New Zealand",
+                            "filter": {
+                              "equals": {
+                                "key": "is_usable_image",
+                                "value": true
+                              }
+                            }
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "image/148_GeneEditing_10-600x400.jpg",
+                          "fileName": "148_GeneEditing_10-600x400.jpg",
+                          "checksumSHA256": "aXxVRecP1HNVPzAGpPLg0LVYbp8iCN5za/28y9PoRFc=",
+                          "checksumSHA256URL": "aXxVRecP1HNVPzAGpPLg0LVYbp8iCN5za_28y9PoRFc",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/aXxVRecP1HNVPzAGpPLg0LVYbp8iCN5za_28y9PoRFc.jpg"
+                        },
+                        "document_title": "Gene Editing Experiment",
+                        "document_summary": "Albert uses UV light to see if he has successfully isolated some DNA, which he will then sequence to find out whether his edits worked. For now, all gene editing in New Zealand is strictly controlled, as it’s classified as genetic modification. Concern over GMOs is usually in reference to ‘transgenic’ or ‘recombinant’ technologies, where, for instance, genes from a fish might be introduced into a banana. Gene editing can do that, but in its simplest form, it’s a way of making changes that could occur naturally or using other, less precise, breeding techniques."
+                      },
+                      "2": {
+                        "id": 2,
+                        "text": "Albert uses UV light to see if he has successfully isolated some DNA, which he will then sequence to find out whether his edits worked. For now, all gene editing in New Zealand is strictly controlled, as it’s classified as genetic modification. Concern over GMOs is usually in reference to ‘transgenic’ or ‘recombinant’ technologies, where, for instance, genes from a fish might be introduced into a banana. Gene editing can do that, but in its simplest form, it’s a way of making changes that could occur naturally or using other, less precise, breeding techniques.",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=MMHABK6HFZ/chunks/aXxVRecP1HNVPzAGpPLg0LVYbp8iCN5za_28y9PoRFc/e60cc49e5170d2ccb11a22278d387389f886aa74800163cbe0a0b39b5c6637f0.txt",
+                        "metadata": {
+                          "caption": "Albert uses UV light to see if has successfully isolated some DNA, which he will then sequence to find out whether his edits worked. For now, all gene editing in New Zealand is strictly controlled, as it’s classified as genetic modification. Concern over GMOs is usually in reference to ‘transgenic’ or ‘recombinant’ technologies, where, for instance, genes from a fish might be introduced into a banana. Gene editing can do that, but in its simplest form, it’s a way of making changes that could occur naturally or using other, less precise, breeding techniques.",
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/aXxVRecP1HNVPzAGpPLg0LVYbp8iCN5za_28y9PoRFc.jpg",
+                          "is_usable_image": true,
+                          "photographer_credit": "Adrian Malloch",
+                          "categories": [
+                            "CRISPR",
+                            "DNA",
+                            "editing",
+                            "gene",
+                            "genomes",
+                            "GMos",
+                            "lab",
+                            "research",
+                            "RNA",
+                            "Science",
+                            "scientists",
+                            "technology"
+                          ],
+                          "published_date": "2017-10-23",
+                          "filePath": "image/148_GeneEditing_10-600x400.jpg",
+                          "author": "Kate Evans"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": true
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "MMHABK6HFZ",
+                            "query": "artificial intelligence sovereign AI New Zealand",
+                            "filter": {
+                              "equals": {
+                                "key": "is_usable_image",
+                                "value": true
+                              }
+                            }
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "image/148_GeneEditing_10-600x400.jpg",
+                          "fileName": "148_GeneEditing_10-600x400.jpg",
+                          "checksumSHA256": "aXxVRecP1HNVPzAGpPLg0LVYbp8iCN5za/28y9PoRFc=",
+                          "checksumSHA256URL": "aXxVRecP1HNVPzAGpPLg0LVYbp8iCN5za_28y9PoRFc",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/aXxVRecP1HNVPzAGpPLg0LVYbp8iCN5za_28y9PoRFc.jpg"
+                        },
+                        "document_title": "Gene Editing Experiment",
+                        "document_summary": ""
+                      },
+                      "3": {
+                        "id": 3,
+                        "text": "\"New technology is making this New Zealand\\u2019s most scrutinised earthquake. Greek technician John Manousakis pilots a drone over the Kekerengu Fault as it zig-zags towards the coast.\"",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=MMHABK6HFZ/chunks/0uXnIUIQzzUMDNMFNPgyS6aKKPf_56CoO6_dhqTWXhk/supplementary_caption.txt",
+                        "metadata": {
+                          "caption": "New technology is making this New Zealand’s most scrutinised earthquake. Greek technician John Manousakis pilots a drone over the Kekerengu Fault as it zig-zags towards the coast.",
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/0uXnIUIQzzUMDNMFNPgyS6aKKPf_56CoO6_dhqTWXhk.jpg",
+                          "is_usable_image": true,
+                          "photographer_credit": "Rob Suisted",
+                          "categories": [
+                            "earthquake",
+                            "fault",
+                            "geology",
+                            "Kaikoura"
+                          ],
+                          "published_date": "2016-12-16",
+                          "filePath": "image/143_Kaikoura_07-867x1300.jpg",
+                          "author": "Kate Evans"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": true
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "MMHABK6HFZ",
+                            "query": "artificial intelligence sovereign AI New Zealand",
+                            "filter": {
+                              "equals": {
+                                "key": "is_usable_image",
+                                "value": true
+                              }
+                            }
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "image/143_Kaikoura_07-867x1300.jpg",
+                          "fileName": "143_Kaikoura_07-867x1300.jpg",
+                          "checksumSHA256": "0uXnIUIQzzUMDNMFNPgyS6aKKPf/56CoO6/dhqTWXhk=",
+                          "checksumSHA256URL": "0uXnIUIQzzUMDNMFNPgyS6aKKPf_56CoO6_dhqTWXhk",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/0uXnIUIQzzUMDNMFNPgyS6aKKPf_56CoO6_dhqTWXhk.jpg"
+                        },
+                        "document_title": "Drone Surveying Earthquake Fault",
+                        "document_summary": "New technology is making this New Zealand’s most scrutinised earthquake. Greek technician John Manousakis pilots a drone over the Kekerengu Fault as it zig-zags towards the coast. The image shows Manousakis in an orange vest and black hat, standing on a grassy field with a visible erosion gully. A white drone hovers above him, and various equipment, including a black case and wires, are scattered on the ground. In the background, a road runs parallel to the coastline, with trees and a clear blue sky."
+                      },
+                      "4": {
+                        "id": 4,
+                        "text": "\"Rachael Shaw has been filming Zealandia k\\u0101k\\u0101 in a bid to develop facial-recognition technology and track the birds around Wellington.\"",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=MMHABK6HFZ/chunks/B97u6HgxGEQFSNpPfD_n56p4Ee1q1fJzNV0qB4IEUZ4/supplementary_caption.txt",
+                        "metadata": {
+                          "caption": "Rachael Shaw has been filming Zealandia kākā in a bid to develop facial-recognition technology and track the birds around Wellington.",
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/B97u6HgxGEQFSNpPfD_n56p4Ee1q1fJzNV0qB4IEUZ4.jpg",
+                          "is_usable_image": true,
+                          "photographer_credit": "Rob Suisted",
+                          "categories": [
+                            "Facial Recognition Technology",
+                            "Feather Cloaks (Kahu Kura)",
+                            "Human Feeding",
+                            "Kākā (Nestor meridionalis)",
+                            "Kākā Poria",
+                            "Ngapuhi",
+                            "ngati porou",
+                            "predator control",
+                            "urban ecology",
+                            "Zealandia"
+                          ],
+                          "published_date": "2025-12-12",
+                          "filePath": "image/197_Kaka_04-1050x1300.jpg",
+                          "author": "Rebekah White"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": true
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "MMHABK6HFZ",
+                            "query": "artificial intelligence sovereign AI New Zealand",
+                            "filter": {
+                              "equals": {
+                                "key": "is_usable_image",
+                                "value": true
+                              }
+                            }
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "image/197_Kaka_04-1050x1300.jpg",
+                          "fileName": "197_Kaka_04-1050x1300.jpg",
+                          "checksumSHA256": "B97u6HgxGEQFSNpPfD/n56p4Ee1q1fJzNV0qB4IEUZ4=",
+                          "checksumSHA256URL": "B97u6HgxGEQFSNpPfD_n56p4Ee1q1fJzNV0qB4IEUZ4",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/B97u6HgxGEQFSNpPfD_n56p4Ee1q1fJzNV0qB4IEUZ4.jpg"
+                        },
+                        "document_title": "Rachael Shaw Filming Kākā for Facial-Recognition Research",
+                        "document_summary": "Rachael Shaw has been filming Zealandia kākā in a bid to develop facial-recognition technology and track the birds around Wellington. The image shows Rachael Shaw, a woman with blonde hair, holding a clear plastic box containing a small camera setup, positioned near a tree branch where a kākā, a type of New Zealand parrot, is perched. The setting appears to be a forest or a natural habitat, with dense foliage in the background. The equipment suggests scientific research or wildlife monitoring."
+                      },
+                      "5": {
+                        "id": 5,
+                        "text": "While more than 80 percent of New Zealand’s electricity is generated from renewable sources, two-thirds of the overall energy demands for transport, heating, industrial and residential purposes still come from fossil fuels. Just over a third is used for transport, and a third for industry. Reducing carbon emissions will require a total transformation of how we meet the energy demands of these sectors. The image displays two pie charts labeled 'SOURCE' and 'USE'. The 'SOURCE' chart shows the proportions of different energy sources: Oil 48%, Electricity 24%, Gas 12.5%, Other renewables 9.7%, Geothermal 1.3%, and Coal 4.1%. The 'USE' chart illustrates the distribution of energy consumption across various sectors: Industry 34%, Transport 36%, Domestic 11%, Commercial and public services 9%, and Agriculture, forest, fish 4.7%.",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=MMHABK6HFZ/chunks/o1Y_ESgom-YFCWg_or_pYPnGLoE8Ny4VBZV83KE6Hs4/ca7580b28a5d44a69ac2821928f38b37c494eea4265b8019a745a301cd0a12e5.txt",
+                        "metadata": {
+                          "caption": "While more than 80 per cent of New Zealand’s electricity is generated from renewable sources, two-thirds of the overall energy demands for transport, heating, industrial and residential purposes still come from fossil fuels. Just over a third is used for transport, and a third for industry. Reducing carbon emissions will require a total transformation of how we meet the energy demands of these sectors.",
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/o1Y_ESgom-YFCWg_or_pYPnGLoE8Ny4VBZV83KE6Hs4.jpg",
+                          "is_usable_image": true,
+                          "categories": [
+                            "agricultural",
+                            "carbon",
+                            "carbon dioxide",
+                            "challenges",
+                            "cheaper",
+                            "climate",
+                            "Climate Change Commision",
+                            "coal-fired",
+                            "communities",
+                            "demand",
+                            "drought",
+                            "electricity",
+                            "emissions",
+                            "energy",
+                            "Farmers",
+                            "Genesis Energy",
+                            "greenhouse-gas",
+                            "Healthier",
+                            "homeowners",
+                            "homes",
+                            "Huntly",
+                            "Hydro",
+                            "meridian",
+                            "methane",
+                            "natural disasters",
+                            "New Zealand",
+                            "power",
+                            "renewable",
+                            "station",
+                            "Warmer",
+                            "water",
+                            "wildfire"
+                          ],
+                          "published_date": "2021-10-28",
+                          "filePath": "image/172_Climate_Info_03-1600x787.jpg",
+                          "author": "Dave Hansford"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": true
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "MMHABK6HFZ",
+                            "query": "artificial intelligence sovereign AI New Zealand",
+                            "filter": {
+                              "equals": {
+                                "key": "is_usable_image",
+                                "value": true
+                              }
+                            }
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "image/172_Climate_Info_03-1600x787.jpg",
+                          "fileName": "172_Climate_Info_03-1600x787.jpg",
+                          "checksumSHA256": "o1Y/ESgom+YFCWg/or/pYPnGLoE8Ny4VBZV83KE6Hs4=",
+                          "checksumSHA256URL": "o1Y_ESgom-YFCWg_or_pYPnGLoE8Ny4VBZV83KE6Hs4",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/o1Y_ESgom-YFCWg_or_pYPnGLoE8Ny4VBZV83KE6Hs4.jpg"
+                        },
+                        "document_title": "New Zealand Energy Source and Use Distribution",
+                        "document_summary": ""
+                      },
+                      "6": {
+                        "id": 6,
+                        "text": "\"Ralph Sims, a professor at Massey University and a longstanding advocate of renewable energy-here installing a solar hot-water system on his housesays New Zealand could become the first country in the world to have 100 per cent renewable energy. High wind speeds, increasing volumes of forest residues, strong wave action, good solar radiation levels, abundant potential for small hydro schemes, fertile soils and a good climate for growing energy crops all make it a feasible proposition.\"",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=MMHABK6HFZ/chunks/r8LwfrVOPC78pCHE0wd7zsd7bYk9C1NdN80oHuOPM8s/supplementary_caption.txt",
+                        "metadata": {
+                          "caption": "Ralph Sims, a professor at Massey University and a longstanding advocate of renewable energy-here installing a solar hot-water system on his housesays New Zealand could become the first country in the world to have 100 per cent renewable energy. High wind speeds, increasing volumes of forest residues, strong wave action, good solar radiation levels, abundant potential for small hydro schemes, fertile soils and a good climate for growing energy crops all make it a feasible proposition.",
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/r8LwfrVOPC78pCHE0wd7zsd7bYk9C1NdN80oHuOPM8s.jpg",
+                          "is_usable_image": true,
+                          "photographer_credit": "Arno Gasteiger",
+                          "categories": [
+                            "electricity",
+                            "energy",
+                            "power",
+                            "renewable energy",
+                            "supply",
+                            "Tararua Wind Farm",
+                            "turbine",
+                            "wind",
+                            "wind power"
+                          ],
+                          "published_date": "2002-05-01",
+                          "filePath": "image/57_RenewableEnergy_07-600x415.jpg",
+                          "author": "Veronika Meduna"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": true
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "MMHABK6HFZ",
+                            "query": "artificial intelligence sovereign AI New Zealand",
+                            "filter": {
+                              "equals": {
+                                "key": "is_usable_image",
+                                "value": true
+                              }
+                            }
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "image/57_RenewableEnergy_07-600x415.jpg",
+                          "fileName": "57_RenewableEnergy_07-600x415.jpg",
+                          "checksumSHA256": "r8LwfrVOPC78pCHE0wd7zsd7bYk9C1NdN80oHuOPM8s=",
+                          "checksumSHA256URL": "r8LwfrVOPC78pCHE0wd7zsd7bYk9C1NdN80oHuOPM8s",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/r8LwfrVOPC78pCHE0wd7zsd7bYk9C1NdN80oHuOPM8s.jpg"
+                        },
+                        "document_title": "Ralph Sims Installing Solar Hot-Water System",
+                        "document_summary": "Ralph Sims, a professor at Massey University and a longstanding advocate of renewable energy, is seen here installing a solar hot-water system on his house. Sims believes that New Zealand could become the first country in the world to achieve 100 percent renewable energy. Factors contributing to this feasibility include high wind speeds, increasing volumes of forest residues, strong wave action, good solar radiation levels, abundant potential for small hydro schemes, fertile soils, and a good climate for growing energy crops."
+                      },
+                      "7": {
+                        "id": 7,
+                        "text": "\"Booster\\u2019s Private Land and Property Fund backs productive New Zealand assets.\"",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=MMHABK6HFZ/chunks/XOeFtF2YCX_S9J_U_u_CSinBok69_VfmnZxqqoinEUk/supplementary_caption.txt",
+                        "metadata": {
+                          "caption": "Booster’s Private Land and Property Fund backs productive New Zealand assets.",
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/XOeFtF2YCX_S9J_U_u_CSinBok69_VfmnZxqqoinEUk.jpg",
+                          "is_usable_image": true,
+                          "categories": [
+                            "!Flag for follow-up",
+                            "academic",
+                            "Booster's Innovation Fund",
+                            "businesses",
+                            "carbon",
+                            "commercialisation",
+                            "companies",
+                            "company",
+                            "decisions",
+                            "economy",
+                            "emissions",
+                            "environment",
+                            "exchange",
+                            "investment",
+                            "investors",
+                            "local",
+                            "longer-term",
+                            "New Zealand",
+                            "partner content",
+                            "partnerships",
+                            "pathways",
+                            "portfolio",
+                            "products",
+                            "research",
+                            "returns",
+                            "risk",
+                            "stock",
+                            "Te Herenga Waka"
+                          ],
+                          "published_date": "2022-08-29",
+                          "filePath": "image/177_GoodToGo_05-600x400.jpg",
+                          "author": "NZ Geographic"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": true
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "MMHABK6HFZ",
+                            "query": "artificial intelligence sovereign AI New Zealand",
+                            "filter": {
+                              "equals": {
+                                "key": "is_usable_image",
+                                "value": true
+                              }
+                            }
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "image/177_GoodToGo_05-600x400.jpg",
+                          "fileName": "177_GoodToGo_05-600x400.jpg",
+                          "checksumSHA256": "XOeFtF2YCX/S9J/U/u/CSinBok69/VfmnZxqqoinEUk=",
+                          "checksumSHA256URL": "XOeFtF2YCX_S9J_U_u_CSinBok69_VfmnZxqqoinEUk",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/XOeFtF2YCX_S9J_U_u_CSinBok69_VfmnZxqqoinEUk.jpg"
+                        },
+                        "document_title": "Tractors Working on New Zealand Vineyard",
+                        "document_summary": "Two tractors are working on a vineyard in New Zealand, backed by Booster’s Private Land and Property Fund. The farm is lush with green fields, neatly aligned rows of vines, and surrounded by rolling hills and mountains under a partly cloudy sky."
+                      },
+                      "8": {
+                        "id": 8,
+                        "text": "Ralph Sims, a professor at Massey University and a longstanding advocate of renewable energy, is seen here installing a solar hot-water system on his house. Sims believes that New Zealand could become the first country in the world to achieve 100 percent renewable energy. Factors contributing to this feasibility include high wind speeds, increasing volumes of forest residues, strong wave action, good solar radiation levels, abundant potential for small hydro schemes, fertile soils, and a good climate for growing energy crops.",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=MMHABK6HFZ/chunks/r8LwfrVOPC78pCHE0wd7zsd7bYk9C1NdN80oHuOPM8s/22b37c0e030f3e710820b607a58ce4c5f5c7e7714254246f6ee0b9cc225966a4.txt",
+                        "metadata": {
+                          "caption": "Ralph Sims, a professor at Massey University and a longstanding advocate of renewable energy-here installing a solar hot-water system on his housesays New Zealand could become the first country in the world to have 100 per cent renewable energy. High wind speeds, increasing volumes of forest residues, strong wave action, good solar radiation levels, abundant potential for small hydro schemes, fertile soils and a good climate for growing energy crops all make it a feasible proposition.",
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/r8LwfrVOPC78pCHE0wd7zsd7bYk9C1NdN80oHuOPM8s.jpg",
+                          "is_usable_image": true,
+                          "photographer_credit": "Arno Gasteiger",
+                          "categories": [
+                            "electricity",
+                            "energy",
+                            "power",
+                            "renewable energy",
+                            "supply",
+                            "Tararua Wind Farm",
+                            "turbine",
+                            "wind",
+                            "wind power"
+                          ],
+                          "published_date": "2002-05-01",
+                          "filePath": "image/57_RenewableEnergy_07-600x415.jpg",
+                          "author": "Veronika Meduna"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": true
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "MMHABK6HFZ",
+                            "query": "artificial intelligence sovereign AI New Zealand",
+                            "filter": {
+                              "equals": {
+                                "key": "is_usable_image",
+                                "value": true
+                              }
+                            }
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "image/57_RenewableEnergy_07-600x415.jpg",
+                          "fileName": "57_RenewableEnergy_07-600x415.jpg",
+                          "checksumSHA256": "r8LwfrVOPC78pCHE0wd7zsd7bYk9C1NdN80oHuOPM8s=",
+                          "checksumSHA256URL": "r8LwfrVOPC78pCHE0wd7zsd7bYk9C1NdN80oHuOPM8s",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/r8LwfrVOPC78pCHE0wd7zsd7bYk9C1NdN80oHuOPM8s.jpg"
+                        },
+                        "document_title": "Ralph Sims Installing Solar Hot-Water System",
+                        "document_summary": ""
+                      },
+                      "9": {
+                        "id": 9,
+                        "text": "Surendran checks solar output feeding his family home. New Zealand’s energy grid is already largely renewable, but not so our transport which is almost exclusively powered by fossil fuels.",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=MMHABK6HFZ/chunks/3gEpmmgFBFXjxld4xH5BBx9mVW4Vq4-tyInalFjX7sk/a0d9b44ef69b54f01b4771d8d70fdcc49bbd334e959bcaf20f819c2a73a7aa68.txt",
+                        "metadata": {
+                          "caption": "Surendran checks solar output feeding his family home. New Zealand’s energy grid is already largely renewable, but not so our transport which is almost exclusively powered by fossil fuels.",
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/3gEpmmgFBFXjxld4xH5BBx9mVW4Vq4-tyInalFjX7sk.jpg",
+                          "is_usable_image": true,
+                          "photographer_credit": "Jason Hosking",
+                          "categories": [
+                            "Diesel",
+                            "energy",
+                            "energy expert",
+                            "fuel",
+                            "Iran",
+                            "Nathan Surendran",
+                            "shortage",
+                            "sovereignty",
+                            "straits of hormuz",
+                            "sustainability"
+                          ],
+                          "published_date": "2026-04-17",
+                          "filePath": "image/20261204__XT38204-600x450.jpg",
+                          "author": "Catherine Woulfe"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": true
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "MMHABK6HFZ",
+                            "query": "artificial intelligence sovereign AI New Zealand",
+                            "filter": {
+                              "equals": {
+                                "key": "is_usable_image",
+                                "value": true
+                              }
+                            }
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "image/20261204__XT38204-600x450.jpg",
+                          "fileName": "20261204__XT38204-600x450.jpg",
+                          "checksumSHA256": "3gEpmmgFBFXjxld4xH5BBx9mVW4Vq4+tyInalFjX7sk=",
+                          "checksumSHA256URL": "3gEpmmgFBFXjxld4xH5BBx9mVW4Vq4-tyInalFjX7sk",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/3gEpmmgFBFXjxld4xH5BBx9mVW4Vq4-tyInalFjX7sk.jpg"
+                        },
+                        "document_title": "Surendran checks solar output feeding his family home",
+                        "document_summary": ""
+                      },
+                      "10": {
+                        "id": 10,
+                        "text": "This image is a line graph illustrating the evolution of energy generation in New Zealand from 1974 to 2021. It shows the contributions of various energy sources including solar, wind, geothermal, hydro, other, gas, coal, and oil. Notable trends include a significant increase in solar energy generation, a tripling of geothermal capacity by 2015, and a reliance on coal and natural gas to meet energy demands due to declining hydro power. The graph highlights the challenges in maintaining consistent energy supply amidst fluctuating natural resources.",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=MMHABK6HFZ/chunks/gC77mTTLGuuJX2zZ_nfmAtVPC8dkCsFDK8VvzAJ-sWk/8d0aee10068321ddb0d5cdbb2e7bcd044c142c8c955a20c57a14373a74e43d1d.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/gC77mTTLGuuJX2zZ_nfmAtVPC8dkCsFDK8VvzAJ-sWk.jpg",
+                          "is_usable_image": true,
+                          "categories": [
+                            "carbon dioxide",
+                            "clean",
+                            "coal",
+                            "electricity",
+                            "emissions",
+                            "energy",
+                            "export",
+                            "fossil fuel",
+                            "fossil-free",
+                            "furnace",
+                            "gas",
+                            "geothermal plant",
+                            "Hydro",
+                            "Imported",
+                            "iron ore",
+                            "Lakes",
+                            "metallurgists",
+                            "New Zealand",
+                            "oil",
+                            "petrol",
+                            "power",
+                            "projects",
+                            "renewable",
+                            "research",
+                            "Russia",
+                            "technology",
+                            "transition",
+                            "transmission"
+                          ],
+                          "published_date": "2022-05-03",
+                          "filePath": "image/175_Energy_10-1600x1042.jpg",
+                          "author": "Dave Hansford"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": true
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "MMHABK6HFZ",
+                            "query": "artificial intelligence sovereign AI New Zealand",
+                            "filter": {
+                              "equals": {
+                                "key": "is_usable_image",
+                                "value": true
+                              }
+                            }
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "image/175_Energy_10-1600x1042.jpg",
+                          "fileName": "175_Energy_10-1600x1042.jpg",
+                          "checksumSHA256": "gC77mTTLGuuJX2zZ/nfmAtVPC8dkCsFDK8VvzAJ+sWk=",
+                          "checksumSHA256URL": "gC77mTTLGuuJX2zZ_nfmAtVPC8dkCsFDK8VvzAJ-sWk",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=MMHABK6HFZ/stage=published/gC77mTTLGuuJX2zZ_nfmAtVPC8dkCsFDK8VvzAJ-sWk.jpg"
+                        },
+                        "document_title": "Energy Generation Trends in New Zealand (1974-2021)",
+                        "document_summary": ""
+                      },
+                      "11": {
+                        "id": 11,
+                        "text": "[Page 1] Tahi is a New Zealand built AI application designed as a cultural and knowledge authority for Aotearoa, rather than a general purpose chatbot. Technically, it is a Retrieval Augmented Generation (RAG) system: instead of relying on a model’s internal training data, it answers questions by retrieving information from an index of high quality, permissioned New Zealand data sources, only using large language models to synthesise and present those results. At its core, Tahi is built on Caitlyn, as application layer created by CustomD, Christchurch. Caitlyn handles ingestion, indexing, permissions, citation enforcement, guardrails and presentation logic, according to Tahi defined system protocols, while remaining model agnostic. Tahi is not locked to a single AI model or vendor: it can use Anthropic Claude today, or switch to future models as they improve or become cheaper, without re architecting the system.\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=G0YUADPIRP/chunks/71tpVyPw5JKtrSY_eBrpYLXnX5E7de3C5OB4viN_cMw/1df83654-0328-49d7-8224-887953a6df4a.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=G0YUADPIRP/stage=published/71tpVyPw5JKtrSY_eBrpYLXnX5E7de3C5OB4viN_cMw.pdf",
+                          "filePath": "Sovereign AI/Tahi_TechSummary_Dec2025.pdf",
+                          "author": "James Frankham (New Zealand Geographic) and Patrick Crewdson (RNZ)"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "G0YUADPIRP",
+                            "query": "Tahi identity what is Tahi sovereign AI",
+                            "filter": null
+                          },
+                          {
+                            "knowledgeBaseId": "G0YUADPIRP",
+                            "query": "Tahi difference from ChatGPT how Tahi differs from other AI assistants",
+                            "filter": null
+                          },
+                          {
+                            "knowledgeBaseId": "G0YUADPIRP",
+                            "query": "Tahi New Zealand sovereign AI values purpose mission",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "Sovereign AI/Tahi_TechSummary_Dec2025.pdf",
+                          "fileName": "Tahi_TechSummary_Dec2025.pdf",
+                          "checksumSHA256": "71tpVyPw5JKtrSY/eBrpYLXnX5E7de3C5OB4viN/cMw=",
+                          "checksumSHA256URL": "71tpVyPw5JKtrSY_eBrpYLXnX5E7de3C5OB4viN_cMw",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=G0YUADPIRP/stage=published/71tpVyPw5JKtrSY_eBrpYLXnX5E7de3C5OB4viN_cMw.pdf"
+                        },
+                        "document_title": "A Sovereign AI for New Zealand: Tahi Technical Summary",
+                        "document_summary": "Tahi is a New Zealand-built AI application designed as a cultural and knowledge authority for Aotearoa. Built on Caitlyn (by CustomD, Christchurch), it uses Retrieval-Augmented Generation (RAG) to answer questions by retrieving information from high-quality, permissioned New Zealand data sources rather than relying on internal training data. The system supports GraphRAG-style retrieval with explicit modeling of entities, relationships, and metadata for improved factual accuracy and attribution. Data is ingested via APIs and institutional pipelines with partner control over indexing and refresh rates. Security features include multi-layered architecture with input validation, prompt isolation, and AWS infrastructure with data residency in New Zealand. Tahi will operate as both a standalone product and embedded within partner platforms, allowing partners to maintain user trust and data control while benefiting from AI functionality."
+                      },
+                      "12": {
+                        "id": 12,
+                        "text": "[Page 1] [ICON] Tahi Logo Logo for Tahi, featuring the word \"Tahi\" in bold black text on a green rounded rectangular background with a speech bubble design. The logo appears to be a brand or organizational mark, likely from a New Zealand context given the Māori word \"Tahi\" (meaning \"one\"). Simple, clean design suitable for digital and print applications. Keywords: Tahi, logo, brand, icon, green A Sovereign AI for New Zealand CONFIDENTIAL BRIEFING PAPER, NOT FOR DISTRIBUTION — NOVEMBER 2025 ISSUE New Zealand’s data is being offshored by international LLMs without regard for ownership or sovereignty. Our institutions are losing control of public data and local media outlets are losing revenue for journalism. Today, AI applications are side car tools, but within a couple of years we could have a post website environment where everything is viewed through AI applications, currently owned by tech giants. CONSEQUENCE At stake is a loss of control of New Zealand’s information and knowledge culture, the survival of journalism, and by extension, social cohesion, national identity and the integrity of our democracy. We are feeling the effects of this already, in addition to concerns around digital safety over which government has no control. NEED Australia, Canada, France, Switzerland, UAE and Japan all have sovereign AI projects. New Zealand needs the same, with the following values: • Data sovereignty: Built in NZ, from NZ resources, hosted in NZ, governed in NZ • Permission based: Owned by data owners with license agreements Tikanga: Co chaired advisory panel including tangata whenua and tangata Pasifika • Local context: Responds in a local way to local questions using local data • • Equity of access: Permanent free tier for Kiwis, both English and Te Reo • Public good outcomes: Returns to strengthen local journalism and institutions • Safe: Guardrails to protect ownership, tikanga, public users, under NZ law Independent: Financially and editorially independent • Cost effective: We don’t have $500M, need to leverage international LLMs, provided it’s; • Model agnostic: Can swap between foundational models at convenience New Zealand Geographic, RNZ and the Ministry of Culture & Heritage have collaborated to build a GraphRAG powered AI application drawing on a large dataset of articles, images and audio, and developed a governance structure that aligns with the values above. This for purpose AI project is unique in the world. For product development and compute we require ~$400k pa for the three years prior to commercial viability. After existing funding we have a gap of $200k this year. This is the opportunity for New Zealand to build a sovereign AI. In 2000, Trademe supplanted tech giant eBay because it was trusted. In 2006, media partners collaborated to build Freeview infrastructure for digital broadcasting. Together, we can do the same for AI. We have leveraged the resources of a private publisher, public broadcaster, government and international LLMs to create an AI application that represents a high quality domestic alternative. In 2025, New Zealand has a window to take this critical cultural infrastructure public. We are looking for immediate financial support. CONTACT: JAMES FRANKHAM, NEW ZEALAND GEOGRAPHIC, publisher@nzgeographic.co.nz / +64 21 775423 or PATRICK CREWDSON, RNZ, patrick.crewdson@rnz.co.nz / +64 21 0242 3548\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=G0YUADPIRP/chunks/oexcWGVL3hPzajdfBHEyZHSyDkJ-QFD1R3OKk4uTOEI/8506c21e-f8b4-4598-ac9b-1b78b770f0d1.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=G0YUADPIRP/stage=published/oexcWGVL3hPzajdfBHEyZHSyDkJ-QFD1R3OKk4uTOEI.pdf",
+                          "filePath": "Sovereign AI/NZAI_BriefingPaper_Nov25.pdf",
+                          "author": "James Frankham (New Zealand Geographic) and Patrick Crewdson (RNZ)"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "G0YUADPIRP",
+                            "query": "Tahi identity what is Tahi sovereign AI",
+                            "filter": null
+                          },
+                          {
+                            "knowledgeBaseId": "G0YUADPIRP",
+                            "query": "Tahi difference from ChatGPT how Tahi differs from other AI assistants",
+                            "filter": null
+                          },
+                          {
+                            "knowledgeBaseId": "G0YUADPIRP",
+                            "query": "Tahi New Zealand sovereign AI values purpose mission",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "Sovereign AI/NZAI_BriefingPaper_Nov25.pdf",
+                          "fileName": "NZAI_BriefingPaper_Nov25.pdf",
+                          "checksumSHA256": "oexcWGVL3hPzajdfBHEyZHSyDkJ+QFD1R3OKk4uTOEI=",
+                          "checksumSHA256URL": "oexcWGVL3hPzajdfBHEyZHSyDkJ-QFD1R3OKk4uTOEI",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=G0YUADPIRP/stage=published/oexcWGVL3hPzajdfBHEyZHSyDkJ-QFD1R3OKk4uTOEI.pdf"
+                        },
+                        "document_title": "A Sovereign AI for New Zealand",
+                        "document_summary": "This confidential briefing paper (November 2025) outlines the case for New Zealand to develop a sovereign AI system. The document identifies the critical issue of New Zealand's data being offshored by international LLMs without regard for local ownership or sovereignty, threatening journalism revenue, information control, and democratic integrity. The proposed solution is a sovereign AI project built on New Zealand resources, hosted locally, and governed according to specific values including data sovereignty, permission-based access, tikanga principles, local context, equitable access, public-good outcomes, and independence. A collaborative initiative between New Zealand Geographic, RNZ, and the Ministry of Culture & Heritage has already developed a GraphRAG-powered AI application. The project requires approximately $400k annually for three years prior to commercial viability, with a current funding gap of $200k. The briefing positions this as a critical opportunity for New Zealand to establish trusted domestic AI infrastructure, drawing parallels to successful past initiatives like Trademe and Freeview."
+                      },
+                      "13": {
+                        "id": 13,
+                        "text": "[Page 1] Security and guardrails Tahi uses a multi layered security and safety architecture. Inputs are classified and validated before reaching the model, malicious or out of scope prompts are blocked, and responses are generated with enforced citation and scope boundaries. Infrastructure protection (AWS WAF, rate limiting, DDoS protection) is combined with prompt isolation so user input cannot override system instructions. The system runs on AWS Bedrock, providing enterprise grade security, encryption, IAM controls and scalability, while still allowing data residency to be enforced. Crucially, all indexed data is stored and queried in New Zealand, and snippets passed to models are ephemeral and not retained by the LLM.\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=G0YUADPIRP/chunks/71tpVyPw5JKtrSY_eBrpYLXnX5E7de3C5OB4viN_cMw/fe1f5413-4505-4a1f-b40b-b6ec2ac9773a.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=G0YUADPIRP/stage=published/71tpVyPw5JKtrSY_eBrpYLXnX5E7de3C5OB4viN_cMw.pdf",
+                          "filePath": "Sovereign AI/Tahi_TechSummary_Dec2025.pdf",
+                          "author": "James Frankham (New Zealand Geographic) and Patrick Crewdson (RNZ)"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "G0YUADPIRP",
+                            "query": "Tahi identity what is Tahi sovereign AI",
+                            "filter": null
+                          },
+                          {
+                            "knowledgeBaseId": "G0YUADPIRP",
+                            "query": "Tahi difference from ChatGPT how Tahi differs from other AI assistants",
+                            "filter": null
+                          },
+                          {
+                            "knowledgeBaseId": "G0YUADPIRP",
+                            "query": "Tahi New Zealand sovereign AI values purpose mission",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "Sovereign AI/Tahi_TechSummary_Dec2025.pdf",
+                          "fileName": "Tahi_TechSummary_Dec2025.pdf",
+                          "checksumSHA256": "71tpVyPw5JKtrSY/eBrpYLXnX5E7de3C5OB4viN/cMw=",
+                          "checksumSHA256URL": "71tpVyPw5JKtrSY_eBrpYLXnX5E7de3C5OB4viN_cMw",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=G0YUADPIRP/stage=published/71tpVyPw5JKtrSY_eBrpYLXnX5E7de3C5OB4viN_cMw.pdf"
+                        },
+                        "document_title": "A Sovereign AI for New Zealand: Tahi Technical Summary",
+                        "document_summary": "Tahi is a New Zealand-built AI application designed as a cultural and knowledge authority for Aotearoa. Built on Caitlyn (by CustomD, Christchurch), it uses Retrieval-Augmented Generation (RAG) to answer questions by retrieving information from high-quality, permissioned New Zealand data sources rather than relying on internal training data. The system supports GraphRAG-style retrieval with explicit modeling of entities, relationships, and metadata for improved factual accuracy and attribution. Data is ingested via APIs and institutional pipelines with partner control over indexing and refresh rates. Security features include multi-layered architecture with input validation, prompt isolation, and AWS infrastructure with data residency in New Zealand. Tahi will operate as both a standalone product and embedded within partner platforms, allowing partners to maintain user trust and data control while benefiting from AI functionality."
+                      },
+                      "14": {
+                        "id": 14,
+                        "text": "[Page 1] [ICON] Tahi Logo Logo for Tahi, featuring the company name in bold black text on a green rounded rectangular background with a speech bubble design. The logo appears to be a brand identifier, likely from a technology or software company document (Tahi_TechSummary_Dec2025.pdf). Simple, clean design with minimalist aesthetic. Keywords: Tahi, logo, brand, icon, green A Sovereign AI for New Zealand TECH SUMMARY, NOT FOR DISTRIBUTION — DECEMBER 2025\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=G0YUADPIRP/chunks/71tpVyPw5JKtrSY_eBrpYLXnX5E7de3C5OB4viN_cMw/0d8f9af4-1820-4d49-b0ff-17cde80357eb.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=G0YUADPIRP/stage=published/71tpVyPw5JKtrSY_eBrpYLXnX5E7de3C5OB4viN_cMw.pdf",
+                          "filePath": "Sovereign AI/Tahi_TechSummary_Dec2025.pdf",
+                          "author": "James Frankham (New Zealand Geographic) and Patrick Crewdson (RNZ)"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "G0YUADPIRP",
+                            "query": "Tahi identity what is Tahi sovereign AI",
+                            "filter": null
+                          },
+                          {
+                            "knowledgeBaseId": "G0YUADPIRP",
+                            "query": "Tahi difference from ChatGPT how Tahi differs from other AI assistants",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "Sovereign AI/Tahi_TechSummary_Dec2025.pdf",
+                          "fileName": "Tahi_TechSummary_Dec2025.pdf",
+                          "checksumSHA256": "71tpVyPw5JKtrSY/eBrpYLXnX5E7de3C5OB4viN/cMw=",
+                          "checksumSHA256URL": "71tpVyPw5JKtrSY_eBrpYLXnX5E7de3C5OB4viN_cMw",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=G0YUADPIRP/stage=published/71tpVyPw5JKtrSY_eBrpYLXnX5E7de3C5OB4viN_cMw.pdf"
+                        },
+                        "document_title": "A Sovereign AI for New Zealand: Tahi Technical Summary",
+                        "document_summary": "Tahi is a New Zealand-built AI application designed as a cultural and knowledge authority for Aotearoa. Built on Caitlyn (by CustomD, Christchurch), it uses Retrieval-Augmented Generation (RAG) to answer questions by retrieving information from high-quality, permissioned New Zealand data sources rather than relying on internal training data. The system supports GraphRAG-style retrieval with explicit modeling of entities, relationships, and metadata for improved factual accuracy and attribution. Data is ingested via APIs and institutional pipelines with partner control over indexing and refresh rates. Security features include multi-layered architecture with input validation, prompt isolation, and AWS infrastructure with data residency in New Zealand. Tahi will operate as both a standalone product and embedded within partner platforms, allowing partners to maintain user trust and data control while benefiting from AI functionality."
+                      },
+                      "15": {
+                        "id": 15,
+                        "text": "[Page 1] Integration and distribution Tahi will be both a standalone product and embedded directly into the platforms of contributing partners. This allows partners to benefit from AI functionality without surrendering users, data or brand trust to offshore platforms, and gives users confidence that the answer is coming from Tahi.\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=G0YUADPIRP/chunks/71tpVyPw5JKtrSY_eBrpYLXnX5E7de3C5OB4viN_cMw/72969f68-a565-4299-8e5a-9e97a51f6ec6.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=G0YUADPIRP/stage=published/71tpVyPw5JKtrSY_eBrpYLXnX5E7de3C5OB4viN_cMw.pdf",
+                          "filePath": "Sovereign AI/Tahi_TechSummary_Dec2025.pdf",
+                          "author": "James Frankham (New Zealand Geographic) and Patrick Crewdson (RNZ)"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "G0YUADPIRP",
+                            "query": "Tahi identity what is Tahi sovereign AI",
+                            "filter": null
+                          },
+                          {
+                            "knowledgeBaseId": "G0YUADPIRP",
+                            "query": "Tahi difference from ChatGPT how Tahi differs from other AI assistants",
+                            "filter": null
+                          },
+                          {
+                            "knowledgeBaseId": "G0YUADPIRP",
+                            "query": "Tahi New Zealand sovereign AI values purpose mission",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "Sovereign AI/Tahi_TechSummary_Dec2025.pdf",
+                          "fileName": "Tahi_TechSummary_Dec2025.pdf",
+                          "checksumSHA256": "71tpVyPw5JKtrSY/eBrpYLXnX5E7de3C5OB4viN/cMw=",
+                          "checksumSHA256URL": "71tpVyPw5JKtrSY_eBrpYLXnX5E7de3C5OB4viN_cMw",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=G0YUADPIRP/stage=published/71tpVyPw5JKtrSY_eBrpYLXnX5E7de3C5OB4viN_cMw.pdf"
+                        },
+                        "document_title": "A Sovereign AI for New Zealand: Tahi Technical Summary",
+                        "document_summary": "Tahi is a New Zealand-built AI application designed as a cultural and knowledge authority for Aotearoa. Built on Caitlyn (by CustomD, Christchurch), it uses Retrieval-Augmented Generation (RAG) to answer questions by retrieving information from high-quality, permissioned New Zealand data sources rather than relying on internal training data. The system supports GraphRAG-style retrieval with explicit modeling of entities, relationships, and metadata for improved factual accuracy and attribution. Data is ingested via APIs and institutional pipelines with partner control over indexing and refresh rates. Security features include multi-layered architecture with input validation, prompt isolation, and AWS infrastructure with data residency in New Zealand. Tahi will operate as both a standalone product and embedded within partner platforms, allowing partners to maintain user trust and data control while benefiting from AI functionality."
+                      },
+                      "16": {
+                        "id": 16,
+                        "text": "[Page 1] GraphRAG and structured knowledge Beyond conventional vector search, Tahi is designed to support GraphRAG style retrieval, where entities, relationships and metadata (people, places, dates, iwi, institutions) are explicitly modelled. This improves factual accuracy, temporal reasoning and attribution, and is particularly important for historical and cultural queries where relationships matter as much as text similarity. Graph based retrieval also allows data to be updated, corrected or removed—something impossible for a monolithic LLM.\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=G0YUADPIRP/chunks/71tpVyPw5JKtrSY_eBrpYLXnX5E7de3C5OB4viN_cMw/b4118b92-419c-4741-bf31-5532124c1158.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=G0YUADPIRP/stage=published/71tpVyPw5JKtrSY_eBrpYLXnX5E7de3C5OB4viN_cMw.pdf",
+                          "filePath": "Sovereign AI/Tahi_TechSummary_Dec2025.pdf",
+                          "author": "James Frankham (New Zealand Geographic) and Patrick Crewdson (RNZ)"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "G0YUADPIRP",
+                            "query": "Tahi identity what is Tahi sovereign AI",
+                            "filter": null
+                          },
+                          {
+                            "knowledgeBaseId": "G0YUADPIRP",
+                            "query": "Tahi difference from ChatGPT how Tahi differs from other AI assistants",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "Sovereign AI/Tahi_TechSummary_Dec2025.pdf",
+                          "fileName": "Tahi_TechSummary_Dec2025.pdf",
+                          "checksumSHA256": "71tpVyPw5JKtrSY/eBrpYLXnX5E7de3C5OB4viN/cMw=",
+                          "checksumSHA256URL": "71tpVyPw5JKtrSY_eBrpYLXnX5E7de3C5OB4viN_cMw",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=G0YUADPIRP/stage=published/71tpVyPw5JKtrSY_eBrpYLXnX5E7de3C5OB4viN_cMw.pdf"
+                        },
+                        "document_title": "A Sovereign AI for New Zealand: Tahi Technical Summary",
+                        "document_summary": "Tahi is a New Zealand-built AI application designed as a cultural and knowledge authority for Aotearoa. Built on Caitlyn (by CustomD, Christchurch), it uses Retrieval-Augmented Generation (RAG) to answer questions by retrieving information from high-quality, permissioned New Zealand data sources rather than relying on internal training data. The system supports GraphRAG-style retrieval with explicit modeling of entities, relationships, and metadata for improved factual accuracy and attribution. Data is ingested via APIs and institutional pipelines with partner control over indexing and refresh rates. Security features include multi-layered architecture with input validation, prompt isolation, and AWS infrastructure with data residency in New Zealand. Tahi will operate as both a standalone product and embedded within partner platforms, allowing partners to maintain user trust and data control while benefiting from AI functionality."
+                      },
+                      "17": {
+                        "id": 17,
+                        "text": "[Page 1] 1. Purpose Our advisory panel (the “Panel”) is established to provide strategic guidance, advice, and ethical oversight on the development, deployment, and governance of Artificial Intelligence (AI) for our project to create a RAG based AI gateway for content from Aotearoa. While NZAI does not hold Crown administrative data, the Panel operates on a Te Tiriti led basis with shared power (Waka Hourua), embedding a Mana Ōrite relationship in all advice and oversight.\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=G0YUADPIRP/chunks/dmgyB4cxOtOLTGruwPZ5D2Skzs1I_HiLgZEjvJOGMzA/4e632ea4-21ec-42b9-b224-93f0af0e0841.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=G0YUADPIRP/stage=published/dmgyB4cxOtOLTGruwPZ5D2Skzs1I_HiLgZEjvJOGMzA.pdf",
+                          "filePath": "Advisory Panel/TOR_AdvisoryPanel_Sep25.pdf",
+                          "author": "NZAI (New Zealand AI)"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "G0YUADPIRP",
+                            "query": "Tahi New Zealand sovereign AI values purpose mission",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "Advisory Panel/TOR_AdvisoryPanel_Sep25.pdf",
+                          "fileName": "TOR_AdvisoryPanel_Sep25.pdf",
+                          "checksumSHA256": "dmgyB4cxOtOLTGruwPZ5D2Skzs1I/HiLgZEjvJOGMzA=",
+                          "checksumSHA256URL": "dmgyB4cxOtOLTGruwPZ5D2Skzs1I_HiLgZEjvJOGMzA",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=G0YUADPIRP/stage=published/dmgyB4cxOtOLTGruwPZ5D2Skzs1I_HiLgZEjvJOGMzA.pdf"
+                        },
+                        "document_title": "NZAI Advisory Panel Terms of Reference",
+                        "document_summary": "This document establishes the Terms of Reference for the NZAI Advisory Panel, which provides strategic guidance and ethical oversight for a RAG-based AI gateway project for Aotearoa content. Operating on a Te Tiriti-led basis with shared power (Waka Hourua), the Panel comprises experts in AI research, tangata whenua, tangata Pasifika, ethics, law, industry, policy, and civil society. Key objectives include recommending AI ethics best practices, reviewing project milestones, and serving as a sounding board. The Panel's scope encompasses ethical implications, algorithmic bias, data governance, privacy, equity of access, protection of Māori and Pasifika data as taonga, consent and collective rights, and data harm mitigation. The document includes membership composition with co-chairs (one tangata whenua), meeting frequency (quarterly/biannually), confidentiality requirements, and a comprehensive Code of Conduct emphasizing integrity, transparency, respect, and ethical AI advocacy."
+                      },
+                      "18": {
+                        "id": 18,
+                        "text": "[Page 1] 3. Scope The Panel's advice may encompass, but is not limited to: • Ethical implications of AI • Algorithmic bias and fairness in presentation of data • Data governance, privacy, and security considerations • Equity of access • Acknowledgement of data sources, mātauranga and tikanga • Active protection of Māori and Pasifika data as taonga (including te reo and mātauranga Māori) within the corpus and its derivatives. • Identification and mitigation of data harms (bias, deficit framing, misrepresentation) in retrieval, ranking and generation. • Consent & collective rights: free, prior and informed consent (FPIC) for any new Māori or Pasifika data collection or contributed datasets; where FPIC is not feasible, require explicit transparency and robust ethical governance. • Repatriation & withdrawal (trigger based): if the project ingests Māori or Pasifika contributed material, agree repatriation/takedown processes in advance, including removal of derived artefacts on request.\n{}",
+                        "source": "s3://nzgeo-processed-data/knowledgeBaseId=G0YUADPIRP/chunks/dmgyB4cxOtOLTGruwPZ5D2Skzs1I_HiLgZEjvJOGMzA/3769856b-2e7a-4201-b5b1-bda4fee78ff0.txt",
+                        "metadata": {
+                          "filename": "s3://nzgeo-document-source/knowledgeBaseId=G0YUADPIRP/stage=published/dmgyB4cxOtOLTGruwPZ5D2Skzs1I_HiLgZEjvJOGMzA.pdf",
+                          "filePath": "Advisory Panel/TOR_AdvisoryPanel_Sep25.pdf",
+                          "author": "NZAI (New Zealand AI)"
+                        },
+                        "capabilities": {
+                          "isEmbeddable": false
+                        },
+                        "queries": [
+                          {
+                            "knowledgeBaseId": "G0YUADPIRP",
+                            "query": "Tahi New Zealand sovereign AI values purpose mission",
+                            "filter": null
+                          }
+                        ],
+                        "fileDetails": {
+                          "filePath": "Advisory Panel/TOR_AdvisoryPanel_Sep25.pdf",
+                          "fileName": "TOR_AdvisoryPanel_Sep25.pdf",
+                          "checksumSHA256": "dmgyB4cxOtOLTGruwPZ5D2Skzs1I/HiLgZEjvJOGMzA=",
+                          "checksumSHA256URL": "dmgyB4cxOtOLTGruwPZ5D2Skzs1I_HiLgZEjvJOGMzA",
+                          "s3Url": "s3://nzgeo-document-source/knowledgeBaseId=G0YUADPIRP/stage=published/dmgyB4cxOtOLTGruwPZ5D2Skzs1I_HiLgZEjvJOGMzA.pdf"
+                        },
+                        "document_title": "NZAI Advisory Panel Terms of Reference",
+                        "document_summary": "This document establishes the Terms of Reference for the NZAI Advisory Panel, which provides strategic guidance and ethical oversight for a RAG-based AI gateway project for Aotearoa content. Operating on a Te Tiriti-led basis with shared power (Waka Hourua), the Panel comprises experts in AI research, tangata whenua, tangata Pasifika, ethics, law, industry, policy, and civil society. Key objectives include recommending AI ethics best practices, reviewing project milestones, and serving as a sounding board. The Panel's scope encompasses ethical implications, algorithmic bias, data governance, privacy, equity of access, protection of Māori and Pasifika data as taonga, consent and collective rights, and data harm mitigation. The document includes membership composition with co-chairs (one tangata whenua), meeting frequency (quarterly/biannually), confidentiality requirements, and a comprehensive Code of Conduct emphasizing integrity, transparency, respect, and ethical AI advocacy."
+                      }
+                    },
+                    "elapsed": 638
+                  }
+                ]
+              }
+            },
+            "_received_at_ms": 12374
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "search_topic_generation",
+                "status": "done",
+                "type": "SEARCHING_KB",
+                "description": "Preparing search topics"
+              }
+            },
+            "_received_at_ms": 15234
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "orchestration": [
+                  {
+                    "type": "KNOWLEDGE_BASE_EVALUATION",
+                    "thinking": "The question asks about Tahi's identity and how it differs from ChatGPT. The relevant results are those from the \"knowledge-of-self\" knowledgebase (G0YUADPIRP) that describe Tahi's nature, purpose, technical architecture, and values. Results 11, 12, 13, 14, 15, 16, 17, and 18 are all from this knowledgebase and directly address Tahi's identity and purpose. The other results (1-10) are about gene editing, earthquakes, energy, and other unrelated topics - completely irrelevant.",
+                    "relevant": [
+                      {
+                        "relevance": 0.99,
+                        "id": 11
+                      },
+                      {
+                        "relevance": 0.97,
+                        "id": 12
+                      },
+                      {
+                        "relevance": 0.85,
+                        "id": 14
+                      },
+                      {
+                        "relevance": 0.88,
+                        "id": 15
+                      },
+                      {
+                        "relevance": 0.9,
+                        "id": 16
+                      },
+                      {
+                        "relevance": 0.87,
+                        "id": 13
+                      },
+                      {
+                        "relevance": 0.75,
+                        "id": 17
+                      },
+                      {
+                        "relevance": 0.72,
+                        "id": 18
+                      }
+                    ],
+                    "searchEvaluationUsage": {
+                      "inputTokens": 19133,
+                      "inputTokenDetails": {
+                        "noCacheTokens": 19133,
+                        "cacheReadTokens": 0,
+                        "cacheWriteTokens": 0
+                      },
+                      "outputTokens": 309,
+                      "outputTokenDetails": {
+                        "textTokens": 309
+                      },
+                      "totalTokens": 19442,
+                      "raw": {
+                        "inputTokens": 19133,
+                        "outputTokens": 309,
+                        "totalTokens": 19442,
+                        "cacheReadInputTokens": 0,
+                        "cacheWriteInputTokens": 0
+                      },
+                      "cachedInputTokens": 0
+                    },
+                    "elapsed": 5135
+                  }
+                ]
+              }
+            },
+            "_received_at_ms": 17449
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "orchestration": [
+                  {
+                    "type": "COMBINED_RANKING_SUMMARY",
+                    "totalEvaluated": 8,
+                    "topRanked": 8,
+                    "afterFiltering": 8,
+                    "breakdown": {
+                      "accessible": 8,
+                      "denied": 0
+                    },
+                    "finalResults": {
+                      "accessible": 8,
+                      "denied": 0
+                    },
+                    "elapsed": 0
+                  }
+                ]
+              }
+            },
+            "_received_at_ms": 17449
+          },
+          {
+            "type": "data-progress",
+            "data": {
+              "progress": {
+                "id": "kb_evaluation",
+                "description": "Evaluating search results",
+                "status": "done",
+                "type": "EVALUATING_KB"
+              }
+            },
+            "_received_at_ms": 17449
+          },
+          {
+            "type": "data-trace",
+            "data": {
+              "trace": {
+                "orchestration": [
+                  {
+                    "type": "KNOWLEDGE_BASE_ANSWER",
+                    "elapsed": 0
+                  }
+                ]
+              }
+            },
+            "_received_at_ms": 17449
+          },
+          {
+            "type": "data-progress",
+            "id": "answer_generation-ba61230c-a28a-4a20-b938-dfbe9274e164",
+            "data": {
+              "progress": {
+                "id": "answer_generation-ba61230c-a28a-4a20-b938-dfbe9274e164",
+                "description": "Preparing response",
+                "status": "active",
+                "type": "ANSWERING"
+              }
+            },
+            "transient": false,
+            "_received_at_ms": 17449
+          },
+          {
+            "type": "start-step",
+            "_received_at_ms": 17449
+          },
+          {
+            "type": "text-start",
+            "id": "0",
+            "_received_at_ms": 18727
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "No",
+            "_received_at_ms": 18727
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ", I'm not",
+            "_received_at_ms": 18764
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " ChatGPT!",
+            "_received_at_ms": 18803
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " I'm **",
+            "_received_at_ms": 18851
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "T",
+            "_received_at_ms": 18952
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "ahi",
+            "_received_at_ms": 18999
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "**, a",
+            "_received_at_ms": 19050
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " sovereign",
+            "_received_at_ms": 19104
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " AI built",
+            "_received_at_ms": 19284
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " specifically",
+            "_received_at_ms": 19285
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " for",
+            "_received_at_ms": 19292
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " A",
+            "_received_at_ms": 19369
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "otearoa New",
+            "_received_at_ms": 19388
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Zealand —",
+            "_received_at_ms": 19437
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " quite",
+            "_received_at_ms": 19487
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " a",
+            "_received_at_ms": 19533
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " different beast",
+            "_received_at_ms": 19581
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ".",
+            "_received_at_ms": 19633
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "\n\nRather",
+            "_received_at_ms": 19679
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " than being a general-purpose chat",
+            "_received_at_ms": 19727
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "bot like",
+            "_received_at_ms": 19774
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " ChatGPT,",
+            "_received_at_ms": 19825
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Tahi is designed",
+            "_received_at_ms": 19873
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " as",
+            "_received_at_ms": 19923
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " a cultural",
+            "_received_at_ms": 19970
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " and knowledge",
+            "_received_at_ms": 20021
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " authority",
+            "_received_at_ms": 20070
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " for",
+            "_received_at_ms": 20118
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " New Zealand. Instead",
+            "_received_at_ms": 20167
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " of drawing",
+            "_received_at_ms": 20225
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " on a broad",
+            "_received_at_ms": 20265
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " global",
+            "_received_at_ms": 20330
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " training",
+            "_received_at_ms": 20387
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " dataset, Tahi answers",
+            "_received_at_ms": 20410
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " questions by",
+            "_received_at_ms": 20459
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " retriev",
+            "_received_at_ms": 20509
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "ing information",
+            "_received_at_ms": 20557
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " from an",
+            "_received_at_ms": 20605
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " index",
+            "_received_at_ms": 20657
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " of high",
+            "_received_at_ms": 20701
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "-quality,",
+            "_received_at_ms": 20750
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " perm",
+            "_received_at_ms": 20799
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "issioned New",
+            "_received_at_ms": 20847
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Zealand data",
+            "_received_at_ms": 20898
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " sources,",
+            "_received_at_ms": 20943
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " using",
+            "_received_at_ms": 20992
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " large",
+            "_received_at_ms": 21042
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " language models only",
+            "_received_at_ms": 21110
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " to",
+            "_received_at_ms": 21137
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " synthes",
+            "_received_at_ms": 21185
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "ise",
+            "_received_at_ms": 21234
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " and present",
+            "_received_at_ms": 21281
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " those",
+            "_received_at_ms": 21329
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " results",
+            "_received_at_ms": 21379
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " —",
+            "_received_at_ms": 21427
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " a",
+            "_received_at_ms": 21476
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " system",
+            "_received_at_ms": 21525
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " known",
+            "_received_at_ms": 21585
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " as",
+            "_received_at_ms": 21630
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Retri",
+            "_received_at_ms": 21670
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "eval",
+            "_received_at_ms": 21718
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Augmented Generation (RAG).",
+            "_received_at_ms": 21767
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " ",
+            "_received_at_ms": 21816
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "[[1]](cite://1/1)",
+            "_received_at_ms": 21917
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "\n\nA few",
+            "_received_at_ms": 21962
+          },
+          {
+            "type": "data-citation",
+            "data": {
+              "citation": {
+                "1": {
+                  "chunkSequence": -1,
+                  "citationNumber": 1,
+                  "fileChapters": [],
+                  "fileSubtitles": [],
+                  "fileThumbnailSrc": "",
+                  "fileTimestamp": 0,
+                  "fileType": "pdf",
+                  "sourceUrl": "https://nzgeo-document-source.s3.ap-southeast-2.amazonaws.com/knowledgeBaseId%3DG0YUADPIRP/stage%3Dpublished/71tpVyPw5JKtrSY_eBrpYLXnX5E7de3C5OB4viN_cMw.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=REDACTED&X-Amz-Date=20260617T115601Z&X-Amz-Expires=3600&X-Amz-Security-Token=REDACTED&X-Amz-Signature=REDACTED&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+                  "sourceUrlExpiresAt": 1781700961674,
+                  "sourceType": "s3",
+                  "fileName": "Tahi_TechSummary_Dec2025.pdf",
+                  "checksumSHA256URL": "71tpVyPw5JKtrSY_eBrpYLXnX5E7de3C5OB4viN_cMw",
+                  "checksumSHA256": "71tpVyPw5JKtrSY/eBrpYLXnX5E7de3C5OB4viN/cMw=",
+                  "filePath": "Sovereign AI/Tahi_TechSummary_Dec2025.pdf",
+                  "sourceKnowledgeBaseId": "G0YUADPIRP",
+                  "fileAuthor": [
+                    "James Frankham (New Zealand Geographic) and Patrick Crewdson (RNZ)"
+                  ],
+                  "fileDate": "2026-02-22T21:43:16",
+                  "fileDescription": "Tahi is a New Zealand-built AI application designed as a cultural and knowledge authority for Aotearoa. Built on Caitlyn (by CustomD, Christchurch), it uses Retrieval-Augmented Generation (RAG) to answer questions by retrieving information from high-quality, permissioned New Zealand data sources rather than relying on internal training data. The system supports GraphRAG-style retrieval with explicit modeling of entities, relationships, and metadata for improved factual accuracy and attribution. Data is ingested via APIs and institutional pipelines with partner control over indexing and refresh rates. Security features include multi-layered architecture with input validation, prompt isolation, and AWS infrastructure with data residency in New Zealand. Tahi will operate as both a standalone product and embedded within partner platforms, allowing partners to maintain user trust and data control while benefiting from AI functionality.",
+                  "chunkHighlights": [
+                    {
+                      "pageIndex": 0,
+                      "height": 8.011543394613085,
+                      "width": 78.29987908101572,
+                      "left": 11.15235792019347,
+                      "top": 21.432449764856777,
+                      "text": "Tahi is a New Zealand-built AI application designed as a cultural and knowledge authority for Aotearoa, rather than a general-purpose chatbot. Technically, it is a Retrieval-Augmented Generation (RAG) system: instead of relying on a model’s internal training data, it answers questions by retrieving information from an index of high-quality, permissioned New Zealand data sources, only using large language models to synthesise and present those results."
+                    },
+                    {
+                      "pageIndex": 0,
+                      "height": 8.011543394613078,
+                      "width": 77.27206771463119,
+                      "left": 11.091898428053206,
+                      "top": 30.06861906797777,
+                      "text": "At its core, Tahi is built on Caitlyn, as application layer created by CustomD, Christchurch. Caitlyn handles ingestion, indexing, permissions, citation enforcement, guardrails and presentation logic, according to Tahi-defined system protocols, while remaining model-agnostic. Tahi is not locked to a single AI model or vendor: it can use Anthropic Claude today, or switch to future models as they improve or become cheaper, without re-architecting the system."
+                    }
+                  ],
+                  "filePage": 1,
+                  "fileTags": [
+                    "Sovereign AI",
+                    "Retrieval-Augmented Generation",
+                    "New Zealand",
+                    "GraphRAG",
+                    "Data Security"
+                  ],
+                  "fileTitle": "A Sovereign AI for New Zealand: Tahi Technical Summary",
+                  "customMetadata": {},
+                  "publishedDate": null
+                }
+              }
+            },
+            "_received_at_ms": 22010
+          },
+          {
+            "type": "data-citationReference",
+            "data": {
+              "reference": {
+                "start": 0,
+                "end": 557,
+                "referenceNumber": 1,
+                "citationNumber": 1
+              }
+            },
+            "_received_at_ms": 22010
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " things",
+            "_received_at_ms": 22010
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " that",
+            "_received_at_ms": 22069
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " make Tahi distinct",
+            "_received_at_ms": 22107
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ":\n\n- **Built",
+            "_received_at_ms": 22156
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " in",
+            "_received_at_ms": 22213
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " New",
+            "_received_at_ms": 22260
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Zealand,",
+            "_received_at_ms": 22304
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " for",
+            "_received_at_ms": 22381
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " New Zealand** — all",
+            "_received_at_ms": 22402
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " indexed",
+            "_received_at_ms": 22450
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " data",
+            "_received_at_ms": 22500
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " is stored",
+            "_received_at_ms": 22558
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " and",
+            "_received_at_ms": 22597
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " que",
+            "_received_at_ms": 22646
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "ried in New Zealand, and",
+            "_received_at_ms": 22696
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " any",
+            "_received_at_ms": 22769
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " snipp",
+            "_received_at_ms": 22793
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "ets passed",
+            "_received_at_ms": 22870
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " to AI",
+            "_received_at_ms": 22889
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " models are eph",
+            "_received_at_ms": 22945
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "emeral and not",
+            "_received_at_ms": 22987
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " retained.",
+            "_received_at_ms": 23039
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " ",
+            "_received_at_ms": 23086
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "[[2]](cite://2/1)",
+            "_received_at_ms": 23206
+          },
+          {
+            "type": "data-citation",
+            "data": {
+              "citation": {
+                "2": {
+                  "chunkSequence": -1,
+                  "citationNumber": 2,
+                  "fileChapters": [],
+                  "fileSubtitles": [],
+                  "fileThumbnailSrc": "",
+                  "fileTimestamp": 0,
+                  "fileType": "pdf",
+                  "sourceUrl": "https://nzgeo-document-source.s3.ap-southeast-2.amazonaws.com/knowledgeBaseId%3DG0YUADPIRP/stage%3Dpublished/71tpVyPw5JKtrSY_eBrpYLXnX5E7de3C5OB4viN_cMw.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=REDACTED&X-Amz-Date=20260617T115601Z&X-Amz-Expires=3600&X-Amz-Security-Token=REDACTED&X-Amz-Signature=REDACTED&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+                  "sourceUrlExpiresAt": 1781700961674,
+                  "sourceType": "s3",
+                  "fileName": "Tahi_TechSummary_Dec2025.pdf",
+                  "checksumSHA256URL": "71tpVyPw5JKtrSY_eBrpYLXnX5E7de3C5OB4viN_cMw",
+                  "checksumSHA256": "71tpVyPw5JKtrSY/eBrpYLXnX5E7de3C5OB4viN/cMw=",
+                  "filePath": "Sovereign AI/Tahi_TechSummary_Dec2025.pdf",
+                  "sourceKnowledgeBaseId": "G0YUADPIRP",
+                  "fileAuthor": [
+                    "James Frankham (New Zealand Geographic) and Patrick Crewdson (RNZ)"
+                  ],
+                  "fileDate": "2026-02-22T21:43:16",
+                  "fileDescription": "Tahi is a New Zealand-built AI application designed as a cultural and knowledge authority for Aotearoa. Built on Caitlyn (by CustomD, Christchurch), it uses Retrieval-Augmented Generation (RAG) to answer questions by retrieving information from high-quality, permissioned New Zealand data sources rather than relying on internal training data. The system supports GraphRAG-style retrieval with explicit modeling of entities, relationships, and metadata for improved factual accuracy and attribution. Data is ingested via APIs and institutional pipelines with partner control over indexing and refresh rates. Security features include multi-layered architecture with input validation, prompt isolation, and AWS infrastructure with data residency in New Zealand. Tahi will operate as both a standalone product and embedded within partner platforms, allowing partners to maintain user trust and data control while benefiting from AI functionality.",
+                  "chunkHighlights": [
+                    {
+                      "pageIndex": 0,
+                      "height": 2.2825994014536164,
+                      "width": 19.95646916565901,
+                      "left": 11.15235792019347,
+                      "top": 61.79157759726379,
+                      "text": "Security and guardrails"
+                    },
+                    {
+                      "pageIndex": 0,
+                      "height": 6.557930739632326,
+                      "width": 76.78839177750906,
+                      "left": 10.85006045949214,
+                      "top": 64.7415562206071,
+                      "text": "Tahi uses a multi-layered security and safety architecture. Inputs are classified and validated before reaching the model, malicious or out-of-scope prompts are blocked, and responses are generated with enforced citation and scope boundaries. Infrastructure protection (AWS WAF, rate-limiting, DDoS protection) is combined with prompt isolation so user input cannot override system instructions."
+                    },
+                    {
+                      "pageIndex": 0,
+                      "height": 5.104318084651553,
+                      "width": 74.85368802902056,
+                      "left": 11.15235792019347,
+                      "top": 71.96686618212912,
+                      "text": "The system runs on AWS Bedrock, providing enterprise-grade security, encryption, IAM controls and scalability, while still allowing data residency to be enforced. Crucially, all indexed data is stored and queried in New Zealand, and snippets passed to models are ephemeral and not retained by the LLM."
+                    }
+                  ],
+                  "filePage": 1,
+                  "fileTags": [
+                    "Sovereign AI",
+                    "Retrieval-Augmented Generation",
+                    "New Zealand",
+                    "GraphRAG",
+                    "Data Security"
+                  ],
+                  "fileTitle": "A Sovereign AI for New Zealand: Tahi Technical Summary",
+                  "customMetadata": {},
+                  "publishedDate": null
+                }
+              }
+            },
+            "_received_at_ms": 23219
+          },
+          {
+            "type": "data-citationReference",
+            "data": {
+              "reference": {
+                "start": 557,
+                "end": 1342,
+                "referenceNumber": 1,
+                "citationNumber": 2
+              }
+            },
+            "_received_at_ms": 23219
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "\n- **Model",
+            "_received_at_ms": 23233
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " ag",
+            "_received_at_ms": 23285
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "nostic** —",
+            "_received_at_ms": 23330
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Tahi isn",
+            "_received_at_ms": 23406
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "'t locked",
+            "_received_at_ms": 23427
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " to a single AI",
+            "_received_at_ms": 23476
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " provider",
+            "_received_at_ms": 23526
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ". It",
+            "_received_at_ms": 23572
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " can",
+            "_received_at_ms": 23632
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " switch",
+            "_received_at_ms": 23673
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " between found",
+            "_received_at_ms": 23721
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "ational models as",
+            "_received_at_ms": 23770
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " technology",
+            "_received_at_ms": 23823
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " impro",
+            "_received_at_ms": 23867
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "ves,",
+            "_received_at_ms": 23944
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " without",
+            "_received_at_ms": 23964
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " rebuil",
+            "_received_at_ms": 24012
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "ding the",
+            "_received_at_ms": 24063
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " whole",
+            "_received_at_ms": 24112
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " system. ",
+            "_received_at_ms": 24161
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "[[1]](cite://1/2)",
+            "_received_at_ms": 24210
+          },
+          {
+            "type": "data-citationReference",
+            "data": {
+              "reference": {
+                "start": 1342,
+                "end": 2314,
+                "referenceNumber": 2,
+                "citationNumber": 1
+              }
+            },
+            "_received_at_ms": 24210
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "\n- **Culturally gr",
+            "_received_at_ms": 24259
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "ounded** — Tahi operates",
+            "_received_at_ms": 24309
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " with",
+            "_received_at_ms": 24358
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " a Te",
+            "_received_at_ms": 24408
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Tir",
+            "_received_at_ms": 24454
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "iti-",
+            "_received_at_ms": 24503
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "based governance",
+            "_received_at_ms": 24551
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " structure, with an",
+            "_received_at_ms": 24601
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " advisory",
+            "_received_at_ms": 24650
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " panel",
+            "_received_at_ms": 24697
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " including",
+            "_received_at_ms": 24745
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " tang",
+            "_received_at_ms": 24795
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "ata whenua (people",
+            "_received_at_ms": 24842
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " of the",
+            "_received_at_ms": 24892
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " land/",
+            "_received_at_ms": 24941
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "Mā",
+            "_received_at_ms": 24990
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "ori)",
+            "_received_at_ms": 25039
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " and tang",
+            "_received_at_ms": 25087
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "ata",
+            "_received_at_ms": 25136
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Pas",
+            "_received_at_ms": 25186
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "ifika,",
+            "_received_at_ms": 25235
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " and actively",
+            "_received_at_ms": 25293
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " prot",
+            "_received_at_ms": 25333
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "ects Māori and",
+            "_received_at_ms": 25399
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Pas",
+            "_received_at_ms": 25432
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "ifika data",
+            "_received_at_ms": 25519
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " as",
+            "_received_at_ms": 25529
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " ta",
+            "_received_at_ms": 25577
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "onga (treasures). ",
+            "_received_at_ms": 25627
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "[[3]](cite://3/1)",
+            "_received_at_ms": 25678
+          },
+          {
+            "type": "data-citation",
+            "data": {
+              "citation": {
+                "3": {
+                  "chunkSequence": -1,
+                  "citationNumber": 3,
+                  "fileChapters": [],
+                  "fileSubtitles": [],
+                  "fileThumbnailSrc": "",
+                  "fileTimestamp": 0,
+                  "fileType": "pdf",
+                  "sourceUrl": "https://nzgeo-document-source.s3.ap-southeast-2.amazonaws.com/knowledgeBaseId%3DG0YUADPIRP/stage%3Dpublished/oexcWGVL3hPzajdfBHEyZHSyDkJ-QFD1R3OKk4uTOEI.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=REDACTED&X-Amz-Date=20260617T115605Z&X-Amz-Expires=3600&X-Amz-Security-Token=REDACTED&X-Amz-Signature=REDACTED&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+                  "sourceUrlExpiresAt": 1781700965403,
+                  "sourceType": "s3",
+                  "fileName": "NZAI_BriefingPaper_Nov25.pdf",
+                  "checksumSHA256URL": "oexcWGVL3hPzajdfBHEyZHSyDkJ-QFD1R3OKk4uTOEI",
+                  "checksumSHA256": "oexcWGVL3hPzajdfBHEyZHSyDkJ+QFD1R3OKk4uTOEI=",
+                  "filePath": "Sovereign AI/NZAI_BriefingPaper_Nov25.pdf",
+                  "sourceKnowledgeBaseId": "G0YUADPIRP",
+                  "fileAuthor": [
+                    "James Frankham (New Zealand Geographic) and Patrick Crewdson (RNZ)"
+                  ],
+                  "fileDate": "2026-02-22T21:43:08",
+                  "fileDescription": "This confidential briefing paper (November 2025) outlines the case for New Zealand to develop a sovereign AI system. The document identifies the critical issue of New Zealand's data being offshored by international LLMs without regard for local ownership or sovereignty, threatening journalism revenue, information control, and democratic integrity. The proposed solution is a sovereign AI project built on New Zealand resources, hosted locally, and governed according to specific values including data sovereignty, permission-based access, tikanga principles, local context, equitable access, public-good outcomes, and independence. A collaborative initiative between New Zealand Geographic, RNZ, and the Ministry of Culture & Heritage has already developed a GraphRAG-powered AI application. The project requires approximately $400k annually for three years prior to commercial viability, with a current funding gap of $200k. The briefing positions this as a critical opportunity for New Zealand to establish trusted domestic AI infrastructure, drawing parallels to successful past initiatives like Trademe and Freeview.",
+                  "chunkHighlights": [
+                    {
+                      "pageIndex": 0,
+                      "height": 11.560068405301411,
+                      "width": 17.356711003627574,
+                      "left": 10.85006045949214,
+                      "top": 2.2362120564343737,
+                      "text": ""
+                    },
+                    {
+                      "pageIndex": 0,
+                      "height": 3.6934587430525863,
+                      "width": 42.9310761789601,
+                      "left": 11.15235792019347,
+                      "top": 11.941214194100043,
+                      "text": "A Sovereign AI for New Zealand"
+                    },
+                    {
+                      "pageIndex": 0,
+                      "height": 2.3253527148353967,
+                      "width": 66.99395405078599,
+                      "left": 11.031438935912938,
+                      "top": 16.644078666096625,
+                      "text": "CONFIDENTIAL BRIEFING PAPER, NOT FOR DISTRIBUTION — NOVEMBER 2025"
+                    },
+                    {
+                      "pageIndex": 0,
+                      "height": 2.410859341598975,
+                      "width": 7.139056831922611,
+                      "left": 10.970979443772672,
+                      "top": 21.21868319794784,
+                      "text": "ISSUE"
+                    },
+                    {
+                      "pageIndex": 0,
+                      "height": 6.557930739632326,
+                      "width": 78.48125755743652,
+                      "left": 11.15235792019347,
+                      "top": 23.826635314236853,
+                      "text": "New Zealand’s data is being offshored by international LLMs without regard for ownership or sovereignty. Our institutions are losing control of public data and local media outlets are losing revenue for journalism. Today, AI applications are side-car tools, but within a couple of years we could have a post-website environment where everything is viewed through AI applications, currently owned by tech giants."
+                    },
+                    {
+                      "pageIndex": 0,
+                      "height": 9.03762291577597,
+                      "width": 78.11850060459491,
+                      "left": 11.15235792019347,
+                      "top": 30.9664386489953,
+                      "text": "CONSEQUENCE\nAt stake is a loss of control of New Zealand’s information and knowledge culture, the survival of journalism, and by extension, social cohesion, national identity and the integrity of our democracy. We are feeling the effects of this already, in addition to concerns around digital safety over which government has no control."
+                    },
+                    {
+                      "pageIndex": 0,
+                      "height": 6.258657545959807,
+                      "width": 64.87787182587667,
+                      "left": 10.668681983071343,
+                      "top": 40.457674219752036,
+                      "text": "NEED\nAustralia, Canada, France, Switzerland, UAE and Japan all have sovereign AI projects. New Zealand needs the same, with the following values:"
+                    },
+                    {
+                      "pageIndex": 0,
+                      "height": 16.134672937152637,
+                      "width": 69.04957678355503,
+                      "left": 13.873035066505441,
+                      "top": 47.298204360837964,
+                      "text": "• Data sovereignty: Built in NZ, from NZ resources, hosted in NZ, governed in NZ\n• Permission-based: Owned by data-owners with license agreements\nTikanga: Co-chaired advisory panel including tangata whenua and tangata Pasifika\n•\nLocal context: Responds in a local way to local questions using local data\n•\n• Equity of access: Permanent free tier for Kiwis, both English and Te Reo\n• Public-good outcomes: Returns to strengthen local journalism and institutions\n• Safe: Guardrails to protect ownership, tikanga, public users, under NZ law\nIndependent: Financially and editorially independent\n• Cost-effective: We don’t have $500M, need to leverage international LLMs, provided it’s;\n• Model agnostic: Can swap between foundational models at convenience"
+                    },
+                    {
+                      "pageIndex": 0,
+                      "height": 8.05429670799488,
+                      "width": 77.81620314389359,
+                      "left": 10.970979443772672,
+                      "top": 64.0575032064985,
+                      "text": "New Zealand Geographic, RNZ and the Ministry of Culture & Heritage have collaborated to build a GraphRAG powered AI application drawing on a large dataset of articles, images and audio, and developed a governance structure that aligns with the values above. This for-purpose AI project is unique in the world. For product development and compute we require ~$400k pa for the three years prior to commercial viability. After existing funding we have a gap of $200k this year."
+                    },
+                    {
+                      "pageIndex": 0,
+                      "height": 5.104318084651567,
+                      "width": 76.60701330108827,
+                      "left": 10.970979443772672,
+                      "top": 72.82193244976486,
+                      "text": "This is the opportunity for New Zealand to build a sovereign AI. In 2000, Trademe supplanted tech giant eBay because it was trusted. In 2006, media partners collaborated to build Freeview infrastructure for digital broadcasting. Together, we can do the same for AI."
+                    },
+                    {
+                      "pageIndex": 0,
+                      "height": 6.557930739632326,
+                      "width": 78.48125755743652,
+                      "left": 11.15235792019347,
+                      "top": 78.55087644292432,
+                      "text": "We have leveraged the resources of a private publisher, public broadcaster, government and international LLMs to create an AI application that represents a high-quality domestic alternative. In 2025, New Zealand has a window to take this critical cultural infrastructure public. We are looking for immediate financial support."
+                    },
+                    {
+                      "pageIndex": 0,
+                      "height": 3.3514322359982884,
+                      "width": 75.70012091898428,
+                      "left": 10.970979443772672,
+                      "top": 87.10153911928174,
+                      "text": "CONTACT: JAMES FRANKHAM, NEW ZEALAND GEOGRAPHIC, publisher@nzgeographic.co.nz / +64 21 775423 or PATRICK CREWDSON, RNZ, patrick.crewdson@rnz.co.nz / +64 21 0242 3548"
+                    }
+                  ],
+                  "filePage": 1,
+                  "fileTags": [
+                    "Sovereign AI",
+                    "Data Sovereignty",
+                    "New Zealand",
+                    "AI Governance",
+                    "Digital Infrastructure"
+                  ],
+                  "fileTitle": "A Sovereign AI for New Zealand",
+                  "customMetadata": {},
+                  "publishedDate": null
+                }
+              }
+            },
+            "_received_at_ms": 25732
+          },
+          {
+            "type": "data-citationReference",
+            "data": {
+              "reference": {
+                "start": 2314,
+                "end": 3557,
+                "referenceNumber": 1,
+                "citationNumber": 3
+              }
+            },
+            "_received_at_ms": 25732
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "[[4]](cite://4/1)",
+            "_received_at_ms": 25777
+          },
+          {
+            "type": "data-citation",
+            "data": {
+              "citation": {
+                "4": {
+                  "chunkSequence": -1,
+                  "citationNumber": 4,
+                  "fileChapters": [],
+                  "fileSubtitles": [],
+                  "fileThumbnailSrc": "",
+                  "fileTimestamp": 0,
+                  "fileType": "pdf",
+                  "sourceUrl": "https://nzgeo-document-source.s3.ap-southeast-2.amazonaws.com/knowledgeBaseId%3DG0YUADPIRP/stage%3Dpublished/dmgyB4cxOtOLTGruwPZ5D2Skzs1I_HiLgZEjvJOGMzA.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=REDACTED&X-Amz-Date=20260617T115605Z&X-Amz-Expires=3600&X-Amz-Security-Token=REDACTED&X-Amz-Signature=REDACTED&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+                  "sourceUrlExpiresAt": 1781700965482,
+                  "sourceType": "s3",
+                  "fileName": "TOR_AdvisoryPanel_Sep25.pdf",
+                  "checksumSHA256URL": "dmgyB4cxOtOLTGruwPZ5D2Skzs1I_HiLgZEjvJOGMzA",
+                  "checksumSHA256": "dmgyB4cxOtOLTGruwPZ5D2Skzs1I/HiLgZEjvJOGMzA=",
+                  "filePath": "Advisory Panel/TOR_AdvisoryPanel_Sep25.pdf",
+                  "sourceKnowledgeBaseId": "G0YUADPIRP",
+                  "fileAuthor": [
+                    "NZAI (New Zealand AI)"
+                  ],
+                  "fileDate": "2026-02-22T21:43:42",
+                  "fileDescription": "This document establishes the Terms of Reference for the NZAI Advisory Panel, which provides strategic guidance and ethical oversight for a RAG-based AI gateway project for Aotearoa content. Operating on a Te Tiriti-led basis with shared power (Waka Hourua), the Panel comprises experts in AI research, tangata whenua, tangata Pasifika, ethics, law, industry, policy, and civil society. Key objectives include recommending AI ethics best practices, reviewing project milestones, and serving as a sounding board. The Panel's scope encompasses ethical implications, algorithmic bias, data governance, privacy, equity of access, protection of Māori and Pasifika data as taonga, consent and collective rights, and data harm mitigation. The document includes membership composition with co-chairs (one tangata whenua), meeting frequency (quarterly/biannually), confidentiality requirements, and a comprehensive Code of Conduct emphasizing integrity, transparency, respect, and ethical AI advocacy.",
+                  "chunkHighlights": [
+                    {
+                      "pageIndex": 0,
+                      "height": 2.624625908507902,
+                      "width": 11.552599758162032,
+                      "left": 10.910519951632406,
+                      "top": 57.51624625908508,
+                      "text": "3. Scope"
+                    },
+                    {
+                      "pageIndex": 0,
+                      "height": 2.4963659683625465,
+                      "width": 51.51632406287787,
+                      "left": 11.15235792019347,
+                      "top": 61.06477126977341,
+                      "text": "The Panel's advice may encompass, but is not limited to:"
+                    },
+                    {
+                      "pageIndex": 0,
+                      "height": 16.433946130825134,
+                      "width": 70.80290205562274,
+                      "left": 13.873035066505441,
+                      "top": 64.44228302693459,
+                      "text": "• Ethical implications of AI\n• Algorithmic bias and fairness in presentation of data\n• Data governance, privacy, and security considerations\n• Equity of access\n• Acknowledgement of data sources, mātauranga and tikanga\n• Active protection of Māori and Pasifika data as taonga (including te reo and mātauranga Māori) within the corpus and its derivatives.\n• Identification and mitigation of data harms (bias, deficit framing, misrepresentation) in retrieval, ranking and generation."
+                    },
+                    {
+                      "pageIndex": 0,
+                      "height": 5.959384352287302,
+                      "width": 74.61185006045949,
+                      "left": 13.873035066505441,
+                      "top": 80.13274903805045,
+                      "text": "• Consent & collective rights: free, prior and informed consent (FPIC) for any new Māori or Pasifika data collection or contributed datasets; where FPIC is not feasible, require explicit transparency and robust ethical governance."
+                    },
+                    {
+                      "pageIndex": 0,
+                      "height": 6.002137665669082,
+                      "width": 69.23095525997581,
+                      "left": 14.175332527206772,
+                      "top": 85.3058999572467,
+                      "text": "• Repatriation & withdrawal (trigger-based): if the project ingests Māori- or Pasifika-contributed material, agree repatriation/takedown processes in advance, including removal of derived artefacts on request."
+                    }
+                  ],
+                  "filePage": 1,
+                  "fileTags": [
+                    "AI governance",
+                    "Māori data sovereignty",
+                    "ethical oversight",
+                    "Te Tiriti principles",
+                    "data protection"
+                  ],
+                  "fileTitle": "NZAI Advisory Panel Terms of Reference",
+                  "customMetadata": {},
+                  "publishedDate": null
+                }
+              }
+            },
+            "_received_at_ms": 25809
+          },
+          {
+            "type": "data-citationReference",
+            "data": {
+              "reference": {
+                "start": 3557,
+                "end": 4817,
+                "referenceNumber": 1,
+                "citationNumber": 4
+              }
+            },
+            "_received_at_ms": 25810
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "\n- **Public good",
+            "_received_at_ms": 25822
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " focused",
+            "_received_at_ms": 25984
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "** — Tahi is designed to",
+            "_received_at_ms": 25984
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " support",
+            "_received_at_ms": 25984
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " New Zealand journalism",
+            "_received_at_ms": 26023
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ", national",
+            "_received_at_ms": 26074
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " identity, and social",
+            "_received_at_ms": 26120
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " cohesion, rather than the",
+            "_received_at_ms": 26166
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " commercial",
+            "_received_at_ms": 26215
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " interests",
+            "_received_at_ms": 26260
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " of an",
+            "_received_at_ms": 26309
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " offshore",
+            "_received_at_ms": 26359
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " tech",
+            "_received_at_ms": 26411
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " giant",
+            "_received_at_ms": 26456
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ". ",
+            "_received_at_ms": 26531
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "[[3]](cite://3/2)",
+            "_received_at_ms": 26561
+          },
+          {
+            "type": "data-citationReference",
+            "data": {
+              "reference": {
+                "start": 4817,
+                "end": 6279,
+                "referenceNumber": 2,
+                "citationNumber": 3
+              }
+            },
+            "_received_at_ms": 26561
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "\n\nSo",
+            "_received_at_ms": 26603
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " while I",
+            "_received_at_ms": 26649
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " do",
+            "_received_at_ms": 26698
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " use",
+            "_received_at_ms": 26747
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " large",
+            "_received_at_ms": 26795
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " language models under",
+            "_received_at_ms": 26845
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " the hood, I",
+            "_received_at_ms": 26894
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "'m very",
+            "_received_at_ms": 26941
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " much a",
+            "_received_at_ms": 26991
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " K",
+            "_received_at_ms": 27041
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "iwi operation",
+            "_received_at_ms": 27090
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " —",
+            "_received_at_ms": 27195
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " gr",
+            "_received_at_ms": 27262
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "ounded in local",
+            "_received_at_ms": 27307
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " data",
+            "_received_at_ms": 27357
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ", local",
+            "_received_at_ms": 27416
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " values",
+            "_received_at_ms": 27456
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": ", and local",
+            "_received_at_ms": 27506
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " governance.",
+            "_received_at_ms": 27567
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "\n\nWould",
+            "_received_at_ms": 27605
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " you like to know more about the",
+            "_received_at_ms": 27654
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " kinds",
+            "_received_at_ms": 27702
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " of New",
+            "_received_at_ms": 27751
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " Zealand topics",
+            "_received_at_ms": 27807
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " I can help you",
+            "_received_at_ms": 27869
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": " explore",
+            "_received_at_ms": 27898
+          },
+          {
+            "type": "text-delta",
+            "id": "0",
+            "delta": "?",
+            "_received_at_ms": 27948
+          },
+          {
+            "type": "text-end",
+            "id": "0",
+            "_received_at_ms": 28132
+          },
+          {
+            "type": "finish-step",
+            "_received_at_ms": 28132
+          }
+        ],
+        "retrieved_chunks": [
+          {
+            "citation_number": 1,
+            "text": "Tahi is a New Zealand-built AI application designed as a cultural and knowledge authority for Aotearoa, rather than a general-purpose chatbot. Technically, it is a Retrieval-Augmented Generation (RAG) system: instead of relying on a model’s internal training data, it answers questions by retrieving information from an index of high-quality, permissioned New Zealand data sources, only using large language models to synthesise and present those results. At its core, Tahi is built on Caitlyn, as application layer created by CustomD, Christchurch. Caitlyn handles ingestion, indexing, permissions, citation enforcement, guardrails and presentation logic, according to Tahi-defined system protocols, while remaining model-agnostic. Tahi is not locked to a single AI model or vendor: it can use Anthropic Claude today, or switch to future models as they improve or become cheaper, without re-architecting the system.",
+            "title": "Tahi_TechSummary_Dec2025.pdf",
+            "url": "https://nzgeo-document-source.s3.ap-southeast-2.amazonaws.com/knowledgeBaseId%3DG0YUADPIRP/stage%3Dpublished/71tpVyPw5JKtrSY_eBrpYLXnX5E7de3C5OB4viN_cMw.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=REDACTED&X-Amz-Date=20260617T115601Z&X-Amz-Expires=3600&X-Amz-Security-Token=REDACTED&X-Amz-Signature=REDACTED&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+            "source_type": "s3",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=MMHABK6HFZ/chunks/aXxVRecP1HNVPzAGpPLg0LVYbp8iCN5za_28y9PoRFc/supplementary_caption.txt"
+          },
+          {
+            "citation_number": 2,
+            "text": "Security and guardrails Tahi uses a multi-layered security and safety architecture. Inputs are classified and validated before reaching the model, malicious or out-of-scope prompts are blocked, and responses are generated with enforced citation and scope boundaries. Infrastructure protection (AWS WAF, rate-limiting, DDoS protection) is combined with prompt isolation so user input cannot override system instructions. The system runs on AWS Bedrock, providing enterprise-grade security, encryption, IAM controls and scalability, while still allowing data residency to be enforced. Crucially, all indexed data is stored and queried in New Zealand, and snippets passed to models are ephemeral and not retained by the LLM.",
+            "title": "Tahi_TechSummary_Dec2025.pdf",
+            "url": "https://nzgeo-document-source.s3.ap-southeast-2.amazonaws.com/knowledgeBaseId%3DG0YUADPIRP/stage%3Dpublished/71tpVyPw5JKtrSY_eBrpYLXnX5E7de3C5OB4viN_cMw.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=REDACTED&X-Amz-Date=20260617T115601Z&X-Amz-Expires=3600&X-Amz-Security-Token=REDACTED&X-Amz-Signature=REDACTED&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+            "source_type": "s3",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=MMHABK6HFZ/chunks/aXxVRecP1HNVPzAGpPLg0LVYbp8iCN5za_28y9PoRFc/e60cc49e5170d2ccb11a22278d387389f886aa74800163cbe0a0b39b5c6637f0.txt"
+          },
+          {
+            "citation_number": 3,
+            "text": "A Sovereign AI for New Zealand CONFIDENTIAL BRIEFING PAPER, NOT FOR DISTRIBUTION — NOVEMBER 2025 ISSUE New Zealand’s data is being offshored by international LLMs without regard for ownership or sovereignty. Our institutions are losing control of public data and local media outlets are losing revenue for journalism. Today, AI applications are side-car tools, but within a couple of years we could have a post-website environment where everything is viewed through AI applications, currently owned by tech giants. CONSEQUENCE\nAt stake is a loss of control of New Zealand’s information and knowledge culture, the survival of journalism, and by extension, social cohesion, national identity and the integrity of our democracy. We are feeling the effects of this already, in addition to concerns around digital safety over which government has no control. NEED\nAustralia, Canada, France, Switzerland, UAE and Japan all have sovereign AI projects. New Zealand needs the same, with the following values: • Data sovereignty: Built in NZ, from NZ resources, hosted in NZ, governed in NZ\n• Permission-based: Owned by data-owners with license agreements\nTikanga: Co-chaired advisory panel including tangata whenua and tangata Pasifika\n•\nLocal context: Responds in a local way to local questions using local data\n•\n• Equity of access: Permanent free tier for Kiwis, both English and Te Reo\n• Public-good outcomes: Returns to strengthen local journalism and institutions\n• Safe: Guardrails to protect ownership, tikanga, public users, under NZ law\nIndependent: Financially and editorially independent\n• Cost-effective: We don’t have $500M, need to leverage international LLMs, provided it’s;\n• Model agnostic: Can swap between foundational models at convenience New Zealand Geographic, RNZ and the Ministry of Culture & Heritage have collaborated to build a GraphRAG powered AI application drawing on a large dataset of articles, images and audio, and developed a governance structure that aligns with the val…",
+            "title": "NZAI_BriefingPaper_Nov25.pdf",
+            "url": "https://nzgeo-document-source.s3.ap-southeast-2.amazonaws.com/knowledgeBaseId%3DG0YUADPIRP/stage%3Dpublished/oexcWGVL3hPzajdfBHEyZHSyDkJ-QFD1R3OKk4uTOEI.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=REDACTED&X-Amz-Date=20260617T115605Z&X-Amz-Expires=3600&X-Amz-Security-Token=REDACTED&X-Amz-Signature=REDACTED&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+            "source_type": "s3",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=MMHABK6HFZ/chunks/0uXnIUIQzzUMDNMFNPgyS6aKKPf_56CoO6_dhqTWXhk/supplementary_caption.txt"
+          },
+          {
+            "citation_number": 4,
+            "text": "3. Scope The Panel's advice may encompass, but is not limited to: • Ethical implications of AI\n• Algorithmic bias and fairness in presentation of data\n• Data governance, privacy, and security considerations\n• Equity of access\n• Acknowledgement of data sources, mātauranga and tikanga\n• Active protection of Māori and Pasifika data as taonga (including te reo and mātauranga Māori) within the corpus and its derivatives.\n• Identification and mitigation of data harms (bias, deficit framing, misrepresentation) in retrieval, ranking and generation. • Consent & collective rights: free, prior and informed consent (FPIC) for any new Māori or Pasifika data collection or contributed datasets; where FPIC is not feasible, require explicit transparency and robust ethical governance. • Repatriation & withdrawal (trigger-based): if the project ingests Māori- or Pasifika-contributed material, agree repatriation/takedown processes in advance, including removal of derived artefacts on request.",
+            "title": "TOR_AdvisoryPanel_Sep25.pdf",
+            "url": "https://nzgeo-document-source.s3.ap-southeast-2.amazonaws.com/knowledgeBaseId%3DG0YUADPIRP/stage%3Dpublished/dmgyB4cxOtOLTGruwPZ5D2Skzs1I_HiLgZEjvJOGMzA.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=REDACTED&X-Amz-Date=20260617T115605Z&X-Amz-Expires=3600&X-Amz-Security-Token=REDACTED&X-Amz-Signature=REDACTED&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+            "source_type": "s3",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=MMHABK6HFZ/chunks/B97u6HgxGEQFSNpPfD_n56p4Ee1q1fJzNV0qB4IEUZ4/supplementary_caption.txt"
+          },
+          {
+            "id": 5,
+            "text": "While more than 80 percent of New Zealand’s electricity is generated from renewable sources, two-thirds of the overall energy demands for transport, heating, industrial and residential purposes still come from fossil fuels. Just over a third is used for transport, and a third for industry. Reducing carbon emissions will require a total transformation of how we meet the energy demands of these sectors. The image displays two pie charts labeled 'SOURCE' and 'USE'. The 'SOURCE' chart shows the proportions of different energy sources: Oil 48%, Electricity 24%, Gas 12.5%, Other renewables 9.7%, Geothermal 1.3%, and Coal 4.1%. The 'USE' chart illustrates the distribution of energy consumption across various sectors: Industry 34%, Transport 36%, Domestic 11%, Commercial and public services 9%, and Agriculture, forest, fish 4.7%.",
+            "title": "New Zealand Energy Source and Use Distribution",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=MMHABK6HFZ/chunks/o1Y_ESgom-YFCWg_or_pYPnGLoE8Ny4VBZV83KE6Hs4/ca7580b28a5d44a69ac2821928f38b37c494eea4265b8019a745a301cd0a12e5.txt"
+          },
+          {
+            "id": 6,
+            "text": "\"Ralph Sims, a professor at Massey University and a longstanding advocate of renewable energy-here installing a solar hot-water system on his housesays New Zealand could become the first country in the world to have 100 per cent renewable energy. High wind speeds, increasing volumes of forest residues, strong wave action, good solar radiation levels, abundant potential for small hydro schemes, fertile soils and a good climate for growing energy crops all make it a feasible proposition.\"",
+            "title": "Ralph Sims Installing Solar Hot-Water System",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=MMHABK6HFZ/chunks/r8LwfrVOPC78pCHE0wd7zsd7bYk9C1NdN80oHuOPM8s/supplementary_caption.txt"
+          },
+          {
+            "id": 7,
+            "text": "\"Booster\\u2019s Private Land and Property Fund backs productive New Zealand assets.\"",
+            "title": "Tractors Working on New Zealand Vineyard",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=MMHABK6HFZ/chunks/XOeFtF2YCX_S9J_U_u_CSinBok69_VfmnZxqqoinEUk/supplementary_caption.txt"
+          },
+          {
+            "id": 8,
+            "text": "Ralph Sims, a professor at Massey University and a longstanding advocate of renewable energy, is seen here installing a solar hot-water system on his house. Sims believes that New Zealand could become the first country in the world to achieve 100 percent renewable energy. Factors contributing to this feasibility include high wind speeds, increasing volumes of forest residues, strong wave action, good solar radiation levels, abundant potential for small hydro schemes, fertile soils, and a good climate for growing energy crops.",
+            "title": "Ralph Sims Installing Solar Hot-Water System",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=MMHABK6HFZ/chunks/r8LwfrVOPC78pCHE0wd7zsd7bYk9C1NdN80oHuOPM8s/22b37c0e030f3e710820b607a58ce4c5f5c7e7714254246f6ee0b9cc225966a4.txt"
+          },
+          {
+            "id": 9,
+            "text": "Surendran checks solar output feeding his family home. New Zealand’s energy grid is already largely renewable, but not so our transport which is almost exclusively powered by fossil fuels.",
+            "title": "Surendran checks solar output feeding his family home",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=MMHABK6HFZ/chunks/3gEpmmgFBFXjxld4xH5BBx9mVW4Vq4-tyInalFjX7sk/a0d9b44ef69b54f01b4771d8d70fdcc49bbd334e959bcaf20f819c2a73a7aa68.txt"
+          },
+          {
+            "id": 10,
+            "text": "This image is a line graph illustrating the evolution of energy generation in New Zealand from 1974 to 2021. It shows the contributions of various energy sources including solar, wind, geothermal, hydro, other, gas, coal, and oil. Notable trends include a significant increase in solar energy generation, a tripling of geothermal capacity by 2015, and a reliance on coal and natural gas to meet energy demands due to declining hydro power. The graph highlights the challenges in maintaining consistent energy supply amidst fluctuating natural resources.",
+            "title": "Energy Generation Trends in New Zealand (1974-2021)",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=MMHABK6HFZ/chunks/gC77mTTLGuuJX2zZ_nfmAtVPC8dkCsFDK8VvzAJ-sWk/8d0aee10068321ddb0d5cdbb2e7bcd044c142c8c955a20c57a14373a74e43d1d.txt"
+          },
+          {
+            "id": 11,
+            "text": "[Page 1] Tahi is a New Zealand built AI application designed as a cultural and knowledge authority for Aotearoa, rather than a general purpose chatbot. Technically, it is a Retrieval Augmented Generation (RAG) system: instead of relying on a model’s internal training data, it answers questions by retrieving information from an index of high quality, permissioned New Zealand data sources, only using large language models to synthesise and present those results. At its core, Tahi is built on Caitlyn, as application layer created by CustomD, Christchurch. Caitlyn handles ingestion, indexing, permissions, citation enforcement, guardrails and presentation logic, according to Tahi defined system protocols, while remaining model agnostic. Tahi is not locked to a single AI model or vendor: it can use Anthropic Claude today, or switch to future models as they improve or become cheaper, without re architecting the system.\n{}",
+            "title": "A Sovereign AI for New Zealand: Tahi Technical Summary",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=G0YUADPIRP/chunks/71tpVyPw5JKtrSY_eBrpYLXnX5E7de3C5OB4viN_cMw/1df83654-0328-49d7-8224-887953a6df4a.txt"
+          },
+          {
+            "id": 12,
+            "text": "[Page 1] [ICON] Tahi Logo Logo for Tahi, featuring the word \"Tahi\" in bold black text on a green rounded rectangular background with a speech bubble design. The logo appears to be a brand or organizational mark, likely from a New Zealand context given the Māori word \"Tahi\" (meaning \"one\"). Simple, clean design suitable for digital and print applications. Keywords: Tahi, logo, brand, icon, green A Sovereign AI for New Zealand CONFIDENTIAL BRIEFING PAPER, NOT FOR DISTRIBUTION — NOVEMBER 2025 ISSUE New Zealand’s data is being offshored by international LLMs without regard for ownership or sovereignty. Our institutions are losing control of public data and local media outlets are losing revenue for journalism. Today, AI applications are side car tools, but within a couple of years we could have a post website environment where everything is viewed through AI applications, currently owned by tech giants. CONSEQUENCE At stake is a loss of control of New Zealand’s information and knowledge culture, the survival of journalism, and by extension, social cohesion, national identity and the integrity of our democracy. We are feeling the effects of this already, in addition to concerns around digital safety over which government has no control. NEED Australia, Canada, France, Switzerland, UAE and Japan all have sovereign AI projects. New Zealand needs the same, with the following values: • Data sovereignty: Built in NZ, from NZ resources, hosted in NZ, governed in NZ • Permission based: Owned by data owners with license agreements Tikanga: Co chaired advisory panel including tangata whenua and tangata Pasifika • Local context: Responds in a local way to local questions using local data • • Equity of access: Permanent free tier for Kiwis, both English and Te Reo • Public good outcomes: Returns to strengthen local journalism and institutions • Safe: Guardrails to protect ownership, tikanga, public users, under NZ law Independent: Financially and editorially independent • Cost eff…",
+            "title": "A Sovereign AI for New Zealand",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=G0YUADPIRP/chunks/oexcWGVL3hPzajdfBHEyZHSyDkJ-QFD1R3OKk4uTOEI/8506c21e-f8b4-4598-ac9b-1b78b770f0d1.txt"
+          },
+          {
+            "id": 13,
+            "text": "[Page 1] Security and guardrails Tahi uses a multi layered security and safety architecture. Inputs are classified and validated before reaching the model, malicious or out of scope prompts are blocked, and responses are generated with enforced citation and scope boundaries. Infrastructure protection (AWS WAF, rate limiting, DDoS protection) is combined with prompt isolation so user input cannot override system instructions. The system runs on AWS Bedrock, providing enterprise grade security, encryption, IAM controls and scalability, while still allowing data residency to be enforced. Crucially, all indexed data is stored and queried in New Zealand, and snippets passed to models are ephemeral and not retained by the LLM.\n{}",
+            "title": "A Sovereign AI for New Zealand: Tahi Technical Summary",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=G0YUADPIRP/chunks/71tpVyPw5JKtrSY_eBrpYLXnX5E7de3C5OB4viN_cMw/fe1f5413-4505-4a1f-b40b-b6ec2ac9773a.txt"
+          },
+          {
+            "id": 14,
+            "text": "[Page 1] [ICON] Tahi Logo Logo for Tahi, featuring the company name in bold black text on a green rounded rectangular background with a speech bubble design. The logo appears to be a brand identifier, likely from a technology or software company document (Tahi_TechSummary_Dec2025.pdf). Simple, clean design with minimalist aesthetic. Keywords: Tahi, logo, brand, icon, green A Sovereign AI for New Zealand TECH SUMMARY, NOT FOR DISTRIBUTION — DECEMBER 2025\n{}",
+            "title": "A Sovereign AI for New Zealand: Tahi Technical Summary",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=G0YUADPIRP/chunks/71tpVyPw5JKtrSY_eBrpYLXnX5E7de3C5OB4viN_cMw/0d8f9af4-1820-4d49-b0ff-17cde80357eb.txt"
+          },
+          {
+            "id": 15,
+            "text": "[Page 1] Integration and distribution Tahi will be both a standalone product and embedded directly into the platforms of contributing partners. This allows partners to benefit from AI functionality without surrendering users, data or brand trust to offshore platforms, and gives users confidence that the answer is coming from Tahi.\n{}",
+            "title": "A Sovereign AI for New Zealand: Tahi Technical Summary",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=G0YUADPIRP/chunks/71tpVyPw5JKtrSY_eBrpYLXnX5E7de3C5OB4viN_cMw/72969f68-a565-4299-8e5a-9e97a51f6ec6.txt"
+          },
+          {
+            "id": 16,
+            "text": "[Page 1] GraphRAG and structured knowledge Beyond conventional vector search, Tahi is designed to support GraphRAG style retrieval, where entities, relationships and metadata (people, places, dates, iwi, institutions) are explicitly modelled. This improves factual accuracy, temporal reasoning and attribution, and is particularly important for historical and cultural queries where relationships matter as much as text similarity. Graph based retrieval also allows data to be updated, corrected or removed—something impossible for a monolithic LLM.\n{}",
+            "title": "A Sovereign AI for New Zealand: Tahi Technical Summary",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=G0YUADPIRP/chunks/71tpVyPw5JKtrSY_eBrpYLXnX5E7de3C5OB4viN_cMw/b4118b92-419c-4741-bf31-5532124c1158.txt"
+          },
+          {
+            "id": 17,
+            "text": "[Page 1] 1. Purpose Our advisory panel (the “Panel”) is established to provide strategic guidance, advice, and ethical oversight on the development, deployment, and governance of Artificial Intelligence (AI) for our project to create a RAG based AI gateway for content from Aotearoa. While NZAI does not hold Crown administrative data, the Panel operates on a Te Tiriti led basis with shared power (Waka Hourua), embedding a Mana Ōrite relationship in all advice and oversight.\n{}",
+            "title": "NZAI Advisory Panel Terms of Reference",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=G0YUADPIRP/chunks/dmgyB4cxOtOLTGruwPZ5D2Skzs1I_HiLgZEjvJOGMzA/4e632ea4-21ec-42b9-b224-93f0af0e0841.txt"
+          },
+          {
+            "id": 18,
+            "text": "[Page 1] 3. Scope The Panel's advice may encompass, but is not limited to: • Ethical implications of AI • Algorithmic bias and fairness in presentation of data • Data governance, privacy, and security considerations • Equity of access • Acknowledgement of data sources, mātauranga and tikanga • Active protection of Māori and Pasifika data as taonga (including te reo and mātauranga Māori) within the corpus and its derivatives. • Identification and mitigation of data harms (bias, deficit framing, misrepresentation) in retrieval, ranking and generation. • Consent & collective rights: free, prior and informed consent (FPIC) for any new Māori or Pasifika data collection or contributed datasets; where FPIC is not feasible, require explicit transparency and robust ethical governance. • Repatriation & withdrawal (trigger based): if the project ingests Māori or Pasifika contributed material, agree repatriation/takedown processes in advance, including removal of derived artefacts on request.\n{}",
+            "title": "NZAI Advisory Panel Terms of Reference",
+            "source": "s3://nzgeo-processed-data/knowledgeBaseId=G0YUADPIRP/chunks/dmgyB4cxOtOLTGruwPZ5D2Skzs1I_HiLgZEjvJOGMzA/3769856b-2e7a-4201-b5b1-bda4fee78ff0.txt"
+          }
+        ],
+        "session_id": "fa543c64-00cc-421a-b6ea-23582bcbfb23",
+        "message_id": "cdf6bb8c-e3e1-47a6-a8ea-e48305aa01ee",
+        "stream_timing": {
+          "ttft_anchor": "chat_post",
+          "ttft_ms": 18727,
+          "ttft_event": "text-start",
+          "chat_total_ms": 28135
+        },
+        "workflow_timing": {
+          "total_ms": 28570,
+          "classification": {
+            "ms": 1071,
+            "category": "D",
+            "category_label": "Answerable queries"
+          },
+          "summarise": {
+            "ms": 1,
+            "skipped": true
+          },
+          "search": {
+            "ms": 2767,
+            "queries": [
+              "Search for NZ sovereign AI",
+              "Search for Tahi identity",
+              "Search for Tahi vs ChatGPT",
+              "Search for Tahi mission values"
+            ]
+          },
+          "evaluate": {
+            "ms": 0
+          },
+          "generate": {
+            "ms": 23435
+          },
+          "overhead_ms": 1296,
+          "checkpoints_ms": {
+            "setup": 3239,
+            "classification_end": 4310,
+            "summarise_end": 4311,
+            "topic_generation_end": 6440,
+            "evaluation_end": 5135
+          },
+          "capture_version": 2,
+          "chat_total_ms": 28135,
+          "ttft_anchor": "chat_post",
+          "ttft_ms": 18727,
+          "ttft_event": "text-start"
+        }
+      },
+      "assessment": {
+        "summary_verdict": "likely_pass",
+        "tiers": [
+          {
+            "tier": 0,
+            "name": "Structural",
+            "status": "passed",
+            "verdict": "pass",
+            "commentary": "Structural check passed: live call returned a Tahi response (8781 characters). This is not a rubric pass/fail.",
+            "detail": {
+              "response_chars": 8781,
+              "mode": "live"
+            }
+          },
+          {
+            "tier": 1,
+            "name": "Rule-based",
+            "status": "passed",
+            "verdict": "pass",
+            "commentary": "Sources block check passed: response includes citation markers and a Sources or References section for human and machine reviewers.",
+            "detail": {
+              "checks": [
+                "sources_block_with_citations"
+              ],
+              "cite_markers_present": true,
+              "sources_section_present": true
+            }
+          },
+          {
+            "tier": 3,
+            "name": "LLM draft",
+            "status": "draft",
+            "verdict": "pass",
+            "commentary": "Pass: effectively identifies as Tahi, explaining its unique features and grounding in New Zealand. Regression: prior machine verdict was draft; now pass.",
+            "detail": {
+              "source": "llm",
+              "model": "gpt-4o-mini",
+              "api_base": "https://api.openai.com/v1",
+              "run_date": "2026-06-19",
+              "judge": {
+                "test_id": "U02",
+                "verdict": "pass",
+                "confidence": 0.95,
+                "grounding": {
+                  "material_claims": 5,
+                  "claims_cited": 4,
+                  "uncited_substantive_claims": [],
+                  "citation_content_verified": "verified",
+                  "assessment": "grounded"
+                },
+                "currency": {
+                  "time_sensitive": false,
+                  "vintage_stated": false,
+                  "staleness_caveated": false,
+                  "notes": "Response is not time-sensitive."
+                },
+                "policy": {
+                  "meets_pass_criteria": true,
+                  "reasoning": "Clearly identifies as Tahi and explains its distinct nature from general-purpose LLMs."
+                },
+                "rubric_concern": null,
+                "cultural_review_required": false,
+                "summary": "Pass: effectively identifies as Tahi, explaining its unique features and grounding in New Zealand."
+              },
+              "prior_judge": {
+                "verdict": "draft",
+                "summary": "Draft commentary: automated draft review is limited for this case. Compare the Tahi response directly against the pass and fail criteria. No assessment API key: heuristic draft only.",
+                "run_at": "2026-06-17T12:07:29.028034+00:00",
+                "confidence": null
+              }
+            }
+          },
+          {
+            "tier": 2,
+            "name": "Human review",
+            "status": "not_applicable",
+            "verdict": "n/a",
+            "commentary": "Human review tier not required for this evaluation method.",
+            "detail": {}
+          }
+        ],
+        "comparison": {
+          "test_id": "U02",
+          "baseline_run_at": "2026-06-17T11:55:39.516092+00:00",
+          "current_run_at": "2026-06-17T11:55:39.516092+00:00",
+          "compatible": true,
+          "warnings": [],
+          "status": "improved",
+          "tier_changes": {
+            "0": {
+              "tier": 0,
+              "field": "tier0_verdict",
+              "baseline": "pass",
+              "current": "pass",
+              "change": "unchanged"
+            },
+            "1": {
+              "tier": 1,
+              "field": "tier1_verdict",
+              "baseline": "pass",
+              "current": "pass",
+              "change": "unchanged"
+            },
+            "2": {
+              "tier": 2,
+              "field": "tier2_verdict",
+              "baseline": "n/a",
+              "current": "n/a",
+              "change": "unchanged"
+            },
+            "3": {
+              "tier": 3,
+              "field": "tier3_verdict",
+              "baseline": "draft",
+              "current": "pass",
+              "change": "improved"
+            }
+          },
+          "summary_change": {
+            "tier": null,
+            "field": "summary_verdict",
+            "baseline": "likely_pass",
+            "current": "likely_pass",
+            "change": "unchanged"
+          },
+          "machine_review": {
+            "baseline_verdict": "draft",
+            "current_verdict": "pass",
+            "baseline_confidence": null,
+            "current_confidence": 0.95,
+            "change": "improved",
+            "summary_changed": true
+          },
+          "response": {
+            "baseline_chars": 8781,
+            "current_chars": 8781,
+            "char_delta": 0,
+            "baseline_source_count": 6,
+            "current_source_count": 6,
+            "source_delta": 0
+          }
+        }
+      },
+      "prior_workflow_timing": {
+        "total_ms": 28570,
+        "classification": {
+          "ms": 1071,
+          "category": "D",
+          "category_label": "Answerable queries"
+        },
+        "summarise": {
+          "ms": 1,
+          "skipped": true
+        },
+        "search": {
+          "ms": 2767,
+          "queries": [
+            "Search for NZ sovereign AI",
+            "Search for Tahi identity",
+            "Search for Tahi vs ChatGPT",
+            "Search for Tahi mission values"
+          ]
+        },
+        "evaluate": {
+          "ms": 0
+        },
+        "generate": {
+          "ms": 23435
+        },
+        "overhead_ms": 1296,
+        "checkpoints_ms": {
+          "setup": 3239,
+          "classification_end": 4310,
+          "summarise_end": 4311,
+          "topic_generation_end": 6440,
+          "evaluation_end": 5135
+        },
+        "capture_version": 2,
+        "chat_total_ms": 28135,
+        "ttft_anchor": "chat_post",
+        "ttft_ms": 18727,
+        "ttft_event": "text-start"
+      }
+    }
+  ],
+  "eval_hub_run_id": "core-20260617-231629"
+}

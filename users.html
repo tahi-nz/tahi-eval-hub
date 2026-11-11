@@ -1,0 +1,3057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User management — Tahi evaluation hub</title>
+  <meta name="tahi-hub-config-url" content="hub-config.json"><meta name="tahi-reviewers-url" content="reviewers.json"><meta name="tahi-report-json-url" content="latest.json"><script>
+(function () {
+  var TOKEN_KEY = "tahi_auth_token";
+  var NAME_KEY = "tahi_reviewer_name";
+  var USER_KEY = "tahi_reviewer_username";
+  var ROLE_KEY = "tahi_reviewer_role";
+  if (!sessionStorage.getItem(TOKEN_KEY)) {
+    return;
+  }
+  function syncReviewerAdminAttr() {
+    if (!document.body) {
+      return;
+    }
+    if (String(sessionStorage.getItem(ROLE_KEY) || "").toLowerCase() === "admin") {
+      document.body.setAttribute("data-reviewer-admin", "true");
+    } else {
+      document.body.removeAttribute("data-reviewer-admin");
+    }
+  }
+  function applyBootstrap() {
+    if (!document.body) {
+      return;
+    }
+    document.body.setAttribute("data-reviewer-signed-in", "true");
+    document.body.setAttribute("data-auth-pending", "true");
+    syncReviewerAdminAttr();
+    var status = document.querySelector("[data-reviewer-auth-status]");
+    var form = document.querySelector("[data-reviewer-auth-form]");
+    var actions = document.querySelector("[data-reviewer-auth-actions]");
+    var name = sessionStorage.getItem(NAME_KEY) || sessionStorage.getItem(USER_KEY) || "";
+    if (status) {
+      status.hidden = false;
+      status.textContent = name;
+      status.classList.add("reviewer-auth-status--signed-in");
+    }
+    if (form) {
+      form.hidden = true;
+    }
+    if (actions) {
+      actions.hidden = false;
+      actions.innerHTML =
+        '<button type="button" class="llm-assessment-toggle" data-reviewer-sign-out>Sign out</button>';
+    }
+  }
+  if (document.body) {
+    applyBootstrap();
+  } else {
+    document.addEventListener("DOMContentLoaded", applyBootstrap, { once: true });
+  }
+})();
+</script>
+  <style>
+:root {
+  color-scheme: light;
+  --text: #1c2430;
+  --muted: #5f6b7a;
+  --border: #dde3ea;
+  --surface: #f4f7fb;
+  --surface-2: #eef2f7;
+  --accent: #0f4c5c;
+  --accent-soft: #e8f3f6;
+  --pass: #0d6b3f;
+  --pass-bg: #e8f6ee;
+  --pass-bg-overall: #b8dcc8;
+  --pass-border: #9fd4b8;
+  --pass-border-overall: #6aab84;
+  --fail: #b42318;
+  --fail-bg: #fdeeed;
+  --fail-border: #f2b8b5;
+  --warn: #8a5a00;
+  --warn-bg: #fff8e8;
+  --warn-border: #f0d48a;
+  --neutral-bg: #f0f3f7;
+  --neutral-border: #c8d2dc;
+  --prompt: #0f3d75;
+  --prompt-text: #0a2847;
+  --prompt-soft: #d4e4f5;
+  --prompt-border: #7aa3d4;
+  --shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 8px 24px rgba(16, 24, 40, 0.06);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: #295f4b;
+}
+.wrap {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+.wrap--wide {
+  max-width: 96rem;
+}
+.wrap--hub {
+  max-width: 90rem;
+}
+.case-layout-columns {
+  display: grid;
+  grid-template-columns: minmax(14rem, 21rem) minmax(0, 1fr);
+  gap: 1rem 1.25rem;
+  align-items: start;
+  margin-top: 1rem;
+  overflow: visible;
+}
+.case-layout-columns.is-details-open {
+  grid-template-columns: minmax(14rem, 21rem) minmax(0, 1fr) minmax(16rem, 24rem);
+}
+.case-context-column,
+.case-response-column,
+.case-details-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+  overflow: visible;
+}
+.case-details-column {
+  display: none;
+  position: sticky;
+  top: 1rem;
+  align-self: start;
+  max-height: calc(100vh - 2rem);
+  overflow: auto;
+}
+.case-layout-columns.is-details-open .case-details-column {
+  display: flex;
+}
+.case-details-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+.case-details-head h2 {
+  margin: 0;
+  font-size: 0.98rem;
+  color: var(--accent);
+}
+.case-details-column .case-details-head h2 {
+  color: #f4faf7;
+}
+.case-details-placeholder {
+  margin: 0;
+  padding: 1rem;
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  background: var(--surface);
+}
+.case-details-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.case-details-panel[hidden] {
+  display: none !important;
+}
+.case-details-placeholder[hidden] {
+  display: none !important;
+}
+.tier-nav-card {
+  border-radius: 12px;
+  padding: 0.85rem 0.95rem;
+  box-shadow: var(--shadow);
+  text-align: left;
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  border: 1px solid transparent;
+  border-left-width: 4px;
+}
+body:not([data-reviewer-admin="true"]) [data-hub-admin-only] {
+  display: none !important;
+}
+.tier-nav-card--pass {
+  background: var(--pass-bg);
+  border-color: var(--pass-border);
+  border-left-color: var(--pass);
+}
+.tier-nav-card--fail {
+  background: var(--fail-bg);
+  border-color: var(--fail-border);
+  border-left-color: var(--fail);
+}
+.tier-nav-card--warn {
+  background: var(--warn-bg);
+  border-color: var(--warn-border);
+  border-left-color: var(--warn);
+}
+.tier-nav-card--neutral {
+  background: var(--neutral-bg);
+  border-color: var(--neutral-border);
+  border-left-color: #8a96a3;
+}
+button.tier-nav-card {
+  cursor: pointer;
+}
+button.tier-nav-card:hover {
+  filter: brightness(0.98);
+}
+.tier-nav-card.is-active {
+  box-shadow: 0 0 0 2px var(--accent);
+}
+.tier-nav-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.45rem;
+}
+.tier-nav-card h3 {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--text);
+}
+.tier-nav-card-commentary {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+.tier-nav-card-hint {
+  margin: 0.45rem 0 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+.case-review-column,
+.case-response-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+}
+.case-response-column {
+  align-self: start;
+}
+.case-llm-slot {
+  flex: 0 0 auto;
+}
+.tahi-response-body {
+  min-width: 0;
+}
+@media (max-width: 900px) {
+  .case-layout-columns,
+  .case-layout-columns.is-details-open {
+    grid-template-columns: 1fr;
+  }
+  .case-details-column {
+    position: static;
+    max-height: none;
+  }
+}
+.results-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+  gap: 0.75rem;
+  margin: 0 0 1.25rem;
+}
+.workflow-timing-card {
+  margin: 0 0 1.25rem;
+  padding: 1rem 1.1rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+.case-details-panel .workflow-timing-card {
+  margin: 0;
+  padding: 1rem 1.05rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: none;
+  background: #fff;
+}
+.workflow-timing-nav-delta {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.workflow-timing-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  margin-bottom: 0.85rem;
+}
+.workflow-timing-head h2 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--accent);
+}
+.workflow-timing-total {
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+.workflow-timing-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+.workflow-timing-table th,
+.workflow-timing-table td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.45rem 0.35rem;
+  text-align: left;
+  vertical-align: top;
+}
+.workflow-timing-table tr:last-child th,
+.workflow-timing-table tr:last-child td {
+  border-bottom: none;
+}
+.workflow-timing-table th {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.workflow-timing-stage {
+  font-weight: 600;
+  color: var(--text);
+}
+.workflow-timing-detail {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+.workflow-timing-queries {
+  margin: 0.35rem 0 0;
+  padding-left: 1.1rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.workflow-timing-queries li {
+  margin: 0.1rem 0;
+}
+.workflow-timing-delta--slower {
+  color: var(--warn);
+  font-weight: 600;
+}
+.workflow-timing-delta--faster {
+  color: var(--pass);
+  font-weight: 600;
+}
+.workflow-timing-delta--neutral {
+  color: var(--muted);
+}
+.workflow-timing-footnote {
+  margin: 0.75rem 0 0;
+  font-size: 0.76rem;
+  color: var(--muted);
+}
+.results-card {
+  border-radius: 12px;
+  padding: 0.85rem 0.95rem;
+  box-shadow: var(--shadow);
+  min-height: 5.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  border: 1px solid transparent;
+  border-left-width: 4px;
+}
+.results-card-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.results-card-name {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.25;
+}
+.results-card-value {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.results-card-footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.results-card-value--pass { color: var(--pass); }
+.results-card-value--fail { color: var(--fail); }
+.results-card-value--warn { color: var(--warn); }
+.results-card-value--neutral { color: var(--text); }
+.results-card-meta {
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.results-card--pass {
+  background: var(--pass-bg);
+  border-color: var(--pass-border);
+  border-left-color: var(--pass);
+}
+.results-card--pass .results-card-meta { color: var(--pass); }
+.results-card--fail {
+  background: var(--fail-bg);
+  border-color: var(--fail-border);
+  border-left-color: var(--fail);
+}
+.results-card--fail .results-card-meta { color: var(--fail); }
+.results-card--warn {
+  background: var(--warn-bg);
+  border-color: var(--warn-border);
+  border-left-color: var(--warn);
+}
+.results-card--warn .results-card-meta { color: var(--warn); }
+.results-card--neutral {
+  background: var(--neutral-bg);
+  border-color: var(--neutral-border);
+  border-left-color: #8a96a3;
+}
+.results-card--overall {
+  grid-column: span 1;
+}
+.results-card--overall.results-card--pass {
+  background: var(--pass-bg-overall);
+  border-color: var(--pass-border-overall);
+  border-left-color: var(--pass);
+}
+.results-card--overall.results-card--pass .results-card-value {
+  color: #084a2d;
+}
+@media (min-width: 720px) {
+  .results-card--overall {
+    grid-column: span 1;
+  }
+}
+.confidence-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid #b8dce6;
+}
+.viewer-gate-hint {
+  margin: 0.65rem 0 0;
+  padding: 0.65rem 0.75rem;
+  border-radius: 8px;
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+body[data-machine-review-visible="true"] [data-case-details-panel="machine"] .viewer-gate-hint {
+  display: none;
+}
+.machine-review-hidden {
+  display: none !important;
+}
+.machine-review-placeholder-card,
+.results-card--locked,
+.tier-nav-card--locked {
+  background: #eef1f4;
+  border-style: dashed;
+  border-color: #b8c2cc;
+  color: var(--text);
+}
+.results-card--locked .results-card-label,
+.results-card--locked .results-card-name,
+.tier-nav-card--locked .tier-nav-card-commentary {
+  color: var(--muted);
+}
+.results-card--locked .results-card-value {
+  color: #5c6875;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+.tier-nav-card--locked {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.hub-cell-locked {
+  color: #5c6875;
+  background: #eef1f4;
+  border-color: #c5ced8;
+}
+[data-machine-review-placeholder][hidden],
+[data-machine-review-content][hidden],
+[data-machine-review-gated] > [hidden] {
+  display: none !important;
+}
+[data-machine-review-gated] {
+  min-width: 0;
+}
+.reviewer-auth-bar-wrap {
+  flex: 0 0 auto;
+  margin: 0;
+  align-self: flex-start;
+}
+.reviewer-auth-bar {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  gap: 0.65rem;
+  align-items: center;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff0e0;
+  box-shadow: var(--shadow);
+}
+body[data-reviewer-signed-in="true"] .reviewer-auth-bar:not(.reviewer-auth-bar--error) {
+  background: #e6f4ea;
+}
+body[data-reviewer-signed-in="false"] .reviewer-auth-bar:not(.reviewer-auth-bar--error) {
+  background: #fff0e0;
+}
+.reviewer-auth-bar--error {
+  border-color: var(--fail-border);
+  background: var(--fail-bg);
+  flex-wrap: wrap;
+}
+.reviewer-auth-bar--shake {
+  animation: reviewer-auth-shake 0.35s ease;
+}
+@keyframes reviewer-auth-shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-4px); }
+  40%, 80% { transform: translateX(4px); }
+}
+.reviewer-auth-status {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.reviewer-auth-status--signed-in {
+  color: var(--text);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.reviewer-auth-status--error {
+  flex: 1 1 100%;
+  order: -1;
+  color: var(--fail);
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid var(--fail-border);
+  box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.12);
+}
+.reviewer-auth-status--loading {
+  color: var(--accent);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.reviewer-auth-actions {
+  display: inline-flex;
+  align-items: center;
+}
+.reviewer-auth-bar--error .reviewer-auth-field input {
+  border-color: var(--fail-border);
+  background: #fff;
+}
+.reviewer-auth-form {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.5rem 0.75rem;
+  align-items: flex-end;
+  margin: 0;
+}
+.reviewer-auth-form[hidden] {
+  display: none !important;
+}
+.reviewer-auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.reviewer-auth-form--locked .reviewer-auth-field input {
+  background: var(--surface);
+  color: var(--muted);
+  border-color: #d5dbe3;
+  cursor: not-allowed;
+  opacity: 0.85;
+}
+.reviewer-auth-form--locked .reviewer-auth-field span {
+  opacity: 0.75;
+}
+.reviewer-auth-field input {
+  min-width: 9rem;
+  padding: 0.35rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.88rem;
+}
+.llm-assessment-toggle:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.llm-assessment-toggle {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  cursor: pointer;
+}
+.llm-assessment-toggle:hover,
+.llm-assessment-toggle[aria-expanded="true"] {
+  background: var(--accent-soft);
+}
+.llm-detail-panel {
+  margin: 0;
+  padding: 1rem 1.1rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: var(--shadow);
+  align-self: start;
+}
+.llm-detail-panel.is-collapsed {
+  display: none;
+}
+.llm-detail-panel.is-open {
+  display: block;
+}
+.case-details-panel .llm-detail-panel {
+  margin: 0;
+}
+.case-details-panel .human-verdict-panel {
+  margin: 0;
+  box-shadow: none;
+}
+.llm-detail-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.llm-detail-panel-head h2 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--accent);
+}
+.llm-detail-panel-hint {
+  margin: 0 0 0.75rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.llm-detail-panel dl {
+  margin: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+.llm-detail-panel dt {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  cursor: help;
+  text-decoration: underline dotted var(--neutral-border);
+  text-underline-offset: 0.15em;
+  width: fit-content;
+}
+.llm-detail-panel dd {
+  margin: 0.15rem 0 0;
+  font-size: 0.92rem;
+}
+.llm-assessment-pop {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  cursor: pointer;
+}
+.llm-assessment-pop:hover {
+  background: var(--accent-soft);
+}
+.llm-assessment-dialog {
+  width: min(42rem, calc(100vw - 2rem));
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0;
+  box-shadow: var(--shadow);
+}
+.llm-assessment-dialog::backdrop {
+  background: rgba(15, 23, 42, 0.45);
+}
+.llm-assessment-dialog-inner {
+  padding: 1.1rem 1.25rem 1.25rem;
+}
+.llm-assessment-dialog-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.llm-assessment-dialog-head h2 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--accent);
+}
+.llm-assessment-dialog-close {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  padding: 0.25rem 0.65rem;
+  cursor: pointer;
+  font-size: 0.82rem;
+}
+.meta-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 1rem;
+  font-size: 0.92rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.meta-table th, .meta-table td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.55rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+.meta-table tr:last-child th, .meta-table tr:last-child td { border-bottom: none; }
+.meta-table th {
+  width: 34%;
+  background: var(--surface);
+  font-weight: 600;
+}
+.rubric-block {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+}
+.rubric-block h3 {
+  margin: 0 0 0.35rem;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+.rubric-block p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+.rubric-block--prompt {
+  background: linear-gradient(180deg, #c5daf2 0%, var(--prompt-soft) 100%);
+  border: 1px solid var(--prompt-border);
+  border-left: 4px solid var(--prompt);
+  box-shadow: 0 2px 8px rgba(15, 61, 117, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  padding: 1rem 1.05rem;
+}
+.rubric-block--prompt h3 {
+  color: var(--prompt);
+  font-weight: 700;
+}
+.rubric-block--prompt p {
+  color: var(--prompt-text);
+}
+@media (max-width: 900px) {
+  .case-layout-columns {
+    grid-template-columns: 1fr;
+  }
+}
+.banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem 1.25rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  margin-bottom: 2rem;
+  padding: 1.25rem 1.35rem;
+}
+.banner__main {
+  flex: 1 1 12rem;
+  min-width: 0;
+}
+.banner__tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem 0.65rem;
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+.banner h1 {
+  margin: 0 0 0.35rem;
+  font-size: 1.65rem;
+  font-weight: 650;
+  color: var(--accent);
+  letter-spacing: -0.01em;
+}
+.banner p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.content h1 {
+  font-size: 1.35rem;
+  margin: 2rem 0 1rem;
+  color: var(--accent);
+}
+.content h2 {
+  font-size: 1.05rem;
+  margin: 1.75rem 0 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.content h3, .content h4 {
+  margin: 1.25rem 0 0.5rem;
+}
+.content p, .content li { font-size: 1rem; }
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0 1.25rem;
+  font-size: 0.95rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.content th, .content td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.65rem 0.85rem;
+  text-align: left;
+  vertical-align: top;
+}
+.content tr:last-child th, .content tr:last-child td { border-bottom: none; }
+.content th {
+  background: var(--surface);
+  width: 32%;
+  font-weight: 600;
+}
+.content hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
+}
+.content em { color: var(--muted); font-size: 0.92rem; }
+.content a { color: var(--accent); text-decoration: none; }
+.content a:hover { text-decoration: underline; }
+.hub-nav {
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+.hub-nav--banner {
+  margin: 0;
+  flex: 0 0 auto;
+}
+.banner__tools .hub-nav--banner {
+  margin: 0;
+}
+.banner__tools .hub-nav--banner a {
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.hub-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+.assessment {
+  margin: 1.75rem 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+.assessment > h2 {
+  margin: 0 0 0.85rem;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.verdict-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.15rem;
+  border-radius: 12px;
+  border: 1px solid var(--neutral-border);
+  background: var(--neutral-bg);
+  box-shadow: var(--shadow);
+  margin-bottom: 1rem;
+}
+.verdict-banner-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.verdict-banner-value {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.verdict-banner--pass {
+  background: var(--pass-bg);
+  border-color: var(--pass-border);
+  color: var(--pass);
+}
+.verdict-banner--fail {
+  background: var(--fail-bg);
+  border-color: var(--fail-border);
+  color: var(--fail);
+}
+.verdict-banner--warn {
+  background: var(--warn-bg);
+  border-color: var(--warn-border);
+  color: var(--warn);
+}
+.verdict-banner--neutral {
+  background: var(--neutral-bg);
+  border-color: var(--neutral-border);
+  color: var(--text);
+}
+.assessment-tiers {
+  display: grid;
+  gap: 0.85rem;
+}
+.assessment-tier {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.95rem 1.05rem;
+  box-shadow: var(--shadow);
+  margin: 0;
+}
+.assessment-tier-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.55rem;
+}
+.assessment-tier h3 {
+  margin: 0;
+  font-size: 0.98rem;
+  color: var(--text);
+}
+.assessment-tier-commentary {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.verdict-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+.verdict-badge--pass {
+  color: var(--pass);
+  background: var(--pass-bg);
+  border-color: var(--pass-border);
+}
+.verdict-badge--fail {
+  color: var(--fail);
+  background: var(--fail-bg);
+  border-color: var(--fail-border);
+}
+.verdict-badge--warn {
+  color: var(--warn);
+  background: var(--warn-bg);
+  border-color: var(--warn-border);
+}
+.verdict-badge--neutral {
+  color: var(--muted);
+  background: var(--neutral-bg);
+  border-color: var(--neutral-border);
+}
+.verdict-pass { color: var(--pass); font-weight: 700; }
+.verdict-fail { color: var(--fail); font-weight: 700; }
+.verdict-pending, .verdict-review, .verdict-draft, .verdict-inconclusive, .verdict-likely_pass {
+  color: var(--warn);
+  font-weight: 700;
+}
+.hub-table-wrap {
+  overflow-x: auto;
+  max-width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  background: #fff;
+}
+.hub-table {
+  margin: 0;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  width: 100%;
+  min-width: 52rem;
+  font-size: 0.82rem;
+  table-layout: fixed;
+}
+.hub-table th,
+.hub-table td {
+  padding: 0.3rem 0.35rem;
+  vertical-align: top;
+}
+.hub-table th {
+  font-size: 0.72rem;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow-wrap: normal;
+}
+.hub-table td {
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+.hub-table .verdict-badge,
+.hub-table .confidence-badge {
+  display: inline-block;
+  max-width: 100%;
+  padding: 0.1rem 0.32rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: nowrap;
+  line-height: 1.25;
+  text-align: center;
+}
+.hub-table .verdict-badge--pass {
+  color: #0d6b52;
+  background: #e6f6ef;
+  border-color: #9fd4c0;
+}
+.hub-table .verdict-badge--warn {
+  color: #9a6400;
+  background: #fff6df;
+  border-color: #ecd084;
+}
+.hub-table .verdict-badge--neutral {
+  color: #4b5563;
+  background: #eef1f4;
+  border-color: #c5ced8;
+}
+.hub-table .confidence-badge {
+  color: #0b5568;
+  background: #e7f4f8;
+  border: 1px solid #b8dce6;
+  border-radius: 999px;
+  padding: 0.1rem 0.32rem;
+}
+.hub-col-test { width: 6.25rem; }
+.hub-col-class { width: 5.4rem; }
+.hub-col-method { width: 3.4rem; }
+.hub-col-run { width: 3.6rem; }
+.hub-col-dur { width: 2.8rem; }
+.hub-col-verdict { width: 4.1rem; }
+.hub-col-conf { width: 3rem; }
+.hub-col-summary { width: 4.4rem; }
+.hub-table-test {
+  padding-right: 0.35rem;
+}
+.hub-test-id-link {
+  display: inline-block;
+  text-decoration: none;
+}
+.hub-test-id-link:hover .hub-test-id {
+  border-color: var(--accent);
+  background: #dceefb;
+}
+.hub-test-id {
+  display: inline-block;
+  font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #0e4a6f;
+  background: #e8f2f8;
+  border: 1px solid #b8d4e8;
+  border-radius: 6px;
+  padding: 0.1rem 0.42rem;
+  line-height: 1.25;
+}
+.hub-table-test a.hub-test-id-link,
+.hub-table-test > strong {
+  white-space: nowrap;
+}
+.hub-table-test > strong {
+  display: inline-block;
+}
+.hub-run-at {
+  display: inline-block;
+  font-size: 0.76rem;
+  line-height: 1.2;
+  color: var(--text);
+  white-space: nowrap;
+}
+.hub-run-meta {
+  margin-top: 0.15rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--muted);
+  line-height: 1.2;
+}
+.hub-compare-link {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  margin-top: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  line-height: 1.25;
+  max-width: 100%;
+}
+.hub-compare-link .hub-compare-badge {
+  align-self: flex-start;
+}
+.hub-compare-link:hover { text-decoration: underline; }
+.hub-compare-badge {
+  display: inline-block;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+.hub-compare-badge--improved {
+  background: var(--pass-bg); color: var(--pass); border: 1px solid var(--pass-border);
+}
+.hub-compare-badge--regressed {
+  background: var(--fail-bg); color: var(--fail); border: 1px solid var(--fail-border);
+}
+.hub-compare-badge--stable {
+  background: var(--neutral-bg); color: #5c6875; border: 1px solid var(--neutral-border);
+}
+.hub-compare-badge--mixed {
+  background: var(--warn-bg); color: var(--warn); border: 1px solid var(--warn-border);
+}
+.compare-nav-card { margin-top: 0.35rem; }
+.hub-version {
+  font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
+  font-size: 0.82rem;
+  color: var(--text);
+  background: var(--surface);
+  padding: 0.1rem 0.35rem;
+  border-radius: 6px;
+}
+.human-verdict-panel {
+  margin: 0.75rem 0 0;
+  padding: 1rem 1.05rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+.human-verdict-panel h2 {
+  margin: 0 0 0.5rem;
+  font-size: 0.98rem;
+  color: var(--text);
+}
+.human-verdict-hint {
+  margin: 0 0 0.85rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.human-verdict-status {
+  margin: 0 0 0.75rem;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+.human-verdict-status--saved {
+  color: var(--pass);
+  font-weight: 600;
+}
+.human-verdict-status--error {
+  color: var(--fail);
+  font-weight: 600;
+}
+.human-verdict-form {
+  display: grid;
+  gap: 0.75rem;
+}
+.human-verdict-field {
+  display: grid;
+  gap: 0.3rem;
+  font-size: 0.88rem;
+}
+.human-verdict-field span {
+  font-weight: 600;
+  color: var(--muted);
+}
+.human-verdict-field select,
+.human-verdict-field textarea {
+  width: 100%;
+  padding: 0.45rem 0.55rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font: inherit;
+  font-size: 0.92rem;
+}
+.hub-table th { background: var(--surface-2); }
+.hub-table tbody tr:hover { background: #fafcff; }
+.content .hub-table-wrap .hub-table {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+.tahi-response {
+  margin-top: 0;
+  padding: 1.15rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+.tahi-response > h2 {
+  margin-top: 0;
+}
+.sources-block {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border);
+}
+.sources-block h3 {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.sources-list {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+.sources-list li + li {
+  margin-top: 0.35rem;
+}
+.source-entry-title {
+  line-height: 1.45;
+}
+.source-entry-num {
+  font-weight: 700;
+  color: var(--text);
+}
+.source-entry-label {
+  color: var(--text);
+}
+.source-entry-url {
+  display: block;
+  margin-top: 0.2rem;
+  color: var(--accent);
+  font-size: 0.84rem;
+  word-break: break-all;
+  text-decoration: none;
+}
+.source-entry-url:hover {
+  text-decoration: underline;
+}
+.sources-list a {
+  color: var(--accent);
+  word-break: break-word;
+}
+.tahi-response a {
+  color: var(--accent);
+}
+.cite-ref {
+  font-size: 0.78em;
+  line-height: 0;
+  margin-left: 0.05em;
+}
+.cite-ref a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+.cite-ref a:hover {
+  text-decoration: underline;
+}
+.sources-warning {
+  margin: 0 0 1rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--warn-border);
+  border-radius: 10px;
+  background: var(--warn-bg);
+}
+.sources-warning-title {
+  margin: 0 0 0.35rem;
+  font-weight: 700;
+  color: var(--warn);
+  font-size: 0.9rem;
+}
+.sources-warning-detail {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+.llm-assessment-detail {
+  margin: 0.75rem 0 0;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+}
+.llm-assessment-detail summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--accent);
+}
+.llm-assessment-detail dl {
+  margin: 0.75rem 0 0;
+  display: grid;
+  gap: 0.5rem;
+}
+.llm-assessment-detail dt {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+.llm-assessment-detail dd {
+  margin: 0.15rem 0 0;
+  font-size: 0.92rem;
+}
+.footer {
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+@media print {
+  body { background: #fff; }
+  .wrap { max-width: none; padding: 0.5in; }
+  .banner, .assessment-tier, .tahi-response, .content table { box-shadow: none; }
+  .banner { break-after: avoid; }
+  .content h1, .content h2 { break-after: avoid; }
+}
+
+.banner__tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+.hub-users-layout { display: flex; flex-direction: column; gap: 1.25rem; }
+.hub-users-section {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 1.15rem 1.25rem;
+}
+.hub-users-section h2 {
+  margin: 0 0 0.75rem;
+  font-size: 0.98rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.hub-users-section p { margin: 0 0 0.75rem; color: var(--muted); font-size: 0.9rem; }
+.hub-users-widget {
+  position: relative;
+  flex: 0 0 auto;
+}
+.hub-users-widget[hidden] { display: none !important; }
+.hub-users-widget-toggle {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--accent);
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.hub-users-widget-toggle[aria-expanded="true"] {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.hub-users-widget-dropdown {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  right: 0;
+  z-index: 20;
+  width: min(20rem, calc(100vw - 2rem));
+  padding: 0.85rem 0.95rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+.hub-users-widget-dropdown[hidden] { display: none !important; }
+.hub-users-widget-dropdown h2 {
+  margin: 0 0 0.65rem;
+  font-size: 0.95rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.hub-users-widget-hint {
+  margin: 0 0 0.75rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+.hub-users-table-wrap {
+  overflow-x: auto;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+.hub-users-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+  min-width: 36rem;
+}
+.hub-users-table th,
+.hub-users-table td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.45rem 0.5rem;
+  text-align: left;
+  vertical-align: top;
+}
+.hub-users-table th {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.hub-users-col-name { min-width: 7rem; }
+.hub-users-col-user { min-width: 8rem; }
+.hub-users-col-email { min-width: 10rem; }
+.hub-users-col-role,
+.hub-users-col-active,
+.hub-users-col-count,
+.hub-users-col-actions {
+  width: 1%;
+  white-space: nowrap;
+}
+.hub-users-col-count { text-align: center; }
+.hub-users-cell-user,
+.hub-users-cell-email {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  max-width: 16rem;
+}
+.hub-users-username {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-all;
+  font-size: 0.82rem;
+}
+.hub-users-badge {
+  display: inline-block;
+  padding: 0.12rem 0.45rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+.hub-users-badge--active { background: #e6f4ea; color: #137333; }
+.hub-users-badge--inactive { background: #f1f3f4; color: #5f6368; }
+.hub-users-badge--admin { background: #e8f0fe; color: #1a73e8; }
+.hub-users-badge--reviewer { background: #fef7e0; color: #b06000; }
+.hub-users-form {
+  display: grid;
+  gap: 0.65rem;
+  max-width: none;
+}
+.hub-users-form label {
+  display: grid;
+  gap: 0.25rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.hub-users-form input,
+.hub-users-form select {
+  font: inherit;
+  padding: 0.42rem 0.55rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+}
+.hub-users-form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+.hub-users-btn {
+  font: inherit;
+  font-weight: 600;
+  padding: 0.42rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #fff;
+  cursor: pointer;
+}
+.hub-users-btn--primary {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+.hub-users-btn--danger {
+  border-color: #f5c2c7;
+  color: #b42318;
+  background: #fff5f5;
+}
+.hub-users-btn:disabled { opacity: 0.55; cursor: wait; }
+.hub-users-btn--link {
+  border: none;
+  background: none;
+  color: var(--accent);
+  padding: 0.1rem 0.25rem;
+}
+.hub-users-status {
+  margin: 0 0 0.75rem;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+.hub-users-status--ok { color: var(--pass); font-weight: 600; }
+.hub-users-status--error { color: var(--fail); font-weight: 600; }
+.hub-users-blocked {
+  margin: 1.5rem 0;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+}
+.hub-users-blocked a { color: var(--accent); }
+
+.hub-nav--performance[hidden],
+.hub-nav--users[hidden],
+.hub-perf-admin-only[hidden],
+[data-hub-auth-content][hidden],
+[data-hub-auth-required][hidden] { display: none !important; }
+body[data-auth-pending] [data-hub-auth-content],
+body[data-auth-pending] [data-hub-auth-required] { display: none !important; }
+body[data-reviewer-signed-in="true"][data-auth-pending] [data-hub-auth-loading] {
+  display: flex;
+}
+.hub-auth-loading {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  margin: 0;
+  padding: 2.5rem 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: var(--shadow);
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.4;
+}
+.hub-auth-loading-spinner {
+  width: 2rem;
+  height: 2rem;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: hub-auth-spin 0.75s linear infinite;
+}
+@keyframes hub-auth-spin {
+  to { transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hub-auth-loading-spinner {
+    animation: none;
+    border-top-color: var(--accent);
+    opacity: 0.85;
+  }
+}
+.hub-auth-required {
+  margin: 0 0 1rem;
+  padding: 1.1rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  color: var(--text);
+}
+.hub-auth-required p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+.hub-perf-blocked {
+  margin: 1.5rem 0;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+}
+.hub-perf-blocked a { color: var(--accent); }
+
+.hub-admin-artifacts {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.45rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #f8fafc;
+}
+.hub-admin-artifacts[hidden] { display: none !important; }
+.hub-admin-artifacts-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-right: 0.15rem;
+}
+.hub-admin-artifacts-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.28rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.hub-admin-artifacts-link:hover {
+  text-decoration: none;
+  border-color: var(--accent);
+}
+</style>
+</head>
+<body data-hub-users-page data-reviewer-signed-in="false">
+  <div class="wrap wrap--hub">
+    <header class="banner">
+      <div class="banner__main">
+        <h1>User management</h1>
+        <p>Reviewers and admins for the NZ Geo Tahi evaluation hub</p>
+      </div>
+      <div class="banner__tools">
+        <p class="hub-nav hub-nav--banner"><a href="index.html">← Back to evaluation hub</a></p>
+        <div class="hub-admin-artifacts" data-hub-admin-artifacts data-hub-admin-only hidden aria-label="Run artifacts"><span class="hub-admin-artifacts-label">Artifacts</span><a class="hub-admin-artifacts-link" href="https://github.com/tahi-nz/tahi-test-runner/actions/workflows/remote-run.yml" target="_blank" rel="noopener noreferrer">GitHub</a><a class="hub-admin-artifacts-link" href="https://docs.google.com/spreadsheets/d/1nDEi-nmaYSyRi6HuO0zQQC2TIaMhzwhW6XnqQGydAvg/edit" target="_blank" rel="noopener noreferrer">Eval Hub</a></div>
+        
+<div class="hub-users-widget" data-hub-users-user-widget hidden>
+  <button type="button" class="hub-users-widget-toggle" data-hub-users-user-toggle aria-expanded="false" aria-controls="hub-users-user-dropdown">
+    Add user
+  </button>
+  <div class="hub-users-widget-dropdown" id="hub-users-user-dropdown" data-hub-users-user-dropdown hidden>
+    <h2 data-hub-users-editor-title>Add user</h2>
+    <form class="hub-users-form" data-hub-users-form>
+      <input type="hidden" name="mode" value="create">
+      <label>Name
+        <input type="text" name="name" required autocomplete="name">
+      </label>
+      <label>Username
+        <input type="text" name="username" required autocomplete="username" pattern="[a-z0-9._-]+" title="Lowercase letters, numbers, dots, dashes, underscores">
+      </label>
+      <label>Email
+        <input type="email" name="email" required autocomplete="email">
+      </label>
+      <label>Role
+        <select name="role" required>
+          <option value="reviewer">Reviewer</option>
+          <option value="expert">Expert</option>
+          <option value="admin">Admin</option>
+        </select>
+      </label>
+      <div class="hub-users-form-actions">
+        <button type="submit" class="hub-users-btn hub-users-btn--primary" data-hub-users-save>Save user</button>
+        <button type="button" class="hub-users-btn" data-hub-users-cancel hidden>Cancel edit</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="hub-users-widget" data-hub-users-passphrase-widget hidden>
+  <button type="button" class="hub-users-widget-toggle" data-hub-users-passphrase-toggle aria-expanded="false" aria-controls="hub-users-passphrase-dropdown">
+    Shared passphrase
+  </button>
+  <div class="hub-users-widget-dropdown" id="hub-users-passphrase-dropdown" data-hub-users-passphrase-dropdown hidden>
+    <h2>Shared passphrase</h2>
+    <p class="hub-users-widget-hint">All rostered users share one hub password (<code>REVIEWER_PASSPHRASE</code>). Distribute updates securely.</p>
+    <form class="hub-users-form" data-hub-users-passphrase-form>
+      <label>Current passphrase
+        <input type="password" name="current_passphrase" required autocomplete="current-password">
+      </label>
+      <label>New passphrase
+        <input type="password" name="new_passphrase" required autocomplete="new-password" minlength="8">
+      </label>
+      <label>Confirm new passphrase
+        <input type="password" name="confirm_passphrase" required autocomplete="new-password" minlength="8">
+      </label>
+      <div class="hub-users-form-actions">
+        <button type="submit" class="hub-users-btn hub-users-btn--primary">Update passphrase</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+        <div class="reviewer-auth-bar-wrap"><div class="reviewer-auth-bar" data-reviewer-auth-bar><span class="reviewer-auth-status" data-reviewer-auth-status hidden>Sign in to view machine review drafts and submit human verdicts.</span><form class="reviewer-auth-form" data-reviewer-auth-form><label class="reviewer-auth-field"><span>Username</span><input type="text" name="username" autocomplete="username" required></label><label class="reviewer-auth-field"><span>Password</span><input type="password" name="password" autocomplete="current-password" required></label><button type="submit" class="llm-assessment-toggle">Sign in</button></form><span class="reviewer-auth-actions" data-reviewer-auth-actions hidden></span></div></div>
+      </div>
+    </header>
+    <main class="content hub-users-layout" data-hub-users-main>
+      <p class="hub-users-status" data-hub-users-status hidden></p>
+      <section class="hub-users-section">
+        <h2>Roster</h2>
+        <p>Active reviewers appear in hub assignment dropdowns. <strong>Tests</strong> counts current hub assignments per reviewer. Changes write to the Eval Hub <strong>Reviewers</strong> sheet.</p>
+        <div class="hub-users-table-wrap">
+          <table class="hub-users-table">
+            <colgroup>
+              <col class="hub-users-col-name"><col class="hub-users-col-user"><col class="hub-users-col-email">
+              <col class="hub-users-col-role"><col class="hub-users-col-active"><col class="hub-users-col-count">
+              <col class="hub-users-col-actions">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>Name</th><th>Username</th><th>Email</th><th>Role</th>
+                <th>Status</th><th>Tests</th><th></th>
+              </tr>
+            </thead>
+            <tbody data-hub-users-rows>
+              <tr><td colspan="7">Loading roster…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script>
+(function () {
+  var TOKEN_KEY = "tahi_auth_token";
+  var USER_KEY = "tahi_reviewer_username";
+  var NAME_KEY = "tahi_reviewer_name";
+  var ROLE_KEY = "tahi_reviewer_role";
+  var EMAIL_KEY = "tahi_reviewer_email";
+  var JUDGE_FIELD_HINTS = {"summary": "One-line verdict from the independent judge model. This is a draft for reviewers—not a human sign-off.", "confidence": "How confident the judge model is in its verdict (0–1). Low scores warrant closer human review.", "grounding": "Axis A (process): are material claims backed by citations from Tahi's retrieved corpus, rather than parametric memory?", "citation_check": "Whether cited claims were checked against retrieved source passages. Unverifiable means only citation markers were checked, not chunk content.", "citations": "Count of material factual claims that carry a citation marker ([[n]](cite://…)) versus the total material claims identified.", "policy": "Axis B (rubric): does the response meet this test's pass and fail criteria as written in the workbook?", "currency": "For time-sensitive topics: did the response state when information is from, and caveat that things may have changed?", "rubric_concern": "The judge thinks the rubric criteria may be mis-specified for this response (e.g. demanding refusal when the corpus clearly covers the topic)."};
+  var JUDGE_VALUE_HINTS = {"grounded": "Claims appear supported by citations to retrieved sources.", "partially_grounded": "Some claims are cited; others may lack grounding.", "ungrounded": "Substantive factual claims without citation markers—parametric leakage risk.", "verified": "Retrieved chunks were provided; cited claims were checked against source text.", "unverifiable": "No chunk text was available; only citation presence was assessed.", "contradicted": "A cited claim does not match its retrieved source passage.", "pass": "Judge recommends pass on grounding and/or rubric alignment.", "fail": "Judge found a genuine deficiency (ungrounded claims, currency, or policy breach).", "borderline": "Grounding may be sound but the rubric or policy fit is unclear—see rubric concern."};
+  var configUrl = document.querySelector('meta[name="tahi-hub-config-url"]');
+  var reportUrl = document.querySelector('meta[name="tahi-report-json-url"]');
+  var configPath = configUrl ? configUrl.getAttribute("content") : "";
+  var reportPath = reportUrl ? reportUrl.getAttribute("content") : "latest.json";
+  var authUrl = "";
+
+  function setSignedIn(session) {
+    sessionStorage.setItem(TOKEN_KEY, session.token);
+    sessionStorage.setItem(USER_KEY, session.username || "");
+    sessionStorage.setItem(NAME_KEY, session.name || session.username || "");
+    sessionStorage.setItem(ROLE_KEY, session.role || "reviewer");
+    sessionStorage.setItem(EMAIL_KEY, session.email || "");
+    updateAuthUi(session);
+    document.body.setAttribute("data-reviewer-signed-in", "true");
+    if (String(session.role || "reviewer").toLowerCase() === "admin") {
+      document.body.setAttribute("data-reviewer-admin", "true");
+    } else {
+      document.body.removeAttribute("data-reviewer-admin");
+    }
+    var hubContent = document.querySelector("[data-hub-auth-content]");
+    var limitedReviewer =
+      hubContent &&
+      String(session.role || "reviewer").toLowerCase() !== "admin";
+    if (limitedReviewer) {
+      document.body.setAttribute("data-auth-pending", "true");
+    } else {
+      document.body.removeAttribute("data-auth-pending");
+    }
+    if (window.tahiSyncVerdictPanel) {
+      window.tahiSyncVerdictPanel();
+    }
+    if (window.tahiSyncMachineReviewVisibility) {
+      window.tahiSyncMachineReviewVisibility();
+    }
+    if (window.tahiLoadReviewerAssignments) {
+      window.tahiLoadReviewerAssignments().finally(function () {
+        if (window.tahiSyncHubCaseNav) {
+          window.tahiSyncHubCaseNav();
+        }
+      });
+    } else if (window.tahiSyncHubCaseNav) {
+      window.tahiSyncHubCaseNav();
+    }
+    if (window.tahiLoadHubAdminAssignments) {
+      window.tahiLoadHubAdminAssignments();
+    }
+    if (window.tahiSyncPerformanceAccess) {
+      window.tahiSyncPerformanceAccess();
+    }
+    if (window.tahiSyncHubAuthContent) {
+      window.tahiSyncHubAuthContent();
+    }
+    if (window.tahiSyncRemoteRunPanel) {
+      window.tahiSyncRemoteRunPanel();
+    }
+    if (window.tahiSyncUsersNav) {
+      window.tahiSyncUsersNav();
+    }
+    if (window.tahiLoadHubUserAdmin) {
+      window.tahiLoadHubUserAdmin();
+    }
+  }
+
+  function signOut() {
+    sessionStorage.removeItem(TOKEN_KEY);
+    sessionStorage.removeItem(USER_KEY);
+    sessionStorage.removeItem(NAME_KEY);
+    sessionStorage.removeItem(ROLE_KEY);
+    sessionStorage.removeItem(EMAIL_KEY);
+    updateAuthUi(null);
+    document.body.setAttribute("data-reviewer-signed-in", "false");
+    document.body.removeAttribute("data-reviewer-admin");
+    document.body.removeAttribute("data-auth-pending");
+    document.body.setAttribute("data-viewer-can-view-llm-detail", "false");
+    if (window.tahiSyncVerdictPanel) {
+      window.tahiSyncVerdictPanel();
+    }
+    if (window.tahiSyncMachineReviewVisibility) {
+      window.tahiSyncMachineReviewVisibility();
+    }
+    if (window.tahiSyncHubAssignmentFilter) {
+      window.tahiSyncHubAssignmentFilter();
+    }
+    if (window.tahiSyncHubCaseNav) {
+      window.tahiSyncHubCaseNav();
+    }
+    if (window.tahiSyncHubAdminAssignments) {
+      window.tahiSyncHubAdminAssignments();
+    }
+    if (window.tahiSyncPerformanceAccess) {
+      window.tahiSyncPerformanceAccess();
+    }
+    if (window.tahiSyncHubAuthContent) {
+      window.tahiSyncHubAuthContent();
+    }
+    if (window.tahiSyncRemoteRunPanel) {
+      window.tahiSyncRemoteRunPanel();
+    }
+    if (window.tahiSyncUsersNav) {
+      window.tahiSyncUsersNav();
+    }
+    if (window.tahiLoadHubUserAdmin) {
+      window.tahiLoadHubUserAdmin();
+    }
+    var slot = document.querySelector("[data-llm-slot]");
+    if (slot) {
+      slot.innerHTML = "";
+    }
+  }
+
+  function updateAuthUi(session) {
+    var status = document.querySelector("[data-reviewer-auth-status]");
+    var actions = document.querySelector("[data-reviewer-auth-actions]");
+    var form = document.querySelector("[data-reviewer-auth-form]");
+    if (!status) {
+      return;
+    }
+    if (session && session.username) {
+      clearAuthFeedback();
+      status.hidden = false;
+      status.textContent = session.name || session.username;
+      status.classList.add("reviewer-auth-status--signed-in");
+      if (form) {
+        form.hidden = true;
+      }
+      if (actions) {
+        actions.hidden = false;
+        actions.innerHTML = '<button type="button" class="llm-assessment-toggle" data-reviewer-sign-out>Sign out</button>';
+        actions.querySelector("[data-reviewer-sign-out]").addEventListener("click", signOut);
+      }
+      return;
+    }
+    clearAuthFeedback();
+    status.textContent = "Sign in to view machine review drafts and submit human verdicts.";
+    status.classList.remove("reviewer-auth-status--signed-in");
+    status.hidden = true;
+    if (form) {
+      form.hidden = false;
+    }
+    if (actions) {
+      actions.hidden = true;
+      actions.innerHTML = "";
+    }
+  }
+
+  function clearAuthFeedback() {
+    var status = document.querySelector("[data-reviewer-auth-status]");
+    var bar = document.querySelector("[data-reviewer-auth-bar]");
+    if (status) {
+      status.classList.remove("reviewer-auth-status--error", "reviewer-auth-status--loading");
+    }
+    if (bar) {
+      bar.classList.remove("reviewer-auth-bar--error", "reviewer-auth-bar--shake");
+    }
+    setAuthFormLocked(false);
+  }
+
+  function setAuthFormLocked(locked) {
+    var form = document.querySelector("[data-reviewer-auth-form]");
+    if (!form) {
+      return;
+    }
+    var submitButton = form.querySelector('button[type="submit"]');
+    form.classList.toggle("reviewer-auth-form--locked", locked);
+    form.querySelectorAll("input").forEach(function (input) {
+      input.readOnly = locked;
+      if (locked) {
+        input.setAttribute("aria-readonly", "true");
+      } else {
+        input.removeAttribute("aria-readonly");
+      }
+    });
+    if (submitButton) {
+      submitButton.disabled = locked;
+    }
+  }
+
+  function setAuthLoading(message) {
+    clearAuthFeedback();
+    setAuthFormLocked(true);
+    var status = document.querySelector("[data-reviewer-auth-status]");
+    if (status) {
+      status.hidden = false;
+      status.textContent = message;
+      status.classList.add("reviewer-auth-status--loading");
+    }
+  }
+
+  function formatAuthErrorMessage(err) {
+    var message = (err && err.message) || "Sign-in failed. Check username and password.";
+    if (message === "Invalid credentials") {
+      return "Sign-in failed. Check username and password.";
+    }
+    return message;
+  }
+
+  function setAuthError(message) {
+    var status = document.querySelector("[data-reviewer-auth-status]");
+    var bar = document.querySelector("[data-reviewer-auth-bar]");
+    var passwordInput = document.querySelector('[data-reviewer-auth-form] input[name="password"]');
+    setAuthFormLocked(false);
+    if (status) {
+      status.hidden = false;
+      status.textContent = message;
+      status.classList.remove("reviewer-auth-status--loading");
+      status.classList.add("reviewer-auth-status--error");
+    }
+    if (bar) {
+      bar.classList.add("reviewer-auth-bar--error");
+      bar.classList.remove("reviewer-auth-bar--shake");
+      void bar.offsetWidth;
+      bar.classList.add("reviewer-auth-bar--shake");
+    }
+    if (passwordInput) {
+      passwordInput.focus();
+      passwordInput.select();
+    }
+  }
+
+  function bindAuthInputReset() {
+    var form = document.querySelector("[data-reviewer-auth-form]");
+    if (!form) {
+      return;
+    }
+    form.querySelectorAll("input").forEach(function (input) {
+      input.addEventListener("input", clearAuthFeedback);
+    });
+  }
+
+  function postAuth(payload) {
+    return fetch(authUrl, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload),
+    }).then(function (resp) {
+      return resp.json();
+    });
+  }
+
+  function isMachineReviewBlinded() {
+    return document.body.getAttribute("data-machine-review-blinded") === "true";
+  }
+
+  function machineReviewUnlocked() {
+    if (!isMachineReviewBlinded()) {
+      if (document.body.getAttribute("data-machine-review-visible") === "false") {
+        return false;
+      }
+      return true;
+    }
+    if (document.body.getAttribute("data-machine-review-visible") === "false") {
+      return false;
+    }
+    var gated = document.querySelector("[data-machine-review-gated]");
+    if (gated) {
+      var content = gated.querySelector("[data-machine-review-content]");
+      if (content && content.hidden) {
+        return false;
+      }
+    }
+    var panel = document.querySelector('[data-case-details-panel="machine"]');
+    if (panel && panel.classList.contains("machine-review-hidden")) {
+      return false;
+    }
+    return Boolean(sessionStorage.getItem(TOKEN_KEY));
+  }
+
+  function renderJudgePanel(judge) {
+    if (!judge) {
+      return "";
+    }
+    var grounding = judge.grounding || {};
+    var policy = judge.policy || {};
+    var currency = judge.currency || {};
+    var rows = [];
+    if (judge.summary) {
+      rows.push({ label: "Summary", value: judge.summary, hintKey: "summary" });
+    }
+    if (judge.confidence != null && judge.confidence !== "") {
+      var conf = Number(judge.confidence);
+      var confText = !isNaN(conf)
+        ? (conf <= 1 ? Math.round(conf * 100) + "%" : String(conf))
+        : String(judge.confidence);
+      rows.push({ label: "Confidence", value: confText, hintKey: "confidence" });
+    }
+    if (grounding.assessment) {
+      rows.push({ label: "Grounding", value: grounding.assessment, hintKey: "grounding" });
+    }
+    if (grounding.citation_content_verified) {
+      rows.push({
+        label: "Citation check",
+        value: grounding.citation_content_verified,
+        hintKey: "citation_check",
+      });
+    }
+    if (grounding.claims_cited != null || grounding.material_claims != null) {
+      rows.push({
+        label: "Citations",
+        value:
+          String(grounding.claims_cited != null ? grounding.claims_cited : "?") +
+          " cited of " +
+          String(grounding.material_claims != null ? grounding.material_claims : "?") +
+          " material claims",
+        hintKey: "citations",
+      });
+    }
+    if (policy.reasoning) {
+      rows.push({ label: "Policy", value: policy.reasoning, hintKey: "policy" });
+    }
+    if (currency.notes) {
+      rows.push({ label: "Currency", value: currency.notes, hintKey: "currency" });
+    }
+    if (judge.rubric_concern) {
+      rows.push({
+        label: "Rubric concern",
+        value: judge.rubric_concern,
+        hintKey: "rubric_concern",
+      });
+    }
+    function escapeHtml(text) {
+      return String(text || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+    function judgeValueHint(value) {
+      var key = String(value || "").toLowerCase().trim();
+      return JUDGE_VALUE_HINTS[key] || "";
+    }
+    function titleAttr(text) {
+      var value = String(text || "").trim();
+      return value ? ' title="' + escapeHtml(value) + '"' : "";
+    }
+    var body = rows
+      .filter(function (row) { return row.value; })
+      .map(function (row) {
+        var fieldHint = JUDGE_FIELD_HINTS[row.hintKey] || "";
+        var valueHint = judgeValueHint(row.value);
+        return (
+          "<dt" + titleAttr(fieldHint) + ">" + escapeHtml(row.label) + "</dt>" +
+          "<dd" + titleAttr(valueHint) + ">" + escapeHtml(row.value) + "</dd>"
+        );
+      })
+      .join("");
+    return (
+      '<section class="llm-detail-panel is-open" id="llm-detail-panel">' +
+      '<div class="llm-detail-panel-head">' +
+      "<h2>Machine review draft</h2>" +
+      "</div>" +
+      '<p class="llm-detail-panel-hint">Hover a label for what each field means.</p>' +
+      "<dl>" +
+      body +
+      "</dl></section>"
+    );
+  }
+
+  function judgeFromReport(report) {
+    var cases = (report && report.cases) || [];
+    if (!cases.length) {
+      return null;
+    }
+    var tiers = ((cases[0].assessment || {}).tiers) || [];
+    for (var i = 0; i < tiers.length; i++) {
+      if (tiers[i].tier === 3) {
+        var judge = ((tiers[i].detail || {}).judge);
+        return judge && typeof judge === "object" ? judge : null;
+      }
+    }
+    return null;
+  }
+
+  function tier3FromReport(report) {
+    var cases = (report && report.cases) || [];
+    if (!cases.length) {
+      return null;
+    }
+    var tiers = ((cases[0].assessment || {}).tiers) || [];
+    for (var i = 0; i < tiers.length; i++) {
+      if (tiers[i].tier === 3) {
+        return tiers[i];
+      }
+    }
+    return null;
+  }
+
+  function verdictLabelForNav(verdict) {
+    var key = String(verdict || "").toLowerCase();
+    var labels = {
+      pass: "Pass",
+      fail: "Fail",
+      likely_pass: "Likely pass",
+      pending: "Pending review",
+      review: "Needs review",
+      draft: "Draft",
+      inconclusive: "Inconclusive",
+      "n/a": "N/A",
+    };
+    return labels[key] || key.replace(/_/g, " ");
+  }
+
+  function verdictToneForNav(verdict) {
+    var key = String(verdict || "").toLowerCase();
+    if (key === "pass" || key === "likely_pass") {
+      return "pass";
+    }
+    if (key === "fail") {
+      return "fail";
+    }
+    if (key === "pending" || key === "review" || key === "draft" || key === "inconclusive") {
+      return "warn";
+    }
+    return "neutral";
+  }
+
+  function syncMachineNavFromReport(report) {
+    var tier = tier3FromReport(report);
+    if (!tier) {
+      return;
+    }
+    var judge = ((tier.detail || {}).judge);
+    if (!judge || typeof judge !== "object") {
+      return;
+    }
+    var summary = String(judge.summary || "").trim();
+    if (!summary) {
+      return;
+    }
+    var card = document.querySelector(
+      '[data-tier-nav-card][data-details-target="machine"]:not([hidden])'
+    );
+    if (!card) {
+      card = document.querySelector(
+        '[data-tier-nav-card][data-details-target="machine"][data-machine-review-content]'
+      );
+    }
+    if (!card || card.hidden) {
+      return;
+    }
+    var heading = card.querySelector("h3");
+    var badge = card.querySelector(".verdict-badge");
+    var commentary = card.querySelector(".tier-nav-card-commentary");
+    var verdict = String(judge.verdict || tier.verdict || "draft").toLowerCase();
+    if (heading) {
+      heading.textContent = "Machine review (LLM draft)";
+    }
+    if (badge) {
+      badge.textContent = verdictLabelForNav(verdict);
+      badge.className = "verdict-badge verdict-badge--" + verdictToneForNav(verdict);
+    }
+    if (commentary) {
+      commentary.textContent = summary;
+    }
+    var stripCards = document.querySelectorAll(".results-card");
+    for (var i = 0; i < stripCards.length; i++) {
+      var nameEl = stripCards[i].querySelector(".results-card-name");
+      if (!nameEl) {
+        continue;
+      }
+      if (String(nameEl.textContent || "").indexOf("Machine review") === -1) {
+        continue;
+      }
+      nameEl.textContent = "Machine review (LLM draft)";
+      var valueEl = stripCards[i].querySelector(".results-card-value");
+      if (valueEl) {
+        valueEl.textContent = verdictLabelForNav(verdict);
+      }
+      stripCards[i].className = stripCards[i].className
+        .replace(/\s*results-card--(?:pass|fail|warn|neutral)/g, "")
+        .trim();
+      stripCards[i].classList.add("results-card--" + verdictToneForNav(verdict));
+      break;
+    }
+  }
+
+  function refreshNavFromReportJson() {
+    if (!reportPath) {
+      return Promise.resolve(null);
+    }
+    return fetch(reportPath)
+      .then(function (resp) { return resp.json(); })
+      .then(function (report) {
+        syncMachineNavFromReport(report);
+        return report;
+      })
+      .catch(function () { return null; });
+  }
+
+  window.tahiSyncMachineNavFromReport = syncMachineNavFromReport;
+  window.tahiRefreshNavFromReportJson = refreshNavFromReportJson;
+
+  function ensureDraftPanelLoaded(callback) {
+    var machinePanel = document.querySelector('[data-case-details-panel="machine"]');
+    var slot = machinePanel ? machinePanel.querySelector("[data-llm-slot]") : null;
+    if (!slot) {
+      callback(false);
+      return;
+    }
+    if (document.getElementById("llm-detail-panel")) {
+      callback(true);
+      return;
+    }
+    if (!machineReviewUnlocked()) {
+      callback(false);
+      return;
+    }
+    if (isMachineReviewBlinded() && !sessionStorage.getItem(TOKEN_KEY)) {
+      callback(false);
+      return;
+    }
+    fetch(reportPath)
+      .then(function (resp) { return resp.json(); })
+      .then(function (report) {
+        syncMachineNavFromReport(report);
+        slot.innerHTML = renderJudgePanel(judgeFromReport(report));
+        document.body.setAttribute("data-viewer-can-view-llm-detail", "true");
+        callback(Boolean(document.getElementById("llm-detail-panel")));
+      })
+      .catch(function () { callback(false); });
+  }
+
+  window.tahiLoadMachineDraft = function () {
+    var machinePanel = document.querySelector('[data-case-details-panel="machine"]');
+    if (!machinePanel || machinePanel.hidden) {
+      return;
+    }
+    if (machinePanel.classList.contains("machine-review-hidden")) {
+      return;
+    }
+    if (!machineReviewUnlocked()) {
+      return;
+    }
+    if (isMachineReviewBlinded() && !sessionStorage.getItem(TOKEN_KEY)) {
+      return;
+    }
+    ensureDraftPanelLoaded(function () {});
+  };
+
+  function restoreSession(token) {
+    return postAuth({ action: "validate", token: token }).then(function (result) {
+      if (!result || !result.ok) {
+        signOut();
+        return false;
+      }
+      setSignedIn({
+        token: token,
+        username: result.username,
+        name: result.name,
+        email: result.email,
+        role: result.role,
+      });
+      return true;
+    });
+  }
+
+  function bindLoginForm() {
+    var form = document.querySelector("[data-reviewer-auth-form]");
+    if (!form) {
+      return;
+    }
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var usernameInput = form.querySelector('input[name="username"]');
+      var passwordInput = form.querySelector('input[name="password"]');
+      var username = usernameInput ? String(usernameInput.value || "").trim() : "";
+      var password = passwordInput ? String(passwordInput.value || "") : "";
+      if (!username || !password) {
+        setAuthError("Enter username and password.");
+        return;
+      }
+      setAuthLoading("Signing in…");
+      postAuth({ action: "login", username: username, password: password })
+        .then(function (result) {
+          if (!result || !result.ok || !result.token) {
+            throw new Error((result && result.error) || "Sign-in failed");
+          }
+          if (passwordInput) {
+            passwordInput.value = "";
+          }
+          setSignedIn(result);
+        })
+        .catch(function (err) {
+          setAuthError(formatAuthErrorMessage(err));
+        });
+    });
+    bindAuthInputReset();
+  }
+
+  if (!configPath) {
+    return;
+  }
+  fetch(configPath)
+    .then(function (resp) {
+      if (!resp.ok) {
+        throw new Error("hub config HTTP " + resp.status);
+      }
+      return resp.json();
+    })
+    .then(function (cfg) {
+      authUrl = String(cfg.auth_url || "").trim();
+      if (!authUrl) {
+        setAuthError("Hub config is missing auth_url. Re-run write_pages_auth.py.");
+        return;
+      }
+      bindLoginForm();
+      refreshNavFromReportJson();
+      var savedToken = sessionStorage.getItem(TOKEN_KEY);
+      if (savedToken) {
+        restoreSession(savedToken).catch(function () {
+          signOut();
+        });
+        return;
+      }
+      updateAuthUi(null);
+    })
+    .catch(function (err) {
+      setAuthError("Could not load hub config (" + configPath + "). " + (err && err.message ? err.message : ""));
+    });
+})();
+
+(function () {
+  var TOKEN_KEY = "tahi_auth_token";
+  var ROLE_KEY = "tahi_reviewer_role";
+
+  function isAdmin() {
+    return (
+      String(sessionStorage.getItem(ROLE_KEY) || "").toLowerCase() === "admin" &&
+      Boolean(sessionStorage.getItem(TOKEN_KEY))
+    );
+  }
+
+  function isReviewer() {
+    return (
+      String(sessionStorage.getItem(ROLE_KEY) || "").toLowerCase() === "reviewer" &&
+      Boolean(sessionStorage.getItem(TOKEN_KEY))
+    );
+  }
+
+  function syncUsersNav() {
+    var hide = !isAdmin();
+    document.querySelectorAll(".hub-nav--users").forEach(function (node) {
+      node.hidden = hide;
+    });
+  }
+
+  function syncAdminArtifacts() {
+    var show = isAdmin();
+    document.querySelectorAll("[data-hub-admin-artifacts]").forEach(function (node) {
+      node.hidden = !show;
+    });
+  }
+
+  function syncPerformanceNav() {
+    var show = isAdmin();
+    document.querySelectorAll(".hub-nav--performance").forEach(function (node) {
+      node.hidden = !show;
+    });
+  }
+
+  function gatePerformancePage() {
+    if (!document.body.hasAttribute("data-perf-hub")) {
+      return;
+    }
+    if (!isReviewer()) {
+      return;
+    }
+    var wrap = document.querySelector(".wrap");
+    if (!wrap || document.querySelector("[data-hub-perf-blocked]")) {
+      return;
+    }
+    var block = document.createElement("div");
+    block.className = "hub-perf-blocked";
+    block.setAttribute("data-hub-perf-blocked", "");
+    block.innerHTML =
+      "<p><strong>Performance suite</strong> is for admins only.</p>" +
+      '<p><a href="../index.html">Back to evaluation hub</a></p>';
+    wrap.querySelectorAll(":scope > main.content, :scope > footer.footer").forEach(function (node) {
+      node.hidden = true;
+    });
+    wrap.appendChild(block);
+  }
+
+  function syncHubAuthContent() {
+    var content = document.querySelector("[data-hub-auth-content]");
+    if (!content) {
+      return;
+    }
+    var signedIn =
+      document.body.getAttribute("data-reviewer-signed-in") === "true" &&
+      Boolean(sessionStorage.getItem(TOKEN_KEY));
+    var pending = document.body.hasAttribute("data-auth-pending");
+    content.hidden = !signedIn || pending;
+    var prompt = document.querySelector("[data-hub-auth-required]");
+    if (prompt) {
+      prompt.hidden = signedIn || pending;
+    }
+    var notice = document.querySelector("[data-hub-assignment-notice]");
+    if (notice && !signedIn) {
+      notice.hidden = true;
+      notice.textContent = "";
+    }
+  }
+
+  window.tahiSyncHubAuthContent = syncHubAuthContent;
+
+  window.tahiSyncPerformanceAccess = function () {
+    syncPerformanceNav();
+    gatePerformancePage();
+    syncUsersNav();
+    syncAdminArtifacts();
+    syncHubAuthContent();
+  };
+
+  window.tahiSyncUsersNav = syncUsersNav;
+
+  document.addEventListener("DOMContentLoaded", function () {
+    window.tahiSyncPerformanceAccess();
+  });
+})();
+
+(function () {
+  var TOKEN_KEY = "tahi_auth_token";
+  var ROLE_KEY = "tahi_reviewer_role";
+  var USER_KEY = "tahi_reviewer_username";
+
+  function isAdmin() {
+    return (
+      String(sessionStorage.getItem(ROLE_KEY) || "").toLowerCase() === "admin" &&
+      Boolean(sessionStorage.getItem(TOKEN_KEY))
+    );
+  }
+
+  function authUrlFromConfig() {
+    var node = document.querySelector('meta[name="tahi-hub-config-url"]');
+    var path = node ? node.getAttribute("content") : "";
+    if (!path) {
+      return Promise.resolve("");
+    }
+    return fetch(path)
+      .then(function (resp) { return resp.json(); })
+      .then(function (cfg) { return String(cfg.auth_url || "").trim(); });
+  }
+
+  var rosterLoadController = null;
+  var rosterLoadSeq = 0;
+
+  function postAuth(authUrl, payload, options) {
+    var opts = options || {};
+    var controller = new AbortController();
+    var timeoutId = window.setTimeout(function () {
+      controller.abort();
+    }, opts.timeoutMs || 45000);
+    var externalSignal = opts.signal;
+    if (externalSignal) {
+      if (externalSignal.aborted) {
+        controller.abort();
+      } else {
+        externalSignal.addEventListener("abort", function () {
+          controller.abort();
+        });
+      }
+    }
+    return fetch(authUrl, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload),
+      signal: controller.signal,
+    })
+      .then(function (resp) {
+        return resp.text().then(function (text) {
+          if (!text) {
+            throw new Error("Empty response from hub auth service");
+          }
+          try {
+            return JSON.parse(text);
+          } catch (parseErr) {
+            throw new Error("Hub auth service returned invalid JSON");
+          }
+        });
+      })
+      .finally(function () {
+        window.clearTimeout(timeoutId);
+      });
+  }
+
+  function setStatus(message, tone) {
+    var node = document.querySelector("[data-hub-users-status]");
+    if (!node) {
+      return;
+    }
+    node.hidden = !message;
+    node.textContent = message || "";
+    node.classList.remove("hub-users-status--ok", "hub-users-status--error");
+    if (tone === "ok") {
+      node.classList.add("hub-users-status--ok");
+    } else if (tone === "error") {
+      node.classList.add("hub-users-status--error");
+    }
+  }
+
+  function showRosterMessage(message) {
+    var tbody = document.querySelector("[data-hub-users-rows]");
+    if (!tbody) {
+      return;
+    }
+    tbody.innerHTML = '<tr><td colspan="7">' + escapeHtml(message) + "</td></tr>";
+  }
+
+  function escapeHtml(text) {
+    return String(text || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function roleBadge(role) {
+    var value = String(role || "reviewer").toLowerCase();
+    return '<span class="hub-users-badge hub-users-badge--' + escapeHtml(value) + '">' + escapeHtml(value) + "</span>";
+  }
+
+  function activeBadge(active) {
+    var yes = String(active || "").toLowerCase() === "yes";
+    return (
+      '<span class="hub-users-badge ' +
+      (yes ? "hub-users-badge--active" : "hub-users-badge--inactive") +
+      '">' +
+      (yes ? "Active" : "Inactive") +
+      "</span>"
+    );
+  }
+
+  function renderRows(reviewers) {
+    var tbody = document.querySelector("[data-hub-users-rows]");
+    if (!tbody) {
+      return;
+    }
+    if (!reviewers.length) {
+      tbody.innerHTML = '<tr><td colspan="7">No reviewers on the roster yet.</td></tr>';
+      return;
+    }
+    tbody.innerHTML = reviewers.map(function (reviewer) {
+      var active = String(reviewer.active || "").toLowerCase() === "yes";
+      var toggleLabel = active ? "Deactivate" : "Reactivate";
+      var toggleClass = active ? "hub-users-btn--danger" : "hub-users-btn--primary";
+      return (
+        '<tr data-hub-user-email="' + escapeHtml(reviewer.email) + '">' +
+        "<td>" + escapeHtml(reviewer.name) + "</td>" +
+        '<td class="hub-users-cell-user"><code class="hub-users-username">' +
+        escapeHtml(reviewer.username) +
+        "</code></td>" +
+        '<td class="hub-users-cell-email">' + escapeHtml(reviewer.email) + "</td>" +
+        "<td>" + roleBadge(reviewer.role) + "</td>" +
+        "<td>" + activeBadge(reviewer.active) + "</td>" +
+        '<td style="text-align:center">' +
+        (reviewer.assignment_count == null ? "—" : escapeHtml(String(reviewer.assignment_count))) +
+        "</td>" +
+        "<td>" +
+        '<button type="button" class="hub-users-btn hub-users-btn--link" data-hub-users-edit>Edit</button> ' +
+        '<button type="button" class="hub-users-btn hub-users-btn--link ' + toggleClass + '" data-hub-users-toggle>' +
+        escapeHtml(toggleLabel) + "</button>" +
+        "</td></tr>"
+      );
+    }).join("");
+    bindRowActions(reviewers);
+  }
+
+  function bindRowActions(reviewers) {
+    var byEmail = {};
+    reviewers.forEach(function (reviewer) {
+      byEmail[String(reviewer.email || "").toLowerCase()] = reviewer;
+    });
+    document.querySelectorAll("[data-hub-users-edit]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        var row = button.closest("tr");
+        var email = row ? String(row.getAttribute("data-hub-user-email") || "").toLowerCase() : "";
+        var reviewer = byEmail[email];
+        if (!reviewer) {
+          return;
+        }
+        fillEditor(reviewer);
+      });
+    });
+    document.querySelectorAll("[data-hub-users-toggle]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        var row = button.closest("tr");
+        var email = row ? String(row.getAttribute("data-hub-user-email") || "").toLowerCase() : "";
+        var reviewer = byEmail[email];
+        if (!reviewer) {
+          return;
+        }
+        var active = String(reviewer.active || "").toLowerCase() === "yes";
+        var label = active ? "Deactivate " + reviewer.username + "?" : "Reactivate " + reviewer.username + "?";
+        if (!window.confirm(label)) {
+          return;
+        }
+        setReviewerActive(reviewer.email, !active, button);
+      });
+    });
+  }
+
+  function fillEditor(reviewer) {
+    var form = document.querySelector("[data-hub-users-form]");
+    var title = document.querySelector("[data-hub-users-editor-title]");
+    var cancel = document.querySelector("[data-hub-users-cancel]");
+    if (!form) {
+      return;
+    }
+    form.mode.value = "edit";
+    form.name.value = reviewer.name || "";
+    form.username.value = reviewer.username || "";
+    form.email.value = reviewer.email || "";
+    form.role.value = reviewer.role || "reviewer";
+    form.email.readOnly = true;
+    if (title) {
+      title.textContent = "Edit user";
+    }
+    if (cancel) {
+      cancel.hidden = false;
+    }
+    syncUserWidgetToggleLabel();
+    setUserWidgetOpen(true);
+  }
+
+  function resetEditor() {
+    var form = document.querySelector("[data-hub-users-form]");
+    var title = document.querySelector("[data-hub-users-editor-title]");
+    var cancel = document.querySelector("[data-hub-users-cancel]");
+    if (!form) {
+      return;
+    }
+    form.reset();
+    form.mode.value = "create";
+    form.email.readOnly = false;
+    if (title) {
+      title.textContent = "Add user";
+    }
+    if (cancel) {
+      cancel.hidden = true;
+    }
+    syncUserWidgetToggleLabel();
+  }
+
+  function syncUserWidgetToggleLabel() {
+    var title = document.querySelector("[data-hub-users-editor-title]");
+    var toggle = document.querySelector("[data-hub-users-user-toggle]");
+    if (title && toggle) {
+      toggle.textContent = title.textContent || "Add user";
+    }
+  }
+
+  function setUserWidgetOpen(open) {
+    var widget = document.querySelector("[data-hub-users-user-widget]");
+    var dropdown = document.querySelector("[data-hub-users-user-dropdown]");
+    var toggle = document.querySelector("[data-hub-users-user-toggle]");
+    if (!widget || !dropdown || !toggle) {
+      return;
+    }
+    dropdown.hidden = !open;
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    if (open) {
+      setPassphraseWidgetOpen(false);
+    }
+  }
+
+  function setPassphraseWidgetOpen(open) {
+    var widget = document.querySelector("[data-hub-users-passphrase-widget]");
+    var dropdown = document.querySelector("[data-hub-users-passphrase-dropdown]");
+    var toggle = document.querySelector("[data-hub-users-passphrase-toggle]");
+    if (!widget || !dropdown || !toggle) {
+      return;
+    }
+    dropdown.hidden = !open;
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    if (open) {
+      setUserWidgetOpen(false);
+    }
+  }
+
+  function syncAdminWidgets() {
+    var show = isAdmin();
+    document.querySelectorAll("[data-hub-users-user-widget], [data-hub-users-passphrase-widget]").forEach(function (node) {
+      node.hidden = !show;
+    });
+    if (!show) {
+      setUserWidgetOpen(false);
+      setPassphraseWidgetOpen(false);
+    }
+  }
+
+  function loadReviewers() {
+    if (!isAdmin()) {
+      gatePage();
+      return Promise.resolve(false);
+    }
+    revealPage();
+    if (rosterLoadController) {
+      rosterLoadController.abort();
+    }
+    rosterLoadController = new AbortController();
+    var loadSeq = ++rosterLoadSeq;
+    var loadSignal = rosterLoadController.signal;
+    showRosterMessage("Loading roster…");
+    var token = sessionStorage.getItem(TOKEN_KEY);
+    return authUrlFromConfig().then(function (authUrl) {
+      if (!authUrl) {
+        throw new Error("Hub auth not configured");
+      }
+      return postAuth(
+        authUrl,
+        { action: "getAllReviewers", token: token, include_assignment_counts: true },
+        { signal: loadSignal }
+      ).then(function (result) {
+        if (loadSeq !== rosterLoadSeq) {
+          return false;
+        }
+        if (!result || !result.ok) {
+          throw new Error((result && result.error) || "Could not load roster");
+        }
+        renderRows(result.reviewers || []);
+        return true;
+      });
+    }).catch(function (err) {
+      if (loadSeq !== rosterLoadSeq || (err && err.name === "AbortError")) {
+        return false;
+      }
+      var message = (err && err.message) || "Could not load roster";
+      if (message.indexOf("Admin role required") >= 0) {
+        message = "Signed in account is not an admin.";
+      }
+      showRosterMessage(message);
+      setStatus(message, "error");
+      return false;
+    }).finally(function () {
+      if (loadSeq === rosterLoadSeq) {
+        rosterLoadController = null;
+      }
+    });
+  }
+
+  function saveReviewer(form) {
+    var token = sessionStorage.getItem(TOKEN_KEY);
+    var payload = {
+      action: "upsertReviewer",
+      token: token,
+      name: String(form.name.value || "").trim(),
+      username: String(form.username.value || "").trim().toLowerCase(),
+      email: String(form.email.value || "").trim().toLowerCase(),
+      role: String(form.role.value || "reviewer").trim().toLowerCase(),
+    };
+    var button = form.querySelector("[data-hub-users-save]");
+    if (button) {
+      button.disabled = true;
+    }
+    return authUrlFromConfig().then(function (authUrl) {
+      return postAuth(authUrl, payload);
+    }).then(function (result) {
+      if (!result || !result.ok) {
+        throw new Error((result && result.error) || "Could not save user");
+      }
+      setStatus("Saved " + payload.username + ".", "ok");
+      resetEditor();
+      setUserWidgetOpen(false);
+      return loadReviewers();
+    }).catch(function (err) {
+      setStatus((err && err.message) || "Save failed", "error");
+    }).finally(function () {
+      if (button) {
+        button.disabled = false;
+      }
+    });
+  }
+
+  function setReviewerActive(email, active, button) {
+    var token = sessionStorage.getItem(TOKEN_KEY);
+    if (button) {
+      button.disabled = true;
+    }
+    return authUrlFromConfig().then(function (authUrl) {
+      return postAuth(authUrl, {
+        action: "setReviewerActive",
+        token: token,
+        email: email,
+        active: active,
+      });
+    }).then(function (result) {
+      if (!result || !result.ok) {
+        throw new Error((result && result.error) || "Could not update status");
+      }
+      setStatus("Updated " + email + ".", "ok");
+      return loadReviewers();
+    }).catch(function (err) {
+      setStatus((err && err.message) || "Update failed", "error");
+    }).finally(function () {
+      if (button) {
+        button.disabled = false;
+      }
+    });
+  }
+
+  function updatePassphrase(form) {
+    var current = String(form.current_passphrase.value || "");
+    var next = String(form.new_passphrase.value || "");
+    var confirm = String(form.confirm_passphrase.value || "");
+    if (next !== confirm) {
+      setStatus("New passphrase and confirmation do not match.", "error");
+      return Promise.resolve(false);
+    }
+    var token = sessionStorage.getItem(TOKEN_KEY);
+    var button = form.querySelector('button[type="submit"]');
+    if (button) {
+      button.disabled = true;
+    }
+    return authUrlFromConfig().then(function (authUrl) {
+      return postAuth(authUrl, {
+        action: "setReviewerPassphrase",
+        token: token,
+        current_passphrase: current,
+        new_passphrase: next,
+      });
+    }).then(function (result) {
+      if (!result || !result.ok) {
+        throw new Error((result && result.error) || "Could not update passphrase");
+      }
+      form.reset();
+      setStatus(result.message || "Passphrase updated.", "ok");
+      setPassphraseWidgetOpen(false);
+      return true;
+    }).catch(function (err) {
+      setStatus((err && err.message) || "Passphrase update failed", "error");
+      return false;
+    }).finally(function () {
+      if (button) {
+        button.disabled = false;
+      }
+    });
+  }
+
+  function revealPage() {
+    var main = document.querySelector("[data-hub-users-main]");
+    if (main) {
+      main.hidden = false;
+    }
+    syncAdminWidgets();
+    document.querySelectorAll("[data-hub-users-blocked]").forEach(function (node) {
+      node.remove();
+    });
+  }
+
+  function gatePage() {
+    var main = document.querySelector("[data-hub-users-main]");
+    if (main) {
+      main.hidden = true;
+    }
+    syncAdminWidgets();
+    showRosterMessage("Sign in as an admin to load the roster.");
+    if (document.querySelector("[data-hub-users-blocked]")) {
+      return;
+    }
+    var wrap = document.querySelector(".wrap");
+    if (!wrap) {
+      return;
+    }
+    var block = document.createElement("div");
+    block.className = "hub-users-blocked";
+    block.setAttribute("data-hub-users-blocked", "");
+    block.innerHTML =
+      "<p><strong>User management</strong> is for admins only.</p>" +
+      '<p><a href="index.html">Back to evaluation hub</a></p>';
+    wrap.appendChild(block);
+  }
+
+  function bindForms() {
+    var userToggle = document.querySelector("[data-hub-users-user-toggle]");
+    if (userToggle) {
+      userToggle.addEventListener("click", function () {
+        var dropdown = document.querySelector("[data-hub-users-user-dropdown]");
+        setUserWidgetOpen(dropdown ? dropdown.hidden : true);
+      });
+    }
+    var passphraseToggle = document.querySelector("[data-hub-users-passphrase-toggle]");
+    if (passphraseToggle) {
+      passphraseToggle.addEventListener("click", function () {
+        var dropdown = document.querySelector("[data-hub-users-passphrase-dropdown]");
+        setPassphraseWidgetOpen(dropdown ? dropdown.hidden : true);
+      });
+    }
+    document.addEventListener("click", function (event) {
+      var userWidget = document.querySelector("[data-hub-users-user-widget]");
+      var passphraseWidget = document.querySelector("[data-hub-users-passphrase-widget]");
+      if (userWidget && !userWidget.hidden) {
+        var userDropdown = document.querySelector("[data-hub-users-user-dropdown]");
+        if (userDropdown && !userDropdown.hidden && !userWidget.contains(event.target)) {
+          setUserWidgetOpen(false);
+        }
+      }
+      if (passphraseWidget && !passphraseWidget.hidden) {
+        var passphraseDropdown = document.querySelector("[data-hub-users-passphrase-dropdown]");
+        if (passphraseDropdown && !passphraseDropdown.hidden && !passphraseWidget.contains(event.target)) {
+          setPassphraseWidgetOpen(false);
+        }
+      }
+    });
+    var form = document.querySelector("[data-hub-users-form]");
+    if (form) {
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        if (!isAdmin()) {
+          return;
+        }
+        saveReviewer(form);
+      });
+    }
+    var cancel = document.querySelector("[data-hub-users-cancel]");
+    if (cancel) {
+      cancel.addEventListener("click", function () {
+        resetEditor();
+        setUserWidgetOpen(false);
+      });
+    }
+    var passphraseForm = document.querySelector("[data-hub-users-passphrase-form]");
+    if (passphraseForm) {
+      passphraseForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        if (!isAdmin()) {
+          return;
+        }
+        updatePassphrase(passphraseForm);
+      });
+    }
+  }
+
+  window.tahiLoadHubUserAdmin = function () {
+    if (!document.body.hasAttribute("data-hub-users-page")) {
+      return Promise.resolve(false);
+    }
+    if (!isAdmin()) {
+      gatePage();
+      return Promise.resolve(false);
+    }
+    return loadReviewers();
+  };
+
+  document.addEventListener("DOMContentLoaded", function () {
+    bindForms();
+  });
+})();
+</script>
+</body>
+</html>

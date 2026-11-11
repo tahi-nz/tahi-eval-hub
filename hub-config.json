@@ -1,0 +1,7 @@
+{
+  "auth_url": "https://script.google.com/macros/s/AKfycbxCSYXomcbO1qbO9eW9i9h5kmC8lH-LjO7ZCpygThmmQ3qG35ofLPe2gwtOkV3BN2VReQ/exec",
+  "auth_mode": "hub",
+  "reviewers_url": "reviewers.json",
+  "github_artifacts_url": "https://github.com/tahi-nz/tahi-test-runner/actions/workflows/remote-run.yml",
+  "google_drive_url": "https://docs.google.com/spreadsheets/d/1nDEi-nmaYSyRi6HuO0zQQC2TIaMhzwhW6XnqQGydAvg/edit"
+}
